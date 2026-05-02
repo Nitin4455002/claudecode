@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pages List View | RankFrame Help Center</title>
+<meta name="description" content="Browse, search, and triage every page on your Framer site from the RankFrame Pages list. Folders, scores, and last crawled dates at a glance.">
+<meta name="keywords" content="RankFrame pages, Framer SEO pages, page list, SEO score, page folders">
+<link rel="canonical" href="https://rankframe.com/help/pages-list-view">
+<meta name="article-category" content="Pages">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", sans-serif; background: #ffffff; color: #111111; line-height: 1.7; font-size: 16px; }
+.page { max-width: 740px; margin: 0 auto; padding: 48px 24px 96px; }
+.breadcrumb { display: flex; align-items: center; gap: 6px; font-size: 13px; color: #888; margin-bottom: 32px; flex-wrap: wrap; }
+.breadcrumb a { color: #888; text-decoration: none; }
+.breadcrumb a:hover { color: #7c3aed; }
+.breadcrumb span { color: #ccc; }
+.article-category { display: inline-block; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #7c3aed; background: #f3f0ff; padding: 3px 10px; border-radius: 999px; margin-bottom: 12px; }
+h1 { font-size: 2rem; font-weight: 700; color: #0a0a0a; line-height: 1.25; margin-bottom: 14px; letter-spacing: -0.02em; }
+.article-description { font-size: 1.05rem; color: #555; line-height: 1.65; margin-bottom: 10px; }
+.article-meta { display: flex; gap: 16px; font-size: 13px; color: #aaa; margin-bottom: 36px; padding-bottom: 24px; border-bottom: 1px solid #f0f0f0; flex-wrap: wrap; }
+.toc { background: #fafafa; border: 1px solid #efefef; border-radius: 10px; padding: 18px 22px; margin-bottom: 40px; }
+.toc-title { font-size: 12px; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: #aaa; margin-bottom: 10px; }
+.toc ol { list-style: none; padding: 0; }
+.toc li { margin-bottom: 5px; }
+.toc a { font-size: 14px; color: #555; text-decoration: none; }
+.toc a:hover { color: #7c3aed; }
+h2 { font-size: 1.3rem; font-weight: 600; color: #0a0a0a; margin: 40px 0 14px; padding-bottom: 8px; border-bottom: 1px solid #f0f0f0; letter-spacing: -0.01em; }
+h3 { font-size: 1.05rem; font-weight: 600; color: #0a0a0a; margin: 24px 0 8px; }
+p { color: #333; margin-bottom: 16px; }
+ul, ol { padding-left: 22px; margin-bottom: 16px; }
+li { color: #333; margin-bottom: 6px; }
+strong { color: #0a0a0a; font-weight: 600; }
+a { color: #7c3aed; text-decoration: none; }
+a:hover { text-decoration: underline; }
+.tip { background: #f5f3ff; border-left: 3px solid #7c3aed; border-radius: 0 8px 8px 0; padding: 12px 16px; margin: 20px 0; }
+.tip-label { font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #7c3aed; margin-bottom: 4px; }
+.tip p { color: #4c1d95; margin: 0; font-size: 0.93rem; }
+.note { background: #fff8f0; border-left: 3px solid #f59e0b; border-radius: 0 8px 8px 0; padding: 12px 16px; margin: 20px 0; }
+.note-label { font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #d97706; margin-bottom: 4px; }
+.note p { color: #78350f; margin: 0; font-size: 0.93rem; }
+.step-list { list-style: none; padding: 0; counter-reset: steps; margin-bottom: 16px; }
+.step-list li { counter-increment: steps; display: flex; gap: 14px; padding: 12px 0; border-bottom: 1px solid #f5f5f5; }
+.step-list li:last-child { border-bottom: none; }
+.step-num { width: 26px; height: 26px; background: #7c3aed; color: #fff; font-size: 12px; font-weight: 700; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+.step-body { flex: 1; }
+.step-title { font-weight: 600; color: #0a0a0a; font-size: 0.95rem; margin-bottom: 2px; }
+.step-desc { color: #555; font-size: 0.9rem; }
+.faq-section { margin-top: 48px; padding-top: 32px; border-top: 1px solid #f0f0f0; }
+.faq-section h2 { border-bottom: none; padding-bottom: 0; margin-bottom: 24px; }
+.faq-item { border: 1px solid #efefef; border-radius: 10px; padding: 18px 20px; margin-bottom: 10px; }
+.faq-q { font-weight: 600; color: #0a0a0a; font-size: 0.95rem; margin-bottom: 8px; }
+.faq-a { color: #555; font-size: 0.93rem; line-height: 1.65; }
+.related-section { margin-top: 48px; padding-top: 32px; border-top: 1px solid #f0f0f0; }
+.related-section h2 { border-bottom: none; padding-bottom: 0; margin-bottom: 16px; font-size: 1rem; color: #666; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; }
+.related-links { list-style: none; padding: 0; }
+.related-links li { margin-bottom: 8px; }
+.related-links a { font-size: 0.95rem; color: #7c3aed; display: flex; align-items: center; gap: 6px; }
+.related-links a::before { content: "→"; font-size: 12px; }
+.cta-box { background: linear-gradient(135deg, #f5f3ff, #faf0ff); border: 1px solid #e8e0ff; border-radius: 12px; padding: 24px 28px; margin-top: 40px; text-align: center; }
+.cta-box h3 { font-size: 1.1rem; color: #0a0a0a; margin-bottom: 8px; }
+.cta-box p { color: #666; font-size: 0.9rem; margin-bottom: 16px; }
+.cta-btn { display: inline-block; background: #7c3aed; color: #fff; font-weight: 600; font-size: 0.9rem; padding: 10px 22px; border-radius: 8px; text-decoration: none; }
+.cta-btn:hover { background: #6d28d9; text-decoration: none; }
+.seo-panel { margin-top: 64px; border-top: 2px dashed #e8e0ff; padding-top: 36px; }
+.seo-panel-header { margin-bottom: 20px; }
+.seo-panel-title { font-size: 11px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: #7c3aed; }
+.seo-panel-sub { font-size: 12px; color: #aaa; margin-top: 3px; }
+.seo-fields { display: grid; gap: 10px; margin-bottom: 28px; }
+.seo-field { background: #fafafa; border: 1px solid #efefef; border-radius: 8px; padding: 14px 16px; position: relative; }
+.seo-field-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+.seo-field-label { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #bbb; }
+.seo-copy-btn { font-size: 10px; font-weight: 600; color: #7c3aed; background: #f3f0ff; border: none; border-radius: 4px; padding: 3px 9px; cursor: pointer; transition: background 0.15s; }
+.seo-copy-btn:hover { background: #e8e0ff; }
+.seo-copy-btn.ok { color: #059669; background: #ecfdf5; }
+.seo-field-value { font-size: 0.88rem; color: #333; line-height: 1.55; word-break: break-word; user-select: all; }
+.seo-schemas { display: grid; gap: 14px; }
+.seo-schema { border: 1px solid #efefef; border-radius: 8px; overflow: hidden; }
+.seo-schema-header { display: flex; justify-content: space-between; align-items: center; padding: 10px 16px; background: #fafafa; border-bottom: 1px solid #efefef; }
+.seo-schema-type { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #bbb; }
+.seo-schema-code { background: #0d0d0d; color: #d4d4d4; font-family: "SF Mono","Fira Code",Consolas,monospace; font-size: 0.75rem; line-height: 1.65; padding: 16px 18px; margin: 0; overflow-x: auto; white-space: pre; user-select: all; }
+.field-block { margin: 36px 0 28px; }
+.field-block-header { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+.field-num { display: inline-flex; align-items: center; justify-content: center; width: 38px; height: 38px; background: linear-gradient(135deg, #7c3aed, #a78bfa); color: #fff; font-weight: 700; font-size: 14px; border-radius: 8px; flex-shrink: 0; box-shadow: 0 2px 6px rgba(124,58,237,0.25); }
+.field-block-title { font-size: 1.18rem; font-weight: 700; color: #0a0a0a; letter-spacing: -0.01em; }
+.field-block-desc { color: #444; margin-bottom: 14px; font-size: 0.97rem; line-height: 1.7; }
+.field-block-desc code { background: #f3f0ff; color: #6d28d9; padding: 1px 6px; border-radius: 4px; font-size: 0.85em; font-family: "SF Mono","Fira Code",Consolas,monospace; }
+.screenshot-slot { background: #fafafa; border: 1px dashed #e0d8f0; border-radius: 10px; padding: 36px 20px; text-align: center; color: #b8b2c8; font-size: 0.85rem; margin-top: 6px; margin-bottom: 8px; }
+.screenshot-slot::before { content: "Screenshot"; display: block; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #c8c0dc; }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Pages List View",
+  "description": "Browse, search, and triage every page on your Framer site from the RankFrame Pages list. Folders, scores, and last crawled dates at a glance.",
+  "author": { "@type": "Organization", "name": "RankFrame" },
+  "publisher": { "@type": "Organization", "name": "RankFrame" },
+  "datePublished": "2026-05-02",
+  "dateModified": "2026-05-02",
+  "mainEntityOfPage": "https://rankframe.com/help/pages-list-view",
+  "articleSection": "Pages"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do I open the Pages list?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Click the database icon in the RankFrame left sidebar. The Pages section opens with the subtitle Manage your page settings in Framer." }
+    },
+    {
+      "@type": "Question",
+      "name": "What does each color dot mean on a page row?",
+      "acceptedAnswer": { "@type": "Answer", "text": "A purple dot means the SEO score is 85 or higher. Orange means 70 to 84. Red means below 70 and needs attention." }
+    },
+    {
+      "@type": "Question",
+      "name": "How are pages grouped?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Pages are organized into collapsible folders that mirror your Framer site structure. Each folder shows whether it contains Static or CMS pages and a count badge." }
+    },
+    {
+      "@type": "Question",
+      "name": "Does the search bar work across folders?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. The search bar filters every page on your site instantly, regardless of which folder the page lives in." }
+    },
+    {
+      "@type": "Question",
+      "name": "When should I press Refresh?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Press Refresh after publishing changes in Framer or adding new pages so RankFrame pulls the latest list and re-reads metadata." }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Help Center", "item": "https://rankframe.com/help" },
+    { "@type": "ListItem", "position": 2, "name": "Pages", "item": "https://rankframe.com/help/pages" },
+    { "@type": "ListItem", "position": 3, "name": "Pages List View", "item": "https://rankframe.com/help/pages-list-view" }
+  ]
+}
+</script>
+</head>
+<body>
+<div class="page">
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="/help">Help Center</a>
+    <span>/</span>
+    <a href="/help/pages">Pages</a>
+    <span>/</span>
+    <span>Pages List View</span>
+  </nav>
+
+  <span class="article-category">Pages</span>
+  <h1>Pages List View</h1>
+  <p class="article-description">The Pages list is your command center for every URL on your Framer site. Find a page in seconds, see how it scores, and know when it was last crawled.</p>
+  <div class="article-meta">
+    <span>Updated May 2, 2026</span>
+    <span>4 min read</span>
+  </div>
+
+  <div class="toc">
+    <div class="toc-title">On this page</div>
+    <ol>
+      <li><a href="#open">Opening the Pages list</a></li>
+      <li><a href="#fields">Anatomy of the list</a></li>
+      <li><a href="#workflow">Suggested workflow</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ol>
+  </div>
+
+  <h2 id="open">Opening the Pages list</h2>
+  <p>Click the <strong>database icon</strong> in the RankFrame left sidebar. The Pages section opens with the subtitle <strong>Manage your page settings in Framer</strong>. Every Static page and CMS entry on your site is listed here, grouped into folders that match your Framer structure.</p>
+
+  <div class="screenshot-slot">Pages list with folders expanded showing Static and CMS labels</div>
+
+  <h2 id="fields">Anatomy of the list</h2>
+  <p>The list view has five things to know.</p>
+
+  <div class="field-block">
+    <div class="field-block-header">
+      <div class="field-num">1</div>
+      <div class="field-block-title">Refresh button</div>
+    </div>
+    <p class="field-block-desc">The <strong>Refresh</strong> button sits at the top of the Pages section. Use it after publishing in Framer or after adding new pages so RankFrame pulls a fresh page list and re-reads metadata.</p>
+  </div>
+
+  <div class="field-block">
+    <div class="field-block-header">
+      <div class="field-num">2</div>
+      <div class="field-block-title">Search bar</div>
+    </div>
+    <p class="field-block-desc">The <strong>Search bar</strong> filters every page instantly across every folder. Type any part of a title or URL and the list narrows in real time. There is no submit button, results update as you type.</p>
+  </div>
+
+  <div class="field-block">
+    <div class="field-block-header">
+      <div class="field-num">3</div>
+      <div class="field-block-title">Collapsible folders</div>
+    </div>
+    <p class="field-block-desc">Folders mirror your Framer site structure, for example <strong>Insaaf</strong>, <strong>Projects</strong>, or <strong>Thoughts</strong>. Each folder header shows a type label of <strong>Static</strong> or <strong>CMS</strong> and a page count badge so you can see size at a glance. Click the header to collapse or expand.</p>
+  </div>
+
+  <div class="field-block">
+    <div class="field-block-header">
+      <div class="field-num">4</div>
+      <div class="field-block-title">Page row</div>
+    </div>
+    <p class="field-block-desc">Each row shows the full <strong>page title</strong>, its <strong>URL</strong>, the current <strong>SEO score</strong>, and the <strong>last crawled date</strong>. Click anywhere on the row to open the per-page split view and start editing.</p>
+  </div>
+
+  <div class="field-block">
+    <div class="field-block-header">
+      <div class="field-num">5</div>
+      <div class="field-block-title">Score color dots</div>
+    </div>
+    <p class="field-block-desc">The colored dot next to each score makes triage fast.</p>
+    <ul>
+      <li><strong>Purple</strong> dot: 85 and above. The page is in great shape.</li>
+      <li><strong>Orange</strong> dot: 70 to 84. There are quick wins to capture.</li>
+      <li><strong>Red</strong> dot: below 70. Open this page next.</li>
+    </ul>
+  </div>
+
+  <h2 id="workflow">Suggested workflow</h2>
+  <ol class="step-list">
+    <li>
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <div class="step-title">Press Refresh</div>
+        <div class="step-desc">Make sure the list reflects what is currently published in Framer.</div>
+      </div>
+    </li>
+    <li>
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <div class="step-title">Scan for red dots</div>
+        <div class="step-desc">Collapse healthy folders and focus on pages scoring below 70 first.</div>
+      </div>
+    </li>
+    <li>
+      <div class="step-num">3</div>
+      <div class="step-body">
+        <div class="step-title">Open a page</div>
+        <div class="step-desc">Click any row to enter the split view and start fixing issues.</div>
+      </div>
+    </li>
+    <li>
+      <div class="step-num">4</div>
+      <div class="step-body">
+        <div class="step-title">Use search for re-checks</div>
+        <div class="step-desc">After publishing changes, search the page title and confirm the score moved up.</div>
+      </div>
+    </li>
+  </ol>
+
+  <div class="tip">
+    <div class="tip-label">Tip</div>
+    <p>Keep folders collapsed for sections that already score purple. The list stays scannable and your eye goes to the work that matters.</p>
+  </div>
+
+  <div class="note">
+    <div class="note-label">Note</div>
+    <p>Last crawled dates only update after RankFrame audits a page. If a date looks old, open the page or press <strong>Refresh</strong> to trigger a fresh read.</p>
+  </div>
+
+  <section class="faq-section" id="faq">
+    <h2>Frequently asked questions</h2>
+    <div class="faq-item">
+      <div class="faq-q">How do I open the Pages list?</div>
+      <div class="faq-a">Click the database icon in the RankFrame left sidebar. The Pages section opens with the subtitle Manage your page settings in Framer.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What does each color dot mean on a page row?</div>
+      <div class="faq-a">A purple dot means the SEO score is 85 or higher. Orange means 70 to 84. Red means below 70 and needs attention.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How are pages grouped?</div>
+      <div class="faq-a">Pages are organized into collapsible folders that mirror your Framer site structure. Each folder shows whether it contains Static or CMS pages and a count badge.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Does the search bar work across folders?</div>
+      <div class="faq-a">Yes. The search bar filters every page on your site instantly, regardless of which folder the page lives in.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">When should I press Refresh?</div>
+      <div class="faq-a">Press Refresh after publishing changes in Framer or adding new pages so RankFrame pulls the latest list and re-reads metadata.</div>
+    </div>
+  </section>
+
+  <section class="related-section">
+    <h2>Related articles</h2>
+    <ul class="related-links">
+      <li><a href="/help/per-page-split-view">Per-Page Split View</a></li>
+      <li><a href="/help/page-title-description">Page Title and Description</a></li>
+      <li><a href="/help/seo-score">Understanding the SEO Score</a></li>
+    </ul>
+  </section>
+
+  <div class="cta-box">
+    <h3>Ready to fix your weakest pages?</h3>
+    <p>Open the Pages list and start with the red dots. RankFrame walks you through every fix.</p>
+    <a class="cta-btn" href="https://rankframe.com">Open RankFrame</a>
+  </div>
+
+  <div class="seo-panel">
+    <div class="seo-panel-header">
+      <div class="seo-panel-title">SEO Details</div>
+      <div class="seo-panel-sub">Meta tags and structured data for this page</div>
+    </div>
+    <div class="seo-fields" id="seo-panel-fields"></div>
+    <div class="seo-schemas" id="seo-panel-schemas"></div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var fields = [
+    { label: 'Title', value: document.querySelector('title') ? document.querySelector('title').textContent : '' },
+    { label: 'Description', value: (document.querySelector('meta[name="description"]') || {}).content || '' },
+    { label: 'Keywords', value: (document.querySelector('meta[name="keywords"]') || {}).content || '' },
+    { label: 'Canonical', value: (document.querySelector('link[rel="canonical"]') || {}).href || '' }
+  ];
+  var fieldsHtml = fields.map(function(f) {
+    return '<div class="seo-field"><div class="seo-field-row"><span class="seo-field-label">' + f.label + '</span><button class="seo-copy-btn" onclick="copyVal(this,\'' + f.label + '\')">Copy</button></div><div class="seo-field-value">' + f.value + '</div></div>';
+  }).join('');
+  var schemas = Array.from(document.querySelectorAll('script[type="application/ld+json"]')).map(function(s) {
+    try { var obj = JSON.parse(s.textContent); var t = obj['@type'] || 'Schema'; return '<div class="seo-schema"><div class="seo-schema-header"><span class="seo-schema-type">' + t + ' / JSON-LD</span><button class="seo-copy-btn" onclick="copySchema(this,\'' + t + '\')">Copy</button></div><pre class="seo-schema-code">' + JSON.stringify(obj, null, 2) + '</pre></div>'; } catch(e) { return ''; }
+  }).join('');
+  document.getElementById('seo-panel-fields').innerHTML = fieldsHtml;
+  document.getElementById('seo-panel-schemas').innerHTML = schemas;
+})();
+function copyVal(btn, label) {
+  var val = btn.closest('.seo-field').querySelector('.seo-field-value').textContent;
+  navigator.clipboard.writeText(val).then(function() { btn.textContent = 'Copied'; btn.classList.add('ok'); setTimeout(function() { btn.textContent = 'Copy'; btn.classList.remove('ok'); }, 1500); });
+}
+function copySchema(btn, type) {
+  var code = btn.closest('.seo-schema').querySelector('.seo-schema-code').textContent;
+  navigator.clipboard.writeText(code).then(function() { btn.textContent = 'Copied'; btn.classList.add('ok'); setTimeout(function() { btn.textContent = 'Copy'; btn.classList.remove('ok'); }, 1500); });
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Per-Page Split View | RankFrame Help Center</title>
+<meta name="description" content="Edit a Framer page's SEO while watching its live preview. The RankFrame split view shows the page on the left and the full SEO control surface on the right.">
+<meta name="keywords" content="RankFrame split view, per page SEO, Framer page audit, SEO control panel">
+<link rel="canonical" href="https://rankframe.com/help/per-page-split-view">
+<meta name="article-category" content="Pages">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", sans-serif; background: #ffffff; color: #111111; line-height: 1.7; font-size: 16px; }
+.page { max-width: 740px; margin: 0 auto; padding: 48px 24px 96px; }
+.breadcrumb { display: flex; align-items: center; gap: 6px; font-size: 13px; color: #888; margin-bottom: 32px; flex-wrap: wrap; }
+.breadcrumb a { color: #888; text-decoration: none; }
+.breadcrumb a:hover { color: #7c3aed; }
+.breadcrumb span { color: #ccc; }
+.article-category { display: inline-block; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #7c3aed; background: #f3f0ff; padding: 3px 10px; border-radius: 999px; margin-bottom: 12px; }
+h1 { font-size: 2rem; font-weight: 700; color: #0a0a0a; line-height: 1.25; margin-bottom: 14px; letter-spacing: -0.02em; }
+.article-description { font-size: 1.05rem; color: #555; line-height: 1.65; margin-bottom: 10px; }
+.article-meta { display: flex; gap: 16px; font-size: 13px; color: #aaa; margin-bottom: 36px; padding-bottom: 24px; border-bottom: 1px solid #f0f0f0; flex-wrap: wrap; }
+.toc { background: #fafafa; border: 1px solid #efefef; border-radius: 10px; padding: 18px 22px; margin-bottom: 40px; }
+.toc-title { font-size: 12px; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: #aaa; margin-bottom: 10px; }
+.toc ol { list-style: none; padding: 0; }
+.toc li { margin-bottom: 5px; }
+.toc a { font-size: 14px; color: #555; text-decoration: none; }
+.toc a:hover { color: #7c3aed; }
+h2 { font-size: 1.3rem; font-weight: 600; color: #0a0a0a; margin: 40px 0 14px; padding-bottom: 8px; border-bottom: 1px solid #f0f0f0; letter-spacing: -0.01em; }
+h3 { font-size: 1.05rem; font-weight: 600; color: #0a0a0a; margin: 24px 0 8px; }
+p { color: #333; margin-bottom: 16px; }
+ul, ol { padding-left: 22px; margin-bottom: 16px; }
+li { color: #333; margin-bottom: 6px; }
+strong { color: #0a0a0a; font-weight: 600; }
+a { color: #7c3aed; text-decoration: none; }
+a:hover { text-decoration: underline; }
+.tip { background: #f5f3ff; border-left: 3px solid #7c3aed; border-radius: 0 8px 8px 0; padding: 12px 16px; margin: 20px 0; }
+.tip-label { font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #7c3aed; margin-bottom: 4px; }
+.tip p { color: #4c1d95; margin: 0; font-size: 0.93rem; }
+.note { background: #fff8f0; border-left: 3px solid #f59e0b; border-radius: 0 8px 8px 0; padding: 12px 16px; margin: 20px 0; }
+.note-label { font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #d97706; margin-bottom: 4px; }
+.note p { color: #78350f; margin: 0; font-size: 0.93rem; }
+.step-list { list-style: none; padding: 0; counter-reset: steps; margin-bottom: 16px; }
+.step-list li { counter-increment: steps; display: flex; gap: 14px; padding: 12px 0; border-bottom: 1px solid #f5f5f5; }
+.step-list li:last-child { border-bottom: none; }
+.step-num { width: 26px; height: 26px; background: #7c3aed; color: #fff; font-size: 12px; font-weight: 700; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+.step-body { flex: 1; }
+.step-title { font-weight: 600; color: #0a0a0a; font-size: 0.95rem; margin-bottom: 2px; }
+.step-desc { color: #555; font-size: 0.9rem; }
+.faq-section { margin-top: 48px; padding-top: 32px; border-top: 1px solid #f0f0f0; }
+.faq-section h2 { border-bottom: none; padding-bottom: 0; margin-bottom: 24px; }
+.faq-item { border: 1px solid #efefef; border-radius: 10px; padding: 18px 20px; margin-bottom: 10px; }
+.faq-q { font-weight: 600; color: #0a0a0a; font-size: 0.95rem; margin-bottom: 8px; }
+.faq-a { color: #555; font-size: 0.93rem; line-height: 1.65; }
+.related-section { margin-top: 48px; padding-top: 32px; border-top: 1px solid #f0f0f0; }
+.related-section h2 { border-bottom: none; padding-bottom: 0; margin-bottom: 16px; font-size: 1rem; color: #666; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; }
+.related-links { list-style: none; padding: 0; }
+.related-links li { margin-bottom: 8px; }
+.related-links a { font-size: 0.95rem; color: #7c3aed; display: flex; align-items: center; gap: 6px; }
+.related-links a::before { content: "→"; font-size: 12px; }
+.cta-box { background: linear-gradient(135deg, #f5f3ff, #faf0ff); border: 1px solid #e8e0ff; border-radius: 12px; padding: 24px 28px; margin-top: 40px; text-align: center; }
+.cta-box h3 { font-size: 1.1rem; color: #0a0a0a; margin-bottom: 8px; }
+.cta-box p { color: #666; font-size: 0.9rem; margin-bottom: 16px; }
+.cta-btn { display: inline-block; background: #7c3aed; color: #fff; font-weight: 600; font-size: 0.9rem; padding: 10px 22px; border-radius: 8px; text-decoration: none; }
+.cta-btn:hover { background: #6d28d9; text-decoration: none; }
+.seo-panel { margin-top: 64px; border-top: 2px dashed #e8e0ff; padding-top: 36px; }
+.seo-panel-header { margin-bottom: 20px; }
+.seo-panel-title { font-size: 11px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: #7c3aed; }
+.seo-panel-sub { font-size: 12px; color: #aaa; margin-top: 3px; }
+.seo-fields { display: grid; gap: 10px; margin-bottom: 28px; }
+.seo-field { background: #fafafa; border: 1px solid #efefef; border-radius: 8px; padding: 14px 16px; position: relative; }
+.seo-field-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+.seo-field-label { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #bbb; }
+.seo-copy-btn { font-size: 10px; font-weight: 600; color: #7c3aed; background: #f3f0ff; border: none; border-radius: 4px; padding: 3px 9px; cursor: pointer; transition: background 0.15s; }
+.seo-copy-btn:hover { background: #e8e0ff; }
+.seo-copy-btn.ok { color: #059669; background: #ecfdf5; }
+.seo-field-value { font-size: 0.88rem; color: #333; line-height: 1.55; word-break: break-word; user-select: all; }
+.seo-schemas { display: grid; gap: 14px; }
+.seo-schema { border: 1px solid #efefef; border-radius: 8px; overflow: hidden; }
+.seo-schema-header { display: flex; justify-content: space-between; align-items: center; padding: 10px 16px; background: #fafafa; border-bottom: 1px solid #efefef; }
+.seo-schema-type { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #bbb; }
+.seo-schema-code { background: #0d0d0d; color: #d4d4d4; font-family: "SF Mono","Fira Code",Consolas,monospace; font-size: 0.75rem; line-height: 1.65; padding: 16px 18px; margin: 0; overflow-x: auto; white-space: pre; user-select: all; }
+.field-block { margin: 36px 0 28px; }
+.field-block-header { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+.field-num { display: inline-flex; align-items: center; justify-content: center; width: 38px; height: 38px; background: linear-gradient(135deg, #7c3aed, #a78bfa); color: #fff; font-weight: 700; font-size: 14px; border-radius: 8px; flex-shrink: 0; box-shadow: 0 2px 6px rgba(124,58,237,0.25); }
+.field-block-title { font-size: 1.18rem; font-weight: 700; color: #0a0a0a; letter-spacing: -0.01em; }
+.field-block-desc { color: #444; margin-bottom: 14px; font-size: 0.97rem; line-height: 1.7; }
+.field-block-desc code { background: #f3f0ff; color: #6d28d9; padding: 1px 6px; border-radius: 4px; font-size: 0.85em; font-family: "SF Mono","Fira Code",Consolas,monospace; }
+.screenshot-slot { background: #fafafa; border: 1px dashed #e0d8f0; border-radius: 10px; padding: 36px 20px; text-align: center; color: #b8b2c8; font-size: 0.85rem; margin-top: 6px; margin-bottom: 8px; }
+.screenshot-slot::before { content: "Screenshot"; display: block; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #c8c0dc; }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Per-Page Split View",
+  "description": "Edit a Framer page's SEO while watching its live preview. The RankFrame split view shows the page on the left and the full SEO control surface on the right.",
+  "author": { "@type": "Organization", "name": "RankFrame" },
+  "publisher": { "@type": "Organization", "name": "RankFrame" },
+  "datePublished": "2026-05-02",
+  "dateModified": "2026-05-02",
+  "mainEntityOfPage": "https://rankframe.com/help/per-page-split-view",
+  "articleSection": "Pages"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do I open the split view?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Click any page row in the Pages list. The split view opens with a live page preview on the left and the SEO control surface on the right." }
+    },
+    {
+      "@type": "Question",
+      "name": "What is on the left panel?",
+      "acceptedAnswer": { "@type": "Answer", "text": "The left panel renders the actual Framer page including header, hero image, and content. It is scrollable so you can review the live page while editing its SEO." }
+    },
+    {
+      "@type": "Question",
+      "name": "What does the Download button do?",
+      "acceptedAnswer": { "@type": "Answer", "text": "The purple Download button in the top bar exports a per-page audit PDF for the page you are viewing." }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I get back to the full list?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Click the Back to pages link at the top of the split view to return to the Pages list." }
+    },
+    {
+      "@type": "Question",
+      "name": "What audit sections are available per page?",
+      "acceptedAnswer": { "@type": "Answer", "text": "The right panel includes five collapsible audit sections: Keyword Analysis, Basic SEO, Advanced SEO, Performance, and Security." }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Help Center", "item": "https://rankframe.com/help" },
+    { "@type": "ListItem", "position": 2, "name": "Pages", "item": "https://rankframe.com/help/pages" },
+    { "@type": "ListItem", "position": 3, "name": "Per-Page Split View", "item": "https://rankframe.com/help/per-page-split-view" }
+  ]
+}
+</script>
+</head>
+<body>
+<div class="page">
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="/help">Help Center</a>
+    <span>/</span>
+    <a href="/help/pages">Pages</a>
+    <span>/</span>
+    <span>Per-Page Split View</span>
+  </nav>
+
+  <span class="article-category">Pages</span>
+  <h1>Per-Page Split View</h1>
+  <p class="article-description">When you open a page, RankFrame splits the screen so you can see the live page and edit its SEO at the same time. Here is what each part does.</p>
+  <div class="article-meta">
+    <span>Updated May 2, 2026</span>
+    <span>5 min read</span>
+  </div>
+
+  <div class="toc">
+    <div class="toc-title">On this page</div>
+    <ol>
+      <li><a href="#open">Opening the split view</a></li>
+      <li><a href="#fields">Anatomy of the split view</a></li>
+      <li><a href="#workflow">Working in the split view</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ol>
+  </div>
+
+  <h2 id="open">Opening the split view</h2>
+  <p>From the Pages list, click any page row. The view splits into two panels. On the left you get the actual Framer page rendered live. On the right you get every SEO control for that single page. Changes on the right affect that page only, not the site default.</p>
+
+  <div class="screenshot-slot">Split view with live page preview on the left and SEO controls on the right</div>
+
+  <h2 id="fields">Anatomy of the split view</h2>
+
+  <div class="field-block">
+    <div class="field-block-header">
+      <div class="field-num">1</div>
+      <div class="field-block-title">Back to pages link</div>
+    </div>
+    <p class="field-block-desc">The <strong>Back to pages</strong> link sits in the top bar. Click it to return to the full Pages list. Your edits are saved automatically before you leave.</p>
+  </div>
+
+  <div class="field-block">
+    <div class="field-block-header">
+      <div class="field-num">2</div>
+      <div class="field-block-title">Download button</div>
+    </div>
+    <p class="field-block-desc">The purple <strong>Download</strong> button in the top bar exports a per-page audit PDF for the page you are viewing. Use it for client handoffs or to track fixes over time.</p>
+  </div>
+
+  <div class="field-block">
+    <div class="field-block-header">
+      <div class="field-num">3</div>
+      <div class="field-block-title">Left panel</div>
+    </div>
+    <p class="field-block-desc">The <strong>left panel</strong> is a live preview of the actual Framer page. Header, hero image, content, and everything else renders just like a visitor would see it. The panel is scrollable so you can inspect any part of the page without leaving RankFrame.</p>
+  </div>
+
+  <div class="field-block">
+    <div class="field-block-header">
+      <div class="field-num">4</div>
+      <div class="field-block-title">Right panel</div>
+    </div>
+    <p class="field-block-desc">The <strong>right panel</strong> is the SEO control surface for the page. From top to bottom you will find the score header, the Google Snippet preview, title and description fields with AI helpers, and five collapsible audit sections.</p>
+  </div>
+
+  <div class="field-block">
+    <div class="field-block-header">
+      <div class="field-num">5</div>
+      <div class="field-block-title">Score header</div>
+    </div>
+    <p class="field-block-desc">At the top of the right panel sits the <strong>Rankframe SEO X/100</strong> score header with a purple progress bar. This is the single number that summarizes how the page is doing. Watch it move as you fix issues.</p>
+  </div>
+
+  <div class="field-block">
+    <div class="field-block-header">
+      <div class="field-num">6</div>
+      <div class="field-block-title">Five collapsible audit sections</div>
+    </div>
+    <p class="field-block-desc">Below the title and description fields you get five audit sections you can collapse independently.</p>
+    <ul>
+      <li><strong>Keyword Analysis</strong>: target keyword usage and density.</li>
+      <li><strong>Basic SEO</strong>: titles, descriptions, headings, alt text.</li>
+      <li><strong>Advanced SEO</strong>: canonical, robots, schema, social tags.</li>
+      <li><strong>Performance</strong>: page weight, load signals, image sizing.</li>
+      <li><strong>Security</strong>: HTTPS and security headers.</li>
+    </ul>
+  </div>
+
+  <h2 id="workflow">Working in the split view</h2>
+  <ol class="step-list">
+    <li>
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <div class="step-title">Scroll the left panel</div>
+        <div class="step-desc">Get a feel for the page as a visitor sees it before changing copy.</div>
+      </div>
+    </li>
+    <li>
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <div class="step-title">Check the score</div>
+        <div class="step-desc">Note the starting number so you can measure your progress.</div>
+      </div>
+    </li>
+    <li>
+      <div class="step-num">3</div>
+      <div class="step-body">
+        <div class="step-title">Update title and description</div>
+        <div class="step-desc">Use the AI helpers if you want a brand-aligned starting point.</div>
+      </div>
+    </li>
+    <li>
+      <div class="step-num">4</div>
+      <div class="step-body">
+        <div class="step-title">Expand audit sections one at a time</div>
+        <div class="step-desc">Tackle Basic SEO first, then move into Advanced SEO, Performance, and Security.</div>
+      </div>
+    </li>
+    <li>
+      <div class="step-num">5</div>
+      <div class="step-body">
+        <div class="step-title">Download the PDF</div>
+        <div class="step-desc">Export an audit PDF when you want a snapshot of the current state.</div>
+      </div>
+    </li>
+  </ol>
+
+  <div class="tip">
+    <div class="tip-label">Tip</div>
+    <p>Resize your RankFrame panel wider when you can. The left preview becomes far more useful when you can see the page at close to its real width.</p>
+  </div>
+
+  <div class="note">
+    <div class="note-label">Note</div>
+    <p>Edits in the split view apply to this page only. To change site-wide defaults, open Global Settings.</p>
+  </div>
+
+  <section class="faq-section" id="faq">
+    <h2>Frequently asked questions</h2>
+    <div class="faq-item">
+      <div class="faq-q">How do I open the split view?</div>
+      <div class="faq-a">Click any page row in the Pages list. The split view opens with a live page preview on the left and the SEO control surface on the right.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What is on the left panel?</div>
+      <div class="faq-a">The left panel renders the actual Framer page including header, hero image, and content. It is scrollable so you can review the live page while editing its SEO.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What does the Download button do?</div>
+      <div class="faq-a">The purple Download button in the top bar exports a per-page audit PDF for the page you are viewing.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How do I get back to the full list?</div>
+      <div class="faq-a">Click the Back to pages link at the top of the split view to return to the Pages list.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What audit sections are available per page?</div>
+      <div class="faq-a">The right panel includes five collapsible audit sections: Keyword Analysis, Basic SEO, Advanced SEO, Performance, and Security.</div>
+    </div>
+  </section>
+
+  <section class="related-section">
+    <h2>Related articles</h2>
+    <ul class="related-links">
+      <li><a href="/help/pages-list-view">Pages List View</a></li>
+      <li><a href="/help/page-title-description">Page Title and Description</a></li>
+      <li><a href="/help/google-snippet-preview">Google Snippet Preview</a></li>
+    </ul>
+  </section>
+
+  <div class="cta-box">
+    <h3>Fix a page in minutes</h3>
+    <p>Open any page in the split view and let RankFrame guide you through the fixes that move the score.</p>
+    <a class="cta-btn" href="https://rankframe.com">Open RankFrame</a>
+  </div>
+
+  <div class="seo-panel">
+    <div class="seo-panel-header">
+      <div class="seo-panel-title">SEO Details</div>
+      <div class="seo-panel-sub">Meta tags and structured data for this page</div>
+    </div>
+    <div class="seo-fields" id="seo-panel-fields"></div>
+    <div class="seo-schemas" id="seo-panel-schemas"></div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var fields = [
+    { label: 'Title', value: document.querySelector('title') ? document.querySelector('title').textContent : '' },
+    { label: 'Description', value: (document.querySelector('meta[name="description"]') || {}).content || '' },
+    { label: 'Keywords', value: (document.querySelector('meta[name="keywords"]') || {}).content || '' },
+    { label: 'Canonical', value: (document.querySelector('link[rel="canonical"]') || {}).href || '' }
+  ];
+  var fieldsHtml = fields.map(function(f) {
+    return '<div class="seo-field"><div class="seo-field-row"><span class="seo-field-label">' + f.label + '</span><button class="seo-copy-btn" onclick="copyVal(this,\'' + f.label + '\')">Copy</button></div><div class="seo-field-value">' + f.value + '</div></div>';
+  }).join('');
+  var schemas = Array.from(document.querySelectorAll('script[type="application/ld+json"]')).map(function(s) {
+    try { var obj = JSON.parse(s.textContent); var t = obj['@type'] || 'Schema'; return '<div class="seo-schema"><div class="seo-schema-header"><span class="seo-schema-type">' + t + ' / JSON-LD</span><button class="seo-copy-btn" onclick="copySchema(this,\'' + t + '\')">Copy</button></div><pre class="seo-schema-code">' + JSON.stringify(obj, null, 2) + '</pre></div>'; } catch(e) { return ''; }
+  }).join('');
+  document.getElementById('seo-panel-fields').innerHTML = fieldsHtml;
+  document.getElementById('seo-panel-schemas').innerHTML = schemas;
+})();
+function copyVal(btn, label) {
+  var val = btn.closest('.seo-field').querySelector('.seo-field-value').textContent;
+  navigator.clipboard.writeText(val).then(function() { btn.textContent = 'Copied'; btn.classList.add('ok'); setTimeout(function() { btn.textContent = 'Copy'; btn.classList.remove('ok'); }, 1500); });
+}
+function copySchema(btn, type) {
+  var code = btn.closest('.seo-schema').querySelector('.seo-schema-code').textContent;
+  navigator.clipboard.writeText(code).then(function() { btn.textContent = 'Copied'; btn.classList.add('ok'); setTimeout(function() { btn.textContent = 'Copy'; btn.classList.remove('ok'); }, 1500); });
+}
+</script>
+</body>
+</html>
