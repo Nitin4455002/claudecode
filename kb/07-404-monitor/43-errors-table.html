@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Errors Table – RankFrame 404 Monitor Help</title>
+  <meta name="description" content="Understand every column in the RankFrame 404 Monitor errors table, including Page URI, User Agent, Last Hit, and Hits. Learn how to filter, reload, and export your 404 data." />
+  <meta name="keywords" content="404 errors table, RankFrame, Framer SEO, broken links, Page URI, User Agent, Last Hit, CSV export" />
+  <link rel="canonical" href="https://rankframe.com/help/404-errors-table" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Errors Table",
+    "description": "Understand every column in the RankFrame 404 Monitor errors table, including Page URI, User Agent, Last Hit, and Hits. Learn how to filter, reload, and export your 404 data.",
+    "url": "https://rankframe.com/help/404-errors-table",
+    "publisher": {
+      "@type": "Organization",
+      "name": "RankFrame",
+      "url": "https://rankframe.com"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Help Center", "item": "https://rankframe.com/help" },
+      { "@type": "ListItem", "position": 2, "name": "404 Monitor", "item": "https://rankframe.com/help/404-monitor" },
+      { "@type": "ListItem", "position": 3, "name": "Errors Table", "item": "https://rankframe.com/help/404-errors-table" }
+    ]
+  }
+  </script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", sans-serif; background: #ffffff; color: #111111; line-height: 1.7; font-size: 16px; }
+    .page { max-width: 740px; margin: 0 auto; padding: 48px 24px 96px; }
+    .breadcrumb { display: flex; align-items: center; gap: 6px; font-size: 13px; color: #888; margin-bottom: 32px; flex-wrap: wrap; }
+    .breadcrumb a { color: #888; text-decoration: none; }
+    .breadcrumb a:hover { color: #7c3aed; }
+    .breadcrumb span { color: #ccc; }
+    .article-category { display: inline-block; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #7c3aed; background: #f3f0ff; padding: 3px 10px; border-radius: 999px; margin-bottom: 12px; }
+    h1 { font-size: 2rem; font-weight: 700; color: #0a0a0a; line-height: 1.25; margin-bottom: 14px; letter-spacing: -0.02em; }
+    .article-description { font-size: 1.05rem; color: #555; line-height: 1.65; margin-bottom: 10px; }
+    .article-meta { display: flex; gap: 16px; font-size: 13px; color: #aaa; margin-bottom: 36px; padding-bottom: 24px; border-bottom: 1px solid #f0f0f0; flex-wrap: wrap; }
+    .toc { background: #fafafa; border: 1px solid #efefef; border-radius: 10px; padding: 18px 22px; margin-bottom: 40px; }
+    .toc-title { font-size: 12px; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: #aaa; margin-bottom: 10px; }
+    .toc ol { list-style: none; padding: 0; }
+    .toc li { margin-bottom: 5px; }
+    .toc a { font-size: 14px; color: #555; text-decoration: none; }
+    .toc a:hover { color: #7c3aed; }
+    h2 { font-size: 1.3rem; font-weight: 600; color: #0a0a0a; margin: 40px 0 14px; padding-bottom: 8px; border-bottom: 1px solid #f0f0f0; letter-spacing: -0.01em; }
+    h3 { font-size: 1.05rem; font-weight: 600; color: #0a0a0a; margin: 24px 0 8px; }
+    p { color: #333; margin-bottom: 16px; }
+    ul, ol { padding-left: 22px; margin-bottom: 16px; }
+    li { color: #333; margin-bottom: 6px; }
+    strong { color: #0a0a0a; font-weight: 600; }
+    a { color: #7c3aed; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .tip { background: #f5f3ff; border-left: 3px solid #7c3aed; border-radius: 0 8px 8px 0; padding: 12px 16px; margin: 20px 0; }
+    .tip-label { font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #7c3aed; margin-bottom: 4px; }
+    .tip p { color: #4c1d95; margin: 0; font-size: 0.93rem; }
+    .note { background: #fff8f0; border-left: 3px solid #f59e0b; border-radius: 0 8px 8px 0; padding: 12px 16px; margin: 20px 0; }
+    .note-label { font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #d97706; margin-bottom: 4px; }
+    .note p { color: #78350f; margin: 0; font-size: 0.93rem; }
+    .step-list { list-style: none; padding: 0; counter-reset: steps; margin-bottom: 16px; }
+    .step-list li { counter-increment: steps; display: flex; gap: 14px; padding: 12px 0; border-bottom: 1px solid #f5f5f5; }
+    .step-list li:last-child { border-bottom: none; }
+    .step-num { width: 26px; height: 26px; background: #7c3aed; color: #fff; font-size: 12px; font-weight: 700; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+    .step-body { flex: 1; }
+    .step-title { font-weight: 600; color: #0a0a0a; font-size: 0.95rem; margin-bottom: 2px; }
+    .step-desc { color: #555; font-size: 0.9rem; }
+    .faq-section { margin-top: 48px; padding-top: 32px; border-top: 1px solid #f0f0f0; }
+    .faq-section h2 { border-bottom: none; padding-bottom: 0; margin-bottom: 24px; }
+    .faq-item { border: 1px solid #efefef; border-radius: 10px; padding: 18px 20px; margin-bottom: 10px; }
+    .faq-q { font-weight: 600; color: #0a0a0a; font-size: 0.95rem; margin-bottom: 8px; }
+    .faq-a { color: #555; font-size: 0.93rem; line-height: 1.65; }
+    .related-section { margin-top: 48px; padding-top: 32px; border-top: 1px solid #f0f0f0; }
+    .related-section h2 { border-bottom: none; padding-bottom: 0; margin-bottom: 16px; font-size: 1rem; color: #666; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; }
+    .related-links { list-style: none; padding: 0; }
+    .related-links li { margin-bottom: 8px; }
+    .related-links a { font-size: 0.95rem; color: #7c3aed; display: flex; align-items: center; gap: 6px; }
+    .related-links a::before { content: "→"; font-size: 12px; }
+    .cta-box { background: linear-gradient(135deg, #f5f3ff, #faf0ff); border: 1px solid #e8e0ff; border-radius: 12px; padding: 24px 28px; margin-top: 40px; text-align: center; }
+    .cta-box h3 { font-size: 1.1rem; color: #0a0a0a; margin-bottom: 8px; }
+    .cta-box p { color: #666; font-size: 0.9rem; margin-bottom: 16px; }
+    .cta-btn { display: inline-block; background: #7c3aed; color: #fff; font-weight: 600; font-size: 0.9rem; padding: 10px 22px; border-radius: 8px; text-decoration: none; }
+    .cta-btn:hover { background: #6d28d9; text-decoration: none; }
+    .seo-panel { margin-top: 64px; border-top: 2px dashed #e8e0ff; padding-top: 36px; }
+    .seo-panel-header { margin-bottom: 20px; }
+    .seo-panel-title { font-size: 11px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: #7c3aed; }
+    .seo-panel-sub { font-size: 12px; color: #aaa; margin-top: 3px; }
+    .seo-fields { display: grid; gap: 10px; margin-bottom: 28px; }
+    .seo-field { background: #fafafa; border: 1px solid #efefef; border-radius: 8px; padding: 14px 16px; position: relative; }
+    .seo-field-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+    .seo-field-label { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #bbb; }
+    .seo-copy-btn { font-size: 10px; font-weight: 600; color: #7c3aed; background: #f3f0ff; border: none; border-radius: 4px; padding: 3px 9px; cursor: pointer; transition: background 0.15s; }
+    .seo-copy-btn:hover { background: #e8e0ff; }
+    .seo-copy-btn.ok { color: #059669; background: #ecfdf5; }
+    .seo-field-value { font-size: 0.88rem; color: #333; line-height: 1.55; word-break: break-word; user-select: all; }
+    .seo-schemas { display: grid; gap: 14px; }
+    .seo-schema { border: 1px solid #efefef; border-radius: 8px; overflow: hidden; }
+    .seo-schema-header { display: flex; justify-content: space-between; align-items: center; padding: 10px 16px; background: #fafafa; border-bottom: 1px solid #efefef; }
+    .seo-schema-type { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #bbb; }
+    .seo-schema-code { background: #0d0d0d; color: #d4d4d4; font-family: "SF Mono","Fira Code",Consolas,monospace; font-size: 0.75rem; line-height: 1.65; padding: 16px 18px; margin: 0; overflow-x: auto; white-space: pre; user-select: all; }
+    .field-block { margin: 36px 0 28px; }
+    .field-block-header { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+    .field-num { display: inline-flex; align-items: center; justify-content: center; width: 38px; height: 38px; background: linear-gradient(135deg, #7c3aed, #a78bfa); color: #fff; font-weight: 700; font-size: 14px; border-radius: 8px; flex-shrink: 0; box-shadow: 0 2px 6px rgba(124,58,237,0.25); }
+    .field-block-title { font-size: 1.18rem; font-weight: 700; color: #0a0a0a; letter-spacing: -0.01em; }
+    .field-block-desc { color: #444; margin-bottom: 14px; font-size: 0.97rem; line-height: 1.7; }
+    .field-block-desc code { background: #f3f0ff; color: #6d28d9; padding: 1px 6px; border-radius: 4px; font-size: 0.85em; font-family: "SF Mono","Fira Code",Consolas,monospace; }
+    .screenshot-slot { background: #fafafa; border: 1px dashed #e0d8f0; border-radius: 10px; padding: 36px 20px; text-align: center; color: #b8b2c8; font-size: 0.85rem; margin-top: 6px; margin-bottom: 8px; }
+    .screenshot-slot::before { content: "Screenshot"; display: block; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #c8c0dc; }
+    .controls-row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin: 20px 0; }
+    .ctrl-pill { background: #f3f0ff; border: 1px solid #ddd5f8; color: #4c1d95; font-size: 0.82rem; font-weight: 600; padding: 6px 14px; border-radius: 999px; }
+    .table-demo { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 0.88rem; }
+    .table-demo th { text-align: left; padding: 10px 12px; background: #fafafa; border-bottom: 2px solid #efefef; color: #555; font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; }
+    .table-demo td { padding: 10px 12px; border-bottom: 1px solid #f5f5f5; color: #333; vertical-align: top; }
+    .table-demo tr:last-child td { border-bottom: none; }
+    .uri-cell { font-family: "SF Mono","Fira Code",Consolas,monospace; font-size: 0.82rem; color: #6d28d9; }
+    .hits-badge { display: inline-block; background: #fee2e2; color: #b91c1c; font-weight: 700; font-size: 0.8rem; padding: 2px 8px; border-radius: 999px; }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="https://rankframe.com/help">Help Center</a>
+    <span>&#8250;</span>
+    <a href="https://rankframe.com/help/404-monitor">404 Monitor</a>
+    <span>&#8250;</span>
+    <span>Errors Table</span>
+  </nav>
+
+  <div class="article-category">404 Monitor</div>
+  <h1>Errors Table</h1>
+  <p class="article-description">The errors table is where all captured 404 hits appear. This article walks through every control and column so you can read the data quickly and decide what to fix first.</p>
+  <div class="article-meta">
+    <span>Updated May 2, 2026</span>
+    <span>6 min read</span>
+  </div>
+
+  <nav class="toc" aria-label="Table of contents">
+    <div class="toc-title">On this page</div>
+    <ol>
+      <li><a href="#overview">Overview</a></li>
+      <li><a href="#field-1">1. All Domains filter</a></li>
+      <li><a href="#field-2">2. Reload button</a></li>
+      <li><a href="#field-3">3. Export button</a></li>
+      <li><a href="#field-4">4. Page URI column</a></li>
+      <li><a href="#field-5">5. User Agent column</a></li>
+      <li><a href="#field-6">6. Last Hit column</a></li>
+      <li><a href="#field-7">7. Hits column</a></li>
+      <li><a href="#prioritizing">Prioritizing fixes</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ol>
+  </nav>
+
+  <h2 id="overview">Overview</h2>
+  <p>Once the 404 Monitor script is active on your published site, every broken URL that visitors or bots encounter is logged and displayed in the errors table. The table updates in real time as new hits come in and gives you the raw data you need to identify, prioritize, and fix broken links.</p>
+
+  <div class="screenshot-slot">Errors table inside the 404 Monitor tab</div>
+
+  <p>Above the table, a controls row lets you filter, refresh, and export data. The table itself has four columns: <strong>Page URI</strong>, <strong>User Agent</strong>, <strong>Last Hit</strong>, and <strong>Hits</strong>. Rows are paginated so large data sets stay manageable.</p>
+
+  <div class="controls-row">
+    <div class="ctrl-pill">All Domains</div>
+    <div class="ctrl-pill">Reload</div>
+    <div class="ctrl-pill">Export CSV</div>
+  </div>
+
+  <table class="table-demo" aria-label="Example errors table">
+    <thead>
+      <tr>
+        <th>Page URI</th>
+        <th>User Agent</th>
+        <th>Last Hit</th>
+        <th>Hits</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="uri-cell">/old-page</td>
+        <td>Chrome 124 / macOS</td>
+        <td>May 1, 2026 14:32</td>
+        <td><span class="hits-badge">47</span></td>
+      </tr>
+      <tr>
+        <td class="uri-cell">/projects/old-name</td>
+        <td>Googlebot</td>
+        <td>May 2, 2026 08:11</td>
+        <td><span class="hits-badge">12</span></td>
+      </tr>
+      <tr>
+        <td class="uri-cell">/blog/removed-post</td>
+        <td>Safari / iOS 17</td>
+        <td>Apr 28, 2026 19:04</td>
+        <td><span class="hits-badge">3</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Field 1 -->
+  <div class="field-block" id="field-1">
+    <div class="field-block-header">
+      <div class="field-num">1</div>
+      <div class="field-block-title">All Domains filter</div>
+    </div>
+    <p class="field-block-desc">The <strong>All Domains</strong> dropdown at the left of the controls row lets you narrow the table to a single domain. By default, errors from every domain in your <strong>Allowed Domains</strong> list are shown together. Select a specific domain from the dropdown to see only the errors logged for that site.</p>
+    <p class="field-block-desc">This filter is especially useful if you manage multiple Framer projects or staging domains and want to focus on one at a time without noise from the others.</p>
+    <div class="screenshot-slot">All Domains dropdown</div>
+  </div>
+
+  <!-- Field 2 -->
+  <div class="field-block" id="field-2">
+    <div class="field-block-header">
+      <div class="field-num">2</div>
+      <div class="field-block-title">Reload button</div>
+    </div>
+    <p class="field-block-desc">Click the <strong>Reload</strong> button to fetch the latest error data from RankFrame's servers without leaving the plugin. The table updates immediately after you click it.</p>
+    <p class="field-block-desc">Use <strong>Reload</strong> after you have fixed a broken route and republished your site to confirm that new hits on that path have stopped coming in. It is also useful after adding a new domain to confirm errors are being captured.</p>
+    <div class="screenshot-slot">Reload button in controls row</div>
+  </div>
+
+  <!-- Field 3 -->
+  <div class="field-block" id="field-3">
+    <div class="field-block-header">
+      <div class="field-num">3</div>
+      <div class="field-block-title">Export button (CSV download)</div>
+    </div>
+    <p class="field-block-desc">Clicking <strong>Export</strong> downloads a CSV file containing all 404 error data currently in the table. The export respects the active domain filter, so if you have selected a specific domain, only that domain's errors are included in the file.</p>
+    <p class="field-block-desc">Common uses for the CSV export:</p>
+    <ul>
+      <li>Sharing a broken link report with a client or team member</li>
+      <li>Importing the data into a spreadsheet to track fix progress</li>
+      <li>Cross-referencing 404 routes against your redirect rules in Framer</li>
+    </ul>
+    <div class="screenshot-slot">Export button in controls row</div>
+  </div>
+
+  <!-- Field 4 -->
+  <div class="field-block" id="field-4">
+    <div class="field-block-header">
+      <div class="field-num">4</div>
+      <div class="field-block-title">Page URI column</div>
+    </div>
+    <p class="field-block-desc">The <strong>Page URI</strong> column shows the exact URL path that returned a 404, for example <code>/old-page</code> or <code>/projects/old-name</code>. This is the path relative to the domain root, not the full URL.</p>
+    <p class="field-block-desc">For long paths that would be hard to copy by hand, a copy icon appears next to the URI. Click it to copy the full path to your clipboard instantly so you can paste it into Framer's redirect settings or your issue tracker without risk of typos.</p>
+    <div class="tip">
+      <div class="tip-label">Tip</div>
+      <p>Use the <strong>Page URI</strong> directly as the "from" path when creating a redirect in Framer. Copy it with the icon to avoid introducing new typos.</p>
+    </div>
+    <div class="screenshot-slot">Page URI column with copy icon</div>
+  </div>
+
+  <!-- Field 5 -->
+  <div class="field-block" id="field-5">
+    <div class="field-block-header">
+      <div class="field-num">5</div>
+      <div class="field-block-title">User Agent column</div>
+    </div>
+    <p class="field-block-desc">The <strong>User Agent</strong> column identifies the browser or bot that triggered the 404 hit. Examples include a specific browser and OS combination like <em>Chrome 124 / macOS</em>, or a crawler identifier like <em>Googlebot</em>.</p>
+    <p class="field-block-desc">User Agent data helps you understand who is hitting a broken link:</p>
+    <ul>
+      <li>If the User Agent is a search engine crawler such as Googlebot, that route is being indexed or was previously indexed, and fixing it is a priority for SEO.</li>
+      <li>If the User Agent is a real browser, a visitor encountered the broken link directly, which affects user experience and bounce rate.</li>
+      <li>If you see monitoring or uptime bots, the hit may not reflect real user traffic and can be deprioritized or added to Exception Routes.</li>
+    </ul>
+    <div class="screenshot-slot">User Agent column</div>
+  </div>
+
+  <!-- Field 6 -->
+  <div class="field-block" id="field-6">
+    <div class="field-block-header">
+      <div class="field-num">6</div>
+      <div class="field-block-title">Last Hit column</div>
+    </div>
+    <p class="field-block-desc">The <strong>Last Hit</strong> column shows the timestamp of the most recent time a request to that route returned a 404. Timestamps are displayed in your local time zone.</p>
+    <p class="field-block-desc">A recent Last Hit date means the broken route is still being accessed. A very old Last Hit date (weeks or months ago with no new traffic) may indicate a route that is no longer being linked to and is lower priority.</p>
+    <div class="note">
+      <div class="note-label">Note</div>
+      <p>Last Hit updates every time that specific route is hit again. If you add a redirect and the date stops advancing, your fix is working.</p>
+    </div>
+    <div class="screenshot-slot">Last Hit column</div>
+  </div>
+
+  <!-- Field 7 -->
+  <div class="field-block" id="field-7">
+    <div class="field-block-header">
+      <div class="field-num">7</div>
+      <div class="field-block-title">Hits column</div>
+    </div>
+    <p class="field-block-desc">The <strong>Hits</strong> column shows the total number of times that specific route has returned a 404 since monitoring began. This is a cumulative count and resets only if you manually clear the data.</p>
+    <p class="field-block-desc">A high Hits number indicates a route that was heavily linked, bookmarked, or indexed before it broke. These routes have the most impact on SEO and user experience and should be addressed first.</p>
+    <div class="screenshot-slot">Hits column</div>
+  </div>
+
+  <h2 id="prioritizing">Prioritizing which broken links to fix first</h2>
+  <p>Use <strong>Last Hit</strong> and <strong>Hits</strong> together to triage your broken link backlog:</p>
+  <ul>
+    <li><strong>High Hits + recent Last Hit:</strong> Fix immediately. This route is actively broken and being accessed regularly.</li>
+    <li><strong>High Hits + old Last Hit:</strong> Important but less urgent. The link was popular but traffic may have tapered off.</li>
+    <li><strong>Low Hits + recent Last Hit:</strong> Monitor. Could be a newly broken link that has not had time to accumulate hits yet.</li>
+    <li><strong>Low Hits + old Last Hit:</strong> Lowest priority. Likely a legacy path that is no longer actively linked.</li>
+  </ul>
+  <p>Also check the <strong>User Agent</strong> column. Routes hit by Googlebot with a high Hit count are the most SEO-damaging and should jump to the top of your fix list.</p>
+
+  <div class="faq-section">
+    <h2>FAQ</h2>
+
+    <div class="faq-item">
+      <div class="faq-q">Does the table update automatically as new errors come in?</div>
+      <div class="faq-a">The table loads the latest data each time you open the 404 Monitor tab. Click <strong>Reload</strong> at any time to pull fresh data without closing and reopening the plugin.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Can I delete individual rows from the errors table?</div>
+      <div class="faq-a">To keep intentional paths from appearing in the table, add them to the <strong>Exception Routes</strong> list rather than trying to delete individual rows. See the <a href="https://rankframe.com/help/exception-routes">Exception Routes</a> article for details.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Does the CSV export include all pages or just what is visible on screen?</div>
+      <div class="faq-a">The export includes all 404 error data for the currently active domain filter, not just the rows on the current page. You always get the complete dataset in the file.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">What does it mean if the same URI appears with different User Agents?</div>
+      <div class="faq-a">Each unique combination of URI and User Agent is tracked separately. If the same broken path was hit by both Googlebot and a real browser, those appear as separate rows so you can see exactly who encountered it.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">How do I remove a path that should not be appearing in the errors table?</div>
+      <div class="faq-a">Add the path to <strong>Exception Routes</strong> at the bottom of the 404 Monitor tab. Once added, that route is ignored by the monitoring script and disappears from the table. This is the correct approach for paths that intentionally return a 404, like your custom <code>/404</code> page.</div>
+    </div>
+  </div>
+
+  <div class="related-section">
+    <h2>Related articles</h2>
+    <ul class="related-links">
+      <li><a href="https://rankframe.com/help/404-monitor-overview">404 Monitor Overview</a></li>
+      <li><a href="https://rankframe.com/help/exception-routes">Exception Routes</a></li>
+    </ul>
+  </div>
+
+  <div class="cta-box">
+    <h3>See your broken links in one place</h3>
+    <p>Enable the 404 Monitor in RankFrame and start reading the errors table on your live Framer site.</p>
+    <a href="https://rankframe.com" class="cta-btn">Open RankFrame</a>
+  </div>
+
+  <div class="seo-panel">
+    <div class="seo-panel-header">
+      <div class="seo-panel-title">SEO Details</div>
+      <div class="seo-panel-sub">Meta tags and structured data for this page</div>
+    </div>
+    <div class="seo-fields" id="seo-panel-fields"></div>
+    <div class="seo-schemas" id="seo-panel-schemas"></div>
+  </div>
+
+</div>
+
+<script>
+(function() {
+  var fields = [
+    { label: 'Title', value: document.querySelector('title') ? document.querySelector('title').textContent : '' },
+    { label: 'Description', value: (document.querySelector('meta[name="description"]') || {}).content || '' },
+    { label: 'Keywords', value: (document.querySelector('meta[name="keywords"]') || {}).content || '' },
+    { label: 'Canonical', value: (document.querySelector('link[rel="canonical"]') || {}).href || '' }
+  ];
+  var fieldsHtml = fields.map(function(f) {
+    return '<div class="seo-field"><div class="seo-field-row"><span class="seo-field-label">' + f.label + '</span><button class="seo-copy-btn" onclick="copyVal(this,\'' + f.label + '\')">Copy</button></div><div class="seo-field-value">' + f.value + '</div></div>';
+  }).join('');
+  var schemas = Array.from(document.querySelectorAll('script[type="application/ld+json"]')).map(function(s) {
+    try { var obj = JSON.parse(s.textContent); var t = obj['@type'] || 'Schema'; return '<div class="seo-schema"><div class="seo-schema-header"><span class="seo-schema-type">' + t + ' / JSON-LD</span><button class="seo-copy-btn" onclick="copySchema(this,\'' + t + '\')">Copy</button></div><pre class="seo-schema-code">' + JSON.stringify(obj, null, 2) + '</pre></div>'; } catch(e) { return ''; }
+  }).join('');
+  document.getElementById('seo-panel-fields').innerHTML = fieldsHtml;
+  document.getElementById('seo-panel-schemas').innerHTML = schemas;
+})();
+function copyVal(btn, label) {
+  var val = btn.closest('.seo-field').querySelector('.seo-field-value').textContent;
+  navigator.clipboard.writeText(val).then(function() { btn.textContent = 'Copied'; btn.classList.add('ok'); setTimeout(function() { btn.textContent = 'Copy'; btn.classList.remove('ok'); }, 1500); });
+}
+function copySchema(btn, type) {
+  var code = btn.closest('.seo-schema').querySelector('.seo-schema-code').textContent;
+  navigator.clipboard.writeText(code).then(function() { btn.textContent = 'Copied'; btn.classList.add('ok'); setTimeout(function() { btn.textContent = 'Copy'; btn.classList.remove('ok'); }, 1500); });
+}
+</script>
+</body>
+</html>

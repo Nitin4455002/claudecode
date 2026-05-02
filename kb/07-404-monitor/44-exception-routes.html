@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>404 Monitor Overview – RankFrame Help</title>
-  <meta name="description" content="Learn how the RankFrame 404 Monitor works, how to enable the monitoring script, and how to configure allowed domains to track broken links on your Framer site." />
-  <meta name="keywords" content="404 monitor, RankFrame, Framer SEO, broken links, 404 errors, monitoring script" />
-  <link rel="canonical" href="https://rankframe.com/help/404-monitor-overview" />
+  <title>Exception Routes – RankFrame 404 Monitor Help</title>
+  <meta name="description" content="Learn how to use Exception Routes in the RankFrame 404 Monitor to exclude intentional 404 paths from your error log, keeping your data clean and actionable." />
+  <meta name="keywords" content="exception routes, 404 monitor, RankFrame, Framer SEO, whitelist 404, ignore routes, custom 404 page" />
+  <link rel="canonical" href="https://rankframe.com/help/exception-routes" />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Article",
-    "headline": "404 Monitor Overview",
-    "description": "Learn how the RankFrame 404 Monitor works, how to enable the monitoring script, and how to configure allowed domains to track broken links on your Framer site.",
-    "url": "https://rankframe.com/help/404-monitor-overview",
+    "headline": "Exception Routes",
+    "description": "Learn how to use Exception Routes in the RankFrame 404 Monitor to exclude intentional 404 paths from your error log, keeping your data clean and actionable.",
+    "url": "https://rankframe.com/help/exception-routes",
     "publisher": {
       "@type": "Organization",
       "name": "RankFrame",
@@ -28,7 +28,7 @@
     "itemListElement": [
       { "@type": "ListItem", "position": 1, "name": "Help Center", "item": "https://rankframe.com/help" },
       { "@type": "ListItem", "position": 2, "name": "404 Monitor", "item": "https://rankframe.com/help/404-monitor" },
-      { "@type": "ListItem", "position": 3, "name": "404 Monitor Overview", "item": "https://rankframe.com/help/404-monitor-overview" }
+      { "@type": "ListItem", "position": 3, "name": "Exception Routes", "item": "https://rankframe.com/help/exception-routes" }
     ]
   }
   </script>
@@ -112,12 +112,14 @@
     .field-block-desc code { background: #f3f0ff; color: #6d28d9; padding: 1px 6px; border-radius: 4px; font-size: 0.85em; font-family: "SF Mono","Fira Code",Consolas,monospace; }
     .screenshot-slot { background: #fafafa; border: 1px dashed #e0d8f0; border-radius: 10px; padding: 36px 20px; text-align: center; color: #b8b2c8; font-size: 0.85rem; margin-top: 6px; margin-bottom: 8px; }
     .screenshot-slot::before { content: "Screenshot"; display: block; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #c8c0dc; }
-    .status-badge { display: inline-flex; align-items: center; gap: 8px; background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 999px; padding: 6px 14px; font-size: 0.88rem; font-weight: 600; color: #15803d; }
-    .status-dot { width: 8px; height: 8px; background: #22c55e; border-radius: 50%; flex-shrink: 0; }
-    .stat-row { display: flex; gap: 16px; margin: 20px 0; flex-wrap: wrap; }
-    .stat-card { flex: 1; min-width: 140px; background: #fafafa; border: 1px solid #efefef; border-radius: 10px; padding: 18px 20px; text-align: center; }
-    .stat-value { font-size: 2rem; font-weight: 700; color: #7c3aed; line-height: 1; margin-bottom: 4px; }
-    .stat-label { font-size: 0.82rem; color: #888; font-weight: 500; }
+    .input-mockup { display: flex; gap: 10px; align-items: center; margin: 20px 0; }
+    .input-field-mock { flex: 1; border: 1px solid #ddd; border-radius: 8px; padding: 10px 14px; font-size: 0.9rem; color: #aaa; font-family: "SF Mono","Fira Code",Consolas,monospace; background: #fafafa; }
+    .add-btn-mock { background: #7c3aed; color: #fff; font-weight: 600; font-size: 0.88rem; padding: 10px 18px; border-radius: 8px; border: none; cursor: pointer; white-space: nowrap; }
+    .exception-pill { display: inline-flex; align-items: center; gap: 6px; background: #f3f0ff; border: 1px solid #ddd5f8; color: #4c1d95; font-size: 0.82rem; font-weight: 600; padding: 5px 12px; border-radius: 999px; margin: 4px; font-family: "SF Mono","Fira Code",Consolas,monospace; }
+    .exception-pill .remove { color: #a78bfa; cursor: pointer; font-weight: 700; font-size: 0.9rem; line-height: 1; }
+    .callout-important { background: #fdf4ff; border: 1px solid #e9d5ff; border-radius: 10px; padding: 16px 20px; margin: 24px 0; }
+    .callout-important-label { font-size: 11px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: #9333ea; margin-bottom: 6px; }
+    .callout-important p { color: #581c87; margin: 0; font-size: 0.93rem; }
   </style>
 </head>
 <body>
@@ -128,12 +130,12 @@
     <span>&#8250;</span>
     <a href="https://rankframe.com/help/404-monitor">404 Monitor</a>
     <span>&#8250;</span>
-    <span>404 Monitor Overview</span>
+    <span>Exception Routes</span>
   </nav>
 
   <div class="article-category">404 Monitor</div>
-  <h1>404 Monitor Overview</h1>
-  <p class="article-description">The 404 Monitor automatically tracks every broken link on your Framer site so you can find and fix them before they hurt your SEO or visitor experience.</p>
+  <h1>Exception Routes</h1>
+  <p class="article-description">Exception Routes let you exclude intentional 404 paths from your error log, so your data stays clean and you can focus on the broken links that actually need fixing.</p>
   <div class="article-meta">
     <span>Updated May 2, 2026</span>
     <span>5 min read</span>
@@ -142,157 +144,140 @@
   <nav class="toc" aria-label="Table of contents">
     <div class="toc-title">On this page</div>
     <ol>
-      <li><a href="#what-it-is">What the 404 Monitor is</a></li>
-      <li><a href="#where-to-find-it">Where to find it</a></li>
-      <li><a href="#setup">How to set it up</a></li>
-      <li><a href="#stats">Stats at a glance</a></li>
-      <li><a href="#status-indicator">Status indicator</a></li>
-      <li><a href="#trial">Trial plan access</a></li>
+      <li><a href="#what-are-exception-routes">What Exception Routes are</a></li>
+      <li><a href="#why-it-matters">Why this feature matters</a></li>
+      <li><a href="#where-to-find">Where to find it</a></li>
+      <li><a href="#field-1">1. Exception route input field</a></li>
+      <li><a href="#field-2">2. Add button</a></li>
+      <li><a href="#field-3">3. How ignored routes appear</a></li>
+      <li><a href="#common-use-cases">Common use cases</a></li>
       <li><a href="#faq">FAQ</a></li>
     </ol>
   </nav>
 
-  <h2 id="what-it-is">What the 404 Monitor is</h2>
-  <p>The <strong>404 Monitor</strong> is a passive error tracking tool built into RankFrame. Once you enable it, a lightweight script runs on your published Framer site and records every request that returns a 404 status. All captured errors appear in the errors table inside RankFrame so you can review them, prioritize fixes, and add redirects where needed.</p>
-  <p>Broken links damage SEO in two ways: search engines stop passing link equity through them, and visitors who land on dead pages leave immediately. The 404 Monitor surfaces these problems automatically without any manual checking.</p>
+  <h2 id="what-are-exception-routes">What Exception Routes are</h2>
+  <p><strong>Exception Routes</strong> is a whitelist inside the 404 Monitor. Any path you add here is permanently ignored by the monitoring script. Hits to that path will not be recorded, and if rows for that path already exist in the errors table they will no longer appear.</p>
+  <p>You find the <strong>Exception Routes</strong> section at the bottom of the <strong>404 Monitor</strong> tab inside <strong>Global Settings</strong>. The label reads: <em>"Routes added here will be ignored by the 404 monitor."</em></p>
 
-  <div class="tip">
-    <div class="tip-label">Tip</div>
-    <p>You do not need to be on a paid plan to use the 404 Monitor. Trial users get full access and all errors are tracked from day one.</p>
+  <div class="callout-important">
+    <div class="callout-important-label">Often missed but important</div>
+    <p>Exception Routes is one of the most overlooked settings in RankFrame. Without it, intentional paths like your custom <code>/404</code> page pollute the error log and make it hard to identify the broken links that actually need attention.</p>
   </div>
 
-  <h2 id="where-to-find-it">Where to find it</h2>
-  <p>The 404 Monitor is not a standalone sidebar section. It lives inside <strong>Global Settings</strong>, under the <strong>404 Monitor</strong> tab. To open it:</p>
+  <h2 id="why-it-matters">Why this feature matters</h2>
+  <p>Some paths on your Framer site are designed to return a 404 status. That is correct and expected behavior. For example, your custom <code>/404</code> error page exists precisely to handle unknown routes, so every single visitor who hits any broken link passes through it and logs a hit. Without an exception, <code>/404</code> will appear at the very top of your errors table with an enormous hit count, hiding the routes that actually matter.</p>
+  <p>The same applies to any path used in redirect testing, app logic, or Framer's internal preview system. Without Exception Routes, these entries create noise that makes it harder to find genuine broken links.</p>
+
+  <h2 id="where-to-find">Where to find it</h2>
   <ol>
     <li>Open the RankFrame plugin inside Framer.</li>
     <li>Click <strong>Global Settings</strong> in the main navigation.</li>
     <li>Select the <strong>404 Monitor</strong> tab.</li>
+    <li>Scroll to the bottom of the tab to reach the <strong>Exception Routes</strong> section.</li>
   </ol>
-  <p>The tab subtitle reads: <em>"Keeps track of all 404 errors on the website."</em></p>
 
-  <div class="screenshot-slot">Global Settings &gt; 404 Monitor tab</div>
+  <div class="screenshot-slot">Exception Routes section at the bottom of the 404 Monitor tab</div>
 
-  <h2 id="setup">How to set it up</h2>
-  <p>Getting the monitor running takes a few steps. Complete them in order so errors start flowing in right after you publish.</p>
-
-  <ul class="step-list">
-    <li>
-      <div class="step-num">1</div>
-      <div class="step-body">
-        <div class="step-title">Open the 404 Monitor tab</div>
-        <div class="step-desc">Go to <strong>Global Settings</strong> inside RankFrame and click the <strong>404 Monitor</strong> tab.</div>
-      </div>
-    </li>
-    <li>
-      <div class="step-num">2</div>
-      <div class="step-body">
-        <div class="step-title">Turn on the 404 Monitor Script toggle</div>
-        <div class="step-desc">Flip the <strong>404 Monitor Script</strong> toggle to the on position. This enables the monitoring script on your live site. Without this step, no errors are captured.</div>
-      </div>
-    </li>
-    <li>
-      <div class="step-num">3</div>
-      <div class="step-body">
-        <div class="step-title">Add your domain to Allowed Domains</div>
-        <div class="step-desc">Type your domain (for example, <em>yourdomain.com</em>) into the <strong>Allowed Domains</strong> tag input and press Enter to add it. Add every domain you want to monitor. You can remove a domain at any time by clicking its remove button.</div>
-      </div>
-    </li>
-    <li>
-      <div class="step-num">4</div>
-      <div class="step-body">
-        <div class="step-title">Publish your Framer site</div>
-        <div class="step-desc">Publish or republish your site so the updated script goes live. The 404 Monitor only tracks errors on the published site, not inside the Framer editor preview.</div>
-      </div>
-    </li>
-    <li>
-      <div class="step-num">5</div>
-      <div class="step-body">
-        <div class="step-title">Confirm the status indicator is active</div>
-        <div class="step-desc">Look for the green status indicator at the bottom of the tab. When monitoring is running you will see: <em>"Monitoring script active, 404 errors are being tracked."</em></div>
-      </div>
-    </li>
-  </ul>
-
-  <div class="note">
-    <div class="note-label">Note</div>
-    <p>If you manage multiple domains from one Framer project, add each domain separately in the <strong>Allowed Domains</strong> list. The script only records errors from domains in that list.</p>
+  <!-- Field 1 -->
+  <div class="field-block" id="field-1">
+    <div class="field-block-header">
+      <div class="field-num">1</div>
+      <div class="field-block-title">Exception route input field</div>
+    </div>
+    <p class="field-block-desc">The text input field accepts a single URL path at a time. Enter the path exactly as it appears in the <strong>Page URI</strong> column of your errors table, starting with a forward slash. The placeholder text shows the expected format: <code>/path-to-ignore</code>.</p>
+    <p class="field-block-desc">For example, to exclude your custom 404 error page, type <code>/404</code>. To exclude a conflict page, type <code>/409</code>. The input accepts any valid URL path.</p>
+    <div class="input-mockup" aria-hidden="true">
+      <div class="input-field-mock">/path-to-ignore</div>
+      <button class="add-btn-mock">+ Add</button>
+    </div>
+    <div class="note">
+      <div class="note-label">Note</div>
+      <p>Always include the leading slash. Entering <code>404</code> without the slash will not match the path <code>/404</code> as it appears in the errors table.</p>
+    </div>
+    <div class="screenshot-slot">Exception route input field</div>
   </div>
 
-  <h2 id="stats">Stats at a glance</h2>
-  <p>At the top of the 404 Monitor tab, two summary figures give you an instant sense of how many broken links exist on your site.</p>
-
-  <div class="stat-row">
-    <div class="stat-card">
-      <div class="stat-value">12</div>
-      <div class="stat-label">Total 404 Errors</div>
+  <!-- Field 2 -->
+  <div class="field-block" id="field-2">
+    <div class="field-block-header">
+      <div class="field-num">2</div>
+      <div class="field-block-title">+ Add button</div>
     </div>
-    <div class="stat-card">
-      <div class="stat-value">7</div>
-      <div class="stat-label">Unique Routes</div>
+    <p class="field-block-desc">After typing a path into the input field, click the <strong>+ Add</strong> button to save it as an exception. The route is immediately added to your exception list and the monitoring script stops tracking hits to that path from that point forward.</p>
+    <p class="field-block-desc">You can add as many exception routes as you need. Each one appears as a labeled tag below the input so you can see which paths are currently excluded at a glance. To remove an exception route, click the remove button on its tag.</p>
+    <div style="margin: 16px 0;">
+      <div class="exception-pill">/404 <span class="remove" aria-label="Remove">&#215;</span></div>
+      <div class="exception-pill">/409 <span class="remove" aria-label="Remove">&#215;</span></div>
+      <div class="exception-pill">/preview-draft <span class="remove" aria-label="Remove">&#215;</span></div>
     </div>
+    <div class="tip">
+      <div class="tip-label">Tip</div>
+      <p>You can copy a path directly from the <strong>Page URI</strong> column in the errors table using the copy icon, then paste it into the exception route input to avoid typos.</p>
+    </div>
+    <div class="screenshot-slot">+ Add button and saved exception route tags</div>
   </div>
 
+  <!-- Field 3 -->
+  <div class="field-block" id="field-3">
+    <div class="field-block-header">
+      <div class="field-num">3</div>
+      <div class="field-block-title">How ignored routes appear in the errors table</div>
+    </div>
+    <p class="field-block-desc">Once a path is added to <strong>Exception Routes</strong>, it disappears from the errors table. The monitoring script stops logging hits to that path, so no new rows are created for it. Any rows that were already present for that path are no longer shown in the table once the exception is saved.</p>
+    <p class="field-block-desc">If you remove an exception route later, the script resumes tracking hits to that path and new hits will appear as rows in the table again. Previously excluded hits are not retroactively added.</p>
+    <div class="screenshot-slot">Errors table with intentional paths removed</div>
+  </div>
+
+  <h2 id="common-use-cases">Common use cases</h2>
+  <p>The following paths are strong candidates for Exception Routes on most Framer sites:</p>
   <ul>
-    <li><strong>Total 404 Errors</strong> is the cumulative count of all individual 404 hits recorded across every tracked domain.</li>
-    <li><strong>Unique Routes</strong> is the number of distinct URL paths that have triggered at least one 404. A single broken path hit many times still counts as one unique route.</li>
+    <li><strong>/404</strong>: Your custom 404 page returns a 404 status by design. Every visitor who hits any broken link on your site passes through this page, so it will always show an extremely high hit count. Add it as an exception to keep the noise out of your log.</li>
+    <li><strong>/409</strong>: A conflict page that intentionally returns a 409 or 404 status as part of your site logic.</li>
+    <li><strong>Redirect testing paths</strong>: If you use specific paths during development to test redirect chains, add them while testing and remove them when done.</li>
+    <li><strong>Framer preview routes or draft pages</strong>: Paths used by Framer's internal preview system or staging flows that are never intended to be live public pages.</li>
+    <li><strong>App logic routes</strong>: Any path that your application or backend intentionally returns a 404 for as part of its normal operation, such as API probe routes or health check paths.</li>
   </ul>
-  <p>Use these numbers to gauge overall site health at a glance. A high Unique Routes count with many hits per route often signals a structural problem like a renamed page or a broken redirect rather than isolated external link typos.</p>
-
-  <h2 id="status-indicator">Status indicator</h2>
-  <p>The bottom of the <strong>404 Monitor</strong> tab shows a live status indicator. When the script is active and monitoring is running, you will see a green dot alongside the message: <em>"Monitoring script active, 404 errors are being tracked."</em></p>
-
-  <div style="margin: 20px 0;">
-    <div class="status-badge">
-      <div class="status-dot"></div>
-      Monitoring script active, 404 errors are being tracked
-    </div>
-  </div>
-
-  <p>If the indicator is not showing green, confirm that the <strong>404 Monitor Script</strong> toggle is on and that you have republished your site after enabling it.</p>
-
-  <h2 id="trial">Trial plan access</h2>
-  <p>There is no restriction on the 404 Monitor during a trial. All 404 errors are tracked from the moment you enable the script, and the full errors table is available without any limits. You do not need to upgrade before you start collecting data.</p>
 
   <div class="faq-section">
     <h2>FAQ</h2>
 
     <div class="faq-item">
-      <div class="faq-q">Does the 404 Monitor work on Framer preview URLs?</div>
-      <div class="faq-a">No. The monitoring script only runs on your published live site. Preview URLs inside the Framer editor are not tracked.</div>
+      <div class="faq-q">Does adding an exception route delete the existing error data for that path?</div>
+      <div class="faq-a">No. Adding a path to <strong>Exception Routes</strong> stops new hits from being recorded and hides existing rows in the table, but it does not permanently delete the underlying data. If you remove the exception later, the script starts tracking that path again and the historical data may reappear.</div>
     </div>
 
     <div class="faq-item">
-      <div class="faq-q">Can I monitor more than one domain at the same time?</div>
-      <div class="faq-a">Yes. Add each domain to the <strong>Allowed Domains</strong> list. The script monitors all listed domains, and the errors table lets you filter by domain.</div>
+      <div class="faq-q">Can I use wildcards or partial matches?</div>
+      <div class="faq-a">Exception Routes match exact paths. Enter the full path as it appears in the <strong>Page URI</strong> column. Wildcard or prefix matching is not currently supported, so you need to add each specific path individually.</div>
     </div>
 
     <div class="faq-item">
-      <div class="faq-q">Will the monitoring script slow down my site?</div>
-      <div class="faq-a">No. The script is lightweight and only fires when a 404 response is detected. It has no measurable effect on page load time for normal visitors.</div>
+      <div class="faq-q">Should I add my custom 404 page as an exception right away?</div>
+      <div class="faq-a">Yes. Adding <code>/404</code> as an exception is one of the first things to do after enabling the 404 Monitor. Without this exception, your custom error page will generate a misleadingly high hit count that drowns out genuine broken links.</div>
     </div>
 
     <div class="faq-item">
-      <div class="faq-q">What happens if I turn the toggle off?</div>
-      <div class="faq-a">Turning off the <strong>404 Monitor Script</strong> toggle stops new errors from being recorded after your next publish. Existing error data remains in the table and is not deleted.</div>
+      <div class="faq-q">How many exception routes can I add?</div>
+      <div class="faq-a">There is no documented limit on the number of exception routes you can add. Add as many as your site requires to keep your error log clean.</div>
     </div>
 
     <div class="faq-item">
-      <div class="faq-q">Are there routes I should exclude from tracking?</div>
-      <div class="faq-a">Yes. Paths like <code>/404</code> (your custom error page) will always return a 404 by design and will clutter your error log unless you add them to the <strong>Exception Routes</strong> list. See the <a href="https://rankframe.com/help/exception-routes">Exception Routes</a> article for details.</div>
+      <div class="faq-q">What if I accidentally add the wrong path as an exception?</div>
+      <div class="faq-a">Remove it by clicking the remove button on its tag in the <strong>Exception Routes</strong> section. The monitoring script will resume tracking that path immediately and new hits will start appearing in the errors table again.</div>
     </div>
   </div>
 
   <div class="related-section">
     <h2>Related articles</h2>
     <ul class="related-links">
+      <li><a href="https://rankframe.com/help/404-monitor-overview">404 Monitor Overview</a></li>
       <li><a href="https://rankframe.com/help/404-errors-table">Errors Table</a></li>
-      <li><a href="https://rankframe.com/help/exception-routes">Exception Routes</a></li>
     </ul>
   </div>
 
   <div class="cta-box">
-    <h3>Ready to stop broken links from hurting your SEO?</h3>
-    <p>Enable the 404 Monitor in RankFrame and start tracking errors on your live Framer site today.</p>
+    <h3>Keep your error log clean and actionable</h3>
+    <p>Add your first exception route in RankFrame and stop intentional paths from polluting your 404 data.</p>
     <a href="https://rankframe.com" class="cta-btn">Open RankFrame</a>
   </div>
 
