@@ -96,12 +96,14 @@
     .note { background: #fff8f0; border-left: 3px solid #f59e0b; border-radius: 0 8px 8px 0; padding: 12px 16px; margin: 20px 0; }
     .note-label { font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #d97706; margin-bottom: 4px; }
     .note p { color: #78350f; margin: 0; font-size: 0.93rem; }
-    .field-table { width: 100%; border-collapse: collapse; margin: 16px 0 24px; font-size: 0.9rem; }
-    .field-table th { text-align: left; padding: 10px 12px; background: #fafafa; border: 1px solid #efefef; color: #555; font-weight: 600; }
-    .field-table td { padding: 10px 12px; border: 1px solid #f0f0f0; vertical-align: top; }
-    .field-table tr:nth-child(even) td { background: #fafafa; }
-    .field-name { font-weight: 600; color: #0a0a0a; font-family: "SF Mono","Fira Code",Consolas,monospace; font-size: 0.85rem; }
-    .field-required { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; background: #fef3c7; color: #92400e; border-radius: 4px; padding: 1px 6px; margin-left: 6px; }
+    .field-block { margin: 36px 0 28px; }
+    .field-block-header { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+    .field-num { display: inline-flex; align-items: center; justify-content: center; width: 38px; height: 38px; background: linear-gradient(135deg, #7c3aed, #a78bfa); color: #fff; font-weight: 700; font-size: 14px; border-radius: 8px; flex-shrink: 0; box-shadow: 0 2px 6px rgba(124,58,237,0.25); }
+    .field-block-title { font-size: 1.18rem; font-weight: 700; color: #0a0a0a; letter-spacing: -0.01em; }
+    .field-block-desc { color: #444; margin-bottom: 14px; font-size: 0.97rem; line-height: 1.7; }
+    .field-block-desc code { background: #f3f0ff; color: #6d28d9; padding: 1px 6px; border-radius: 4px; font-size: 0.85em; font-family: "SF Mono","Fira Code",Consolas,monospace; }
+    .screenshot-slot { background: #fafafa; border: 1px dashed #e0d8f0; border-radius: 10px; padding: 36px 20px; text-align: center; color: #b8b2c8; font-size: 0.85rem; margin-top: 6px; margin-bottom: 8px; }
+    .screenshot-slot::before { content: "Screenshot"; display: block; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #c8c0dc; }
     .faq-section { margin-top: 48px; padding-top: 32px; border-top: 1px solid #f0f0f0; }
     .faq-section h2 { border-bottom: none; padding-bottom: 0; margin-bottom: 24px; }
     .faq-item { border: 1px solid #efefef; border-radius: 10px; padding: 18px 20px; margin-bottom: 10px; }
@@ -187,47 +189,66 @@
   </section>
 
   <section id="all-fields">
-    <h2>All form fields explained</h2>
-    <p>The form contains the following fields. Fill as many as are accurate and applicable.</p>
+    <h2>Person and Organization Schema Setup &amp; Available Options</h2>
+    <p>Now let's have a closer look at each of the available options in detail. The form contains six fields. Fill as many as are accurate and applicable to your subject.</p>
 
-    <table class="field-table">
-      <thead>
-        <tr>
-          <th>Field</th>
-          <th>What to enter</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><span class="field-name">Name</span></td>
-          <td>The full name of the person or organization. For a person, use their real name (e.g. "Jane Smith"). For an organization, use the official brand name (e.g. "7 Seers"). This becomes the <code>name</code> property in the JSON-LD.</td>
-        </tr>
-        <tr>
-          <td><span class="field-name">URL</span></td>
-          <td>The canonical URL that best represents this person or organization. Usually the homepage (e.g. <code>https://yourdomain.com</code>) or a dedicated about page. Becomes the <code>url</code> property.</td>
-        </tr>
-        <tr>
-          <td><span class="field-name">Image URL</span></td>
-          <td>A direct link to a profile photo (for Person) or a logo image (for Organization). Use a square or near-square image for best results with Google. Becomes the <code>image</code> property.</td>
-        </tr>
-        <tr>
-          <td><span class="field-name">Job Title</span></td>
-          <td>The person's professional title or role (e.g. "Founder", "Creative Director", "SEO Specialist"). Applies to Person schema only. Becomes the <code>jobTitle</code> property.</td>
-        </tr>
-        <tr>
-          <td><span class="field-name">Company</span></td>
-          <td>The name of the organization this person is affiliated with or works for. Relevant for Person schema. Helps Google connect the individual to their employer entity. Becomes the <code>worksFor</code> property.</td>
-        </tr>
-        <tr>
-          <td><span class="field-name">Social Profiles</span></td>
-          <td>One or more URLs to social media profiles or authoritative external profiles (e.g. LinkedIn, Twitter, Instagram, Facebook, YouTube, Wikipedia). Each URL you add becomes a separate entry in the <code>sameAs</code> array. Add as many as apply.</td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="field-block">
+      <div class="field-block-header">
+        <div class="field-num">1</div>
+        <div class="field-block-title">Name</div>
+      </div>
+      <p class="field-block-desc">Enter the full name of the person or organization in this field. For a person, use their real name as it appears publicly (for example, "Jane Smith"). For an organization, use the official brand name as it appears on your branding and legal documents (for example, "7 Seers"). This value populates the <code>name</code> property in the JSON-LD output and is the primary identifier for the entity.</p>
+      <div class="screenshot-slot"></div>
+    </div>
+
+    <div class="field-block">
+      <div class="field-block-header">
+        <div class="field-num">2</div>
+        <div class="field-block-title">URL</div>
+      </div>
+      <p class="field-block-desc">Enter the canonical URL that best represents this person or organization. Usually this is your homepage (for example, <code>https://yourdomain.com</code>) or a dedicated about page. The URL should resolve to a page that clearly identifies the entity. This value populates the <code>url</code> property and acts as the canonical web identity for the subject.</p>
+      <div class="screenshot-slot"></div>
+    </div>
+
+    <div class="field-block">
+      <div class="field-block-header">
+        <div class="field-num">3</div>
+        <div class="field-block-title">Image URL</div>
+      </div>
+      <p class="field-block-desc">Add a direct link to a profile photo (for Person) or a logo image (for Organization). Use a full absolute URL, not a relative path. Square or near-square images work best with Google's rich result requirements. For organizations, use a clean logo on a white or transparent background. This value populates the <code>image</code> property in the JSON-LD output.</p>
+      <div class="screenshot-slot"></div>
+    </div>
+
+    <div class="field-block">
+      <div class="field-block-header">
+        <div class="field-num">4</div>
+        <div class="field-block-title">Job Title</div>
+      </div>
+      <p class="field-block-desc">Enter the person's professional title or role in this field (for example, "Founder", "Creative Director", "SEO Specialist"). This field is most relevant when you have selected the Person type at the top of the form. Use the title as it appears on the person's bio, resume, or LinkedIn profile so Google can match the entity across the web. This value populates the <code>jobTitle</code> property.</p>
+      <div class="screenshot-slot"></div>
+    </div>
+
+    <div class="field-block">
+      <div class="field-block-header">
+        <div class="field-num">5</div>
+        <div class="field-block-title">Company</div>
+      </div>
+      <p class="field-block-desc">Enter the name of the organization this person is affiliated with or works for. This is most relevant when you have selected Person at the top of the form, as it links the individual to their employer or affiliated entity in Google's knowledge graph. Use the official organization name. This value populates the <code>worksFor</code> property in the JSON-LD output.</p>
+      <div class="screenshot-slot"></div>
+    </div>
+
+    <div class="field-block">
+      <div class="field-block-header">
+        <div class="field-num">6</div>
+        <div class="field-block-title">Social Profiles</div>
+      </div>
+      <p class="field-block-desc">Add one or more URLs to social media profiles or authoritative external profiles for this person or organization. Common entries include LinkedIn, X (Twitter), Instagram, Facebook, YouTube, GitHub, and Wikipedia pages. Add as many as apply. Each URL you add becomes a separate entry inside the <code>sameAs</code> array in the JSON-LD output. This is one of the most powerful fields for entity recognition, since it tells Google that all of these online presences belong to the same entity.</p>
+      <div class="screenshot-slot"></div>
+    </div>
 
     <div class="note">
-      <div class="note-label">Note</div>
-      <p>The <code>sameAs</code> property is one of the most powerful fields for entity recognition. Adding your LinkedIn profile, Twitter handle, and any press mentions tells Google that all of these online presences belong to the same entity.</p>
+      <div class="note-label">Pro tip</div>
+      <p>The more social profiles you add, the stronger the entity signal. List your LinkedIn, X profile, Instagram, YouTube channel, and any authoritative third-party pages (Wikipedia, Crunchbase, Behance) so Google can confidently connect the dots.</p>
     </div>
   </section>
 
