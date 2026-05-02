@@ -503,19 +503,20 @@ This is the **site-wide** audit (different from the per-page audit inside the Pa
 "Manage and auto-generate alt text for your website images to boost accessibility and SEO."
 
 ### Header
-- **Buy Credits** button (purple)
-- **Credits balance** badge with coin icon (e.g. 60,498 Credits)
-- **Expand/Collapse** arrows icon (toggles Minimized Mode)
+- **Buy Credits** button (purple, solid)
+- **Credits balance** badge: dark red/coral pill with coin icon, credit count, and a refresh icon (e.g. "0 Credits" when empty, "60,498 Credits" when topped up)
+- **Expand/Collapse** arrows icon at far right (toggles Minimized Mode)
 
 ### Stats
-- Total Images (e.g. 517)
-- Missing Alt (orange number, e.g. 72)
+Two large stat cards side by side:
+- **TOTAL IMAGES** (e.g. 517, white number)
+- **MISSING ALT** (e.g. 72, orange number, orange label)
 
-### Controls
-- Site selector (e.g. "7 Seers")
-- Search field
-- Refresh
-- **Export** button (purple, downloads CSV with all image data)
+### Controls (below stats)
+- **Site selector:** gear icon + site name (e.g. "7 Seers"), full rounded pill button
+- **Search field:** magnifier icon + "Search..." placeholder, takes up most of the row width
+- **Refresh** button: circular arrows icon, rounded pill
+- **Export** button: purple, download arrow icon, downloads CSV with all image data
 
 ### Explorer (left panel within Image SEO)
 Two-level tree:

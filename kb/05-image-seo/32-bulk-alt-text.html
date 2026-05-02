@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bulk Alt Text Generation – RankFrame Help</title>
+  <meta name="description" content="Learn how to use RankFrame's bulk alt text generation to write AI-powered alt text for every image on your Framer site in one click." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://rankframe.com/help/bulk-alt-text-generation" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Bulk Alt Text Generation – RankFrame Help" />
+  <meta property="og:description" content="Learn how to use RankFrame's bulk alt text generation to write AI-powered alt text for every image on your Framer site in one click." />
+  <meta property="og:url" content="https://rankframe.com/help/bulk-alt-text-generation" />
+  <meta property="og:site_name" content="RankFrame" />
+
+  <!-- JSON-LD: Article -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Bulk Alt Text Generation",
+    "description": "Learn how to use RankFrame's bulk alt text generation to write AI-powered alt text for every image on your Framer site in one click.",
+    "url": "https://rankframe.com/help/bulk-alt-text-generation",
+    "datePublished": "2026-05-02",
+    "dateModified": "2026-05-02",
+    "publisher": {
+      "@type": "Organization",
+      "name": "RankFrame",
+      "url": "https://rankframe.com"
+    },
+    "author": {
+      "@type": "Organization",
+      "name": "RankFrame"
+    },
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Help Center", "item": "https://rankframe.com/help" },
+        { "@type": "ListItem", "position": 2, "name": "Image SEO", "item": "https://rankframe.com/help/image-seo" },
+        { "@type": "ListItem", "position": 3, "name": "Bulk Alt Text Generation", "item": "https://rankframe.com/help/bulk-alt-text-generation" }
+      ]
+    }
+  }
+  </script>
+
+  <!-- JSON-LD: FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How many credits does bulk alt text generation use?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Bulk alt text generation costs 1 credit per image. If you select 20 images and click Generate Alt Text, 20 credits are consumed. Only images that are actually generated count against your credit balance."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I edit the alt text after it is generated?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. After generation each image card shows a filled input field with the AI-written alt text. You can click into any field and edit the text before saving. Your edits are preserved."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does bulk generation work across all pages at once?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Bulk generation applies to the images visible on the current page of the image grid. If your site has many images spread across multiple pages (shown as Page X of Y), navigate to each page and run generation separately, or select images across pages before generating."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What happens if I click Select All and then deselect one image?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The master toggle switches back to Select All state and the Generate Alt Text button counter updates to reflect only the images that remain checked. You can freely mix the master toggle with individual card checkboxes."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I add a consistent suffix to every generated alt text?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. RankFrame supports a global suffix that is automatically appended to every AI-generated alt text. See the Global Suffix article for setup instructions."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- JSON-LD: BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Help Center", "item": "https://rankframe.com/help" },
+      { "@type": "ListItem", "position": 2, "name": "Image SEO", "item": "https://rankframe.com/help/image-seo" },
+      { "@type": "ListItem", "position": 3, "name": "Bulk Alt Text Generation", "item": "https://rankframe.com/help/bulk-alt-text-generation" }
+    ]
+  }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", sans-serif; background: #ffffff; color: #111111; line-height: 1.7; font-size: 16px; }
+    .page { max-width: 740px; margin: 0 auto; padding: 48px 24px 96px; }
+    .breadcrumb { display: flex; align-items: center; gap: 6px; font-size: 13px; color: #888; margin-bottom: 32px; flex-wrap: wrap; }
+    .breadcrumb a { color: #888; text-decoration: none; }
+    .breadcrumb a:hover { color: #7c3aed; }
+    .breadcrumb span { color: #ccc; }
+    .article-category { display: inline-block; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #7c3aed; background: #f3f0ff; padding: 3px 10px; border-radius: 999px; margin-bottom: 12px; }
+    h1 { font-size: 2rem; font-weight: 700; color: #0a0a0a; line-height: 1.25; margin-bottom: 14px; letter-spacing: -0.02em; }
+    .article-description { font-size: 1.05rem; color: #555; line-height: 1.65; margin-bottom: 10px; }
+    .article-meta { display: flex; gap: 16px; font-size: 13px; color: #aaa; margin-bottom: 36px; padding-bottom: 24px; border-bottom: 1px solid #f0f0f0; flex-wrap: wrap; }
+    .toc { background: #fafafa; border: 1px solid #efefef; border-radius: 10px; padding: 18px 22px; margin-bottom: 40px; }
+    .toc-title { font-size: 12px; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: #aaa; margin-bottom: 10px; }
+    .toc ol { list-style: none; padding: 0; }
+    .toc li { margin-bottom: 5px; }
+    .toc a { font-size: 14px; color: #555; text-decoration: none; }
+    .toc a:hover { color: #7c3aed; }
+    h2 { font-size: 1.3rem; font-weight: 600; color: #0a0a0a; margin: 40px 0 14px; padding-bottom: 8px; border-bottom: 1px solid #f0f0f0; letter-spacing: -0.01em; }
+    h3 { font-size: 1.05rem; font-weight: 600; color: #0a0a0a; margin: 24px 0 8px; }
+    p { color: #333; margin-bottom: 16px; }
+    ul, ol { padding-left: 22px; margin-bottom: 16px; }
+    li { color: #333; margin-bottom: 6px; }
+    strong { color: #0a0a0a; font-weight: 600; }
+    a { color: #7c3aed; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .tip { background: #f5f3ff; border-left: 3px solid #7c3aed; border-radius: 0 8px 8px 0; padding: 12px 16px; margin: 20px 0; }
+    .tip-label { font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #7c3aed; margin-bottom: 4px; }
+    .tip p { color: #4c1d95; margin: 0; font-size: 0.93rem; }
+    .note { background: #fff8f0; border-left: 3px solid #f59e0b; border-radius: 0 8px 8px 0; padding: 12px 16px; margin: 20px 0; }
+    .note-label { font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #d97706; margin-bottom: 4px; }
+    .note p { color: #78350f; margin: 0; font-size: 0.93rem; }
+    .step-list { list-style: none; padding: 0; counter-reset: steps; margin-bottom: 16px; }
+    .step-list li { counter-increment: steps; display: flex; gap: 14px; padding: 12px 0; border-bottom: 1px solid #f5f5f5; }
+    .step-list li:last-child { border-bottom: none; }
+    .step-num { width: 26px; height: 26px; background: #7c3aed; color: #fff; font-size: 12px; font-weight: 700; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+    .step-body { flex: 1; }
+    .step-title { font-weight: 600; color: #0a0a0a; font-size: 0.95rem; margin-bottom: 2px; }
+    .step-desc { color: #555; font-size: 0.9rem; }
+    .faq-section { margin-top: 48px; padding-top: 32px; border-top: 1px solid #f0f0f0; }
+    .faq-section h2 { border-bottom: none; padding-bottom: 0; margin-bottom: 24px; }
+    .faq-item { border: 1px solid #efefef; border-radius: 10px; padding: 18px 20px; margin-bottom: 10px; }
+    .faq-q { font-weight: 600; color: #0a0a0a; font-size: 0.95rem; margin-bottom: 8px; }
+    .faq-a { color: #555; font-size: 0.93rem; line-height: 1.65; }
+    .related-section { margin-top: 48px; padding-top: 32px; border-top: 1px solid #f0f0f0; }
+    .related-section h2 { border-bottom: none; padding-bottom: 0; margin-bottom: 16px; font-size: 1rem; color: #666; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; }
+    .related-links { list-style: none; padding: 0; }
+    .related-links li { margin-bottom: 8px; }
+    .related-links a { font-size: 0.95rem; color: #7c3aed; display: flex; align-items: center; gap: 6px; }
+    .related-links a::before { content: "→"; font-size: 12px; }
+    .cta-box { background: linear-gradient(135deg, #f5f3ff, #faf0ff); border: 1px solid #e8e0ff; border-radius: 12px; padding: 24px 28px; margin-top: 40px; text-align: center; }
+    .cta-box h3 { font-size: 1.1rem; color: #0a0a0a; margin-bottom: 8px; }
+    .cta-box p { color: #666; font-size: 0.9rem; margin-bottom: 16px; }
+    .cta-btn { display: inline-block; background: #7c3aed; color: #fff; font-weight: 600; font-size: 0.9rem; padding: 10px 22px; border-radius: 8px; text-decoration: none; }
+    .cta-btn:hover { background: #6d28d9; text-decoration: none; }
+    .seo-panel { margin-top: 64px; border-top: 2px dashed #e8e0ff; padding-top: 36px; }
+    .seo-panel-header { margin-bottom: 20px; }
+    .seo-panel-title { font-size: 11px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: #7c3aed; }
+    .seo-panel-sub { font-size: 12px; color: #aaa; margin-top: 3px; }
+    .seo-fields { display: grid; gap: 10px; margin-bottom: 28px; }
+    .seo-field { background: #fafafa; border: 1px solid #efefef; border-radius: 8px; padding: 14px 16px; position: relative; }
+    .seo-field-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+    .seo-field-label { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #bbb; }
+    .seo-copy-btn { font-size: 10px; font-weight: 600; color: #7c3aed; background: #f3f0ff; border: none; border-radius: 4px; padding: 3px 9px; cursor: pointer; transition: background 0.15s; }
+    .seo-copy-btn:hover { background: #e8e0ff; }
+    .seo-copy-btn.ok { color: #059669; background: #ecfdf5; }
+    .seo-field-value { font-size: 0.88rem; color: #333; line-height: 1.55; word-break: break-word; user-select: all; }
+    .seo-schemas { display: grid; gap: 14px; }
+    .seo-schema { border: 1px solid #efefef; border-radius: 8px; overflow: hidden; }
+    .seo-schema-header { display: flex; justify-content: space-between; align-items: center; padding: 10px 16px; background: #fafafa; border-bottom: 1px solid #efefef; }
+    .seo-schema-type { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #bbb; }
+    .seo-schema-code { background: #0d0d0d; color: #d4d4d4; font-family: "SF Mono","Fira Code",Consolas,monospace; font-size: 0.75rem; line-height: 1.65; padding: 16px 18px; margin: 0; overflow-x: auto; white-space: pre; user-select: all; }
+    .field-block { margin: 36px 0 28px; }
+    .field-block-header { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+    .field-num { display: inline-flex; align-items: center; justify-content: center; width: 38px; height: 38px; background: linear-gradient(135deg, #7c3aed, #a78bfa); color: #fff; font-weight: 700; font-size: 14px; border-radius: 8px; flex-shrink: 0; box-shadow: 0 2px 6px rgba(124,58,237,0.25); }
+    .field-block-title { font-size: 1.18rem; font-weight: 700; color: #0a0a0a; letter-spacing: -0.01em; }
+    .field-block-desc { color: #444; margin-bottom: 14px; font-size: 0.97rem; line-height: 1.7; }
+    .field-block-desc code { background: #f3f0ff; color: #6d28d9; padding: 1px 6px; border-radius: 4px; font-size: 0.85em; font-family: "SF Mono","Fira Code",Consolas,monospace; }
+    .screenshot-slot { background: #fafafa; border: 1px dashed #e0d8f0; border-radius: 10px; padding: 36px 20px; text-align: center; color: #b8b2c8; font-size: 0.85rem; margin-top: 6px; margin-bottom: 8px; }
+    .screenshot-slot::before { content: "Screenshot"; display: block; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #c8c0dc; }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Breadcrumb -->
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="https://rankframe.com/help">Help Center</a>
+    <span>›</span>
+    <a href="https://rankframe.com/help/image-seo">Image SEO</a>
+    <span>›</span>
+    <span>Bulk Alt Text Generation</span>
+  </nav>
+
+  <!-- Header -->
+  <div class="article-category">Image SEO</div>
+  <h1>Bulk Alt Text Generation</h1>
+  <p class="article-description">Generate AI-written alt text for every image on your Framer site at once. Select all images, click one button, and RankFrame does the rest -- no manual typing required.</p>
+  <div class="article-meta">
+    <span>Updated May 2, 2026</span>
+    <span>5 min read</span>
+    <span>Image SEO</span>
+  </div>
+
+  <!-- Table of Contents -->
+  <nav class="toc" aria-label="Table of contents">
+    <div class="toc-title">In this article</div>
+    <ol>
+      <li><a href="#overview">Overview</a></li>
+      <li><a href="#how-to-use">How to use bulk generation</a></li>
+      <li><a href="#field-1">1. Select All / Deselect All</a></li>
+      <li><a href="#field-2">2. Individual image checkboxes</a></li>
+      <li><a href="#field-3">3. Generate Alt Text button</a></li>
+      <li><a href="#field-4">4. Credit cost</a></li>
+      <li><a href="#field-5">5. Pagination</a></li>
+      <li><a href="#review-edit">Reviewing and editing results</a></li>
+      <li><a href="#faq">Frequently asked questions</a></li>
+    </ol>
+  </nav>
+
+  <!-- Overview -->
+  <h2 id="overview">Overview</h2>
+  <p>Writing descriptive alt text for every image is one of the highest-impact on-page SEO tasks you can do, and it is also one of the most tedious. RankFrame's bulk generation feature removes that friction entirely. Instead of opening each image one by one, you select all images on the current page of the grid in a single click, hit <strong>Generate Alt Text</strong>, and the AI fills every field automatically.</p>
+  <p>After generation you can review, tweak, or leave the text as-is before saving. You are always in control of the final output.</p>
+
+  <div class="tip">
+    <div class="tip-label">Tip</div>
+    <p>Pair bulk generation with the <a href="https://rankframe.com/help/global-suffix">Global Suffix</a> feature to automatically append consistent branding to every generated alt text site-wide.</p>
+  </div>
+
+  <!-- How to use -->
+  <h2 id="how-to-use">How to use bulk generation</h2>
+  <ul class="step-list">
+    <li>
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <div class="step-title">Open the Image SEO panel in RankFrame</div>
+        <div class="step-desc">Navigate to the Image SEO section. Your site images are displayed in a grid, paginated as Page X of Y.</div>
+      </div>
+    </li>
+    <li>
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <div class="step-title">Click Select All</div>
+        <div class="step-desc">The button is located at the top of the image grid. Every card gets a purple border and its checkbox is checked.</div>
+      </div>
+    </li>
+    <li>
+      <div class="step-num">3</div>
+      <div class="step-body">
+        <div class="step-title">Confirm your selection</div>
+        <div class="step-desc">The Generate Alt Text button appears with a live count showing how many images are selected, for example Generate Alt Text (12).</div>
+      </div>
+    </li>
+    <li>
+      <div class="step-num">4</div>
+      <div class="step-body">
+        <div class="step-title">Click Generate Alt Text (N)</div>
+        <div class="step-desc">RankFrame runs AI generation for every selected image. A progress indicator shows the job running.</div>
+      </div>
+    </li>
+    <li>
+      <div class="step-num">5</div>
+      <div class="step-body">
+        <div class="step-title">Review and save</div>
+        <div class="step-desc">Each image card now shows a filled alt text input. Edit any field you want to refine, then save your changes.</div>
+      </div>
+    </li>
+  </ul>
+
+  <!-- Field blocks -->
+  <h2 id="field-1">Field Reference</h2>
+
+  <div class="field-block">
+    <div class="field-block-header">
+      <div class="field-num">1</div>
+      <div class="field-block-title">Select All / Deselect All</div>
+    </div>
+    <p class="field-block-desc">The master toggle at the top of the image grid. Clicking <strong>Select All</strong> instantly checks every image card visible on the current page and applies a purple border to each card. The button label changes to <strong>Deselect All</strong> so you can reverse the action with one more click. Deselecting all returns every card to its unchecked state and hides the Generate Alt Text button.</p>
+    <div class="screenshot-slot">Select All / Deselect All toggle</div>
+  </div>
+
+  <div class="field-block" id="field-2">
+    <div class="field-block-header">
+      <div class="field-num">2</div>
+      <div class="field-block-title">Individual Image Checkboxes</div>
+    </div>
+    <p class="field-block-desc">Every image card has its own checkbox. Use individual checkboxes when you only want to regenerate alt text for specific images rather than the entire page. You can freely mix individual selection with the master toggle -- checking or unchecking a single card updates the Generate Alt Text counter immediately.</p>
+    <div class="screenshot-slot">Individual card checkbox</div>
+  </div>
+
+  <div class="field-block" id="field-3">
+    <div class="field-block-header">
+      <div class="field-num">3</div>
+      <div class="field-block-title">Generate Alt Text (N) Button</div>
+    </div>
+    <p class="field-block-desc">A large purple button that appears at the top of the grid as soon as at least one image is selected. The number in parentheses updates live as you check or uncheck images, so you always know exactly how many images will be processed before you click. Clicking the button starts AI generation for every selected image in one batch.</p>
+    <div class="screenshot-slot">Generate Alt Text (N) button</div>
+    <div class="note">
+      <div class="note-label">Note</div>
+      <p>The button is hidden when no images are selected. Select at least one image to make it appear.</p>
+    </div>
+  </div>
+
+  <div class="field-block" id="field-4">
+    <div class="field-block-header">
+      <div class="field-num">4</div>
+      <div class="field-block-title">Credit Cost</div>
+    </div>
+    <p class="field-block-desc">Bulk alt text generation costs <strong>1 credit per image</strong>. If you select 30 images and click Generate Alt Text (30), exactly 30 credits are deducted from your account. Images that already have alt text and are not selected are never charged. Check your credit balance in the RankFrame dashboard before running large batches.</p>
+    <div class="screenshot-slot">Credit balance indicator</div>
+    <div class="tip">
+      <div class="tip-label">Tip</div>
+      <p>Use individual checkboxes to skip images that already have strong, hand-written alt text and save credits for images that need AI assistance.</p>
+    </div>
+  </div>
+
+  <div class="field-block" id="field-5">
+    <div class="field-block-header">
+      <div class="field-num">5</div>
+      <div class="field-block-title">Pagination (Page X of Y)</div>
+    </div>
+    <p class="field-block-desc">When your site has many images, they are split across multiple pages in the grid. The current position is shown as <code>Page X of Y</code> with <strong>Prev</strong> and <strong>Next</strong> arrow buttons for navigation. Bulk generation applies to the images on the currently visible page. To generate alt text across all pages, navigate to each page in turn, run Select All, and click Generate Alt Text for each.</p>
+    <div class="screenshot-slot">Pagination controls</div>
+  </div>
+
+  <!-- Reviewing and editing -->
+  <h2 id="review-edit">Reviewing and Editing Results</h2>
+  <p>After generation completes, each image card shows an input field pre-filled with the AI-written alt text. You can:</p>
+  <ul>
+    <li>Leave the text as-is if it accurately describes the image</li>
+    <li>Click any field and type to refine the description</li>
+    <li>Delete the text and write your own from scratch</li>
+  </ul>
+  <p>No changes are published until you explicitly save. Take your time reviewing before confirming.</p>
+
+  <div class="tip">
+    <div class="tip-label">Tip</div>
+    <p>If you want every generated alt text to end with a branded phrase such as "by Studio Name", set up the <a href="https://rankframe.com/help/global-suffix">Global Suffix</a> before running bulk generation. The suffix is appended automatically and you will not need to edit each field manually.</p>
+  </div>
+
+  <!-- FAQ -->
+  <div class="faq-section" id="faq">
+    <h2>Frequently Asked Questions</h2>
+
+    <div class="faq-item">
+      <div class="faq-q">How many credits does bulk alt text generation use?</div>
+      <div class="faq-a">Bulk alt text generation costs 1 credit per image. If you select 20 images and click Generate Alt Text, 20 credits are consumed. Only images that are actually generated count against your credit balance.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Can I edit the alt text after it is generated?</div>
+      <div class="faq-a">Yes. After generation each image card shows a filled input field with the AI-written alt text. You can click into any field and edit the text before saving. Your edits are preserved.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Does bulk generation work across all pages at once?</div>
+      <div class="faq-a">Bulk generation applies to the images visible on the current page of the image grid. If your site has many images spread across multiple pages (shown as Page X of Y), navigate to each page and run generation separately.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">What happens if I click Select All and then deselect one image?</div>
+      <div class="faq-a">The master toggle switches back to Select All state and the Generate Alt Text button counter updates to reflect only the images that remain checked. You can freely mix the master toggle with individual card checkboxes.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Can I add a consistent suffix to every generated alt text?</div>
+      <div class="faq-a">Yes. RankFrame supports a global suffix that is automatically appended to every AI-generated alt text. See the <a href="https://rankframe.com/help/global-suffix">Global Suffix</a> article for setup instructions.</div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-box">
+    <h3>Ready to optimize your images?</h3>
+    <p>Install RankFrame in your Framer project and generate alt text for every image in minutes.</p>
+    <a href="https://rankframe.com" class="cta-btn">Get RankFrame</a>
+  </div>
+
+  <!-- Related articles -->
+  <div class="related-section">
+    <h2>Related Articles</h2>
+    <ul class="related-links">
+      <li><a href="https://rankframe.com/help/global-suffix">Global Alt Text Suffix</a></li>
+      <li><a href="https://rankframe.com/help/image-seo">Image SEO Overview</a></li>
+      <li><a href="https://rankframe.com/help/credits">Understanding Credits</a></li>
+      <li><a href="https://rankframe.com/help/framer-seo-basics">Framer SEO Basics</a></li>
+    </ul>
+  </div>
+
+  <!-- SEO Panel -->
+  <div class="seo-panel">
+    <div class="seo-panel-header">
+      <div class="seo-panel-title">SEO Data</div>
+      <div class="seo-panel-sub">Live meta tag values read from this page</div>
+    </div>
+
+    <div class="seo-fields" id="seo-fields"></div>
+
+    <div class="seo-schemas" id="seo-schemas"></div>
+  </div>
+
+</div>
+
+<script>
+(function () {
+  // Read meta tags dynamically
+  function getMeta(name) {
+    var el = document.querySelector('meta[name="' + name + '"]') ||
+             document.querySelector('meta[property="' + name + '"]');
+    return el ? el.getAttribute('content') : '';
+  }
+
+  function getCanonical() {
+    var el = document.querySelector('link[rel="canonical"]');
+    return el ? el.getAttribute('href') : window.location.href;
+  }
+
+  var fields = [
+    { label: 'Title', value: document.title },
+    { label: 'Description', value: getMeta('description') },
+    { label: 'Canonical URL', value: getCanonical() },
+    { label: 'Robots', value: getMeta('robots') },
+    { label: 'OG Title', value: getMeta('og:title') },
+    { label: 'OG Description', value: getMeta('og:description') }
+  ];
+
+  var fieldsContainer = document.getElementById('seo-fields');
+  fields.forEach(function (f) {
+    var div = document.createElement('div');
+    div.className = 'seo-field';
+    div.innerHTML =
+      '<div class="seo-field-row">' +
+        '<span class="seo-field-label">' + f.label + '</span>' +
+        '<button class="seo-copy-btn" data-value="' + f.value.replace(/"/g, '&quot;') + '">Copy</button>' +
+      '</div>' +
+      '<div class="seo-field-value">' + (f.value || '<em style="color:#ccc">not set</em>') + '</div>';
+    fieldsContainer.appendChild(div);
+  });
+
+  // Copy buttons
+  document.querySelectorAll('.seo-copy-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var val = btn.getAttribute('data-value');
+      navigator.clipboard.writeText(val).then(function () {
+        btn.textContent = 'Copied!';
+        btn.classList.add('ok');
+        setTimeout(function () {
+          btn.textContent = 'Copy';
+          btn.classList.remove('ok');
+        }, 1800);
+      });
+    });
+  });
+
+  // Render JSON-LD schemas
+  var schemas = document.querySelectorAll('script[type="application/ld+json"]');
+  var schemasContainer = document.getElementById('seo-schemas');
+  schemas.forEach(function (s, i) {
+    var labels = ['Article', 'FAQPage', 'BreadcrumbList'];
+    var parsed;
+    try { parsed = JSON.stringify(JSON.parse(s.textContent), null, 2); } catch(e) { parsed = s.textContent; }
+    var wrapper = document.createElement('div');
+    wrapper.className = 'seo-schema';
+    wrapper.innerHTML =
+      '<div class="seo-schema-header">' +
+        '<span class="seo-schema-type">' + (labels[i] || 'Schema ' + (i + 1)) + '</span>' +
+        '<button class="seo-copy-btn" data-value="' + parsed.replace(/"/g, '&quot;') + '">Copy</button>' +
+      '</div>' +
+      '<pre class="seo-schema-code">' + parsed.replace(/</g, '&lt;').replace(/>/g, '&gt;') + '</pre>';
+    schemasContainer.appendChild(wrapper);
+  });
+
+  // Copy buttons for schemas
+  document.querySelectorAll('#seo-schemas .seo-copy-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var val = btn.getAttribute('data-value');
+      navigator.clipboard.writeText(val).then(function () {
+        btn.textContent = 'Copied!';
+        btn.classList.add('ok');
+        setTimeout(function () {
+          btn.textContent = 'Copy';
+          btn.classList.remove('ok');
+        }, 1800);
+      });
+    });
+  });
+})();
+</script>
+</body>
+</html>
