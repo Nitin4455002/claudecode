@@ -3,23 +3,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Google Account Setup for Indexing | RankFrame Help</title>
+  <title>Google Account Setup | RankFrame Help</title>
   <meta name="description" content="Connect your Google account to RankFrame and verify your Search Console property in two automatic steps. No manual DNS records or verification tags required." />
-  <meta name="keywords" content="rankframe google account setup, connect google search console framer, google indexing api setup, rankframe setup tab, framer seo google verification" />
+  <meta name="keywords" content="rankframe google account setup, connect google search console framer, rankframe setup tab, google oauth framer seo plugin, framer domain verification search console, rankframe indexing api setup" />
   <link rel="canonical" href="https://rankframe.com/help/google-account-setup" />
 
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Article",
-    "headline": "Google Account Setup for Indexing",
+    "headline": "Google Account Setup",
     "description": "Connect your Google account to RankFrame and verify your Search Console property in two automatic steps. No manual DNS records or verification tags required.",
     "author": { "@type": "Organization", "name": "7 Seers", "url": "https://rankframe.com" },
     "publisher": { "@type": "Organization", "name": "RankFrame", "url": "https://rankframe.com" },
     "datePublished": "2026-05-02",
     "dateModified": "2026-05-02",
     "mainEntityOfPage": { "@type": "WebPage", "@id": "https://rankframe.com/help/google-account-setup" },
-    "keywords": "rankframe google account, connect google search console, framer indexing api, google oauth framer seo"
+    "keywords": "rankframe google account setup, connect google search console framer, rankframe setup tab, google oauth framer seo plugin, framer domain verification search console"
   }
   </script>
 
@@ -30,28 +30,28 @@
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "Which Google account should I connect to RankFrame?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Connect the Google account that owns or has full access to the Google Search Console property for your Framer site. If you are not sure which account that is, open Search Console at search.google.com/search-console and check which account has your site listed as a verified property." }
+        "name": "Do I need to set up Google Search Console manually before connecting RankFrame?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No. RankFrame handles domain verification automatically on your behalf. You do not need to create a Search Console property, add a verification meta tag, or configure any DNS records before starting. Connect your Google account and RankFrame takes care of the rest." }
       },
       {
         "@type": "Question",
-        "name": "Does RankFrame create a Search Console property on my behalf?",
-        "acceptedAnswer": { "@type": "Answer", "text": "RankFrame handles domain verification automatically through the Setup tab. You do not need to manually add a property, place a verification meta tag, or create a DNS record. The plugin completes this process for you after you connect your Google account." }
+        "name": "What does RankFrame access when I connect my Google account?",
+        "acceptedAnswer": { "@type": "Answer", "text": "RankFrame requests access to Google Search Console through a standard Google OAuth flow. This allows the plugin to verify your domain and submit URLs to the Google Indexing API using your credentials. RankFrame does not access Gmail, Google Drive, or any other Google service." }
       },
       {
         "@type": "Question",
-        "name": "What permissions does RankFrame request from Google?",
-        "acceptedAnswer": { "@type": "Answer", "text": "RankFrame requests access to Google Search Console so it can verify your property and use the Google Indexing API on your behalf. This is a standard OAuth flow. RankFrame does not access your Gmail, Drive, or any other Google service." }
+        "name": "How do I know if my Google account is already connected in RankFrame?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Open the Setup tab inside the Submit Indexing section. If an account is connected, you will see your email address displayed alongside the Google G logo, with a Disconnect option in red text below it. If no account is connected, you will see a connection screen instead." }
       },
       {
         "@type": "Question",
-        "name": "Can I disconnect my Google account later?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Yes. When your account is connected, the Setup tab shows a Disconnect option in red. Clicking it removes the connection. You can reconnect at any time by going through the same Google OAuth flow." }
+        "name": "Can I disconnect my Google account from RankFrame?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. When your account is connected, the Setup tab shows a Disconnect option in red text below your email. Click it to remove the connection. You can reconnect at any time by going through the Google OAuth flow again." }
       },
       {
         "@type": "Question",
-        "name": "What does the green success box in the Domain Verification step mean?",
-        "acceptedAnswer": { "@type": "Answer", "text": "The green box that reads 'You have verified access to this property in Search Console. No further action needed!' confirms that RankFrame has successfully verified your domain with Google Search Console. Once you see this message, your account is fully configured and you can start submitting pages for indexing." }
+        "name": "What does the green success box in Domain Verification mean?",
+        "acceptedAnswer": { "@type": "Answer", "text": "The green box reading 'You have verified access to this property in Search Console. No further action needed!' confirms that RankFrame has successfully verified your domain with Google Search Console. Once you see it, Setup is fully complete and you can begin submitting pages for indexing." }
       }
     ]
   }
@@ -62,24 +62,9 @@
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Help Center",
-        "item": "https://rankframe.com/help"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Submit Indexing",
-        "item": "https://rankframe.com/help/submit-indexing"
-      },
-      {
-        "@type": "ListItem",
-        "position": 3,
-        "name": "Google Account Setup",
-        "item": "https://rankframe.com/help/google-account-setup"
-      }
+      { "@type": "ListItem", "position": 1, "name": "Help Center", "item": "https://rankframe.com/help" },
+      { "@type": "ListItem", "position": 2, "name": "Submit Indexing", "item": "https://rankframe.com/help/submit-indexing" },
+      { "@type": "ListItem", "position": 3, "name": "Google Account Setup", "item": "https://rankframe.com/help/google-account-setup" }
     ]
   }
   </script>
@@ -164,12 +149,13 @@
     .field-block-desc code { background: #f3f0ff; color: #6d28d9; padding: 1px 6px; border-radius: 4px; font-size: 0.85em; font-family: "SF Mono","Fira Code",Consolas,monospace; }
     .screenshot-slot { background: #fafafa; border: 1px dashed #e0d8f0; border-radius: 10px; padding: 36px 20px; text-align: center; color: #b8b2c8; font-size: 0.85rem; margin-top: 6px; margin-bottom: 8px; }
     .screenshot-slot::before { content: "Screenshot"; display: block; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #c8c0dc; }
-    .success-box { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 10px; padding: 16px 20px; margin: 16px 0; }
+    .path-block { border: 1px solid #efefef; border-radius: 10px; overflow: hidden; margin: 14px 0; }
+    .path-block-label { background: #fafafa; border-bottom: 1px solid #efefef; padding: 7px 16px; font-size: 11px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: #aaa; }
+    .path-block-body { padding: 14px 18px; }
+    .path-block-body p { color: #444; font-size: 0.93rem; margin: 0; line-height: 1.65; }
+    .success-box { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 10px; padding: 14px 18px; margin: 16px 0; }
     .success-box-label { font-size: 11px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: #16a34a; margin-bottom: 6px; }
-    .success-box p { color: #15803d; font-size: 0.93rem; margin: 0; }
-    .state-card { border: 1px solid #efefef; border-radius: 10px; padding: 16px 20px; margin-bottom: 12px; }
-    .state-card-label { font-size: 11px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: #aaa; margin-bottom: 8px; }
-    .state-card p { color: #444; font-size: 0.93rem; margin: 0; line-height: 1.6; }
+    .success-box p { color: #15803d; font-size: 0.93rem; margin: 0; line-height: 1.6; }
   </style>
 </head>
 <body>
@@ -180,148 +166,161 @@
     <span>/</span>
     <a href="https://rankframe.com/help/submit-indexing">Submit Indexing</a>
     <span>/</span>
-    <span>Google Account Setup</span>
+    Google Account Setup
   </nav>
 
   <div class="article-category">Submit Indexing</div>
   <h1>Google Account Setup</h1>
-  <p class="article-description">Before you can submit pages for indexing, RankFrame needs a connected Google account and verified access to your Search Console property. Both steps are handled automatically inside the <strong>Setup</strong> tab.</p>
+  <p class="article-description">The <strong>Setup</strong> tab in RankFrame's Submit Indexing section prepares your Google account connection and domain verification. There are two steps. Both are handled automatically once you authorize RankFrame.</p>
   <div class="article-meta">
     <span>3 min read</span>
     <span>Last updated May 2, 2026</span>
   </div>
 
-  <nav class="toc">
+  <div class="toc">
     <div class="toc-title">On this page</div>
     <ol>
       <li><a href="#overview">Overview</a></li>
-      <li><a href="#field-1">Step 1: Connect Google Account</a></li>
-      <li><a href="#field-2">Step 2: Domain Verification</a></li>
+      <li><a href="#setup-fields">The two Setup fields</a></li>
+      <li><a href="#field-1">Field 1: Connect Google Account</a></li>
+      <li><a href="#field-2">Field 2: Domain Verification</a></li>
       <li><a href="#faq">Frequently asked questions</a></li>
       <li><a href="#related">Related articles</a></li>
     </ol>
-  </nav>
+  </div>
 
-  <section id="overview">
-    <h2>Overview</h2>
-    <p>The <strong>Setup</strong> tab inside the Submit Indexing section contains two steps. You complete them once. After that, RankFrame can push any page on your Framer site directly to Google using the official Google Indexing API.</p>
-    <p>Both steps are automated. RankFrame handles the Google Search Console property verification on your behalf. You do not need to add a meta tag, create a DNS record, or log into Search Console manually.</p>
+  <h2 id="overview">Overview</h2>
+  <p>Before RankFrame can push URLs to Google using the official Indexing API, you need to complete the <strong>Setup</strong> tab. Setup links your Google account to the plugin and confirms that you have verified access to your Framer site's property in Google Search Console.</p>
+  <p>The Setup tab contains two steps. Both run automatically after you authorize your Google account. You do not need to log into Search Console, create a property manually, add a verification meta tag, or configure any DNS records. RankFrame handles all of it on your behalf.</p>
+  <div class="tip">
+    <div class="tip-label">Tip</div>
+    <p>Setup only needs to be completed once. Your connection persists across sessions unless you choose to disconnect or revoke access.</p>
+  </div>
+
+  <h2 id="setup-fields">The two Setup fields</h2>
+  <p>The <strong>Setup</strong> tab shows two numbered steps. Both are automatic after you complete the Google OAuth authorization in Step 1.</p>
+  <ul class="step-list">
+    <li>
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <div class="step-title">Connect Google Account</div>
+        <div class="step-desc">Authorize RankFrame to access your Google Search Console through Google's standard OAuth flow. Once connected, your account email appears in the Setup tab with a Disconnect option.</div>
+      </div>
+    </li>
+    <li>
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <div class="step-title">Domain Verification</div>
+        <div class="step-desc">RankFrame automatically verifies your domain in Google Search Console. No action required. A green success box appears when verification is complete.</div>
+      </div>
+    </li>
+  </ul>
+
+  <h2 id="setup-fields">Setup tab fields</h2>
+
+  <div class="field-block" id="field-1">
+    <div class="field-block-header">
+      <div class="field-num">1</div>
+      <div class="field-block-title">Connect Google Account</div>
+    </div>
+    <p class="field-block-desc">This step authorizes RankFrame to access your Google Search Console. What you see depends on whether a Google account is already connected to the plugin.</p>
+
+    <div class="screenshot-slot">Setup tab, Connect Google Account section</div>
+
+    <h3>Path A: No account connected yet</h3>
+    <p>The <strong>Setup</strong> tab shows a connection screen. Click the button to start the Google OAuth flow. A Google sign-in window opens. Choose your Google account and grant RankFrame permission to access <strong>Google Search Console</strong>. After you approve, the window closes and the <strong>Setup</strong> tab updates to show your connected account.</p>
+
+    <h3>Path B: Account already connected</h3>
+    <p>The <strong>Setup</strong> tab shows your connected email address (for example, <code>7seersmedia@gmail.com</code>) alongside the <strong>Google G logo</strong>. This confirms that RankFrame is actively authorized. A <strong>Disconnect</strong> option appears in red text below the email address.</p>
+
+    <div class="path-block">
+      <div class="path-block-label">Connected state appearance</div>
+      <div class="path-block-body">
+        <p>Google G logo + connected email (e.g. <strong>7seersmedia@gmail.com</strong>) + <strong style="color:#dc2626;">Disconnect</strong> in red text</p>
+      </div>
+    </div>
+
+    <div class="note">
+      <div class="note-label">Note</div>
+      <p>Click <strong>Disconnect</strong> only if you want to switch Google accounts. Disconnecting removes RankFrame's access token. You will need to go through the OAuth flow again to restore URL submission.</p>
+    </div>
+  </div>
+
+  <div class="field-block" id="field-2">
+    <div class="field-block-header">
+      <div class="field-num">2</div>
+      <div class="field-block-title">Domain Verification</div>
+    </div>
+    <p class="field-block-desc">This step verifies that RankFrame has access to your site as a property in Google Search Console. It is completely automatic. RankFrame handles everything on your behalf.</p>
+
+    <p>Once your Google account is connected in Step 1, RankFrame runs domain verification automatically. You do not need to add a verification meta tag, upload an HTML file, or create any DNS records.</p>
+    <p>When verification succeeds, you will see a green success box:</p>
+
+    <div class="success-box">
+      <div class="success-box-label">Verified</div>
+      <p>You have verified access to this property in Search Console. No further action needed!</p>
+    </div>
+
+    <p>Once the green box appears, Setup is fully complete. You can move to the <strong>Submit URLs</strong> tab and start pushing pages to Google.</p>
+
+    <div class="screenshot-slot">Setup tab, Domain Verification success state</div>
 
     <div class="tip">
       <div class="tip-label">Tip</div>
-      <p>Use the Google account that already has access to your site's Search Console property. If your site is not yet in Search Console, connect any Google account and RankFrame will handle the property creation and verification for you.</p>
+      <p>If the green box does not appear after connecting your account, wait a few seconds and refresh the <strong>Setup</strong> tab. Verification typically completes within moments of the Google account connection.</p>
     </div>
-  </section>
+  </div>
 
-  <section id="field-1">
-    <h2>Setup tab fields</h2>
-
-    <div class="field-block">
-      <div class="field-block-header">
-        <div class="field-num">1</div>
-        <div class="field-block-title">Connect Google Account</div>
-      </div>
-
-      <p class="field-block-desc">This step links your Google account to RankFrame so the plugin can communicate with Google Search Console and the Indexing API on your behalf.</p>
-
-      <p>There are two possible states for this step.</p>
-
-      <div class="state-card">
-        <div class="state-card-label">If no account is connected</div>
-        <p>RankFrame shows a connection screen. Click the button to start a standard Google OAuth flow. A Google sign-in window opens where you authorize RankFrame to access your Google Search Console. After you approve, the plugin returns to the <strong>Setup</strong> tab with your account connected.</p>
-      </div>
-
-      <div class="state-card">
-        <div class="state-card-label">If an account is already connected</div>
-        <p>RankFrame shows the connected email address (for example, <code>yourname@gmail.com</code>) alongside the Google G logo. A <strong>Disconnect</strong> option appears in red below the email. Click <strong>Disconnect</strong> only if you want to switch to a different Google account. You can reconnect at any time.</p>
-      </div>
-
-      <div class="screenshot-slot">Connect Google Account (both states)</div>
-
-      <div class="note">
-        <div class="note-label">Note</div>
-        <p>RankFrame only requests access to Google Search Console. It does not access Gmail, Google Drive, or any other Google service.</p>
-      </div>
-    </div>
-
-    <div class="field-block" id="field-2">
-      <div class="field-block-header">
-        <div class="field-num">2</div>
-        <div class="field-block-title">Domain Verification</div>
-      </div>
-
-      <p class="field-block-desc">This step verifies that RankFrame has access to your site's property in Google Search Console. It is completely automatic.</p>
-
-      <p>Once your Google account is connected, RankFrame verifies your domain in the background. You do not need to add a verification meta tag, upload an HTML file, or create any DNS records. The plugin manages the entire verification process for you.</p>
-
-      <p>When verification is complete, you will see a green success box:</p>
-
-      <div class="success-box">
-        <div class="success-box-label">Verified</div>
-        <p>You have verified access to this property in Search Console. No further action needed!</p>
-      </div>
-
-      <p>Once you see this message, the <strong>Setup</strong> tab is fully complete. You can move to the <strong>Submit</strong> tab and start pushing pages to Google immediately.</p>
-
-      <div class="screenshot-slot">Domain Verification (success state)</div>
-
-      <div class="tip">
-        <div class="tip-label">Tip</div>
-        <p>If the green success box does not appear after connecting your account, try disconnecting and reconnecting your Google account. Make sure the account you connect has owner-level access to the relevant Search Console property.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="faq-section" id="faq">
+  <div class="faq-section" id="faq">
     <h2>Frequently asked questions</h2>
 
     <div class="faq-item">
-      <div class="faq-q">Which Google account should I connect to RankFrame?</div>
-      <div class="faq-a">Connect the Google account that owns or has full access to the Google Search Console property for your Framer site. If you are not sure which account that is, open Search Console at <a href="https://search.google.com/search-console" target="_blank" rel="noopener">search.google.com/search-console</a> and check which account has your site listed as a verified property.</div>
+      <div class="faq-q">Do I need to set up Google Search Console manually before connecting RankFrame?</div>
+      <div class="faq-a">No. RankFrame handles domain verification automatically on your behalf. You do not need to create a Search Console property, add a verification meta tag, or configure any DNS records before starting. Connect your Google account and RankFrame takes care of the rest.</div>
     </div>
 
     <div class="faq-item">
-      <div class="faq-q">Does RankFrame create a Search Console property on my behalf?</div>
-      <div class="faq-a">RankFrame handles domain verification automatically through the <strong>Setup</strong> tab. You do not need to manually add a property, place a verification meta tag, or create a DNS record. The plugin completes this process for you after you connect your Google account.</div>
+      <div class="faq-q">What does RankFrame access when I connect my Google account?</div>
+      <div class="faq-a">RankFrame requests access to Google Search Console through a standard Google OAuth flow. This allows the plugin to verify your domain and submit URLs to the Google Indexing API using your credentials. RankFrame does not access Gmail, Google Drive, or any other Google service.</div>
     </div>
 
     <div class="faq-item">
-      <div class="faq-q">What permissions does RankFrame request from Google?</div>
-      <div class="faq-a">RankFrame requests access to Google Search Console so it can verify your property and use the Google Indexing API on your behalf. This is a standard OAuth flow. RankFrame does not access your Gmail, Drive, or any other Google service.</div>
+      <div class="faq-q">How do I know if my Google account is already connected in RankFrame?</div>
+      <div class="faq-a">Open the <strong>Setup</strong> tab inside the Submit Indexing section. If an account is connected, you will see your email address displayed alongside the <strong>Google G logo</strong>, with a <strong>Disconnect</strong> option in red text below it. If no account is connected, you will see a connection screen instead.</div>
     </div>
 
     <div class="faq-item">
-      <div class="faq-q">Can I disconnect my Google account later?</div>
-      <div class="faq-a">Yes. When your account is connected, the <strong>Setup</strong> tab shows a <strong>Disconnect</strong> option in red. Clicking it removes the connection. You can reconnect at any time by going through the same Google OAuth flow.</div>
+      <div class="faq-q">Can I disconnect my Google account from RankFrame?</div>
+      <div class="faq-a">Yes. When your account is connected, the <strong>Setup</strong> tab shows a <strong>Disconnect</strong> option in red text below your email. Click it to remove the connection. You can reconnect at any time by going through the Google OAuth flow again.</div>
     </div>
 
     <div class="faq-item">
-      <div class="faq-q">What does the green success box in the Domain Verification step mean?</div>
-      <div class="faq-a">The green box that reads "You have verified access to this property in Search Console. No further action needed!" confirms that RankFrame has successfully verified your domain with Google Search Console. Once you see this message, your account is fully configured and you can start submitting pages for indexing.</div>
+      <div class="faq-q">What does the green success box in Domain Verification mean?</div>
+      <div class="faq-a">The green box reading "You have verified access to this property in Search Console. No further action needed!" confirms that RankFrame has successfully verified your domain with Google Search Console. Once you see it, Setup is fully complete and you can begin submitting pages for indexing.</div>
     </div>
-  </section>
+  </div>
 
-  <section class="related-section" id="related">
+  <div class="related-section" id="related">
     <h2>Related articles</h2>
     <ul class="related-links">
-      <li><a href="https://rankframe.com/help/submit-pages-for-indexing">How to submit pages for indexing</a></li>
-      <li><a href="https://rankframe.com/help/check-indexing-status">Checking the indexing status of a URL</a></li>
-      <li><a href="https://rankframe.com/help/google-indexing-api">How the Google Indexing API works</a></li>
-      <li><a href="https://rankframe.com/help/connect-your-website">Connect your Framer website to RankFrame</a></li>
-      <li><a href="https://rankframe.com/help/troubleshooting-indexing">Troubleshooting indexing errors</a></li>
+      <li><a href="https://rankframe.com/help/instant-indexing-overview">Instant Indexing Overview</a></li>
+      <li><a href="https://rankframe.com/help/submit-urls">Submitting URLs for Indexing</a></li>
+      <li><a href="https://rankframe.com/help/indexing-history">Understanding Your Indexing History Log</a></li>
+      <li><a href="https://rankframe.com/help/indexing-analytics">Indexing Analytics: Reading Your Data</a></li>
+      <li><a href="https://rankframe.com/help/indexing-keyword-tracker">Using the Keyword Tracker in Submit Indexing</a></li>
     </ul>
-  </section>
+  </div>
 
   <div class="cta-box">
-    <h3>Ready to get your pages indexed faster?</h3>
-    <p>Open the Submit Indexing tab in RankFrame and push any page directly to Google in one click.</p>
-    <a href="https://rankframe.com" class="cta-btn">Get RankFrame</a>
+    <h3>Setup complete? Start submitting URLs.</h3>
+    <p>Once your Google account is connected and the green verification box appears, head to the <strong>Submit URLs</strong> tab to push your first pages to Google.</p>
+    <a href="https://rankframe.com/help/submit-urls" class="cta-btn">Go to Submit URLs Guide</a>
   </div>
 
   <div class="seo-panel">
     <div class="seo-panel-header">
-      <div class="seo-panel-title">SEO Panel</div>
-      <div class="seo-panel-sub">Live meta tags and structured data for this article</div>
+      <div class="seo-panel-title">SEO Metadata</div>
+      <div class="seo-panel-sub">Live values from this page's head tags and structured data</div>
     </div>
     <div class="seo-fields" id="seo-panel-fields"></div>
     <div class="seo-schemas" id="seo-panel-schemas"></div>
@@ -355,6 +354,5 @@ function copySchema(btn, type) {
   navigator.clipboard.writeText(code).then(function() { btn.textContent = 'Copied'; btn.classList.add('ok'); setTimeout(function() { btn.textContent = 'Copy'; btn.classList.remove('ok'); }, 1500); });
 }
 </script>
-
 </body>
 </html>

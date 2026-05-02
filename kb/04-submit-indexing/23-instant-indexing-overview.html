@@ -156,158 +156,177 @@
     <span>/</span>
     <a href="https://rankframe.com/help/submit-indexing">Submit Indexing</a>
     <span>/</span>
-    Instant Indexing Overview
+    <span>Instant Indexing Overview</span>
   </nav>
 
   <div class="article-category">Submit Indexing</div>
   <h1>Instant Indexing Overview</h1>
-  <p class="article-description">RankFrame's Instant Indexing section lets you push URLs directly to Google using the official Google Indexing API. Skip the crawl queue and signal Google the moment your content is ready.</p>
+  <p class="article-description">RankFrame connects to the official Google Indexing API so you can push URLs directly to Google, rather than waiting days for Googlebot to find them. This article explains what Instant Indexing does, where to find it, and what each tab is for.</p>
   <div class="article-meta">
     <span>4 min read</span>
     <span>Last updated May 2, 2026</span>
   </div>
 
-  <div class="toc">
-    <div class="toc-title">In this article</div>
+  <nav class="toc">
+    <div class="toc-title">On this page</div>
     <ol>
       <li><a href="#what-is-instant-indexing">What is Instant Indexing</a></li>
       <li><a href="#how-to-open">How to open Submit Indexing</a></li>
-      <li><a href="#the-five-tabs">The five tabs</a></li>
+      <li><a href="#five-tabs">The five tabs</a></li>
       <li><a href="#before-you-start">Before you start</a></li>
       <li><a href="#why-it-matters">Why instant indexing matters</a></li>
+      <li><a href="#faq">Frequently asked questions</a></li>
     </ol>
-  </div>
+  </nav>
 
-  <h2 id="what-is-instant-indexing">What is Instant Indexing</h2>
-  <p>Instant Indexing is RankFrame's built-in tool for communicating directly with Google through the <strong>official Google Indexing API</strong>. Instead of waiting for Googlebot to discover and crawl your pages on its own schedule, you send a direct notification to Google that a URL is ready to be indexed or re-indexed.</p>
-  <p>The feature lives in the <strong>Submit Indexing</strong> section of RankFrame, marked by the <strong>lightning bolt icon</strong> in the left sidebar. At the top of the section you will see the <strong>Instant Indexing</strong> header alongside a <strong>Powered by Google</strong> badge. The subtitle reads: "Manage search presence securely via the official Google API."</p>
-  <div class="tip">
-    <div class="tip-label">Tip</div>
-    <p>Because requests go through the official Google API, every submission is tied to your verified Google account credentials. Google treats these signals as authoritative.</p>
-  </div>
+  <section id="what-is-instant-indexing">
+    <h2>What is Instant Indexing</h2>
+    <p>Instant Indexing is a feature inside RankFrame that lets you tell Google about your pages the moment they are ready. It uses the <strong>official Google Indexing API</strong>, the same authenticated channel that Google recommends for programmatic URL submissions.</p>
+    <p>You will find it in the <strong>Submit Indexing</strong> section of the plugin, identified by the <strong>lightning bolt icon</strong> in the left sidebar. The section header reads <strong>Instant Indexing</strong> and carries a <strong>Powered by Google</strong> badge. The subtitle reads: "Manage search presence securely via the official Google API."</p>
+    <p>Because RankFrame is a native Framer plugin by 7 Seers, the entire workflow stays inside Framer. You do not need to switch to Search Console or a separate third-party tool to submit URLs.</p>
+    <div class="tip">
+      <div class="tip-label">Tip</div>
+      <p>All requests go through your own Google account credentials. Google treats these authenticated signals as authoritative, which is why the API produces faster results than passive crawl discovery.</p>
+    </div>
+  </section>
 
-  <h2 id="how-to-open">How to open Submit Indexing</h2>
-  <p>Opening the section takes one click.</p>
-  <ul class="step-list">
-    <li>
-      <div class="step-num">1</div>
-      <div class="step-body">
-        <div class="step-title">Click the lightning bolt icon</div>
-        <div class="step-desc">Find it in the RankFrame left sidebar. It is the dedicated icon for the Submit Indexing section.</div>
+  <section id="how-to-open">
+    <h2>How to open Submit Indexing</h2>
+    <p>The Submit Indexing panel is one click away from anywhere inside RankFrame.</p>
+    <ol class="step-list">
+      <li>
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <div class="step-title">Open RankFrame in Framer</div>
+          <div class="step-desc">Launch the plugin from the Framer toolbar. The left sidebar shows navigation icons for each section of the plugin.</div>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <div class="step-title">Click the lightning bolt icon</div>
+          <div class="step-desc">The <strong>lightning bolt</strong> icon in the left sidebar opens the Submit Indexing panel. The panel loads with the <strong>Instant Indexing</strong> header and five tabs across the top.</div>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <div class="step-title">Select a tab</div>
+          <div class="step-desc">If this is your first visit, go to the <strong>Setup</strong> tab before anything else. You must connect your Google account there before URL submissions will work.</div>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <section id="five-tabs">
+    <h2>The five tabs</h2>
+    <p>The Submit Indexing panel is organized into five tabs. Each tab covers a distinct part of the indexing workflow.</p>
+    <div class="tab-grid">
+      <div class="tab-card">
+        <div class="tab-card-name">Submit URLs</div>
+        <div class="tab-card-desc">The main submission workspace. Enter one or more URLs from your Framer site and send them to Google via the Indexing API. Results appear right after each request.</div>
       </div>
-    </li>
-    <li>
-      <div class="step-num">2</div>
-      <div class="step-body">
-        <div class="step-title">The Instant Indexing panel opens</div>
-        <div class="step-desc">You will see the <strong>Instant Indexing</strong> header, the <strong>Powered by Google</strong> badge, and the five tabs along the top.</div>
+      <div class="tab-card">
+        <div class="tab-card-name">Setup</div>
+        <div class="tab-card-desc">Connect your Google account and authorize RankFrame to use the Indexing API on your behalf. Complete this step before submitting any URLs.</div>
       </div>
-    </li>
-    <li>
-      <div class="step-num">3</div>
-      <div class="step-body">
-        <div class="step-title">Choose a tab to get started</div>
-        <div class="step-desc">If this is your first time, go to the <strong>Setup</strong> tab first to connect your Google account before submitting any URLs.</div>
+      <div class="tab-card">
+        <div class="tab-card-name">Analytics</div>
+        <div class="tab-card-desc">View submission counts, API quota usage, and a breakdown of indexed vs. pending URLs. Use this tab to monitor your coverage over time.</div>
       </div>
-    </li>
-  </ul>
+      <div class="tab-card">
+        <div class="tab-card-name">Keyword Tracker</div>
+        <div class="tab-card-desc">Monitor keyword rankings for pages you have submitted. Track position changes after indexing to measure the impact of your submissions.</div>
+      </div>
+      <div class="tab-card">
+        <div class="tab-card-name">Indexing History</div>
+        <div class="tab-card-desc">A full log of every URL you have submitted, including submission date and API response status. Use this to audit past requests and avoid duplicate submissions.</div>
+      </div>
+    </div>
+    <div class="tip">
+      <div class="tip-label">Tip</div>
+      <p>If you are using Submit Indexing for the first time, go to the <strong>Setup</strong> tab before touching anything else. The other tabs depend on a connected Google account.</p>
+    </div>
+  </section>
 
-  <h2 id="the-five-tabs">The five tabs</h2>
-  <p>The Submit Indexing section is organized into five tabs. Each tab handles a distinct part of the indexing workflow.</p>
-  <div class="tab-grid">
-    <div class="tab-card">
-      <div class="tab-card-name">Submit URLs</div>
-      <div class="tab-card-desc">The primary workspace. Enter one or more URLs from your Framer site and send them to Google via the Indexing API with a single action.</div>
+  <section id="before-you-start">
+    <h2>Before you start</h2>
+    <p>Instant Indexing requires a one-time authorization before you can submit any URLs. Without it, requests to Google will fail.</p>
+    <p>Open the <strong>Setup</strong> tab first. The tab walks you through connecting your Google account and granting RankFrame permission to call the Indexing API. Once that authorization is complete, your credentials are stored and every other tab becomes fully functional.</p>
+    <div class="note">
+      <div class="note-label">Important</div>
+      <p>The Google account you connect must be a verified owner of the property in Google Search Console. If ownership is not verified, the API will reject your submissions.</p>
     </div>
-    <div class="tab-card">
-      <div class="tab-card-name">Setup</div>
-      <div class="tab-card-desc">Connect your Google account and authorize RankFrame to use the Indexing API on your behalf. You must complete this step before submitting any URLs.</div>
-    </div>
-    <div class="tab-card">
-      <div class="tab-card-name">Analytics</div>
-      <div class="tab-card-desc">Review performance data for your submitted URLs. Track impressions, clicks, and index coverage changes over time.</div>
-    </div>
-    <div class="tab-card">
-      <div class="tab-card-name">Keyword Tracker</div>
-      <div class="tab-card-desc">Monitor how specific keywords rank for pages you have submitted. See position changes alongside your indexing activity.</div>
-    </div>
-    <div class="tab-card">
-      <div class="tab-card-name">Indexing History</div>
-      <div class="tab-card-desc">A full log of every URL you have submitted, including submission date, API response status, and whether the request was to index or remove the URL.</div>
-    </div>
-  </div>
+    <p>After completing Setup, return to the <strong>Submit URLs</strong> tab to send your first request. You only need to go through Setup once. Future sessions reuse the saved authorization unless you revoke access or switch Google accounts.</p>
+  </section>
 
-  <h2 id="before-you-start">Before you start</h2>
-  <p>You need to complete the <strong>Setup</strong> tab before the <strong>Submit URLs</strong> tab can send requests to Google. The setup process links your Google account to RankFrame and grants the necessary API permissions.</p>
-  <div class="note">
-    <div class="note-label">Important</div>
-    <p>If you skip Setup, the <strong>Submit URLs</strong> tab will not be able to communicate with the Google Indexing API. Complete Setup first, then return to Submit URLs.</p>
-  </div>
-  <p>After connecting your account, you are ready to use all five tabs. The connection persists across sessions, so you only need to complete Setup once unless you revoke access or switch accounts.</p>
+  <section id="why-it-matters">
+    <h2>Why instant indexing matters</h2>
+    <p>By default, Google discovers new and updated pages by crawling your site on its own schedule. That process can take anywhere from a few days to several weeks depending on your domain authority and crawl budget.</p>
+    <p>The Google Indexing API gives you a direct line to Google's crawl queue. When you submit a URL through RankFrame, you send an authenticated request that tells Google to prioritize crawling that specific URL. The result is faster indexing, often within hours rather than weeks.</p>
+    <p>This matters most in three situations:</p>
+    <ul>
+      <li>You publish time-sensitive content (product launches, announcements, blog posts) and want it indexed before the day is over.</li>
+      <li>You update an existing page (new pricing, changed copy, revised metadata) and need Google to reflect the current version quickly.</li>
+      <li>You have a large site where Googlebot may not re-crawl infrequently updated sections for weeks at a time.</li>
+    </ul>
+    <p>Using the official API also means your submissions are authenticated and traceable. The <strong>Indexing History</strong> tab keeps a record of every request so you always know what has been submitted and when.</p>
+    <div class="tip">
+      <div class="tip-label">Tip</div>
+      <p>Combine Instant Indexing with RankFrame's schema injection. Submit a URL right after injecting its schema so Google indexes both the page content and the structured data at the same time.</p>
+    </div>
+  </section>
 
-  <h2 id="why-it-matters">Why instant indexing matters</h2>
-  <p>Standard search indexing relies on Googlebot crawling your site on its own schedule. For a new or updated Framer site, that wait can range from a few days to several weeks. Your pages may not appear in search results during that window.</p>
-  <p>Instant Indexing changes that dynamic in two key ways:</p>
-  <ul>
-    <li><strong>Direct signal to Google:</strong> The Indexing API sends an explicit request to index a specific URL, rather than relying on Googlebot to discover it organically.</li>
-    <li><strong>Re-indexing for updated pages:</strong> When you update an existing page, such as a revised blog post or a new product page, you can submit it again so Google picks up the changes faster.</li>
-  </ul>
-  <p>For Framer designers who publish frequently or launch new projects on deadlines, this control is valuable. You publish, you submit, and Google processes the request without an indefinite wait.</p>
-  <div class="tip">
-    <div class="tip-label">Tip</div>
-    <p>Use the <strong>Indexing History</strong> tab to confirm that each submission received a successful API response. A successful response means Google acknowledged the request, not necessarily that the page is indexed yet. Check <strong>Analytics</strong> for coverage confirmation.</p>
-  </div>
-
-  <div class="faq-section">
+  <section id="faq" class="faq-section">
     <h2>Frequently asked questions</h2>
 
     <div class="faq-item">
-      <div class="faq-q">Does RankFrame use the official Google Indexing API?</div>
-      <div class="faq-a">Yes. RankFrame's Instant Indexing feature connects directly to the official Google Indexing API. You authenticate with your own Google account in the <strong>Setup</strong> tab, so all requests go through your verified credentials.</div>
+      <div class="faq-q">What is Instant Indexing in RankFrame?</div>
+      <div class="faq-a">Instant Indexing is the Submit Indexing section of RankFrame. It connects to the official Google Indexing API so you can push URLs directly to Google for crawling, instead of waiting for Googlebot to discover them on its own.</div>
     </div>
 
     <div class="faq-item">
-      <div class="faq-q">Do I need to complete Setup before I can submit URLs?</div>
-      <div class="faq-a">Yes. You must connect your Google account in the <strong>Setup</strong> tab first. Without a valid connection, the <strong>Submit URLs</strong> tab cannot send requests to the Google Indexing API.</div>
+      <div class="faq-q">Do I need to set anything up before submitting URLs?</div>
+      <div class="faq-a">Yes. You must complete the <strong>Setup</strong> tab first. That process connects your Google account and authorizes RankFrame to call the Indexing API on your behalf. Without completing Setup, the <strong>Submit URLs</strong> tab will not send requests.</div>
     </div>
 
     <div class="faq-item">
-      <div class="faq-q">How is Instant Indexing different from waiting for Googlebot to crawl my site?</div>
-      <div class="faq-a">Standard crawling relies on Googlebot discovering and visiting your pages on its own schedule, which can take days or weeks. Instant Indexing sends a direct signal to Google via the official API, telling it to index or re-index a specific URL right away.</div>
+      <div class="faq-q">How do I open the Submit Indexing panel?</div>
+      <div class="faq-a">Click the <strong>lightning bolt icon</strong> in the left sidebar of the RankFrame plugin. The panel opens to the Instant Indexing section with five tabs at the top.</div>
     </div>
 
     <div class="faq-item">
-      <div class="faq-q">What does the Indexing History tab show?</div>
-      <div class="faq-a">The <strong>Indexing History</strong> tab shows a log of every URL you have submitted through RankFrame, including the submission date, the status returned by the Google Indexing API, and whether the request was an index or remove action.</div>
+      <div class="faq-q">Is the Google Indexing API free to use?</div>
+      <div class="faq-a">The Google Indexing API is a free Google service, but it has daily quota limits. RankFrame surfaces your submission counts in the <strong>Analytics</strong> tab so you can track usage against those limits.</div>
     </div>
 
     <div class="faq-item">
-      <div class="faq-q">Where do I find the Submit Indexing section in RankFrame?</div>
-      <div class="faq-a">Click the <strong>lightning bolt icon</strong> in the RankFrame left sidebar. The Submit Indexing section opens with the <strong>Instant Indexing</strong> header and the five tabs: <strong>Submit URLs</strong>, <strong>Setup</strong>, <strong>Analytics</strong>, <strong>Keyword Tracker</strong>, and <strong>Indexing History</strong>.</div>
+      <div class="faq-q">What is the difference between Submit URLs and Indexing History?</div>
+      <div class="faq-a"><strong>Submit URLs</strong> is where you send new indexing requests. <strong>Indexing History</strong> is a log of every URL you have already submitted, including the submission date and current API response status. Use Indexing History to confirm past requests and audit your coverage.</div>
     </div>
-  </div>
+  </section>
 
-  <div class="related-section">
+  <section class="related-section">
     <h2>Related articles</h2>
     <ul class="related-links">
-      <li><a href="https://rankframe.com/help/submit-urls">Submitting URLs for Indexing</a></li>
       <li><a href="https://rankframe.com/help/instant-indexing-setup">Setting Up the Google Indexing API Connection</a></li>
-      <li><a href="https://rankframe.com/help/indexing-analytics">Indexing Analytics: Reading Your Data</a></li>
-      <li><a href="https://rankframe.com/help/indexing-keyword-tracker">Using the Keyword Tracker in Submit Indexing</a></li>
-      <li><a href="https://rankframe.com/help/indexing-history">Understanding Your Indexing History Log</a></li>
+      <li><a href="https://rankframe.com/help/submit-urls">How to Submit URLs for Indexing</a></li>
+      <li><a href="https://rankframe.com/help/indexing-history">Reading Your Indexing History</a></li>
+      <li><a href="https://rankframe.com/help/indexing-keyword-tracker">Using the Keyword Tracker</a></li>
+      <li><a href="https://rankframe.com/help/schema-injection-overview">Schema Injection Overview</a></li>
     </ul>
-  </div>
+  </section>
 
   <div class="cta-box">
-    <h3>Ready to submit your first URL?</h3>
-    <p>Complete the Setup tab to connect your Google account, then head to Submit URLs to start pushing pages to Google immediately.</p>
-    <a href="https://rankframe.com/help/instant-indexing-setup" class="cta-btn">Go to Setup Guide</a>
+    <h3>Ready to get your pages indexed faster?</h3>
+    <p>Install RankFrame from the Framer Plugin Marketplace and start submitting URLs to Google in minutes. 7-day free trial, no credit card required.</p>
+    <a class="cta-btn" href="https://rankframe.com">Start free trial</a>
   </div>
 
   <div class="seo-panel">
     <div class="seo-panel-header">
-      <div class="seo-panel-title">SEO Metadata</div>
-      <div class="seo-panel-sub">Live values from this page's head tags and structured data</div>
+      <div class="seo-panel-title">SEO Details</div>
+      <div class="seo-panel-sub">Click Copy on any field to grab it without touching page source</div>
     </div>
     <div class="seo-fields" id="seo-panel-fields"></div>
     <div class="seo-schemas" id="seo-panel-schemas"></div>

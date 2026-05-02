@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Indexing History: Review and Verify Your Submitted URLs | RankFrame Help</title>
+  <meta name="description" content="Use the Indexing History tab in RankFrame to see every URL you have submitted to Google, check live indexing status directly inside Framer, and confirm pages are indexed." />
+  <meta name="keywords" content="rankframe indexing history, framer check indexed google, google indexing status framer, rankframe submitted urls log, check live indexing framer, framer seo plugin indexing" />
+  <link rel="canonical" href="https://rankframe.com/help/indexing-history" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Indexing History: Review and Verify Your Submitted URLs",
+    "description": "Use the Indexing History tab in RankFrame to see every URL you have submitted to Google, check live indexing status directly inside Framer, and confirm pages are indexed.",
+    "author": { "@type": "Organization", "name": "7 Seers", "url": "https://rankframe.com" },
+    "publisher": { "@type": "Organization", "name": "RankFrame", "url": "https://rankframe.com" },
+    "datePublished": "2026-05-02",
+    "dateModified": "2026-05-02",
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://rankframe.com/help/indexing-history" },
+    "keywords": "rankframe indexing history, framer check indexed google, google indexing status framer, rankframe submitted urls log, check live indexing framer"
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What does the Check Live button actually do?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Check Live sends a real-time query to Google and returns the current indexing state for that specific URL. If Google has indexed the page, the inline tooltip displays 'Indexed by Google' with a State of 'Submitted and indexed'. The result reflects Google's live data at the moment you click, not a cached snapshot." }
+      },
+      {
+        "@type": "Question",
+        "name": "How long does it take for a submitted URL to appear as indexed?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Indexing timelines vary. Google typically crawls and indexes submitted pages within hours to a few days. A submission that shows a green Success badge in the Status column means RankFrame successfully delivered the URL to the Google Indexing API. It does not mean the page is already indexed. Use Check Live to confirm actual indexing status." }
+      },
+      {
+        "@type": "Question",
+        "name": "Why does my URL show a Success badge but Check Live does not confirm indexing yet?",
+        "acceptedAnswer": { "@type": "Answer", "text": "The Success badge confirms that RankFrame successfully submitted your URL to the Google Indexing API. Google acknowledged the request. However, Google still needs time to crawl and process the page. Check Live may not return 'Indexed by Google' until Google has completed that crawl, which can take hours or days." }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I check multiple URLs at once with Check Live?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No. Check Live is a per-URL action. Click the Check Live button in the Action column for each URL you want to verify. The tooltip result appears inline next to the row you selected." }
+      },
+      {
+        "@type": "Question",
+        "name": "Is RankFrame the only tool that shows live Google indexing confirmation inside Framer?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. RankFrame is the only tool in the Framer ecosystem that queries Google for live indexing confirmation and displays the result directly inside the design tool. You do not need to leave Framer or log into Google Search Console to verify whether a specific page has been indexed." }
+      }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Help Center", "item": "https://rankframe.com/help" },
+      { "@type": "ListItem", "position": 2, "name": "Submit Indexing", "item": "https://rankframe.com/help/submit-indexing" },
+      { "@type": "ListItem", "position": 3, "name": "Indexing History", "item": "https://rankframe.com/help/indexing-history" }
+    ]
+  }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", sans-serif; background: #ffffff; color: #111111; line-height: 1.7; font-size: 16px; }
+    .page { max-width: 740px; margin: 0 auto; padding: 48px 24px 96px; }
+    .breadcrumb { display: flex; align-items: center; gap: 6px; font-size: 13px; color: #888; margin-bottom: 32px; flex-wrap: wrap; }
+    .breadcrumb a { color: #888; text-decoration: none; }
+    .breadcrumb a:hover { color: #7c3aed; }
+    .breadcrumb span { color: #ccc; }
+    .article-category { display: inline-block; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #7c3aed; background: #f3f0ff; padding: 3px 10px; border-radius: 999px; margin-bottom: 12px; }
+    h1 { font-size: 2rem; font-weight: 700; color: #0a0a0a; line-height: 1.25; margin-bottom: 14px; letter-spacing: -0.02em; }
+    .article-description { font-size: 1.05rem; color: #555; line-height: 1.65; margin-bottom: 10px; }
+    .article-meta { display: flex; gap: 16px; font-size: 13px; color: #aaa; margin-bottom: 36px; padding-bottom: 24px; border-bottom: 1px solid #f0f0f0; flex-wrap: wrap; }
+    .toc { background: #fafafa; border: 1px solid #efefef; border-radius: 10px; padding: 18px 22px; margin-bottom: 40px; }
+    .toc-title { font-size: 12px; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: #aaa; margin-bottom: 10px; }
+    .toc ol { list-style: none; padding: 0; }
+    .toc li { margin-bottom: 5px; }
+    .toc a { font-size: 14px; color: #555; text-decoration: none; }
+    .toc a:hover { color: #7c3aed; }
+    h2 { font-size: 1.3rem; font-weight: 600; color: #0a0a0a; margin: 40px 0 14px; padding-bottom: 8px; border-bottom: 1px solid #f0f0f0; letter-spacing: -0.01em; }
+    h3 { font-size: 1.05rem; font-weight: 600; color: #0a0a0a; margin: 24px 0 8px; }
+    p { color: #333; margin-bottom: 16px; }
+    ul, ol { padding-left: 22px; margin-bottom: 16px; }
+    li { color: #333; margin-bottom: 6px; }
+    strong { color: #0a0a0a; font-weight: 600; }
+    a { color: #7c3aed; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .tip { background: #f5f3ff; border-left: 3px solid #7c3aed; border-radius: 0 8px 8px 0; padding: 12px 16px; margin: 20px 0; }
+    .tip-label { font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #7c3aed; margin-bottom: 4px; }
+    .tip p { color: #4c1d95; margin: 0; font-size: 0.93rem; }
+    .note { background: #fff8f0; border-left: 3px solid #f59e0b; border-radius: 0 8px 8px 0; padding: 12px 16px; margin: 20px 0; }
+    .note-label { font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #d97706; margin-bottom: 4px; }
+    .note p { color: #78350f; margin: 0; font-size: 0.93rem; }
+    .step-list { list-style: none; padding: 0; counter-reset: steps; margin-bottom: 16px; }
+    .step-list li { counter-increment: steps; display: flex; gap: 14px; padding: 12px 0; border-bottom: 1px solid #f5f5f5; }
+    .step-list li:last-child { border-bottom: none; }
+    .step-num { width: 26px; height: 26px; background: #7c3aed; color: #fff; font-size: 12px; font-weight: 700; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+    .step-body { flex: 1; }
+    .step-title { font-weight: 600; color: #0a0a0a; font-size: 0.95rem; margin-bottom: 2px; }
+    .step-desc { color: #555; font-size: 0.9rem; }
+    .faq-section { margin-top: 48px; padding-top: 32px; border-top: 1px solid #f0f0f0; }
+    .faq-section h2 { border-bottom: none; padding-bottom: 0; margin-bottom: 24px; }
+    .faq-item { border: 1px solid #efefef; border-radius: 10px; padding: 18px 20px; margin-bottom: 10px; }
+    .faq-q { font-weight: 600; color: #0a0a0a; font-size: 0.95rem; margin-bottom: 8px; }
+    .faq-a { color: #555; font-size: 0.93rem; line-height: 1.65; }
+    .related-section { margin-top: 48px; padding-top: 32px; border-top: 1px solid #f0f0f0; }
+    .related-section h2 { border-bottom: none; padding-bottom: 0; margin-bottom: 16px; font-size: 1rem; color: #666; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; }
+    .related-links { list-style: none; padding: 0; }
+    .related-links li { margin-bottom: 8px; }
+    .related-links a { font-size: 0.95rem; color: #7c3aed; display: flex; align-items: center; gap: 6px; }
+    .related-links a::before { content: "→"; font-size: 12px; }
+    .cta-box { background: linear-gradient(135deg, #f5f3ff, #faf0ff); border: 1px solid #e8e0ff; border-radius: 12px; padding: 24px 28px; margin-top: 40px; text-align: center; }
+    .cta-box h3 { font-size: 1.1rem; color: #0a0a0a; margin-bottom: 8px; }
+    .cta-box p { color: #666; font-size: 0.9rem; margin-bottom: 16px; }
+    .cta-btn { display: inline-block; background: #7c3aed; color: #fff; font-weight: 600; font-size: 0.9rem; padding: 10px 22px; border-radius: 8px; text-decoration: none; }
+    .cta-btn:hover { background: #6d28d9; text-decoration: none; }
+    .seo-panel { margin-top: 64px; border-top: 2px dashed #e8e0ff; padding-top: 36px; }
+    .seo-panel-header { margin-bottom: 20px; }
+    .seo-panel-title { font-size: 11px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: #7c3aed; }
+    .seo-panel-sub { font-size: 12px; color: #aaa; margin-top: 3px; }
+    .seo-fields { display: grid; gap: 10px; margin-bottom: 28px; }
+    .seo-field { background: #fafafa; border: 1px solid #efefef; border-radius: 8px; padding: 14px 16px; position: relative; }
+    .seo-field-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+    .seo-field-label { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #bbb; }
+    .seo-copy-btn { font-size: 10px; font-weight: 600; color: #7c3aed; background: #f3f0ff; border: none; border-radius: 4px; padding: 3px 9px; cursor: pointer; transition: background 0.15s; }
+    .seo-copy-btn:hover { background: #e8e0ff; }
+    .seo-copy-btn.ok { color: #059669; background: #ecfdf5; }
+    .seo-field-value { font-size: 0.88rem; color: #333; line-height: 1.55; word-break: break-word; user-select: all; }
+    .seo-schemas { display: grid; gap: 14px; }
+    .seo-schema { border: 1px solid #efefef; border-radius: 8px; overflow: hidden; }
+    .seo-schema-header { display: flex; justify-content: space-between; align-items: center; padding: 10px 16px; background: #fafafa; border-bottom: 1px solid #efefef; }
+    .seo-schema-type { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #bbb; }
+    .seo-schema-code { background: #0d0d0d; color: #d4d4d4; font-family: "SF Mono","Fira Code",Consolas,monospace; font-size: 0.75rem; line-height: 1.65; padding: 16px 18px; margin: 0; overflow-x: auto; white-space: pre; user-select: all; }
+    .field-block { margin: 36px 0 28px; }
+    .field-block-header { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+    .field-num { display: inline-flex; align-items: center; justify-content: center; width: 38px; height: 38px; background: linear-gradient(135deg, #7c3aed, #a78bfa); color: #fff; font-weight: 700; font-size: 14px; border-radius: 8px; flex-shrink: 0; box-shadow: 0 2px 6px rgba(124,58,237,0.25); }
+    .field-block-title { font-size: 1.18rem; font-weight: 700; color: #0a0a0a; letter-spacing: -0.01em; }
+    .field-block-desc { color: #444; margin-bottom: 14px; font-size: 0.97rem; line-height: 1.7; }
+    .field-block-desc code { background: #f3f0ff; color: #6d28d9; padding: 1px 6px; border-radius: 4px; font-size: 0.85em; font-family: "SF Mono","Fira Code",Consolas,monospace; }
+    .screenshot-slot { background: #fafafa; border: 1px dashed #e0d8f0; border-radius: 10px; padding: 36px 20px; text-align: center; color: #b8b2c8; font-size: 0.85rem; margin-top: 6px; margin-bottom: 8px; }
+    .screenshot-slot::before { content: "Screenshot"; display: block; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #c8c0dc; }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <nav class="breadcrumb">
+    <a href="https://rankframe.com/help">Help Center</a>
+    <span>/</span>
+    <a href="https://rankframe.com/help/submit-indexing">Submit Indexing</a>
+    <span>/</span>
+    Indexing History
+  </nav>
+
+  <div class="article-category">Submit Indexing</div>
+  <h1>Indexing History: Review and Verify Your Submitted URLs</h1>
+  <p class="article-description">The <strong>Indexing History</strong> tab gives you a complete log of every URL you have submitted to Google. Use it to review past submissions and confirm live indexing status without ever leaving Framer.</p>
+  <div class="article-meta">
+    <span>5 min read</span>
+    <span>Last updated May 2, 2026</span>
+  </div>
+
+  <div class="toc">
+    <div class="toc-title">In this article</div>
+    <ol>
+      <li><a href="#overview">Overview of the Indexing History tab</a></li>
+      <li><a href="#info-banner">The info banner</a></li>
+      <li><a href="#table-columns">Table columns: the five fields</a></li>
+      <li><a href="#check-live">Using Check Live to verify indexing</a></li>
+      <li><a href="#what-to-do-next">What to do after checking live status</a></li>
+      <li><a href="#faq">Frequently asked questions</a></li>
+    </ol>
+  </div>
+
+  <h2 id="overview">Overview of the Indexing History tab</h2>
+  <p>The <strong>Indexing History</strong> tab is your submission audit log. Every URL you push through RankFrame's Submit URLs tab appears here, along with a timestamp, submission type, and current status. The tab also includes a header that identifies which domain the logs belong to, and a <strong>Refresh</strong> button to reload the latest entries.</p>
+  <p>The header reads: <strong>Showing logs for: [domain]</strong>. Clicking <strong>Refresh</strong> pulls the most recent submission records into the table.</p>
+
+  <div class="note">
+    <div class="note-label">Keep in mind</div>
+    <p>A green <strong>Success</strong> badge means RankFrame successfully delivered your URL to the Google Indexing API. It does not guarantee the page has been crawled and indexed yet. Use the <strong>Check Live</strong> button to query Google directly and confirm actual indexing status.</p>
+  </div>
+
+  <div class="screenshot-slot">Indexing History tab showing the domain header, Refresh button, and submission log table</div>
+
+  <h2 id="info-banner">The info banner</h2>
+  <p>At the top of the <strong>Indexing History</strong> tab, an info banner reminds you how the <strong>Check Live</strong> feature works:</p>
+  <blockquote style="border-left: 3px solid #e0d8f0; margin: 16px 0; padding: 10px 16px; color: #555; font-style: italic; font-size: 0.95rem;">"Click Check Live next to any URL to ask Google if it has successfully indexed that specific page yet. It may take hours or days for Google to crawl pushed URLs."</blockquote>
+  <p>This reminder is important. Submission success and indexing confirmation are two separate events. The table records the first. <strong>Check Live</strong> tells you about the second.</p>
+
+  <h2 id="table-columns">Table columns: the five fields</h2>
+  <p>The history table has five columns. Each row represents a single URL submission. Here is what each column tells you.</p>
+
+  <!-- Field Block 1 -->
+  <div class="field-block">
+    <div class="field-block-header">
+      <div class="field-num">1</div>
+      <div class="field-block-title">Date</div>
+    </div>
+    <p class="field-block-desc">The <strong>Date</strong> column shows the exact timestamp of when you submitted the URL. This is the moment RankFrame delivered the URL to the Google Indexing API, not when Google crawled or indexed the page.</p>
+    <div class="screenshot-slot">Date column showing a submission timestamp in the Indexing History table</div>
+    <p>Use this column to cross-reference your submission history with any changes you made to your Framer site. If you published a page update and then submitted the URL, the timestamp confirms when that submission occurred.</p>
+  </div>
+
+  <!-- Field Block 2 -->
+  <div class="field-block">
+    <div class="field-block-header">
+      <div class="field-num">2</div>
+      <div class="field-block-title">Type</div>
+    </div>
+    <p class="field-block-desc">The <strong>Type</strong> column identifies the URL submission type for each entry. A globe icon appears alongside the type label, making it easy to scan the column at a glance.</p>
+    <div class="screenshot-slot">Type column showing the globe icon and URL submission type label</div>
+    <p>All submissions made through the <strong>Submit URLs</strong> tab appear here with the corresponding type. This field helps you understand the context of each submission when you are reviewing a long history log.</p>
+  </div>
+
+  <!-- Field Block 3 -->
+  <div class="field-block">
+    <div class="field-block-header">
+      <div class="field-num">3</div>
+      <div class="field-block-title">URL</div>
+    </div>
+    <p class="field-block-desc">The <strong>URL</strong> column displays the full URL that was submitted. Long URLs are truncated in the table view to keep the layout readable, but the complete address is used when you click <strong>Check Live</strong>.</p>
+    <div class="screenshot-slot">URL column showing a truncated page URL in the Indexing History table</div>
+    <p>Each row corresponds to exactly one URL. If you submitted the same URL multiple times (for example, after updating the page), each submission appears as a separate row with its own timestamp and status.</p>
+  </div>
+
+  <!-- Field Block 4 -->
+  <div class="field-block">
+    <div class="field-block-header">
+      <div class="field-num">4</div>
+      <div class="field-block-title">Status</div>
+    </div>
+    <p class="field-block-desc">The <strong>Status</strong> column shows whether RankFrame successfully delivered the URL to the Google Indexing API. A green <strong>Success</strong> badge means the submission was accepted without errors.</p>
+    <div class="screenshot-slot">Status column showing a green Success badge in the Indexing History table</div>
+    <p>The <strong>Success</strong> badge confirms that Google received the submission request. From this point, Google decides when to crawl and index the page based on its own schedule. To find out whether Google has completed that process, use the <strong>Check Live</strong> button in the <strong>Action</strong> column.</p>
+    <div class="tip">
+      <div class="tip-label">Tip</div>
+      <p>A <strong>Success</strong> status combined with a <strong>Check Live</strong> result of "Indexed by Google" is the clearest signal that your page has been fully processed by Google.</p>
+    </div>
+  </div>
+
+  <!-- Field Block 5 -->
+  <div class="field-block">
+    <div class="field-block-header">
+      <div class="field-num">5</div>
+      <div class="field-block-title">Check Live</div>
+    </div>
+    <p class="field-block-desc">The <strong>Action</strong> column contains a <strong>Check Live</strong> button for each row. Clicking it queries Google in real time and returns the current indexing state for that specific URL. The result appears as an inline tooltip directly next to the row, showing <strong>Indexed by Google</strong> with a State of <strong>Submitted and indexed</strong>.</p>
+    <div class="screenshot-slot">Check Live button in the Action column and the inline tooltip showing "Indexed by Google" with State "Submitted and indexed"</div>
+    <p>This is a live request to Google, not a cached result. The response reflects Google's actual data at the moment you click.</p>
+    <div class="note">
+      <div class="note-label">Timing note</div>
+      <p>If you click <strong>Check Live</strong> shortly after submitting a URL, Google may not have crawled the page yet. The tooltip will not show the "Submitted and indexed" state until Google completes its crawl. Check again after a few hours or the next day.</p>
+    </div>
+  </div>
+
+  <h2 id="check-live">Using Check Live to verify indexing</h2>
+  <p>The <strong>Check Live</strong> feature is what makes the <strong>Indexing History</strong> tab unique. It is the only tool in the Framer ecosystem that gives you live indexing confirmation from Google directly inside the design tool. You do not need to open Google Search Console or use an external URL inspection tool.</p>
+
+  <p>Here is how to use it.</p>
+
+  <ul class="step-list">
+    <li>
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <div class="step-title">Open the Indexing History tab</div>
+        <div class="step-desc">Navigate to <strong>Submit Indexing</strong> in RankFrame and select the <strong>Indexing History</strong> tab. The table loads your submission log automatically.</div>
+      </div>
+    </li>
+    <li>
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <div class="step-title">Click Refresh if needed</div>
+        <div class="step-desc">If you recently submitted new URLs and do not see them yet, click the <strong>Refresh</strong> button next to the <strong>Showing logs for: [domain]</strong> header to reload the latest entries.</div>
+      </div>
+    </li>
+    <li>
+      <div class="step-num">3</div>
+      <div class="step-body">
+        <div class="step-title">Locate the URL you want to verify</div>
+        <div class="step-desc">Find the row for the page you want to check. Use the <strong>Date</strong> and <strong>URL</strong> columns to identify the correct entry if you have submitted multiple pages.</div>
+      </div>
+    </li>
+    <li>
+      <div class="step-num">4</div>
+      <div class="step-body">
+        <div class="step-title">Click Check Live in the Action column</div>
+        <div class="step-desc">Click the <strong>Check Live</strong> button in the row for your chosen URL. RankFrame sends a live query to Google.</div>
+      </div>
+    </li>
+    <li>
+      <div class="step-num">5</div>
+      <div class="step-body">
+        <div class="step-title">Read the inline tooltip</div>
+        <div class="step-desc">A tooltip appears inline next to the row. If Google has indexed the page, it displays <strong>Indexed by Google</strong> with a State of <strong>Submitted and indexed</strong>. If the page has not been indexed yet, the tooltip will reflect that current state instead.</div>
+      </div>
+    </li>
+  </ul>
+
+  <h2 id="what-to-do-next">What to do after checking live status</h2>
+  <p>The result from <strong>Check Live</strong> tells you where each page stands in Google's indexing pipeline. Here are the most common outcomes and what to do with each.</p>
+
+  <h3>Indexed by Google (State: Submitted and indexed)</h3>
+  <p>Your page is in Google's index. No further action is needed for this URL. You can move on to verifying other pages or reviewing your ranking data in the Analytics tab.</p>
+
+  <h3>Not yet indexed</h3>
+  <p>Google received your submission but has not completed the crawl yet. This is normal, especially for newly published pages. Wait several hours or check back the following day. If the page has been live for more than a few days and still shows no indexing confirmation, consider re-submitting the URL from the <strong>Submit URLs</strong> tab.</p>
+
+  <div class="tip">
+    <div class="tip-label">Tip</div>
+    <p>You can re-submit any URL at any time from the <strong>Submit URLs</strong> tab. Re-submitting a URL that is not indexed yet sends a fresh signal to Google and may help prompt an earlier crawl.</p>
+  </div>
+
+  <div class="faq-section">
+    <h2>Frequently asked questions</h2>
+
+    <div class="faq-item">
+      <div class="faq-q">What does the Check Live button actually do?</div>
+      <div class="faq-a"><strong>Check Live</strong> sends a real-time query to Google and returns the current indexing state for that specific URL. If Google has indexed the page, the inline tooltip displays <strong>Indexed by Google</strong> with a State of <strong>Submitted and indexed</strong>. The result reflects Google's live data at the moment you click, not a cached snapshot.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">How long does it take for a submitted URL to appear as indexed?</div>
+      <div class="faq-a">Indexing timelines vary. Google typically crawls and indexes submitted pages within hours to a few days. A green <strong>Success</strong> badge in the <strong>Status</strong> column means RankFrame successfully delivered the URL to the Google Indexing API. It does not mean the page is already indexed. Use <strong>Check Live</strong> to confirm actual indexing status.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Why does my URL show a Success badge but Check Live does not confirm indexing yet?</div>
+      <div class="faq-a">The <strong>Success</strong> badge confirms that RankFrame successfully submitted your URL to the Google Indexing API. Google acknowledged the request. However, Google still needs time to crawl and process the page. <strong>Check Live</strong> may not return "Indexed by Google" until Google has completed that crawl, which can take hours or days.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Can I check multiple URLs at once with Check Live?</div>
+      <div class="faq-a">No. <strong>Check Live</strong> is a per-URL action. Click the <strong>Check Live</strong> button in the <strong>Action</strong> column for each URL you want to verify. The tooltip result appears inline next to the row you selected.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Is RankFrame the only tool that shows live Google indexing confirmation inside Framer?</div>
+      <div class="faq-a">Yes. RankFrame is the only tool in the Framer ecosystem that queries Google for live indexing confirmation and displays the result directly inside the design tool. You do not need to leave Framer or log into Google Search Console to verify whether a specific page has been indexed.</div>
+    </div>
+  </div>
+
+  <div class="related-section">
+    <h2>Related articles</h2>
+    <ul class="related-links">
+      <li><a href="https://rankframe.com/help/instant-indexing-overview">Instant Indexing Overview</a></li>
+      <li><a href="https://rankframe.com/help/submit-urls">Submit URLs for Indexing</a></li>
+      <li><a href="https://rankframe.com/help/instant-indexing-setup">Setting Up the Google Indexing API Connection</a></li>
+      <li><a href="https://rankframe.com/help/indexing-analytics">Indexing Analytics: Reading Your Data</a></li>
+      <li><a href="https://rankframe.com/help/indexing-keyword-tracker">Using the Keyword Tracker in Submit Indexing</a></li>
+    </ul>
+  </div>
+
+  <div class="cta-box">
+    <h3>Ready to confirm your pages are live on Google?</h3>
+    <p>Submit your URLs from the Submit URLs tab, then return to Indexing History and use Check Live to verify each page directly inside Framer.</p>
+    <a href="https://rankframe.com/help/submit-urls" class="cta-btn">Go to Submit URLs Guide</a>
+  </div>
+
+  <div class="seo-panel">
+    <div class="seo-panel-header">
+      <div class="seo-panel-title">SEO Metadata</div>
+      <div class="seo-panel-sub">Live values from this page's head tags and structured data</div>
+    </div>
+    <div class="seo-fields" id="seo-panel-fields"></div>
+    <div class="seo-schemas" id="seo-panel-schemas"></div>
+  </div>
+
+</div>
+
+<script>
+(function() {
+  var fields = [
+    { label: 'Title', value: document.querySelector('title') ? document.querySelector('title').textContent : '' },
+    { label: 'Description', value: (document.querySelector('meta[name="description"]') || {}).content || '' },
+    { label: 'Keywords', value: (document.querySelector('meta[name="keywords"]') || {}).content || '' },
+    { label: 'Canonical', value: (document.querySelector('link[rel="canonical"]') || {}).href || '' }
+  ];
+  var fieldsHtml = fields.map(function(f) {
+    return '<div class="seo-field"><div class="seo-field-row"><span class="seo-field-label">' + f.label + '</span><button class="seo-copy-btn" onclick="copyVal(this,\'' + f.label + '\')">Copy</button></div><div class="seo-field-value">' + f.value + '</div></div>';
+  }).join('');
+  var schemas = Array.from(document.querySelectorAll('script[type="application/ld+json"]')).map(function(s) {
+    try { var obj = JSON.parse(s.textContent); var t = obj['@type'] || 'Schema'; return '<div class="seo-schema"><div class="seo-schema-header"><span class="seo-schema-type">' + t + ' / JSON-LD</span><button class="seo-copy-btn" onclick="copySchema(this,\'' + t + '\')">Copy</button></div><pre class="seo-schema-code">' + JSON.stringify(obj, null, 2) + '</pre></div>'; } catch(e) { return ''; }
+  }).join('');
+  document.getElementById('seo-panel-fields').innerHTML = fieldsHtml;
+  document.getElementById('seo-panel-schemas').innerHTML = schemas;
+})();
+function copyVal(btn, label) {
+  var val = btn.closest('.seo-field').querySelector('.seo-field-value').textContent;
+  navigator.clipboard.writeText(val).then(function() { btn.textContent = 'Copied'; btn.classList.add('ok'); setTimeout(function() { btn.textContent = 'Copy'; btn.classList.remove('ok'); }, 1500); });
+}
+function copySchema(btn, type) {
+  var code = btn.closest('.seo-schema').querySelector('.seo-schema-code').textContent;
+  navigator.clipboard.writeText(code).then(function() { btn.textContent = 'Copied'; btn.classList.add('ok'); setTimeout(function() { btn.textContent = 'Copy'; btn.classList.remove('ok'); }, 1500); });
+}
+</script>
+</body>
+</html>
