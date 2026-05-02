@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Image SEO Explorer and Filters | RankFrame Help</title>
+  <meta name="description" content="Learn how to use the Image SEO Explorer in RankFrame to browse, filter, search, and export all images across your Framer site and CMS collections." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://rankframe.com/help/image-seo-explorer" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Image SEO Explorer and Filters | RankFrame Help" />
+  <meta property="og:description" content="Learn how to use the Image SEO Explorer in RankFrame to browse, filter, search, and export all images across your Framer site and CMS collections." />
+  <meta property="og:url" content="https://rankframe.com/help/image-seo-explorer" />
+  <meta property="og:site_name" content="RankFrame" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Image SEO Explorer and Filters | RankFrame Help" />
+  <meta name="twitter:description" content="Learn how to use the Image SEO Explorer in RankFrame to browse, filter, search, and export all images across your Framer site and CMS collections." />
+
+  <!-- Schema.org structured data -->
+  <script type="application/ld+json">
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Help Center",
+          "item": "https://rankframe.com/help"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Image SEO",
+          "item": "https://rankframe.com/help/image-seo"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Image SEO Explorer and Filters",
+          "item": "https://rankframe.com/help/image-seo-explorer"
+        }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the Image SEO Explorer in RankFrame?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The Explorer is the left panel inside the Image SEO section of RankFrame. It displays a two-level tree of all images on your site, organized into Canvas images and CMS collection sub-folders. Clicking any node filters the image grid on the right to show only images from that location."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I filter images by CMS collection?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Expand the CMS node in the Explorer tree by clicking it. Sub-folders appear for each of your CMS collections (for example, Our Cases, Our Service, Thoughts, Work). Click any sub-folder to filter the image grid to that collection only."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I search for a specific image by name or alt text?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Use the Search field in the controls row at the top of the section. Type any part of the filename or existing alt text and the image grid updates immediately to show only matching images."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does the Export button download?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The Export button (purple, with a download icon) generates a CSV file containing data for all images currently in view, including filenames, source paths, and any alt text that has been saved. This is useful for auditing or sharing image SEO status with a team."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "When should I use the Refresh button?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Click Refresh (the circular arrows icon) after publishing changes to your Framer site or after adding new images or CMS entries. This re-fetches the latest image data so the Explorer counts and grid reflect your current site content."
+          }
+        }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "Image SEO Explorer and Filters",
+      "description": "Learn how to use the Image SEO Explorer in RankFrame to browse, filter, search, and export all images across your Framer site and CMS collections.",
+      "url": "https://rankframe.com/help/image-seo-explorer",
+      "datePublished": "2025-01-01",
+      "dateModified": "2026-05-02",
+      "publisher": {
+        "@type": "Organization",
+        "name": "RankFrame",
+        "url": "https://rankframe.com"
+      }
+    }
+  ]
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", sans-serif; background: #ffffff; color: #111111; line-height: 1.7; font-size: 16px; }
+    .page { max-width: 740px; margin: 0 auto; padding: 48px 24px 96px; }
+    .breadcrumb { display: flex; align-items: center; gap: 6px; font-size: 13px; color: #888; margin-bottom: 32px; flex-wrap: wrap; }
+    .breadcrumb a { color: #888; text-decoration: none; }
+    .breadcrumb a:hover { color: #7c3aed; }
+    .breadcrumb span { color: #ccc; }
+    .article-category { display: inline-block; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #7c3aed; background: #f3f0ff; padding: 3px 10px; border-radius: 999px; margin-bottom: 12px; }
+    h1 { font-size: 2rem; font-weight: 700; color: #0a0a0a; line-height: 1.25; margin-bottom: 14px; letter-spacing: -0.02em; }
+    .article-description { font-size: 1.05rem; color: #555; line-height: 1.65; margin-bottom: 10px; }
+    .article-meta { display: flex; gap: 16px; font-size: 13px; color: #aaa; margin-bottom: 36px; padding-bottom: 24px; border-bottom: 1px solid #f0f0f0; flex-wrap: wrap; }
+    .toc { background: #fafafa; border: 1px solid #efefef; border-radius: 10px; padding: 18px 22px; margin-bottom: 40px; }
+    .toc-title { font-size: 12px; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: #aaa; margin-bottom: 10px; }
+    .toc ol { list-style: none; padding: 0; }
+    .toc li { margin-bottom: 5px; }
+    .toc a { font-size: 14px; color: #555; text-decoration: none; }
+    .toc a:hover { color: #7c3aed; }
+    h2 { font-size: 1.3rem; font-weight: 600; color: #0a0a0a; margin: 40px 0 14px; padding-bottom: 8px; border-bottom: 1px solid #f0f0f0; letter-spacing: -0.01em; }
+    h3 { font-size: 1.05rem; font-weight: 600; color: #0a0a0a; margin: 24px 0 8px; }
+    p { color: #333; margin-bottom: 16px; }
+    ul, ol { padding-left: 22px; margin-bottom: 16px; }
+    li { color: #333; margin-bottom: 6px; }
+    strong { color: #0a0a0a; font-weight: 600; }
+    a { color: #7c3aed; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .tip { background: #f5f3ff; border-left: 3px solid #7c3aed; border-radius: 0 8px 8px 0; padding: 12px 16px; margin: 20px 0; }
+    .tip-label { font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #7c3aed; margin-bottom: 4px; }
+    .tip p { color: #4c1d95; margin: 0; font-size: 0.93rem; }
+    .note { background: #fff8f0; border-left: 3px solid #f59e0b; border-radius: 0 8px 8px 0; padding: 12px 16px; margin: 20px 0; }
+    .note-label { font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #d97706; margin-bottom: 4px; }
+    .note p { color: #78350f; margin: 0; font-size: 0.93rem; }
+    .step-list { list-style: none; padding: 0; counter-reset: steps; margin-bottom: 16px; }
+    .step-list li { counter-increment: steps; display: flex; gap: 14px; padding: 12px 0; border-bottom: 1px solid #f5f5f5; }
+    .step-list li:last-child { border-bottom: none; }
+    .step-num { width: 26px; height: 26px; background: #7c3aed; color: #fff; font-size: 12px; font-weight: 700; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+    .step-body { flex: 1; }
+    .step-title { font-weight: 600; color: #0a0a0a; font-size: 0.95rem; margin-bottom: 2px; }
+    .step-desc { color: #555; font-size: 0.9rem; }
+    .faq-section { margin-top: 48px; padding-top: 32px; border-top: 1px solid #f0f0f0; }
+    .faq-section h2 { border-bottom: none; padding-bottom: 0; margin-bottom: 24px; }
+    .faq-item { border: 1px solid #efefef; border-radius: 10px; padding: 18px 20px; margin-bottom: 10px; }
+    .faq-q { font-weight: 600; color: #0a0a0a; font-size: 0.95rem; margin-bottom: 8px; }
+    .faq-a { color: #555; font-size: 0.93rem; line-height: 1.65; }
+    .related-section { margin-top: 48px; padding-top: 32px; border-top: 1px solid #f0f0f0; }
+    .related-section h2 { border-bottom: none; padding-bottom: 0; margin-bottom: 16px; font-size: 1rem; color: #666; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; }
+    .related-links { list-style: none; padding: 0; }
+    .related-links li { margin-bottom: 8px; }
+    .related-links a { font-size: 0.95rem; color: #7c3aed; display: flex; align-items: center; gap: 6px; }
+    .related-links a::before { content: "→"; font-size: 12px; }
+    .cta-box { background: linear-gradient(135deg, #f5f3ff, #faf0ff); border: 1px solid #e8e0ff; border-radius: 12px; padding: 24px 28px; margin-top: 40px; text-align: center; }
+    .cta-box h3 { font-size: 1.1rem; color: #0a0a0a; margin-bottom: 8px; }
+    .cta-box p { color: #666; font-size: 0.9rem; margin-bottom: 16px; }
+    .cta-btn { display: inline-block; background: #7c3aed; color: #fff; font-weight: 600; font-size: 0.9rem; padding: 10px 22px; border-radius: 8px; text-decoration: none; }
+    .cta-btn:hover { background: #6d28d9; text-decoration: none; }
+    .seo-panel { margin-top: 64px; border-top: 2px dashed #e8e0ff; padding-top: 36px; }
+    .seo-panel-header { margin-bottom: 20px; }
+    .seo-panel-title { font-size: 11px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: #7c3aed; }
+    .seo-panel-sub { font-size: 12px; color: #aaa; margin-top: 3px; }
+    .seo-fields { display: grid; gap: 10px; margin-bottom: 28px; }
+    .seo-field { background: #fafafa; border: 1px solid #efefef; border-radius: 8px; padding: 14px 16px; position: relative; }
+    .seo-field-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+    .seo-field-label { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #bbb; }
+    .seo-copy-btn { font-size: 10px; font-weight: 600; color: #7c3aed; background: #f3f0ff; border: none; border-radius: 4px; padding: 3px 9px; cursor: pointer; transition: background 0.15s; }
+    .seo-copy-btn:hover { background: #e8e0ff; }
+    .seo-copy-btn.ok { color: #059669; background: #ecfdf5; }
+    .seo-field-value { font-size: 0.88rem; color: #333; line-height: 1.55; word-break: break-word; user-select: all; }
+    .seo-schemas { display: grid; gap: 14px; }
+    .seo-schema { border: 1px solid #efefef; border-radius: 8px; overflow: hidden; }
+    .seo-schema-header { display: flex; justify-content: space-between; align-items: center; padding: 10px 16px; background: #fafafa; border-bottom: 1px solid #efefef; }
+    .seo-schema-type { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #bbb; }
+    .seo-schema-code { background: #0d0d0d; color: #d4d4d4; font-family: "SF Mono","Fira Code",Consolas,monospace; font-size: 0.75rem; line-height: 1.65; padding: 16px 18px; margin: 0; overflow-x: auto; white-space: pre; user-select: all; }
+    .field-block { margin: 36px 0 28px; }
+    .field-block-header { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+    .field-num { display: inline-flex; align-items: center; justify-content: center; width: 38px; height: 38px; background: linear-gradient(135deg, #7c3aed, #a78bfa); color: #fff; font-weight: 700; font-size: 14px; border-radius: 8px; flex-shrink: 0; box-shadow: 0 2px 6px rgba(124,58,237,0.25); }
+    .field-block-title { font-size: 1.18rem; font-weight: 700; color: #0a0a0a; letter-spacing: -0.01em; }
+    .field-block-desc { color: #444; margin-bottom: 14px; font-size: 0.97rem; line-height: 1.7; }
+    .field-block-desc code { background: #f3f0ff; color: #6d28d9; padding: 1px 6px; border-radius: 4px; font-size: 0.85em; font-family: "SF Mono","Fira Code",Consolas,monospace; }
+    .screenshot-slot { background: #fafafa; border: 1px dashed #e0d8f0; border-radius: 10px; padding: 36px 20px; text-align: center; color: #b8b2c8; font-size: 0.85rem; margin-top: 6px; margin-bottom: 8px; }
+    .screenshot-slot::before { content: "Screenshot"; display: block; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #c8c0dc; }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Breadcrumb -->
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="https://rankframe.com/help">Help Center</a>
+    <span>/</span>
+    <a href="https://rankframe.com/help/image-seo">Image SEO</a>
+    <span>/</span>
+    <span>Explorer and Filters</span>
+  </nav>
+
+  <!-- Header -->
+  <div class="article-category">Image SEO</div>
+  <h1>Image SEO Explorer and Filters</h1>
+  <p class="article-description">
+    The Explorer is the left panel inside Image SEO. It gives you a tree-based view of every image on your Framer site, organized by source, so you can quickly scope the image grid to exactly what you need to audit or fix.
+  </p>
+  <div class="article-meta">
+    <span>Last updated: May 2, 2026</span>
+    <span>5 min read</span>
+  </div>
+
+  <!-- Table of Contents -->
+  <div class="toc">
+    <div class="toc-title">On this page</div>
+    <ol>
+      <li><a href="#overview">Section overview</a></li>
+      <li><a href="#field-1">1. Explorer tree</a></li>
+      <li><a href="#field-2">2. Site selector</a></li>
+      <li><a href="#field-3">3. Search field</a></li>
+      <li><a href="#field-4">4. Refresh button</a></li>
+      <li><a href="#field-5">5. Export button</a></li>
+      <li><a href="#workflow">Typical workflow</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ol>
+  </div>
+
+  <!-- Overview -->
+  <h2 id="overview">Section overview</h2>
+  <p>
+    When you open <strong>Image SEO</strong> in RankFrame, the screen splits into two panels. The left panel is the <strong>Explorer</strong>. The right panel is the image grid, which reacts to whatever you select in the Explorer. Above both panels sits a controls row with the site selector, search field, refresh button, and export button.
+  </p>
+  <p>
+    The Explorer organizes your images into a two-level tree:
+  </p>
+  <ul>
+    <li><strong>All Images:</strong> the root node showing the total count across your entire site (for example, 517 images)</li>
+    <li><strong>Canvas:</strong> static images placed directly on Framer canvas pages (for example, 428 images)</li>
+    <li><strong>CMS:</strong> images sourced from CMS collections (for example, 89 images), expandable to reveal one sub-folder per collection</li>
+  </ul>
+  <p>
+    CMS sub-folders carry the collection name and count. For example: <strong>Our Cases (33)</strong>, <strong>Our Service (29)</strong>, <strong>Thoughts (8)</strong>, <strong>Work (19)</strong>. Clicking any node instantly filters the image grid on the right to show only images from that location.
+  </p>
+
+  <div class="tip">
+    <div class="tip-label">Tip</div>
+    <p>Start at <strong>All Images</strong> to get a site-wide picture of how many images are missing alt text, then drill into individual collections to prioritize the highest-traffic pages first.</p>
+  </div>
+
+  <!-- Field 1 -->
+  <div class="field-block" id="field-1">
+    <div class="field-block-header">
+      <div class="field-num">1</div>
+      <div class="field-block-title">Explorer tree</div>
+    </div>
+    <div class="screenshot-slot">Explorer tree showing All Images, Canvas, CMS, and CMS sub-folders</div>
+    <p class="field-block-desc">
+      The tree renders three levels: the root <code>All Images</code> node, the <code>Canvas</code> branch, and the <code>CMS</code> branch. Clicking <code>CMS</code> expands it to reveal one sub-folder per collection. Each node shows a count badge so you can immediately see how many images live in that location.
+    </p>
+    <p class="field-block-desc">
+      Selecting a node is the primary way to scope the image grid. Only one node can be active at a time. To return to the full site view, click <strong>All Images</strong> again.
+    </p>
+    <ul>
+      <li>Clicking <strong>All Images</strong> shows every image on the site.</li>
+      <li>Clicking <strong>Canvas</strong> shows only static canvas images.</li>
+      <li>Clicking <strong>CMS</strong> shows all CMS images combined.</li>
+      <li>Clicking a CMS sub-folder (for example, <strong>Our Cases</strong>) shows only that collection's images.</li>
+    </ul>
+    <div class="note">
+      <div class="note-label">Note</div>
+      <p>The counts shown in the Explorer reflect the last time data was fetched. If you have published new images recently, click <strong>Refresh</strong> to update the counts.</p>
+    </div>
+  </div>
+
+  <!-- Field 2 -->
+  <div class="field-block" id="field-2">
+    <div class="field-block-header">
+      <div class="field-num">2</div>
+      <div class="field-block-title">Site selector</div>
+    </div>
+    <div class="screenshot-slot">Site selector pill showing gear icon and site name "7 Seers"</div>
+    <p class="field-block-desc">
+      The site selector appears at the left of the controls row as a fully rounded pill. It displays a gear icon followed by the active site name (for example, <strong>7 Seers</strong>). Click the pill to open a dropdown and switch to a different site connected to your RankFrame account.
+    </p>
+    <p class="field-block-desc">
+      All Explorer counts, the image grid, and any search results update immediately to reflect the newly selected site. This is useful when you manage multiple Framer projects under one RankFrame account and need to switch between them without leaving the Image SEO section.
+    </p>
+  </div>
+
+  <!-- Field 3 -->
+  <div class="field-block" id="field-3">
+    <div class="field-block-header">
+      <div class="field-num">3</div>
+      <div class="field-block-title">Search field</div>
+    </div>
+    <div class="screenshot-slot">Search field with magnifier icon and "Search..." placeholder</div>
+    <p class="field-block-desc">
+      The search field sits in the controls row between the site selector and the refresh button. It carries a magnifier icon and a <code>Search...</code> placeholder. Type any characters to filter the image grid in real time.
+    </p>
+    <p class="field-block-desc">
+      Search matches against two attributes of each image:
+    </p>
+    <ul>
+      <li><strong>Filename:</strong> the file name of the image asset as stored in Framer.</li>
+      <li><strong>Alt text:</strong> any alt text already saved for that image.</li>
+    </ul>
+    <p class="field-block-desc">
+      The Explorer node you have selected continues to act as a scope. For example, if you have <strong>Our Cases</strong> selected and then type in the search field, results are filtered to filenames and alt text within that collection only. Clear the search field to restore the full view for the active node.
+    </p>
+    <div class="tip">
+      <div class="tip-label">Tip</div>
+      <p>Search for <strong>Alt text...</strong> (the placeholder text) to find all images that have no alt text saved yet. This works if the empty placeholder is stored as the field value.</p>
+    </div>
+  </div>
+
+  <!-- Field 4 -->
+  <div class="field-block" id="field-4">
+    <div class="field-block-header">
+      <div class="field-num">4</div>
+      <div class="field-block-title">Refresh button</div>
+    </div>
+    <div class="screenshot-slot">Refresh button with circular arrows icon</div>
+    <p class="field-block-desc">
+      The refresh button (circular arrows icon) re-fetches image data from your Framer site. Click it any time you have published changes to your site and want the Explorer and image grid to reflect the latest content.
+    </p>
+    <p class="field-block-desc">
+      Common situations that call for a refresh:
+    </p>
+    <ul>
+      <li>You have added new images to canvas pages or CMS collections and published the site.</li>
+      <li>You have deleted images and want the counts to update.</li>
+      <li>Counts in the Explorer do not match what you see live on your Framer site.</li>
+    </ul>
+    <div class="note">
+      <div class="note-label">Note</div>
+      <p>The refresh re-fetches image metadata only. Alt text you have already saved through RankFrame is not affected or overwritten.</p>
+    </div>
+  </div>
+
+  <!-- Field 5 -->
+  <div class="field-block" id="field-5">
+    <div class="field-block-header">
+      <div class="field-num">5</div>
+      <div class="field-block-title">Export button (CSV)</div>
+    </div>
+    <div class="screenshot-slot">Purple Export button with download icon</div>
+    <p class="field-block-desc">
+      The export button is styled in purple with a download icon and sits at the right end of the controls row. Clicking it downloads a <strong>CSV file</strong> containing data for all images currently in scope. The CSV includes each image's filename, source path, and saved alt text.
+    </p>
+    <p class="field-block-desc">
+      The export reflects the current Explorer selection and any active search filter. For example, if you have <strong>Our Cases</strong> selected in the Explorer, the CSV contains only images from that collection. Select <strong>All Images</strong> before exporting to get a full site-wide report.
+    </p>
+    <ul>
+      <li>Use the CSV to share an image audit with clients or team members.</li>
+      <li>Import the CSV into a spreadsheet to track alt text completion over time.</li>
+      <li>Use it as a backup of all saved alt text before making bulk changes.</li>
+    </ul>
+    <div class="tip">
+      <div class="tip-label">Tip</div>
+      <p>Export before and after a bulk AI generation session so you have a record of what changed and can review the generated alt text outside of the plugin.</p>
+    </div>
+  </div>
+
+  <!-- Workflow -->
+  <h2 id="workflow">Typical workflow</h2>
+  <p>Here is a recommended sequence for auditing image alt text on a new site:</p>
+  <ol class="step-list">
+    <li>
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <div class="step-title">Select your site</div>
+        <div class="step-desc">Use the site selector pill to confirm you are working on the correct Framer project.</div>
+      </div>
+    </li>
+    <li>
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <div class="step-title">Refresh to get the latest data</div>
+        <div class="step-desc">Click the circular arrows icon to ensure the Explorer counts and image grid are current.</div>
+      </div>
+    </li>
+    <li>
+      <div class="step-num">3</div>
+      <div class="step-body">
+        <div class="step-title">Click All Images and export a baseline CSV</div>
+        <div class="step-desc">Download a CSV of the full site so you have a record of the starting state before you add any alt text.</div>
+      </div>
+    </li>
+    <li>
+      <div class="step-num">4</div>
+      <div class="step-body">
+        <div class="step-title">Drill into Canvas or a CMS collection</div>
+        <div class="step-desc">Click the Explorer node for the section you want to work on. The image grid narrows to that scope.</div>
+      </div>
+    </li>
+    <li>
+      <div class="step-num">5</div>
+      <div class="step-body">
+        <div class="step-title">Search to find images missing alt text</div>
+        <div class="step-desc">Use the search field to locate specific images by name if you already know which ones need attention.</div>
+      </div>
+    </li>
+    <li>
+      <div class="step-num">6</div>
+      <div class="step-body">
+        <div class="step-title">Add or generate alt text, then export again</div>
+        <div class="step-desc">After completing a section, export another CSV to track progress. Repeat for each Explorer node.</div>
+      </div>
+    </li>
+  </ol>
+
+  <!-- FAQ -->
+  <div class="faq-section" id="faq">
+    <h2>Frequently asked questions</h2>
+
+    <div class="faq-item">
+      <div class="faq-q">What is the Image SEO Explorer in RankFrame?</div>
+      <div class="faq-a">The Explorer is the left panel inside the Image SEO section of RankFrame. It displays a two-level tree of all images on your site, organized into Canvas images and CMS collection sub-folders. Clicking any node filters the image grid on the right to show only images from that location.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">How do I filter images by CMS collection?</div>
+      <div class="faq-a">Expand the CMS node in the Explorer tree by clicking it. Sub-folders appear for each of your CMS collections (for example, Our Cases, Our Service, Thoughts, Work). Click any sub-folder to filter the image grid to that collection only.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Can I search for a specific image by name or alt text?</div>
+      <div class="faq-a">Yes. Use the Search field in the controls row at the top of the section. Type any part of the filename or existing alt text and the image grid updates immediately to show only matching images.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">What does the Export button download?</div>
+      <div class="faq-a">The Export button (purple, with a download icon) generates a CSV file containing data for all images currently in view, including filenames, source paths, and any alt text that has been saved. This is useful for auditing or sharing image SEO status with a team.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">When should I use the Refresh button?</div>
+      <div class="faq-a">Click Refresh (the circular arrows icon) after publishing changes to your Framer site or after adding new images or CMS entries. This re-fetches the latest image data so the Explorer counts and grid reflect your current site content.</div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-box">
+    <h3>Ready to audit your images?</h3>
+    <p>Open RankFrame in your Framer project and head to the Image SEO section to start browsing, filtering, and fixing alt text across your entire site.</p>
+    <a href="https://rankframe.com" class="cta-btn">Open RankFrame</a>
+  </div>
+
+  <!-- Related articles -->
+  <div class="related-section">
+    <h2>Related articles</h2>
+    <ul class="related-links">
+      <li><a href="https://rankframe.com/help/single-image-alt-text">Single image alt text: cards, wand icon, and the alt text field</a></li>
+      <li><a href="https://rankframe.com/help/image-seo">Image SEO overview</a></li>
+      <li><a href="https://rankframe.com/help/bulk-alt-text">Bulk alt text generation</a></li>
+      <li><a href="https://rankframe.com/help/credits">Understanding RankFrame credits</a></li>
+    </ul>
+  </div>
+
+  <!-- SEO Panel -->
+  <div class="seo-panel">
+    <div class="seo-panel-header">
+      <div class="seo-panel-title">SEO data for this page</div>
+      <div class="seo-panel-sub">Live values read from meta tags</div>
+    </div>
+
+    <div class="seo-fields" id="seo-fields"></div>
+
+    <div class="seo-schemas" id="seo-schemas"></div>
+  </div>
+
+</div><!-- /.page -->
+
+<script>
+(function () {
+  function getMeta(name) {
+    var el = document.querySelector('meta[name="' + name + '"]') ||
+             document.querySelector('meta[property="' + name + '"]');
+    return el ? el.getAttribute('content') : null;
+  }
+
+  function getCanonical() {
+    var el = document.querySelector('link[rel="canonical"]');
+    return el ? el.getAttribute('href') : null;
+  }
+
+  function copyText(text, btn) {
+    navigator.clipboard.writeText(text).then(function () {
+      btn.textContent = 'Copied';
+      btn.classList.add('ok');
+      setTimeout(function () {
+        btn.textContent = 'Copy';
+        btn.classList.remove('ok');
+      }, 1800);
+    });
+  }
+
+  function buildField(label, value) {
+    var div = document.createElement('div');
+    div.className = 'seo-field';
+
+    var row = document.createElement('div');
+    row.className = 'seo-field-row';
+
+    var lbl = document.createElement('div');
+    lbl.className = 'seo-field-label';
+    lbl.textContent = label;
+
+    var btn = document.createElement('button');
+    btn.className = 'seo-copy-btn';
+    btn.textContent = 'Copy';
+    btn.addEventListener('click', function () { copyText(value, btn); });
+
+    row.appendChild(lbl);
+    row.appendChild(btn);
+
+    var val = document.createElement('div');
+    val.className = 'seo-field-value';
+    val.textContent = value;
+
+    div.appendChild(row);
+    div.appendChild(val);
+    return div;
+  }
+
+  var fields = [
+    { label: 'Title', value: document.title },
+    { label: 'Meta Description', value: getMeta('description') },
+    { label: 'Canonical URL', value: getCanonical() },
+    { label: 'OG Title', value: getMeta('og:title') },
+    { label: 'OG Description', value: getMeta('og:description') },
+    { label: 'Robots', value: getMeta('robots') }
+  ];
+
+  var container = document.getElementById('seo-fields');
+  fields.forEach(function (f) {
+    if (f.value) container.appendChild(buildField(f.label, f.value));
+  });
+
+  // Render schema blocks
+  var schemaScripts = document.querySelectorAll('script[type="application/ld+json"]');
+  var schemasContainer = document.getElementById('seo-schemas');
+
+  schemaScripts.forEach(function (script) {
+    var parsed;
+    try { parsed = JSON.parse(script.textContent); } catch (e) { return; }
+    var items = Array.isArray(parsed) ? parsed : [parsed];
+    items.forEach(function (item) {
+      var wrap = document.createElement('div');
+      wrap.className = 'seo-schema';
+
+      var header = document.createElement('div');
+      header.className = 'seo-schema-header';
+
+      var typeLabel = document.createElement('div');
+      typeLabel.className = 'seo-schema-type';
+      typeLabel.textContent = item['@type'] || 'Schema';
+
+      var copyBtn = document.createElement('button');
+      copyBtn.className = 'seo-copy-btn';
+      copyBtn.textContent = 'Copy';
+      var pretty = JSON.stringify(item, null, 2);
+      copyBtn.addEventListener('click', function () { copyText(pretty, copyBtn); });
+
+      header.appendChild(typeLabel);
+      header.appendChild(copyBtn);
+
+      var pre = document.createElement('pre');
+      pre.className = 'seo-schema-code';
+      pre.textContent = pretty;
+
+      wrap.appendChild(header);
+      wrap.appendChild(pre);
+      schemasContainer.appendChild(wrap);
+    });
+  });
+})();
+</script>
+</body>
+</html>

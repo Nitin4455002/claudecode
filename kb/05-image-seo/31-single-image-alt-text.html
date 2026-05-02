@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Single Image Alt Text: Cards, Wand Icon, and the Alt Text Field | RankFrame Help</title>
+  <meta name="description" content="Learn how each image card works in RankFrame Image SEO: the thumbnail, wand icon for AI generation, alt text input, red dot indicator, and checkbox for bulk actions." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://rankframe.com/help/single-image-alt-text" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Single Image Alt Text: Cards, Wand Icon, and the Alt Text Field | RankFrame Help" />
+  <meta property="og:description" content="Learn how each image card works in RankFrame Image SEO: the thumbnail, wand icon for AI generation, alt text input, red dot indicator, and checkbox for bulk actions." />
+  <meta property="og:url" content="https://rankframe.com/help/single-image-alt-text" />
+  <meta property="og:site_name" content="RankFrame" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Single Image Alt Text: Cards, Wand Icon, and the Alt Text Field | RankFrame Help" />
+  <meta name="twitter:description" content="Learn how each image card works in RankFrame Image SEO: the thumbnail, wand icon for AI generation, alt text input, red dot indicator, and checkbox for bulk actions." />
+
+  <!-- Schema.org structured data -->
+  <script type="application/ld+json">
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Help Center",
+          "item": "https://rankframe.com/help"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Image SEO",
+          "item": "https://rankframe.com/help/image-seo"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Single Image Alt Text",
+          "item": "https://rankframe.com/help/single-image-alt-text"
+        }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How many credits does generating alt text for one image cost?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "One AI generation costs 1 credit. Each time you click the wand icon on a single image card, RankFrame uses your AI model to analyze the image and write alt text, consuming exactly 1 credit regardless of the image size or content."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does the red dot on an image thumbnail mean?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A red dot in the corner of the thumbnail is a visual indicator that the image currently has no alt text saved. Once you add or generate alt text and save it, the red dot disappears, confirming the image is no longer missing an alt attribute."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I edit the AI-generated alt text after it is filled in?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. After the wand icon fills the alt text input, you can click into the field and edit the text freely before saving. The input behaves like a standard text field, so you can refine the generated copy, add brand-specific context, or replace it entirely with your own wording."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between the wand icon and bulk AI generation?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The wand icon on a single card generates alt text for that one image only, using 1 credit. Bulk AI generation lets you select multiple images using their checkboxes and generate alt text for all of them in one action, using 1 credit per image."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I have to use AI to add alt text, or can I type it manually?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You can type or paste alt text directly into the input field at any time without using the wand icon. No credits are consumed when you write alt text manually. This is useful for images where you already know the exact description you want or where custom branding language is important."
+          }
+        }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "Single Image Alt Text: Cards, Wand Icon, and the Alt Text Field",
+      "description": "Learn how each image card works in RankFrame Image SEO: the thumbnail, wand icon for AI generation, alt text input, red dot indicator, and checkbox for bulk actions.",
+      "url": "https://rankframe.com/help/single-image-alt-text",
+      "datePublished": "2025-01-01",
+      "dateModified": "2026-05-02",
+      "publisher": {
+        "@type": "Organization",
+        "name": "RankFrame",
+        "url": "https://rankframe.com"
+      }
+    }
+  ]
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", sans-serif; background: #ffffff; color: #111111; line-height: 1.7; font-size: 16px; }
+    .page { max-width: 740px; margin: 0 auto; padding: 48px 24px 96px; }
+    .breadcrumb { display: flex; align-items: center; gap: 6px; font-size: 13px; color: #888; margin-bottom: 32px; flex-wrap: wrap; }
+    .breadcrumb a { color: #888; text-decoration: none; }
+    .breadcrumb a:hover { color: #7c3aed; }
+    .breadcrumb span { color: #ccc; }
+    .article-category { display: inline-block; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #7c3aed; background: #f3f0ff; padding: 3px 10px; border-radius: 999px; margin-bottom: 12px; }
+    h1 { font-size: 2rem; font-weight: 700; color: #0a0a0a; line-height: 1.25; margin-bottom: 14px; letter-spacing: -0.02em; }
+    .article-description { font-size: 1.05rem; color: #555; line-height: 1.65; margin-bottom: 10px; }
+    .article-meta { display: flex; gap: 16px; font-size: 13px; color: #aaa; margin-bottom: 36px; padding-bottom: 24px; border-bottom: 1px solid #f0f0f0; flex-wrap: wrap; }
+    .toc { background: #fafafa; border: 1px solid #efefef; border-radius: 10px; padding: 18px 22px; margin-bottom: 40px; }
+    .toc-title { font-size: 12px; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: #aaa; margin-bottom: 10px; }
+    .toc ol { list-style: none; padding: 0; }
+    .toc li { margin-bottom: 5px; }
+    .toc a { font-size: 14px; color: #555; text-decoration: none; }
+    .toc a:hover { color: #7c3aed; }
+    h2 { font-size: 1.3rem; font-weight: 600; color: #0a0a0a; margin: 40px 0 14px; padding-bottom: 8px; border-bottom: 1px solid #f0f0f0; letter-spacing: -0.01em; }
+    h3 { font-size: 1.05rem; font-weight: 600; color: #0a0a0a; margin: 24px 0 8px; }
+    p { color: #333; margin-bottom: 16px; }
+    ul, ol { padding-left: 22px; margin-bottom: 16px; }
+    li { color: #333; margin-bottom: 6px; }
+    strong { color: #0a0a0a; font-weight: 600; }
+    a { color: #7c3aed; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .tip { background: #f5f3ff; border-left: 3px solid #7c3aed; border-radius: 0 8px 8px 0; padding: 12px 16px; margin: 20px 0; }
+    .tip-label { font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #7c3aed; margin-bottom: 4px; }
+    .tip p { color: #4c1d95; margin: 0; font-size: 0.93rem; }
+    .note { background: #fff8f0; border-left: 3px solid #f59e0b; border-radius: 0 8px 8px 0; padding: 12px 16px; margin: 20px 0; }
+    .note-label { font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #d97706; margin-bottom: 4px; }
+    .note p { color: #78350f; margin: 0; font-size: 0.93rem; }
+    .step-list { list-style: none; padding: 0; counter-reset: steps; margin-bottom: 16px; }
+    .step-list li { counter-increment: steps; display: flex; gap: 14px; padding: 12px 0; border-bottom: 1px solid #f5f5f5; }
+    .step-list li:last-child { border-bottom: none; }
+    .step-num { width: 26px; height: 26px; background: #7c3aed; color: #fff; font-size: 12px; font-weight: 700; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+    .step-body { flex: 1; }
+    .step-title { font-weight: 600; color: #0a0a0a; font-size: 0.95rem; margin-bottom: 2px; }
+    .step-desc { color: #555; font-size: 0.9rem; }
+    .faq-section { margin-top: 48px; padding-top: 32px; border-top: 1px solid #f0f0f0; }
+    .faq-section h2 { border-bottom: none; padding-bottom: 0; margin-bottom: 24px; }
+    .faq-item { border: 1px solid #efefef; border-radius: 10px; padding: 18px 20px; margin-bottom: 10px; }
+    .faq-q { font-weight: 600; color: #0a0a0a; font-size: 0.95rem; margin-bottom: 8px; }
+    .faq-a { color: #555; font-size: 0.93rem; line-height: 1.65; }
+    .related-section { margin-top: 48px; padding-top: 32px; border-top: 1px solid #f0f0f0; }
+    .related-section h2 { border-bottom: none; padding-bottom: 0; margin-bottom: 16px; font-size: 1rem; color: #666; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; }
+    .related-links { list-style: none; padding: 0; }
+    .related-links li { margin-bottom: 8px; }
+    .related-links a { font-size: 0.95rem; color: #7c3aed; display: flex; align-items: center; gap: 6px; }
+    .related-links a::before { content: "→"; font-size: 12px; }
+    .cta-box { background: linear-gradient(135deg, #f5f3ff, #faf0ff); border: 1px solid #e8e0ff; border-radius: 12px; padding: 24px 28px; margin-top: 40px; text-align: center; }
+    .cta-box h3 { font-size: 1.1rem; color: #0a0a0a; margin-bottom: 8px; }
+    .cta-box p { color: #666; font-size: 0.9rem; margin-bottom: 16px; }
+    .cta-btn { display: inline-block; background: #7c3aed; color: #fff; font-weight: 600; font-size: 0.9rem; padding: 10px 22px; border-radius: 8px; text-decoration: none; }
+    .cta-btn:hover { background: #6d28d9; text-decoration: none; }
+    .seo-panel { margin-top: 64px; border-top: 2px dashed #e8e0ff; padding-top: 36px; }
+    .seo-panel-header { margin-bottom: 20px; }
+    .seo-panel-title { font-size: 11px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: #7c3aed; }
+    .seo-panel-sub { font-size: 12px; color: #aaa; margin-top: 3px; }
+    .seo-fields { display: grid; gap: 10px; margin-bottom: 28px; }
+    .seo-field { background: #fafafa; border: 1px solid #efefef; border-radius: 8px; padding: 14px 16px; position: relative; }
+    .seo-field-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+    .seo-field-label { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #bbb; }
+    .seo-copy-btn { font-size: 10px; font-weight: 600; color: #7c3aed; background: #f3f0ff; border: none; border-radius: 4px; padding: 3px 9px; cursor: pointer; transition: background 0.15s; }
+    .seo-copy-btn:hover { background: #e8e0ff; }
+    .seo-copy-btn.ok { color: #059669; background: #ecfdf5; }
+    .seo-field-value { font-size: 0.88rem; color: #333; line-height: 1.55; word-break: break-word; user-select: all; }
+    .seo-schemas { display: grid; gap: 14px; }
+    .seo-schema { border: 1px solid #efefef; border-radius: 8px; overflow: hidden; }
+    .seo-schema-header { display: flex; justify-content: space-between; align-items: center; padding: 10px 16px; background: #fafafa; border-bottom: 1px solid #efefef; }
+    .seo-schema-type { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #bbb; }
+    .seo-schema-code { background: #0d0d0d; color: #d4d4d4; font-family: "SF Mono","Fira Code",Consolas,monospace; font-size: 0.75rem; line-height: 1.65; padding: 16px 18px; margin: 0; overflow-x: auto; white-space: pre; user-select: all; }
+    .field-block { margin: 36px 0 28px; }
+    .field-block-header { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+    .field-num { display: inline-flex; align-items: center; justify-content: center; width: 38px; height: 38px; background: linear-gradient(135deg, #7c3aed, #a78bfa); color: #fff; font-weight: 700; font-size: 14px; border-radius: 8px; flex-shrink: 0; box-shadow: 0 2px 6px rgba(124,58,237,0.25); }
+    .field-block-title { font-size: 1.18rem; font-weight: 700; color: #0a0a0a; letter-spacing: -0.01em; }
+    .field-block-desc { color: #444; margin-bottom: 14px; font-size: 0.97rem; line-height: 1.7; }
+    .field-block-desc code { background: #f3f0ff; color: #6d28d9; padding: 1px 6px; border-radius: 4px; font-size: 0.85em; font-family: "SF Mono","Fira Code",Consolas,monospace; }
+    .screenshot-slot { background: #fafafa; border: 1px dashed #e0d8f0; border-radius: 10px; padding: 36px 20px; text-align: center; color: #b8b2c8; font-size: 0.85rem; margin-top: 6px; margin-bottom: 8px; }
+    .screenshot-slot::before { content: "Screenshot"; display: block; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #c8c0dc; }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Breadcrumb -->
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="https://rankframe.com/help">Help Center</a>
+    <span>/</span>
+    <a href="https://rankframe.com/help/image-seo">Image SEO</a>
+    <span>/</span>
+    <span>Single Image Alt Text</span>
+  </nav>
+
+  <!-- Header -->
+  <div class="article-category">Image SEO</div>
+  <h1>Single Image Alt Text: Cards, Wand Icon, and the Alt Text Field</h1>
+  <p class="article-description">
+    Every image in the Image SEO grid appears as a card. This article walks through each part of the card: the checkbox, thumbnail, label, wand icon for single-image AI generation, and the editable alt text input field.
+  </p>
+  <div class="article-meta">
+    <span>Last updated: May 2, 2026</span>
+    <span>5 min read</span>
+  </div>
+
+  <!-- Table of Contents -->
+  <div class="toc">
+    <div class="toc-title">On this page</div>
+    <ol>
+      <li><a href="#overview">Card anatomy overview</a></li>
+      <li><a href="#field-1">1. Checkbox</a></li>
+      <li><a href="#field-2">2. Thumbnail and red dot indicator</a></li>
+      <li><a href="#field-3">3. Image label</a></li>
+      <li><a href="#field-4">4. Wand icon (single AI generation)</a></li>
+      <li><a href="#field-5">5. Alt text input field</a></li>
+      <li><a href="#workflow">Writing alt text: AI vs. manual</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ol>
+  </div>
+
+  <!-- Overview -->
+  <h2 id="overview">Card anatomy overview</h2>
+  <p>
+    The right panel of Image SEO displays your images as a grid of cards. Each card represents one image and contains all the information and controls needed to review and update its alt text without leaving the panel.
+  </p>
+  <p>
+    A card is structured in two rows:
+  </p>
+  <ul>
+    <li><strong>Card header row:</strong> contains the checkbox (left), the thumbnail, the image label, and the wand icon (right).</li>
+    <li><strong>Input row:</strong> a full-width alt text field that spans the entire width of the card below the header.</li>
+  </ul>
+  <p>
+    The red dot overlay on the thumbnail is a quick visual signal. If you see a red dot, the image has no alt text saved. Once alt text is added and saved, the dot is removed.
+  </p>
+  <div class="tip">
+    <div class="tip-label">Tip</div>
+    <p>Scan the grid visually for red dots to quickly identify which images still need attention. Images without red dots are already covered.</p>
+  </div>
+
+  <!-- Field 1 -->
+  <div class="field-block" id="field-1">
+    <div class="field-block-header">
+      <div class="field-num">1</div>
+      <div class="field-block-title">Checkbox</div>
+    </div>
+    <div class="screenshot-slot">Image card showing checkbox at the left of the card header row</div>
+    <p class="field-block-desc">
+      The checkbox sits at the far left of the card header row. Checking it selects that image for bulk actions. You can check multiple cards and then use the bulk controls (such as bulk AI generation) to process all selected images at once.
+    </p>
+    <p class="field-block-desc">
+      Checking the checkbox does not trigger any immediate action on its own. It simply marks the image as part of the current selection. A header-level "select all" control (when visible) checks all cards in the current view simultaneously.
+    </p>
+    <ul>
+      <li>Use checkboxes when you want to generate alt text for a specific subset of images, not necessarily all of them.</li>
+      <li>Deselect a card by clicking its checkbox again.</li>
+      <li>Switching Explorer nodes clears the current selection.</li>
+    </ul>
+    <div class="tip">
+      <div class="tip-label">Tip</div>
+      <p>To process only images missing alt text, filter the grid first (for example by using the Explorer or search), then select all and run bulk generation on the filtered set.</p>
+    </div>
+  </div>
+
+  <!-- Field 2 -->
+  <div class="field-block" id="field-2">
+    <div class="field-block-header">
+      <div class="field-num">2</div>
+      <div class="field-block-title">Thumbnail and red dot indicator</div>
+    </div>
+    <div class="screenshot-slot">Image thumbnail with a red dot in the corner indicating missing alt text</div>
+    <p class="field-block-desc">
+      The thumbnail is a small preview of the image rendered directly inside the card. It gives you a visual reference so you can confirm you are writing alt text for the correct image before you type or generate anything.
+    </p>
+    <p class="field-block-desc">
+      A <strong>red dot</strong> appears in the corner of the thumbnail when the image has no alt text saved. The red dot works as an at-a-glance audit indicator across the entire grid. Once you save alt text for the image (either typed manually or generated by AI), the red dot is removed.
+    </p>
+    <ul>
+      <li><strong>Red dot present:</strong> alt text is missing. Action required.</li>
+      <li><strong>No red dot:</strong> alt text has been saved. No action needed unless you want to update the copy.</li>
+    </ul>
+    <div class="note">
+      <div class="note-label">Note</div>
+      <p>The red dot reflects the saved state of the alt text, not the current content of the input field. If you type into the field but do not save, the red dot remains until the value is confirmed.</p>
+    </div>
+  </div>
+
+  <!-- Field 3 -->
+  <div class="field-block" id="field-3">
+    <div class="field-block-header">
+      <div class="field-num">3</div>
+      <div class="field-block-title">Image label</div>
+    </div>
+    <div class="screenshot-slot">Image label showing "Canvas Image" or CMS collection path like "Our Cases >"</div>
+    <p class="field-block-desc">
+      The image label sits between the thumbnail and the wand icon in the card header. It tells you where the image comes from so you can write appropriately targeted alt text.
+    </p>
+    <p class="field-block-desc">
+      The label takes one of two forms depending on the image source:
+    </p>
+    <ul>
+      <li><strong>Canvas Image:</strong> shown when the image is placed directly on a Framer canvas page rather than coming from a CMS collection.</li>
+      <li><strong>CMS collection path:</strong> shown as the file name (for example, <code>01</code>) with the collection name as context (for example, <code>Our Cases &gt;</code>). This tells you exactly which CMS collection the image belongs to.</li>
+    </ul>
+    <p class="field-block-desc">
+      Reading the label before writing alt text helps you tailor the description. For example, an image in the <strong>Our Cases</strong> collection is likely a case study visual, which calls for different alt text than a generic Canvas Image used as a decorative hero graphic.
+    </p>
+  </div>
+
+  <!-- Field 4 -->
+  <div class="field-block" id="field-4">
+    <div class="field-block-header">
+      <div class="field-num">4</div>
+      <div class="field-block-title">Wand icon (single AI generation, uses 1 credit)</div>
+    </div>
+    <div class="screenshot-slot">Wand icon at the right side of the card header, triggering single-image AI generation</div>
+    <p class="field-block-desc">
+      The wand icon sits at the right end of the card header row. Clicking it sends the image to RankFrame's AI model, which analyzes the visual content and writes a descriptive alt text string. The result is filled directly into the alt text input field below.
+    </p>
+    <p class="field-block-desc">
+      Each click of the wand icon uses exactly <strong>1 credit</strong>, regardless of the image size or content. The wand icon is the per-card equivalent of bulk generation and is useful when you want to generate for just one specific image rather than a batch.
+    </p>
+    <ul>
+      <li>The wand icon generates alt text for that card only.</li>
+      <li>Generation consumes 1 credit per click.</li>
+      <li>The result is placed in the alt text field but is not saved automatically. Review and confirm before saving.</li>
+      <li>You can click the wand icon again to regenerate if you are not satisfied with the first result (uses another credit).</li>
+    </ul>
+    <div class="note">
+      <div class="note-label">Note</div>
+      <p>Credits are consumed at the point of generation, not at the point of saving. If you regenerate multiple times for the same image, each generation costs 1 credit.</p>
+    </div>
+    <div class="tip">
+      <div class="tip-label">Tip</div>
+      <p>Use the wand icon for images that need a custom review before saving. This is especially useful for images that contain brand names, product identifiers, or text overlay where you want to confirm the AI has read the content correctly.</p>
+    </div>
+  </div>
+
+  <!-- Field 5 -->
+  <div class="field-block" id="field-5">
+    <div class="field-block-header">
+      <div class="field-num">5</div>
+      <div class="field-block-title">Alt text input field</div>
+    </div>
+    <div class="screenshot-slot">Full-width alt text input field below the card header, pre-filled or showing "Alt text..." placeholder</div>
+    <p class="field-block-desc">
+      The alt text input field spans the full width of the card below the header row. It is a standard text input that accepts any string. You can type, paste, or edit alt text here at any time, with or without using the wand icon.
+    </p>
+    <p class="field-block-desc">
+      The field has two starting states:
+    </p>
+    <ul>
+      <li><strong>Pre-filled:</strong> if the image already has saved alt text, that text appears in the field when the card loads. The red dot is absent.</li>
+      <li><strong>Empty with placeholder:</strong> if no alt text has been saved yet, the field shows the placeholder text <code>Alt text...</code> in grey. The red dot is present on the thumbnail.</li>
+    </ul>
+    <p class="field-block-desc">
+      After the wand icon runs AI generation, the generated text is inserted into this field. You can then edit it freely before saving. If you prefer not to use AI at all, simply click into the field and type your own alt text directly. No credits are used for manual input.
+    </p>
+    <h3>Writing good alt text</h3>
+    <p>
+      Good alt text is concise, descriptive, and relevant to the surrounding page content. A few guidelines:
+    </p>
+    <ul>
+      <li>Describe the image as you would to someone who cannot see it.</li>
+      <li>Include relevant keywords naturally, but do not stuff keywords into every image.</li>
+      <li>Avoid starting with "Image of" or "Photo of". Screen readers already announce the element as an image.</li>
+      <li>For purely decorative images, an empty alt attribute is correct. Use the input field to clear any existing value.</li>
+      <li>Keep descriptions to roughly 80 to 125 characters for most images.</li>
+    </ul>
+    <div class="tip">
+      <div class="tip-label">Tip</div>
+      <p>For CMS images that appear on multiple pages (for example, a service thumbnail that reappears across case studies), write alt text that describes the image itself rather than a specific page context. This keeps the description accurate wherever the image appears.</p>
+    </div>
+  </div>
+
+  <!-- Workflow -->
+  <h2 id="workflow">Writing alt text: AI vs. manual</h2>
+  <p>
+    RankFrame supports two ways to populate the alt text field for a single image. They can be mixed freely across your image set.
+  </p>
+
+  <h3>Option A: AI generation (wand icon)</h3>
+  <ol class="step-list">
+    <li>
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <div class="step-title">Locate the image card</div>
+        <div class="step-desc">Use the Explorer tree or search field to find the image you want to update.</div>
+      </div>
+    </li>
+    <li>
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <div class="step-title">Click the wand icon</div>
+        <div class="step-desc">The icon is at the right end of the card header. One credit is consumed and AI generation begins.</div>
+      </div>
+    </li>
+    <li>
+      <div class="step-num">3</div>
+      <div class="step-body">
+        <div class="step-title">Review the generated text</div>
+        <div class="step-desc">The result appears in the alt text input. Read it carefully to confirm it is accurate and on-brand.</div>
+      </div>
+    </li>
+    <li>
+      <div class="step-num">4</div>
+      <div class="step-body">
+        <div class="step-title">Edit if needed and save</div>
+        <div class="step-desc">Click into the field, make any edits, then confirm. The red dot on the thumbnail will clear once the value is saved.</div>
+      </div>
+    </li>
+  </ol>
+
+  <h3>Option B: Manual input</h3>
+  <ol class="step-list">
+    <li>
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <div class="step-title">Click into the alt text input field</div>
+        <div class="step-desc">The field is ready for typing immediately. No button press is required to activate it.</div>
+      </div>
+    </li>
+    <li>
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <div class="step-title">Type or paste your alt text</div>
+        <div class="step-desc">Write a clear, concise description of the image. No credits are used.</div>
+      </div>
+    </li>
+    <li>
+      <div class="step-num">3</div>
+      <div class="step-body">
+        <div class="step-title">Save</div>
+        <div class="step-desc">Confirm the value. The red dot disappears once the alt text is saved successfully.</div>
+      </div>
+    </li>
+  </ol>
+
+  <!-- FAQ -->
+  <div class="faq-section" id="faq">
+    <h2>Frequently asked questions</h2>
+
+    <div class="faq-item">
+      <div class="faq-q">How many credits does generating alt text for one image cost?</div>
+      <div class="faq-a">One AI generation costs 1 credit. Each time you click the wand icon on a single image card, RankFrame uses your AI model to analyze the image and write alt text, consuming exactly 1 credit regardless of the image size or content.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">What does the red dot on an image thumbnail mean?</div>
+      <div class="faq-a">A red dot in the corner of the thumbnail is a visual indicator that the image currently has no alt text saved. Once you add or generate alt text and save it, the red dot disappears, confirming the image is no longer missing an alt attribute.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Can I edit the AI-generated alt text after it is filled in?</div>
+      <div class="faq-a">Yes. After the wand icon fills the alt text input, you can click into the field and edit the text freely before saving. The input behaves like a standard text field, so you can refine the generated copy, add brand-specific context, or replace it entirely with your own wording.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">What is the difference between the wand icon and bulk AI generation?</div>
+      <div class="faq-a">The wand icon on a single card generates alt text for that one image only, using 1 credit. Bulk AI generation lets you select multiple images using their checkboxes and generate alt text for all of them in one action, using 1 credit per image.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Do I have to use AI to add alt text, or can I type it manually?</div>
+      <div class="faq-a">You can type or paste alt text directly into the input field at any time without using the wand icon. No credits are consumed when you write alt text manually. This is useful for images where you already know the exact description you want or where custom branding language is important.</div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-box">
+    <h3>Start adding alt text today</h3>
+    <p>Open RankFrame in your Framer project, head to Image SEO, and use the wand icon or type directly into the alt text field to cover every image on your site.</p>
+    <a href="https://rankframe.com" class="cta-btn">Open RankFrame</a>
+  </div>
+
+  <!-- Related articles -->
+  <div class="related-section">
+    <h2>Related articles</h2>
+    <ul class="related-links">
+      <li><a href="https://rankframe.com/help/image-seo-explorer">Image SEO Explorer and Filters</a></li>
+      <li><a href="https://rankframe.com/help/bulk-alt-text">Bulk alt text generation</a></li>
+      <li><a href="https://rankframe.com/help/image-seo">Image SEO overview</a></li>
+      <li><a href="https://rankframe.com/help/credits">Understanding RankFrame credits</a></li>
+    </ul>
+  </div>
+
+  <!-- SEO Panel -->
+  <div class="seo-panel">
+    <div class="seo-panel-header">
+      <div class="seo-panel-title">SEO data for this page</div>
+      <div class="seo-panel-sub">Live values read from meta tags</div>
+    </div>
+
+    <div class="seo-fields" id="seo-fields"></div>
+
+    <div class="seo-schemas" id="seo-schemas"></div>
+  </div>
+
+</div><!-- /.page -->
+
+<script>
+(function () {
+  function getMeta(name) {
+    var el = document.querySelector('meta[name="' + name + '"]') ||
+             document.querySelector('meta[property="' + name + '"]');
+    return el ? el.getAttribute('content') : null;
+  }
+
+  function getCanonical() {
+    var el = document.querySelector('link[rel="canonical"]');
+    return el ? el.getAttribute('href') : null;
+  }
+
+  function copyText(text, btn) {
+    navigator.clipboard.writeText(text).then(function () {
+      btn.textContent = 'Copied';
+      btn.classList.add('ok');
+      setTimeout(function () {
+        btn.textContent = 'Copy';
+        btn.classList.remove('ok');
+      }, 1800);
+    });
+  }
+
+  function buildField(label, value) {
+    var div = document.createElement('div');
+    div.className = 'seo-field';
+
+    var row = document.createElement('div');
+    row.className = 'seo-field-row';
+
+    var lbl = document.createElement('div');
+    lbl.className = 'seo-field-label';
+    lbl.textContent = label;
+
+    var btn = document.createElement('button');
+    btn.className = 'seo-copy-btn';
+    btn.textContent = 'Copy';
+    btn.addEventListener('click', function () { copyText(value, btn); });
+
+    row.appendChild(lbl);
+    row.appendChild(btn);
+
+    var val = document.createElement('div');
+    val.className = 'seo-field-value';
+    val.textContent = value;
+
+    div.appendChild(row);
+    div.appendChild(val);
+    return div;
+  }
+
+  var fields = [
+    { label: 'Title', value: document.title },
+    { label: 'Meta Description', value: getMeta('description') },
+    { label: 'Canonical URL', value: getCanonical() },
+    { label: 'OG Title', value: getMeta('og:title') },
+    { label: 'OG Description', value: getMeta('og:description') },
+    { label: 'Robots', value: getMeta('robots') }
+  ];
+
+  var container = document.getElementById('seo-fields');
+  fields.forEach(function (f) {
+    if (f.value) container.appendChild(buildField(f.label, f.value));
+  });
+
+  // Render schema blocks
+  var schemaScripts = document.querySelectorAll('script[type="application/ld+json"]');
+  var schemasContainer = document.getElementById('seo-schemas');
+
+  schemaScripts.forEach(function (script) {
+    var parsed;
+    try { parsed = JSON.parse(script.textContent); } catch (e) { return; }
+    var items = Array.isArray(parsed) ? parsed : [parsed];
+    items.forEach(function (item) {
+      var wrap = document.createElement('div');
+      wrap.className = 'seo-schema';
+
+      var header = document.createElement('div');
+      header.className = 'seo-schema-header';
+
+      var typeLabel = document.createElement('div');
+      typeLabel.className = 'seo-schema-type';
+      typeLabel.textContent = item['@type'] || 'Schema';
+
+      var copyBtn = document.createElement('button');
+      copyBtn.className = 'seo-copy-btn';
+      copyBtn.textContent = 'Copy';
+      var pretty = JSON.stringify(item, null, 2);
+      copyBtn.addEventListener('click', function () { copyText(pretty, copyBtn); });
+
+      header.appendChild(typeLabel);
+      header.appendChild(copyBtn);
+
+      var pre = document.createElement('pre');
+      pre.className = 'seo-schema-code';
+      pre.textContent = pretty;
+
+      wrap.appendChild(header);
+      wrap.appendChild(pre);
+      schemasContainer.appendChild(wrap);
+    });
+  });
+})();
+</script>
+</body>
+</html>
