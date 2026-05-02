@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Keyword Metrics Explained: Search Vol, KD, Competition, CPC</title>
+  <meta name="description" content="Understand the four keyword metrics in RankFrame: search volume, keyword difficulty, competition, and CPC. Learn how to interpret each number to choose the right focus keywords for your Framer site." />
+  <meta name="keywords" content="keyword difficulty Framer, search volume Framer SEO, CPC keyword research, keyword competition score" />
+  <link rel="canonical" href="https://rankframe.com/help/keyword-metrics-explained" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Keyword Metrics Explained: Search Vol, KD, Competition, CPC",
+    "description": "Understand the four keyword metrics in RankFrame: search volume, keyword difficulty, competition, and CPC. Learn how to interpret each number to choose the right focus keywords for your Framer site.",
+    "author": { "@type": "Organization", "name": "7 Seers", "email": "hello@7seersmedia.com" },
+    "publisher": { "@type": "Organization", "name": "7 Seers", "logo": { "@type": "ImageObject", "url": "https://rankframe.com/logo.png" } },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://rankframe.com/help/keyword-metrics-explained" },
+    "datePublished": "2026-05-02",
+    "dateModified": "2026-05-02"
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Should I always pick the highest search volume keyword?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Not necessarily. High volume keywords usually have high KD. A lower-volume keyword with a KD under 30 often delivers faster ranking results for a newer Framer site." }
+      },
+      {
+        "@type": "Question",
+        "name": "What does a KD of 0 mean?",
+        "acceptedAnswer": { "@type": "Answer", "text": "It means very few or no authoritative sites are currently ranking for that exact keyword. This is an opportunity, but also worth verifying that the volume is real and not just a niche term nobody actually searches." }
+      },
+      {
+        "@type": "Question",
+        "name": "Is CPC the same as what I would pay if I ran Google Ads?",
+        "acceptedAnswer": { "@type": "Answer", "text": "CPC in RankFrame is the average benchmark across all advertisers. Your actual ad cost would vary based on your Quality Score, bid strategy, and competition at the time of the auction." }
+      },
+      {
+        "@type": "Question",
+        "name": "Why is competition shown as a decimal (e.g. 0.78) instead of a percentage?",
+        "acceptedAnswer": { "@type": "Answer", "text": "It follows the standard Google Ads format where 0 is no competition and 1 is full competition. Multiply by 100 if you want to think of it as a percentage." }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I use these metrics to decide which pages to optimize first?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. Check the current keyword for each important page and compare KD and volume. Prioritize pages that target lower-KD keywords with reasonable volume since those have the fastest path to ranking improvement." }
+      }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Help Center", "item": "https://rankframe.com/help" },
+      { "@type": "ListItem", "position": 2, "name": "Keyword Research", "item": "https://rankframe.com/help/keyword-research" },
+      { "@type": "ListItem", "position": 3, "name": "Keyword Metrics Explained", "item": "https://rankframe.com/help/keyword-metrics-explained" }
+    ]
+  }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: #ffffff; color: #1a0533; line-height: 1.7; }
+    .top-bar { background: #1a0533; padding: 14px 32px; display: flex; align-items: center; gap: 12px; }
+    .top-bar .logo { font-size: 1.05rem; font-weight: 800; color: #fff; letter-spacing: -0.02em; }
+    .top-bar .logo span { color: #a78bfa; }
+    .top-bar .divider { color: #4b2d7a; font-size: 1.2rem; }
+    .top-bar .section-label { font-size: 0.82rem; color: #c4b5fd; font-weight: 500; }
+    .breadcrumb { padding: 14px 48px; font-size: 0.8rem; color: #7c6fa0; background: #faf8ff; border-bottom: 1px solid #ede8fa; }
+    .breadcrumb a { color: #7c3aed; text-decoration: none; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .breadcrumb span { margin: 0 6px; color: #c4b5fd; }
+    .page-wrap { max-width: 820px; margin: 0 auto; padding: 48px 32px 80px; }
+    .tag-pill { display: inline-block; background: linear-gradient(135deg, #7c3aed18, #a78bfa18); border: 1px solid #a78bfa55; color: #7c3aed; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; border-radius: 20px; padding: 4px 12px; margin-bottom: 16px; }
+    h1 { font-size: 2rem; font-weight: 800; color: #1a0533; line-height: 1.25; margin-bottom: 20px; letter-spacing: -0.02em; }
+    .intro { font-size: 1.05rem; color: #4b4b6b; line-height: 1.8; margin-bottom: 40px; padding-bottom: 32px; border-bottom: 1px solid #ede8fa; }
+    h2 { font-size: 1.3rem; font-weight: 700; color: #1a0533; margin: 44px 0 14px; letter-spacing: -0.01em; }
+    p { font-size: 0.95rem; color: #4b4b6b; line-height: 1.75; margin-bottom: 16px; }
+    code { background: #f0ebff; padding: 2px 6px; border-radius: 4px; font-size: 0.88rem; }
+
+    /* Field blocks */
+    .field-block { margin: 36px 0 28px; }
+    .field-block-header { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+    .field-num { display: inline-flex; align-items: center; justify-content: center; width: 38px; height: 38px; background: linear-gradient(135deg, #7c3aed, #a78bfa); color: #fff; font-weight: 700; font-size: 14px; border-radius: 8px; flex-shrink: 0; box-shadow: 0 2px 6px rgba(124,58,237,0.25); }
+    .field-block-title { font-size: 1rem; font-weight: 700; color: #1a0533; }
+    .field-block-desc { font-size: 0.93rem; color: #4b4b6b; line-height: 1.7; }
+    .screenshot-slot { background: #fafafa; border: 1px dashed #e0d8f0; border-radius: 10px; padding: 36px 20px; text-align: center; color: #b8b2c8; font-size: 0.85rem; margin-top: 6px; margin-bottom: 8px; }
+    .screenshot-slot::before { content: "Screenshot"; display: block; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #c8c0dc; }
+
+    /* KD range table */
+    .kd-table { width: 100%; border-collapse: collapse; margin: 18px 0 6px; font-size: 0.88rem; }
+    .kd-table th { text-align: left; padding: 8px 12px; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: #7c3aed; border-bottom: 2px solid #ede8fa; background: #faf8ff; }
+    .kd-table td { padding: 10px 12px; border-bottom: 1px solid #f0ebff; color: #4b4b6b; vertical-align: top; }
+    .kd-table tr:last-child td { border-bottom: none; }
+    .kd-badge { display: inline-block; padding: 2px 8px; border-radius: 5px; font-size: 0.78rem; font-weight: 700; }
+    .kd-easy { background: #dcfce7; color: #15803d; }
+    .kd-moderate { background: #fef9c3; color: #854d0e; }
+    .kd-hard { background: #fee2e2; color: #b91c1c; }
+    .kd-vhard { background: #f3e8ff; color: #6b21a8; }
+
+    /* Example scenario box */
+    .scenario-box { background: #faf8ff; border: 1px solid #ede8fa; border-radius: 12px; padding: 24px 28px; margin: 28px 0; }
+    .scenario-box .sc-title { font-size: 0.8rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: #7c3aed; margin-bottom: 16px; }
+    .scenario-row { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #ede8fa; gap: 12px; flex-wrap: wrap; }
+    .scenario-row:last-child { border-bottom: none; }
+    .scenario-kw { font-size: 0.9rem; font-weight: 600; color: #1a0533; flex: 1; min-width: 160px; }
+    .scenario-stats { display: flex; gap: 16px; font-size: 0.82rem; color: #4b4b6b; flex-wrap: wrap; }
+    .scenario-stats span { white-space: nowrap; }
+    .scenario-stats .stat-label { color: #7c3aed; font-weight: 700; }
+    .scenario-verdict { font-size: 0.78rem; font-weight: 700; padding: 3px 9px; border-radius: 5px; white-space: nowrap; }
+    .verdict-good { background: #dcfce7; color: #15803d; }
+    .verdict-hard { background: #fee2e2; color: #b91c1c; }
+    .verdict-ok { background: #fef9c3; color: #854d0e; }
+
+    .callout { background: #f5f1ff; border-left: 4px solid #7c3aed; border-radius: 0 8px 8px 0; padding: 16px 20px; margin: 20px 0; font-size: 0.92rem; color: #3b1e6e; line-height: 1.65; }
+    .callout strong { color: #1a0533; }
+
+    .faq-section { margin-top: 56px; padding-top: 36px; border-top: 1px solid #ede8fa; }
+    .faq-section h2 { margin-top: 0; margin-bottom: 24px; }
+    .faq-item { margin-bottom: 24px; padding: 20px 24px; background: #faf8ff; border: 1px solid #ede8fa; border-radius: 10px; }
+    .faq-item .faq-q { font-size: 0.95rem; font-weight: 700; color: #1a0533; margin-bottom: 8px; }
+    .faq-item .faq-a { font-size: 0.91rem; color: #4b4b6b; line-height: 1.7; margin: 0; }
+
+    .contact-bar { margin-top: 56px; padding: 24px 28px; background: #1a0533; border-radius: 14px; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+    .contact-bar p { color: #c4b5fd; font-size: 0.88rem; margin: 0; }
+    .contact-bar a { color: #a78bfa; text-decoration: none; font-weight: 600; }
+    .contact-bar a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+  <nav class="top-bar">
+    <div class="logo">Rank<span>Frame</span></div>
+    <div class="divider">/</div>
+    <div class="section-label">Help Center</div>
+  </nav>
+
+  <div class="breadcrumb">
+    <a href="https://rankframe.com/help">Help Center</a>
+    <span>&rsaquo;</span>
+    <a href="https://rankframe.com/help/keyword-research">Keyword Research</a>
+    <span>&rsaquo;</span>
+    Keyword Metrics Explained
+  </div>
+
+  <div class="page-wrap">
+
+    <div class="tag-pill">Keyword Research</div>
+    <h1>Keyword Metrics Explained</h1>
+
+    <p class="intro">
+      When you click Check on any keyword in RankFrame, four metric cards populate below the input field. Each card tells you something different about how that keyword performs in search. Understanding what each number means helps you choose keywords that are realistic to rank for and valuable when you do.
+    </p>
+
+    <h2>The Four Metrics at a Glance</h2>
+    <p>Each metric answers a specific question about a keyword. Read all four together rather than acting on any single number in isolation.</p>
+
+    <!-- Metric 1 -->
+    <div class="field-block">
+      <div class="field-block-header">
+        <div class="field-num">1</div>
+        <div class="field-block-title">Search Volume (Search Vol)</div>
+      </div>
+      <div class="field-block-desc">
+        <p style="margin-bottom:12px;">The average number of times per month people search for this keyword globally. Volume is the first filter: if nobody searches for a term, ranking for it delivers no traffic regardless of how well you optimize.</p>
+        <p style="margin-bottom:12px;">A volume of 100 to 1,000 can be very worthwhile for niche Framer audiences where the visitors are highly targeted. Volumes above 10,000 are competitive by default and usually come with high KD scores. Match your volume expectations to your site's current domain authority: a newer Framer portfolio targeting 200 monthly searches is far more realistic than chasing 50,000.</p>
+        <p style="margin-bottom:0;">Volume figures are global estimates and can fluctuate month to month based on seasonal trends or industry news. Use the number as a directional signal, not an exact forecast.</p>
+      </div>
+      <div class="screenshot-slot">Search Vol metric card showing an example monthly search figure</div>
+    </div>
+
+    <!-- Metric 2 -->
+    <div class="field-block">
+      <div class="field-block-header">
+        <div class="field-num">2</div>
+        <div class="field-block-title">Keyword Difficulty (KD)</div>
+      </div>
+      <div class="field-block-desc">
+        <p style="margin-bottom:14px;">A score from 0 to 100 estimating how hard it is to rank on the first page of Google for this keyword. The score factors in how many authoritative sites already rank for the term and how strong their backlink profiles are. A site with few backlinks competing against established domains with thousands of links will struggle at high KD, no matter how good the content is.</p>
+
+        <table class="kd-table">
+          <thead>
+            <tr>
+              <th>KD Range</th>
+              <th>Label</th>
+              <th>What it means for your site</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="kd-badge kd-easy">0 to 29</span></td>
+              <td>Easy</td>
+              <td>New sites can compete. Prioritize these terms early.</td>
+            </tr>
+            <tr>
+              <td><span class="kd-badge kd-moderate">30 to 49</span></td>
+              <td>Moderate</td>
+              <td>Achievable with strong, well-structured content and some backlinks.</td>
+            </tr>
+            <tr>
+              <td><span class="kd-badge kd-hard">50 to 69</span></td>
+              <td>Hard</td>
+              <td>Requires meaningful domain authority. Plan for a longer timeline.</td>
+            </tr>
+            <tr>
+              <td><span class="kd-badge kd-vhard">70 and above</span></td>
+              <td>Very Hard</td>
+              <td>Realistic only for established sites with strong link profiles.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p style="margin-top:14px;margin-bottom:0;">Saved keywords with a high KD score show a red KD badge in the Saved Keywords list as a persistent visual reminder that these terms need more work to yield results.</p>
+      </div>
+      <div class="screenshot-slot">KD metric card alongside the KD difficulty range reference</div>
+    </div>
+
+    <!-- Metric 3 -->
+    <div class="field-block">
+      <div class="field-block-header">
+        <div class="field-num">3</div>
+        <div class="field-block-title">Competition</div>
+      </div>
+      <div class="field-block-desc">
+        <p style="margin-bottom:12px;">Reflects advertiser competition in Google Ads for this keyword. The value ranges from 0 (no advertisers bidding) to 1 (maximum advertiser competition). This metric comes from paid search data, not organic ranking data, so it is a different signal from KD.</p>
+        <p style="margin-bottom:12px;">High competition is a useful proxy for commercial intent. When many advertisers are bidding on a term, it typically means people searching for that term are buyers or decision-makers rather than casual browsers. That makes organic ranking for high-competition keywords more valuable: you are reaching people closer to a purchase or conversion decision even though you are not paying for the click.</p>
+        <p style="margin-bottom:0;">A competition score of 0.7 or above generally indicates strong commercial intent. A score near 0 suggests the keyword is informational or niche, with fewer advertisers seeing a direct conversion value from it.</p>
+      </div>
+      <div class="screenshot-slot">Competition metric card with a value near 0.75 as an illustrative example</div>
+    </div>
+
+    <!-- Metric 4 -->
+    <div class="field-block">
+      <div class="field-block-header">
+        <div class="field-num">4</div>
+        <div class="field-block-title">CPC (Cost Per Click)</div>
+      </div>
+      <div class="field-block-desc">
+        <p style="margin-bottom:12px;">The average price advertisers pay for one click on a Google Ad targeting this keyword, displayed in USD. CPC is a direct measure of commercial value: advertisers only keep paying high CPCs when those clicks generate returns. That means a high-CPC keyword signals that each visitor who arrives via that search term tends to be worth something to a business.</p>
+        <p style="margin-bottom:12px;">Consider two keywords side by side. Keyword A has a CPC of $5 and 500 monthly searches. Keyword B has a CPC of $0.10 and 5,000 monthly searches. If you rank for Keyword A, every organic visit carries the implied commercial weight of a $5 click. If you rank for Keyword B, each visit is worth a fraction of that. Total potential value can be higher for the lower-volume, higher-CPC term.</p>
+        <p style="margin-bottom:0;">Use CPC to prioritize which pages deserve the most optimization effort. Pages targeting high-CPC keywords often deliver a stronger business impact per ranking position gained.</p>
+      </div>
+      <div class="screenshot-slot">CPC metric card showing a dollar value, alongside a comparison of two keywords with different CPC values</div>
+    </div>
+
+    <!-- Reading together section -->
+    <h2>Reading the Four Metrics Together</h2>
+    <p>Each metric is more useful in context with the other three. The goal is to find keywords where the opportunity is real (volume), the path is realistic (KD), and the reward is meaningful (competition, CPC).</p>
+
+    <p>The ideal combination for most Framer sites, especially newer ones, looks like this:</p>
+
+    <ul style="margin: 14px 0 20px 20px; font-size:0.93rem; color:#4b4b6b; line-height:1.9;">
+      <li>Search Vol: 200 to 3,000 monthly searches (specific enough to be targeted, large enough to matter)</li>
+      <li>KD: under 40 (competitive enough to be valuable, achievable without massive domain authority)</li>
+      <li>Competition: 0.4 or above (indicates some commercial intent behind the searches)</li>
+      <li>CPC: above $1 (confirms each click has real business value)</li>
+    </ul>
+
+    <p>A practical example helps illustrate the contrast. Suppose you are building a Framer agency site and you check two keywords:</p>
+
+    <div class="scenario-box">
+      <div class="sc-title">Comparison Example</div>
+      <div class="scenario-row">
+        <div class="scenario-kw">"framer website design"</div>
+        <div class="scenario-stats">
+          <span><span class="stat-label">Vol</span> 1,200</span>
+          <span><span class="stat-label">KD</span> 34</span>
+          <span><span class="stat-label">Comp</span> 0.62</span>
+          <span><span class="stat-label">CPC</span> $3.80</span>
+        </div>
+        <div class="scenario-verdict verdict-good">Strong target</div>
+      </div>
+      <div class="scenario-row">
+        <div class="scenario-kw">"website design"</div>
+        <div class="scenario-stats">
+          <span><span class="stat-label">Vol</span> 90,500</span>
+          <span><span class="stat-label">KD</span> 82</span>
+          <span><span class="stat-label">Comp</span> 0.91</span>
+          <span><span class="stat-label">CPC</span> $5.20</span>
+        </div>
+        <div class="scenario-verdict verdict-hard">Too competitive</div>
+      </div>
+      <div class="scenario-row">
+        <div class="scenario-kw">"free design tips"</div>
+        <div class="scenario-stats">
+          <span><span class="stat-label">Vol</span> 480</span>
+          <span><span class="stat-label">KD</span> 18</span>
+          <span><span class="stat-label">Comp</span> 0.09</span>
+          <span><span class="stat-label">CPC</span> $0.15</span>
+        </div>
+        <div class="scenario-verdict verdict-ok">Low value intent</div>
+      </div>
+    </div>
+
+    <p>In this example, "framer website design" is the strongest target. The volume is meaningful, the KD is achievable, and the CPC confirms commercial intent. "Website design" has impressive volume but a KD of 82 puts it out of reach for most Framer sites. "Free design tips" is easy to rank for, but the low CPC and competition score reveal that searchers are not in a buying mindset, making it less valuable even if you rank.</p>
+
+    <div class="callout">
+      <strong>Practical rule:</strong> Start with KD as your filter. Remove any keyword above your site's current competitive level. Then rank the remaining options by CPC. The highest-CPC keyword that clears your KD threshold is usually your best starting point.
+    </div>
+
+    <div class="faq-section">
+      <h2>Frequently Asked Questions</h2>
+
+      <div class="faq-item">
+        <div class="faq-q">Should I always pick the highest search volume keyword?</div>
+        <p class="faq-a">Not necessarily. High volume keywords usually have high KD. A lower-volume keyword with a KD under 30 often delivers faster ranking results for a newer Framer site, and faster results mean faster traffic growth.</p>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">What does a KD of 0 mean?</div>
+        <p class="faq-a">It means very few or no authoritative sites are currently ranking for that exact keyword. This is an opportunity, but also worth verifying that the volume is real and not just a niche term nobody actually searches. Check the volume alongside the KD before committing.</p>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Is CPC the same as what I would pay if I ran Google Ads?</div>
+        <p class="faq-a">CPC in RankFrame is the average benchmark across all advertisers. Your actual ad cost would vary based on your Quality Score, bid strategy, and competition at the time of the auction. Use CPC as a relative signal of value, not as a precise budget figure.</p>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Why is competition shown as a decimal (e.g. 0.78) instead of a percentage?</div>
+        <p class="faq-a">It follows the standard Google Ads format where 0 is no competition and 1 is full competition. Multiply by 100 if you want to think of it as a percentage. A value of 0.78 is equivalent to 78% competition.</p>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Can I use these metrics to decide which pages to optimize first?</div>
+        <p class="faq-a">Yes. Check the current keyword for each important page and compare KD and volume. Prioritize pages that target lower-KD keywords with reasonable volume since those have the fastest path to ranking improvement and measurable traffic gains.</p>
+      </div>
+    </div>
+
+    <div class="contact-bar">
+      <p>Questions about interpreting keyword metrics for your Framer site? The 7 Seers team is here to help.</p>
+      <a href="mailto:hello@7seersmedia.com">hello@7seersmedia.com</a>
+    </div>
+
+    <div id="seo-details" style="margin:60px 0 0;padding:28px 32px;background:#f8f6ff;border:1px solid #e8e0fa;border-radius:14px;">
+      <h3 style="font-size:1rem;font-weight:700;color:#1a0533;margin:0 0 20px;">SEO Details</h3>
+      <div id="seo-fields"></div>
+    </div>
+
+  </div>
+
+  <script>
+  (function(){
+    var fields=[
+      {label:'Title',value:document.querySelector('title')?document.querySelector('title').textContent:''},
+      {label:'Description',value:(document.querySelector('meta[name="description"]')||{}).content||''},
+      {label:'Keywords',value:(document.querySelector('meta[name="keywords"]')||{}).content||''},
+      {label:'Canonical',value:(document.querySelector('link[rel="canonical"]')||{}).href||''}
+    ];
+    var schemas=Array.from(document.querySelectorAll('script[type="application/ld+json"]')).map(function(s,i){return {label:'Schema '+(i+1),value:s.textContent.trim()};});
+    var all=fields.concat(schemas);
+    var html='';
+    all.forEach(function(f){
+      html+='<div style="margin-bottom:14px;"><div style="font-size:0.78rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:#7c3aed;margin-bottom:4px;">'+f.label+'</div><div style="display:flex;align-items:flex-start;gap:8px;"><code style="flex:1;background:#fff;border:1px solid #e0d8f0;border-radius:6px;padding:8px 10px;font-size:0.82rem;color:#1a0533;white-space:pre-wrap;word-break:break-all;">'+f.value.replace(/</g,'&lt;').replace(/>/g,'&gt;')+'</code><button onclick="navigator.clipboard.writeText(this.dataset.v)" data-v="'+f.value.replace(/"/g,'&quot;')+'" style="flex-shrink:0;padding:6px 12px;background:#7c3aed;color:#fff;border:none;border-radius:6px;font-size:0.78rem;font-weight:700;cursor:pointer;">Copy</button></div></div>';
+    });
+    document.getElementById('seo-fields').innerHTML=html;
+  })();
+  </script>
+
+</body>
+</html>

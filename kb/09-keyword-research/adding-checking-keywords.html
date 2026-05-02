@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How to Add and Check Keywords in RankFrame</title>
+  <meta name="description" content="Step-by-step guide to adding focus keywords in RankFrame, checking search volume and keyword difficulty, and saving keywords to specific pages on your Framer site." />
+  <meta name="keywords" content="add keywords RankFrame, check keyword difficulty Framer, focus keyword Framer plugin, keyword search volume Framer" />
+  <link rel="canonical" href="https://rankframe.com/help/adding-checking-keywords" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "How to Add and Check Keywords in RankFrame",
+    "description": "Step-by-step guide to adding focus keywords in RankFrame, checking search volume and keyword difficulty, and saving keywords to specific pages on your Framer site.",
+    "author": { "@type": "Organization", "name": "7 Seers", "email": "hello@7seersmedia.com" },
+    "publisher": { "@type": "Organization", "name": "7 Seers", "logo": { "@type": "ImageObject", "url": "https://rankframe.com/logo.png" } },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://rankframe.com/help/adding-checking-keywords" },
+    "datePublished": "2026-05-02",
+    "dateModified": "2026-05-02"
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What happens if I click Check without selecting a Target Page?",
+        "acceptedAnswer": { "@type": "Answer", "text": "A target page must be selected before saving. The Check action will still return metrics, but you need to select a page in the dropdown before clicking Save." }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I check multiple keywords before saving?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. Check as many keywords as you like and compare metrics before deciding which one to save." }
+      },
+      {
+        "@type": "Question",
+        "name": "What is a good keyword difficulty score?",
+        "acceptedAnswer": { "@type": "Answer", "text": "For new or smaller Framer sites, aim for KD under 40. Established sites can target higher difficulty keywords as domain authority grows." }
+      },
+      {
+        "@type": "Question",
+        "name": "How often are keyword metrics updated?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Metrics reflect the data available at the time you click Check. Click Check again on any saved keyword to refresh the numbers." }
+      },
+      {
+        "@type": "Question",
+        "name": "Does the saved keyword appear in the page HTML?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Only if the Focus Keyword Script toggle is enabled. When on, RankFrame injects saved keywords into a meta keywords tag during the next Framer publish." }
+      }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Help Center", "item": "https://rankframe.com/help" },
+      { "@type": "ListItem", "position": 2, "name": "Keyword Research", "item": "https://rankframe.com/help/keyword-research" },
+      { "@type": "ListItem", "position": 3, "name": "Adding and Checking Keywords", "item": "https://rankframe.com/help/adding-checking-keywords" }
+    ]
+  }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: #ffffff; color: #1a0533; line-height: 1.7; }
+    .top-bar { background: #1a0533; padding: 14px 32px; display: flex; align-items: center; gap: 12px; }
+    .top-bar .logo { font-size: 1.05rem; font-weight: 800; color: #fff; letter-spacing: -0.02em; }
+    .top-bar .logo span { color: #a78bfa; }
+    .top-bar .divider { color: #4b2d7a; font-size: 1.2rem; }
+    .top-bar .section-label { font-size: 0.82rem; color: #c4b5fd; font-weight: 500; }
+    .breadcrumb { padding: 14px 48px; font-size: 0.8rem; color: #7c6fa0; background: #faf8ff; border-bottom: 1px solid #ede8fa; }
+    .breadcrumb a { color: #7c3aed; text-decoration: none; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .breadcrumb span { margin: 0 6px; color: #c4b5fd; }
+    .page-wrap { max-width: 820px; margin: 0 auto; padding: 48px 32px 80px; }
+    .tag-pill { display: inline-block; background: linear-gradient(135deg, #7c3aed18, #a78bfa18); border: 1px solid #a78bfa55; color: #7c3aed; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; border-radius: 20px; padding: 4px 12px; margin-bottom: 16px; }
+    h1 { font-size: 2rem; font-weight: 800; color: #1a0533; line-height: 1.25; margin-bottom: 20px; letter-spacing: -0.02em; }
+    .intro { font-size: 1.05rem; color: #4b4b6b; line-height: 1.8; margin-bottom: 40px; padding-bottom: 32px; border-bottom: 1px solid #ede8fa; }
+    h2 { font-size: 1.3rem; font-weight: 700; color: #1a0533; margin: 44px 0 14px; letter-spacing: -0.01em; }
+    p { font-size: 0.95rem; color: #4b4b6b; line-height: 1.75; margin-bottom: 16px; }
+    code { background: #f0ebff; padding: 2px 6px; border-radius: 4px; font-size: 0.88rem; }
+
+    /* Step list */
+    .step-list { list-style: none; padding: 0; margin: 28px 0; }
+    .step-list li { display: flex; gap: 16px; margin-bottom: 24px; }
+    .step-num { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; min-width: 32px; background: linear-gradient(135deg, #7c3aed, #a78bfa); color: #fff; font-weight: 700; font-size: 0.85rem; border-radius: 50%; }
+    .step-body { flex: 1; }
+    .step-body strong { display: block; font-size: 0.97rem; color: #1a0533; margin-bottom: 4px; }
+    .step-body p { font-size: 0.92rem; color: #4b4b6b; line-height: 1.7; margin: 0; }
+
+    /* Field blocks */
+    .field-block { margin: 36px 0 28px; }
+    .field-block-header { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+    .field-num { display: inline-flex; align-items: center; justify-content: center; width: 38px; height: 38px; background: linear-gradient(135deg, #7c3aed, #a78bfa); color: #fff; font-weight: 700; font-size: 14px; border-radius: 8px; flex-shrink: 0; box-shadow: 0 2px 6px rgba(124,58,237,0.25); }
+    .field-block-title { font-size: 1rem; font-weight: 700; color: #1a0533; }
+    .field-block-desc { font-size: 0.93rem; color: #4b4b6b; line-height: 1.7; }
+    .screenshot-slot { background: #fafafa; border: 1px dashed #e0d8f0; border-radius: 10px; padding: 36px 20px; text-align: center; color: #b8b2c8; font-size: 0.85rem; margin-top: 6px; margin-bottom: 8px; }
+    .screenshot-slot::before { content: "Screenshot"; display: block; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #c8c0dc; }
+
+    /* Metric card grid */
+    .metric-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 14px; margin: 24px 0 32px; }
+    .metric-card { background: #faf8ff; border: 1px solid #ede8fa; border-radius: 10px; padding: 16px 18px; }
+    .metric-card .mc-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: #7c3aed; margin-bottom: 6px; }
+    .metric-card .mc-desc { font-size: 0.85rem; color: #4b4b6b; line-height: 1.6; }
+
+    .callout { background: #f5f1ff; border-left: 4px solid #7c3aed; border-radius: 0 8px 8px 0; padding: 16px 20px; margin: 20px 0; font-size: 0.92rem; color: #3b1e6e; line-height: 1.65; }
+    .callout strong { color: #1a0533; }
+
+    .tip-box { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 10px; padding: 16px 20px; margin: 20px 0; font-size: 0.92rem; color: #166534; line-height: 1.65; }
+    .tip-box strong { color: #14532d; }
+
+    .faq-section { margin-top: 56px; padding-top: 36px; border-top: 1px solid #ede8fa; }
+    .faq-section h2 { margin-top: 0; margin-bottom: 24px; }
+    .faq-item { margin-bottom: 24px; padding: 20px 24px; background: #faf8ff; border: 1px solid #ede8fa; border-radius: 10px; }
+    .faq-item .faq-q { font-size: 0.95rem; font-weight: 700; color: #1a0533; margin-bottom: 8px; }
+    .faq-item .faq-a { font-size: 0.91rem; color: #4b4b6b; line-height: 1.7; margin: 0; }
+
+    .contact-bar { margin-top: 56px; padding: 24px 28px; background: #1a0533; border-radius: 14px; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+    .contact-bar p { color: #c4b5fd; font-size: 0.88rem; margin: 0; }
+    .contact-bar a { color: #a78bfa; text-decoration: none; font-weight: 600; }
+    .contact-bar a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+  <nav class="top-bar">
+    <div class="logo">Rank<span>Frame</span></div>
+    <div class="divider">/</div>
+    <div class="section-label">Help Center</div>
+  </nav>
+
+  <div class="breadcrumb">
+    <a href="https://rankframe.com/help">Help Center</a>
+    <span>&rsaquo;</span>
+    <a href="https://rankframe.com/help/keyword-research">Keyword Research</a>
+    <span>&rsaquo;</span>
+    Adding and Checking Keywords
+  </div>
+
+  <div class="page-wrap">
+
+    <div class="tag-pill">Keyword Research</div>
+    <h1>How to Add and Check Keywords in RankFrame</h1>
+
+    <p class="intro">
+      Adding a focus keyword in RankFrame takes three steps: select the page, type the keyword, check the metrics. Once you are happy with the data, click Save and the keyword is assigned to that page. This guide walks through each step and explains what the four metric cards tell you so you can make a confident choice.
+    </p>
+
+    <h2>Step-by-Step: Adding a Focus Keyword</h2>
+    <p>Follow these steps in order. Each step builds on the previous one.</p>
+
+    <ul class="step-list">
+      <li>
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <strong>Open Global Settings</strong>
+          <p>Click the gear icon in the RankFrame left sidebar. When the panel opens, click the Keywords tab at the top. You will see the tab row: Basic, Keywords, Advanced, 404 Monitor.</p>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <strong>Select the Target Page</strong>
+          <p>Open the Target Page dropdown and click the page you want to assign the keyword to. Use <code>/</code> for the homepage, <code>/thoughts</code> for a blog section, or the specific path for any inner page. The Saved Keywords list updates to show existing keywords for the page you selected.</p>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <strong>Type the keyword</strong>
+          <p>Click the keyword input field and type your focus keyword, for example "Framer SEO plugin". Keep it specific and directly relevant to the page content. Phrase-length keywords (two to four words) tend to have more focused intent than single words.</p>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <strong>Click Check</strong>
+          <p>Click the Check button next to the input field. RankFrame queries search data and within a few seconds the four metric cards populate below the input: Search Vol, Difficulty (KD), Competition, and CPC. No credits are used for this action.</p>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">5</div>
+        <div class="step-body">
+          <strong>Review the metrics</strong>
+          <p>Read each card carefully. A keyword with reasonable search volume and low-to-medium difficulty (KD under 50) is often the best starting point for a newer site. High CPC can signal strong commercial value even for organic traffic.</p>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">6</div>
+        <div class="step-body">
+          <strong>Click Save</strong>
+          <p>If the metrics look right for your goals, click Save. The keyword appears in the Saved Keywords list below the input, showing its Vol and KD values at a glance. Repeat the process to add more keywords to the same page or switch to a different page.</p>
+        </div>
+      </li>
+    </ul>
+
+    <div class="screenshot-slot">Keywords tab showing a completed Check result with all four metric cards populated and the Save button visible</div>
+
+    <div class="tip-box">
+      <strong>Tip:</strong> You can check several keywords back to back before saving any of them. Type a new keyword and click Check again to replace the displayed metrics. Compare options freely before committing.
+    </div>
+
+    <h2>Understanding the Four Metric Cards</h2>
+    <p>Each card that appears after you click Check provides a different lens on that keyword's viability. Here is what each one measures.</p>
+
+    <div class="field-block">
+      <div class="field-block-header">
+        <div class="field-num">1</div>
+        <div class="field-block-title">Search Vol</div>
+      </div>
+      <div class="field-block-desc">
+        Estimated monthly search volume for the keyword globally. Higher volume means more potential traffic, but also usually means more competition. Use this number to confirm people are actually looking for the term before investing in content around it.
+      </div>
+      <div class="screenshot-slot">Search Vol metric card with a sample value highlighted</div>
+    </div>
+
+    <div class="field-block">
+      <div class="field-block-header">
+        <div class="field-num">2</div>
+        <div class="field-block-title">Difficulty (KD)</div>
+      </div>
+      <div class="field-block-desc">
+        Keyword Difficulty score on a scale of 0 to 100. The higher the number, the harder it is to reach page one of Google for that keyword. For a new or mid-sized Framer site, target KD under 40 to start. Saved keywords with high KD display a red badge in the Saved Keywords list as a reminder that these will require more effort to rank.
+      </div>
+      <div class="screenshot-slot">KD metric card alongside a saved keyword row showing a red KD badge</div>
+    </div>
+
+    <div class="field-block">
+      <div class="field-block-header">
+        <div class="field-num">3</div>
+        <div class="field-block-title">Competition</div>
+      </div>
+      <div class="field-block-desc">
+        Reflects how many advertisers are bidding on this keyword in paid search, on a scale from 0 (no advertisers) to 1 (maximum competition). High competition often signals strong commercial intent: people searching for the term are buyers or decision-makers. That makes organic ranking for high-competition keywords especially valuable.
+      </div>
+      <div class="screenshot-slot">Competition metric card with a value near 0.8 as an example</div>
+    </div>
+
+    <div class="field-block">
+      <div class="field-block-header">
+        <div class="field-num">4</div>
+        <div class="field-block-title">CPC</div>
+      </div>
+      <div class="field-block-desc">
+        Cost Per Click in USD. This is the average amount advertisers pay for one click on a Google Ad targeting this keyword. A high CPC is a strong indicator that searchers convert into leads or customers, making each organic click more valuable. Compare CPC across keyword options to prioritize terms where a ranking actually moves your business forward.
+      </div>
+      <div class="screenshot-slot">CPC metric card with a dollar value displayed</div>
+    </div>
+
+    <div class="callout">
+      <strong>Putting it together:</strong> The best single keyword to target is usually one with moderate volume (500 to 5,000 monthly searches), a KD under 40, and a CPC above $1. This combination means real people search for the term, you have a real shot at ranking, and each visit has real commercial value.
+    </div>
+
+    <div class="faq-section">
+      <h2>Frequently Asked Questions</h2>
+
+      <div class="faq-item">
+        <div class="faq-q">What happens if I click Check without selecting a Target Page?</div>
+        <p class="faq-a">A target page must be selected before saving. The Check action will still return metrics, but you need to select a page in the dropdown before clicking Save.</p>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Can I check multiple keywords before saving?</div>
+        <p class="faq-a">Yes. Check as many keywords as you like and compare metrics before deciding which one to save. Each Check call overwrites the displayed metric cards with the new keyword's data.</p>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">What is a good keyword difficulty score?</div>
+        <p class="faq-a">For new or smaller Framer sites, aim for KD under 40. Established sites can target higher difficulty keywords as domain authority grows.</p>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">How often are keyword metrics updated?</div>
+        <p class="faq-a">Metrics reflect the data available at the time you click Check. Click Check again on any saved keyword to refresh the numbers with the most current estimates.</p>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Does the saved keyword appear in the page HTML?</div>
+        <p class="faq-a">Only if the Focus Keyword Script toggle is enabled in the Keywords tab. When on, RankFrame injects saved keywords into a meta keywords tag during the next Framer publish.</p>
+      </div>
+    </div>
+
+    <div class="contact-bar">
+      <p>Need help choosing the right keywords for your Framer site? Reach the 7 Seers team.</p>
+      <a href="mailto:hello@7seersmedia.com">hello@7seersmedia.com</a>
+    </div>
+
+    <div id="seo-details" style="margin:60px 0 0;padding:28px 32px;background:#f8f6ff;border:1px solid #e8e0fa;border-radius:14px;">
+      <h3 style="font-size:1rem;font-weight:700;color:#1a0533;margin:0 0 20px;">SEO Details</h3>
+      <div id="seo-fields"></div>
+    </div>
+
+  </div>
+
+  <script>
+  (function(){
+    var fields=[
+      {label:'Title',value:document.querySelector('title')?document.querySelector('title').textContent:''},
+      {label:'Description',value:(document.querySelector('meta[name="description"]')||{}).content||''},
+      {label:'Keywords',value:(document.querySelector('meta[name="keywords"]')||{}).content||''},
+      {label:'Canonical',value:(document.querySelector('link[rel="canonical"]')||{}).href||''}
+    ];
+    var schemas=Array.from(document.querySelectorAll('script[type="application/ld+json"]')).map(function(s,i){return {label:'Schema '+(i+1),value:s.textContent.trim()};});
+    var all=fields.concat(schemas);
+    var html='';
+    all.forEach(function(f){
+      html+='<div style="margin-bottom:14px;"><div style="font-size:0.78rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:#7c3aed;margin-bottom:4px;">'+f.label+'</div><div style="display:flex;align-items:flex-start;gap:8px;"><code style="flex:1;background:#fff;border:1px solid #e0d8f0;border-radius:6px;padding:8px 10px;font-size:0.82rem;color:#1a0533;white-space:pre-wrap;word-break:break-all;">'+f.value.replace(/</g,'&lt;').replace(/>/g,'&gt;')+'</code><button onclick="navigator.clipboard.writeText(this.dataset.v)" data-v="'+f.value.replace(/"/g,'&quot;')+'" style="flex-shrink:0;padding:6px 12px;background:#7c3aed;color:#fff;border:none;border-radius:6px;font-size:0.78rem;font-weight:700;cursor:pointer;">Copy</button></div></div>';
+    });
+    document.getElementById('seo-fields').innerHTML=html;
+  })();
+  </script>
+
+</body>
+</html>

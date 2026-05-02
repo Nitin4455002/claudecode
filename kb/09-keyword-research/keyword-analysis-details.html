@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Keyword Analysis and Density Details in RankFrame</title>
+  <meta name="description" content="Understand the Keyword Analysis section in RankFrame: total keyword count, average density, total frequency, and how to use the word-count filter and search field to explore keyword distribution across your Framer site." />
+  <meta name="keywords" content="keyword density Framer, keyword frequency analysis, RankFrame keyword analysis, keyword distribution Framer plugin" />
+  <link rel="canonical" href="https://rankframe.com/help/keyword-analysis-details" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Keyword Analysis and Density Details in RankFrame",
+    "description": "Understand the Keyword Analysis section in RankFrame: total keyword count, average density, total frequency, and how to use the word-count filter and search field to explore keyword distribution across your Framer site.",
+    "author": {
+      "@type": "Organization",
+      "name": "7 Seers",
+      "email": "hello@7seersmedia.com"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "7 Seers",
+      "url": "https://rankframe.com"
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://rankframe.com/help/keyword-analysis-details"
+    },
+    "datePublished": "2026-05-02",
+    "dateModified": "2026-05-02"
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Why are common words like 'and' and 'to' appearing in the keyword table?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The keyword analysis scans all text on the page including stop words. Focus on the 2-word and 3-word filters to find more meaningful phrases. The high frequency of stop words is normal and not an SEO concern."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is a healthy keyword density for a focus keyword?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Aim for 1 to 2 percent for your primary focus keyword. Below 0.5 percent may mean the keyword is under-represented. Above 3 percent risks being seen as keyword stuffing."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does the keyword table update automatically when I change the Target Page?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. The keyword analysis is scoped to the page selected in the Target Page dropdown. Switching the page updates all stats and the table."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I export the keyword table?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The keyword table does not have a direct export button in the Keywords tab. Use the Image SEO Export (CSV) for image data, or capture the keyword table manually for now."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does the keyword analysis data relate to the per-page keyword analysis in the Pages section?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Both features analyze keyword frequency and density. The Keywords tab focuses on the page selected via the Target Page dropdown and is accessible from Global Settings. The per-page keyword analysis in the Pages section is scoped to the individual page you have opened in the split view."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Help Center",
+        "item": "https://rankframe.com/help"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Keyword Research",
+        "item": "https://rankframe.com/help/keyword-research"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Keyword Analysis and Details",
+        "item": "https://rankframe.com/help/keyword-analysis-details"
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: #ffffff;
+      color: #1a0533;
+      line-height: 1.7;
+    }
+
+    .top-bar {
+      background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);
+      padding: 14px 32px;
+      display: flex;
+      align-items: center;
+    }
+    .top-bar-logo {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -0.02em;
+    }
+    .top-bar-logo span {
+      opacity: 0.7;
+      font-weight: 400;
+      margin-left: 6px;
+      font-size: 0.9rem;
+    }
+
+    .breadcrumb {
+      background: #faf8ff;
+      border-bottom: 1px solid #ede8fa;
+      padding: 10px 32px;
+      font-size: 0.82rem;
+      color: #8b80a8;
+    }
+    .breadcrumb a { color: #7c3aed; text-decoration: none; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .breadcrumb .sep { margin: 0 6px; }
+
+    .page-wrap {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 48px 32px 80px;
+    }
+
+    .article-label {
+      display: inline-block;
+      background: #f3eeff;
+      color: #7c3aed;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #1a0533;
+      line-height: 1.25;
+      margin-bottom: 18px;
+      letter-spacing: -0.02em;
+    }
+
+    .intro {
+      font-size: 1.05rem;
+      color: #4b4b6b;
+      line-height: 1.75;
+      margin-bottom: 40px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid #ede8fa;
+    }
+
+    h2 {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: #1a0533;
+      margin: 48px 0 12px;
+      letter-spacing: -0.01em;
+    }
+
+    h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #1a0533;
+      margin: 28px 0 8px;
+    }
+
+    p { margin-bottom: 16px; color: #4b4b6b; font-size: 0.97rem; }
+    ul, ol { padding-left: 22px; margin-bottom: 16px; color: #4b4b6b; font-size: 0.97rem; }
+    li { margin-bottom: 6px; line-height: 1.65; }
+
+    .field-block { margin: 36px 0 28px; }
+    .field-block-header { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+    .field-num { display: inline-flex; align-items: center; justify-content: center; width: 38px; height: 38px; background: linear-gradient(135deg, #7c3aed, #a78bfa); color: #fff; font-weight: 700; font-size: 14px; border-radius: 8px; flex-shrink: 0; box-shadow: 0 2px 6px rgba(124,58,237,0.25); }
+    .field-block-title { font-size: 1rem; font-weight: 700; color: #1a0533; }
+    .field-block-desc { font-size: 0.93rem; color: #4b4b6b; line-height: 1.7; }
+
+    .screenshot-slot { background: #fafafa; border: 1px dashed #e0d8f0; border-radius: 10px; padding: 36px 20px; text-align: center; color: #b8b2c8; font-size: 0.85rem; margin-top: 6px; margin-bottom: 8px; }
+    .screenshot-slot::before { content: "Screenshot"; display: block; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #c8c0dc; }
+
+    .tip-box {
+      background: #f3eeff;
+      border-left: 4px solid #7c3aed;
+      border-radius: 0 8px 8px 0;
+      padding: 16px 20px;
+      margin: 24px 0;
+      font-size: 0.93rem;
+      color: #3b1f6b;
+      line-height: 1.65;
+    }
+    .tip-box strong { color: #7c3aed; }
+
+    .info-box {
+      background: #eff6ff;
+      border-left: 4px solid #3b82f6;
+      border-radius: 0 8px 8px 0;
+      padding: 16px 20px;
+      margin: 24px 0;
+      font-size: 0.93rem;
+      color: #1e3a5f;
+      line-height: 1.65;
+    }
+    .info-box strong { color: #2563eb; }
+
+    /* Stat cards row */
+    .stat-cards {
+      display: flex;
+      gap: 14px;
+      margin: 20px 0;
+      flex-wrap: wrap;
+    }
+    .stat-card {
+      flex: 1;
+      min-width: 160px;
+      background: #faf8ff;
+      border: 1px solid #ede8fa;
+      border-radius: 10px;
+      padding: 18px 20px;
+    }
+    .stat-card-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #7c3aed;
+      margin-bottom: 6px;
+    }
+    .stat-card-value {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: #1a0533;
+      line-height: 1.2;
+    }
+    .stat-card-desc {
+      font-size: 0.8rem;
+      color: #8b80a8;
+      margin-top: 4px;
+    }
+
+    /* Keyword table example */
+    .example-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+      font-size: 0.9rem;
+    }
+    .example-table th {
+      background: #f3eeff;
+      color: #7c3aed;
+      font-weight: 700;
+      font-size: 0.78rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 10px 14px;
+      text-align: left;
+      border-bottom: 2px solid #ede8fa;
+    }
+    .example-table td {
+      padding: 10px 14px;
+      color: #4b4b6b;
+      border-bottom: 1px solid #f0ecf8;
+    }
+    .example-table tr:last-child td { border-bottom: none; }
+    .example-table tr:nth-child(even) td { background: #faf8ff; }
+    .density-high { color: #dc2626; font-weight: 700; }
+    .density-mid { color: #d97706; font-weight: 700; }
+    .density-ok { color: #059669; font-weight: 700; }
+
+    /* Word count filter buttons demo */
+    .filter-demo {
+      display: flex;
+      gap: 8px;
+      margin: 14px 0 20px;
+      flex-wrap: wrap;
+    }
+    .filter-btn {
+      padding: 7px 16px;
+      border: 2px solid #ede8fa;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #7c3aed;
+      background: #faf8ff;
+      cursor: default;
+    }
+    .filter-btn.active {
+      background: #7c3aed;
+      color: #fff;
+      border-color: #7c3aed;
+    }
+
+    .divider { border: none; border-top: 1px solid #ede8fa; margin: 48px 0; }
+
+    /* Practical tip section */
+    .practical-tip {
+      background: linear-gradient(135deg, #f3eeff 0%, #ede8fa 100%);
+      border-radius: 12px;
+      padding: 28px 32px;
+      margin: 40px 0;
+    }
+    .practical-tip h3 {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: #1a0533;
+      margin: 0 0 12px;
+    }
+    .practical-tip p, .practical-tip li {
+      font-size: 0.94rem;
+      color: #3b1f6b;
+    }
+    .practical-tip ul { margin-top: 10px; }
+
+    .faq-section { margin-top: 56px; }
+
+    .faq-item {
+      border: 1px solid #ede8fa;
+      border-radius: 10px;
+      margin-bottom: 14px;
+      overflow: hidden;
+    }
+
+    .faq-q {
+      background: #faf8ff;
+      padding: 16px 20px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: #1a0533;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      list-style: none;
+      user-select: none;
+    }
+    .faq-q::-webkit-details-marker { display: none; }
+    .faq-arrow {
+      width: 20px;
+      height: 20px;
+      background: #ede8fa;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 11px;
+      color: #7c3aed;
+    }
+    details[open] .faq-arrow { transform: rotate(180deg); }
+
+    .faq-a {
+      padding: 16px 20px;
+      font-size: 0.93rem;
+      color: #4b4b6b;
+      line-height: 1.7;
+      border-top: 1px solid #ede8fa;
+    }
+
+    .article-footer {
+      margin-top: 64px;
+      padding-top: 28px;
+      border-top: 1px solid #ede8fa;
+      font-size: 0.84rem;
+      color: #8b80a8;
+    }
+    .article-footer a { color: #7c3aed; text-decoration: none; }
+    .article-footer a:hover { text-decoration: underline; }
+
+    code {
+      background: #f3eeff;
+      color: #6d28d9;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.88em;
+      font-family: "SF Mono", "Fira Code", monospace;
+    }
+
+    @media (max-width: 600px) {
+      .page-wrap { padding: 28px 18px 60px; }
+      h1 { font-size: 1.5rem; }
+      .top-bar { padding: 12px 18px; }
+      .breadcrumb { padding: 10px 18px; }
+      .practical-tip { padding: 20px 18px; }
+      .stat-cards { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-bar">
+    <div class="top-bar-logo">RankFrame <span>by 7 Seers</span></div>
+  </div>
+
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="https://rankframe.com/help">Help Center</a>
+    <span class="sep">/</span>
+    <a href="https://rankframe.com/help/keyword-research">Keyword Research</a>
+    <span class="sep">/</span>
+    <span>Keyword Analysis and Details</span>
+  </nav>
+
+  <main class="page-wrap">
+
+    <div class="article-label">Keyword Research</div>
+    <h1>Keyword Analysis and Density Details</h1>
+
+    <p class="intro">
+      The Keyword Analysis section in the Keywords tab gives you a content-level view of how words are distributed across your site pages. This is different from tracking focus keywords: it scans the actual crawled text of the selected page and surfaces every keyword, its frequency, and its density percentage. Use it to spot over-optimized or under-optimized pages before they become a ranking problem.
+    </p>
+
+    <!-- Field Block 1 -->
+    <div class="field-block">
+      <div class="field-block-header">
+        <div class="field-num">1</div>
+        <div class="field-block-title">Show Details / Hide Details Toggle</div>
+      </div>
+      <div class="field-block-desc">
+        The Keyword Analysis section is collapsed by default. You will see summary stats (Total Keywords, Avg Density, Total Frequency) in the collapsed header row. Click <strong>Show details</strong> to expand the full section, which reveals the word-count filter buttons, the search field, and the keyword table. Click <strong>Hide details</strong> to collapse it again. Your Target Page selection determines which page's data is shown.
+      </div>
+    </div>
+    <div class="screenshot-slot">Keyword Analysis section in collapsed state, showing summary stats and the Show details button</div>
+
+    <!-- Summary stat cards -->
+    <div class="stat-cards">
+      <div class="stat-card">
+        <div class="stat-card-label">Total Keywords</div>
+        <div class="stat-card-value">50</div>
+        <div class="stat-card-desc">Unique terms found</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card-label">Avg Density</div>
+        <div class="stat-card-value">0.84%</div>
+        <div class="stat-card-desc">Across all keywords</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card-label">Total Frequency</div>
+        <div class="stat-card-value">10,371</div>
+        <div class="stat-card-desc">Total word occurrences</div>
+      </div>
+    </div>
+
+    <!-- Field Block 2 -->
+    <div class="field-block">
+      <div class="field-block-header">
+        <div class="field-num">2</div>
+        <div class="field-block-title">Total Keywords</div>
+      </div>
+      <div class="field-block-desc">
+        The count of unique keyword terms found across the page content. For example, a value of 50 means 50 distinct words or phrases were extracted from the crawled text. This count includes stop words (like "and", "the", "to") and common terms unless you filter the table using the word-count buttons or the search field. A higher count simply means more varied vocabulary on the page, not better or worse SEO.
+      </div>
+    </div>
+    <div class="screenshot-slot">Keyword Analysis header row showing Total Keywords count highlighted</div>
+
+    <!-- Field Block 3 -->
+    <div class="field-block">
+      <div class="field-block-header">
+        <div class="field-num">3</div>
+        <div class="field-block-title">Avg Density</div>
+      </div>
+      <div class="field-block-desc">
+        Average keyword density across all keywords on the page, expressed as a percentage (for example: 0.84%). The formula is: <strong>Density = (keyword frequency / total words) x 100</strong>. An average density near 1% or below is generally healthy and natural-sounding. Spikes above 3 to 5% for any single term may be flagged by Google as keyword stuffing, which can negatively impact rankings. Check individual term densities in the keyword table for a more precise view.
+      </div>
+    </div>
+    <div class="screenshot-slot">Keyword Analysis header row showing Avg Density percentage highlighted</div>
+
+    <div class="info-box">
+      <strong>Note:</strong> Avg Density is an average across all terms, so a high-frequency stop word like "the" will push the average up. Pay more attention to the individual density of your target focus keyword in the table than to the overall average.
+    </div>
+
+    <!-- Field Block 4 -->
+    <div class="field-block">
+      <div class="field-block-header">
+        <div class="field-num">4</div>
+        <div class="field-block-title">Total Frequency</div>
+      </div>
+      <div class="field-block-desc">
+        The total number of keyword occurrences across the entire page content (for example: 10,371). This is the sum of every word's frequency count added together. A high total frequency simply means the page has more content words overall, not necessarily a problem. Pages with longer, more detailed content will naturally have higher total frequency counts. Use this stat as a baseline when comparing keyword density across pages of similar length.
+      </div>
+    </div>
+    <div class="screenshot-slot">Keyword Analysis header row showing Total Frequency count highlighted</div>
+
+    <!-- Field Block 5 -->
+    <div class="field-block">
+      <div class="field-block-header">
+        <div class="field-num">5</div>
+        <div class="field-block-title">Word Count Filter</div>
+      </div>
+      <div class="field-block-desc">
+        Three filter buttons appear above the keyword table: <strong>1 word</strong>, <strong>2 words</strong>, and <strong>3 words</strong>. Click a button to filter the table to single words, two-word phrases, or three-word phrases. Use the 2-word and 3-word filters to find long-tail phrases that appear naturally in your content. These multi-word phrases are often excellent candidates for focus keywords because they already exist in your text and tend to carry lower keyword difficulty scores.
+      </div>
+    </div>
+
+    <div class="filter-demo" aria-hidden="true">
+      <div class="filter-btn active">1 word</div>
+      <div class="filter-btn">2 words</div>
+      <div class="filter-btn">3 words</div>
+    </div>
+
+    <div class="screenshot-slot">Word count filter buttons with "2 words" selected, showing two-word phrase results in the table</div>
+
+    <!-- Field Block 6 -->
+    <div class="field-block">
+      <div class="field-block-header">
+        <div class="field-num">6</div>
+        <div class="field-block-title">Search Keywords Field</div>
+      </div>
+      <div class="field-block-desc">
+        A search input sits above the keyword table. Type any word or partial phrase to filter the keyword list in real time. The table updates immediately as you type, narrowing down results to rows that match your query. This is most useful when you have 50 or more keywords and want to jump straight to a specific term without scrolling. Combine the search field with the word-count filter for precise lookups (for example: switch to 2 words, then search for "design" to find all two-word phrases containing "design").
+      </div>
+    </div>
+    <div class="screenshot-slot">Search keywords field with the word "design" typed and filtered table results below</div>
+
+    <!-- Field Block 7 -->
+    <div class="field-block">
+      <div class="field-block-header">
+        <div class="field-num">7</div>
+        <div class="field-block-title">Keyword Table: Keyword, Freq, Density</div>
+      </div>
+      <div class="field-block-desc">
+        The main table displays three columns. <strong>Keyword:</strong> the term or phrase extracted from the page content. <strong>Freq:</strong> how many times it appears on the page. <strong>Density:</strong> its percentage of the total word count. Rows are sorted by frequency descending by default, so the most common terms appear at the top. Common stop words will appear prominently in the 1-word view: use the 2-word or 3-word filter to surface more actionable phrases.
+      </div>
+    </div>
+
+    <table class="example-table" aria-label="Example keyword table rows">
+      <thead>
+        <tr>
+          <th>Keyword</th>
+          <th>Freq</th>
+          <th>Density</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>and</td>
+          <td>1,232</td>
+          <td class="density-high">4.99%</td>
+        </tr>
+        <tr>
+          <td>to</td>
+          <td>849</td>
+          <td class="density-high">3.44%</td>
+        </tr>
+        <tr>
+          <td>framer</td>
+          <td>312</td>
+          <td class="density-mid">1.26%</td>
+        </tr>
+        <tr>
+          <td>design</td>
+          <td>198</td>
+          <td class="density-ok">0.80%</td>
+        </tr>
+        <tr>
+          <td>framer template</td>
+          <td>47</td>
+          <td class="density-ok">0.19%</td>
+        </tr>
+        <tr>
+          <td>portfolio design</td>
+          <td>23</td>
+          <td class="density-ok">0.09%</td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="font-size:0.82rem;color:#8b80a8;margin-top:-6px;margin-bottom:24px;">Example table rows. Red density values indicate potential over-optimization of stop words, which is normal and not an SEO issue. Amber indicates moderate frequency. Green indicates a healthy, natural density for a topical keyword.</p>
+
+    <div class="screenshot-slot">Full keyword table with 1-word filter active, showing Freq and Density columns sorted by frequency descending</div>
+
+    <hr class="divider" />
+
+    <!-- Practical tip section -->
+    <div class="practical-tip">
+      <h3>How to Use Keyword Analysis to Find Focus Keyword Ideas</h3>
+      <p>
+        The keyword table is not just a reporting tool. You can use it as a focus keyword discovery engine. Here is a simple workflow:
+      </p>
+      <ul>
+        <li>Switch the word-count filter to <strong>2 words</strong>. Scan the list for phrases that appear 10 or more times. These are phrases your content already naturally uses, which makes them easier to rank for.</li>
+        <li>Switch to <strong>3 words</strong>. Phrases appearing 5 or more times in the 3-word filter are strong long-tail candidates. Three-word phrases typically carry lower keyword difficulty and more specific search intent.</li>
+        <li>Take any candidate phrase and type it into the Focus Keyword input field above the Saved Keywords list. Click Check to get the search volume and KD score. If volume is reasonable and KD is not red, save it as a focus keyword.</li>
+        <li>Repeat across two or three pages to build a focused keyword set for your entire site without relying on external tools.</li>
+      </ul>
+    </div>
+
+    <div class="tip-box">
+      <strong>Tip:</strong> A phrase that appears 20 or more times naturally in your content and has decent search volume is a strong focus keyword candidate. Your content already supports it, which means less rewriting and a shorter path to ranking.
+    </div>
+
+    <hr class="divider" />
+
+    <section class="faq-section">
+      <h2>Frequently Asked Questions</h2>
+
+      <details class="faq-item">
+        <summary class="faq-q">
+          Why are common words like "and" and "to" appearing in the keyword table?
+          <span class="faq-arrow">&#9660;</span>
+        </summary>
+        <div class="faq-a">
+          The keyword analysis scans all text on the page including stop words. Focus on the 2-word and 3-word filters to find more meaningful phrases. The high frequency of stop words is normal and not an SEO concern: search engines ignore stop words when matching queries to content.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">
+          What is a healthy keyword density for a focus keyword?
+          <span class="faq-arrow">&#9660;</span>
+        </summary>
+        <div class="faq-a">
+          Aim for 1 to 2 percent for your primary focus keyword. Below 0.5 percent may mean the keyword is under-represented in your content, which could signal weak topical relevance. Above 3 percent risks being seen as keyword stuffing, which Google can penalize. Write naturally and check the density after: do not force a keyword in to hit a target number.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">
+          Does the keyword table update automatically when I change the Target Page?
+          <span class="faq-arrow">&#9660;</span>
+        </summary>
+        <div class="faq-a">
+          Yes. The keyword analysis is scoped to the page selected in the Target Page dropdown. Switching the page updates all stats (Total Keywords, Avg Density, Total Frequency) and refreshes the keyword table to reflect the new page's content.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">
+          Can I export the keyword table?
+          <span class="faq-arrow">&#9660;</span>
+        </summary>
+        <div class="faq-a">
+          The keyword table does not have a direct export button in the Keywords tab. Use the Image SEO Export (CSV) for image data, or capture the keyword table manually for now. An export feature may be added in a future update.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">
+          How does the keyword analysis data relate to the per-page keyword analysis in the Pages section?
+          <span class="faq-arrow">&#9660;</span>
+        </summary>
+        <div class="faq-a">
+          Both features analyze keyword frequency and density using the same underlying data. The Keywords tab (accessed from Global Settings) focuses on the page selected via the Target Page dropdown and is designed for cross-page comparison. The per-page keyword analysis in the Pages section is scoped to the individual page you have opened in the split view and gives you the same metrics in a page-centric context. Use whichever location is more convenient for your current workflow.
+        </div>
+      </details>
+    </section>
+
+    <div class="article-footer">
+      <p>Need more help? Contact the 7 Seers team at <a href="mailto:hello@7seersmedia.com">hello@7seersmedia.com</a>. More keyword guides are available in the <a href="https://rankframe.com/help/keyword-research">Keyword Research</a> section of the Help Center.</p>
+    </div>
+
+    <div id="seo-details" style="margin:60px 0 0;padding:28px 32px;background:#f8f6ff;border:1px solid #e8e0fa;border-radius:14px;">
+      <h3 style="font-size:1rem;font-weight:700;color:#1a0533;margin:0 0 20px;">SEO Details</h3>
+      <div id="seo-fields"></div>
+    </div>
+
+  </main>
+
+  <script>
+  (function(){
+    var fields=[
+      {label:'Title',value:document.querySelector('title')?document.querySelector('title').textContent:''},
+      {label:'Description',value:(document.querySelector('meta[name="description"]')||{}).content||''},
+      {label:'Keywords',value:(document.querySelector('meta[name="keywords"]')||{}).content||''},
+      {label:'Canonical',value:(document.querySelector('link[rel="canonical"]')||{}).href||''}
+    ];
+    var schemas=Array.from(document.querySelectorAll('script[type="application/ld+json"]')).map(function(s,i){return {label:'Schema '+(i+1),value:s.textContent.trim()};});
+    var all=fields.concat(schemas);
+    var html='';
+    all.forEach(function(f){
+      html+='<div style="margin-bottom:14px;"><div style="font-size:0.78rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:#7c3aed;margin-bottom:4px;">'+f.label+'</div><div style="display:flex;align-items:flex-start;gap:8px;"><code style="flex:1;background:#fff;border:1px solid #e0d8f0;border-radius:6px;padding:8px 10px;font-size:0.82rem;color:#1a0533;white-space:pre-wrap;word-break:break-all;">'+f.value.replace(/</g,'&lt;').replace(/>/g,'&gt;')+'</code><button onclick="navigator.clipboard.writeText(this.dataset.v)" data-v="'+f.value.replace(/"/g,'&quot;')+'" style="flex-shrink:0;padding:6px 12px;background:#7c3aed;color:#fff;border:none;border-radius:6px;font-size:0.78rem;font-weight:700;cursor:pointer;">Copy</button></div></div>';
+    });
+    document.getElementById('seo-fields').innerHTML=html;
+  })();
+  </script>
+
+</body>
+</html>
