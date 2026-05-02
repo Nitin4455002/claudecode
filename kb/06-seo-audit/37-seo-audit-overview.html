@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SEO Audit Overview | RankFrame Help</title>
-  <meta name="description" content="Learn how to use the SEO Analyzer in RankFrame to run a site-wide audit, read your score breakdown, and filter results by Red Zone, Warnings, Green Zone, and Speed." />
+  <meta name="description" content="Learn how to use the SEO Analyzer in RankFrame to run a site-wide SEO audit, interpret your score, and act on critical issues, warnings, and speed data." />
   <meta name="keywords" content="RankFrame, SEO audit, SEO Analyzer, Framer SEO, site audit, Core Web Vitals, SEO score" />
   <link rel="canonical" href="https://rankframe.com/help/seo-audit-overview" />
 
@@ -14,19 +14,18 @@
     "@context": "https://schema.org",
     "@type": "Article",
     "headline": "SEO Audit Overview",
-    "description": "Learn how to use the SEO Analyzer in RankFrame to run a site-wide audit, read your score breakdown, and filter results by Red Zone, Warnings, Green Zone, and Speed.",
-    "url": "https://rankframe.com/help/seo-audit-overview",
-    "datePublished": "2026-05-02",
-    "dateModified": "2026-05-02",
+    "description": "Learn how to use the SEO Analyzer in RankFrame to run a site-wide SEO audit, interpret your score, and act on critical issues, warnings, and speed data.",
+    "author": {
+      "@type": "Organization",
+      "name": "RankFrame"
+    },
     "publisher": {
       "@type": "Organization",
       "name": "RankFrame",
       "url": "https://rankframe.com"
     },
-    "author": {
-      "@type": "Organization",
-      "name": "RankFrame"
-    },
+    "datePublished": "2026-05-02",
+    "dateModified": "2026-05-02",
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "https://rankframe.com/help/seo-audit-overview"
@@ -42,42 +41,42 @@
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "What is the difference between the SEO Analyzer and the per-page audit?",
+        "name": "What is the difference between the SEO Analyzer and the per-page audit inside Pages?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "The SEO Analyzer runs a site-wide audit across every page of your Framer site. The per-page audit, found inside the Pages section, focuses on one specific page at a time. Use the SEO Analyzer for a full health check and the per-page audit for targeted improvements."
+          "text": "The SEO Analyzer runs a site-wide audit across your entire Framer project. The per-page audit inside the Pages section focuses on one page at a time. Use the SEO Analyzer to get a broad health score, then drill into individual pages for granular fixes."
         }
       },
       {
         "@type": "Question",
-        "name": "How do I refresh my SEO audit?",
+        "name": "How is the SEO score calculated?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Click the Refresh Analysis button in the top-right area of the SEO Analyzer header. RankFrame will re-crawl your published site and update your score and issue list."
+          "text": "The score is a number out of 100. It weighs checks from the Red Zone (critical failures), Warnings, and Green Zone (passing checks). Critical failures have the largest negative impact. Speed performance contributes through the dedicated Speed tab metrics."
         }
       },
       {
         "@type": "Question",
-        "name": "What does the Red Zone mean in the score breakdown?",
+        "name": "What does the Download Audit button export?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "The Red Zone shows critical SEO failures that have the most negative impact on your rankings. These are high-priority items you should fix before addressing Warnings or reviewing Green Zone passes."
+          "text": "Clicking the Download Audit button exports a PDF report of your current audit results. The PDF includes your score, all check results across every category, and any flagged issues. You can share it with clients or teammates."
         }
       },
       {
         "@type": "Question",
-        "name": "How do I export my SEO audit as a PDF?",
+        "name": "How do I see detailed suggestions for a specific issue?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Click the Download Audit button (shown in purple) in the SEO Analyzer header. RankFrame generates a PDF report you can save or share with clients."
+          "text": "Click any check item in the audit list. A detail panel opens with a plain-language explanation, the specific element or page affected, and actionable suggestions for fixing the issue."
         }
       },
       {
         "@type": "Question",
-        "name": "What does the Speed tab show?",
+        "name": "How often should I refresh the analysis?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "The Speed tab displays separate Mobile and Desktop performance gauges alongside your Core Web Vitals metrics. These scores come from real-world performance data and reflect how quickly your site loads for visitors on each device type."
+          "text": "Refresh the analysis after publishing changes to your Framer site. The Live SEO indicator shows the current status, but RankFrame does not automatically re-run the audit on every publish. Use the Refresh Analysis button to pull the latest data."
         }
       }
     ]
@@ -206,11 +205,11 @@
     <!-- Category badge -->
     <div class="article-category">SEO Audit</div>
 
-    <!-- Title and description -->
+    <!-- Title -->
     <h1>SEO Audit Overview</h1>
-    <p class="article-description">
-      The <strong>SEO Analyzer</strong> gives you a full site-wide health check in one place. See your overall score, spot critical failures, and track performance metrics without leaving RankFrame.
-    </p>
+
+    <p class="article-description">The <strong>SEO Analyzer</strong> gives you a site-wide health score for your Framer project. Learn what each section shows, how to read your score, and how to take action on every finding.</p>
+
     <div class="article-meta">
       <span>Updated May 2, 2026</span>
       <span>5 min read</span>
@@ -220,170 +219,204 @@
     <nav class="toc" aria-label="Table of contents">
       <div class="toc-title">On this page</div>
       <ol>
-        <li><a href="#what-is-seo-analyzer">What is the SEO Analyzer?</a></li>
-        <li><a href="#opening-the-analyzer">Opening the Analyzer</a></li>
+        <li><a href="#open-analyzer">Opening the SEO Analyzer</a></li>
         <li><a href="#header-controls">Header Controls</a></li>
         <li><a href="#score-panel">Your SEO Score</a></li>
         <li><a href="#score-breakdown">Score Breakdown</a></li>
         <li><a href="#filter-tabs">Filter Tabs</a></li>
-        <li><a href="#clicking-issues">Clicking into Issues</a></li>
+        <li><a href="#clickable-items">Clicking Issues for Details</a></li>
         <li><a href="#faq">Frequently Asked Questions</a></li>
       </ol>
     </nav>
 
-    <!-- Section: What is the SEO Analyzer -->
-    <h2 id="what-is-seo-analyzer">What is the SEO Analyzer?</h2>
-    <p>
-      The <strong>SEO Analyzer</strong> is a site-wide audit tool built into RankFrame. It scans every published page of your Framer site and returns a single score plus a categorized list of issues.
-    </p>
-    <p>
-      It is different from the per-page audit inside the <strong>Pages</strong> section. The per-page audit focuses on one URL at a time. The <strong>SEO Analyzer</strong> gives you the full picture across your entire site so you can prioritize the fixes that matter most.
-    </p>
+    <!-- Section 1: Opening the analyzer -->
+    <h2 id="open-analyzer">Opening the SEO Analyzer</h2>
+
+    <p>The <strong>SEO Analyzer</strong> is RankFrame's site-wide audit tool. It lives in the left sidebar of the plugin, identified by a bar chart icon. The subtitle under the section name reads "Analyze your website SEO."</p>
+
+    <p>This section is separate from the per-page audit inside the <strong>Pages</strong> section. The <strong>SEO Analyzer</strong> reviews your entire site at once and produces a single combined score.</p>
+
+    <ul>
+      <li>Open RankFrame inside Framer.</li>
+      <li>Click the bar chart icon in the left sidebar.</li>
+      <li>The <strong>SEO Analyzer</strong> loads with your most recent audit results.</li>
+    </ul>
 
     <div class="note">
       <div class="note-label">Note</div>
-      <p>The <strong>SEO Analyzer</strong> scans your live, published site. Make sure your latest Framer publish is live before running or refreshing an audit.</p>
+      <p>If you have not run an audit yet, the score panel will prompt you to click <strong>Refresh Analysis</strong> to generate your first results.</p>
     </div>
 
-    <!-- Section: Opening the Analyzer -->
-    <h2 id="opening-the-analyzer">Opening the Analyzer</h2>
-    <p>
-      Open RankFrame inside Framer. Look for the bar chart icon in the left sidebar. Click it to open the <strong>SEO Analyzer</strong>. The subtitle beneath the section name reads "Analyze your website SEO."
-    </p>
-
-    <!-- Section: Header Controls -->
+    <!-- Section 2: Header controls -->
     <h2 id="header-controls">Header Controls</h2>
-    <p>Three controls appear at the top of the <strong>SEO Analyzer</strong>:</p>
-    <ul>
-      <li><strong>Live SEO indicator</strong> - A green dot that confirms the analyzer is connected and reflecting live site data.</li>
-      <li><strong>Refresh Analysis button</strong> - Re-runs the audit against your published site and updates all scores and issue lists.</li>
-      <li><strong>Download Audit button</strong> - Shown in purple. Exports your full audit report as a PDF you can save or share.</li>
+
+    <p>Three controls appear at the top of the <strong>SEO Analyzer</strong>.</p>
+
+    <ul class="step-list">
+      <li>
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <div class="step-title">Live SEO Indicator</div>
+          <div class="step-desc">A green dot that shows the analyzer is connected and reflecting your live published site. If the dot is not green, check that your site is published and your connection is active.</div>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <div class="step-title">Refresh Analysis Button</div>
+          <div class="step-desc">Click <strong>Refresh Analysis</strong> to re-run the audit and pull the latest data from your live site. Run this after publishing any changes.</div>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <div class="step-title">Download Audit Button</div>
+          <div class="step-desc">The purple <strong>Download Audit</strong> button exports a PDF of your full audit report. Use this to share findings with clients or teammates.</div>
+        </div>
+      </li>
     </ul>
+
+    <!-- Section 3: Score panel -->
+    <h2 id="score-panel">Your SEO Score</h2>
+
+    <p>Below the header, the score panel shows your overall site SEO health at a glance.</p>
+
+    <ul>
+      <li>A large circular score display (for example, 82/100) with a purple ring shows your current score.</li>
+      <li>The <strong>Last Checked</strong> date tells you when the audit was last run.</li>
+      <li>Your full site URL appears under the score so you know exactly which domain was analyzed.</li>
+    </ul>
+
+    <p>A higher score means more checks are passing and fewer critical issues exist. Aim to resolve all <strong>Red Zone</strong> items first, then work through <strong>Warnings</strong> to push your score higher.</p>
 
     <div class="tip">
-      <div class="tip-label">Tip</div>
-      <p>Click <strong>Download Audit</strong> before and after a round of fixes to compare PDF snapshots and show progress to clients.</p>
+      <div class="tip-label">Pro Tip</div>
+      <p>Click any issue in the analyzer to see detailed suggestions. Every check item is interactive and opens a deeper explanation panel.</p>
     </div>
 
-    <!-- Section: Score Panel -->
-    <h2 id="score-panel">Your SEO Score</h2>
-    <p>
-      The score panel dominates the top of the audit view. It shows a large circular score (for example, 82/100) surrounded by a purple ring. Below the ring you will see the <strong>Last Checked</strong> date and your full site URL.
-    </p>
-    <p>
-      The score is a composite number that weighs critical failures, warnings, passing checks, and speed. A higher score means your site is in better SEO shape. Aim to clear all <strong>Red Zone</strong> items first, then work through <strong>Warnings</strong>.
-    </p>
-
-    <!-- Section: Score Breakdown -->
+    <!-- Section 4: Score breakdown -->
     <h2 id="score-breakdown">Score Breakdown</h2>
-    <p>Below the circular score you will find four summary counts that explain where your score comes from:</p>
+
+    <p>Under the score ring, four summary counts give you a quick breakdown of how your site performed.</p>
+
     <ul>
-      <li><strong>Red Zone</strong> - Critical failures. These have the most negative impact on rankings.</li>
-      <li><strong>Warnings</strong> - Issues that need attention but are not blocking. Fix these after clearing the Red Zone.</li>
-      <li><strong>Green Zone</strong> - Passing checks. These confirm what your site is already doing right.</li>
-      <li><strong>Speed</strong> - Your site load time in milliseconds. Lower is better.</li>
+      <li><strong>Red Zone</strong> -- critical failures that most directly hurt your rankings and crawlability.</li>
+      <li><strong>Warnings</strong> -- issues that are not blocking but will limit your SEO potential if left unresolved.</li>
+      <li><strong>Green Zone</strong> -- checks your site is passing. More passing checks means a higher score.</li>
+      <li><strong>Speed</strong> -- your site's measured load time in milliseconds, pulled from real performance data.</li>
     </ul>
 
-    <!-- Section: Filter Tabs -->
+    <p>Use this breakdown to prioritize your work. Fix <strong>Red Zone</strong> items before addressing <strong>Warnings</strong>.</p>
+
+    <!-- Section 5: Filter tabs -->
     <h2 id="filter-tabs">Filter Tabs</h2>
-    <p>
-      Five filter tabs sit above the issue list. Use them to focus on one category at a time instead of scrolling through every check at once.
-    </p>
+
+    <p>Five filter tabs let you narrow the audit list to the category you want to focus on. Select any tab to see only those checks.</p>
 
     <div class="tab-grid">
       <div class="tab-card">
         <div class="tab-card-name">All</div>
-        <div class="tab-card-desc">Shows every check from every category in a single combined list. Good for a full overview before you start prioritizing.</div>
+        <div class="tab-card-desc">Shows every check from every category in a single combined list. Use this for a full picture of your site audit.</div>
       </div>
       <div class="tab-card">
         <div class="tab-card-name">Green Zone</div>
-        <div class="tab-card-desc">Filters to checks your site is already passing. Review these to understand what is working so you do not accidentally break it.</div>
+        <div class="tab-card-desc">Filters to checks your site is currently passing. Review these to confirm what is already working correctly.</div>
       </div>
       <div class="tab-card">
         <div class="tab-card-name">Red Zone</div>
-        <div class="tab-card-desc">Shows only critical failures. Start here. These items drag your score down the most and should be fixed first.</div>
+        <div class="tab-card-desc">Shows only critical failures. These have the largest negative impact on your score and rankings. Address these first.</div>
       </div>
       <div class="tab-card">
         <div class="tab-card-name">Warnings</div>
-        <div class="tab-card-desc">Lists issues that are not critical but still hurt your SEO. Address these after clearing all Red Zone failures.</div>
+        <div class="tab-card-desc">Lists issues that are not critical failures but still affect your SEO. Fix these after clearing the Red Zone.</div>
       </div>
       <div class="tab-card">
         <div class="tab-card-name">Speed</div>
-        <div class="tab-card-desc">A dedicated tab with separate Mobile and Desktop performance gauges and your full Core Web Vitals breakdown. Treat this as its own sub-report.</div>
+        <div class="tab-card-desc">A dedicated tab with Mobile and Desktop performance gauges plus Core Web Vitals. Separate from the pass/fail checks above.</div>
       </div>
     </div>
 
-    <div class="tip">
-      <div class="tip-label">Pro Tip</div>
-      <p>Switch to the <strong>Red Zone</strong> tab immediately after an audit. Fix those items, click <strong>Refresh Analysis</strong>, then move to the <strong>Warnings</strong> tab. This order gives you the fastest score improvement.</p>
-    </div>
+    <h3>Speed Tab Details</h3>
 
-    <!-- Section: Clicking into Issues -->
-    <h2 id="clicking-issues">Clicking into Issues</h2>
-    <p>
-      Every check item in the list is clickable. The sidebar tip panel in the <strong>SEO Analyzer</strong> reminds you of this directly:
-    </p>
+    <p>The <strong>Speed</strong> tab is distinct from the other filter tabs. It does not show pass/fail SEO checks. Instead, it displays performance gauges for both <strong>Mobile</strong> and <strong>Desktop</strong>, along with your <strong>Core Web Vitals</strong> scores.</p>
+
+    <ul>
+      <li>Review <strong>Mobile</strong> performance separately from <strong>Desktop</strong>. Mobile scores often differ significantly.</li>
+      <li>Core Web Vitals include metrics like Largest Contentful Paint and Cumulative Layout Shift.</li>
+      <li>Poor speed scores affect how search engines rank your pages, so treat them with the same urgency as <strong>Red Zone</strong> items.</li>
+    </ul>
+
+    <!-- Section 6: Clicking issues -->
+    <h2 id="clickable-items">Clicking Issues for Details</h2>
+
+    <p>Every check item in the audit list is clickable. The sidebar tip panel reminds you of this:</p>
+
     <div class="tip">
       <div class="tip-label">SEO Analyzer Tip</div>
       <p>Pro Tip: Click any issue in the analyzer to see detailed suggestions.</p>
     </div>
-    <p>
-      When you click an issue, RankFrame opens a detailed panel with an explanation of the problem, why it matters for SEO, and specific suggestions for fixing it inside Framer. Use this detail view to understand each check before making changes.
-    </p>
+
+    <p>When you click a check item, a detail panel opens with:</p>
 
     <ul>
-      <li>Click any <strong>Red Zone</strong> item to see exactly what is failing and how to resolve it.</li>
-      <li>Click any <strong>Warning</strong> item for guidance on the recommended improvement.</li>
-      <li>Click any <strong>Green Zone</strong> item to confirm what the check validates.</li>
-      <li>Click any <strong>Speed</strong> metric to see what it measures and how to improve it.</li>
+      <li>A plain-language explanation of what the check looks for.</li>
+      <li>The specific element, page, or tag that is failing or flagged.</li>
+      <li>Concrete suggestions for fixing the issue inside Framer.</li>
     </ul>
 
-    <!-- FAQ Section -->
+    <p>Use this workflow to move through your audit efficiently. Start on the <strong>Red Zone</strong> tab, click each item, apply the fix in Framer, publish your changes, then click <strong>Refresh Analysis</strong> to confirm the item is resolved.</p>
+
+    <div class="note">
+      <div class="note-label">Note</div>
+      <p>Some fixes require changes in your Framer project settings or CMS content rather than the RankFrame plugin itself. The detail panel will indicate where to make each change.</p>
+    </div>
+
+    <!-- FAQ -->
     <div class="faq-section" id="faq">
       <h2>Frequently Asked Questions</h2>
 
       <div class="faq-item">
-        <div class="faq-q">What is the difference between the SEO Analyzer and the per-page audit?</div>
-        <div class="faq-a">The <strong>SEO Analyzer</strong> runs a site-wide audit across every page of your Framer site. The per-page audit, found inside the <strong>Pages</strong> section, focuses on one specific page at a time. Use the <strong>SEO Analyzer</strong> for a full health check and the per-page audit for targeted improvements on individual URLs.</div>
+        <div class="faq-q">What is the difference between the SEO Analyzer and the per-page audit inside Pages?</div>
+        <div class="faq-a">The <strong>SEO Analyzer</strong> runs a site-wide audit across your entire Framer project. The per-page audit inside the <strong>Pages</strong> section focuses on one page at a time. Use the <strong>SEO Analyzer</strong> to get a broad health score, then drill into individual pages for granular fixes.</div>
       </div>
 
       <div class="faq-item">
-        <div class="faq-q">How do I refresh my SEO audit?</div>
-        <div class="faq-a">Click the <strong>Refresh Analysis</strong> button in the top area of the <strong>SEO Analyzer</strong> header. RankFrame will re-crawl your published site and update your score and issue list with the latest data.</div>
+        <div class="faq-q">How is the SEO score calculated?</div>
+        <div class="faq-a">The score is a number out of 100. It weighs checks from the <strong>Red Zone</strong> (critical failures), <strong>Warnings</strong>, and <strong>Green Zone</strong> (passing checks). Critical failures have the largest negative impact. Speed performance contributes through the dedicated <strong>Speed</strong> tab metrics.</div>
       </div>
 
       <div class="faq-item">
-        <div class="faq-q">What does the Red Zone mean in the score breakdown?</div>
-        <div class="faq-a">The <strong>Red Zone</strong> shows critical SEO failures that have the most negative impact on your rankings. These are high-priority items you should fix before addressing <strong>Warnings</strong> or reviewing <strong>Green Zone</strong> passes.</div>
+        <div class="faq-q">What does the Download Audit button export?</div>
+        <div class="faq-a">Clicking <strong>Download Audit</strong> exports a PDF report of your current audit results. The PDF includes your score, all check results across every category, and any flagged issues. You can share it with clients or teammates.</div>
       </div>
 
       <div class="faq-item">
-        <div class="faq-q">How do I export my SEO audit as a PDF?</div>
-        <div class="faq-a">Click the <strong>Download Audit</strong> button (shown in purple) in the <strong>SEO Analyzer</strong> header. RankFrame generates a PDF report you can save locally or share with clients.</div>
+        <div class="faq-q">How do I see detailed suggestions for a specific issue?</div>
+        <div class="faq-a">Click any check item in the audit list. A detail panel opens with a plain-language explanation, the specific element or page affected, and actionable suggestions for fixing the issue.</div>
       </div>
 
       <div class="faq-item">
-        <div class="faq-q">What does the Speed tab show?</div>
-        <div class="faq-a">The <strong>Speed</strong> tab displays separate Mobile and Desktop performance gauges alongside your Core Web Vitals metrics. These scores reflect how quickly your site loads for visitors on each device type and help you identify which performance improvements will have the biggest impact.</div>
+        <div class="faq-q">How often should I refresh the analysis?</div>
+        <div class="faq-a">Refresh the analysis after publishing changes to your Framer site. The <strong>Live SEO</strong> indicator shows the current connection status, but RankFrame does not automatically re-run the audit on every publish. Use the <strong>Refresh Analysis</strong> button to pull the latest data.</div>
       </div>
     </div>
 
-    <!-- Related Links -->
+    <!-- Related Articles -->
     <div class="related-section">
       <h2>Related Articles</h2>
       <ul class="related-links">
-        <li><a href="https://rankframe.com/help/seo-audit-red-zone">Understanding Red Zone Failures</a></li>
-        <li><a href="https://rankframe.com/help/seo-audit-warnings">Fixing SEO Warnings</a></li>
-        <li><a href="https://rankframe.com/help/seo-audit-speed">Speed Tab and Core Web Vitals</a></li>
-        <li><a href="https://rankframe.com/help/pages-seo-audit">Per-Page SEO Audit in the Pages Section</a></li>
-        <li><a href="https://rankframe.com/help/downloading-audit-pdf">Downloading Your Audit as a PDF</a></li>
+        <li><a href="https://rankframe.com/help/red-zone-issues">Understanding Red Zone Issues</a></li>
+        <li><a href="https://rankframe.com/help/warnings-overview">SEO Warnings Explained</a></li>
+        <li><a href="https://rankframe.com/help/speed-tab">Speed Tab and Core Web Vitals</a></li>
+        <li><a href="https://rankframe.com/help/per-page-audit">Per-Page SEO Audit in the Pages Section</a></li>
+        <li><a href="https://rankframe.com/help/download-audit-pdf">Downloading and Sharing Your Audit PDF</a></li>
       </ul>
     </div>
 
-    <!-- CTA Box -->
+    <!-- CTA -->
     <div class="cta-box">
-      <h3>Ready to fix your SEO issues?</h3>
-      <p>Open the <strong>SEO Analyzer</strong> in RankFrame, click into any Red Zone item, and follow the guided suggestions to improve your score today.</p>
+      <h3>Ready to improve your Framer SEO?</h3>
+      <p>Open the <strong>SEO Analyzer</strong> in RankFrame, click <strong>Refresh Analysis</strong>, and start resolving your Red Zone items today.</p>
       <a href="https://rankframe.com" class="cta-btn">Open RankFrame</a>
     </div>
 
