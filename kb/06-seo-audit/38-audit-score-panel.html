@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Understanding the Audit Score Panel | RankFrame Help</title>
+  <meta name="description" content="Learn how to read RankFrame's SEO Audit Score Panel, including the circular score, color-coded zones, speed metric, and filter tabs that let you drill into specific check categories." />
+  <meta name="keywords" content="RankFrame, Framer SEO, audit score panel, SEO score, red zone, green zone, warnings, speed, filter tabs" />
+  <link rel="canonical" href="https://rankframe.com/help/audit-score-panel" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Understanding the Audit Score Panel",
+    "description": "Learn how to read RankFrame's SEO Audit Score Panel, including the circular score, color-coded zones, speed metric, and filter tabs.",
+    "author": { "@type": "Organization", "name": "RankFrame" },
+    "publisher": { "@type": "Organization", "name": "RankFrame" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://rankframe.com/help/audit-score-panel" }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Help Center", "item": "https://rankframe.com/help" },
+      { "@type": "ListItem", "position": 2, "name": "SEO Audit", "item": "https://rankframe.com/help/seo-audit" },
+      { "@type": "ListItem", "position": 3, "name": "Understanding the Audit Score Panel", "item": "https://rankframe.com/help/audit-score-panel" }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What does the circular score number mean?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The circular score is an overall SEO health score from 0 to 100. It is calculated from the ratio of passing checks, warnings, and critical fails across all audit categories. A score of 90 or above is considered good SEO by RankFrame."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the target score I should aim for?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "RankFrame recommends targeting a score of 90 or higher. The score panel displays the label 'Good SEO. Target: 90+' to remind you of this benchmark."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between Red Zone and Warnings?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Red Zone checks are critical failures that have the highest impact on your search rankings and should be fixed immediately. Warnings are non-critical issues that are worth addressing but will not cause the same level of harm if left unfixed for a short period."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What does the Speed metric measure?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The Speed metric shows your page's server response time in milliseconds. A fast response time is a positive ranking signal. You can click the Speed filter tab to isolate speed-related checks in the list below the panel."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why is my score lower after adding new pages?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "New pages may introduce missing meta tags, missing ALT attributes, or other issues that the audit detects. Run a fresh audit from the score panel and review the Red Zone and Warnings tabs to identify which pages need attention."
+        }
+      }
+    ]
+  }
+  </script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", sans-serif; background: #ffffff; color: #111111; line-height: 1.7; font-size: 16px; }
+    .page { max-width: 740px; margin: 0 auto; padding: 48px 24px 96px; }
+    .breadcrumb { display: flex; align-items: center; gap: 6px; font-size: 13px; color: #888; margin-bottom: 32px; flex-wrap: wrap; }
+    .breadcrumb a { color: #888; text-decoration: none; }
+    .breadcrumb a:hover { color: #7c3aed; }
+    .breadcrumb span { color: #ccc; }
+    .article-category { display: inline-block; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #7c3aed; background: #f3f0ff; padding: 3px 10px; border-radius: 999px; margin-bottom: 12px; }
+    h1 { font-size: 2rem; font-weight: 700; color: #0a0a0a; line-height: 1.25; margin-bottom: 14px; letter-spacing: -0.02em; }
+    .article-description { font-size: 1.05rem; color: #555; line-height: 1.65; margin-bottom: 10px; }
+    .article-meta { display: flex; gap: 16px; font-size: 13px; color: #aaa; margin-bottom: 36px; padding-bottom: 24px; border-bottom: 1px solid #f0f0f0; flex-wrap: wrap; }
+    .toc { background: #fafafa; border: 1px solid #efefef; border-radius: 10px; padding: 18px 22px; margin-bottom: 40px; }
+    .toc-title { font-size: 12px; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: #aaa; margin-bottom: 10px; }
+    .toc ol { list-style: none; padding: 0; }
+    .toc li { margin-bottom: 5px; }
+    .toc a { font-size: 14px; color: #555; text-decoration: none; }
+    .toc a:hover { color: #7c3aed; }
+    h2 { font-size: 1.3rem; font-weight: 600; color: #0a0a0a; margin: 40px 0 14px; padding-bottom: 8px; border-bottom: 1px solid #f0f0f0; letter-spacing: -0.01em; }
+    h3 { font-size: 1.05rem; font-weight: 600; color: #0a0a0a; margin: 24px 0 8px; }
+    p { color: #333; margin-bottom: 16px; }
+    ul, ol { padding-left: 22px; margin-bottom: 16px; }
+    li { color: #333; margin-bottom: 6px; }
+    strong { color: #0a0a0a; font-weight: 600; }
+    a { color: #7c3aed; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .tip { background: #f5f3ff; border-left: 3px solid #7c3aed; border-radius: 0 8px 8px 0; padding: 12px 16px; margin: 20px 0; }
+    .tip-label { font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #7c3aed; margin-bottom: 4px; }
+    .tip p { color: #4c1d95; margin: 0; font-size: 0.93rem; }
+    .note { background: #fff8f0; border-left: 3px solid #f59e0b; border-radius: 0 8px 8px 0; padding: 12px 16px; margin: 20px 0; }
+    .note-label { font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #d97706; margin-bottom: 4px; }
+    .note p { color: #78350f; margin: 0; font-size: 0.93rem; }
+    .step-list { list-style: none; padding: 0; counter-reset: steps; margin-bottom: 16px; }
+    .step-list li { counter-increment: steps; display: flex; gap: 14px; padding: 12px 0; border-bottom: 1px solid #f5f5f5; }
+    .step-list li:last-child { border-bottom: none; }
+    .step-num { width: 26px; height: 26px; background: #7c3aed; color: #fff; font-size: 12px; font-weight: 700; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+    .step-body { flex: 1; }
+    .step-title { font-weight: 600; color: #0a0a0a; font-size: 0.95rem; margin-bottom: 2px; }
+    .step-desc { color: #555; font-size: 0.9rem; }
+    .faq-section { margin-top: 48px; padding-top: 32px; border-top: 1px solid #f0f0f0; }
+    .faq-section h2 { border-bottom: none; padding-bottom: 0; margin-bottom: 24px; }
+    .faq-item { border: 1px solid #efefef; border-radius: 10px; padding: 18px 20px; margin-bottom: 10px; }
+    .faq-q { font-weight: 600; color: #0a0a0a; font-size: 0.95rem; margin-bottom: 8px; }
+    .faq-a { color: #555; font-size: 0.93rem; line-height: 1.65; }
+    .related-section { margin-top: 48px; padding-top: 32px; border-top: 1px solid #f0f0f0; }
+    .related-section h2 { border-bottom: none; padding-bottom: 0; margin-bottom: 16px; font-size: 1rem; color: #666; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; }
+    .related-links { list-style: none; padding: 0; }
+    .related-links li { margin-bottom: 8px; }
+    .related-links a { font-size: 0.95rem; color: #7c3aed; display: flex; align-items: center; gap: 6px; }
+    .related-links a::before { content: "→"; font-size: 12px; }
+    .cta-box { background: linear-gradient(135deg, #f5f3ff, #faf0ff); border: 1px solid #e8e0ff; border-radius: 12px; padding: 24px 28px; margin-top: 40px; text-align: center; }
+    .cta-box h3 { font-size: 1.1rem; color: #0a0a0a; margin-bottom: 8px; }
+    .cta-box p { color: #666; font-size: 0.9rem; margin-bottom: 16px; }
+    .cta-btn { display: inline-block; background: #7c3aed; color: #fff; font-weight: 600; font-size: 0.9rem; padding: 10px 22px; border-radius: 8px; text-decoration: none; }
+    .cta-btn:hover { background: #6d28d9; text-decoration: none; }
+    .seo-panel { margin-top: 64px; border-top: 2px dashed #e8e0ff; padding-top: 36px; }
+    .seo-panel-header { margin-bottom: 20px; }
+    .seo-panel-title { font-size: 11px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: #7c3aed; }
+    .seo-panel-sub { font-size: 12px; color: #aaa; margin-top: 3px; }
+    .seo-fields { display: grid; gap: 10px; margin-bottom: 28px; }
+    .seo-field { background: #fafafa; border: 1px solid #efefef; border-radius: 8px; padding: 14px 16px; position: relative; }
+    .seo-field-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+    .seo-field-label { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #bbb; }
+    .seo-copy-btn { font-size: 10px; font-weight: 600; color: #7c3aed; background: #f3f0ff; border: none; border-radius: 4px; padding: 3px 9px; cursor: pointer; transition: background 0.15s; }
+    .seo-copy-btn:hover { background: #e8e0ff; }
+    .seo-copy-btn.ok { color: #059669; background: #ecfdf5; }
+    .seo-field-value { font-size: 0.88rem; color: #333; line-height: 1.55; word-break: break-word; user-select: all; }
+    .seo-schemas { display: grid; gap: 14px; }
+    .seo-schema { border: 1px solid #efefef; border-radius: 8px; overflow: hidden; }
+    .seo-schema-header { display: flex; justify-content: space-between; align-items: center; padding: 10px 16px; background: #fafafa; border-bottom: 1px solid #efefef; }
+    .seo-schema-type { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #bbb; }
+    .seo-schema-code { background: #0d0d0d; color: #d4d4d4; font-family: "SF Mono","Fira Code",Consolas,monospace; font-size: 0.75rem; line-height: 1.65; padding: 16px 18px; margin: 0; overflow-x: auto; white-space: pre; user-select: all; }
+    .field-block { margin: 36px 0 28px; }
+    .field-block-header { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+    .field-num { display: inline-flex; align-items: center; justify-content: center; width: 38px; height: 38px; background: linear-gradient(135deg, #7c3aed, #a78bfa); color: #fff; font-weight: 700; font-size: 14px; border-radius: 8px; flex-shrink: 0; box-shadow: 0 2px 6px rgba(124,58,237,0.25); }
+    .field-block-title { font-size: 1.18rem; font-weight: 700; color: #0a0a0a; letter-spacing: -0.01em; }
+    .field-block-desc { color: #444; margin-bottom: 14px; font-size: 0.97rem; line-height: 1.7; }
+    .field-block-desc code { background: #f3f0ff; color: #6d28d9; padding: 1px 6px; border-radius: 4px; font-size: 0.85em; font-family: "SF Mono","Fira Code",Consolas,monospace; }
+    .screenshot-slot { background: #fafafa; border: 1px dashed #e0d8f0; border-radius: 10px; padding: 36px 20px; text-align: center; color: #b8b2c8; font-size: 0.85rem; margin-top: 6px; margin-bottom: 8px; }
+    .screenshot-slot::before { content: "Screenshot"; display: block; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #c8c0dc; }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Breadcrumb -->
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="https://rankframe.com/help">Help Center</a>
+    <span>›</span>
+    <a href="https://rankframe.com/help/seo-audit">SEO Audit</a>
+    <span>›</span>
+    <span>Understanding the Audit Score Panel</span>
+  </nav>
+
+  <!-- Category pill -->
+  <div class="article-category">SEO Audit</div>
+
+  <!-- Title -->
+  <h1>Understanding the Audit Score Panel</h1>
+  <p class="article-description">The Audit Score Panel gives you an at-a-glance health summary for your Framer site. This article explains every element in the panel and shows you how to use the filter tabs to focus on specific check categories.</p>
+
+  <div class="article-meta">
+    <span>RankFrame Help</span>
+    <span>Updated May 2, 2026</span>
+    <span>5 min read</span>
+  </div>
+
+  <!-- TOC -->
+  <nav class="toc" aria-label="Table of contents">
+    <div class="toc-title">In this article</div>
+    <ol>
+      <li><a href="#overview">Panel overview</a></li>
+      <li><a href="#circular-score">1. Circular Score</a></li>
+      <li><a href="#red-zone">2. Red Zone count</a></li>
+      <li><a href="#warnings">3. Warnings count</a></li>
+      <li><a href="#green-zone">4. Green Zone count</a></li>
+      <li><a href="#speed">5. Speed</a></li>
+      <li><a href="#filter-tabs">6. Filter tabs</a></li>
+      <li><a href="#brand-pill">Brand pill and target label</a></li>
+      <li><a href="#faq">Frequently asked questions</a></li>
+    </ol>
+  </nav>
+
+  <!-- Overview -->
+  <h2 id="overview">Panel overview</h2>
+  <p>When you run an SEO audit in RankFrame, the top of the results view displays the <strong>Score Panel</strong>. It contains the date the audit last ran, the full URL of your site, the overall score, a breakdown of check results by zone, and a set of filter tabs that control which checks appear in the list below.</p>
+  <p>On the right side of the panel you will see a <strong>brand pill</strong> reading "RankFrame, Best Framer SEO Plugin" and a <strong>target label</strong> reading "Good SEO. Target: 90+" to remind you of the benchmark to aim for.</p>
+
+  <div class="screenshot-slot">Score Panel overview screenshot</div>
+
+  <div class="tip">
+    <div class="tip-label">Tip</div>
+    <p>Run your audit regularly after publishing new pages or updating site content. The <strong>Last Checked</strong> date in the panel tells you exactly when the most recent scan was performed.</p>
+  </div>
+
+  <!-- Field 1 -->
+  <div class="field-block" id="circular-score">
+    <div class="field-block-header">
+      <span class="field-num">1</span>
+      <span class="field-block-title">Circular Score</span>
+    </div>
+    <p class="field-block-desc">The large circle in the center of the panel displays your overall SEO score as a number from <code>0</code> to <code>100</code>, surrounded by a purple ring. The ring fills proportionally to your score so you can gauge health at a glance.</p>
+    <p>The score is calculated from the combined weight of all passing checks, warnings, and critical fails across Basic SEO, Advanced SEO, Performance, and Security categories. A higher ratio of passing checks produces a higher score.</p>
+    <ul>
+      <li>Scores of <strong>90 and above</strong> indicate good SEO health.</li>
+      <li>Scores between <strong>70 and 89</strong> suggest notable issues that should be addressed soon.</li>
+      <li>Scores below <strong>70</strong> mean significant problems that need immediate attention.</li>
+    </ul>
+    <div class="screenshot-slot">Circular score with purple ring screenshot</div>
+  </div>
+
+  <!-- Field 2 -->
+  <div class="field-block" id="red-zone">
+    <div class="field-block-header">
+      <span class="field-num">2</span>
+      <span class="field-block-title">Red Zone count</span>
+    </div>
+    <p class="field-block-desc">The <strong>Red Zone</strong> count shows how many checks have returned a critical failure. A red dot appears next to the count to distinguish it from the other zones.</p>
+    <p>Critical fails have the highest negative impact on your search rankings. Prioritize fixing every Red Zone issue before addressing warnings or optimizing other areas.</p>
+    <div class="note">
+      <div class="note-label">Important</div>
+      <p>Even a single Red Zone failure, such as a missing canonical tag or a broken sitemap, can significantly reduce your site's crawlability and indexing. Address these first.</p>
+    </div>
+    <div class="screenshot-slot">Red Zone count indicator screenshot</div>
+  </div>
+
+  <!-- Field 3 -->
+  <div class="field-block" id="warnings">
+    <div class="field-block-header">
+      <span class="field-num">3</span>
+      <span class="field-block-title">Warnings count</span>
+    </div>
+    <p class="field-block-desc">The <strong>Warnings</strong> count shows how many checks have returned a non-critical issue. Warnings are not as urgent as Red Zone failures, but they still affect your overall score and should be resolved.</p>
+    <p>Common warning scenarios include suboptimal image sizes, missing keywords in descriptions, or pages that lack OpenGraph meta tags. Resolving warnings after all critical fails are cleared is the recommended approach.</p>
+    <div class="screenshot-slot">Warnings count indicator screenshot</div>
+  </div>
+
+  <!-- Field 4 -->
+  <div class="field-block" id="green-zone">
+    <div class="field-block-header">
+      <span class="field-num">4</span>
+      <span class="field-block-title">Green Zone count</span>
+    </div>
+    <p class="field-block-desc">The <strong>Green Zone</strong> count shows how many checks are passing. A green dot marks this figure. You do not need to take action on Green Zone items.</p>
+    <p>Use this number to track progress over time. As you fix Red Zone issues and resolve warnings, your Green Zone count should rise and your overall score should increase toward the 90+ target.</p>
+    <div class="screenshot-slot">Green Zone count indicator screenshot</div>
+  </div>
+
+  <!-- Field 5 -->
+  <div class="field-block" id="speed">
+    <div class="field-block-header">
+      <span class="field-num">5</span>
+      <span class="field-block-title">Speed</span>
+    </div>
+    <p class="field-block-desc">The <strong>Speed</strong> metric displays your server response time in milliseconds. A fast response time is a direct ranking signal for search engines and affects user experience.</p>
+    <p>Lower response times are better. If the value shown is high, switch to the <strong>Speed</strong> filter tab (described below) to review the individual performance checks and identify what is causing the slowdown.</p>
+    <ul>
+      <li>Under <strong>200 ms</strong>: excellent.</li>
+      <li><strong>200 to 500 ms</strong>: acceptable, with room to improve.</li>
+      <li>Above <strong>500 ms</strong>: should be investigated and optimized.</li>
+    </ul>
+    <div class="screenshot-slot">Speed metric screenshot</div>
+  </div>
+
+  <!-- Field 6 -->
+  <div class="field-block" id="filter-tabs">
+    <div class="field-block-header">
+      <span class="field-num">6</span>
+      <span class="field-block-title">Filter tabs</span>
+    </div>
+    <p class="field-block-desc">Below the score breakdown, five <strong>filter tabs</strong> let you narrow the check list to a specific zone: <strong>All</strong>, <strong>Green Zone</strong>, <strong>Red Zone</strong>, <strong>Warnings</strong>, and <strong>Speed</strong>.</p>
+    <p>Clicking a tab instantly filters the check list so that only items matching that category are shown. This makes it easier to work through one type of issue at a time without losing track of where you are.</p>
+    <ul>
+      <li><strong>All</strong>: shows every check result regardless of status.</li>
+      <li><strong>Green Zone</strong>: shows only passing checks.</li>
+      <li><strong>Red Zone</strong>: shows only critical failures.</li>
+      <li><strong>Warnings</strong>: shows only non-critical issues.</li>
+      <li><strong>Speed</strong>: shows only performance-related checks.</li>
+    </ul>
+    <div class="tip">
+      <div class="tip-label">Tip</div>
+      <p>Start with the <strong>Red Zone</strong> tab to work through your most urgent issues first, then move to <strong>Warnings</strong>, and finish by reviewing the <strong>Speed</strong> tab for performance improvements.</p>
+    </div>
+    <div class="screenshot-slot">Filter tabs screenshot</div>
+  </div>
+
+  <!-- Brand pill section -->
+  <h2 id="brand-pill">Brand pill and target label</h2>
+  <p>On the right side of the score panel you will find two visual elements:</p>
+  <ul>
+    <li>The <strong>brand pill</strong> displays "RankFrame, Best Framer SEO Plugin" and confirms which plugin produced the audit.</li>
+    <li>The <strong>target label</strong> reads "Good SEO. Target: 90+" and reminds you of the recommended score to reach for your site to be considered well-optimized.</li>
+  </ul>
+  <p>These elements are for reference only and do not require any interaction.</p>
+
+  <!-- CTA -->
+  <div class="cta-box">
+    <h3>Ready to improve your score?</h3>
+    <p>Install RankFrame in your Framer project and run your first full SEO audit in minutes.</p>
+    <a href="https://rankframe.com" class="cta-btn">Get RankFrame</a>
+  </div>
+
+  <!-- FAQ -->
+  <section class="faq-section" id="faq">
+    <h2>Frequently asked questions</h2>
+
+    <div class="faq-item">
+      <div class="faq-q">What does the circular score number mean?</div>
+      <div class="faq-a">The circular score is an overall SEO health score from 0 to 100. It is calculated from the ratio of passing checks, warnings, and critical fails across all audit categories. A score of 90 or above is considered good SEO by RankFrame.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">What is the target score I should aim for?</div>
+      <div class="faq-a">RankFrame recommends targeting a score of 90 or higher. The score panel displays the label "Good SEO. Target: 90+" to remind you of this benchmark.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">What is the difference between Red Zone and Warnings?</div>
+      <div class="faq-a">Red Zone checks are critical failures that have the highest impact on your search rankings and should be fixed immediately. Warnings are non-critical issues that are worth addressing but will not cause the same level of harm if left unfixed for a short period.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">What does the Speed metric measure?</div>
+      <div class="faq-a">The Speed metric shows your page's server response time in milliseconds. A fast response time is a positive ranking signal. You can click the <strong>Speed</strong> filter tab to isolate speed-related checks in the list below the panel.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Why is my score lower after adding new pages?</div>
+      <div class="faq-a">New pages may introduce missing meta tags, missing ALT attributes, or other issues that the audit detects. Run a fresh audit from the score panel and review the <strong>Red Zone</strong> and <strong>Warnings</strong> tabs to identify which pages need attention.</div>
+    </div>
+  </section>
+
+  <!-- Related articles -->
+  <section class="related-section">
+    <h2>Related articles</h2>
+    <ul class="related-links">
+      <li><a href="https://rankframe.com/help/audit-checks">Understanding Audit Checks and Zones</a></li>
+      <li><a href="https://rankframe.com/help/seo-audit">SEO Audit overview</a></li>
+      <li><a href="https://rankframe.com/help">Help Center home</a></li>
+    </ul>
+  </section>
+
+  <!-- SEO Panel -->
+  <section class="seo-panel" aria-label="Page SEO data">
+    <div class="seo-panel-header">
+      <div class="seo-panel-title">Page SEO Data</div>
+      <div class="seo-panel-sub">Live meta tag values read from this page</div>
+    </div>
+    <div class="seo-fields" id="seo-panel-fields"></div>
+    <div class="seo-schemas" id="seo-panel-schemas"></div>
+  </section>
+
+</div>
+
+<script>
+(function() {
+  var fields = [
+    { label: 'Title', value: document.querySelector('title') ? document.querySelector('title').textContent : '' },
+    { label: 'Description', value: (document.querySelector('meta[name="description"]') || {}).content || '' },
+    { label: 'Keywords', value: (document.querySelector('meta[name="keywords"]') || {}).content || '' },
+    { label: 'Canonical', value: (document.querySelector('link[rel="canonical"]') || {}).href || '' }
+  ];
+  var fieldsHtml = fields.map(function(f) {
+    return '<div class="seo-field"><div class="seo-field-row"><span class="seo-field-label">' + f.label + '</span><button class="seo-copy-btn" onclick="copyVal(this,\'' + f.label + '\')">Copy</button></div><div class="seo-field-value">' + f.value + '</div></div>';
+  }).join('');
+  var schemas = Array.from(document.querySelectorAll('script[type="application/ld+json"]')).map(function(s) {
+    try { var obj = JSON.parse(s.textContent); var t = obj['@type'] || 'Schema'; return '<div class="seo-schema"><div class="seo-schema-header"><span class="seo-schema-type">' + t + ' / JSON-LD</span><button class="seo-copy-btn" onclick="copySchema(this,\'' + t + '\')">Copy</button></div><pre class="seo-schema-code">' + JSON.stringify(obj, null, 2) + '</pre></div>'; } catch(e) { return ''; }
+  }).join('');
+  document.getElementById('seo-panel-fields').innerHTML = fieldsHtml;
+  document.getElementById('seo-panel-schemas').innerHTML = schemas;
+})();
+function copyVal(btn, label) {
+  var val = btn.closest('.seo-field').querySelector('.seo-field-value').textContent;
+  navigator.clipboard.writeText(val).then(function() { btn.textContent = 'Copied'; btn.classList.add('ok'); setTimeout(function() { btn.textContent = 'Copy'; btn.classList.remove('ok'); }, 1500); });
+}
+function copySchema(btn, type) {
+  var code = btn.closest('.seo-schema').querySelector('.seo-schema-code').textContent;
+  navigator.clipboard.writeText(code).then(function() { btn.textContent = 'Copied'; btn.classList.add('ok'); setTimeout(function() { btn.textContent = 'Copy'; btn.classList.remove('ok'); }, 1500); });
+}
+</script>
+
+</body>
+</html>
