@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How to Connect Your Website in RankFrame | RankFrame Help</title>
+  <meta name="description" content="Connect your Framer site to RankFrame and start your SEO setup. Learn site limits per plan, how to manage connected sites, and what happens when you connect." />
+  <meta name="keywords" content="connect framer site rankframe, rankframe website setup, framer seo setup guide, connect site rankframe, rankframe framer connect" />
+  <link rel="canonical" href="https://rankframe.com/help/connect-your-website" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How to Connect Your Website in RankFrame",
+    "description": "Connect your Framer site to RankFrame and start your full SEO setup.",
+    "step": [
+      { "@type": "HowToStep", "name": "Open RankFrame in Framer", "text": "Open the Plugins panel in Framer and launch RankFrame." },
+      { "@type": "HowToStep", "name": "Sign in to your account", "text": "Sign in to your RankFrame account or create one if this is your first time." },
+      { "@type": "HowToStep", "name": "Click Connect Site", "text": "RankFrame shows a Connect Site prompt. Click it to link your Framer project's live URL to your RankFrame account." },
+      { "@type": "HowToStep", "name": "Wait for the site scan", "text": "RankFrame scans your sitemap and loads all your pages. This takes a few seconds on most sites." },
+      { "@type": "HowToStep", "name": "Complete Personalization", "text": "Fill in the Personalization fields so RankFrame understands your brand before running any AI features." }
+    ],
+    "author": { "@type": "Organization", "name": "7 Seers", "url": "https://rankframe.com" },
+    "publisher": { "@type": "Organization", "name": "RankFrame", "url": "https://rankframe.com" }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How many sites can I connect to RankFrame?",
+        "acceptedAnswer": { "@type": "Answer", "text": "The Personal plan includes one connected Framer site. The Agency plan includes unlimited connected sites. Connecting additional sites on the Personal plan requires upgrading to Agency." }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I switch my connected site on the Personal plan?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Disconnecting a site on the Personal plan requires emailing hello@7seersmedia.com. This is because the Personal plan is a single-site license that binds on connection. Once disconnected, you can connect a different site." }
+      },
+      {
+        "@type": "Question",
+        "name": "Does connecting my site affect my live Framer site?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Connecting your site only reads your site structure. It does not modify your live site in any way. Changes to your live site only happen when you actively push them, such as injecting schema markup or submitting pages to Google." }
+      },
+      {
+        "@type": "Question",
+        "name": "What does RankFrame scan when I connect my site?",
+        "acceptedAnswer": { "@type": "Answer", "text": "RankFrame reads your sitemap to build a list of all your pages. It also scans image inventories across Canvas and CMS collections. This data powers the Pages section, Image SEO, and the SEO Analyzer." }
+      },
+      {
+        "@type": "Question",
+        "name": "My site is still in development and not published. Can I still connect it?",
+        "acceptedAnswer": { "@type": "Answer", "text": "RankFrame needs access to a published or staging URL to scan your site structure. Publish your Framer project first, then connect it. You can use a staging subdomain if you are not ready to go live yet." }
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", sans-serif; background: #ffffff; color: #111111; line-height: 1.7; font-size: 16px; }
+    .page { max-width: 740px; margin: 0 auto; padding: 48px 24px 96px; }
+    .breadcrumb { display: flex; align-items: center; gap: 6px; font-size: 13px; color: #888; margin-bottom: 32px; flex-wrap: wrap; }
+    .breadcrumb a { color: #888; text-decoration: none; } .breadcrumb a:hover { color: #7c3aed; } .breadcrumb span { color: #ccc; }
+    .article-category { display: inline-block; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #7c3aed; background: #f3f0ff; padding: 3px 10px; border-radius: 999px; margin-bottom: 12px; }
+    h1 { font-size: 2rem; font-weight: 700; color: #0a0a0a; line-height: 1.25; margin-bottom: 14px; letter-spacing: -0.02em; }
+    .article-description { font-size: 1.05rem; color: #555; line-height: 1.65; margin-bottom: 10px; }
+    .article-meta { display: flex; gap: 16px; font-size: 13px; color: #aaa; margin-bottom: 36px; padding-bottom: 24px; border-bottom: 1px solid #f0f0f0; flex-wrap: wrap; }
+    .toc { background: #fafafa; border: 1px solid #efefef; border-radius: 10px; padding: 18px 22px; margin-bottom: 40px; }
+    .toc-title { font-size: 12px; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: #aaa; margin-bottom: 10px; }
+    .toc ol { list-style: none; padding: 0; } .toc li { margin-bottom: 5px; } .toc a { font-size: 14px; color: #555; text-decoration: none; } .toc a:hover { color: #7c3aed; }
+    h2 { font-size: 1.3rem; font-weight: 600; color: #0a0a0a; margin: 40px 0 14px; padding-bottom: 8px; border-bottom: 1px solid #f0f0f0; letter-spacing: -0.01em; }
+    h3 { font-size: 1.05rem; font-weight: 600; color: #0a0a0a; margin: 24px 0 8px; }
+    p { color: #333; margin-bottom: 16px; } ul, ol { padding-left: 22px; margin-bottom: 16px; } li { color: #333; margin-bottom: 6px; }
+    strong { color: #0a0a0a; font-weight: 600; } a { color: #7c3aed; text-decoration: none; } a:hover { text-decoration: underline; }
+    .tip { background: #f5f3ff; border-left: 3px solid #7c3aed; border-radius: 0 8px 8px 0; padding: 12px 16px; margin: 20px 0; }
+    .tip-label { font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #7c3aed; margin-bottom: 4px; }
+    .tip p { color: #4c1d95; margin: 0; font-size: 0.93rem; }
+    .note { background: #fff8f0; border-left: 3px solid #f59e0b; border-radius: 0 8px 8px 0; padding: 12px 16px; margin: 20px 0; }
+    .note-label { font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #d97706; margin-bottom: 4px; }
+    .note p { color: #78350f; margin: 0; font-size: 0.93rem; }
+    .warning { background: #fff1f2; border-left: 3px solid #f43f5e; border-radius: 0 8px 8px 0; padding: 12px 16px; margin: 20px 0; }
+    .warning-label { font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #e11d48; margin-bottom: 4px; }
+    .warning p { color: #881337; margin: 0; font-size: 0.93rem; }
+    .steps { list-style: none; padding: 0; margin: 16px 0 24px; }
+    .steps li { display: flex; gap: 16px; padding: 16px 0; border-bottom: 1px solid #f5f5f5; }
+    .steps li:last-child { border-bottom: none; }
+    .step-num { width: 28px; height: 28px; background: #7c3aed; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; flex-shrink: 0; margin-top: 2px; }
+    .step-content { flex: 1; }
+    .step-title { font-weight: 600; color: #0a0a0a; margin-bottom: 4px; font-size: 0.95rem; }
+    .step-desc { color: #555; font-size: 0.92rem; line-height: 1.6; }
+    .plan-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; margin: 16px 0 24px; }
+    .plan-table th { text-align: left; padding: 10px 14px; background: #fafafa; border: 1px solid #efefef; color: #555; font-weight: 600; }
+    .plan-table td { padding: 10px 14px; border: 1px solid #f5f5f5; color: #333; }
+    .plan-table tr:nth-child(even) td { background: #fafafa; }
+    .faq-section { margin-top: 48px; padding-top: 32px; border-top: 1px solid #f0f0f0; }
+    .faq-section h2 { border-bottom: none; padding-bottom: 0; margin-bottom: 24px; }
+    .faq-item { border: 1px solid #efefef; border-radius: 10px; padding: 18px 20px; margin-bottom: 10px; }
+    .faq-q { font-weight: 600; color: #0a0a0a; font-size: 0.95rem; margin-bottom: 8px; }
+    .faq-a { color: #555; font-size: 0.93rem; line-height: 1.65; }
+    .related-section { margin-top: 48px; padding-top: 32px; border-top: 1px solid #f0f0f0; }
+    .related-section h2 { border-bottom: none; padding-bottom: 0; margin-bottom: 16px; font-size: 1rem; color: #666; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; }
+    .related-links { list-style: none; padding: 0; } .related-links li { margin-bottom: 8px; }
+    .related-links a { font-size: 0.95rem; color: #7c3aed; display: flex; align-items: center; gap: 6px; }
+    .related-links a::before { content: "→"; font-size: 12px; }
+    .cta-box { background: linear-gradient(135deg, #f5f3ff, #faf0ff); border: 1px solid #e8e0ff; border-radius: 12px; padding: 24px 28px; margin-top: 40px; text-align: center; }
+    .cta-box h3 { font-size: 1.1rem; color: #0a0a0a; margin-bottom: 8px; }
+    .cta-box p { color: #666; font-size: 0.9rem; margin-bottom: 16px; }
+    .cta-btn { display: inline-block; background: #7c3aed; color: #fff; font-weight: 600; font-size: 0.9rem; padding: 10px 22px; border-radius: 8px; text-decoration: none; }
+    .cta-btn:hover { background: #6d28d9; text-decoration: none; }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <nav class="breadcrumb">
+    <a href="https://rankframe.com/help">Help Center</a>
+    <span>/</span>
+    <a href="https://rankframe.com/help/getting-started">Getting Started</a>
+    <span>/</span>
+    <span>How to Connect Your Website</span>
+  </nav>
+
+  <div class="article-category">Getting Started</div>
+  <h1>How to Connect Your Website in RankFrame</h1>
+  <p class="article-description">Connecting your Framer site to RankFrame is the first step in your SEO setup. This article explains how it works, what RankFrame scans, and the site limits for each plan.</p>
+  <div class="article-meta">
+    <span>3 min read</span>
+    <span>Last updated May 2, 2026</span>
+  </div>
+
+  <nav class="toc">
+    <div class="toc-title">On this page</div>
+    <ol>
+      <li><a href="#how-connecting-works">How connecting works</a></li>
+      <li><a href="#steps">Steps to connect your site</a></li>
+      <li><a href="#what-gets-scanned">What RankFrame scans</a></li>
+      <li><a href="#site-limits">Site limits per plan</a></li>
+      <li><a href="#disconnect">How to disconnect a site</a></li>
+      <li><a href="#faq">Frequently asked questions</a></li>
+    </ol>
+  </nav>
+
+  <section id="how-connecting-works">
+    <h2>How connecting works</h2>
+    <p>When you open RankFrame in a Framer project for the first time, it asks you to connect your site. Connecting links your Framer project's published URL to your RankFrame account.</p>
+    <p>This is what allows RankFrame to read your page structure, scan your images, run audits, and push pages to Google on your behalf. Without a connected site, RankFrame cannot access any data about your pages.</p>
+    <p>Connecting your site does not modify your live Framer site. It is a read-only scan that builds a map of your site inside RankFrame.</p>
+  </section>
+
+  <section id="steps">
+    <h2>Steps to connect your site</h2>
+
+    <ol class="steps">
+      <li>
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <div class="step-title">Open RankFrame in your Framer project</div>
+          <div class="step-desc">Click <strong>Plugins</strong> in the Framer toolbar and select RankFrame. If you have not installed it yet, see <a href="https://rankframe.com/help/install-rankframe">How to Install RankFrame in Framer</a>.</div>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <div class="step-title">Sign in or create your account</div>
+          <div class="step-desc">Sign in with your email and password, or use <strong>Continue with Google</strong>. If this is your first time, your account is created automatically.</div>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <div class="step-title">Click Connect Site</div>
+          <div class="step-desc">RankFrame shows a <strong>Connect Site</strong> prompt with your Framer project's URL pre-filled. Confirm the URL is correct and click <strong>Connect</strong>.</div>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <div class="step-title">Wait for the scan to complete</div>
+          <div class="step-desc">RankFrame scans your sitemap and image inventory. This takes a few seconds on most sites. Larger sites with hundreds of pages may take up to 30 seconds.</div>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">5</div>
+        <div class="step-content">
+          <div class="step-title">Complete Personalization</div>
+          <div class="step-desc">After connecting, RankFrame asks for your brand details. Fill in your <strong>Brand Name</strong>, <strong>Brand About</strong>, goals, industry, audience, and any competitor URLs. Click <strong>Save Settings</strong>. See <a href="https://rankframe.com/help/managing-your-account">Managing Your Account</a> for a full breakdown of each field.</div>
+        </div>
+      </li>
+    </ol>
+
+    <div class="tip">
+      <div class="tip-label">Tip</div>
+      <p>Your site must be published before RankFrame can connect. If you see a connection error, check that your Framer site is published and accessible at a public URL.</p>
+    </div>
+  </section>
+
+  <section id="what-gets-scanned">
+    <h2>What RankFrame scans</h2>
+    <p>When you connect your site, RankFrame performs an initial scan that reads the following.</p>
+    <ul>
+      <li><strong>Your sitemap</strong> at /sitemap.xml. This builds the page list you see in the Pages section and the Submit Indexing flow.</li>
+      <li><strong>Canvas images</strong> across all static pages. These appear in Image SEO under the Canvas folder.</li>
+      <li><strong>CMS collection images</strong> for all connected CMS collections. These appear in Image SEO under the CMS folder, organized by collection name.</li>
+      <li><strong>Page meta tags</strong>. RankFrame reads existing titles and descriptions so it can display your current meta alongside AI-generated alternatives.</li>
+    </ul>
+    <p>RankFrame does not read unpublished drafts, private pages, or pages excluded from your sitemap via robots.txt.</p>
+  </section>
+
+  <section id="site-limits">
+    <h2>Site limits per plan</h2>
+    <table class="plan-table">
+      <thead>
+        <tr>
+          <th>Plan</th>
+          <th>Connected sites</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Personal</strong></td>
+          <td>1 Framer site</td>
+          <td>$15/mo or $108/yr</td>
+        </tr>
+        <tr>
+          <td><strong>Agency</strong></td>
+          <td>Unlimited Framer sites</td>
+          <td>$40/mo or $288/yr</td>
+        </tr>
+        <tr>
+          <td>Free Trial</td>
+          <td>1 Framer site</td>
+          <td>Free for 7 days</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>If you are on the Personal plan and want to manage multiple client sites, upgrade to the Agency plan from the <strong>See Billing</strong> button in the plugin sidebar.</p>
+  </section>
+
+  <section id="disconnect">
+    <h2>How to disconnect a site</h2>
+    <p>The disconnect process depends on which plan you are on.</p>
+
+    <h3>Agency plan</h3>
+    <p>You can connect and disconnect unlimited sites at any time from inside the plugin. Go to your account settings and manage connected sites from the site selector.</p>
+
+    <h3>Personal plan</h3>
+    <p>Disconnecting a site on the Personal plan requires emailing <a href="mailto:hello@7seersmedia.com">hello@7seersmedia.com</a>. The Personal plan binds to the connected site on activation, and the support team handles disconnections manually.</p>
+
+    <div class="warning">
+      <div class="warning-label">Important</div>
+      <p>Disconnecting a site removes all RankFrame data associated with it, including audit history, keyword tracking data, and 404 logs. This action cannot be undone.</p>
+    </div>
+  </section>
+
+  <section id="faq" class="faq-section">
+    <h2>Frequently asked questions</h2>
+
+    <div class="faq-item">
+      <div class="faq-q">How many sites can I connect to RankFrame?</div>
+      <div class="faq-a">The Personal plan includes one connected Framer site. The Agency plan includes unlimited connected sites. Connecting additional sites on the Personal plan requires upgrading to Agency.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Can I switch my connected site on the Personal plan?</div>
+      <div class="faq-a">Yes, but it requires a manual step. Email hello@7seersmedia.com to request a site disconnect. Once the team processes it, you can connect a different Framer site.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Does connecting my site affect my live Framer site?</div>
+      <div class="faq-a">No. Connecting your site is a read-only scan. It does not modify your live site in any way. Changes to your live site only happen when you actively push them from inside RankFrame.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">My site is still in development and not published. Can I still connect it?</div>
+      <div class="faq-a">RankFrame needs access to a published or staging URL to scan your page structure. Publish your Framer project first, even to a staging subdomain, then connect it to RankFrame.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What does Recrawl Website do?</div>
+      <div class="faq-a">Recrawl Website, available from the plugin sidebar, re-runs the site scan. Use it after adding new pages, uploading new images, or making significant changes to your Framer site so RankFrame reflects the latest version. Trial users get 1 recrawl. Paid users get unlimited recrawls.</div>
+    </div>
+  </section>
+
+  <section class="related-section">
+    <h2>Related articles</h2>
+    <ul class="related-links">
+      <li><a href="https://rankframe.com/help/install-rankframe">How to Install RankFrame in Framer</a></li>
+      <li><a href="https://rankframe.com/help/understanding-the-dashboard">Understanding the RankFrame Dashboard</a></li>
+      <li><a href="https://rankframe.com/help/managing-your-account">Managing Your RankFrame Account</a></li>
+      <li><a href="https://rankframe.com/help/plans-and-pricing">RankFrame Plans and Pricing</a></li>
+    </ul>
+  </section>
+
+  <div class="cta-box">
+    <h3>Ready to connect your site?</h3>
+    <p>Open RankFrame in your Framer project and follow the setup steps. Free trial, no credit card needed.</p>
+    <a class="cta-btn" href="https://rankframe.com">Get started free</a>
+  </div>
+
+</div>
+</body>
+</html>

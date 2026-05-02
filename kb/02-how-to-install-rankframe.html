@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How to Install RankFrame in Framer | RankFrame Help</title>
+  <meta name="description" content="Install RankFrame in your Framer project in under 2 minutes. Step-by-step guide with no coding required. Find RankFrame in the Framer Plugin Marketplace and open it instantly." />
+  <meta name="keywords" content="how to install framer seo plugin, install rankframe, add rankframe to framer, framer plugin install, rankframe setup" />
+  <link rel="canonical" href="https://rankframe.com/help/install-rankframe" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How to Install RankFrame in Framer",
+    "description": "Install RankFrame in your Framer project in under 2 minutes. No coding required.",
+    "step": [
+      { "@type": "HowToStep", "name": "Open Framer", "text": "Open Framer and go to the project you want to add RankFrame to." },
+      { "@type": "HowToStep", "name": "Open the Plugins panel", "text": "Click the Plugins button in the Framer toolbar. It sits in the top bar of the editor." },
+      { "@type": "HowToStep", "name": "Search for RankFrame", "text": "Type RankFrame in the search field. The plugin appears in the results." },
+      { "@type": "HowToStep", "name": "Open the plugin", "text": "Click RankFrame to open it. Framer plugins do not require a separate install step. The plugin opens immediately in your project." },
+      { "@type": "HowToStep", "name": "Complete Personalization", "text": "The first time you open RankFrame, complete the Personalization setup. This tells RankFrame about your brand so every AI feature writes copy that sounds like you." }
+    ],
+    "author": { "@type": "Organization", "name": "7 Seers", "url": "https://rankframe.com" },
+    "publisher": { "@type": "Organization", "name": "RankFrame", "url": "https://rankframe.com" }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where do I find RankFrame in Framer?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Click the Plugins button in the Framer toolbar, then search for RankFrame. You can also find it on the Framer Plugin Marketplace at framer.com/marketplace." }
+      },
+      {
+        "@type": "Question",
+        "name": "Do I need to be a developer to install RankFrame?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No. RankFrame installs and runs entirely through the Framer plugin panel. No code, no terminal, no configuration files." }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I use RankFrame on multiple Framer projects?",
+        "acceptedAnswer": { "@type": "Answer", "text": "The plugin itself is accessible in any Framer project. However, one connected site is included in the Personal plan. The Agency plan covers unlimited connected sites. See Plans and Pricing for details." }
+      },
+      {
+        "@type": "Question",
+        "name": "What happens if I close Framer after installing RankFrame?",
+        "acceptedAnswer": { "@type": "Answer", "text": "RankFrame is always available in your project. The next time you open the project, click Plugins and select RankFrame to reopen it. Your data and settings are saved." }
+      },
+      {
+        "@type": "Question",
+        "name": "Does installing RankFrame affect my published Framer site?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Opening RankFrame in Framer does not change your live site. RankFrame only affects your live site when you actively push changes, such as injecting schema or submitting pages to Google." }
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", sans-serif; background: #ffffff; color: #111111; line-height: 1.7; font-size: 16px; }
+    .page { max-width: 740px; margin: 0 auto; padding: 48px 24px 96px; }
+    .breadcrumb { display: flex; align-items: center; gap: 6px; font-size: 13px; color: #888; margin-bottom: 32px; flex-wrap: wrap; }
+    .breadcrumb a { color: #888; text-decoration: none; }
+    .breadcrumb a:hover { color: #7c3aed; }
+    .breadcrumb span { color: #ccc; }
+    .article-category { display: inline-block; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #7c3aed; background: #f3f0ff; padding: 3px 10px; border-radius: 999px; margin-bottom: 12px; }
+    h1 { font-size: 2rem; font-weight: 700; color: #0a0a0a; line-height: 1.25; margin-bottom: 14px; letter-spacing: -0.02em; }
+    .article-description { font-size: 1.05rem; color: #555; line-height: 1.65; margin-bottom: 10px; }
+    .article-meta { display: flex; gap: 16px; font-size: 13px; color: #aaa; margin-bottom: 36px; padding-bottom: 24px; border-bottom: 1px solid #f0f0f0; flex-wrap: wrap; }
+    .toc { background: #fafafa; border: 1px solid #efefef; border-radius: 10px; padding: 18px 22px; margin-bottom: 40px; }
+    .toc-title { font-size: 12px; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: #aaa; margin-bottom: 10px; }
+    .toc ol { list-style: none; padding: 0; }
+    .toc li { margin-bottom: 5px; }
+    .toc a { font-size: 14px; color: #555; text-decoration: none; }
+    .toc a:hover { color: #7c3aed; }
+    h2 { font-size: 1.3rem; font-weight: 600; color: #0a0a0a; margin: 40px 0 14px; padding-bottom: 8px; border-bottom: 1px solid #f0f0f0; letter-spacing: -0.01em; }
+    h3 { font-size: 1.05rem; font-weight: 600; color: #0a0a0a; margin: 24px 0 8px; }
+    p { color: #333; margin-bottom: 16px; }
+    ul, ol { padding-left: 22px; margin-bottom: 16px; }
+    li { color: #333; margin-bottom: 6px; }
+    strong { color: #0a0a0a; font-weight: 600; }
+    a { color: #7c3aed; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .tip { background: #f5f3ff; border-left: 3px solid #7c3aed; border-radius: 0 8px 8px 0; padding: 12px 16px; margin: 20px 0; }
+    .tip-label { font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #7c3aed; margin-bottom: 4px; }
+    .tip p { color: #4c1d95; margin: 0; font-size: 0.93rem; }
+    .note { background: #fff8f0; border-left: 3px solid #f59e0b; border-radius: 0 8px 8px 0; padding: 12px 16px; margin: 20px 0; }
+    .note-label { font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #d97706; margin-bottom: 4px; }
+    .note p { color: #78350f; margin: 0; font-size: 0.93rem; }
+
+    /* Steps */
+    .steps { list-style: none; padding: 0; margin: 16px 0 24px; counter-reset: step-counter; }
+    .steps li { display: flex; gap: 16px; padding: 16px 0; border-bottom: 1px solid #f5f5f5; counter-increment: step-counter; }
+    .steps li:last-child { border-bottom: none; }
+    .step-num { width: 28px; height: 28px; background: #7c3aed; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; flex-shrink: 0; margin-top: 2px; }
+    .step-content { flex: 1; }
+    .step-title { font-weight: 600; color: #0a0a0a; margin-bottom: 4px; font-size: 0.95rem; }
+    .step-desc { color: #555; font-size: 0.92rem; line-height: 1.6; }
+    .step-desc strong { color: #0a0a0a; }
+
+    /* Screenshot placeholder */
+    .screenshot { background: #fafafa; border: 1px dashed #ddd; border-radius: 8px; padding: 20px; text-align: center; margin: 16px 0; font-size: 0.82rem; color: #aaa; font-style: italic; }
+
+    .faq-section { margin-top: 48px; padding-top: 32px; border-top: 1px solid #f0f0f0; }
+    .faq-section h2 { border-bottom: none; padding-bottom: 0; margin-bottom: 24px; }
+    .faq-item { border: 1px solid #efefef; border-radius: 10px; padding: 18px 20px; margin-bottom: 10px; }
+    .faq-q { font-weight: 600; color: #0a0a0a; font-size: 0.95rem; margin-bottom: 8px; }
+    .faq-a { color: #555; font-size: 0.93rem; line-height: 1.65; }
+    .related-section { margin-top: 48px; padding-top: 32px; border-top: 1px solid #f0f0f0; }
+    .related-section h2 { border-bottom: none; padding-bottom: 0; margin-bottom: 16px; font-size: 1rem; color: #666; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; }
+    .related-links { list-style: none; padding: 0; }
+    .related-links li { margin-bottom: 8px; }
+    .related-links a { font-size: 0.95rem; color: #7c3aed; display: flex; align-items: center; gap: 6px; }
+    .related-links a::before { content: "→"; font-size: 12px; }
+    .cta-box { background: linear-gradient(135deg, #f5f3ff, #faf0ff); border: 1px solid #e8e0ff; border-radius: 12px; padding: 24px 28px; margin-top: 40px; text-align: center; }
+    .cta-box h3 { font-size: 1.1rem; color: #0a0a0a; margin-bottom: 8px; }
+    .cta-box p { color: #666; font-size: 0.9rem; margin-bottom: 16px; }
+    .cta-btn { display: inline-block; background: #7c3aed; color: #fff; font-weight: 600; font-size: 0.9rem; padding: 10px 22px; border-radius: 8px; text-decoration: none; }
+    .cta-btn:hover { background: #6d28d9; text-decoration: none; }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <nav class="breadcrumb">
+    <a href="https://rankframe.com/help">Help Center</a>
+    <span>/</span>
+    <a href="https://rankframe.com/help/getting-started">Getting Started</a>
+    <span>/</span>
+    <span>How to Install RankFrame in Framer</span>
+  </nav>
+
+  <div class="article-category">Getting Started</div>
+  <h1>How to Install RankFrame in Framer</h1>
+  <p class="article-description">Add RankFrame to any Framer project in under 2 minutes. No coding required. No separate account setup before installing.</p>
+  <div class="article-meta">
+    <span>2 min read</span>
+    <span>Last updated May 2, 2026</span>
+  </div>
+
+  <nav class="toc">
+    <div class="toc-title">On this page</div>
+    <ol>
+      <li><a href="#before-you-start">Before you start</a></li>
+      <li><a href="#installation-steps">Installation steps</a></li>
+      <li><a href="#first-launch">What happens on first launch</a></li>
+      <li><a href="#troubleshooting">Troubleshooting</a></li>
+      <li><a href="#faq">Frequently asked questions</a></li>
+    </ol>
+  </nav>
+
+  <section id="before-you-start">
+    <h2>Before you start</h2>
+    <p>You need two things before installing RankFrame.</p>
+    <ul>
+      <li>A <strong>Framer account</strong>. RankFrame is a Framer-native plugin and lives inside the Framer editor.</li>
+      <li>A <strong>Framer project</strong> connected to a published or staging site. RankFrame reads your site's page structure on first load.</li>
+    </ul>
+    <p>You do not need a RankFrame account before installing. Your account is created automatically on first launch.</p>
+  </section>
+
+  <section id="installation-steps">
+    <h2>Installation steps</h2>
+    <p>Framer plugins do not require a download or installation file. You open them directly from inside Framer.</p>
+
+    <ol class="steps">
+      <li>
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <div class="step-title">Open your Framer project</div>
+          <div class="step-desc">Go to <a href="https://framer.com">framer.com</a> and open the project you want to add RankFrame to. You need to be inside the Framer editor, not the dashboard.</div>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <div class="step-title">Click the Plugins button</div>
+          <div class="step-desc">Find the <strong>Plugins</strong> button in the Framer toolbar. It appears in the top bar of the editor. Click it to open the Plugin panel.</div>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <div class="step-title">Search for RankFrame</div>
+          <div class="step-desc">Type <strong>RankFrame</strong> in the search field inside the Plugin panel. The RankFrame plugin appears in the results. You can also browse to the SEO category to find it.</div>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <div class="step-title">Open RankFrame</div>
+          <div class="step-desc">Click <strong>RankFrame</strong> in the results. The plugin opens immediately in your project as a side panel. There is no separate install confirmation step.</div>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">5</div>
+        <div class="step-content">
+          <div class="step-title">Create your account or sign in</div>
+          <div class="step-desc">If this is your first time, RankFrame shows a sign-up screen. Enter your email and set a password, or continue with Google Auth. Your account is created instantly.</div>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">6</div>
+        <div class="step-content">
+          <div class="step-title">Connect your site</div>
+          <div class="step-desc">After signing in, RankFrame asks you to connect the Framer site for this project. Click <strong>Connect Site</strong>. RankFrame scans your site structure and loads your pages automatically.</div>
+        </div>
+      </li>
+    </ol>
+
+    <div class="tip">
+      <div class="tip-label">Tip</div>
+      <p>You can also find RankFrame on the <a href="https://www.framer.com/marketplace/">Framer Plugin Marketplace</a>. Click <strong>Open plugin in</strong> and choose your project from the dropdown.</p>
+    </div>
+  </section>
+
+  <section id="first-launch">
+    <h2>What happens on first launch</h2>
+    <p>The first time RankFrame loads in your project, it shows the <strong>Personalization</strong> setup screen. This is not optional. It runs before any AI feature becomes available.</p>
+    <p>Personalization asks for your brand name, a description of what your business does, your main goals, industry, target audience, and any competitor URLs you want RankFrame to be aware of.</p>
+    <p>This data feeds every AI output in RankFrame: meta titles, meta descriptions, image alt text, and schema field suggestions. Without it, AI generates generic copy. With it, AI writes copy that sounds like your brand.</p>
+
+    <div class="note">
+      <div class="note-label">Note</div>
+      <p>Personalization data is saved to your account, not your Framer project. If you open RankFrame in a different project, your Personalization settings carry over automatically.</p>
+    </div>
+  </section>
+
+  <section id="troubleshooting">
+    <h2>Troubleshooting</h2>
+
+    <h3>RankFrame does not appear in search results</h3>
+    <p>Make sure you are searching inside the Framer Plugin panel, not the Framer asset or component search. The Plugin panel opens from the <strong>Plugins</strong> button in the top toolbar. If RankFrame still does not appear, try searching for "7 Seers" instead.</p>
+
+    <h3>The plugin opens but does not load</h3>
+    <p>Refresh the Framer editor by pressing <strong>Command + R</strong> (Mac) or <strong>Ctrl + R</strong> (Windows). If the issue persists, check that your browser allows third-party cookies. RankFrame uses cookies for authentication.</p>
+
+    <h3>The site connection step fails</h3>
+    <p>RankFrame needs access to your published Framer site to scan your page structure. If you have not published your project yet, publish it first from the Framer toolbar, then re-open RankFrame.</p>
+
+    <h3>Something else is wrong</h3>
+    <p>Contact support at <a href="mailto:hello@7seersmedia.com">hello@7seersmedia.com</a>. Include your Framer project URL and a screenshot of the error if possible.</p>
+  </section>
+
+  <section id="faq" class="faq-section">
+    <h2>Frequently asked questions</h2>
+
+    <div class="faq-item">
+      <div class="faq-q">Where do I find RankFrame in Framer?</div>
+      <div class="faq-a">Click the Plugins button in the Framer toolbar, then search for RankFrame. You can also find it on the Framer Plugin Marketplace at framer.com/marketplace and open it directly into your project from there.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Do I need to be a developer to install RankFrame?</div>
+      <div class="faq-a">No. RankFrame installs and runs entirely through the Framer plugin panel. No code, no terminal, no configuration files required.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Can I use RankFrame on multiple Framer projects?</div>
+      <div class="faq-a">The plugin is accessible in any Framer project. However, one connected site is included in the Personal plan. The Agency plan covers unlimited connected Framer sites. See Plans and Pricing for full details.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Does installing RankFrame change my live Framer site?</div>
+      <div class="faq-a">Opening RankFrame in Framer does not change your live site. RankFrame only affects your live site when you actively push changes, such as injecting schema or submitting pages to Google via the Indexing API.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Is RankFrame available for Framer desktop app users?</div>
+      <div class="faq-a">Yes. RankFrame works in the Framer web editor and the Framer desktop app. The plugin panel behaves the same in both.</div>
+    </div>
+  </section>
+
+  <section class="related-section">
+    <h2>Related articles</h2>
+    <ul class="related-links">
+      <li><a href="https://rankframe.com/help/connect-your-website">How to Connect Your Website in RankFrame</a></li>
+      <li><a href="https://rankframe.com/help/understanding-the-dashboard">Understanding the RankFrame Dashboard</a></li>
+      <li><a href="https://rankframe.com/help/what-is-rankframe">What is RankFrame?</a></li>
+      <li><a href="https://rankframe.com/help/plans-and-pricing">RankFrame Plans and Pricing</a></li>
+    </ul>
+  </section>
+
+  <div class="cta-box">
+    <h3>Ready to install?</h3>
+    <p>Find RankFrame in the Framer Plugin Marketplace. 7-day free trial, no credit card required.</p>
+    <a class="cta-btn" href="https://rankframe.com">Open in Framer</a>
+  </div>
+
+</div>
+</body>
+</html>
