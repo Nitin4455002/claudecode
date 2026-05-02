@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Instant Indexing Overview | RankFrame Help</title>
+  <meta name="description" content="Learn how Instant Indexing works in RankFrame. Submit URLs directly to Google via the official Indexing API, track submission history, and monitor keyword performance, all from the Submit Indexing panel." />
+  <meta name="keywords" content="framer instant indexing, google indexing api framer, rankframe submit urls, framer seo indexing, rankframe google api" />
+  <link rel="canonical" href="https://rankframe.com/help/instant-indexing-overview" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Instant Indexing Overview",
+    "description": "Learn how Instant Indexing works in RankFrame. Submit URLs directly to Google via the official Indexing API, track submission history, and monitor keyword performance, all from the Submit Indexing panel.",
+    "author": { "@type": "Organization", "name": "7 Seers", "url": "https://rankframe.com" },
+    "publisher": { "@type": "Organization", "name": "RankFrame", "url": "https://rankframe.com" },
+    "datePublished": "2026-05-02",
+    "dateModified": "2026-05-02",
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://rankframe.com/help/instant-indexing-overview" },
+    "keywords": "instant indexing, google indexing api, framer seo, submit urls, rankframe"
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is Instant Indexing in RankFrame?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Instant Indexing is the Submit Indexing section of RankFrame. It connects to the official Google Indexing API so you can push URLs directly to Google for crawling, instead of waiting for Googlebot to discover them on its own." }
+      },
+      {
+        "@type": "Question",
+        "name": "Do I need to set anything up before submitting URLs?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. You must complete the Setup tab first. That process connects your Google account and authorizes RankFrame to call the Indexing API on your behalf. Without completing Setup, the Submit URLs tab will not send requests." }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I open the Submit Indexing panel?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Click the lightning bolt icon in the left sidebar of the RankFrame plugin. The panel opens to the Instant Indexing section with five tabs at the top." }
+      },
+      {
+        "@type": "Question",
+        "name": "Is the Google Indexing API free to use?",
+        "acceptedAnswer": { "@type": "Answer", "text": "The Google Indexing API is a free Google service, but it has daily quota limits. RankFrame surfaces your submission counts in the Analytics tab so you can track usage against those limits." }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between Submit URLs and Indexing History?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Submit URLs is where you send new indexing requests. Indexing History is a log of every URL you have already submitted, including the submission date and current status. Use Indexing History to confirm past requests and audit your coverage." }
+      }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Help Center", "item": "https://rankframe.com/help" },
+      { "@type": "ListItem", "position": 2, "name": "Submit Indexing", "item": "https://rankframe.com/help/submit-indexing" },
+      { "@type": "ListItem", "position": 3, "name": "Instant Indexing Overview", "item": "https://rankframe.com/help/instant-indexing-overview" }
+    ]
+  }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", sans-serif; background: #ffffff; color: #111111; line-height: 1.7; font-size: 16px; }
+    .page { max-width: 740px; margin: 0 auto; padding: 48px 24px 96px; }
+    .breadcrumb { display: flex; align-items: center; gap: 6px; font-size: 13px; color: #888; margin-bottom: 32px; flex-wrap: wrap; }
+    .breadcrumb a { color: #888; text-decoration: none; }
+    .breadcrumb a:hover { color: #7c3aed; }
+    .breadcrumb span { color: #ccc; }
+    .article-category { display: inline-block; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #7c3aed; background: #f3f0ff; padding: 3px 10px; border-radius: 999px; margin-bottom: 12px; }
+    h1 { font-size: 2rem; font-weight: 700; color: #0a0a0a; line-height: 1.25; margin-bottom: 14px; letter-spacing: -0.02em; }
+    .article-description { font-size: 1.05rem; color: #555; line-height: 1.65; margin-bottom: 10px; }
+    .article-meta { display: flex; gap: 16px; font-size: 13px; color: #aaa; margin-bottom: 36px; padding-bottom: 24px; border-bottom: 1px solid #f0f0f0; flex-wrap: wrap; }
+    .toc { background: #fafafa; border: 1px solid #efefef; border-radius: 10px; padding: 18px 22px; margin-bottom: 40px; }
+    .toc-title { font-size: 12px; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: #aaa; margin-bottom: 10px; }
+    .toc ol { list-style: none; padding: 0; }
+    .toc li { margin-bottom: 5px; }
+    .toc a { font-size: 14px; color: #555; text-decoration: none; }
+    .toc a:hover { color: #7c3aed; }
+    h2 { font-size: 1.3rem; font-weight: 600; color: #0a0a0a; margin: 40px 0 14px; padding-bottom: 8px; border-bottom: 1px solid #f0f0f0; letter-spacing: -0.01em; }
+    h3 { font-size: 1.05rem; font-weight: 600; color: #0a0a0a; margin: 24px 0 8px; }
+    p { color: #333; margin-bottom: 16px; }
+    ul, ol { padding-left: 22px; margin-bottom: 16px; }
+    li { color: #333; margin-bottom: 6px; }
+    strong { color: #0a0a0a; font-weight: 600; }
+    a { color: #7c3aed; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .tip { background: #f5f3ff; border-left: 3px solid #7c3aed; border-radius: 0 8px 8px 0; padding: 12px 16px; margin: 20px 0; }
+    .tip-label { font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #7c3aed; margin-bottom: 4px; }
+    .tip p { color: #4c1d95; margin: 0; font-size: 0.93rem; }
+    .note { background: #fff8f0; border-left: 3px solid #f59e0b; border-radius: 0 8px 8px 0; padding: 12px 16px; margin: 20px 0; }
+    .note-label { font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #d97706; margin-bottom: 4px; }
+    .note p { color: #78350f; margin: 0; font-size: 0.93rem; }
+    .step-list { list-style: none; padding: 0; counter-reset: steps; margin-bottom: 16px; }
+    .step-list li { counter-increment: steps; display: flex; gap: 14px; padding: 12px 0; border-bottom: 1px solid #f5f5f5; }
+    .step-list li:last-child { border-bottom: none; }
+    .step-num { width: 26px; height: 26px; background: #7c3aed; color: #fff; font-size: 12px; font-weight: 700; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+    .step-body { flex: 1; }
+    .step-title { font-weight: 600; color: #0a0a0a; font-size: 0.95rem; margin-bottom: 2px; }
+    .step-desc { color: #555; font-size: 0.9rem; }
+    .faq-section { margin-top: 48px; padding-top: 32px; border-top: 1px solid #f0f0f0; }
+    .faq-section h2 { border-bottom: none; padding-bottom: 0; margin-bottom: 24px; }
+    .faq-item { border: 1px solid #efefef; border-radius: 10px; padding: 18px 20px; margin-bottom: 10px; }
+    .faq-q { font-weight: 600; color: #0a0a0a; font-size: 0.95rem; margin-bottom: 8px; }
+    .faq-a { color: #555; font-size: 0.93rem; line-height: 1.65; }
+    .related-section { margin-top: 48px; padding-top: 32px; border-top: 1px solid #f0f0f0; }
+    .related-section h2 { border-bottom: none; padding-bottom: 0; margin-bottom: 16px; font-size: 1rem; color: #666; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; }
+    .related-links { list-style: none; padding: 0; }
+    .related-links li { margin-bottom: 8px; }
+    .related-links a { font-size: 0.95rem; color: #7c3aed; display: flex; align-items: center; gap: 6px; }
+    .related-links a::before { content: "→"; font-size: 12px; }
+    .cta-box { background: linear-gradient(135deg, #f5f3ff, #faf0ff); border: 1px solid #e8e0ff; border-radius: 12px; padding: 24px 28px; margin-top: 40px; text-align: center; }
+    .cta-box h3 { font-size: 1.1rem; color: #0a0a0a; margin-bottom: 8px; }
+    .cta-box p { color: #666; font-size: 0.9rem; margin-bottom: 16px; }
+    .cta-btn { display: inline-block; background: #7c3aed; color: #fff; font-weight: 600; font-size: 0.9rem; padding: 10px 22px; border-radius: 8px; text-decoration: none; }
+    .cta-btn:hover { background: #6d28d9; text-decoration: none; }
+    .seo-panel { margin-top: 64px; border-top: 2px dashed #e8e0ff; padding-top: 36px; }
+    .seo-panel-header { margin-bottom: 20px; }
+    .seo-panel-title { font-size: 11px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: #7c3aed; }
+    .seo-panel-sub { font-size: 12px; color: #aaa; margin-top: 3px; }
+    .seo-fields { display: grid; gap: 10px; margin-bottom: 28px; }
+    .seo-field { background: #fafafa; border: 1px solid #efefef; border-radius: 8px; padding: 14px 16px; position: relative; }
+    .seo-field-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+    .seo-field-label { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #bbb; }
+    .seo-copy-btn { font-size: 10px; font-weight: 600; color: #7c3aed; background: #f3f0ff; border: none; border-radius: 4px; padding: 3px 9px; cursor: pointer; transition: background 0.15s; }
+    .seo-copy-btn:hover { background: #e8e0ff; }
+    .seo-copy-btn.ok { color: #059669; background: #ecfdf5; }
+    .seo-field-value { font-size: 0.88rem; color: #333; line-height: 1.55; word-break: break-word; user-select: all; }
+    .seo-schemas { display: grid; gap: 14px; }
+    .seo-schema { border: 1px solid #efefef; border-radius: 8px; overflow: hidden; }
+    .seo-schema-header { display: flex; justify-content: space-between; align-items: center; padding: 10px 16px; background: #fafafa; border-bottom: 1px solid #efefef; }
+    .seo-schema-type { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #bbb; }
+    .seo-schema-code { background: #0d0d0d; color: #d4d4d4; font-family: "SF Mono","Fira Code",Consolas,monospace; font-size: 0.75rem; line-height: 1.65; padding: 16px 18px; margin: 0; overflow-x: auto; white-space: pre; user-select: all; }
+    .tab-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 20px 0; }
+    @media (max-width: 520px) { .tab-grid { grid-template-columns: 1fr; } }
+    .tab-card { border: 1px solid #efefef; border-radius: 10px; padding: 16px 18px; }
+    .tab-card-name { font-size: 0.85rem; font-weight: 700; color: #7c3aed; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.04em; }
+    .tab-card-desc { font-size: 0.88rem; color: #555; line-height: 1.6; }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <nav class="breadcrumb">
+    <a href="https://rankframe.com/help">Help Center</a>
+    <span>/</span>
+    <a href="https://rankframe.com/help/submit-indexing">Submit Indexing</a>
+    <span>/</span>
+    Instant Indexing Overview
+  </nav>
+
+  <div class="article-category">Submit Indexing</div>
+  <h1>Instant Indexing Overview</h1>
+  <p class="article-description">RankFrame's Instant Indexing section lets you push URLs directly to Google using the official Google Indexing API. Skip the crawl queue and signal Google the moment your content is ready.</p>
+  <div class="article-meta">
+    <span>4 min read</span>
+    <span>Last updated May 2, 2026</span>
+  </div>
+
+  <div class="toc">
+    <div class="toc-title">In this article</div>
+    <ol>
+      <li><a href="#what-is-instant-indexing">What is Instant Indexing</a></li>
+      <li><a href="#how-to-open">How to open Submit Indexing</a></li>
+      <li><a href="#the-five-tabs">The five tabs</a></li>
+      <li><a href="#before-you-start">Before you start</a></li>
+      <li><a href="#why-it-matters">Why instant indexing matters</a></li>
+    </ol>
+  </div>
+
+  <h2 id="what-is-instant-indexing">What is Instant Indexing</h2>
+  <p>Instant Indexing is RankFrame's built-in tool for communicating directly with Google through the <strong>official Google Indexing API</strong>. Instead of waiting for Googlebot to discover and crawl your pages on its own schedule, you send a direct notification to Google that a URL is ready to be indexed or re-indexed.</p>
+  <p>The feature lives in the <strong>Submit Indexing</strong> section of RankFrame, marked by the <strong>lightning bolt icon</strong> in the left sidebar. At the top of the section you will see the <strong>Instant Indexing</strong> header alongside a <strong>Powered by Google</strong> badge. The subtitle reads: "Manage search presence securely via the official Google API."</p>
+  <div class="tip">
+    <div class="tip-label">Tip</div>
+    <p>Because requests go through the official Google API, every submission is tied to your verified Google account credentials. Google treats these signals as authoritative.</p>
+  </div>
+
+  <h2 id="how-to-open">How to open Submit Indexing</h2>
+  <p>Opening the section takes one click.</p>
+  <ul class="step-list">
+    <li>
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <div class="step-title">Click the lightning bolt icon</div>
+        <div class="step-desc">Find it in the RankFrame left sidebar. It is the dedicated icon for the Submit Indexing section.</div>
+      </div>
+    </li>
+    <li>
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <div class="step-title">The Instant Indexing panel opens</div>
+        <div class="step-desc">You will see the <strong>Instant Indexing</strong> header, the <strong>Powered by Google</strong> badge, and the five tabs along the top.</div>
+      </div>
+    </li>
+    <li>
+      <div class="step-num">3</div>
+      <div class="step-body">
+        <div class="step-title">Choose a tab to get started</div>
+        <div class="step-desc">If this is your first time, go to the <strong>Setup</strong> tab first to connect your Google account before submitting any URLs.</div>
+      </div>
+    </li>
+  </ul>
+
+  <h2 id="the-five-tabs">The five tabs</h2>
+  <p>The Submit Indexing section is organized into five tabs. Each tab handles a distinct part of the indexing workflow.</p>
+  <div class="tab-grid">
+    <div class="tab-card">
+      <div class="tab-card-name">Submit URLs</div>
+      <div class="tab-card-desc">The primary workspace. Enter one or more URLs from your Framer site and send them to Google via the Indexing API with a single action.</div>
+    </div>
+    <div class="tab-card">
+      <div class="tab-card-name">Setup</div>
+      <div class="tab-card-desc">Connect your Google account and authorize RankFrame to use the Indexing API on your behalf. You must complete this step before submitting any URLs.</div>
+    </div>
+    <div class="tab-card">
+      <div class="tab-card-name">Analytics</div>
+      <div class="tab-card-desc">Review performance data for your submitted URLs. Track impressions, clicks, and index coverage changes over time.</div>
+    </div>
+    <div class="tab-card">
+      <div class="tab-card-name">Keyword Tracker</div>
+      <div class="tab-card-desc">Monitor how specific keywords rank for pages you have submitted. See position changes alongside your indexing activity.</div>
+    </div>
+    <div class="tab-card">
+      <div class="tab-card-name">Indexing History</div>
+      <div class="tab-card-desc">A full log of every URL you have submitted, including submission date, API response status, and whether the request was to index or remove the URL.</div>
+    </div>
+  </div>
+
+  <h2 id="before-you-start">Before you start</h2>
+  <p>You need to complete the <strong>Setup</strong> tab before the <strong>Submit URLs</strong> tab can send requests to Google. The setup process links your Google account to RankFrame and grants the necessary API permissions.</p>
+  <div class="note">
+    <div class="note-label">Important</div>
+    <p>If you skip Setup, the <strong>Submit URLs</strong> tab will not be able to communicate with the Google Indexing API. Complete Setup first, then return to Submit URLs.</p>
+  </div>
+  <p>After connecting your account, you are ready to use all five tabs. The connection persists across sessions, so you only need to complete Setup once unless you revoke access or switch accounts.</p>
+
+  <h2 id="why-it-matters">Why instant indexing matters</h2>
+  <p>Standard search indexing relies on Googlebot crawling your site on its own schedule. For a new or updated Framer site, that wait can range from a few days to several weeks. Your pages may not appear in search results during that window.</p>
+  <p>Instant Indexing changes that dynamic in two key ways:</p>
+  <ul>
+    <li><strong>Direct signal to Google:</strong> The Indexing API sends an explicit request to index a specific URL, rather than relying on Googlebot to discover it organically.</li>
+    <li><strong>Re-indexing for updated pages:</strong> When you update an existing page, such as a revised blog post or a new product page, you can submit it again so Google picks up the changes faster.</li>
+  </ul>
+  <p>For Framer designers who publish frequently or launch new projects on deadlines, this control is valuable. You publish, you submit, and Google processes the request without an indefinite wait.</p>
+  <div class="tip">
+    <div class="tip-label">Tip</div>
+    <p>Use the <strong>Indexing History</strong> tab to confirm that each submission received a successful API response. A successful response means Google acknowledged the request, not necessarily that the page is indexed yet. Check <strong>Analytics</strong> for coverage confirmation.</p>
+  </div>
+
+  <div class="faq-section">
+    <h2>Frequently asked questions</h2>
+
+    <div class="faq-item">
+      <div class="faq-q">Does RankFrame use the official Google Indexing API?</div>
+      <div class="faq-a">Yes. RankFrame's Instant Indexing feature connects directly to the official Google Indexing API. You authenticate with your own Google account in the <strong>Setup</strong> tab, so all requests go through your verified credentials.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Do I need to complete Setup before I can submit URLs?</div>
+      <div class="faq-a">Yes. You must connect your Google account in the <strong>Setup</strong> tab first. Without a valid connection, the <strong>Submit URLs</strong> tab cannot send requests to the Google Indexing API.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">How is Instant Indexing different from waiting for Googlebot to crawl my site?</div>
+      <div class="faq-a">Standard crawling relies on Googlebot discovering and visiting your pages on its own schedule, which can take days or weeks. Instant Indexing sends a direct signal to Google via the official API, telling it to index or re-index a specific URL right away.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">What does the Indexing History tab show?</div>
+      <div class="faq-a">The <strong>Indexing History</strong> tab shows a log of every URL you have submitted through RankFrame, including the submission date, the status returned by the Google Indexing API, and whether the request was an index or remove action.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Where do I find the Submit Indexing section in RankFrame?</div>
+      <div class="faq-a">Click the <strong>lightning bolt icon</strong> in the RankFrame left sidebar. The Submit Indexing section opens with the <strong>Instant Indexing</strong> header and the five tabs: <strong>Submit URLs</strong>, <strong>Setup</strong>, <strong>Analytics</strong>, <strong>Keyword Tracker</strong>, and <strong>Indexing History</strong>.</div>
+    </div>
+  </div>
+
+  <div class="related-section">
+    <h2>Related articles</h2>
+    <ul class="related-links">
+      <li><a href="https://rankframe.com/help/submit-urls">Submitting URLs for Indexing</a></li>
+      <li><a href="https://rankframe.com/help/instant-indexing-setup">Setting Up the Google Indexing API Connection</a></li>
+      <li><a href="https://rankframe.com/help/indexing-analytics">Indexing Analytics: Reading Your Data</a></li>
+      <li><a href="https://rankframe.com/help/indexing-keyword-tracker">Using the Keyword Tracker in Submit Indexing</a></li>
+      <li><a href="https://rankframe.com/help/indexing-history">Understanding Your Indexing History Log</a></li>
+    </ul>
+  </div>
+
+  <div class="cta-box">
+    <h3>Ready to submit your first URL?</h3>
+    <p>Complete the Setup tab to connect your Google account, then head to Submit URLs to start pushing pages to Google immediately.</p>
+    <a href="https://rankframe.com/help/instant-indexing-setup" class="cta-btn">Go to Setup Guide</a>
+  </div>
+
+  <div class="seo-panel">
+    <div class="seo-panel-header">
+      <div class="seo-panel-title">SEO Metadata</div>
+      <div class="seo-panel-sub">Live values from this page's head tags and structured data</div>
+    </div>
+    <div class="seo-fields" id="seo-panel-fields"></div>
+    <div class="seo-schemas" id="seo-panel-schemas"></div>
+  </div>
+
+</div>
+
+<script>
+(function() {
+  var fields = [
+    { label: 'Title', value: document.querySelector('title') ? document.querySelector('title').textContent : '' },
+    { label: 'Description', value: (document.querySelector('meta[name="description"]') || {}).content || '' },
+    { label: 'Keywords', value: (document.querySelector('meta[name="keywords"]') || {}).content || '' },
+    { label: 'Canonical', value: (document.querySelector('link[rel="canonical"]') || {}).href || '' }
+  ];
+  var fieldsHtml = fields.map(function(f) {
+    return '<div class="seo-field"><div class="seo-field-row"><span class="seo-field-label">' + f.label + '</span><button class="seo-copy-btn" onclick="copyVal(this,\'' + f.label + '\')">Copy</button></div><div class="seo-field-value">' + f.value + '</div></div>';
+  }).join('');
+  var schemas = Array.from(document.querySelectorAll('script[type="application/ld+json"]')).map(function(s) {
+    try { var obj = JSON.parse(s.textContent); var t = obj['@type'] || 'Schema'; return '<div class="seo-schema"><div class="seo-schema-header"><span class="seo-schema-type">' + t + ' / JSON-LD</span><button class="seo-copy-btn" onclick="copySchema(this,\'' + t + '\')">Copy</button></div><pre class="seo-schema-code">' + JSON.stringify(obj, null, 2) + '</pre></div>'; } catch(e) { return ''; }
+  }).join('');
+  document.getElementById('seo-panel-fields').innerHTML = fieldsHtml;
+  document.getElementById('seo-panel-schemas').innerHTML = schemas;
+})();
+function copyVal(btn, label) {
+  var val = btn.closest('.seo-field').querySelector('.seo-field-value').textContent;
+  navigator.clipboard.writeText(val).then(function() { btn.textContent = 'Copied'; btn.classList.add('ok'); setTimeout(function() { btn.textContent = 'Copy'; btn.classList.remove('ok'); }, 1500); });
+}
+function copySchema(btn, type) {
+  var code = btn.closest('.seo-schema').querySelector('.seo-schema-code').textContent;
+  navigator.clipboard.writeText(code).then(function() { btn.textContent = 'Copied'; btn.classList.add('ok'); setTimeout(function() { btn.textContent = 'Copy'; btn.classList.remove('ok'); }, 1500); });
+}
+</script>
+</body>
+</html>
