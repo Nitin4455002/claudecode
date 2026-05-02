@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Understanding Keyword Metrics in RankFrame | RankFrame Help</title>
+  <meta name="description" content="Learn what Search Volume, Keyword Difficulty (KD), Competition, and CPC mean inside RankFrame. Use these metrics to pick the right keywords for your Framer pages." />
+  <meta name="keywords" content="keyword metrics, search volume, keyword difficulty, kd score, cpc keyword, framer seo metrics, rankframe keyword check, keyword competition" />
+  <link rel="canonical" href="https://rankframe.com/help/keyword-metrics-explained" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Understanding Keyword Metrics in RankFrame",
+    "description": "Search Volume, Difficulty, Competition, and CPC explained for Framer SEO keyword research.",
+    "author": { "@type": "Organization", "name": "7 Seers", "url": "https://rankframe.com" },
+    "publisher": { "@type": "Organization", "name": "RankFrame", "url": "https://rankframe.com" },
+    "datePublished": "2026-05-02",
+    "dateModified": "2026-05-02",
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://rankframe.com/help/keyword-metrics-explained" }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is a good keyword difficulty (KD) score?",
+        "acceptedAnswer": { "@type": "Answer", "text": "For new or low-authority sites, target keywords with a KD under 30. For established sites with backlinks and content history, KD up to 50 is achievable. KD above 70 typically requires significant link building and content depth to rank." }
+      },
+      {
+        "@type": "Question",
+        "name": "What is a good search volume to target?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Target keywords with at least 100 monthly searches if traffic is your goal. Keywords with under 100 monthly searches can still be valuable if they have strong commercial intent (CPC over $5) or strategic importance to your niche." }
+      },
+      {
+        "@type": "Question",
+        "name": "What does CPC tell me about a keyword?",
+        "acceptedAnswer": { "@type": "Answer", "text": "CPC (Cost Per Click) shows how much advertisers pay per click for that keyword on Google Ads. High CPC means the keyword has strong commercial intent: people searching for it are likely to convert into customers. Use CPC as a signal of buyer intent, not just traffic intent." }
+      },
+      {
+        "@type": "Question",
+        "name": "Why is Competition different from Difficulty (KD)?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Competition refers to how aggressive paid advertisers are bidding on the keyword on Google Ads. Difficulty (KD) refers to how hard it is to rank organically. A keyword can have low Competition (cheap to advertise) but high KD (hard to rank organically), or vice versa." }
+      },
+      {
+        "@type": "Question",
+        "name": "How often does RankFrame update keyword metrics?",
+        "acceptedAnswer": { "@type": "Answer", "text": "RankFrame fetches metrics from search data providers each time you click Check. The data reflects recent search trends. Major changes in volume or competition typically take a few weeks to appear." }
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", sans-serif; background: #ffffff; color: #111111; line-height: 1.7; font-size: 16px; }
+    .page { max-width: 740px; margin: 0 auto; padding: 48px 24px 96px; }
+    .breadcrumb { display: flex; align-items: center; gap: 6px; font-size: 13px; color: #888; margin-bottom: 32px; flex-wrap: wrap; }
+    .breadcrumb a { color: #888; text-decoration: none; } .breadcrumb a:hover { color: #7c3aed; } .breadcrumb span { color: #ccc; }
+    .article-category { display: inline-block; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #7c3aed; background: #f3f0ff; padding: 3px 10px; border-radius: 999px; margin-bottom: 12px; }
+    h1 { font-size: 2rem; font-weight: 700; color: #0a0a0a; line-height: 1.25; margin-bottom: 14px; letter-spacing: -0.02em; }
+    .article-description { font-size: 1.05rem; color: #555; line-height: 1.65; margin-bottom: 10px; }
+    .article-meta { display: flex; gap: 16px; font-size: 13px; color: #aaa; margin-bottom: 36px; padding-bottom: 24px; border-bottom: 1px solid #f0f0f0; flex-wrap: wrap; }
+    .toc { background: #fafafa; border: 1px solid #efefef; border-radius: 10px; padding: 18px 22px; margin-bottom: 40px; }
+    .toc-title { font-size: 12px; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: #aaa; margin-bottom: 10px; }
+    .toc ol { list-style: none; padding: 0; } .toc li { margin-bottom: 5px; }
+    .toc a { font-size: 14px; color: #555; text-decoration: none; } .toc a:hover { color: #7c3aed; }
+    h2 { font-size: 1.3rem; font-weight: 600; color: #0a0a0a; margin: 40px 0 14px; padding-bottom: 8px; border-bottom: 1px solid #f0f0f0; letter-spacing: -0.01em; }
+    h3 { font-size: 1.05rem; font-weight: 600; color: #0a0a0a; margin: 24px 0 8px; }
+    p { color: #333; margin-bottom: 16px; } ul, ol { padding-left: 22px; margin-bottom: 16px; } li { color: #333; margin-bottom: 6px; }
+    strong { color: #0a0a0a; font-weight: 600; } a { color: #7c3aed; text-decoration: none; } a:hover { text-decoration: underline; }
+    .tip { background: #f5f3ff; border-left: 3px solid #7c3aed; border-radius: 0 8px 8px 0; padding: 12px 16px; margin: 20px 0; }
+    .tip-label { font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #7c3aed; margin-bottom: 4px; }
+    .tip p { color: #4c1d95; margin: 0; font-size: 0.93rem; }
+    .note { background: #fff8f0; border-left: 3px solid #f59e0b; border-radius: 0 8px 8px 0; padding: 12px 16px; margin: 20px 0; }
+    .note-label { font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #d97706; margin-bottom: 4px; }
+    .note p { color: #78350f; margin: 0; font-size: 0.93rem; }
+    .metric-card { background: #fafafa; border: 1px solid #efefef; border-radius: 10px; padding: 18px 22px; margin: 14px 0; }
+    .metric-name { font-weight: 700; color: #0a0a0a; font-size: 1rem; margin-bottom: 4px; }
+    .metric-short { font-size: 0.86rem; color: #7c3aed; margin-bottom: 10px; }
+    .metric-explain { font-size: 0.92rem; color: #444; margin-bottom: 8px; }
+    .metric-use { font-size: 0.88rem; color: #666; font-style: italic; }
+    .ranges-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; margin: 12px 0 24px; }
+    .ranges-table th { text-align: left; padding: 9px 14px; background: #fafafa; border: 1px solid #efefef; color: #555; font-weight: 600; }
+    .ranges-table td { padding: 9px 14px; border: 1px solid #f5f5f5; color: #333; }
+    .badge-low { color: #15803d; font-weight: 600; }
+    .badge-mid { color: #d97706; font-weight: 600; }
+    .badge-high { color: #be123c; font-weight: 600; }
+    .faq-section { margin-top: 48px; padding-top: 32px; border-top: 1px solid #f0f0f0; }
+    .faq-section h2 { border-bottom: none; padding-bottom: 0; margin-bottom: 24px; }
+    .faq-item { border: 1px solid #efefef; border-radius: 10px; padding: 18px 20px; margin-bottom: 10px; }
+    .faq-q { font-weight: 600; color: #0a0a0a; font-size: 0.95rem; margin-bottom: 8px; }
+    .faq-a { color: #555; font-size: 0.93rem; line-height: 1.65; }
+    .related-section { margin-top: 48px; padding-top: 32px; border-top: 1px solid #f0f0f0; }
+    .related-section h2 { border-bottom: none; padding-bottom: 0; margin-bottom: 16px; font-size: 1rem; color: #666; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; }
+    .related-links { list-style: none; padding: 0; } .related-links li { margin-bottom: 8px; }
+    .related-links a { font-size: 0.95rem; color: #7c3aed; display: flex; align-items: center; gap: 6px; }
+    .related-links a::before { content: "→"; font-size: 12px; }
+    .cta-box { background: linear-gradient(135deg, #f5f3ff, #faf0ff); border: 1px solid #e8e0ff; border-radius: 12px; padding: 24px 28px; margin-top: 40px; text-align: center; }
+    .cta-box h3 { font-size: 1.1rem; color: #0a0a0a; margin-bottom: 8px; }
+    .cta-box p { color: #666; font-size: 0.9rem; margin-bottom: 16px; }
+    .cta-btn { display: inline-block; background: #7c3aed; color: #fff; font-weight: 600; font-size: 0.9rem; padding: 10px 22px; border-radius: 8px; text-decoration: none; }
+    .cta-btn:hover { background: #6d28d9; text-decoration: none; }
+
+    /* SEO Panel */
+    .seo-panel { margin-top: 64px; border-top: 2px dashed #e8e0ff; padding-top: 36px; }
+    .seo-panel-header { margin-bottom: 20px; }
+    .seo-panel-title { font-size: 11px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: #7c3aed; }
+    .seo-panel-sub { font-size: 12px; color: #aaa; margin-top: 3px; }
+    .seo-fields { display: grid; gap: 10px; margin-bottom: 28px; }
+    .seo-field { background: #fafafa; border: 1px solid #efefef; border-radius: 8px; padding: 14px 16px; position: relative; }
+    .seo-field-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+    .seo-field-label { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #bbb; }
+    .seo-copy-btn { font-size: 10px; font-weight: 600; color: #7c3aed; background: #f3f0ff; border: none; border-radius: 4px; padding: 3px 9px; cursor: pointer; transition: background 0.15s; }
+    .seo-copy-btn:hover { background: #e8e0ff; }
+    .seo-copy-btn.ok { color: #059669; background: #ecfdf5; }
+    .seo-field-value { font-size: 0.88rem; color: #333; line-height: 1.55; word-break: break-word; user-select: all; }
+    .seo-schemas { display: grid; gap: 14px; }
+    .seo-schema { border: 1px solid #efefef; border-radius: 8px; overflow: hidden; }
+    .seo-schema-header { display: flex; justify-content: space-between; align-items: center; padding: 10px 16px; background: #fafafa; border-bottom: 1px solid #efefef; }
+    .seo-schema-type { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #bbb; }
+    .seo-schema-code { background: #0d0d0d; color: #d4d4d4; font-family: "SF Mono","Fira Code",Consolas,monospace; font-size: 0.75rem; line-height: 1.65; padding: 16px 18px; margin: 0; overflow-x: auto; white-space: pre; user-select: all; }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <nav class="breadcrumb">
+    <a href="https://rankframe.com/help">Help Center</a>
+    <span>/</span>
+    <a href="https://rankframe.com/help/global-seo-settings">Global SEO Settings</a>
+    <span>/</span>
+    <span>Keyword Metrics Explained</span>
+  </nav>
+
+  <div class="article-category">Global SEO Settings</div>
+  <h1>Understanding Keyword Metrics in RankFrame</h1>
+  <p class="article-description">When you click Check on a keyword, RankFrame shows four metrics: Search Volume, Difficulty, Competition, and CPC. This article explains what each one means and how to use them.</p>
+  <div class="article-meta">
+    <span>4 min read</span>
+    <span>Last updated May 2, 2026</span>
+  </div>
+
+  <nav class="toc">
+    <div class="toc-title">On this page</div>
+    <ol>
+      <li><a href="#search-volume">Search Volume</a></li>
+      <li><a href="#kd">Keyword Difficulty (KD)</a></li>
+      <li><a href="#competition">Competition</a></li>
+      <li><a href="#cpc">CPC</a></li>
+      <li><a href="#how-to-pick">How to use them together</a></li>
+      <li><a href="#faq">Frequently asked questions</a></li>
+    </ol>
+  </nav>
+
+  <section id="search-volume">
+    <h2>Search Volume</h2>
+    <div class="metric-card">
+      <div class="metric-name">Search Volume</div>
+      <div class="metric-short">Average monthly searches for this keyword</div>
+      <div class="metric-explain">Search Volume tells you how many people search for this exact keyword on Google each month, on average.</div>
+      <div class="metric-use">Use it to: gauge potential traffic if your page ranks well.</div>
+    </div>
+
+    <table class="ranges-table">
+      <thead>
+        <tr><th>Volume range</th><th>Interpretation</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>0 to 100</td><td><span class="badge-low">Low</span> Worth targeting only if intent is strong (e.g. high CPC).</td></tr>
+        <tr><td>100 to 1,000</td><td><span class="badge-mid">Medium</span> Sweet spot for most niche pages, especially long-tail.</td></tr>
+        <tr><td>1,000 to 10,000</td><td><span class="badge-high">High</span> Significant traffic potential. Often more competitive.</td></tr>
+        <tr><td>10,000+</td><td><span class="badge-high">Very high</span> Major term. Only target if you have authority and content depth.</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="kd">
+    <h2>Keyword Difficulty (KD)</h2>
+    <div class="metric-card">
+      <div class="metric-name">Keyword Difficulty (KD)</div>
+      <div class="metric-short">A 0 to 100 score showing how hard it is to rank in the top 10 results</div>
+      <div class="metric-explain">KD estimates how competitive the organic results already are for this keyword. Higher KD means stronger sites are ranking, and more backlinks and content quality are needed to compete.</div>
+      <div class="metric-use">Use it to: filter for keywords your site can realistically rank for.</div>
+    </div>
+
+    <table class="ranges-table">
+      <thead>
+        <tr><th>KD range</th><th>What it means</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>0 to 30</td><td><span class="badge-low">Low</span> Reachable for most sites, including new ones. Best targets.</td></tr>
+        <tr><td>30 to 50</td><td><span class="badge-mid">Medium</span> Reachable for sites with some authority and quality content.</td></tr>
+        <tr><td>50 to 70</td><td><span class="badge-mid">Hard</span> Requires backlinks, depth, and strong on-page SEO.</td></tr>
+        <tr><td>70+</td><td><span class="badge-high">Very hard</span> Established sites only. New sites should look elsewhere.</td></tr>
+      </tbody>
+    </table>
+
+    <div class="note">
+      <div class="note-label">Note</div>
+      <p>RankFrame highlights KD in red in the Saved Keywords list when difficulty is high. This is a quick visual cue to identify keywords that may be too competitive for your current site authority.</p>
+    </div>
+  </section>
+
+  <section id="competition">
+    <h2>Competition</h2>
+    <div class="metric-card">
+      <div class="metric-name">Competition</div>
+      <div class="metric-short">How aggressive paid advertisers are on this keyword</div>
+      <div class="metric-explain">Competition is a measure of how many advertisers are bidding for this keyword on Google Ads. It is shown on a 0 to 1 scale, often labelled Low, Medium, or High.</div>
+      <div class="metric-use">Use it to: distinguish between paid bidding pressure and organic ranking pressure.</div>
+    </div>
+    <p>Competition and KD are different. A keyword can be cheap and easy to advertise on (low Competition) but hard to rank organically (high KD), or vice versa. Check both before deciding to target.</p>
+  </section>
+
+  <section id="cpc">
+    <h2>CPC</h2>
+    <div class="metric-card">
+      <div class="metric-name">CPC (Cost Per Click)</div>
+      <div class="metric-short">Average price advertisers pay per click on Google Ads</div>
+      <div class="metric-explain">CPC tells you how much one click on this keyword costs on Google Ads. It is a strong signal of commercial intent: high CPC means searchers are converting into paying customers.</div>
+      <div class="metric-use">Use it to: identify keywords with high buyer intent, even if volume is modest.</div>
+    </div>
+
+    <table class="ranges-table">
+      <thead>
+        <tr><th>CPC range</th><th>Interpretation</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>$0 to $1</td><td>Informational queries. Low purchase intent.</td></tr>
+        <tr><td>$1 to $5</td><td>Mixed intent. Some buyers, some researchers.</td></tr>
+        <tr><td>$5 to $20</td><td>High commercial intent. Worth targeting.</td></tr>
+        <tr><td>$20+</td><td>Premium B2B or expensive product searches. Highest converters.</td></tr>
+      </tbody>
+    </table>
+
+    <div class="tip">
+      <div class="tip-label">Tip</div>
+      <p>If you are running a SaaS or B2B Framer site, prioritize keywords with CPC over $5 even if their search volume is moderate. These users are looking to buy, not just to learn.</p>
+    </div>
+  </section>
+
+  <section id="how-to-pick">
+    <h2>How to use them together</h2>
+    <p>No single metric tells the whole story. Here is how to combine them when picking a focus keyword.</p>
+
+    <h3>Best targets for new sites</h3>
+    <ul>
+      <li>Search Volume: 100 to 1,000</li>
+      <li>KD: under 30</li>
+      <li>CPC: over $1 (commercial intent matters)</li>
+    </ul>
+
+    <h3>Best targets for established sites</h3>
+    <ul>
+      <li>Search Volume: 1,000+</li>
+      <li>KD: under 50</li>
+      <li>CPC: over $3</li>
+    </ul>
+
+    <h3>Avoid</h3>
+    <ul>
+      <li>High KD (70+) without significant existing authority</li>
+      <li>Zero CPC keywords if your goal is conversions, not traffic</li>
+      <li>Very low Volume (under 50) unless the term is extremely targeted to your business</li>
+    </ul>
+  </section>
+
+  <section id="faq" class="faq-section">
+    <h2>Frequently asked questions</h2>
+
+    <div class="faq-item">
+      <div class="faq-q">What is a good keyword difficulty (KD) score?</div>
+      <div class="faq-a">For new or low-authority sites, target keywords with KD under 30. For established sites, KD up to 50 is achievable. KD above 70 typically requires significant link building and content depth.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What is a good search volume to target?</div>
+      <div class="faq-a">Aim for at least 100 monthly searches if traffic is your goal. Keywords with under 100 searches can still be valuable if they have strong commercial intent (CPC over $5) or strategic importance to your niche.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What does CPC tell me about a keyword?</div>
+      <div class="faq-a">CPC shows how much advertisers pay per click on Google Ads. High CPC means strong commercial intent. Use it as a signal of buyer intent, not just traffic intent.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Why is Competition different from Difficulty (KD)?</div>
+      <div class="faq-a">Competition refers to paid advertiser bidding on Google Ads. Difficulty refers to how hard it is to rank organically. A keyword can have low Competition but high KD, or vice versa.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How often does RankFrame update keyword metrics?</div>
+      <div class="faq-a">RankFrame fetches metrics from search data providers each time you click Check. The data reflects recent search trends. Major changes typically take a few weeks to appear.</div>
+    </div>
+  </section>
+
+  <section class="related-section">
+    <h2>Related articles</h2>
+    <ul class="related-links">
+      <li><a href="https://rankframe.com/help/manage-focus-keywords">Managing Focus Keywords for Your Framer Site</a></li>
+      <li><a href="https://rankframe.com/help/keyword-analysis-dashboard">Reading the Keyword Analysis Dashboard</a></li>
+      <li><a href="https://rankframe.com/help/site-wide-seo-best-practices">Site-wide SEO Best Practices for Framer</a></li>
+      <li><a href="https://rankframe.com/help/global-seo-settings-overview">Global SEO Settings Overview</a></li>
+    </ul>
+  </section>
+
+  <div class="cta-box">
+    <h3>Run keyword research today</h3>
+    <p>Open the Keywords tab in RankFrame and check your top 10 candidate keywords in 5 minutes.</p>
+    <a class="cta-btn" href="https://rankframe.com">Open RankFrame</a>
+  </div>
+
+  <!-- SEO Details Panel -->
+  <div class="seo-panel">
+    <div class="seo-panel-header">
+      <div class="seo-panel-title">SEO Details</div>
+      <div class="seo-panel-sub">Click Copy on any field to grab it without touching page source</div>
+    </div>
+    <div class="seo-fields" id="rf-seo-fields"></div>
+    <div class="seo-schemas" id="rf-seo-schemas"></div>
+  </div>
+
+  <script>
+  (function () {
+    function esc(s) {
+      return String(s)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;');
+    }
+    function copyBtn(text) {
+      const btn = document.createElement('button');
+      btn.className = 'seo-copy-btn';
+      btn.textContent = 'Copy';
+      btn.addEventListener('click', function () {
+        navigator.clipboard.writeText(text).then(function () {
+          btn.textContent = 'Copied';
+          btn.classList.add('ok');
+          setTimeout(function () { btn.textContent = 'Copy'; btn.classList.remove('ok'); }, 2000);
+        });
+      });
+      return btn;
+    }
+
+    var metaFields = [
+      { label: 'Meta Title', value: document.title },
+      { label: 'Meta Description', value: (document.querySelector('meta[name="description"]') || {}).content || '' },
+      { label: 'Meta Keywords', value: (document.querySelector('meta[name="keywords"]') || {}).content || '' },
+      { label: 'Canonical URL', value: (document.querySelector('link[rel="canonical"]') || {}).getAttribute('href') || '' },
+    ];
+
+    var fieldsEl = document.getElementById('rf-seo-fields');
+    metaFields.forEach(function (f) {
+      if (!f.value) return;
+      var wrap = document.createElement('div');
+      wrap.className = 'seo-field';
+      var row = document.createElement('div');
+      row.className = 'seo-field-row';
+      var lbl = document.createElement('div');
+      lbl.className = 'seo-field-label';
+      lbl.textContent = f.label;
+      row.appendChild(lbl);
+      row.appendChild(copyBtn(f.value));
+      var val = document.createElement('div');
+      val.className = 'seo-field-value';
+      val.textContent = f.value;
+      wrap.appendChild(row);
+      wrap.appendChild(val);
+      fieldsEl.appendChild(wrap);
+    });
+
+    var schemasEl = document.getElementById('rf-seo-schemas');
+    document.querySelectorAll('script[type="application/ld+json"]').forEach(function (s) {
+      var parsed;
+      try { parsed = JSON.parse(s.textContent); } catch (e) { return; }
+      var pretty = JSON.stringify(parsed, null, 2);
+      var wrap = document.createElement('div');
+      wrap.className = 'seo-schema';
+      var hdr = document.createElement('div');
+      hdr.className = 'seo-schema-header';
+      var typ = document.createElement('div');
+      typ.className = 'seo-schema-type';
+      typ.textContent = (parsed['@type'] || 'Schema') + ' — JSON-LD';
+      hdr.appendChild(typ);
+      hdr.appendChild(copyBtn(pretty));
+      var pre = document.createElement('pre');
+      pre.className = 'seo-schema-code';
+      pre.textContent = pretty;
+      wrap.appendChild(hdr);
+      wrap.appendChild(pre);
+      schemasEl.appendChild(wrap);
+    });
+  })();
+  </script>
+
+</div>
+</body>
+</html>

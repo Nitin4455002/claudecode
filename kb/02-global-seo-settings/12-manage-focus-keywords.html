@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Managing Focus Keywords for Your Framer Site | RankFrame Help</title>
+  <meta name="description" content="Add, assign, and manage focus keywords in RankFrame's Keywords tab. Learn how the Focus Keyword Script works, how to assign keywords to specific pages, and best practices." />
+  <meta name="keywords" content="framer focus keyword, framer seo keywords, rankframe keywords tab, target keyword framer, framer keyword research, focus keyword script, assign keyword to page" />
+  <link rel="canonical" href="https://rankframe.com/help/manage-focus-keywords" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How to Manage Focus Keywords in RankFrame",
+    "description": "Add focus keywords to specific pages on your Framer site and toggle the Focus Keyword Script.",
+    "step": [
+      { "@type": "HowToStep", "name": "Open the Keywords tab", "text": "In RankFrame, open Global Settings and click the Keywords tab." },
+      { "@type": "HowToStep", "name": "Toggle the Focus Keyword Script", "text": "Turn the Focus Keyword Script on to enable meta keyword injection on your live site." },
+      { "@type": "HowToStep", "name": "Select a target page", "text": "Use the Target Page dropdown to choose which page the keyword should be assigned to." },
+      { "@type": "HowToStep", "name": "Type your keyword", "text": "Enter the keyword in the input field. Click Check to view metrics, or click Save to assign it directly." },
+      { "@type": "HowToStep", "name": "Review saved keywords", "text": "Saved keywords appear in the Saved Keywords list with their volume and difficulty values." }
+    ],
+    "author": { "@type": "Organization", "name": "7 Seers", "url": "https://rankframe.com" },
+    "publisher": { "@type": "Organization", "name": "RankFrame", "url": "https://rankframe.com" }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is a focus keyword in RankFrame?",
+        "acceptedAnswer": { "@type": "Answer", "text": "A focus keyword is the primary search term you want a specific page to rank for. RankFrame stores focus keywords per page so you can track and optimize each page individually." }
+      },
+      {
+        "@type": "Question",
+        "name": "What does the Focus Keyword Script toggle do?",
+        "acceptedAnswer": { "@type": "Answer", "text": "When enabled, RankFrame injects a meta keyword tag on your live Framer site for each page with a saved focus keyword. The script also helps RankFrame's audit understand which keyword to evaluate each page against." }
+      },
+      {
+        "@type": "Question",
+        "name": "How many focus keywords can I assign to one page?",
+        "acceptedAnswer": { "@type": "Answer", "text": "You can save multiple keywords per page in RankFrame, but each page should have one primary focus keyword. Use additional keywords as secondary terms to track in the Keyword Tracker." }
+      },
+      {
+        "@type": "Question",
+        "name": "Do search engines still use the meta keywords tag?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Google does not use the meta keywords tag as a ranking signal. However, having focus keywords saved in RankFrame still helps because the plugin uses them for per-page audits, tracks them in the Keyword Tracker, and uses them to inform AI-generated meta titles and descriptions." }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I delete a saved keyword?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. In the Saved Keywords list, click the trash icon next to any keyword to remove it. The keyword is removed from RankFrame immediately." }
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", sans-serif; background: #ffffff; color: #111111; line-height: 1.7; font-size: 16px; }
+    .page { max-width: 740px; margin: 0 auto; padding: 48px 24px 96px; }
+    .breadcrumb { display: flex; align-items: center; gap: 6px; font-size: 13px; color: #888; margin-bottom: 32px; flex-wrap: wrap; }
+    .breadcrumb a { color: #888; text-decoration: none; } .breadcrumb a:hover { color: #7c3aed; } .breadcrumb span { color: #ccc; }
+    .article-category { display: inline-block; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #7c3aed; background: #f3f0ff; padding: 3px 10px; border-radius: 999px; margin-bottom: 12px; }
+    h1 { font-size: 2rem; font-weight: 700; color: #0a0a0a; line-height: 1.25; margin-bottom: 14px; letter-spacing: -0.02em; }
+    .article-description { font-size: 1.05rem; color: #555; line-height: 1.65; margin-bottom: 10px; }
+    .article-meta { display: flex; gap: 16px; font-size: 13px; color: #aaa; margin-bottom: 36px; padding-bottom: 24px; border-bottom: 1px solid #f0f0f0; flex-wrap: wrap; }
+    .toc { background: #fafafa; border: 1px solid #efefef; border-radius: 10px; padding: 18px 22px; margin-bottom: 40px; }
+    .toc-title { font-size: 12px; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: #aaa; margin-bottom: 10px; }
+    .toc ol { list-style: none; padding: 0; } .toc li { margin-bottom: 5px; }
+    .toc a { font-size: 14px; color: #555; text-decoration: none; } .toc a:hover { color: #7c3aed; }
+    h2 { font-size: 1.3rem; font-weight: 600; color: #0a0a0a; margin: 40px 0 14px; padding-bottom: 8px; border-bottom: 1px solid #f0f0f0; letter-spacing: -0.01em; }
+    h3 { font-size: 1.05rem; font-weight: 600; color: #0a0a0a; margin: 24px 0 8px; }
+    p { color: #333; margin-bottom: 16px; } ul, ol { padding-left: 22px; margin-bottom: 16px; } li { color: #333; margin-bottom: 6px; }
+    strong { color: #0a0a0a; font-weight: 600; } a { color: #7c3aed; text-decoration: none; } a:hover { text-decoration: underline; }
+    .tip { background: #f5f3ff; border-left: 3px solid #7c3aed; border-radius: 0 8px 8px 0; padding: 12px 16px; margin: 20px 0; }
+    .tip-label { font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #7c3aed; margin-bottom: 4px; }
+    .tip p { color: #4c1d95; margin: 0; font-size: 0.93rem; }
+    .note { background: #fff8f0; border-left: 3px solid #f59e0b; border-radius: 0 8px 8px 0; padding: 12px 16px; margin: 20px 0; }
+    .note-label { font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #d97706; margin-bottom: 4px; }
+    .note p { color: #78350f; margin: 0; font-size: 0.93rem; }
+    .steps { list-style: none; padding: 0; margin: 16px 0 24px; }
+    .steps li { display: flex; gap: 16px; padding: 14px 0; border-bottom: 1px solid #f5f5f5; }
+    .steps li:last-child { border-bottom: none; }
+    .step-num { width: 28px; height: 28px; background: #7c3aed; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; flex-shrink: 0; margin-top: 2px; }
+    .step-content { flex: 1; }
+    .step-title { font-weight: 600; color: #0a0a0a; margin-bottom: 3px; font-size: 0.95rem; }
+    .step-desc { color: #555; font-size: 0.92rem; line-height: 1.6; }
+    .faq-section { margin-top: 48px; padding-top: 32px; border-top: 1px solid #f0f0f0; }
+    .faq-section h2 { border-bottom: none; padding-bottom: 0; margin-bottom: 24px; }
+    .faq-item { border: 1px solid #efefef; border-radius: 10px; padding: 18px 20px; margin-bottom: 10px; }
+    .faq-q { font-weight: 600; color: #0a0a0a; font-size: 0.95rem; margin-bottom: 8px; }
+    .faq-a { color: #555; font-size: 0.93rem; line-height: 1.65; }
+    .related-section { margin-top: 48px; padding-top: 32px; border-top: 1px solid #f0f0f0; }
+    .related-section h2 { border-bottom: none; padding-bottom: 0; margin-bottom: 16px; font-size: 1rem; color: #666; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; }
+    .related-links { list-style: none; padding: 0; } .related-links li { margin-bottom: 8px; }
+    .related-links a { font-size: 0.95rem; color: #7c3aed; display: flex; align-items: center; gap: 6px; }
+    .related-links a::before { content: "→"; font-size: 12px; }
+    .cta-box { background: linear-gradient(135deg, #f5f3ff, #faf0ff); border: 1px solid #e8e0ff; border-radius: 12px; padding: 24px 28px; margin-top: 40px; text-align: center; }
+    .cta-box h3 { font-size: 1.1rem; color: #0a0a0a; margin-bottom: 8px; }
+    .cta-box p { color: #666; font-size: 0.9rem; margin-bottom: 16px; }
+    .cta-btn { display: inline-block; background: #7c3aed; color: #fff; font-weight: 600; font-size: 0.9rem; padding: 10px 22px; border-radius: 8px; text-decoration: none; }
+    .cta-btn:hover { background: #6d28d9; text-decoration: none; }
+
+    /* SEO Panel */
+    .seo-panel { margin-top: 64px; border-top: 2px dashed #e8e0ff; padding-top: 36px; }
+    .seo-panel-header { margin-bottom: 20px; }
+    .seo-panel-title { font-size: 11px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: #7c3aed; }
+    .seo-panel-sub { font-size: 12px; color: #aaa; margin-top: 3px; }
+    .seo-fields { display: grid; gap: 10px; margin-bottom: 28px; }
+    .seo-field { background: #fafafa; border: 1px solid #efefef; border-radius: 8px; padding: 14px 16px; position: relative; }
+    .seo-field-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+    .seo-field-label { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #bbb; }
+    .seo-copy-btn { font-size: 10px; font-weight: 600; color: #7c3aed; background: #f3f0ff; border: none; border-radius: 4px; padding: 3px 9px; cursor: pointer; transition: background 0.15s; }
+    .seo-copy-btn:hover { background: #e8e0ff; }
+    .seo-copy-btn.ok { color: #059669; background: #ecfdf5; }
+    .seo-field-value { font-size: 0.88rem; color: #333; line-height: 1.55; word-break: break-word; user-select: all; }
+    .seo-schemas { display: grid; gap: 14px; }
+    .seo-schema { border: 1px solid #efefef; border-radius: 8px; overflow: hidden; }
+    .seo-schema-header { display: flex; justify-content: space-between; align-items: center; padding: 10px 16px; background: #fafafa; border-bottom: 1px solid #efefef; }
+    .seo-schema-type { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #bbb; }
+    .seo-schema-code { background: #0d0d0d; color: #d4d4d4; font-family: "SF Mono","Fira Code",Consolas,monospace; font-size: 0.75rem; line-height: 1.65; padding: 16px 18px; margin: 0; overflow-x: auto; white-space: pre; user-select: all; }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <nav class="breadcrumb">
+    <a href="https://rankframe.com/help">Help Center</a>
+    <span>/</span>
+    <a href="https://rankframe.com/help/global-seo-settings">Global SEO Settings</a>
+    <span>/</span>
+    <span>Managing Focus Keywords</span>
+  </nav>
+
+  <div class="article-category">Global SEO Settings</div>
+  <h1>Managing Focus Keywords for Your Framer Site</h1>
+  <p class="article-description">Focus keywords tell RankFrame which terms each page is optimizing for. This article explains the Keywords tab, the Focus Keyword Script, and how to assign keywords to specific pages.</p>
+  <div class="article-meta">
+    <span>4 min read</span>
+    <span>Last updated May 2, 2026</span>
+  </div>
+
+  <nav class="toc">
+    <div class="toc-title">On this page</div>
+    <ol>
+      <li><a href="#what-is-focus">What a focus keyword is</a></li>
+      <li><a href="#script-toggle">The Focus Keyword Script toggle</a></li>
+      <li><a href="#target-page">The Target Page dropdown</a></li>
+      <li><a href="#add-keyword">How to add a keyword</a></li>
+      <li><a href="#saved-keywords">Saved keywords list</a></li>
+      <li><a href="#best-practices">Best practices</a></li>
+      <li><a href="#faq">Frequently asked questions</a></li>
+    </ol>
+  </nav>
+
+  <section id="what-is-focus">
+    <h2>What a focus keyword is</h2>
+    <p>A focus keyword is the primary search term you want a specific page to rank for on Google.</p>
+    <p>For example, your homepage might focus on "framer seo plugin" while your pricing page focuses on "framer seo plugin price" and your blog post about schema focuses on "framer schema markup."</p>
+    <p>RankFrame stores focus keywords per page. The Keywords tab in Global Settings is where you manage them.</p>
+  </section>
+
+  <section id="script-toggle">
+    <h2>The Focus Keyword Script toggle</h2>
+    <p>At the top of the Keywords tab, you will see the <strong>Focus Keyword Script</strong> toggle.</p>
+    <p>When enabled, RankFrame injects a meta keyword tag on your live Framer site for each page that has a saved focus keyword. It also helps RankFrame's audit logic evaluate each page against its assigned keyword.</p>
+    <p>Toggle it on once. Republish your Framer site to push the script live. From then on, every saved focus keyword takes effect automatically.</p>
+
+    <div class="note">
+      <div class="note-label">Note</div>
+      <p>Google no longer uses the meta keywords tag as a ranking signal. The toggle still matters because RankFrame uses focus keywords for per-page audits, the Keyword Tracker, and AI-generated meta tags.</p>
+    </div>
+  </section>
+
+  <section id="target-page">
+    <h2>The Target Page dropdown</h2>
+    <p>The <strong>Target Page</strong> dropdown lists every page from your sitemap. Select the page you want to assign a keyword to.</p>
+    <p>Common pages you will see:</p>
+    <ul>
+      <li>/ (your homepage)</li>
+      <li>/pricing</li>
+      <li>/about</li>
+      <li>/blog/[post-slug]</li>
+      <li>/projects/[project-slug]</li>
+    </ul>
+    <p>Choose the page first, then add the keyword. Each keyword is bound to the selected page.</p>
+  </section>
+
+  <section id="add-keyword">
+    <h2>How to add a keyword</h2>
+
+    <ol class="steps">
+      <li>
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <div class="step-title">Open Global Settings, Keywords tab</div>
+          <div class="step-desc">Click <strong>Global Settings</strong> in the sidebar, then click the <strong>Keywords</strong> tab.</div>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <div class="step-title">Make sure Focus Keyword Script is on</div>
+          <div class="step-desc">Toggle the <strong>Focus Keyword Script</strong> on if it is not already.</div>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <div class="step-title">Select the target page</div>
+          <div class="step-desc">Use the <strong>Target Page</strong> dropdown to pick the page you want to assign the keyword to.</div>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <div class="step-title">Type your keyword</div>
+          <div class="step-desc">Enter the keyword in the input field below the dropdown.</div>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">5</div>
+        <div class="step-content">
+          <div class="step-title">Click Check to see metrics</div>
+          <div class="step-desc">Click the <strong>Check</strong> button to view Search Volume, Difficulty (KD), Competition, and CPC for the keyword. See <a href="https://rankframe.com/help/keyword-metrics-explained">Understanding Keyword Metrics</a> for details.</div>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">6</div>
+        <div class="step-content">
+          <div class="step-title">Click Save</div>
+          <div class="step-desc">Click <strong>Save</strong> to assign the keyword to the selected page. The keyword appears in the Saved Keywords list below.</div>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <section id="saved-keywords">
+    <h2>Saved keywords list</h2>
+    <p>All your assigned keywords appear in the <strong>Saved Keywords</strong> section. Each row shows:</p>
+    <ul>
+      <li>The keyword text</li>
+      <li>Volume (search volume per month)</li>
+      <li>KD (keyword difficulty, shown in red if difficulty is high)</li>
+      <li>A delete (trash) icon to remove the keyword</li>
+    </ul>
+    <p>Use <strong>Manage</strong> to edit your keyword list and <strong>Hide</strong> to collapse the section once you have what you need.</p>
+
+    <div class="tip">
+      <div class="tip-label">Tip</div>
+      <p>Sort and filter Saved Keywords by KD to spot easy wins. Keywords with high volume and low difficulty (KD under 30) are the best targets for new pages.</p>
+    </div>
+  </section>
+
+  <section id="best-practices">
+    <h2>Best practices</h2>
+
+    <h3>One primary keyword per page</h3>
+    <p>Pick one primary keyword per page. Adding ten different keywords to one page dilutes the page's relevance for any single one.</p>
+
+    <h3>Match keyword to search intent</h3>
+    <p>Make sure the keyword matches what users searching for that term actually want. A pricing page should target a "pricing" or "cost" keyword. A guide should target a "how to" keyword. A landing page should target a "[product] for [audience]" keyword.</p>
+
+    <h3>Use long-tail keywords for new sites</h3>
+    <p>If your domain is new, target longer, more specific keywords (e.g. "framer seo plugin for agencies" instead of just "seo plugin"). Lower competition means faster ranking.</p>
+
+    <h3>Update keywords as your site evolves</h3>
+    <p>If you change a page's content focus, update its focus keyword too. Stale keyword assignments confuse RankFrame's audits and tracking.</p>
+  </section>
+
+  <section id="faq" class="faq-section">
+    <h2>Frequently asked questions</h2>
+
+    <div class="faq-item">
+      <div class="faq-q">What is a focus keyword in RankFrame?</div>
+      <div class="faq-a">A focus keyword is the primary search term you want a specific page to rank for. RankFrame stores focus keywords per page so you can track and optimize each page individually.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What does the Focus Keyword Script toggle do?</div>
+      <div class="faq-a">When enabled, RankFrame injects a meta keyword tag on your live site for each page with a saved focus keyword. It also helps the per-page audit evaluate each page against its assigned keyword.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How many focus keywords can I assign to one page?</div>
+      <div class="faq-a">You can save multiple keywords per page in RankFrame, but each page should have one primary focus keyword. Use additional keywords as secondary terms to track in the Keyword Tracker.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Do search engines still use the meta keywords tag?</div>
+      <div class="faq-a">Google does not use the meta keywords tag as a ranking signal. However, focus keywords still matter because RankFrame uses them for audits, tracking, and AI-generated meta tags.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Can I delete a saved keyword?</div>
+      <div class="faq-a">Yes. Click the trash icon next to any keyword in the Saved Keywords list to remove it. The keyword is removed from RankFrame immediately.</div>
+    </div>
+  </section>
+
+  <section class="related-section">
+    <h2>Related articles</h2>
+    <ul class="related-links">
+      <li><a href="https://rankframe.com/help/keyword-metrics-explained">Understanding Keyword Metrics in RankFrame</a></li>
+      <li><a href="https://rankframe.com/help/keyword-analysis-dashboard">Reading the Keyword Analysis Dashboard</a></li>
+      <li><a href="https://rankframe.com/help/site-wide-meta-title-description">How to Set Site-wide Meta Title and Description</a></li>
+      <li><a href="https://rankframe.com/help/site-wide-seo-best-practices">Site-wide SEO Best Practices for Framer</a></li>
+    </ul>
+  </section>
+
+  <div class="cta-box">
+    <h3>Assign focus keywords today</h3>
+    <p>Open RankFrame and add focus keywords to your top 5 pages. Most users finish in under 10 minutes.</p>
+    <a class="cta-btn" href="https://rankframe.com">Open RankFrame</a>
+  </div>
+
+  <!-- SEO Details Panel -->
+  <div class="seo-panel">
+    <div class="seo-panel-header">
+      <div class="seo-panel-title">SEO Details</div>
+      <div class="seo-panel-sub">Click Copy on any field to grab it without touching page source</div>
+    </div>
+    <div class="seo-fields" id="rf-seo-fields"></div>
+    <div class="seo-schemas" id="rf-seo-schemas"></div>
+  </div>
+
+  <script>
+  (function () {
+    function esc(s) {
+      return String(s)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;');
+    }
+    function copyBtn(text) {
+      const btn = document.createElement('button');
+      btn.className = 'seo-copy-btn';
+      btn.textContent = 'Copy';
+      btn.addEventListener('click', function () {
+        navigator.clipboard.writeText(text).then(function () {
+          btn.textContent = 'Copied';
+          btn.classList.add('ok');
+          setTimeout(function () { btn.textContent = 'Copy'; btn.classList.remove('ok'); }, 2000);
+        });
+      });
+      return btn;
+    }
+
+    var metaFields = [
+      { label: 'Meta Title', value: document.title },
+      { label: 'Meta Description', value: (document.querySelector('meta[name="description"]') || {}).content || '' },
+      { label: 'Meta Keywords', value: (document.querySelector('meta[name="keywords"]') || {}).content || '' },
+      { label: 'Canonical URL', value: (document.querySelector('link[rel="canonical"]') || {}).getAttribute('href') || '' },
+    ];
+
+    var fieldsEl = document.getElementById('rf-seo-fields');
+    metaFields.forEach(function (f) {
+      if (!f.value) return;
+      var wrap = document.createElement('div');
+      wrap.className = 'seo-field';
+      var row = document.createElement('div');
+      row.className = 'seo-field-row';
+      var lbl = document.createElement('div');
+      lbl.className = 'seo-field-label';
+      lbl.textContent = f.label;
+      row.appendChild(lbl);
+      row.appendChild(copyBtn(f.value));
+      var val = document.createElement('div');
+      val.className = 'seo-field-value';
+      val.textContent = f.value;
+      wrap.appendChild(row);
+      wrap.appendChild(val);
+      fieldsEl.appendChild(wrap);
+    });
+
+    var schemasEl = document.getElementById('rf-seo-schemas');
+    document.querySelectorAll('script[type="application/ld+json"]').forEach(function (s) {
+      var parsed;
+      try { parsed = JSON.parse(s.textContent); } catch (e) { return; }
+      var pretty = JSON.stringify(parsed, null, 2);
+      var wrap = document.createElement('div');
+      wrap.className = 'seo-schema';
+      var hdr = document.createElement('div');
+      hdr.className = 'seo-schema-header';
+      var typ = document.createElement('div');
+      typ.className = 'seo-schema-type';
+      typ.textContent = (parsed['@type'] || 'Schema') + ' — JSON-LD';
+      hdr.appendChild(typ);
+      hdr.appendChild(copyBtn(pretty));
+      var pre = document.createElement('pre');
+      pre.className = 'seo-schema-code';
+      pre.textContent = pretty;
+      wrap.appendChild(hdr);
+      wrap.appendChild(pre);
+      schemasEl.appendChild(wrap);
+    });
+  })();
+  </script>
+
+</div>
+</body>
+</html>

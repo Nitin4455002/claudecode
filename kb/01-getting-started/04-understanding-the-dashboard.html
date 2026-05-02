@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Understanding the RankFrame Dashboard | RankFrame Help</title>
+  <meta name="description" content="A guided tour of RankFrame's sidebar, navigation items, SEO score widget, and every button in the plugin panel. Learn what each section does before you start." />
+  <meta name="keywords" content="rankframe dashboard, rankframe plugin interface, framer seo dashboard, rankframe navigation, rankframe sidebar, rankframe seo score" />
+  <link rel="canonical" href="https://rankframe.com/help/understanding-the-dashboard" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Understanding the RankFrame Dashboard",
+    "description": "A guided tour of every section in the RankFrame plugin panel: sidebar navigation, SEO score widget, main sections, and action buttons.",
+    "author": { "@type": "Organization", "name": "7 Seers", "url": "https://rankframe.com" },
+    "publisher": { "@type": "Organization", "name": "RankFrame", "url": "https://rankframe.com" },
+    "datePublished": "2026-05-02",
+    "dateModified": "2026-05-02",
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://rankframe.com/help/understanding-the-dashboard" }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What does the SEO score in RankFrame mean?",
+        "acceptedAnswer": { "@type": "Answer", "text": "The SEO score is a 0 to 100 rating based on the site-wide audit RankFrame runs across 29 checks. A score of 90 or above is Excellent. 80 to 89 is Good. 60 to 79 is Needs Work. Below 60 is Critical. Improve the score by fixing items in the Red Zone of the SEO Analyzer." }
+      },
+      {
+        "@type": "Question",
+        "name": "What does Recrawl Website do?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Recrawl Website re-runs the site scan. Use it after adding new pages, uploading new images, or making changes to your Framer site so RankFrame reflects the latest version. Trial users get 1 recrawl. Paid users get unlimited recrawls." }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the Go to Dashboard button in RankFrame?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Go to Dashboard opens dashboard.rankframe.com in your browser. The external dashboard shows account-level data. Most day-to-day SEO work happens inside the plugin panel in Framer." }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I switch between sites in RankFrame?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Agency plan users can switch between connected sites using the site selector in the plugin. Personal plan users are limited to one connected site." }
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", sans-serif; background: #ffffff; color: #111111; line-height: 1.7; font-size: 16px; }
+    .page { max-width: 740px; margin: 0 auto; padding: 48px 24px 96px; }
+    .breadcrumb { display: flex; align-items: center; gap: 6px; font-size: 13px; color: #888; margin-bottom: 32px; flex-wrap: wrap; }
+    .breadcrumb a { color: #888; text-decoration: none; } .breadcrumb a:hover { color: #7c3aed; } .breadcrumb span { color: #ccc; }
+    .article-category { display: inline-block; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #7c3aed; background: #f3f0ff; padding: 3px 10px; border-radius: 999px; margin-bottom: 12px; }
+    h1 { font-size: 2rem; font-weight: 700; color: #0a0a0a; line-height: 1.25; margin-bottom: 14px; letter-spacing: -0.02em; }
+    .article-description { font-size: 1.05rem; color: #555; line-height: 1.65; margin-bottom: 10px; }
+    .article-meta { display: flex; gap: 16px; font-size: 13px; color: #aaa; margin-bottom: 36px; padding-bottom: 24px; border-bottom: 1px solid #f0f0f0; flex-wrap: wrap; }
+    .toc { background: #fafafa; border: 1px solid #efefef; border-radius: 10px; padding: 18px 22px; margin-bottom: 40px; }
+    .toc-title { font-size: 12px; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: #aaa; margin-bottom: 10px; }
+    .toc ol { list-style: none; padding: 0; } .toc li { margin-bottom: 5px; }
+    .toc a { font-size: 14px; color: #555; text-decoration: none; } .toc a:hover { color: #7c3aed; }
+    h2 { font-size: 1.3rem; font-weight: 600; color: #0a0a0a; margin: 40px 0 14px; padding-bottom: 8px; border-bottom: 1px solid #f0f0f0; letter-spacing: -0.01em; }
+    h3 { font-size: 1.05rem; font-weight: 600; color: #0a0a0a; margin: 24px 0 8px; }
+    p { color: #333; margin-bottom: 16px; } ul, ol { padding-left: 22px; margin-bottom: 16px; } li { color: #333; margin-bottom: 6px; }
+    strong { color: #0a0a0a; font-weight: 600; } a { color: #7c3aed; text-decoration: none; } a:hover { text-decoration: underline; }
+    .tip { background: #f5f3ff; border-left: 3px solid #7c3aed; border-radius: 0 8px 8px 0; padding: 12px 16px; margin: 20px 0; }
+    .tip-label { font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #7c3aed; margin-bottom: 4px; }
+    .tip p { color: #4c1d95; margin: 0; font-size: 0.93rem; }
+    .note { background: #fff8f0; border-left: 3px solid #f59e0b; border-radius: 0 8px 8px 0; padding: 12px 16px; margin: 20px 0; }
+    .note-label { font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #d97706; margin-bottom: 4px; }
+    .note p { color: #78350f; margin: 0; font-size: 0.93rem; }
+    .nav-item { display: flex; gap: 14px; padding: 14px 0; border-bottom: 1px solid #f5f5f5; align-items: flex-start; }
+    .nav-item:last-child { border-bottom: none; }
+    .nav-icon { width: 32px; height: 32px; background: #f3f0ff; border: 1px solid #e5e0f8; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; color: #7c3aed; font-weight: 700; }
+    .nav-info { flex: 1; }
+    .nav-name { font-weight: 600; color: #0a0a0a; font-size: 0.95rem; margin-bottom: 3px; }
+    .nav-desc { color: #666; font-size: 0.88rem; line-height: 1.55; }
+    .score-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; margin: 16px 0 24px; }
+    .score-table th { text-align: left; padding: 8px 14px; background: #fafafa; border: 1px solid #efefef; color: #555; font-weight: 600; }
+    .score-table td { padding: 9px 14px; border: 1px solid #f5f5f5; }
+    .badge { display: inline-block; font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 999px; }
+    .badge-green { background: #f0fdf4; color: #15803d; }
+    .badge-blue { background: #eff6ff; color: #1d4ed8; }
+    .badge-yellow { background: #fefce8; color: #a16207; }
+    .badge-red { background: #fff1f2; color: #be123c; }
+    .faq-section { margin-top: 48px; padding-top: 32px; border-top: 1px solid #f0f0f0; }
+    .faq-section h2 { border-bottom: none; padding-bottom: 0; margin-bottom: 24px; }
+    .faq-item { border: 1px solid #efefef; border-radius: 10px; padding: 18px 20px; margin-bottom: 10px; }
+    .faq-q { font-weight: 600; color: #0a0a0a; font-size: 0.95rem; margin-bottom: 8px; }
+    .faq-a { color: #555; font-size: 0.93rem; line-height: 1.65; }
+    .related-section { margin-top: 48px; padding-top: 32px; border-top: 1px solid #f0f0f0; }
+    .related-section h2 { border-bottom: none; padding-bottom: 0; margin-bottom: 16px; font-size: 1rem; color: #666; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; }
+    .related-links { list-style: none; padding: 0; } .related-links li { margin-bottom: 8px; }
+    .related-links a { font-size: 0.95rem; color: #7c3aed; display: flex; align-items: center; gap: 6px; }
+    .related-links a::before { content: "→"; font-size: 12px; }
+    .cta-box { background: linear-gradient(135deg, #f5f3ff, #faf0ff); border: 1px solid #e8e0ff; border-radius: 12px; padding: 24px 28px; margin-top: 40px; text-align: center; }
+    .cta-box h3 { font-size: 1.1rem; color: #0a0a0a; margin-bottom: 8px; }
+    .cta-box p { color: #666; font-size: 0.9rem; margin-bottom: 16px; }
+    .cta-btn { display: inline-block; background: #7c3aed; color: #fff; font-weight: 600; font-size: 0.9rem; padding: 10px 22px; border-radius: 8px; text-decoration: none; }
+    .cta-btn:hover { background: #6d28d9; text-decoration: none; }
+
+    /* SEO Panel */
+    .seo-panel { margin-top: 64px; border-top: 2px dashed #e8e0ff; padding-top: 36px; }
+    .seo-panel-header { margin-bottom: 20px; }
+    .seo-panel-title { font-size: 11px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: #7c3aed; }
+    .seo-panel-sub { font-size: 12px; color: #aaa; margin-top: 3px; }
+    .seo-fields { display: grid; gap: 10px; margin-bottom: 28px; }
+    .seo-field { background: #fafafa; border: 1px solid #efefef; border-radius: 8px; padding: 14px 16px; position: relative; }
+    .seo-field-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+    .seo-field-label { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #bbb; }
+    .seo-copy-btn { font-size: 10px; font-weight: 600; color: #7c3aed; background: #f3f0ff; border: none; border-radius: 4px; padding: 3px 9px; cursor: pointer; transition: background 0.15s; }
+    .seo-copy-btn:hover { background: #e8e0ff; }
+    .seo-copy-btn.ok { color: #059669; background: #ecfdf5; }
+    .seo-field-value { font-size: 0.88rem; color: #333; line-height: 1.55; word-break: break-word; user-select: all; }
+    .seo-schemas { display: grid; gap: 14px; }
+    .seo-schema { border: 1px solid #efefef; border-radius: 8px; overflow: hidden; }
+    .seo-schema-header { display: flex; justify-content: space-between; align-items: center; padding: 10px 16px; background: #fafafa; border-bottom: 1px solid #efefef; }
+    .seo-schema-type { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #bbb; }
+    .seo-schema-code { background: #0d0d0d; color: #d4d4d4; font-family: "SF Mono","Fira Code",Consolas,monospace; font-size: 0.75rem; line-height: 1.65; padding: 16px 18px; margin: 0; overflow-x: auto; white-space: pre; user-select: all; }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <nav class="breadcrumb">
+    <a href="https://rankframe.com/help">Help Center</a>
+    <span>/</span>
+    <a href="https://rankframe.com/help/getting-started">Getting Started</a>
+    <span>/</span>
+    <span>Understanding the Dashboard</span>
+  </nav>
+
+  <div class="article-category">Getting Started</div>
+  <h1>Understanding the RankFrame Dashboard</h1>
+  <p class="article-description">A guided tour of RankFrame's layout: the sidebar navigation, SEO score widget, main sections, and every action button in the plugin.</p>
+  <div class="article-meta">
+    <span>4 min read</span>
+    <span>Last updated May 2, 2026</span>
+  </div>
+
+  <nav class="toc">
+    <div class="toc-title">On this page</div>
+    <ol>
+      <li><a href="#layout">Plugin layout overview</a></li>
+      <li><a href="#navigation">Main navigation sections</a></li>
+      <li><a href="#seo-score">The SEO score widget</a></li>
+      <li><a href="#sidebar-actions">Sidebar actions</a></li>
+      <li><a href="#account-block">Account and plan block</a></li>
+      <li><a href="#faq">Frequently asked questions</a></li>
+    </ol>
+  </nav>
+
+  <section id="layout">
+    <h2>Plugin layout overview</h2>
+    <p>RankFrame opens as a panel inside Framer. The layout has two main areas: a <strong>left sidebar</strong> that stays visible at all times, and a <strong>main content area</strong> on the right that changes based on which section you open.</p>
+    <p>The top bar shows the RankFrame logo and a close button. You can reopen the plugin at any time from the Framer Plugins panel.</p>
+  </section>
+
+  <section id="navigation">
+    <h2>Main navigation sections</h2>
+    <p>The left sidebar has five main navigation items. Each one opens a different set of SEO tools.</p>
+
+    <div class="nav-item">
+      <div class="nav-icon">GS</div>
+      <div class="nav-info">
+        <div class="nav-name">Global Settings</div>
+        <div class="nav-desc">Set site-wide meta titles and descriptions. Manage keyword injection, schema markup, and the 404 monitor. Changes here apply across your entire site unless overridden at the page level. Has four tabs: Basic, Keywords, Advanced (Schema), and 404 Monitor.</div>
+      </div>
+    </div>
+
+    <div class="nav-item">
+      <div class="nav-icon">P</div>
+      <div class="nav-info">
+        <div class="nav-name">Pages</div>
+        <div class="nav-desc">Browse every page on your Framer site, organized by folder. See the SEO score for each page. Click any page to open the per-page split view, where the live page preview appears on the left and the full per-page audit appears on the right.</div>
+      </div>
+    </div>
+
+    <div class="nav-item">
+      <div class="nav-icon">SI</div>
+      <div class="nav-info">
+        <div class="nav-name">Submit Indexing</div>
+        <div class="nav-desc">Push pages directly to Google using the official Google Indexing API. View your Search Console analytics, track keywords, and check the live indexing status of any URL. Has five tabs: Submit URLs, Setup, Analytics, Keyword Tracker, and Indexing History.</div>
+      </div>
+    </div>
+
+    <div class="nav-item">
+      <div class="nav-icon">SA</div>
+      <div class="nav-info">
+        <div class="nav-name">SEO Analyzer</div>
+        <div class="nav-desc">Run a site-wide audit across 29 checks. Filter by Green Zone, Red Zone, Warnings, and Speed. Click any check to see a specific suggestion. Download the full report as a PDF. The Speed tab shows Core Web Vitals from Google PageSpeed Insights.</div>
+      </div>
+    </div>
+
+    <div class="nav-item">
+      <div class="nav-icon">IM</div>
+      <div class="nav-info">
+        <div class="nav-name">Image SEO</div>
+        <div class="nav-desc">Scan every image on your site (Canvas and CMS collections). See missing alt text counts. Bulk-generate AI alt text for all selected images in one click. Export as CSV. Add a global suffix to all generated alt text site-wide.</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="seo-score">
+    <h2>The SEO score widget</h2>
+    <p>Below the main navigation, the sidebar shows a circular progress ring with a number from 0 to 100. This is your <strong>site-wide SEO score</strong>.</p>
+    <p>The score is calculated from the 29-check audit in the SEO Analyzer. It updates each time you run a fresh audit or recrawl your site.</p>
+
+    <table class="score-table">
+      <thead>
+        <tr>
+          <th>Score range</th>
+          <th>Label</th>
+          <th>What it means</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>90 to 100</td>
+          <td><span class="badge badge-green">Excellent</span></td>
+          <td>Your site passes the vast majority of checks. Continue monitoring.</td>
+        </tr>
+        <tr>
+          <td>80 to 89</td>
+          <td><span class="badge badge-blue">Good</span></td>
+          <td>Minor issues present. Target 90+ by fixing Red Zone items.</td>
+        </tr>
+        <tr>
+          <td>60 to 79</td>
+          <td><span class="badge badge-yellow">Needs Work</span></td>
+          <td>Several important checks are failing. Prioritize Red Zone fixes.</td>
+        </tr>
+        <tr>
+          <td>0 to 59</td>
+          <td><span class="badge badge-red">Critical</span></td>
+          <td>Significant SEO gaps. Run the Analyzer and fix all Red Zone items immediately.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="tip">
+      <div class="tip-label">Tip</div>
+      <p>Click the SEO score widget to jump directly to the SEO Analyzer. This is the fastest way to see exactly what is dragging your score down.</p>
+    </div>
+  </section>
+
+  <section id="sidebar-actions">
+    <h2>Sidebar actions</h2>
+    <p>Below the SEO score widget, the sidebar shows quick-access links and two action buttons.</p>
+
+    <h3>Support</h3>
+    <p>A green dot appears next to <strong>Support</strong> when the RankFrame team is online and available. Click it to open a support conversation. If the dot is grey, the team is offline. You can still send a message and expect a reply within one business day.</p>
+
+    <h3>Documentation</h3>
+    <p>Opens the RankFrame Help Center in your browser. Use this to find guides for any feature.</p>
+
+    <h3>Go to Dashboard</h3>
+    <p>Opens <strong>dashboard.rankframe.com</strong> in a new tab. The external dashboard shows account-level data and billing details. Most day-to-day SEO work happens inside the Framer plugin panel, not the external dashboard.</p>
+
+    <h3>See Billing</h3>
+    <p>Opens your billing portal (powered by Polar.sh). From here you can view your current plan, switch between monthly and annual billing, update your payment method, download invoices, and cancel your subscription.</p>
+
+    <h3>Recrawl Website</h3>
+    <p>Re-runs the full site scan. Use this after adding new pages to your Framer site, uploading new images, or publishing significant content updates. RankFrame uses the most recent scan data for all audits and image inventories.</p>
+
+    <div class="note">
+      <div class="note-label">Note</div>
+      <p>Trial users get 1 recrawl included. Paid users on both Personal and Agency plans get unlimited recrawls.</p>
+    </div>
+  </section>
+
+  <section id="account-block">
+    <h2>Account and plan block</h2>
+    <p>At the bottom of the sidebar, RankFrame shows your account information.</p>
+    <ul>
+      <li><strong>Avatar</strong>: your initials in a purple circle</li>
+      <li><strong>Name and email</strong>: the account you are signed in with</li>
+      <li><strong>Plan badge</strong>: your current plan (Free Trial, Personal, or Agency)</li>
+      <li><strong>Renewal countdown</strong>: days until your next billing date (e.g. "Renews in 357 days")</li>
+    </ul>
+    <p>Click the account block to open <strong>Account Settings</strong>. From there you can view your profile details and manage your Personalization data.</p>
+    <p>Profile details like your name and password are read-only inside the plugin. To update them, visit <a href="https://dashboard.rankframe.com">dashboard.rankframe.com</a>.</p>
+  </section>
+
+  <section id="faq" class="faq-section">
+    <h2>Frequently asked questions</h2>
+
+    <div class="faq-item">
+      <div class="faq-q">What does the SEO score in RankFrame mean?</div>
+      <div class="faq-a">The SEO score is a 0 to 100 rating based on the site-wide audit RankFrame runs across 29 checks. A score of 90 or above is Excellent. 80 to 89 is Good. 60 to 79 is Needs Work. Below 60 is Critical. Improve it by fixing items in the Red Zone of the SEO Analyzer.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What does Recrawl Website do?</div>
+      <div class="faq-a">Recrawl Website re-runs the full site scan. Use it after adding new pages, uploading new images, or making changes to your Framer site so RankFrame reflects the latest version. Trial users get 1 recrawl. Paid users get unlimited recrawls.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What is the Go to Dashboard button?</div>
+      <div class="faq-a">It opens dashboard.rankframe.com in your browser. The external dashboard shows account-level data. Most day-to-day SEO work happens inside the plugin panel in Framer.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How do I switch between sites in RankFrame?</div>
+      <div class="faq-a">Agency plan users can switch between connected sites using the site selector that appears at the top of certain sections. Personal plan users are limited to one connected site.</div>
+    </div>
+  </section>
+
+  <section class="related-section">
+    <h2>Related articles</h2>
+    <ul class="related-links">
+      <li><a href="https://rankframe.com/help/what-is-rankframe">What is RankFrame?</a></li>
+      <li><a href="https://rankframe.com/help/connect-your-website">How to Connect Your Website in RankFrame</a></li>
+      <li><a href="https://rankframe.com/help/plans-and-pricing">RankFrame Plans and Pricing</a></li>
+      <li><a href="https://rankframe.com/help/managing-your-account">Managing Your RankFrame Account</a></li>
+    </ul>
+  </section>
+
+  <div class="cta-box">
+    <h3>Start exploring RankFrame</h3>
+    <p>Install RankFrame in Framer and get full access free for 7 days. No credit card required.</p>
+    <a class="cta-btn" href="https://rankframe.com">Start free trial</a>
+  </div>
+
+  <!-- SEO Details Panel -->
+  <div class="seo-panel">
+    <div class="seo-panel-header">
+      <div class="seo-panel-title">SEO Details</div>
+      <div class="seo-panel-sub">Click Copy on any field to grab it without touching page source</div>
+    </div>
+    <div class="seo-fields" id="rf-seo-fields"></div>
+    <div class="seo-schemas" id="rf-seo-schemas"></div>
+  </div>
+
+  <script>
+  (function () {
+    function esc(s) {
+      return String(s)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;');
+    }
+    function copyBtn(text) {
+      const btn = document.createElement('button');
+      btn.className = 'seo-copy-btn';
+      btn.textContent = 'Copy';
+      btn.addEventListener('click', function () {
+        navigator.clipboard.writeText(text).then(function () {
+          btn.textContent = 'Copied';
+          btn.classList.add('ok');
+          setTimeout(function () { btn.textContent = 'Copy'; btn.classList.remove('ok'); }, 2000);
+        });
+      });
+      return btn;
+    }
+
+    var metaFields = [
+      { label: 'Meta Title', value: document.title },
+      { label: 'Meta Description', value: (document.querySelector('meta[name="description"]') || {}).content || '' },
+      { label: 'Meta Keywords', value: (document.querySelector('meta[name="keywords"]') || {}).content || '' },
+      { label: 'Canonical URL', value: (document.querySelector('link[rel="canonical"]') || {}).getAttribute('href') || '' },
+    ];
+
+    var fieldsEl = document.getElementById('rf-seo-fields');
+    metaFields.forEach(function (f) {
+      if (!f.value) return;
+      var wrap = document.createElement('div');
+      wrap.className = 'seo-field';
+      var row = document.createElement('div');
+      row.className = 'seo-field-row';
+      var lbl = document.createElement('div');
+      lbl.className = 'seo-field-label';
+      lbl.textContent = f.label;
+      row.appendChild(lbl);
+      row.appendChild(copyBtn(f.value));
+      var val = document.createElement('div');
+      val.className = 'seo-field-value';
+      val.textContent = f.value;
+      wrap.appendChild(row);
+      wrap.appendChild(val);
+      fieldsEl.appendChild(wrap);
+    });
+
+    var schemasEl = document.getElementById('rf-seo-schemas');
+    document.querySelectorAll('script[type="application/ld+json"]').forEach(function (s) {
+      var parsed;
+      try { parsed = JSON.parse(s.textContent); } catch (e) { return; }
+      var pretty = JSON.stringify(parsed, null, 2);
+      var wrap = document.createElement('div');
+      wrap.className = 'seo-schema';
+      var hdr = document.createElement('div');
+      hdr.className = 'seo-schema-header';
+      var typ = document.createElement('div');
+      typ.className = 'seo-schema-type';
+      typ.textContent = (parsed['@type'] || 'Schema') + ' — JSON-LD';
+      hdr.appendChild(typ);
+      hdr.appendChild(copyBtn(pretty));
+      var pre = document.createElement('pre');
+      pre.className = 'seo-schema-code';
+      pre.textContent = pretty;
+      wrap.appendChild(hdr);
+      wrap.appendChild(pre);
+      schemasEl.appendChild(wrap);
+    });
+  })();
+  </script>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How to Set Site-wide Meta Title and Description in Framer | RankFrame Help</title>
+  <meta name="description" content="Set your Framer site's global meta title and description in RankFrame. Learn character limits, character counters, and best practices for writing meta tags that rank." />
+  <meta name="keywords" content="framer meta title, framer meta description, site-wide meta tags framer, rankframe basic tab, framer seo title, framer page description, meta title character limit" />
+  <link rel="canonical" href="https://rankframe.com/help/site-wide-meta-title-description" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How to Set Site-wide Meta Title and Description in Framer",
+    "description": "Configure your Framer site's default meta title and description in RankFrame's Basic tab.",
+    "step": [
+      { "@type": "HowToStep", "name": "Open Global Settings", "text": "Open RankFrame in Framer and click Global Settings in the sidebar." },
+      { "@type": "HowToStep", "name": "Open the Basic tab", "text": "The Basic tab is selected by default. It shows your current title and description side-by-side with AI-generated alternatives." },
+      { "@type": "HowToStep", "name": "Write or paste your meta title", "text": "Enter a meta title under 70 characters. Watch the character counter to stay within the limit." },
+      { "@type": "HowToStep", "name": "Write your meta description", "text": "Enter a meta description between 150 and 160 characters. The hard limit is 260 characters, but Google often truncates around 160." },
+      { "@type": "HowToStep", "name": "Save your changes", "text": "Click Save. Your meta title and description are now stored in RankFrame." },
+      { "@type": "HowToStep", "name": "Republish your Framer site", "text": "Republish your Framer project so the new meta tags appear on your live site." }
+    ],
+    "author": { "@type": "Organization", "name": "7 Seers", "url": "https://rankframe.com" },
+    "publisher": { "@type": "Organization", "name": "RankFrame", "url": "https://rankframe.com" }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is the recommended character limit for a meta title?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Keep your meta title under 70 characters. Google typically displays the first 50 to 60 characters in search results, but the full 70-character version still helps with relevance signals. RankFrame shows a live character counter as you type." }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the recommended character limit for a meta description?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Aim for 150 to 160 characters. Google often truncates descriptions longer than 160 characters in search results. The hard limit in RankFrame is 260 characters." }
+      },
+      {
+        "@type": "Question",
+        "name": "Will my Global meta title appear on every page?",
+        "acceptedAnswer": { "@type": "Answer", "text": "The Global meta title is your default. It applies to every page that does not have a per-page override set. You can override it for specific pages from the Pages section." }
+      },
+      {
+        "@type": "Question",
+        "name": "Why does Google show a different meta description than the one I set?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Google sometimes generates its own description based on page content if it considers your meta description not relevant enough to the user's search query. Make your description specific to your page and include your primary keyword to reduce this." }
+      },
+      {
+        "@type": "Question",
+        "name": "Do I need to republish my Framer site after changing meta tags?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. Changes save to RankFrame immediately, but the new meta tags only appear on your live Framer site after you republish the project from Framer." }
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", sans-serif; background: #ffffff; color: #111111; line-height: 1.7; font-size: 16px; }
+    .page { max-width: 740px; margin: 0 auto; padding: 48px 24px 96px; }
+    .breadcrumb { display: flex; align-items: center; gap: 6px; font-size: 13px; color: #888; margin-bottom: 32px; flex-wrap: wrap; }
+    .breadcrumb a { color: #888; text-decoration: none; } .breadcrumb a:hover { color: #7c3aed; } .breadcrumb span { color: #ccc; }
+    .article-category { display: inline-block; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #7c3aed; background: #f3f0ff; padding: 3px 10px; border-radius: 999px; margin-bottom: 12px; }
+    h1 { font-size: 2rem; font-weight: 700; color: #0a0a0a; line-height: 1.25; margin-bottom: 14px; letter-spacing: -0.02em; }
+    .article-description { font-size: 1.05rem; color: #555; line-height: 1.65; margin-bottom: 10px; }
+    .article-meta { display: flex; gap: 16px; font-size: 13px; color: #aaa; margin-bottom: 36px; padding-bottom: 24px; border-bottom: 1px solid #f0f0f0; flex-wrap: wrap; }
+    .toc { background: #fafafa; border: 1px solid #efefef; border-radius: 10px; padding: 18px 22px; margin-bottom: 40px; }
+    .toc-title { font-size: 12px; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: #aaa; margin-bottom: 10px; }
+    .toc ol { list-style: none; padding: 0; } .toc li { margin-bottom: 5px; }
+    .toc a { font-size: 14px; color: #555; text-decoration: none; } .toc a:hover { color: #7c3aed; }
+    h2 { font-size: 1.3rem; font-weight: 600; color: #0a0a0a; margin: 40px 0 14px; padding-bottom: 8px; border-bottom: 1px solid #f0f0f0; letter-spacing: -0.01em; }
+    h3 { font-size: 1.05rem; font-weight: 600; color: #0a0a0a; margin: 24px 0 8px; }
+    p { color: #333; margin-bottom: 16px; } ul, ol { padding-left: 22px; margin-bottom: 16px; } li { color: #333; margin-bottom: 6px; }
+    strong { color: #0a0a0a; font-weight: 600; } a { color: #7c3aed; text-decoration: none; } a:hover { text-decoration: underline; }
+    .tip { background: #f5f3ff; border-left: 3px solid #7c3aed; border-radius: 0 8px 8px 0; padding: 12px 16px; margin: 20px 0; }
+    .tip-label { font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #7c3aed; margin-bottom: 4px; }
+    .tip p { color: #4c1d95; margin: 0; font-size: 0.93rem; }
+    .note { background: #fff8f0; border-left: 3px solid #f59e0b; border-radius: 0 8px 8px 0; padding: 12px 16px; margin: 20px 0; }
+    .note-label { font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #d97706; margin-bottom: 4px; }
+    .note p { color: #78350f; margin: 0; font-size: 0.93rem; }
+    .steps { list-style: none; padding: 0; margin: 16px 0 24px; }
+    .steps li { display: flex; gap: 16px; padding: 14px 0; border-bottom: 1px solid #f5f5f5; }
+    .steps li:last-child { border-bottom: none; }
+    .step-num { width: 28px; height: 28px; background: #7c3aed; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; flex-shrink: 0; margin-top: 2px; }
+    .step-content { flex: 1; }
+    .step-title { font-weight: 600; color: #0a0a0a; margin-bottom: 3px; font-size: 0.95rem; }
+    .step-desc { color: #555; font-size: 0.92rem; line-height: 1.6; }
+    .example { background: #fafafa; border: 1px solid #efefef; border-radius: 8px; padding: 14px 18px; margin: 14px 0; font-size: 0.9rem; }
+    .example-label { font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #888; margin-bottom: 6px; }
+    .example-good { color: #15803d; font-weight: 500; }
+    .example-bad { color: #be123c; text-decoration: line-through; opacity: 0.8; }
+    .faq-section { margin-top: 48px; padding-top: 32px; border-top: 1px solid #f0f0f0; }
+    .faq-section h2 { border-bottom: none; padding-bottom: 0; margin-bottom: 24px; }
+    .faq-item { border: 1px solid #efefef; border-radius: 10px; padding: 18px 20px; margin-bottom: 10px; }
+    .faq-q { font-weight: 600; color: #0a0a0a; font-size: 0.95rem; margin-bottom: 8px; }
+    .faq-a { color: #555; font-size: 0.93rem; line-height: 1.65; }
+    .related-section { margin-top: 48px; padding-top: 32px; border-top: 1px solid #f0f0f0; }
+    .related-section h2 { border-bottom: none; padding-bottom: 0; margin-bottom: 16px; font-size: 1rem; color: #666; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; }
+    .related-links { list-style: none; padding: 0; } .related-links li { margin-bottom: 8px; }
+    .related-links a { font-size: 0.95rem; color: #7c3aed; display: flex; align-items: center; gap: 6px; }
+    .related-links a::before { content: "→"; font-size: 12px; }
+    .cta-box { background: linear-gradient(135deg, #f5f3ff, #faf0ff); border: 1px solid #e8e0ff; border-radius: 12px; padding: 24px 28px; margin-top: 40px; text-align: center; }
+    .cta-box h3 { font-size: 1.1rem; color: #0a0a0a; margin-bottom: 8px; }
+    .cta-box p { color: #666; font-size: 0.9rem; margin-bottom: 16px; }
+    .cta-btn { display: inline-block; background: #7c3aed; color: #fff; font-weight: 600; font-size: 0.9rem; padding: 10px 22px; border-radius: 8px; text-decoration: none; }
+    .cta-btn:hover { background: #6d28d9; text-decoration: none; }
+
+    /* SEO Panel */
+    .seo-panel { margin-top: 64px; border-top: 2px dashed #e8e0ff; padding-top: 36px; }
+    .seo-panel-header { margin-bottom: 20px; }
+    .seo-panel-title { font-size: 11px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: #7c3aed; }
+    .seo-panel-sub { font-size: 12px; color: #aaa; margin-top: 3px; }
+    .seo-fields { display: grid; gap: 10px; margin-bottom: 28px; }
+    .seo-field { background: #fafafa; border: 1px solid #efefef; border-radius: 8px; padding: 14px 16px; position: relative; }
+    .seo-field-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+    .seo-field-label { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #bbb; }
+    .seo-copy-btn { font-size: 10px; font-weight: 600; color: #7c3aed; background: #f3f0ff; border: none; border-radius: 4px; padding: 3px 9px; cursor: pointer; transition: background 0.15s; }
+    .seo-copy-btn:hover { background: #e8e0ff; }
+    .seo-copy-btn.ok { color: #059669; background: #ecfdf5; }
+    .seo-field-value { font-size: 0.88rem; color: #333; line-height: 1.55; word-break: break-word; user-select: all; }
+    .seo-schemas { display: grid; gap: 14px; }
+    .seo-schema { border: 1px solid #efefef; border-radius: 8px; overflow: hidden; }
+    .seo-schema-header { display: flex; justify-content: space-between; align-items: center; padding: 10px 16px; background: #fafafa; border-bottom: 1px solid #efefef; }
+    .seo-schema-type { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #bbb; }
+    .seo-schema-code { background: #0d0d0d; color: #d4d4d4; font-family: "SF Mono","Fira Code",Consolas,monospace; font-size: 0.75rem; line-height: 1.65; padding: 16px 18px; margin: 0; overflow-x: auto; white-space: pre; user-select: all; }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <nav class="breadcrumb">
+    <a href="https://rankframe.com/help">Help Center</a>
+    <span>/</span>
+    <a href="https://rankframe.com/help/global-seo-settings">Global SEO Settings</a>
+    <span>/</span>
+    <span>Site-wide Meta Title and Description</span>
+  </nav>
+
+  <div class="article-category">Global SEO Settings</div>
+  <h1>How to Set Site-wide Meta Title and Description</h1>
+  <p class="article-description">Your meta title and description are the first thing users and search engines see. This article shows you how to set strong site-wide defaults in RankFrame's Basic tab.</p>
+  <div class="article-meta">
+    <span>4 min read</span>
+    <span>Last updated May 2, 2026</span>
+  </div>
+
+  <nav class="toc">
+    <div class="toc-title">On this page</div>
+    <ol>
+      <li><a href="#why-it-matters">Why meta tags matter</a></li>
+      <li><a href="#character-limits">Character limits</a></li>
+      <li><a href="#steps">How to set them in RankFrame</a></li>
+      <li><a href="#best-practices">Best practices</a></li>
+      <li><a href="#faq">Frequently asked questions</a></li>
+    </ol>
+  </nav>
+
+  <section id="why-it-matters">
+    <h2>Why meta tags matter</h2>
+    <p>The meta title is the clickable headline that appears in Google search results. The meta description is the short paragraph below it. Together, they decide whether someone clicks your result or scrolls past it.</p>
+    <p>They also signal to search engines what your page is about. A clear, keyword-relevant title and description help your page rank for the right queries.</p>
+    <p>For Framer sites, RankFrame is the easiest place to manage both. The Basic tab in Global Settings shows your current values side-by-side with AI-generated alternatives so you can compare and improve at a glance.</p>
+  </section>
+
+  <section id="character-limits">
+    <h2>Character limits</h2>
+    <ul>
+      <li><strong>Meta title:</strong> 70 characters maximum. Google displays the first 50 to 60 characters on most devices.</li>
+      <li><strong>Meta description:</strong> 260 characters maximum. Aim for 150 to 160 to avoid truncation.</li>
+    </ul>
+    <p>RankFrame shows a live character counter as you type so you always know how close you are to the limit.</p>
+  </section>
+
+  <section id="steps">
+    <h2>How to set them in RankFrame</h2>
+
+    <ol class="steps">
+      <li>
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <div class="step-title">Open Global Settings</div>
+          <div class="step-desc">Open RankFrame in Framer and click <strong>Global Settings</strong> in the left sidebar.</div>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <div class="step-title">Make sure you are on the Basic tab</div>
+          <div class="step-desc">The <strong>Basic</strong> tab is selected by default. It shows two columns: your current live title and description on the left, AI-generated alternatives on the right.</div>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <div class="step-title">Write or paste your meta title</div>
+          <div class="step-desc">Type your title in the title field. Watch the character counter to stay under 70. The counter turns red if you exceed the limit.</div>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <div class="step-title">Write your meta description</div>
+          <div class="step-desc">Type a description between 150 and 160 characters. Make it specific, benefit-focused, and include your primary keyword.</div>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">5</div>
+        <div class="step-content">
+          <div class="step-title">Save your changes</div>
+          <div class="step-desc">Click <strong>Save</strong>. The values are stored in RankFrame immediately.</div>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">6</div>
+        <div class="step-content">
+          <div class="step-title">Republish your Framer site</div>
+          <div class="step-desc">Open Framer and republish your project. The new meta tags appear on your live site after the publish completes.</div>
+        </div>
+      </li>
+    </ol>
+
+    <div class="tip">
+      <div class="tip-label">Tip</div>
+      <p>If you are not sure what to write, click <strong>Write with AI</strong>. RankFrame uses your Personalization data (brand name, audience, industry) to generate keyword-rich copy in seconds. See <a href="https://rankframe.com/help/ai-meta-tag-generation">Using AI to Generate Meta Tags</a>.</p>
+    </div>
+  </section>
+
+  <section id="best-practices">
+    <h2>Best practices</h2>
+
+    <h3>For meta titles</h3>
+    <ul>
+      <li>Lead with your primary keyword</li>
+      <li>Include your brand name at the end (e.g. "...| RankFrame")</li>
+      <li>Make it specific to the page, not generic to your industry</li>
+      <li>Use natural language, not stuffed keywords</li>
+      <li>Stay under 70 characters</li>
+    </ul>
+
+    <div class="example">
+      <div class="example-label">Good vs. weak title example</div>
+      <div class="example-good">RankFrame: The First Native SEO Plugin for Framer | Try Free</div>
+      <div class="example-bad">SEO Tool</div>
+    </div>
+
+    <h3>For meta descriptions</h3>
+    <ul>
+      <li>Open with the most important benefit or value statement</li>
+      <li>Include your primary keyword naturally</li>
+      <li>End with a call to action ("Try free", "Learn more", "Get started today")</li>
+      <li>Keep it between 150 and 160 characters</li>
+      <li>Make it match the search intent for your target keyword</li>
+    </ul>
+
+    <div class="example">
+      <div class="example-label">Good vs. weak description example</div>
+      <div class="example-good">RankFrame is the first native SEO plugin for Framer. Manage meta, schema, indexing, and image alt text without leaving your Framer panel. Free trial.</div>
+      <div class="example-bad">We are an SEO tool. Click here to learn more about our product.</div>
+    </div>
+
+    <div class="note">
+      <div class="note-label">Note</div>
+      <p>Google sometimes overrides your meta description with content it considers more relevant to a user's search. Make your description match common search queries for your page to reduce this.</p>
+    </div>
+  </section>
+
+  <section id="faq" class="faq-section">
+    <h2>Frequently asked questions</h2>
+
+    <div class="faq-item">
+      <div class="faq-q">What is the recommended character limit for a meta title?</div>
+      <div class="faq-a">Keep it under 70 characters. Google typically displays the first 50 to 60 characters in search results. RankFrame shows a live character counter as you type.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What is the recommended character limit for a meta description?</div>
+      <div class="faq-a">Aim for 150 to 160 characters. Google often truncates descriptions longer than that in search results. The hard limit in RankFrame is 260 characters.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Will my Global meta title appear on every page?</div>
+      <div class="faq-a">The Global meta title is your default. It applies to every page that does not have a per-page override. You can override it for specific pages from the Pages section.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Why does Google show a different meta description than the one I set?</div>
+      <div class="faq-a">Google sometimes generates its own description based on page content if it considers your meta not relevant enough. Make your description specific to your page and include your primary keyword to reduce this.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Do I need to republish my Framer site after changing meta tags?</div>
+      <div class="faq-a">Yes. Changes save to RankFrame immediately, but new meta tags only appear on your live Framer site after you republish the project from Framer.</div>
+    </div>
+  </section>
+
+  <section class="related-section">
+    <h2>Related articles</h2>
+    <ul class="related-links">
+      <li><a href="https://rankframe.com/help/global-seo-settings-overview">Global SEO Settings Overview</a></li>
+      <li><a href="https://rankframe.com/help/ai-meta-tag-generation">Using AI to Generate Meta Tags</a></li>
+      <li><a href="https://rankframe.com/help/manage-focus-keywords">Managing Focus Keywords for Your Framer Site</a></li>
+      <li><a href="https://rankframe.com/help/site-wide-seo-best-practices">Site-wide SEO Best Practices for Framer</a></li>
+    </ul>
+  </section>
+
+  <div class="cta-box">
+    <h3>Set strong site defaults today</h3>
+    <p>Open RankFrame and update your Global meta in under 5 minutes. Your search appearance starts here.</p>
+    <a class="cta-btn" href="https://rankframe.com">Open RankFrame</a>
+  </div>
+
+  <!-- SEO Details Panel -->
+  <div class="seo-panel">
+    <div class="seo-panel-header">
+      <div class="seo-panel-title">SEO Details</div>
+      <div class="seo-panel-sub">Click Copy on any field to grab it without touching page source</div>
+    </div>
+    <div class="seo-fields" id="rf-seo-fields"></div>
+    <div class="seo-schemas" id="rf-seo-schemas"></div>
+  </div>
+
+  <script>
+  (function () {
+    function esc(s) {
+      return String(s)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;');
+    }
+    function copyBtn(text) {
+      const btn = document.createElement('button');
+      btn.className = 'seo-copy-btn';
+      btn.textContent = 'Copy';
+      btn.addEventListener('click', function () {
+        navigator.clipboard.writeText(text).then(function () {
+          btn.textContent = 'Copied';
+          btn.classList.add('ok');
+          setTimeout(function () { btn.textContent = 'Copy'; btn.classList.remove('ok'); }, 2000);
+        });
+      });
+      return btn;
+    }
+
+    var metaFields = [
+      { label: 'Meta Title', value: document.title },
+      { label: 'Meta Description', value: (document.querySelector('meta[name="description"]') || {}).content || '' },
+      { label: 'Meta Keywords', value: (document.querySelector('meta[name="keywords"]') || {}).content || '' },
+      { label: 'Canonical URL', value: (document.querySelector('link[rel="canonical"]') || {}).getAttribute('href') || '' },
+    ];
+
+    var fieldsEl = document.getElementById('rf-seo-fields');
+    metaFields.forEach(function (f) {
+      if (!f.value) return;
+      var wrap = document.createElement('div');
+      wrap.className = 'seo-field';
+      var row = document.createElement('div');
+      row.className = 'seo-field-row';
+      var lbl = document.createElement('div');
+      lbl.className = 'seo-field-label';
+      lbl.textContent = f.label;
+      row.appendChild(lbl);
+      row.appendChild(copyBtn(f.value));
+      var val = document.createElement('div');
+      val.className = 'seo-field-value';
+      val.textContent = f.value;
+      wrap.appendChild(row);
+      wrap.appendChild(val);
+      fieldsEl.appendChild(wrap);
+    });
+
+    var schemasEl = document.getElementById('rf-seo-schemas');
+    document.querySelectorAll('script[type="application/ld+json"]').forEach(function (s) {
+      var parsed;
+      try { parsed = JSON.parse(s.textContent); } catch (e) { return; }
+      var pretty = JSON.stringify(parsed, null, 2);
+      var wrap = document.createElement('div');
+      wrap.className = 'seo-schema';
+      var hdr = document.createElement('div');
+      hdr.className = 'seo-schema-header';
+      var typ = document.createElement('div');
+      typ.className = 'seo-schema-type';
+      typ.textContent = (parsed['@type'] || 'Schema') + ' — JSON-LD';
+      hdr.appendChild(typ);
+      hdr.appendChild(copyBtn(pretty));
+      var pre = document.createElement('pre');
+      pre.className = 'seo-schema-code';
+      pre.textContent = pretty;
+      wrap.appendChild(hdr);
+      wrap.appendChild(pre);
+      schemasEl.appendChild(wrap);
+    });
+  })();
+  </script>
+
+</div>
+</body>
+</html>

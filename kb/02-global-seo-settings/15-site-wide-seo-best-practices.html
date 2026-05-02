@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Site-wide SEO Best Practices for Framer | RankFrame Help</title>
+  <meta name="description" content="A practical SEO checklist for Framer site owners. Cover the fundamentals: meta tags, schema, indexing, alt text, internal linking, page speed, and keyword targeting." />
+  <meta name="keywords" content="framer seo best practices, framer seo checklist, seo for framer sites, framer site seo guide, framer seo tips 2026, rankframe best practices" />
+  <link rel="canonical" href="https://rankframe.com/help/site-wide-seo-best-practices" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Site-wide SEO Best Practices for Framer",
+    "description": "A practical SEO checklist for Framer site owners. Meta tags, schema, indexing, alt text, internal linking, page speed, and keyword targeting.",
+    "author": { "@type": "Organization", "name": "7 Seers", "url": "https://rankframe.com" },
+    "publisher": { "@type": "Organization", "name": "RankFrame", "url": "https://rankframe.com" },
+    "datePublished": "2026-05-02",
+    "dateModified": "2026-05-02",
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://rankframe.com/help/site-wide-seo-best-practices" }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Is Framer good for SEO?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Framer sites are SEO-optimized out of the box. They include automatic sitemap.xml, robots.txt, fast-loading pages, and clean code. The platform handles the technical foundation well. The areas that still need attention are per-page meta, schema markup, image alt text, and Google indexing, which RankFrame covers natively." }
+      },
+      {
+        "@type": "Question",
+        "name": "How long does it take for a new Framer site to rank on Google?",
+        "acceptedAnswer": { "@type": "Answer", "text": "A new domain typically takes 3 to 6 months to start ranking for moderately competitive keywords. You can speed this up by submitting key pages directly via the Google Indexing API in RankFrame, getting backlinks from other sites, and publishing high-quality content consistently." }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the most important SEO factor for a Framer site?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Content quality and search intent matching are the two most important factors. Tools like RankFrame handle the technical infrastructure (meta, schema, indexing, audits). The content itself, written for the user's actual question, is what wins rankings long-term." }
+      },
+      {
+        "@type": "Question",
+        "name": "Do I need backlinks to rank a Framer site?",
+        "acceptedAnswer": { "@type": "Answer", "text": "For competitive keywords, yes. Backlinks remain one of Google's strongest ranking signals. For low-competition long-tail keywords, you can rank without backlinks if your content is high-quality and your technical SEO is solid." }
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", sans-serif; background: #ffffff; color: #111111; line-height: 1.7; font-size: 16px; }
+    .page { max-width: 740px; margin: 0 auto; padding: 48px 24px 96px; }
+    .breadcrumb { display: flex; align-items: center; gap: 6px; font-size: 13px; color: #888; margin-bottom: 32px; flex-wrap: wrap; }
+    .breadcrumb a { color: #888; text-decoration: none; } .breadcrumb a:hover { color: #7c3aed; } .breadcrumb span { color: #ccc; }
+    .article-category { display: inline-block; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #7c3aed; background: #f3f0ff; padding: 3px 10px; border-radius: 999px; margin-bottom: 12px; }
+    h1 { font-size: 2rem; font-weight: 700; color: #0a0a0a; line-height: 1.25; margin-bottom: 14px; letter-spacing: -0.02em; }
+    .article-description { font-size: 1.05rem; color: #555; line-height: 1.65; margin-bottom: 10px; }
+    .article-meta { display: flex; gap: 16px; font-size: 13px; color: #aaa; margin-bottom: 36px; padding-bottom: 24px; border-bottom: 1px solid #f0f0f0; flex-wrap: wrap; }
+    .toc { background: #fafafa; border: 1px solid #efefef; border-radius: 10px; padding: 18px 22px; margin-bottom: 40px; }
+    .toc-title { font-size: 12px; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: #aaa; margin-bottom: 10px; }
+    .toc ol { list-style: none; padding: 0; } .toc li { margin-bottom: 5px; }
+    .toc a { font-size: 14px; color: #555; text-decoration: none; } .toc a:hover { color: #7c3aed; }
+    h2 { font-size: 1.3rem; font-weight: 600; color: #0a0a0a; margin: 40px 0 14px; padding-bottom: 8px; border-bottom: 1px solid #f0f0f0; letter-spacing: -0.01em; }
+    h3 { font-size: 1.05rem; font-weight: 600; color: #0a0a0a; margin: 24px 0 8px; }
+    p { color: #333; margin-bottom: 16px; } ul, ol { padding-left: 22px; margin-bottom: 16px; } li { color: #333; margin-bottom: 6px; }
+    strong { color: #0a0a0a; font-weight: 600; } a { color: #7c3aed; text-decoration: none; } a:hover { text-decoration: underline; }
+    .tip { background: #f5f3ff; border-left: 3px solid #7c3aed; border-radius: 0 8px 8px 0; padding: 12px 16px; margin: 20px 0; }
+    .tip-label { font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #7c3aed; margin-bottom: 4px; }
+    .tip p { color: #4c1d95; margin: 0; font-size: 0.93rem; }
+    .note { background: #fff8f0; border-left: 3px solid #f59e0b; border-radius: 0 8px 8px 0; padding: 12px 16px; margin: 20px 0; }
+    .note-label { font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #d97706; margin-bottom: 4px; }
+    .note p { color: #78350f; margin: 0; font-size: 0.93rem; }
+    .practice { background: #fafafa; border: 1px solid #efefef; border-radius: 10px; padding: 18px 22px; margin: 14px 0; }
+    .practice-num { display: inline-block; background: #7c3aed; color: #fff; font-size: 11px; font-weight: 700; padding: 3px 9px; border-radius: 999px; margin-bottom: 8px; letter-spacing: 0.05em; }
+    .practice-title { font-weight: 700; color: #0a0a0a; font-size: 1rem; margin-bottom: 6px; }
+    .practice-body { font-size: 0.92rem; color: #444; line-height: 1.6; }
+    .practice-body strong { color: #0a0a0a; }
+    .faq-section { margin-top: 48px; padding-top: 32px; border-top: 1px solid #f0f0f0; }
+    .faq-section h2 { border-bottom: none; padding-bottom: 0; margin-bottom: 24px; }
+    .faq-item { border: 1px solid #efefef; border-radius: 10px; padding: 18px 20px; margin-bottom: 10px; }
+    .faq-q { font-weight: 600; color: #0a0a0a; font-size: 0.95rem; margin-bottom: 8px; }
+    .faq-a { color: #555; font-size: 0.93rem; line-height: 1.65; }
+    .related-section { margin-top: 48px; padding-top: 32px; border-top: 1px solid #f0f0f0; }
+    .related-section h2 { border-bottom: none; padding-bottom: 0; margin-bottom: 16px; font-size: 1rem; color: #666; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; }
+    .related-links { list-style: none; padding: 0; } .related-links li { margin-bottom: 8px; }
+    .related-links a { font-size: 0.95rem; color: #7c3aed; display: flex; align-items: center; gap: 6px; }
+    .related-links a::before { content: "→"; font-size: 12px; }
+    .cta-box { background: linear-gradient(135deg, #f5f3ff, #faf0ff); border: 1px solid #e8e0ff; border-radius: 12px; padding: 24px 28px; margin-top: 40px; text-align: center; }
+    .cta-box h3 { font-size: 1.1rem; color: #0a0a0a; margin-bottom: 8px; }
+    .cta-box p { color: #666; font-size: 0.9rem; margin-bottom: 16px; }
+    .cta-btn { display: inline-block; background: #7c3aed; color: #fff; font-weight: 600; font-size: 0.9rem; padding: 10px 22px; border-radius: 8px; text-decoration: none; }
+    .cta-btn:hover { background: #6d28d9; text-decoration: none; }
+
+    /* SEO Panel */
+    .seo-panel { margin-top: 64px; border-top: 2px dashed #e8e0ff; padding-top: 36px; }
+    .seo-panel-header { margin-bottom: 20px; }
+    .seo-panel-title { font-size: 11px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: #7c3aed; }
+    .seo-panel-sub { font-size: 12px; color: #aaa; margin-top: 3px; }
+    .seo-fields { display: grid; gap: 10px; margin-bottom: 28px; }
+    .seo-field { background: #fafafa; border: 1px solid #efefef; border-radius: 8px; padding: 14px 16px; position: relative; }
+    .seo-field-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+    .seo-field-label { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #bbb; }
+    .seo-copy-btn { font-size: 10px; font-weight: 600; color: #7c3aed; background: #f3f0ff; border: none; border-radius: 4px; padding: 3px 9px; cursor: pointer; transition: background 0.15s; }
+    .seo-copy-btn:hover { background: #e8e0ff; }
+    .seo-copy-btn.ok { color: #059669; background: #ecfdf5; }
+    .seo-field-value { font-size: 0.88rem; color: #333; line-height: 1.55; word-break: break-word; user-select: all; }
+    .seo-schemas { display: grid; gap: 14px; }
+    .seo-schema { border: 1px solid #efefef; border-radius: 8px; overflow: hidden; }
+    .seo-schema-header { display: flex; justify-content: space-between; align-items: center; padding: 10px 16px; background: #fafafa; border-bottom: 1px solid #efefef; }
+    .seo-schema-type { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #bbb; }
+    .seo-schema-code { background: #0d0d0d; color: #d4d4d4; font-family: "SF Mono","Fira Code",Consolas,monospace; font-size: 0.75rem; line-height: 1.65; padding: 16px 18px; margin: 0; overflow-x: auto; white-space: pre; user-select: all; }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <nav class="breadcrumb">
+    <a href="https://rankframe.com/help">Help Center</a>
+    <span>/</span>
+    <a href="https://rankframe.com/help/global-seo-settings">Global SEO Settings</a>
+    <span>/</span>
+    <span>Site-wide SEO Best Practices</span>
+  </nav>
+
+  <div class="article-category">Global SEO Settings</div>
+  <h1>Site-wide SEO Best Practices for Framer</h1>
+  <p class="article-description">An opinionated checklist for Framer designers and site owners. Run through these 10 practices for every site you launch and every site you manage.</p>
+  <div class="article-meta">
+    <span>5 min read</span>
+    <span>Last updated May 2, 2026</span>
+  </div>
+
+  <nav class="toc">
+    <div class="toc-title">On this page</div>
+    <ol>
+      <li><a href="#fundamentals">SEO fundamentals for Framer</a></li>
+      <li><a href="#checklist">The 10-step checklist</a></li>
+      <li><a href="#after-launch">After launch</a></li>
+      <li><a href="#faq">Frequently asked questions</a></li>
+    </ol>
+  </nav>
+
+  <section id="fundamentals">
+    <h2>SEO fundamentals for Framer</h2>
+    <p>Framer sites have an SEO advantage out of the box. The platform generates a clean sitemap.xml, a robots.txt, semantic HTML, and ships fast pages. Most performance and crawlability issues common on WordPress or hand-coded sites do not exist on Framer.</p>
+    <p>What still needs attention: per-page meta, structured data, image alt text, indexing acceleration, and ongoing monitoring. RankFrame handles all of these natively.</p>
+    <p>This checklist focuses on what to do, in what order, on every Framer site.</p>
+  </section>
+
+  <section id="checklist">
+    <h2>The 10-step checklist</h2>
+
+    <div class="practice">
+      <span class="practice-num">01</span>
+      <div class="practice-title">Set Global meta title and description</div>
+      <div class="practice-body">Open <strong>Global Settings</strong> in RankFrame. Set a strong default title (under 70 characters) and description (150 to 160 characters). Lead with your primary keyword and end with a value statement. See <a href="https://rankframe.com/help/site-wide-meta-title-description">How to Set Site-wide Meta Title and Description</a>.</div>
+    </div>
+
+    <div class="practice">
+      <span class="practice-num">02</span>
+      <div class="practice-title">Override meta on key landing pages</div>
+      <div class="practice-body">Open the <strong>Pages</strong> section. For your homepage, pricing page, key product pages, and top blog posts, write per-page meta titles and descriptions specific to that page's intent. Default meta is a fallback. Per-page meta is what wins clicks.</div>
+    </div>
+
+    <div class="practice">
+      <span class="practice-num">03</span>
+      <div class="practice-title">Add Organization schema to your homepage</div>
+      <div class="practice-body">Open <strong>Global Settings, Advanced</strong>. Click <strong>Auto-Generate</strong> to let RankFrame create schemas across your sitemap, or build an Organization schema manually for the homepage with your name, URL, logo, and description. Save & Inject. Republish in Framer.</div>
+    </div>
+
+    <div class="practice">
+      <span class="practice-num">04</span>
+      <div class="practice-title">Submit your sitemap to Google</div>
+      <div class="practice-body">Open <strong>Submit Indexing, Submit URLs</strong>. Click <strong>Push Sitemap</strong>. RankFrame submits your /sitemap.xml directly to Google Search Console. Do this on every site, on launch day.</div>
+    </div>
+
+    <div class="practice">
+      <span class="practice-num">05</span>
+      <div class="practice-title">Push key pages directly to the Indexing API</div>
+      <div class="practice-body">In the same tab, select your homepage and 3 to 5 critical pages. Click <strong>Push N URLs</strong>. RankFrame uses the official Google Indexing API to notify Google of these pages directly. Faster than waiting for the sitemap to be crawled.</div>
+    </div>
+
+    <div class="practice">
+      <span class="practice-num">06</span>
+      <div class="practice-title">Run Image SEO bulk alt text</div>
+      <div class="practice-body">Open <strong>Image SEO</strong>. Check the <strong>Missing Alt</strong> count. Click <strong>Select All</strong>, then <strong>Generate Alt Text</strong>. RankFrame writes brand-aware alt text for every image in one click. Republish your Framer site to apply.</div>
+    </div>
+
+    <div class="practice">
+      <span class="practice-num">07</span>
+      <div class="practice-title">Assign focus keywords to each page</div>
+      <div class="practice-body">Open <strong>Global Settings, Keywords</strong>. Use the <strong>Target Page</strong> dropdown to assign a primary keyword to each of your top 10 pages. One keyword per page. See <a href="https://rankframe.com/help/manage-focus-keywords">Managing Focus Keywords</a>.</div>
+    </div>
+
+    <div class="practice">
+      <span class="practice-num">08</span>
+      <div class="practice-title">Run a full SEO Analyzer audit</div>
+      <div class="practice-body">Open <strong>SEO Analyzer</strong>. Run the full audit. Filter by <strong>Red Zone</strong> first. Fix every red zone item. Then move to Warnings. The Speed tab shows your Core Web Vitals from Google PageSpeed Insights. Aim for a 90+ score.</div>
+    </div>
+
+    <div class="practice">
+      <span class="practice-num">09</span>
+      <div class="practice-title">Turn on the 404 Monitor</div>
+      <div class="practice-body">Open <strong>Global Settings, 404 Monitor</strong>. Toggle the script on. Republish your Framer site. RankFrame now tracks every broken link request in real time. Add Exception Routes for any intentional catch-all paths.</div>
+    </div>
+
+    <div class="practice">
+      <span class="practice-num">10</span>
+      <div class="practice-title">Track keywords over time</div>
+      <div class="practice-body">Open <strong>Submit Indexing, Keyword Tracker</strong>. Add the keywords you assigned in step 7. RankFrame tracks impressions, clicks, position, and position history for each one. Check weekly to see how your rankings move.</div>
+    </div>
+
+    <div class="tip">
+      <div class="tip-label">Tip</div>
+      <p>Bookmark this article and run through the 10 steps every time you launch a new Framer site. You will hit launch day with full SEO coverage in under an hour.</p>
+    </div>
+  </section>
+
+  <section id="after-launch">
+    <h2>After launch</h2>
+    <p>SEO is not a one-time setup. Maintain your site with these recurring habits.</p>
+
+    <h3>Weekly</h3>
+    <ul>
+      <li>Check the Keyword Tracker for ranking movement</li>
+      <li>Review Search Console analytics in the Submit Indexing tab</li>
+      <li>Push new or updated pages via the Indexing API</li>
+    </ul>
+
+    <h3>Monthly</h3>
+    <ul>
+      <li>Run a fresh SEO Analyzer audit and download the PDF report</li>
+      <li>Check the 404 Monitor for new broken links</li>
+      <li>Run Image SEO on any newly added images</li>
+    </ul>
+
+    <h3>Per content update</h3>
+    <ul>
+      <li>Use Recrawl Website in RankFrame after major changes</li>
+      <li>Update focus keywords if a page's content focus shifts</li>
+      <li>Regenerate AI meta tags if you reposition the page</li>
+    </ul>
+
+    <div class="note">
+      <div class="note-label">Note</div>
+      <p>Consistency beats perfection. A site that follows this checklist every week will outperform a site that nails it once and never updates again.</p>
+    </div>
+  </section>
+
+  <section id="faq" class="faq-section">
+    <h2>Frequently asked questions</h2>
+
+    <div class="faq-item">
+      <div class="faq-q">Is Framer good for SEO?</div>
+      <div class="faq-a">Yes. Framer sites are SEO-optimized out of the box: clean code, automatic sitemap, robots.txt, and fast pages. Areas that still need attention (per-page meta, schema, alt text, indexing) are exactly what RankFrame covers.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How long does it take for a new Framer site to rank?</div>
+      <div class="faq-a">A new domain typically takes 3 to 6 months to rank for moderately competitive keywords. Speed this up with the Google Indexing API, quality backlinks, and consistent content publishing.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What is the most important SEO factor?</div>
+      <div class="faq-a">Content quality and search intent matching. Tools handle technical infrastructure. The content itself, written for the user's actual question, is what wins rankings long-term.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Do I need backlinks to rank a Framer site?</div>
+      <div class="faq-a">For competitive keywords, yes. For low-competition long-tail keywords, you can rank without backlinks if your content is high-quality and your technical SEO is solid.</div>
+    </div>
+  </section>
+
+  <section class="related-section">
+    <h2>Related articles</h2>
+    <ul class="related-links">
+      <li><a href="https://rankframe.com/help/global-seo-settings-overview">Global SEO Settings Overview</a></li>
+      <li><a href="https://rankframe.com/help/site-wide-meta-title-description">How to Set Site-wide Meta Title and Description</a></li>
+      <li><a href="https://rankframe.com/help/manage-focus-keywords">Managing Focus Keywords for Your Framer Site</a></li>
+      <li><a href="https://rankframe.com/help/keyword-metrics-explained">Understanding Keyword Metrics in RankFrame</a></li>
+    </ul>
+  </section>
+
+  <div class="cta-box">
+    <h3>Run the full checklist today</h3>
+    <p>Open RankFrame and walk through the 10 steps. Most users finish in under an hour.</p>
+    <a class="cta-btn" href="https://rankframe.com">Open RankFrame</a>
+  </div>
+
+  <!-- SEO Details Panel -->
+  <div class="seo-panel">
+    <div class="seo-panel-header">
+      <div class="seo-panel-title">SEO Details</div>
+      <div class="seo-panel-sub">Click Copy on any field to grab it without touching page source</div>
+    </div>
+    <div class="seo-fields" id="rf-seo-fields"></div>
+    <div class="seo-schemas" id="rf-seo-schemas"></div>
+  </div>
+
+  <script>
+  (function () {
+    function esc(s) {
+      return String(s)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;');
+    }
+    function copyBtn(text) {
+      const btn = document.createElement('button');
+      btn.className = 'seo-copy-btn';
+      btn.textContent = 'Copy';
+      btn.addEventListener('click', function () {
+        navigator.clipboard.writeText(text).then(function () {
+          btn.textContent = 'Copied';
+          btn.classList.add('ok');
+          setTimeout(function () { btn.textContent = 'Copy'; btn.classList.remove('ok'); }, 2000);
+        });
+      });
+      return btn;
+    }
+
+    var metaFields = [
+      { label: 'Meta Title', value: document.title },
+      { label: 'Meta Description', value: (document.querySelector('meta[name="description"]') || {}).content || '' },
+      { label: 'Meta Keywords', value: (document.querySelector('meta[name="keywords"]') || {}).content || '' },
+      { label: 'Canonical URL', value: (document.querySelector('link[rel="canonical"]') || {}).getAttribute('href') || '' },
+    ];
+
+    var fieldsEl = document.getElementById('rf-seo-fields');
+    metaFields.forEach(function (f) {
+      if (!f.value) return;
+      var wrap = document.createElement('div');
+      wrap.className = 'seo-field';
+      var row = document.createElement('div');
+      row.className = 'seo-field-row';
+      var lbl = document.createElement('div');
+      lbl.className = 'seo-field-label';
+      lbl.textContent = f.label;
+      row.appendChild(lbl);
+      row.appendChild(copyBtn(f.value));
+      var val = document.createElement('div');
+      val.className = 'seo-field-value';
+      val.textContent = f.value;
+      wrap.appendChild(row);
+      wrap.appendChild(val);
+      fieldsEl.appendChild(wrap);
+    });
+
+    var schemasEl = document.getElementById('rf-seo-schemas');
+    document.querySelectorAll('script[type="application/ld+json"]').forEach(function (s) {
+      var parsed;
+      try { parsed = JSON.parse(s.textContent); } catch (e) { return; }
+      var pretty = JSON.stringify(parsed, null, 2);
+      var wrap = document.createElement('div');
+      wrap.className = 'seo-schema';
+      var hdr = document.createElement('div');
+      hdr.className = 'seo-schema-header';
+      var typ = document.createElement('div');
+      typ.className = 'seo-schema-type';
+      typ.textContent = (parsed['@type'] || 'Schema') + ' — JSON-LD';
+      hdr.appendChild(typ);
+      hdr.appendChild(copyBtn(pretty));
+      var pre = document.createElement('pre');
+      pre.className = 'seo-schema-code';
+      pre.textContent = pretty;
+      wrap.appendChild(hdr);
+      wrap.appendChild(pre);
+      schemasEl.appendChild(wrap);
+    });
+  })();
+  </script>
+
+</div>
+</body>
+</html>

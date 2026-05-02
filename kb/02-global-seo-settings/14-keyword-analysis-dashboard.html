@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reading the Keyword Analysis Dashboard | RankFrame Help</title>
+  <meta name="description" content="The Keyword Analysis dashboard in RankFrame shows total keywords, average density, total frequency, and a per-keyword breakdown. Learn how to read it and act on it." />
+  <meta name="keywords" content="rankframe keyword analysis, keyword density, framer keyword frequency, keyword density framer, rankframe analysis dashboard, framer seo keyword report" />
+  <link rel="canonical" href="https://rankframe.com/help/keyword-analysis-dashboard" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Reading the Keyword Analysis Dashboard",
+    "description": "Understand the Keyword Analysis section in RankFrame: total keywords, density, frequency, and per-keyword detail tables.",
+    "author": { "@type": "Organization", "name": "7 Seers", "url": "https://rankframe.com" },
+    "publisher": { "@type": "Organization", "name": "RankFrame", "url": "https://rankframe.com" },
+    "datePublished": "2026-05-02",
+    "dateModified": "2026-05-02",
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://rankframe.com/help/keyword-analysis-dashboard" }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is a healthy keyword density?",
+        "acceptedAnswer": { "@type": "Answer", "text": "There is no single correct number, but a healthy keyword density for your primary keyword is usually 0.5% to 2%. Density above 3% to 5% can look like keyword stuffing to search engines. Use the Keyword Analysis dashboard to spot terms that appear too often relative to your overall content." }
+      },
+      {
+        "@type": "Question",
+        "name": "What does Total Frequency mean in Keyword Analysis?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Total Frequency is the count of all keyword instances detected on the page, including filler words like 'and', 'the', and 'to'. It is mostly useful as a denominator: density is each keyword's count divided by Total Frequency." }
+      },
+      {
+        "@type": "Question",
+        "name": "Why do common words like 'and' and 'to' show up as top keywords?",
+        "acceptedAnswer": { "@type": "Answer", "text": "RankFrame counts every word on the page. Filler words naturally appear most often. Use the word count filter (1, 2, 3 words) to focus on multi-word phrases that are more meaningful for SEO." }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I increase a specific keyword's density on a page?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Add the keyword naturally to headings (H1, H2), the first paragraph, image alt text, and within your body content. Avoid forcing it. Search engines reward natural use, not stuffing. Update your page in Framer and republish, then run Recrawl Website in RankFrame." }
+      },
+      {
+        "@type": "Question",
+        "name": "Is Keyword Analysis available for every page?",
+        "acceptedAnswer": { "@type": "Answer", "text": "The Keyword Analysis section in Global Settings shows data for your homepage by default. For per-page keyword analysis, open the Pages section and click any individual page to see its Keyword Analysis." }
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", sans-serif; background: #ffffff; color: #111111; line-height: 1.7; font-size: 16px; }
+    .page { max-width: 740px; margin: 0 auto; padding: 48px 24px 96px; }
+    .breadcrumb { display: flex; align-items: center; gap: 6px; font-size: 13px; color: #888; margin-bottom: 32px; flex-wrap: wrap; }
+    .breadcrumb a { color: #888; text-decoration: none; } .breadcrumb a:hover { color: #7c3aed; } .breadcrumb span { color: #ccc; }
+    .article-category { display: inline-block; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #7c3aed; background: #f3f0ff; padding: 3px 10px; border-radius: 999px; margin-bottom: 12px; }
+    h1 { font-size: 2rem; font-weight: 700; color: #0a0a0a; line-height: 1.25; margin-bottom: 14px; letter-spacing: -0.02em; }
+    .article-description { font-size: 1.05rem; color: #555; line-height: 1.65; margin-bottom: 10px; }
+    .article-meta { display: flex; gap: 16px; font-size: 13px; color: #aaa; margin-bottom: 36px; padding-bottom: 24px; border-bottom: 1px solid #f0f0f0; flex-wrap: wrap; }
+    .toc { background: #fafafa; border: 1px solid #efefef; border-radius: 10px; padding: 18px 22px; margin-bottom: 40px; }
+    .toc-title { font-size: 12px; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: #aaa; margin-bottom: 10px; }
+    .toc ol { list-style: none; padding: 0; } .toc li { margin-bottom: 5px; }
+    .toc a { font-size: 14px; color: #555; text-decoration: none; } .toc a:hover { color: #7c3aed; }
+    h2 { font-size: 1.3rem; font-weight: 600; color: #0a0a0a; margin: 40px 0 14px; padding-bottom: 8px; border-bottom: 1px solid #f0f0f0; letter-spacing: -0.01em; }
+    h3 { font-size: 1.05rem; font-weight: 600; color: #0a0a0a; margin: 24px 0 8px; }
+    p { color: #333; margin-bottom: 16px; } ul, ol { padding-left: 22px; margin-bottom: 16px; } li { color: #333; margin-bottom: 6px; }
+    strong { color: #0a0a0a; font-weight: 600; } a { color: #7c3aed; text-decoration: none; } a:hover { text-decoration: underline; }
+    .tip { background: #f5f3ff; border-left: 3px solid #7c3aed; border-radius: 0 8px 8px 0; padding: 12px 16px; margin: 20px 0; }
+    .tip-label { font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #7c3aed; margin-bottom: 4px; }
+    .tip p { color: #4c1d95; margin: 0; font-size: 0.93rem; }
+    .note { background: #fff8f0; border-left: 3px solid #f59e0b; border-radius: 0 8px 8px 0; padding: 12px 16px; margin: 20px 0; }
+    .note-label { font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #d97706; margin-bottom: 4px; }
+    .note p { color: #78350f; margin: 0; font-size: 0.93rem; }
+    .stat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 16px 0 24px; }
+    @media (max-width: 540px) { .stat-grid { grid-template-columns: 1fr; } }
+    .stat-card { border: 1px solid #efefef; border-radius: 10px; padding: 16px 18px; }
+    .stat-name { font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #888; margin-bottom: 6px; }
+    .stat-value { font-size: 1.4rem; font-weight: 700; color: #7c3aed; margin-bottom: 4px; }
+    .stat-desc { font-size: 0.82rem; color: #666; line-height: 1.5; }
+    .example-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; margin: 12px 0 24px; }
+    .example-table th { text-align: left; padding: 9px 12px; background: #fafafa; border: 1px solid #efefef; color: #555; font-weight: 600; }
+    .example-table td { padding: 9px 12px; border: 1px solid #f5f5f5; color: #333; }
+    .faq-section { margin-top: 48px; padding-top: 32px; border-top: 1px solid #f0f0f0; }
+    .faq-section h2 { border-bottom: none; padding-bottom: 0; margin-bottom: 24px; }
+    .faq-item { border: 1px solid #efefef; border-radius: 10px; padding: 18px 20px; margin-bottom: 10px; }
+    .faq-q { font-weight: 600; color: #0a0a0a; font-size: 0.95rem; margin-bottom: 8px; }
+    .faq-a { color: #555; font-size: 0.93rem; line-height: 1.65; }
+    .related-section { margin-top: 48px; padding-top: 32px; border-top: 1px solid #f0f0f0; }
+    .related-section h2 { border-bottom: none; padding-bottom: 0; margin-bottom: 16px; font-size: 1rem; color: #666; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; }
+    .related-links { list-style: none; padding: 0; } .related-links li { margin-bottom: 8px; }
+    .related-links a { font-size: 0.95rem; color: #7c3aed; display: flex; align-items: center; gap: 6px; }
+    .related-links a::before { content: "→"; font-size: 12px; }
+    .cta-box { background: linear-gradient(135deg, #f5f3ff, #faf0ff); border: 1px solid #e8e0ff; border-radius: 12px; padding: 24px 28px; margin-top: 40px; text-align: center; }
+    .cta-box h3 { font-size: 1.1rem; color: #0a0a0a; margin-bottom: 8px; }
+    .cta-box p { color: #666; font-size: 0.9rem; margin-bottom: 16px; }
+    .cta-btn { display: inline-block; background: #7c3aed; color: #fff; font-weight: 600; font-size: 0.9rem; padding: 10px 22px; border-radius: 8px; text-decoration: none; }
+    .cta-btn:hover { background: #6d28d9; text-decoration: none; }
+
+    /* SEO Panel */
+    .seo-panel { margin-top: 64px; border-top: 2px dashed #e8e0ff; padding-top: 36px; }
+    .seo-panel-header { margin-bottom: 20px; }
+    .seo-panel-title { font-size: 11px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: #7c3aed; }
+    .seo-panel-sub { font-size: 12px; color: #aaa; margin-top: 3px; }
+    .seo-fields { display: grid; gap: 10px; margin-bottom: 28px; }
+    .seo-field { background: #fafafa; border: 1px solid #efefef; border-radius: 8px; padding: 14px 16px; position: relative; }
+    .seo-field-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+    .seo-field-label { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #bbb; }
+    .seo-copy-btn { font-size: 10px; font-weight: 600; color: #7c3aed; background: #f3f0ff; border: none; border-radius: 4px; padding: 3px 9px; cursor: pointer; transition: background 0.15s; }
+    .seo-copy-btn:hover { background: #e8e0ff; }
+    .seo-copy-btn.ok { color: #059669; background: #ecfdf5; }
+    .seo-field-value { font-size: 0.88rem; color: #333; line-height: 1.55; word-break: break-word; user-select: all; }
+    .seo-schemas { display: grid; gap: 14px; }
+    .seo-schema { border: 1px solid #efefef; border-radius: 8px; overflow: hidden; }
+    .seo-schema-header { display: flex; justify-content: space-between; align-items: center; padding: 10px 16px; background: #fafafa; border-bottom: 1px solid #efefef; }
+    .seo-schema-type { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #bbb; }
+    .seo-schema-code { background: #0d0d0d; color: #d4d4d4; font-family: "SF Mono","Fira Code",Consolas,monospace; font-size: 0.75rem; line-height: 1.65; padding: 16px 18px; margin: 0; overflow-x: auto; white-space: pre; user-select: all; }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <nav class="breadcrumb">
+    <a href="https://rankframe.com/help">Help Center</a>
+    <span>/</span>
+    <a href="https://rankframe.com/help/global-seo-settings">Global SEO Settings</a>
+    <span>/</span>
+    <span>Keyword Analysis Dashboard</span>
+  </nav>
+
+  <div class="article-category">Global SEO Settings</div>
+  <h1>Reading the Keyword Analysis Dashboard</h1>
+  <p class="article-description">RankFrame's Keyword Analysis section shows you exactly how often each keyword appears on your page and how dense each one is. This article shows you how to read the numbers and act on them.</p>
+  <div class="article-meta">
+    <span>4 min read</span>
+    <span>Last updated May 2, 2026</span>
+  </div>
+
+  <nav class="toc">
+    <div class="toc-title">On this page</div>
+    <ol>
+      <li><a href="#what-it-shows">What the dashboard shows</a></li>
+      <li><a href="#headline-stats">The three headline stats</a></li>
+      <li><a href="#word-filter">Word count filter</a></li>
+      <li><a href="#details-table">Keyword Details table</a></li>
+      <li><a href="#what-to-do">What to do with the data</a></li>
+      <li><a href="#faq">Frequently asked questions</a></li>
+    </ol>
+  </nav>
+
+  <section id="what-it-shows">
+    <h2>What the dashboard shows</h2>
+    <p>The Keyword Analysis section sits below your saved keywords inside Global Settings, Keywords tab. It analyzes your homepage's content and shows you a breakdown of every word and phrase RankFrame finds.</p>
+    <p>This is different from your Saved Keywords list. Saved Keywords is what you want to rank for. Keyword Analysis is what your page actually contains.</p>
+    <p>Comparing the two reveals gaps. If a keyword you want to rank for does not appear often enough on the page, RankFrame surfaces that mismatch.</p>
+  </section>
+
+  <section id="headline-stats">
+    <h2>The three headline stats</h2>
+
+    <div class="stat-grid">
+      <div class="stat-card">
+        <div class="stat-name">Total Keywords</div>
+        <div class="stat-value">50</div>
+        <div class="stat-desc">Number of unique words and phrases detected on the page.</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-name">Avg Density</div>
+        <div class="stat-value">0.84%</div>
+        <div class="stat-desc">Average density across all detected keywords. Helps you understand the overall keyword spread.</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-name">Total Frequency</div>
+        <div class="stat-value">10,371</div>
+        <div class="stat-desc">Total count of all keyword instances on the page, including filler words.</div>
+      </div>
+    </div>
+
+    <p>Click <strong>Show details</strong> to expand the analysis, or <strong>Hide details</strong> to collapse it.</p>
+  </section>
+
+  <section id="word-filter">
+    <h2>Word count filter</h2>
+    <p>The word count filter lets you focus on phrases of a specific length.</p>
+    <ul>
+      <li><strong>1 word:</strong> single words like "design", "framer", "seo". Often dominated by filler words.</li>
+      <li><strong>2 words:</strong> two-word phrases like "framer sites", "ai schema", "alt text". More meaningful for SEO.</li>
+      <li><strong>3 words:</strong> three-word phrases like "framer seo plugin", "image alt text", "google indexing api". Usually the most actionable for keyword targeting.</li>
+    </ul>
+
+    <div class="tip">
+      <div class="tip-label">Tip</div>
+      <p>Default to the 2-word and 3-word filter when reviewing your dashboard. Single-word data is dominated by filler words like "and" and "the" that do not affect ranking.</p>
+    </div>
+  </section>
+
+  <section id="details-table">
+    <h2>Keyword Details table</h2>
+    <p>Below the headline stats, the Keyword Details table lists every keyword RankFrame detected, its Frequency (count), and Density (percentage).</p>
+
+    <table class="example-table">
+      <thead>
+        <tr>
+          <th>Keyword</th>
+          <th>Frequency</th>
+          <th>Density</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>and</td><td>1,232</td><td>4.99%</td></tr>
+        <tr><td>to</td><td>849</td><td>3.44%</td></tr>
+        <tr><td>of</td><td>565</td><td>2.29%</td></tr>
+        <tr><td>design</td><td>526</td><td>2.13%</td></tr>
+        <tr><td>color</td><td>421</td><td>1.71%</td></tr>
+      </tbody>
+    </table>
+
+    <p>The table is searchable. Type any keyword in the search field to filter the list to phrases containing that term. This is useful for checking the density of your focus keyword specifically.</p>
+  </section>
+
+  <section id="what-to-do">
+    <h2>What to do with the data</h2>
+
+    <h3>Find density gaps</h3>
+    <p>Search for your saved focus keyword in the table. If it appears with a density under 0.5%, your page does not feature it strongly enough. Edit your page in Framer to use the keyword more naturally in headings and body content, then republish and recrawl.</p>
+
+    <h3>Spot keyword stuffing</h3>
+    <p>If any keyword shows density above 5%, you may be over-using it. Soften the language by varying word choice and using synonyms. Search engines penalize keyword stuffing.</p>
+
+    <h3>Discover new opportunities</h3>
+    <p>Browse the 2-word and 3-word lists for phrases with high frequency. These are terms your content already emphasizes. They might be worth saving as additional focus keywords, especially if they have decent search volume.</p>
+
+    <div class="note">
+      <div class="note-label">Note</div>
+      <p>The Keyword Analysis section in Global Settings reflects your homepage. For per-page analysis, open the Pages section and click any individual page to see its own Keyword Analysis breakdown.</p>
+    </div>
+  </section>
+
+  <section id="faq" class="faq-section">
+    <h2>Frequently asked questions</h2>
+
+    <div class="faq-item">
+      <div class="faq-q">What is a healthy keyword density?</div>
+      <div class="faq-a">There is no single correct number, but 0.5% to 2% is healthy for your primary keyword. Density above 3% to 5% can look like keyword stuffing.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What does Total Frequency mean?</div>
+      <div class="faq-a">Total Frequency is the count of all keyword instances on the page, including filler words. It is mostly useful as the denominator for density calculations.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Why do common words like "and" and "to" show up as top keywords?</div>
+      <div class="faq-a">RankFrame counts every word on the page. Filler words naturally appear most often. Use the word count filter (1, 2, 3 words) to focus on meaningful multi-word phrases.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How do I increase a specific keyword's density?</div>
+      <div class="faq-a">Add the keyword naturally to headings, the first paragraph, image alt text, and body content. Avoid forcing it. Update in Framer, republish, then run Recrawl Website in RankFrame.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Is Keyword Analysis available for every page?</div>
+      <div class="faq-a">Global Settings shows data for your homepage. For per-page analysis, open the Pages section and click any page to see its own Keyword Analysis.</div>
+    </div>
+  </section>
+
+  <section class="related-section">
+    <h2>Related articles</h2>
+    <ul class="related-links">
+      <li><a href="https://rankframe.com/help/manage-focus-keywords">Managing Focus Keywords for Your Framer Site</a></li>
+      <li><a href="https://rankframe.com/help/keyword-metrics-explained">Understanding Keyword Metrics in RankFrame</a></li>
+      <li><a href="https://rankframe.com/help/site-wide-seo-best-practices">Site-wide SEO Best Practices for Framer</a></li>
+      <li><a href="https://rankframe.com/help/global-seo-settings-overview">Global SEO Settings Overview</a></li>
+    </ul>
+  </section>
+
+  <div class="cta-box">
+    <h3>Run Keyword Analysis today</h3>
+    <p>Open RankFrame, scroll to the Keywords tab, and check your homepage's keyword density in 2 minutes.</p>
+    <a class="cta-btn" href="https://rankframe.com">Open RankFrame</a>
+  </div>
+
+  <!-- SEO Details Panel -->
+  <div class="seo-panel">
+    <div class="seo-panel-header">
+      <div class="seo-panel-title">SEO Details</div>
+      <div class="seo-panel-sub">Click Copy on any field to grab it without touching page source</div>
+    </div>
+    <div class="seo-fields" id="rf-seo-fields"></div>
+    <div class="seo-schemas" id="rf-seo-schemas"></div>
+  </div>
+
+  <script>
+  (function () {
+    function esc(s) {
+      return String(s)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;');
+    }
+    function copyBtn(text) {
+      const btn = document.createElement('button');
+      btn.className = 'seo-copy-btn';
+      btn.textContent = 'Copy';
+      btn.addEventListener('click', function () {
+        navigator.clipboard.writeText(text).then(function () {
+          btn.textContent = 'Copied';
+          btn.classList.add('ok');
+          setTimeout(function () { btn.textContent = 'Copy'; btn.classList.remove('ok'); }, 2000);
+        });
+      });
+      return btn;
+    }
+
+    var metaFields = [
+      { label: 'Meta Title', value: document.title },
+      { label: 'Meta Description', value: (document.querySelector('meta[name="description"]') || {}).content || '' },
+      { label: 'Meta Keywords', value: (document.querySelector('meta[name="keywords"]') || {}).content || '' },
+      { label: 'Canonical URL', value: (document.querySelector('link[rel="canonical"]') || {}).getAttribute('href') || '' },
+    ];
+
+    var fieldsEl = document.getElementById('rf-seo-fields');
+    metaFields.forEach(function (f) {
+      if (!f.value) return;
+      var wrap = document.createElement('div');
+      wrap.className = 'seo-field';
+      var row = document.createElement('div');
+      row.className = 'seo-field-row';
+      var lbl = document.createElement('div');
+      lbl.className = 'seo-field-label';
+      lbl.textContent = f.label;
+      row.appendChild(lbl);
+      row.appendChild(copyBtn(f.value));
+      var val = document.createElement('div');
+      val.className = 'seo-field-value';
+      val.textContent = f.value;
+      wrap.appendChild(row);
+      wrap.appendChild(val);
+      fieldsEl.appendChild(wrap);
+    });
+
+    var schemasEl = document.getElementById('rf-seo-schemas');
+    document.querySelectorAll('script[type="application/ld+json"]').forEach(function (s) {
+      var parsed;
+      try { parsed = JSON.parse(s.textContent); } catch (e) { return; }
+      var pretty = JSON.stringify(parsed, null, 2);
+      var wrap = document.createElement('div');
+      wrap.className = 'seo-schema';
+      var hdr = document.createElement('div');
+      hdr.className = 'seo-schema-header';
+      var typ = document.createElement('div');
+      typ.className = 'seo-schema-type';
+      typ.textContent = (parsed['@type'] || 'Schema') + ' — JSON-LD';
+      hdr.appendChild(typ);
+      hdr.appendChild(copyBtn(pretty));
+      var pre = document.createElement('pre');
+      pre.className = 'seo-schema-code';
+      pre.textContent = pretty;
+      wrap.appendChild(hdr);
+      wrap.appendChild(pre);
+      schemasEl.appendChild(wrap);
+    });
+  })();
+  </script>
+
+</div>
+</body>
+</html>

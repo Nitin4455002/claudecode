@@ -1,0 +1,1310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RankFrame 4-Week Launch Post Plan</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f5f4f0; color: #1a1a1a; }
+
+  .header { background: #7B2FBE; color: white; padding: 40px 48px; }
+  .header h1 { font-size: 28px; font-weight: 700; margin-bottom: 8px; }
+  .header p { font-size: 15px; opacity: 0.85; }
+
+  .nav { background: white; border-bottom: 1px solid #e5e5e5; padding: 0 48px; display: flex; gap: 4px; overflow-x: auto; position: sticky; top: 0; z-index: 100; }
+  .nav a { padding: 16px 18px; font-size: 13px; font-weight: 600; color: #555; text-decoration: none; white-space: nowrap; border-bottom: 3px solid transparent; }
+  .nav a:hover { color: #7B2FBE; }
+  .nav a.active { color: #7B2FBE; border-bottom-color: #7B2FBE; }
+
+  .main { max-width: 1100px; margin: 0 auto; padding: 40px 48px; }
+
+  .week-header { margin: 48px 0 24px; }
+  .week-header h2 { font-size: 22px; font-weight: 700; color: #1a1a1a; }
+  .week-header p { font-size: 14px; color: #666; margin-top: 6px; }
+
+  .video-section { background: #fff8e1; border: 1px solid #ffe082; border-radius: 12px; padding: 24px; margin-bottom: 32px; }
+  .video-section h3 { font-size: 15px; font-weight: 700; color: #b45309; margin-bottom: 12px; }
+  .video-item { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 10px; }
+  .video-item:last-child { margin-bottom: 0; }
+  .video-num { background: #f59e0b; color: white; font-size: 12px; font-weight: 700; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+  .video-item p { font-size: 13px; color: #78350f; line-height: 1.5; }
+  .video-item strong { color: #b45309; }
+
+  .posts-grid { display: grid; gap: 20px; }
+
+  .post-card { background: white; border-radius: 12px; border: 1px solid #e5e5e5; overflow: hidden; }
+  .post-card-header { padding: 14px 20px; display: flex; align-items: center; gap: 12px; border-bottom: 1px solid #f0f0f0; }
+  .platform-badge { font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 20px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .x-badge { background: #000; color: white; }
+  .reddit-badge { background: #ff4500; color: white; }
+  .framer-badge { background: #0066ff; color: white; }
+  .account-label { font-size: 13px; font-weight: 600; color: #333; }
+  .day-label { font-size: 12px; color: #999; margin-left: auto; }
+
+  .post-card-body { padding: 20px; }
+  .post-title { font-size: 13px; font-weight: 700; color: #7B2FBE; margin-bottom: 10px; }
+  .post-type { font-size: 11px; font-weight: 600; color: #888; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .post-content { font-size: 13.5px; color: #222; line-height: 1.75; white-space: pre-wrap; background: #fafafa; border: 1px solid #ebebeb; border-radius: 8px; padding: 16px; }
+  .video-note { font-size: 12px; color: #7B2FBE; font-weight: 600; margin-top: 12px; background: #f3e8ff; padding: 8px 12px; border-radius: 6px; }
+
+  .copy-btn { margin-top: 12px; background: #7B2FBE; color: white; border: none; padding: 8px 16px; border-radius: 6px; font-size: 12px; font-weight: 600; cursor: pointer; }
+  .copy-btn:hover { background: #6922a8; }
+  .copy-btn.copied { background: #16a34a; }
+
+  .legend { display: flex; gap: 20px; margin-bottom: 24px; flex-wrap: wrap; }
+  .legend-item { display: flex; align-items: center; gap: 8px; font-size: 13px; color: #555; }
+
+  .schedule-table { width: 100%; border-collapse: collapse; margin: 24px 0; background: white; border-radius: 12px; overflow: hidden; border: 1px solid #e5e5e5; }
+  .schedule-table th { background: #7B2FBE; color: white; padding: 12px 16px; text-align: left; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+  .schedule-table td { padding: 12px 16px; font-size: 13px; border-bottom: 1px solid #f0f0f0; color: #333; }
+  .schedule-table tr:last-child td { border-bottom: none; }
+  .schedule-table tr:hover td { background: #fafafa; }
+
+  h3.section-label { font-size: 16px; font-weight: 700; color: #333; margin: 32px 0 16px; padding-bottom: 8px; border-bottom: 2px solid #e5e5e5; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>RankFrame: 4-Week Launch Post Plan</h1>
+  <p>Per platform. Per person. Every post written. Video recording suggestions included. No em dashes.</p>
+</div>
+
+<nav class="nav">
+  <a href="#overview" class="active">Overview</a>
+  <a href="#week1">Week 1: Launch</a>
+  <a href="#week2">Week 2: Features</a>
+  <a href="#week3">Week 3: Proof</a>
+  <a href="#week4">Week 4: Authority</a>
+</nav>
+
+<div class="main">
+
+  <!-- OVERVIEW -->
+  <div id="overview">
+    <div class="week-header">
+      <h2>Strategy Overview</h2>
+      <p>4 weeks, 3 platforms, 3 accounts. Built around the launch video and first paying customer moment.</p>
+    </div>
+
+    <div class="legend">
+      <div class="legend-item"><span class="platform-badge x-badge">X</span> Twitter/X</div>
+      <div class="legend-item"><span class="platform-badge reddit-badge">Reddit</span> Reddit</div>
+      <div class="legend-item"><span class="platform-badge framer-badge">Framer</span> Framer Community</div>
+    </div>
+
+    <table class="schedule-table">
+      <thead>
+        <tr>
+          <th>Week</th>
+          <th>Theme</th>
+          <th>Focus</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Week 1</td><td>Launch</td><td>Maximum buzz. Launch video. First customer story. All features visible.</td></tr>
+        <tr><td>Week 2</td><td>Feature Deep Dives</td><td>One feature per post. Screen recording per feature. Technical credibility.</td></tr>
+        <tr><td>Week 3</td><td>Social Proof</td><td>Customer feedback, use cases, real results, community engagement.</td></tr>
+        <tr><td>Week 4</td><td>Authority</td><td>SEO education, Framer tips, positioning as the go-to SEO source for Framer.</td></tr>
+      </tbody>
+    </table>
+
+    <div class="video-section">
+      <h3>Video and Screen Recording Plan (Create These Before Posting)</h3>
+      <div class="video-item"><div class="video-num">1</div><p><strong>3-Min Full Launch Video:</strong> Full walkthrough of every feature. Plugin install, global settings, meta, schema, image SEO, 404 monitor, page speed, keyword tracker, indexing, AI generation. This is the main launch video for X.</p></div>
+      <div class="video-item"><div class="video-num">2</div><p><strong>Schema Demo (60s):</strong> Show schema generating for an Article page. Show the JSON-LD in browser source. Republish and show it updates in place without duplicating. Perfect for Reddit technical audiences.</p></div>
+      <div class="video-item"><div class="video-num">3</div><p><strong>404 Monitor Demo (45s):</strong> Crawl a site with a known 404. Surface it. Set a redirect. Done. Show the redirect working in browser.</p></div>
+      <div class="video-item"><div class="video-num">4</div><p><strong>AI Image SEO Demo (30s):</strong> Scan a page with missing alt text. Show the AI generating alt text in bulk. One click apply. Before and after.</p></div>
+      <div class="video-item"><div class="video-num">5</div><p><strong>AI Meta Generation Demo (30s):</strong> Show the AI generating a meta title and description for a page. Show character counts. Show how it improves the default Framer meta.</p></div>
+      <div class="video-item"><div class="video-num">6</div><p><strong>Page Speed Demo (30s):</strong> Open the Page Speed tab inside RankFrame. Show Lighthouse scores and Core Web Vitals loading. No third-party tool needed.</p></div>
+      <div class="video-item"><div class="video-num">7</div><p><strong>Install Demo (20s):</strong> Open Framer. Go to plugins. Search RankFrame. Install. Plugin opens. Under 20 seconds from zero to running. Great for Framer Community post.</p></div>
+      <div class="video-item"><div class="video-num">8</div><p><strong>Keyword Tracker Demo (45s):</strong> Connect GSC. Show keyword data appearing inside the plugin. Impressions, clicks, position per keyword per page.</p></div>
+    </div>
+  </div>
+
+  <!-- WEEK 1 -->
+  <div id="week1">
+    <div class="week-header">
+      <h2>Week 1: Launch</h2>
+      <p>Every post this week references the launch video. Post in sequence. Start with RankFrame official X, then Harsh, then Utkarsh. Reddit and Framer Community same day.</p>
+    </div>
+
+    <h3 class="section-label">Day 1: Launch Day</h3>
+    <div class="posts-grid">
+
+      <div class="post-card">
+        <div class="post-card-header">
+          <span class="platform-badge x-badge">X</span>
+          <span class="account-label">RankFrame Official</span>
+          <span class="day-label">Day 1, 9:00am — POST FIRST</span>
+        </div>
+        <div class="post-card-body">
+          <div class="post-title">Main Launch Post</div>
+          <div class="post-type">Video post. This is the anchor. All other posts this week quote or reference this one.</div>
+          <div class="post-content">We built native SEO for Framer.
+
+Here is everything RankFrame does, inside the plugin panel, while you design:
+
+GLOBAL SEO SETTINGS
+Set your site name, logo, default social image, robots.txt, and sitemap from one panel. No code. No workarounds.
+
+PAGE-LEVEL SEO
+Write meta titles and descriptions with live character counts. Set Open Graph and Twitter card fields. Control canonicals and robots tags per page. Or let AI generate all of it in one click.
+
+SCHEMA MARKUP
+Article, HowTo, FAQ, Product, LocalBusiness. JSON-LD generated and injected automatically as a single script tag. Updates in place on every republish. Zero duplicate tags ever.
+
+IMAGE SEO
+Scans every image on your page. Flags missing alt text. Generates AI alt text in bulk. One click across your entire page.
+
+404 MONITOR
+Crawls your live Framer site. Surfaces every broken URL. Set redirects without leaving the plugin.
+
+PAGE SPEED
+Google Lighthouse scores and Core Web Vitals per page. No third-party account needed.
+
+KEYWORD TRACKER
+Google Search Console data inside the plugin. See impressions, clicks, and position per keyword per page.
+
+INDEXING
+Submit any page to Google directly from inside Framer.
+
+All of it. One plugin. Native inside Framer.
+
+[VIDEO]
+
+rankframe.com</div>
+          <div class="video-note">Attach: 3-Min Full Launch Video</div>
+          <button class="copy-btn" onclick="copyPost(this)">Copy Post</button>
+        </div>
+      </div>
+
+      <div class="post-card">
+        <div class="post-card-header">
+          <span class="platform-badge x-badge">X</span>
+          <span class="account-label">Harsh</span>
+          <span class="day-label">Day 1, 9:15am</span>
+        </div>
+        <div class="post-card-body">
+          <div class="post-title">Personal angle. Quote tweet the RankFrame main post.</div>
+          <div class="post-type">Quote tweet</div>
+          <div class="post-content">My co-founder Utkarsh and I spent months inside Framer asking the same question every week.
+
+Why does SEO feel like it belongs to a completely different world?
+
+Framer is the best design tool out there. But every time we needed to handle schema, 404s, alt text, page speed, or indexing, we had to leave and do it somewhere else.
+
+We stopped accepting that.
+
+RankFrame puts all of it inside Framer, natively.
+
+Someone found the marketplace listing before we told anyone and paid for it. That was our green light.
+
+This is the launch.
+
+[Quote tweet @RankFrame main post]</div>
+          <button class="copy-btn" onclick="copyPost(this)">Copy Post</button>
+        </div>
+      </div>
+
+      <div class="post-card">
+        <div class="post-card-header">
+          <span class="platform-badge x-badge">X</span>
+          <span class="account-label">Utkarsh</span>
+          <span class="day-label">Day 1, 9:20am</span>
+        </div>
+        <div class="post-card-body">
+          <div class="post-title">Technical credibility angle. Quote tweet the RankFrame main post.</div>
+          <div class="post-type">Quote tweet</div>
+          <div class="post-content">The hardest part of building RankFrame was schema injection.
+
+Framer republishes the whole page. If you inject a script tag naively, every republish stacks another one. Duplicate schema is one of the most common technical SEO errors on Framer sites.
+
+We built it so the script updates in place. One tag. Always current. No duplicates.
+
+That is just one of the things we got right.
+
+[Quote tweet @RankFrame main post]</div>
+          <button class="copy-btn" onclick="copyPost(this)">Copy Post</button>
+        </div>
+      </div>
+
+      <div class="post-card">
+        <div class="post-card-header">
+          <span class="platform-badge reddit-badge">Reddit</span>
+          <span class="account-label">Harsh</span>
+          <span class="day-label">Day 1, 10:00am — r/framer</span>
+        </div>
+        <div class="post-card-body">
+          <div class="post-title">We built a native SEO plugin for Framer and someone paid for it before we told anyone</div>
+          <div class="post-type">Text post with video link. This is the main Reddit post. Post here first before other subreddits.</div>
+          <div class="post-content">Hey r/framer,
+
+My name is Harsh. I am a designer and I have been building in Framer for a while. Every time a client asked me about SEO, I had to leave Framer, open several other tools, copy-paste meta tags, set up redirects somewhere else, manually check images, and hope 404s got caught before Google indexed them.
+
+It was painful. Not because Framer is bad, but because no proper SEO tooling existed for Framer specifically.
+
+So my co-founder Utkarsh and I built RankFrame.
+
+It is a native Framer plugin. Install from the marketplace, runs inside the plugin panel. Here is everything it does:
+
+GLOBAL SEO SETTINGS
+Site name, logo, default social image, robots.txt, sitemap. One panel.
+
+PAGE-LEVEL SEO
+Meta title and description with live character counts. Open Graph fields. Twitter card. Canonical URL. Robots tag per page. AI generation for all of it.
+
+SCHEMA MARKUP
+JSON-LD for Article, HowTo, FAQ, Product, LocalBusiness. Auto-injected as a single script tag. Updates in place on republish without stacking duplicate tags.
+
+IMAGE SEO
+Scans all images on a page. Flags missing alt text. Generates AI alt text in bulk.
+
+404 MONITOR
+Crawls your live site. Shows all broken URLs. Set redirects inside the plugin.
+
+PAGE SPEED
+Google Lighthouse scores and Core Web Vitals per page without needing a separate tool.
+
+KEYWORD TRACKER
+Google Search Console data inside the plugin. Impressions, clicks, position per keyword.
+
+INDEXING
+Submit pages to Google directly from inside Framer.
+
+We pushed it to the Framer marketplace quietly to test the listing. No posts. No DMs. Someone found it and paid for it before we said a word. That was our signal.
+
+Full 3-minute feature walkthrough: [VIDEO LINK]
+
+Happy to answer any questions about how anything works. We built this because we needed it ourselves.
+
+rankframe.com</div>
+          <button class="copy-btn" onclick="copyPost(this)">Copy Post</button>
+        </div>
+      </div>
+
+      <div class="post-card">
+        <div class="post-card-header">
+          <span class="platform-badge reddit-badge">Reddit</span>
+          <span class="account-label">Utkarsh</span>
+          <span class="day-label">Day 1, 10:10am — Comment under Harsh's r/framer post</span>
+        </div>
+        <div class="post-card-body">
+          <div class="post-title">Technical context comment under Harsh's post</div>
+          <div class="post-type">Comment, not a new post</div>
+          <div class="post-content">I built the backend for this. Happy to answer technical questions.
+
+The schema injection was the most interesting engineering challenge. Framer republishes the full page on every publish. A naive script tag injection would stack a new tag every time, which is one of the worst technical SEO errors you can have.
+
+We built RankFrame's injection so it finds the existing script tag and updates it in place on republish. One tag. Always the current schema. Zero duplicates regardless of how many times you publish.
+
+The 404 monitor also went through a few iterations. It crawls the live domain, not the Framer editor, so it finds real-world broken links including ones caused by URL structure changes after a redesign.
+
+Ask me anything about how it works under the hood.</div>
+          <button class="copy-btn" onclick="copyPost(this)">Copy Post</button>
+        </div>
+      </div>
+
+      <div class="post-card">
+        <div class="post-card-header">
+          <span class="platform-badge framer-badge">Framer</span>
+          <span class="account-label">Harsh</span>
+          <span class="day-label">Day 1, 11:00am — Framer Community</span>
+        </div>
+        <div class="post-card-body">
+          <div class="post-title">We built a native SEO plugin for Framer. Built by designers. For designers.</div>
+          <div class="post-type">Community post. This audience knows Framer best. Be specific and honest.</div>
+          <div class="post-content">Hey Framer community,
+
+My name is Harsh. I am a designer who lives inside Framer.
+
+Every time a client asked me about SEO, the answer was always some version of: "Yes, but I have to go do that somewhere else."
+
+Schema? External tool. 404s? Manually check Google Search Console. Image alt text? Open another tab. Page speed? PageSpeed Insights in a new window. Meta tags? Built into Framer but limited. Indexing? Manual request in Google Search Console.
+
+Every one of these things required leaving the tool I was already in.
+
+My co-founder Utkarsh and I decided to fix this. We built RankFrame.
+
+It is a native Framer plugin. Install in under a minute from the Framer marketplace. Runs entirely inside the plugin panel.
+
+Here is what it does:
+
+Global SEO Settings: Site name, logo, social image, robots.txt, sitemap. All in one place.
+
+Page-Level SEO: Meta title and description with live character counts. Open Graph. Twitter cards. Canonical URL. Robots tag per page. AI generation with one click.
+
+Schema Markup: JSON-LD for Article, HowTo, FAQ, Product, LocalBusiness, Organization. Auto-generated and injected. Updates in place on republish. No duplicate script tags.
+
+Image SEO: Scans all page images. Flags missing alt text. AI generates alt text in bulk across the entire page.
+
+404 Monitor: Crawls your live site. Shows broken URLs. Set redirect paths without leaving Framer.
+
+Page Speed: Google Lighthouse scores and Core Web Vitals per page inside the plugin. No separate tool.
+
+Keyword Tracker: Connect Google Search Console. See impressions, clicks, and position per keyword per page.
+
+Indexing: Submit any page for Google indexing directly from the plugin.
+
+We quietly listed it on the Framer marketplace before announcing anywhere. Someone in the community found it and paid for it. That gave us the confidence to launch.
+
+Here is the full 3-minute walkthrough: [VIDEO LINK]
+
+If you have been putting off SEO for your Framer site, or doing it manually across five different tools, this is built for you.
+
+I would love feedback from this community. You know Framer better than anyone. Tell me what is missing.
+
+rankframe.com
+
+Harsh
+7 Seers</div>
+          <div class="video-note">Attach: 3-Min Full Launch Video or link directly</div>
+          <button class="copy-btn" onclick="copyPost(this)">Copy Post</button>
+        </div>
+      </div>
+
+    </div>
+
+    <h3 class="section-label">Day 2</h3>
+    <div class="posts-grid">
+
+      <div class="post-card">
+        <div class="post-card-header">
+          <span class="platform-badge x-badge">X</span>
+          <span class="account-label">Harsh</span>
+          <span class="day-label">Day 2, 9:00am</span>
+        </div>
+        <div class="post-card-body">
+          <div class="post-title">Feature list thread. Standalone post.</div>
+          <div class="post-content">Things RankFrame does that no other Framer tool does:
+
+Scans every image on your page, flags missing alt text, and generates AI alt text in bulk for all of them.
+
+Crawls your live site, finds every 404, and lets you set redirects inside the plugin without opening another tool.
+
+Generates complete JSON-LD schema (Article, HowTo, FAQ, Product) and injects it so it updates in place on republish. No duplicate script tags.
+
+Pulls Google Lighthouse data per page inside the plugin. Core Web Vitals without leaving Framer.
+
+Pulls Google Search Console keyword data per page so you can see impressions, clicks, and position where you are already working.
+
+Submits pages for Google indexing directly from the plugin panel.
+
+This is what SEO tooling for Framer should have looked like from the start.
+
+rankframe.com</div>
+          <button class="copy-btn" onclick="copyPost(this)">Copy Post</button>
+        </div>
+      </div>
+
+      <div class="post-card">
+        <div class="post-card-header">
+          <span class="platform-badge x-badge">X</span>
+          <span class="account-label">RankFrame Official</span>
+          <span class="day-label">Day 2, 11:00am</span>
+        </div>
+        <div class="post-card-body">
+          <div class="post-title">First customer post</div>
+          <div class="post-content">Before we posted anywhere.
+
+Before we sent a single DM.
+
+Before we told anyone this existed.
+
+Someone found RankFrame on the Framer marketplace and paid for it.
+
+Product-market fit does not announce itself. It just shows up.
+
+We are launched. Try it free.
+
+rankframe.com</div>
+          <button class="copy-btn" onclick="copyPost(this)">Copy Post</button>
+        </div>
+      </div>
+
+      <div class="post-card">
+        <div class="post-card-header">
+          <span class="platform-badge reddit-badge">Reddit</span>
+          <span class="account-label">Utkarsh</span>
+          <span class="day-label">Day 2, 10:00am — r/SideProject</span>
+        </div>
+        <div class="post-card-body">
+          <div class="post-title">Our Framer SEO plugin got its first paying customer from organic discovery before we told anyone it existed</div>
+          <div class="post-type">New post in r/SideProject</div>
+          <div class="post-content">Quick story.
+
+We built a native SEO plugin for Framer called RankFrame. It handles meta, schema, image SEO, 404 monitoring, page speed, keyword tracking, and indexing submission. All inside the Framer plugin panel. No external dashboard.
+
+We pushed it to the Framer marketplace a few days ago just to test the listing. No posts. No DMs. No announcements.
+
+Someone found it, tried it, and paid for it.
+
+That was the only signal we needed.
+
+We are now officially launching.
+
+Full feature walkthrough (3 minutes): [VIDEO LINK]
+
+If you are building anything in Framer or know people who are, please share. Every Framer site without proper SEO is leaving traffic on the table. This is the tool that fixes that.
+
+rankframe.com</div>
+          <button class="copy-btn" onclick="copyPost(this)">Copy Post</button>
+        </div>
+      </div>
+
+    </div>
+
+    <h3 class="section-label">Day 3-5</h3>
+    <div class="posts-grid">
+
+      <div class="post-card">
+        <div class="post-card-header">
+          <span class="platform-badge reddit-badge">Reddit</span>
+          <span class="account-label">Harsh</span>
+          <span class="day-label">Day 3 — r/webdev</span>
+        </div>
+        <div class="post-card-body">
+          <div class="post-title">Built a plugin that injects JSON-LD schema natively inside Framer. Here is how it works technically.</div>
+          <div class="post-content">Framer is growing fast as a website builder. But it has always had a gap in technical SEO.
+
+You can set basic meta fields in Framer, but schema markup, 404 management, image optimization, and page speed all required going elsewhere. We built RankFrame to close that gap.
+
+Here is what it does technically:
+
+Schema: Generates Article, HowTo, FAQ, Product, LocalBusiness JSON-LD based on page type. Injects as a single script tag. On republish, finds the existing tag and updates it in place. No stacking. No duplicates.
+
+404 Monitor: Crawls the live domain (not the editor). Surfaces broken URLs including those caused by redesigns and URL changes. Redirect paths set inside the plugin.
+
+Image SEO: Scans all images on the current page. Alt text generated via AI in bulk. Character limit and format checked.
+
+Page Speed: Pulls Google Lighthouse API data per page. Shows LCP, CLS, INP. No PageSpeed Insights account needed.
+
+Keyword Tracker: OAuth connection to Google Search Console. Shows impressions, clicks, average position per keyword per page.
+
+Indexing: Direct submission via Google Indexing API equivalent without leaving the plugin.
+
+Built this as a native Framer plugin. Install from the marketplace.
+
+Three-minute video of every feature: [VIDEO LINK]
+
+Open to technical questions.
+
+rankframe.com</div>
+          <button class="copy-btn" onclick="copyPost(this)">Copy Post</button>
+        </div>
+      </div>
+
+      <div class="post-card">
+        <div class="post-card-header">
+          <span class="platform-badge reddit-badge">Reddit</span>
+          <span class="account-label">Utkarsh</span>
+          <span class="day-label">Day 4 — r/SEO</span>
+        </div>
+        <div class="post-card-body">
+          <div class="post-title">Framer sites have a structural SEO problem. Here is what it is and what we built to fix it.</div>
+          <div class="post-content">If you have ever audited a Framer site for SEO you know the common gaps.
+
+Schema requires workarounds or external injection tools. Images often lack alt text at scale. 404s go unmonitored between redesigns. Page speed data means leaving the tool. Indexing is a manual GSC task.
+
+Framer is growing. The sites built on it are real businesses. The SEO tooling has not kept pace.
+
+We spent several months building RankFrame, a native Framer plugin that addresses all of this inside the plugin panel.
+
+The schema implementation is the part I want to highlight specifically for this community.
+
+Framer republishes the entire page on every publish. If you inject a script tag for JSON-LD without accounting for this, you stack duplicate tags on every publish. Duplicate structured data is flagged by Google's Rich Results Test and can cause schema to be ignored entirely.
+
+RankFrame's injection logic locates the existing script tag and updates it in place. One tag. Always the current schema. No duplicates regardless of publish frequency.
+
+Supported types: Article, TechArticle, HowTo, FAQPage, Product, LocalBusiness, Organization, WebSite, BreadcrumbList.
+
+For 404s: crawls the live domain on demand and surfaces broken paths with a redirect input. For image SEO: bulk AI alt text generation across the full page. For speed: Lighthouse API data per page inside the plugin.
+
+We soft-launched on the Framer marketplace. First paid customer came from organic discovery before we announced anywhere.
+
+Full feature video: [VIDEO LINK]
+
+Open to questions from anyone doing technical SEO on Framer sites.
+
+rankframe.com</div>
+          <button class="copy-btn" onclick="copyPost(this)">Copy Post</button>
+        </div>
+      </div>
+
+      <div class="post-card">
+        <div class="post-card-header">
+          <span class="platform-badge x-badge">X</span>
+          <span class="account-label">Utkarsh</span>
+          <span class="day-label">Day 5</span>
+        </div>
+        <div class="post-card-body">
+          <div class="post-title">Designer perspective post</div>
+          <div class="post-content">Framer sites rank poorly not because Framer is bad at SEO.
+
+They rank poorly because doing SEO in Framer was genuinely painful before this week.
+
+No schema tooling. No bulk image alt text. No 404 monitoring. No integrated keyword data. No indexing submission.
+
+You had to leave the tool for every single one of those things.
+
+We built RankFrame to end that.
+
+Everything SEO inside the Framer plugin panel. One install. No dashboard.
+
+rankframe.com</div>
+          <button class="copy-btn" onclick="copyPost(this)">Copy Post</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- WEEK 2 -->
+  <div id="week2">
+    <div class="week-header">
+      <h2>Week 2: Feature Deep Dives</h2>
+      <p>One feature per day. Each post paired with a short screen recording. Shows depth. Builds technical credibility. Targets people searching for specific Framer SEO problems.</p>
+    </div>
+
+    <div class="video-section">
+      <h3>Videos to Record This Week</h3>
+      <div class="video-item"><div class="video-num">1</div><p><strong>Schema Demo (60s):</strong> Generate Article schema for a Framer page. Show JSON-LD in browser source. Republish. Show same tag updated, not duplicated.</p></div>
+      <div class="video-item"><div class="video-num">2</div><p><strong>404 Monitor (45s):</strong> Trigger a crawl. Surface a broken URL. Set a redirect path. Show it resolves.</p></div>
+      <div class="video-item"><div class="video-num">3</div><p><strong>Image SEO (30s):</strong> Open Image SEO tab. Show images with missing alt text highlighted. Hit generate. AI fills them all. Apply.</p></div>
+      <div class="video-item"><div class="video-num">4</div><p><strong>AI Meta (30s):</strong> Open a page. Hit AI generate on meta title and description. Show character counts. Accept.</p></div>
+      <div class="video-item"><div class="video-num">5</div><p><strong>Page Speed (30s):</strong> Open Page Speed tab. Show Lighthouse scores loading. Show Core Web Vitals breakdown per page.</p></div>
+    </div>
+
+    <div class="posts-grid">
+
+      <div class="post-card">
+        <div class="post-card-header">
+          <span class="platform-badge x-badge">X</span>
+          <span class="account-label">RankFrame Official</span>
+          <span class="day-label">Week 2, Day 1 — Schema Feature</span>
+        </div>
+        <div class="post-card-body">
+          <div class="post-title">Schema deep dive</div>
+          <div class="post-content">Most Framer sites have zero schema markup.
+
+Not because the builder does not care. Because adding JSON-LD to a Framer site properly requires either custom code or an external tool.
+
+RankFrame generates it inside the plugin.
+
+Article, HowTo, FAQ, Product, LocalBusiness. Pick your page type, fill the fields, done.
+
+The injection handles Framer's republish behavior automatically. One script tag. Updates in place. No duplicates.
+
+Here is a 60-second demo.
+
+[SCHEMA DEMO VIDEO]
+
+rankframe.com</div>
+          <div class="video-note">Attach: Schema Demo (60s)</div>
+          <button class="copy-btn" onclick="copyPost(this)">Copy Post</button>
+        </div>
+      </div>
+
+      <div class="post-card">
+        <div class="post-card-header">
+          <span class="platform-badge x-badge">X</span>
+          <span class="account-label">Harsh</span>
+          <span class="day-label">Week 2, Day 1 — Schema</span>
+        </div>
+        <div class="post-card-body">
+          <div class="post-title">Schema explainer thread</div>
+          <div class="post-content">Why schema markup matters for your Framer site and why most designers skip it.
+
+Schema is the structured data Google reads to understand what your page actually is. Without it, Google guesses.
+
+With Article schema, Google knows it is an article. It can show a rich result with a headline and image.
+
+With FAQ schema, your FAQs can appear expanded directly in search results.
+
+With HowTo schema, your step-by-step guides get step-by-step rich results.
+
+Every Framer site publishing content without schema is leaving rich results on the table.
+
+RankFrame generates and injects it for you. No code required.
+
+[SCHEMA DEMO VIDEO]
+
+This is one of the highest-impact SEO changes you can make in under 5 minutes.</div>
+          <div class="video-note">Attach: Schema Demo (60s)</div>
+          <button class="copy-btn" onclick="copyPost(this)">Copy Post</button>
+        </div>
+      </div>
+
+      <div class="post-card">
+        <div class="post-card-header">
+          <span class="platform-badge x-badge">X</span>
+          <span class="account-label">RankFrame Official</span>
+          <span class="day-label">Week 2, Day 2 — 404 Monitor</span>
+        </div>
+        <div class="post-card-body">
+          <div class="post-title">404 Monitor deep dive</div>
+          <div class="post-content">Every time you redesign a Framer site and change a URL, the old URL becomes a 404.
+
+Google has already indexed that old URL. Every visitor who clicks it hits a dead end.
+
+RankFrame crawls your live site on demand and shows you every broken URL.
+
+You set the redirect path inside the plugin. Done.
+
+No need to open Google Search Console. No spreadsheet. No manual checking.
+
+Here is how it works in 45 seconds.
+
+[404 MONITOR VIDEO]
+
+If you have ever redesigned a Framer site and not set up redirects, you have 404s. Go check.
+
+rankframe.com</div>
+          <div class="video-note">Attach: 404 Monitor Demo (45s)</div>
+          <button class="copy-btn" onclick="copyPost(this)">Copy Post</button>
+        </div>
+      </div>
+
+      <div class="post-card">
+        <div class="post-card-header">
+          <span class="platform-badge reddit-badge">Reddit</span>
+          <span class="account-label">Harsh</span>
+          <span class="day-label">Week 2, Day 2 — r/framer</span>
+        </div>
+        <div class="post-card-body">
+          <div class="post-title">Does anyone actually monitor 404s on their Framer sites?</div>
+          <div class="post-type">Discussion post that mentions RankFrame naturally</div>
+          <div class="post-content">Genuinely curious. I asked this question to a bunch of Framer designers recently and the answer was almost always no.
+
+The most common scenario: you redesign a site, change some URLs, republish. The old URLs are now 404s. Google has already indexed them. Anyone clicking old links hits a dead end.
+
+The fix is simple: set up redirects from the old path to the new one. But doing this in Framer usually meant keeping track of what changed manually, or periodically checking GSC for 404 errors after the fact.
+
+We built a 404 monitor into RankFrame specifically because of this. It crawls your live Framer site on demand, surfaces all broken URLs, and lets you set redirect paths inside the plugin.
+
+Curious if others have had this problem and how you handled it before.
+
+[Demo video if relevant: VIDEO LINK]</div>
+          <button class="copy-btn" onclick="copyPost(this)">Copy Post</button>
+        </div>
+      </div>
+
+      <div class="post-card">
+        <div class="post-card-header">
+          <span class="platform-badge x-badge">X</span>
+          <span class="account-label">Utkarsh</span>
+          <span class="day-label">Week 2, Day 3 — Image SEO</span>
+        </div>
+        <div class="post-card-body">
+          <div class="post-title">Image SEO post</div>
+          <div class="post-content">Most Framer sites have images with no alt text.
+
+Not because the designer is careless. Because adding alt text to every image manually is tedious enough that it usually does not happen.
+
+Missing alt text means:
+- Google cannot understand what the image shows
+- Your images do not appear in Google Image Search
+- Accessibility fails for screen readers
+
+RankFrame scans every image on your page, flags the ones without alt text, and generates AI alt text for all of them in bulk.
+
+One click. Done.
+
+[IMAGE SEO VIDEO]
+
+This one takes 30 seconds and it matters more than most people realize.
+
+rankframe.com</div>
+          <div class="video-note">Attach: Image SEO Demo (30s)</div>
+          <button class="copy-btn" onclick="copyPost(this)">Copy Post</button>
+        </div>
+      </div>
+
+      <div class="post-card">
+        <div class="post-card-header">
+          <span class="platform-badge x-badge">X</span>
+          <span class="account-label">RankFrame Official</span>
+          <span class="day-label">Week 2, Day 4 — AI Meta</span>
+        </div>
+        <div class="post-card-body">
+          <div class="post-title">AI Meta Generation post</div>
+          <div class="post-content">Most Framer sites have generic meta titles.
+
+Something like the page name plus the site name. No keywords. No click incentive. Nothing that tells Google what the page is actually about.
+
+RankFrame generates keyword-optimized meta titles and descriptions using AI.
+
+Character counts shown live so you know exactly what fits in a search result.
+
+Generate one page or run Generate All across your entire site at once.
+
+[AI META VIDEO]
+
+The meta title is the first thing someone reads before clicking your link in Google. Make it count.
+
+rankframe.com</div>
+          <div class="video-note">Attach: AI Meta Demo (30s)</div>
+          <button class="copy-btn" onclick="copyPost(this)">Copy Post</button>
+        </div>
+      </div>
+
+      <div class="post-card">
+        <div class="post-card-header">
+          <span class="platform-badge x-badge">X</span>
+          <span class="account-label">Harsh</span>
+          <span class="day-label">Week 2, Day 5 — Page Speed</span>
+        </div>
+        <div class="post-card-body">
+          <div class="post-title">Page Speed post</div>
+          <div class="post-content">Core Web Vitals are a Google ranking factor.
+
+Most designers check page speed once, when they launch. Then never again.
+
+Every time you add a new section, a new image, or a new embed, your performance score can drop. You need to check it regularly, not just at launch.
+
+RankFrame pulls Google Lighthouse data per page inside the plugin. LCP, CLS, INP. Actual scores for the actual page you are looking at.
+
+No separate tab. No third-party account.
+
+[PAGE SPEED VIDEO]
+
+Check your Framer site right now. You might be surprised.
+
+rankframe.com</div>
+          <div class="video-note">Attach: Page Speed Demo (30s)</div>
+          <button class="copy-btn" onclick="copyPost(this)">Copy Post</button>
+        </div>
+      </div>
+
+      <div class="post-card">
+        <div class="post-card-header">
+          <span class="platform-badge framer-badge">Framer</span>
+          <span class="account-label">Harsh</span>
+          <span class="day-label">Week 2, Day 3 — Framer Community</span>
+        </div>
+        <div class="post-card-body">
+          <div class="post-title">How are you handling image alt text at scale in Framer?</div>
+          <div class="post-type">Discussion that naturally leads to RankFrame</div>
+          <div class="post-content">Curious how people in this community are handling image alt text for client sites.
+
+For a 5-page site it is manageable manually. But once you are working on a site with 20, 30, 50 images, doing it manually in Framer becomes a real time sink.
+
+We built an image scanner into RankFrame specifically for this. It finds every image with missing alt text and generates AI alt text in bulk for the full page.
+
+Genuinely curious if others have a better workflow for this or if it is just one of those things that gets skipped.
+
+[Short demo: VIDEO LINK]</div>
+          <button class="copy-btn" onclick="copyPost(this)">Copy Post</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- WEEK 3 -->
+  <div id="week3">
+    <div class="week-header">
+      <h2>Week 3: Social Proof</h2>
+      <p>Share early results, customer moments, testimonials, and use cases. Engage with comments from weeks 1 and 2. Build community trust.</p>
+    </div>
+
+    <div class="posts-grid">
+
+      <div class="post-card">
+        <div class="post-card-header">
+          <span class="platform-badge x-badge">X</span>
+          <span class="account-label">Harsh</span>
+          <span class="day-label">Week 3, Day 1</span>
+        </div>
+        <div class="post-card-body">
+          <div class="post-title">Reflection post after launch week</div>
+          <div class="post-content">One week since we launched RankFrame.
+
+What I have learned from the feedback so far:
+
+Most Framer designers have never added schema markup to their sites. Not because they do not know it matters. Because there was no easy way to do it inside Framer.
+
+404 monitoring is the feature that surprises people most. Everyone has 404s on their Framer site. Almost nobody was checking for them.
+
+Image alt text gets skipped almost universally. The bulk AI generation is the one feature people come back and mention first.
+
+We built RankFrame because we felt these exact gaps ourselves. Good to know we were not alone.
+
+If you have not tried it yet, first crawl is free.
+
+rankframe.com</div>
+          <button class="copy-btn" onclick="copyPost(this)">Copy Post</button>
+        </div>
+      </div>
+
+      <div class="post-card">
+        <div class="post-card-header">
+          <span class="platform-badge x-badge">X</span>
+          <span class="account-label">RankFrame Official</span>
+          <span class="day-label">Week 3, Day 2</span>
+        </div>
+        <div class="post-card-body">
+          <div class="post-title">Use case post: Freelancers and agencies</div>
+          <div class="post-content">If you build Framer sites for clients, here is what RankFrame changes for you:
+
+Before: Deliver the site. Tell the client they need to "handle SEO" separately. Watch them open a dozen tabs and give up.
+
+After: Show them a live Lighthouse score. Show them their schema in place. Show them their meta titles. Show them their 404s cleared.
+
+SEO becomes part of the deliverable, not an afterthought.
+
+That is what native tooling enables.
+
+rankframe.com</div>
+          <button class="copy-btn" onclick="copyPost(this)">Copy Post</button>
+        </div>
+      </div>
+
+      <div class="post-card">
+        <div class="post-card-header">
+          <span class="platform-badge reddit-badge">Reddit</span>
+          <span class="account-label">Harsh</span>
+          <span class="day-label">Week 3, Day 2 — r/framer</span>
+        </div>
+        <div class="post-card-body">
+          <div class="post-title">Update: Here is what we learned from the first week of RankFrame being live</div>
+          <div class="post-content">Hey r/framer, posted here last week about our native SEO plugin for Framer, RankFrame.
+
+Wanted to share a few things we learned from the feedback since then.
+
+The most common thing people told us: they had never added schema markup to any of their Framer sites. Not because it is unimportant, but because there was no friction-free way to do it inside Framer. This was validating because it was the primary reason we built the schema feature.
+
+The most surprising thing: almost every Framer site we have seen during testing has at least a few 404s from URL changes made during redesigns that were never caught. Setting up redirects after the fact is not something most designers think about until a client notices traffic dropping.
+
+The most requested feature not yet built: automatic schema suggestions based on page content. It is on the roadmap.
+
+If you tried it after the last post, I would love to hear your experience in the comments.
+
+Still free to try. First crawl included.
+
+rankframe.com</div>
+          <button class="copy-btn" onclick="copyPost(this)">Copy Post</button>
+        </div>
+      </div>
+
+      <div class="post-card">
+        <div class="post-card-header">
+          <span class="platform-badge x-badge">X</span>
+          <span class="account-label">Utkarsh</span>
+          <span class="day-label">Week 3, Day 3</span>
+        </div>
+        <div class="post-card-body">
+          <div class="post-title">Builder perspective</div>
+          <div class="post-content">Something nobody tells you about building a plugin for a design tool:
+
+The users have a completely different relationship with their tools than the users of a SaaS dashboard.
+
+Framer users are visual. They move fast. They want to see things change instantly. They do not want to fill out forms.
+
+Every UI decision in RankFrame was made by asking: would a designer tolerate this? Or does it feel like an enterprise SaaS screen got dropped into their creative tool?
+
+We rebuilt parts of it three times because the answer was the latter.
+
+This is what "built by designers for designers" actually means when it is not just marketing copy.</div>
+          <button class="copy-btn" onclick="copyPost(this)">Copy Post</button>
+        </div>
+      </div>
+
+      <div class="post-card">
+        <div class="post-card-header">
+          <span class="platform-badge x-badge">X</span>
+          <span class="account-label">Harsh</span>
+          <span class="day-label">Week 3, Day 4</span>
+        </div>
+        <div class="post-card-body">
+          <div class="post-title">Honest comparison post</div>
+          <div class="post-content">Before RankFrame, here is how a Framer designer would handle SEO for a client site:
+
+Meta: Set in Framer (limited). No AI assist. No character count.
+Schema: Custom code embed or skip entirely.
+Images: Check alt text manually page by page.
+404s: Check GSC every few weeks, if remembered.
+Page Speed: Run PageSpeed Insights in a separate tab.
+Keywords: Export GSC data to a spreadsheet.
+Indexing: Request manually in GSC.
+
+After RankFrame: One plugin. All of the above. Inside Framer.
+
+The goal was not to build a better dashboard. The goal was to make a separate dashboard unnecessary.
+
+rankframe.com</div>
+          <button class="copy-btn" onclick="copyPost(this)">Copy Post</button>
+        </div>
+      </div>
+
+      <div class="post-card">
+        <div class="post-card-header">
+          <span class="platform-badge framer-badge">Framer</span>
+          <span class="account-label">Harsh</span>
+          <span class="day-label">Week 3, Day 3 — Framer Community</span>
+        </div>
+        <div class="post-card-body">
+          <div class="post-title">Week 1 recap. What you all taught us.</div>
+          <div class="post-content">Following up on my post from last week about RankFrame.
+
+First: thank you for the feedback and questions. This community has been the most useful source of early input we have had.
+
+A few things I want to acknowledge directly.
+
+The schema type coverage question came up several times. We currently support Article, TechArticle, HowTo, FAQPage, Product, LocalBusiness, Organization, WebSite, and BreadcrumbList. Event and JobPosting are on the roadmap.
+
+The CMS question also came up. Canvas image jump (finding an image in the Framer canvas from the plugin) currently works on Canvas pages only, not CMS pages. This is a Framer API limitation we are working around.
+
+The plugin speed question: the initial crawl time depends on site size. Average site is under two minutes for a full crawl.
+
+If you tried RankFrame this week and ran into anything confusing or broken, I want to hear it. Reply here or email hello@7seersmedia.com.
+
+We build this for this community. Your feedback shapes what gets built next.
+
+rankframe.com</div>
+          <button class="copy-btn" onclick="copyPost(this)">Copy Post</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- WEEK 4 -->
+  <div id="week4">
+    <div class="week-header">
+      <h2>Week 4: Authority</h2>
+      <p>SEO education. Framer-specific tips. Positioning RankFrame and its founders as the authority on SEO for Framer. Content that ranks, gets saved, and gets shared months from now.</p>
+    </div>
+
+    <div class="posts-grid">
+
+      <div class="post-card">
+        <div class="post-card-header">
+          <span class="platform-badge x-badge">X</span>
+          <span class="account-label">Harsh</span>
+          <span class="day-label">Week 4, Day 1</span>
+        </div>
+        <div class="post-card-body">
+          <div class="post-title">SEO checklist thread for Framer sites</div>
+          <div class="post-content">The SEO checklist every Framer site should pass before going live. Save this.
+
+1. Meta title set for every page. Under 60 characters. Keyword in it.
+
+2. Meta description set for every page. Under 160 characters. Answers what the page is.
+
+3. Open Graph image set. What shows when someone shares your link.
+
+4. Schema markup added. At minimum: WebSite on homepage, Article on blog posts, FAQ on any FAQ sections.
+
+5. All images have alt text. Every single one.
+
+6. No 404 URLs from previous URL structures.
+
+7. Canonical URL set on duplicate or near-duplicate pages.
+
+8. Sitemap accessible at /sitemap.xml.
+
+9. Robots.txt not blocking anything that should be crawled.
+
+10. Page speed score above 80 on mobile for key pages.
+
+Most Framer sites fail at least four of these before launch.
+
+RankFrame checks all of them from inside the plugin.
+
+rankframe.com</div>
+          <button class="copy-btn" onclick="copyPost(this)">Copy Post</button>
+        </div>
+      </div>
+
+      <div class="post-card">
+        <div class="post-card-header">
+          <span class="platform-badge x-badge">X</span>
+          <span class="account-label">RankFrame Official</span>
+          <span class="day-label">Week 4, Day 2</span>
+        </div>
+        <div class="post-card-body">
+          <div class="post-title">Educational post: What schema actually does</div>
+          <div class="post-content">Schema markup explained without the jargon.
+
+Google reads your HTML to understand what your page contains. But HTML is ambiguous. A heading could be a product name, an article title, a person's name, or a company name. Google guesses.
+
+Schema is how you stop Google from guessing.
+
+You add structured data (JSON-LD) that explicitly says: this is an Article. The author is X. The date published is Y. The headline is Z.
+
+Google reads that data and can show your content as a rich result in search. Expanded FAQ answers. Article cards with images. HowTo steps with thumbnails.
+
+Rich results get more clicks than plain links. More clicks means more traffic.
+
+RankFrame generates this for you inside Framer. No code.
+
+rankframe.com</div>
+          <button class="copy-btn" onclick="copyPost(this)">Copy Post</button>
+        </div>
+      </div>
+
+      <div class="post-card">
+        <div class="post-card-header">
+          <span class="platform-badge reddit-badge">Reddit</span>
+          <span class="account-label">Harsh</span>
+          <span class="day-label">Week 4, Day 1 — r/framer</span>
+        </div>
+        <div class="post-card-body">
+          <div class="post-title">Complete SEO checklist for Framer sites (what to check before and after launch)</div>
+          <div class="post-type">Educational post. High value for the subreddit. Mention RankFrame honestly at the end.</div>
+          <div class="post-content">After auditing a lot of Framer sites for SEO, here is the checklist I use. Sharing it here because I see a lot of questions about Framer SEO and there is no single clean resource for it.
+
+PRE-LAUNCH
+
+Meta titles: Set for every page. Under 60 characters. Target keyword included. Not just the page name.
+
+Meta descriptions: Set for every page. Under 160 characters. Reads like a human wrote it, not a title repeated.
+
+Open Graph: OG image set. OG title and description set. Check how it renders using opengraph.xyz.
+
+Schema: At minimum, WebSite schema on your homepage. Article schema on blog posts. FAQ schema on FAQ sections. HowTo schema on tutorial pages.
+
+Images: Every image has alt text. Descriptive, not keyword-stuffed.
+
+Sitemap: Accessible at /sitemap.xml. Contains all indexable pages.
+
+Robots.txt: Accessible at /robots.txt. Not blocking anything important.
+
+Canonical URLs: Set on any page that has a duplicate or near-duplicate (pagination, filter pages, etc.).
+
+POST-LAUNCH
+
+404 Monitor: Check for broken URLs after any URL restructure or redesign. Set redirects from old paths to new ones.
+
+Page Speed: Run Lighthouse on mobile for your homepage and top pages. Target above 80 for performance. Fix LCP issues first.
+
+Keyword Tracking: Connect Google Search Console. Monitor impressions and position for target keywords per page.
+
+Indexing: Submit key pages via GSC or direct API after publishing. Do not wait for Googlebot to find them.
+
+---
+
+I built a plugin called RankFrame that handles all of the above inside Framer natively. Mentioning it because it is relevant, not to spam. The checklist above applies whether you use RankFrame or not.
+
+Happy to answer questions on any of the above.
+
+rankframe.com</div>
+          <button class="copy-btn" onclick="copyPost(this)">Copy Post</button>
+        </div>
+      </div>
+
+      <div class="post-card">
+        <div class="post-card-header">
+          <span class="platform-badge x-badge">X</span>
+          <span class="account-label">Utkarsh</span>
+          <span class="day-label">Week 4, Day 3</span>
+        </div>
+        <div class="post-card-body">
+          <div class="post-title">Core Web Vitals explained for designers</div>
+          <div class="post-content">Core Web Vitals for Framer designers. What they are and why they matter.
+
+LCP (Largest Contentful Paint): How fast the biggest thing on your page loads. Usually your hero image. Keep it under 2.5 seconds. Compress images. Use WebP.
+
+CLS (Cumulative Layout Shift): How much your page jumps around as it loads. Caused by images without fixed dimensions, fonts loading late, embeds that change size. Keep it under 0.1.
+
+INP (Interaction to Next Paint): How fast your page responds after a click. Under 200ms is good.
+
+Google uses all three as ranking signals.
+
+Framer is generally good on CLS and INP. LCP depends on your hero image size.
+
+RankFrame shows you these scores per page inside the plugin. Check yours.
+
+rankframe.com</div>
+          <button class="copy-btn" onclick="copyPost(this)">Copy Post</button>
+        </div>
+      </div>
+
+      <div class="post-card">
+        <div class="post-card-header">
+          <span class="platform-badge x-badge">X</span>
+          <span class="account-label">Harsh</span>
+          <span class="day-label">Week 4, Day 4</span>
+        </div>
+        <div class="post-card-body">
+          <div class="post-title">Month 1 reflection post</div>
+          <div class="post-content">One month since RankFrame launched.
+
+We built it because we were tired of doing SEO in five different tools while already being inside the best design tool available.
+
+The response has been better than we expected.
+
+Designers who have been putting off SEO because it felt like a separate job are now handling it while they design. That is exactly what we built it for.
+
+If you have not tried it yet, the first crawl is free.
+
+If you have tried it, thank you. Your feedback is directly shaping what gets built next.
+
+This is just the beginning.
+
+rankframe.com</div>
+          <button class="copy-btn" onclick="copyPost(this)">Copy Post</button>
+        </div>
+      </div>
+
+      <div class="post-card">
+        <div class="post-card-header">
+          <span class="platform-badge framer-badge">Framer</span>
+          <span class="account-label">Harsh</span>
+          <span class="day-label">Week 4, Day 2 — Framer Community</span>
+        </div>
+        <div class="post-card-body">
+          <div class="post-title">A complete SEO guide for Framer sites (everything I know after building an SEO plugin for Framer)</div>
+          <div class="post-type">Long-form educational post. High value. Will be referenced and linked for months.</div>
+          <div class="post-content">I have been building in Framer and thinking about Framer SEO specifically for a long time now. Here is everything I know, organized into what actually matters.
+
+---
+
+PART 1: THE BASICS
+
+Meta titles and descriptions are the floor. Every Framer page needs a unique meta title under 60 characters with the target keyword and a meta description under 160 characters that reads like a human wrote it. Framer lets you set these per page. Do not leave them on defaults.
+
+Open Graph matters. Every time someone shares your link on X, LinkedIn, or in Slack, the OG image and title are what they see. Set a compelling OG image. Use a 1200x630px image. Test it before launch.
+
+---
+
+PART 2: SCHEMA MARKUP
+
+Schema is the highest-leverage thing most Framer designers are not doing.
+
+JSON-LD structured data tells Google exactly what your page is. An article. A product. A FAQ. A step-by-step guide. Without it, Google guesses.
+
+With Article schema, your blog posts can appear as rich results with images and headlines.
+With FAQ schema, your FAQ answers can expand directly in search results.
+With HowTo schema, your tutorials can show steps with thumbnails.
+
+Schema does not guarantee rich results. But without it, you are not eligible.
+
+---
+
+PART 3: IMAGE SEO
+
+Every image on your Framer site should have alt text. Descriptive. Not keyword-stuffed. A sentence that describes what is in the image.
+
+Google uses alt text to understand images for Image Search. Screen readers use it for accessibility. Both matter.
+
+At scale, writing alt text manually is painful. That is a solvable problem with the right tools.
+
+---
+
+PART 4: 404 MONITORING
+
+Every redesign that changes a URL creates 404s. Every 404 that Google has indexed is a broken user experience and a crawl waste.
+
+The fix: set 301 redirects from old paths to new ones. The problem: most designers do not know which URLs changed.
+
+Crawl your live site after every major restructure. Find the 404s. Set the redirects. This is not optional if you care about maintaining rankings through redesigns.
+
+---
+
+PART 5: PAGE SPEED
+
+Framer is generally fast. But hero images, heavy embeds, and large font files can hurt your LCP score.
+
+Compress images. Use WebP where Framer allows. Be careful with heavy Lottie files and video embeds above the fold.
+
+Check your Core Web Vitals scores per page, not just the homepage. Your blog pages and landing pages matter too.
+
+---
+
+PART 6: INDEXING
+
+Publish, then request indexing. Do not wait for Googlebot to discover new pages on its own. Submit them.
+
+Also connect Google Search Console to your Framer site from day one. Even if you are not tracking anything yet, the historical data starts accumulating from the connection date. You will want it later.
+
+---
+
+I built RankFrame to handle all of the above natively inside Framer. Mentioning it because it is directly relevant to this post, not as a pitch.
+
+The guide above applies regardless of what tools you use.
+
+rankframe.com</div>
+          <button class="copy-btn" onclick="copyPost(this)">Copy Post</button>
+        </div>
+      </div>
+
+    </div>
+
+    <h3 class="section-label">Full 4-Week Posting Schedule</h3>
+    <table class="schedule-table">
+      <thead>
+        <tr><th>Day</th><th>Platform</th><th>Account</th><th>Topic</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Day 1</td><td>X</td><td>RankFrame</td><td>Main launch post + video</td></tr>
+        <tr><td>Day 1</td><td>X</td><td>Harsh</td><td>Quote tweet, personal angle</td></tr>
+        <tr><td>Day 1</td><td>X</td><td>Utkarsh</td><td>Quote tweet, schema technical angle</td></tr>
+        <tr><td>Day 1</td><td>Reddit</td><td>Harsh</td><td>r/framer full launch post</td></tr>
+        <tr><td>Day 1</td><td>Reddit</td><td>Utkarsh</td><td>Comment under Harsh's r/framer post</td></tr>
+        <tr><td>Day 1</td><td>Framer</td><td>Harsh</td><td>Community launch post</td></tr>
+        <tr><td>Day 2</td><td>X</td><td>Harsh</td><td>Feature list thread</td></tr>
+        <tr><td>Day 2</td><td>X</td><td>RankFrame</td><td>First customer moment post</td></tr>
+        <tr><td>Day 2</td><td>Reddit</td><td>Utkarsh</td><td>r/SideProject launch post</td></tr>
+        <tr><td>Day 3</td><td>Reddit</td><td>Harsh</td><td>r/webdev technical post</td></tr>
+        <tr><td>Day 4</td><td>Reddit</td><td>Utkarsh</td><td>r/SEO structural problem post</td></tr>
+        <tr><td>Day 5</td><td>X</td><td>Utkarsh</td><td>Designer perspective standalone</td></tr>
+        <tr><td>Week 2 D1</td><td>X</td><td>RankFrame</td><td>Schema deep dive + 60s video</td></tr>
+        <tr><td>Week 2 D1</td><td>X</td><td>Harsh</td><td>Schema explainer thread + video</td></tr>
+        <tr><td>Week 2 D2</td><td>X</td><td>RankFrame</td><td>404 Monitor + 45s video</td></tr>
+        <tr><td>Week 2 D2</td><td>Reddit</td><td>Harsh</td><td>r/framer 404 discussion</td></tr>
+        <tr><td>Week 2 D3</td><td>X</td><td>Utkarsh</td><td>Image SEO + 30s video</td></tr>
+        <tr><td>Week 2 D3</td><td>Framer</td><td>Harsh</td><td>Image alt text discussion</td></tr>
+        <tr><td>Week 2 D4</td><td>X</td><td>RankFrame</td><td>AI Meta + 30s video</td></tr>
+        <tr><td>Week 2 D5</td><td>X</td><td>Harsh</td><td>Page Speed + 30s video</td></tr>
+        <tr><td>Week 3 D1</td><td>X</td><td>Harsh</td><td>Launch week reflection</td></tr>
+        <tr><td>Week 3 D2</td><td>X</td><td>RankFrame</td><td>Freelancer and agency use case</td></tr>
+        <tr><td>Week 3 D2</td><td>Reddit</td><td>Harsh</td><td>r/framer week 1 update</td></tr>
+        <tr><td>Week 3 D3</td><td>X</td><td>Utkarsh</td><td>Builder perspective</td></tr>
+        <tr><td>Week 3 D3</td><td>Framer</td><td>Harsh</td><td>Week 1 recap, community feedback</td></tr>
+        <tr><td>Week 3 D4</td><td>X</td><td>Harsh</td><td>Before vs after comparison</td></tr>
+        <tr><td>Week 4 D1</td><td>X</td><td>Harsh</td><td>SEO checklist thread</td></tr>
+        <tr><td>Week 4 D1</td><td>Reddit</td><td>Harsh</td><td>r/framer SEO checklist post</td></tr>
+        <tr><td>Week 4 D2</td><td>X</td><td>RankFrame</td><td>What schema actually does</td></tr>
+        <tr><td>Week 4 D2</td><td>Framer</td><td>Harsh</td><td>Complete Framer SEO guide</td></tr>
+        <tr><td>Week 4 D3</td><td>X</td><td>Utkarsh</td><td>Core Web Vitals for designers</td></tr>
+        <tr><td>Week 4 D4</td><td>X</td><td>Harsh</td><td>Month 1 reflection</td></tr>
+      </tbody>
+    </table>
+
+  </div>
+
+</div>
+
+<script>
+function copyPost(btn) {
+  const content = btn.closest('.post-card-body').querySelector('.post-content').textContent;
+  navigator.clipboard.writeText(content).then(() => {
+    btn.textContent = 'Copied!';
+    btn.classList.add('copied');
+    setTimeout(() => {
+      btn.textContent = 'Copy Post';
+      btn.classList.remove('copied');
+    }, 2000);
+  });
+}
+
+// Nav active state on scroll
+const sections = document.querySelectorAll('[id]');
+const navLinks = document.querySelectorAll('.nav a');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(section => {
+    if (window.scrollY >= section.offsetTop - 100) current = section.id;
+  });
+  navLinks.forEach(link => {
+    link.classList.remove('active');
+    if (link.getAttribute('href') === '#' + current) link.classList.add('active');
+  });
+});
+</script>
+
+</body>
+</html>
