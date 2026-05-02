@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Managing Saved Keywords in RankFrame</title>
+  <meta name="description" content="Learn how to view, organize, and delete saved focus keywords in RankFrame. Understand the Saved Keywords list, keyword difficulty badges, and how to keep your keyword assignments clean." />
+  <meta name="keywords" content="saved keywords RankFrame, manage focus keywords Framer, delete keyword RankFrame, keyword difficulty badge" />
+  <link rel="canonical" href="https://rankframe.com/help/managing-saved-keywords" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Managing Saved Keywords in RankFrame",
+    "description": "Learn how to view, organize, and delete saved focus keywords in RankFrame. Understand the Saved Keywords list, keyword difficulty badges, and how to keep your keyword assignments clean.",
+    "url": "https://rankframe.com/help/managing-saved-keywords",
+    "datePublished": "2026-05-02",
+    "dateModified": "2026-05-02",
+    "author": {
+      "@type": "Organization",
+      "name": "7 Seers",
+      "email": "hello@7seersmedia.com"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "7 Seers",
+      "url": "https://rankframe.com"
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://rankframe.com/help/managing-saved-keywords"
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Can I assign the same keyword to multiple pages?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Each keyword save is tied to one Target Page selection. To assign the same keyword to two pages, save it twice: once with each page selected in the Target Page dropdown."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What happens to a deleted keyword on the live site?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "If the Focus Keyword Script is enabled and you delete a keyword, the keyword will be removed from the meta keywords tag on the next Framer publish. Until then, the old tag may still be live."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is there a limit to how many keywords I can save?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "There is no documented hard limit. Keep the list focused: 2 to 5 keywords per page is a realistic and effective strategy."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I edit a saved keyword without deleting it?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Currently there is no in-place edit. Delete the keyword and re-add the corrected version using the input field and Check flow."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does hiding the Saved Keywords list affect injection?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Hide only collapses the display in the plugin panel. Saved keywords remain assigned and are still injected when the script is enabled."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Help Center",
+        "item": "https://rankframe.com/help"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Keyword Research",
+        "item": "https://rankframe.com/help/keyword-research"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Managing Saved Keywords",
+        "item": "https://rankframe.com/help/managing-saved-keywords"
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #ffffff;
+      color: #1a0533;
+      line-height: 1.7;
+    }
+
+    /* Top bar */
+    .top-bar {
+      background: linear-gradient(135deg, #7c3aed 0%, #5b21b6 100%);
+      padding: 14px 32px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .top-bar-logo {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -0.01em;
+    }
+    .top-bar-sep { color: rgba(255,255,255,0.4); font-size: 1rem; }
+    .top-bar-section { color: rgba(255,255,255,0.75); font-size: 0.88rem; }
+
+    /* Breadcrumb */
+    .breadcrumb {
+      padding: 14px 32px;
+      background: #faf8ff;
+      border-bottom: 1px solid #ede8fa;
+      font-size: 0.82rem;
+      color: #7c6fa0;
+    }
+    .breadcrumb a { color: #7c3aed; text-decoration: none; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .breadcrumb span { margin: 0 6px; color: #c4b8e0; }
+
+    /* Layout */
+    .page-wrapper {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 48px 32px 80px;
+    }
+
+    /* Article header */
+    .article-tag {
+      display: inline-block;
+      background: #f3eeff;
+      color: #7c3aed;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 20px;
+      margin-bottom: 16px;
+    }
+    h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #1a0533;
+      line-height: 1.25;
+      margin-bottom: 20px;
+      letter-spacing: -0.02em;
+    }
+    .intro {
+      font-size: 1.05rem;
+      color: #4b3d6b;
+      line-height: 1.8;
+      border-left: 4px solid #a78bfa;
+      padding-left: 18px;
+      margin-bottom: 44px;
+    }
+
+    /* Section headings */
+    h2 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #1a0533;
+      margin: 48px 0 6px;
+      padding-top: 8px;
+      border-top: 2px solid #f0ebff;
+    }
+    h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #3b1f6b;
+      margin: 28px 0 8px;
+    }
+
+    p { font-size: 0.97rem; color: #36284f; line-height: 1.78; margin-bottom: 14px; }
+
+    /* Field blocks */
+    .field-block { margin: 36px 0 28px; }
+    .field-block-header { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+    .field-num {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 38px; height: 38px;
+      background: linear-gradient(135deg, #7c3aed, #a78bfa);
+      color: #fff; font-weight: 700; font-size: 14px;
+      border-radius: 8px; flex-shrink: 0;
+      box-shadow: 0 2px 6px rgba(124,58,237,0.25);
+    }
+    .field-block-title { font-size: 1rem; font-weight: 700; color: #1a0533; }
+    .field-block-desc { font-size: 0.93rem; color: #4b4b6b; line-height: 1.7; }
+
+    /* Screenshot slot */
+    .screenshot-slot {
+      background: #fafafa;
+      border: 1px dashed #e0d8f0;
+      border-radius: 10px;
+      padding: 36px 20px;
+      text-align: center;
+      color: #b8b2c8;
+      font-size: 0.85rem;
+      margin-top: 6px;
+      margin-bottom: 8px;
+    }
+    .screenshot-slot::before {
+      content: "Screenshot";
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #c8c0dc;
+    }
+
+    /* Callout / tip box */
+    .callout {
+      background: #f3eeff;
+      border-left: 4px solid #7c3aed;
+      border-radius: 0 10px 10px 0;
+      padding: 16px 20px;
+      margin: 24px 0;
+      font-size: 0.93rem;
+      color: #3b1f6b;
+      line-height: 1.7;
+    }
+    .callout strong { color: #5b21b6; }
+
+    /* Warning callout */
+    .callout-warn {
+      background: #fff7ed;
+      border-left: 4px solid #f59e0b;
+      border-radius: 0 10px 10px 0;
+      padding: 16px 20px;
+      margin: 24px 0;
+      font-size: 0.93rem;
+      color: #78350f;
+      line-height: 1.7;
+    }
+
+    /* Divider */
+    .divider { border: none; border-top: 2px solid #f0ebff; margin: 48px 0; }
+
+    /* FAQ section */
+    .faq-section { margin-top: 56px; }
+    .faq-section h2 { border-top: none; padding-top: 0; margin-top: 0; }
+    .faq-item {
+      border: 1px solid #ede8fa;
+      border-radius: 10px;
+      margin-bottom: 14px;
+      overflow: hidden;
+    }
+    .faq-q {
+      font-size: 0.96rem;
+      font-weight: 700;
+      color: #1a0533;
+      padding: 18px 20px;
+      background: #faf8ff;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    .faq-q-icon {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 24px; height: 24px; min-width: 24px;
+      background: #7c3aed; color: #fff;
+      font-size: 0.75rem; font-weight: 800;
+      border-radius: 50%;
+    }
+    .faq-a {
+      font-size: 0.93rem;
+      color: #4b4b6b;
+      padding: 16px 20px 18px 56px;
+      line-height: 1.75;
+      border-top: 1px solid #ede8fa;
+      background: #fff;
+    }
+
+    /* Footer */
+    .article-footer {
+      margin-top: 72px;
+      padding-top: 28px;
+      border-top: 2px solid #f0ebff;
+      font-size: 0.82rem;
+      color: #9b8fc0;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .article-footer a { color: #7c3aed; text-decoration: none; }
+    .article-footer a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+  <!-- Top bar -->
+  <div class="top-bar">
+    <span class="top-bar-logo">RankFrame</span>
+    <span class="top-bar-sep">/</span>
+    <span class="top-bar-section">Help Center</span>
+  </div>
+
+  <!-- Breadcrumb -->
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="https://rankframe.com/help">Help Center</a>
+    <span>&#8250;</span>
+    <a href="https://rankframe.com/help/keyword-research">Keyword Research</a>
+    <span>&#8250;</span>
+    Managing Saved Keywords
+  </nav>
+
+  <!-- Main content -->
+  <div class="page-wrapper">
+    <span class="article-tag">Keyword Research</span>
+    <h1>Managing Saved Keywords in RankFrame</h1>
+    <p class="intro">Every keyword you save in RankFrame appears in the Saved Keywords list below the input field. This list lets you review what keywords are assigned to each page, spot high-difficulty keywords, and remove any that are no longer relevant.</p>
+
+    <!-- Section 1 -->
+    <div class="field-block">
+      <div class="field-block-header">
+        <span class="field-num">1</span>
+        <span class="field-block-title">Saved Keywords List</span>
+      </div>
+      <p class="field-block-desc">After saving at least one keyword, the header shows <strong>Saved Keywords (N)</strong> where N is the current count. Each row in the list displays three pieces of information: the keyword text, the Vol (search volume), and the KD (keyword difficulty) score. Rows appear in the order you saved them, with the most recent additions at the bottom.</p>
+      <p class="field-block-desc">This list is your at-a-glance record of every focus keyword you have committed to for the selected page. Review it before publishing to confirm your keyword strategy is still aligned with your content.</p>
+      <div class="screenshot-slot">Saved Keywords list showing keyword text, Vol, and KD columns</div>
+    </div>
+
+    <!-- Section 2 -->
+    <div class="field-block">
+      <div class="field-block-header">
+        <span class="field-num">2</span>
+        <span class="field-block-title">Keyword Difficulty Badge (Red KD)</span>
+      </div>
+      <p class="field-block-desc">When the KD score is high (typically 50 or above), the KD badge turns red. This is a visual warning that the keyword is competitive. A red badge does not prevent saving, and it does not break any functionality. It signals that you should evaluate whether your site has the domain authority to rank for this term.</p>
+      <div class="callout-warn">
+        <strong>High KD keywords:</strong> A red KD badge means the top-ranking pages for this keyword are strong, established competitors. New or low-authority sites typically see better results targeting keywords with a KD below 30.
+      </div>
+      <div class="screenshot-slot">KD badge in red state on a high-difficulty keyword row</div>
+    </div>
+
+    <!-- Section 3 -->
+    <div class="field-block">
+      <div class="field-block-header">
+        <span class="field-num">3</span>
+        <span class="field-block-title">Manage and Hide Controls</span>
+      </div>
+      <p class="field-block-desc">The Saved Keywords header includes two controls: <strong>Hide</strong> and <strong>Manage</strong>. Hide collapses the list without deleting any keywords. Manage mode (when available) enables reordering or bulk actions on your saved keyword rows.</p>
+      <p class="field-block-desc">Use Hide to keep the plugin panel clean when you are focused on other sections of the Keywords tab. The list remains fully intact and all keywords stay assigned. Click the header again to expand the list when you need to review or edit it.</p>
+      <div class="screenshot-slot">Saved Keywords header showing Hide and Manage controls</div>
+    </div>
+
+    <!-- Section 4 -->
+    <div class="field-block">
+      <div class="field-block-header">
+        <span class="field-num">4</span>
+        <span class="field-block-title">Deleting a Keyword</span>
+      </div>
+      <p class="field-block-desc">Each saved keyword row has a trash icon on the right side. Clicking the icon removes the keyword from the list and unassigns it from its page immediately. The deletion is not reversible through an undo action. If you remove a keyword by mistake, re-add it using the input field and the Check flow.</p>
+      <p class="field-block-desc">Once deleted, the keyword is no longer injected into the page meta tags, even if the Focus Keyword Script is still enabled. The change takes effect on the next Framer publish.</p>
+      <div class="callout">
+        <strong>Tip:</strong> Before deleting, confirm which page the keyword is assigned to. Because the list does not display a page column, switch to the correct Target Page in the dropdown before making deletions.
+      </div>
+      <div class="screenshot-slot">Keyword row with trash icon highlighted on the right side</div>
+    </div>
+
+    <!-- Section 5 -->
+    <div class="field-block">
+      <div class="field-block-header">
+        <span class="field-num">5</span>
+        <span class="field-block-title">Keyword-to-Page Assignment</span>
+      </div>
+      <p class="field-block-desc">Each saved keyword is tied to the page that was active in the <strong>Target Page dropdown</strong> at the moment you saved it. There is currently no visible "page" column in the Saved Keywords list, so the assignment is implicit.</p>
+      <p class="field-block-desc">To keep your keyword organization clean, always confirm the correct Target Page is selected before saving a keyword. If you save a keyword while the wrong page is selected, delete it and re-save it with the correct page chosen.</p>
+      <div class="screenshot-slot">Target Page dropdown with a page selected before saving a keyword</div>
+    </div>
+
+    <hr class="divider" />
+
+    <!-- FAQ -->
+    <section class="faq-section">
+      <h2>Frequently Asked Questions</h2>
+
+      <div class="faq-item">
+        <div class="faq-q">
+          <span class="faq-q-icon">Q</span>
+          Can I assign the same keyword to multiple pages?
+        </div>
+        <div class="faq-a">Each keyword save is tied to one Target Page selection. To assign the same keyword to two pages, save it twice: once with each page selected in the Target Page dropdown.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">
+          <span class="faq-q-icon">Q</span>
+          What happens to a deleted keyword on the live site?
+        </div>
+        <div class="faq-a">If the Focus Keyword Script is enabled and you delete a keyword, the keyword will be removed from the meta keywords tag on the next Framer publish. Until then, the old tag may still be live on your published site.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">
+          <span class="faq-q-icon">Q</span>
+          Is there a limit to how many keywords I can save?
+        </div>
+        <div class="faq-a">There is no documented hard limit. Keep the list focused: 2 to 5 keywords per page is a realistic and effective strategy for most Framer sites.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">
+          <span class="faq-q-icon">Q</span>
+          Can I edit a saved keyword without deleting it?
+        </div>
+        <div class="faq-a">Currently there is no in-place edit option. Delete the keyword and re-add the corrected version using the input field and the Check flow.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">
+          <span class="faq-q-icon">Q</span>
+          Does hiding the Saved Keywords list affect injection?
+        </div>
+        <div class="faq-a">No. Hide only collapses the display in the plugin panel. Saved keywords remain assigned and are still injected into your page meta tags when the Focus Keyword Script is enabled.</div>
+      </div>
+    </section>
+
+    <!-- SEO Details panel -->
+    <div id="seo-details" style="margin:60px 0 0;padding:28px 32px;background:#f8f6ff;border:1px solid #e8e0fa;border-radius:14px;">
+      <h3 style="font-size:1rem;font-weight:700;color:#1a0533;margin:0 0 20px;">SEO Details</h3>
+      <div id="seo-fields"></div>
+    </div>
+
+    <!-- Article footer -->
+    <div class="article-footer">
+      <span>Article 54 &middot; RankFrame Help Center</span>
+      <span>Questions? <a href="mailto:hello@7seersmedia.com">hello@7seersmedia.com</a></span>
+    </div>
+  </div>
+
+  <script>
+  (function(){
+    var fields=[
+      {label:'Title',value:document.querySelector('title')?document.querySelector('title').textContent:''},
+      {label:'Description',value:(document.querySelector('meta[name="description"]')||{}).content||''},
+      {label:'Keywords',value:(document.querySelector('meta[name="keywords"]')||{}).content||''},
+      {label:'Canonical',value:(document.querySelector('link[rel="canonical"]')||{}).href||''}
+    ];
+    var schemas=Array.from(document.querySelectorAll('script[type="application/ld+json"]')).map(function(s,i){return {label:'Schema '+(i+1),value:s.textContent.trim()};});
+    var all=fields.concat(schemas);
+    var html='';
+    all.forEach(function(f){
+      html+='<div style="margin-bottom:14px;"><div style="font-size:0.78rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:#7c3aed;margin-bottom:4px;">'+f.label+'</div><div style="display:flex;align-items:flex-start;gap:8px;"><code style="flex:1;background:#fff;border:1px solid #e0d8f0;border-radius:6px;padding:8px 10px;font-size:0.82rem;color:#1a0533;white-space:pre-wrap;word-break:break-all;">'+f.value.replace(/</g,'&lt;').replace(/>/g,'&gt;')+'</code><button onclick="navigator.clipboard.writeText(this.dataset.v)" data-v="'+f.value.replace(/"/g,'&quot;')+'" style="flex-shrink:0;padding:6px 12px;background:#7c3aed;color:#fff;border:none;border-radius:6px;font-size:0.78rem;font-weight:700;cursor:pointer;">Copy</button></div></div>';
+    });
+    document.getElementById('seo-fields').innerHTML=html;
+  })();
+  </script>
+
+</body>
+</html>
