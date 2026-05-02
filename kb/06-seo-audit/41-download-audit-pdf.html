@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Download Audit PDF Report | RankFrame Help</title>
+  <meta name="description" content="Learn how to download, read, and share the RankFrame SEO Audit PDF report. Covers report header, all four check sections, icon meanings, and how to access the report from both the SEO Analyzer and per-page audit views." />
+  <meta name="keywords" content="RankFrame audit PDF, SEO audit report, download audit, Basic SEO, Advanced SEO, performance checks, security checks, Framer SEO report" />
+  <link rel="canonical" href="https://rankframe.com/help/download-audit-pdf" />
+
+  <!-- OpenGraph -->
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Download Audit PDF Report | RankFrame Help" />
+  <meta property="og:description" content="Learn how to download and read the RankFrame SEO Audit PDF. Covers all 29 checks across Basic SEO, Advanced SEO, Performance, and Security sections." />
+  <meta property="og:url" content="https://rankframe.com/help/download-audit-pdf" />
+
+  <!-- JSON-LD: Article -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Download Audit PDF Report",
+    "description": "Learn how to download, read, and share the RankFrame SEO Audit PDF report. Covers report header, all four check sections, icon meanings, and how to access the report from both the SEO Analyzer and per-page audit views.",
+    "url": "https://rankframe.com/help/download-audit-pdf",
+    "author": { "@type": "Organization", "name": "RankFrame" },
+    "publisher": { "@type": "Organization", "name": "RankFrame" },
+    "datePublished": "2026-05-02",
+    "dateModified": "2026-05-02"
+  }
+  </script>
+
+  <!-- JSON-LD: BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Help Center", "item": "https://rankframe.com/help" },
+      { "@type": "ListItem", "position": 2, "name": "SEO Audit", "item": "https://rankframe.com/help/seo-audit" },
+      { "@type": "ListItem", "position": 3, "name": "Download Audit PDF Report", "item": "https://rankframe.com/help/download-audit-pdf" }
+    ]
+  }
+  </script>
+
+  <!-- JSON-LD: FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where do I find the Download Audit button in RankFrame?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "You can find the Download Audit button on the main SEO Analyzer page. You can also find a Download button on any individual per-page audit view. Both generate the same style of PDF report for the selected scope."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is included in the SEO Audit PDF report?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The PDF includes a report header with your site title, URL, date, a summary tile row showing Passed, Failed, Warnings, and Total Checks counts, plus your SEO Score. The report body has four sections: Basic SEO (10 checks), Advanced SEO (12 checks), Performance (5 checks), and Security (2 checks), for a total of 29 checks."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What does each icon in the PDF report mean?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A green check mark means the check passed. A red X means the check failed and requires action. An orange exclamation mark (!) is a warning that may need attention. A blue i icon indicates an informational item or visual preview such as a search snippet or mobile snapshot."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I share the PDF report with a client or team member?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. The PDF is a self-contained document that you can email, upload to a shared drive, or attach to a project management ticket. It includes your site title, URL, and date so the recipient has full context without needing access to RankFrame."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How is the SEO Score in the PDF report calculated?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The SEO Score is a weighted percentage based on the ratio of passed checks to total checks across all four sections. Failed checks reduce the score more than warnings, and some checks carry more weight than others based on their SEO impact."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", sans-serif; background: #ffffff; color: #111111; line-height: 1.7; font-size: 16px; }
+    .page { max-width: 740px; margin: 0 auto; padding: 48px 24px 96px; }
+    .breadcrumb { display: flex; align-items: center; gap: 6px; font-size: 13px; color: #888; margin-bottom: 32px; flex-wrap: wrap; }
+    .breadcrumb a { color: #888; text-decoration: none; }
+    .breadcrumb a:hover { color: #7c3aed; }
+    .breadcrumb span { color: #ccc; }
+    .article-category { display: inline-block; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #7c3aed; background: #f3f0ff; padding: 3px 10px; border-radius: 999px; margin-bottom: 12px; }
+    h1 { font-size: 2rem; font-weight: 700; color: #0a0a0a; line-height: 1.25; margin-bottom: 14px; letter-spacing: -0.02em; }
+    .article-description { font-size: 1.05rem; color: #555; line-height: 1.65; margin-bottom: 10px; }
+    .article-meta { display: flex; gap: 16px; font-size: 13px; color: #aaa; margin-bottom: 36px; padding-bottom: 24px; border-bottom: 1px solid #f0f0f0; flex-wrap: wrap; }
+    .toc { background: #fafafa; border: 1px solid #efefef; border-radius: 10px; padding: 18px 22px; margin-bottom: 40px; }
+    .toc-title { font-size: 12px; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: #aaa; margin-bottom: 10px; }
+    .toc ol { list-style: none; padding: 0; }
+    .toc li { margin-bottom: 5px; }
+    .toc a { font-size: 14px; color: #555; text-decoration: none; }
+    .toc a:hover { color: #7c3aed; }
+    h2 { font-size: 1.3rem; font-weight: 600; color: #0a0a0a; margin: 40px 0 14px; padding-bottom: 8px; border-bottom: 1px solid #f0f0f0; letter-spacing: -0.01em; }
+    h3 { font-size: 1.05rem; font-weight: 600; color: #0a0a0a; margin: 24px 0 8px; }
+    p { color: #333; margin-bottom: 16px; }
+    ul, ol { padding-left: 22px; margin-bottom: 16px; }
+    li { color: #333; margin-bottom: 6px; }
+    strong { color: #0a0a0a; font-weight: 600; }
+    a { color: #7c3aed; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .tip { background: #f5f3ff; border-left: 3px solid #7c3aed; border-radius: 0 8px 8px 0; padding: 12px 16px; margin: 20px 0; }
+    .tip-label { font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #7c3aed; margin-bottom: 4px; }
+    .tip p { color: #4c1d95; margin: 0; font-size: 0.93rem; }
+    .note { background: #fff8f0; border-left: 3px solid #f59e0b; border-radius: 0 8px 8px 0; padding: 12px 16px; margin: 20px 0; }
+    .note-label { font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #d97706; margin-bottom: 4px; }
+    .note p { color: #78350f; margin: 0; font-size: 0.93rem; }
+    .step-list { list-style: none; padding: 0; counter-reset: steps; margin-bottom: 16px; }
+    .step-list li { counter-increment: steps; display: flex; gap: 14px; padding: 12px 0; border-bottom: 1px solid #f5f5f5; }
+    .step-list li:last-child { border-bottom: none; }
+    .step-num { width: 26px; height: 26px; background: #7c3aed; color: #fff; font-size: 12px; font-weight: 700; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+    .step-body { flex: 1; }
+    .step-title { font-weight: 600; color: #0a0a0a; font-size: 0.95rem; margin-bottom: 2px; }
+    .step-desc { color: #555; font-size: 0.9rem; }
+    .faq-section { margin-top: 48px; padding-top: 32px; border-top: 1px solid #f0f0f0; }
+    .faq-section h2 { border-bottom: none; padding-bottom: 0; margin-bottom: 24px; }
+    .faq-item { border: 1px solid #efefef; border-radius: 10px; padding: 18px 20px; margin-bottom: 10px; }
+    .faq-q { font-weight: 600; color: #0a0a0a; font-size: 0.95rem; margin-bottom: 8px; }
+    .faq-a { color: #555; font-size: 0.93rem; line-height: 1.65; }
+    .related-section { margin-top: 48px; padding-top: 32px; border-top: 1px solid #f0f0f0; }
+    .related-section h2 { border-bottom: none; padding-bottom: 0; margin-bottom: 16px; font-size: 1rem; color: #666; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; }
+    .related-links { list-style: none; padding: 0; }
+    .related-links li { margin-bottom: 8px; }
+    .related-links a { font-size: 0.95rem; color: #7c3aed; display: flex; align-items: center; gap: 6px; }
+    .related-links a::before { content: "→"; font-size: 12px; }
+    .cta-box { background: linear-gradient(135deg, #f5f3ff, #faf0ff); border: 1px solid #e8e0ff; border-radius: 12px; padding: 24px 28px; margin-top: 40px; text-align: center; }
+    .cta-box h3 { font-size: 1.1rem; color: #0a0a0a; margin-bottom: 8px; }
+    .cta-box p { color: #666; font-size: 0.9rem; margin-bottom: 16px; }
+    .cta-btn { display: inline-block; background: #7c3aed; color: #fff; font-weight: 600; font-size: 0.9rem; padding: 10px 22px; border-radius: 8px; text-decoration: none; }
+    .cta-btn:hover { background: #6d28d9; text-decoration: none; }
+    .seo-panel { margin-top: 64px; border-top: 2px dashed #e8e0ff; padding-top: 36px; }
+    .seo-panel-header { margin-bottom: 20px; }
+    .seo-panel-title { font-size: 11px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: #7c3aed; }
+    .seo-panel-sub { font-size: 12px; color: #aaa; margin-top: 3px; }
+    .seo-fields { display: grid; gap: 10px; margin-bottom: 28px; }
+    .seo-field { background: #fafafa; border: 1px solid #efefef; border-radius: 8px; padding: 14px 16px; position: relative; }
+    .seo-field-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+    .seo-field-label { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #bbb; }
+    .seo-copy-btn { font-size: 10px; font-weight: 600; color: #7c3aed; background: #f3f0ff; border: none; border-radius: 4px; padding: 3px 9px; cursor: pointer; transition: background 0.15s; }
+    .seo-copy-btn:hover { background: #e8e0ff; }
+    .seo-copy-btn.ok { color: #059669; background: #ecfdf5; }
+    .seo-field-value { font-size: 0.88rem; color: #333; line-height: 1.55; word-break: break-word; user-select: all; }
+    .seo-schemas { display: grid; gap: 14px; }
+    .seo-schema { border: 1px solid #efefef; border-radius: 8px; overflow: hidden; }
+    .seo-schema-header { display: flex; justify-content: space-between; align-items: center; padding: 10px 16px; background: #fafafa; border-bottom: 1px solid #efefef; }
+    .seo-schema-type { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #bbb; }
+    .seo-schema-code { background: #0d0d0d; color: #d4d4d4; font-family: "SF Mono","Fira Code",Consolas,monospace; font-size: 0.75rem; line-height: 1.65; padding: 16px 18px; margin: 0; overflow-x: auto; white-space: pre; user-select: all; }
+    .field-block { margin: 36px 0 28px; }
+    .field-block-header { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+    .field-num { display: inline-flex; align-items: center; justify-content: center; width: 38px; height: 38px; background: linear-gradient(135deg, #7c3aed, #a78bfa); color: #fff; font-weight: 700; font-size: 14px; border-radius: 8px; flex-shrink: 0; box-shadow: 0 2px 6px rgba(124,58,237,0.25); }
+    .field-block-title { font-size: 1.18rem; font-weight: 700; color: #0a0a0a; letter-spacing: -0.01em; }
+    .field-block-desc { color: #444; margin-bottom: 14px; font-size: 0.97rem; line-height: 1.7; }
+    .field-block-desc code { background: #f3f0ff; color: #6d28d9; padding: 1px 6px; border-radius: 4px; font-size: 0.85em; font-family: "SF Mono","Fira Code",Consolas,monospace; }
+    .screenshot-slot { background: #fafafa; border: 1px dashed #e0d8f0; border-radius: 10px; padding: 36px 20px; text-align: center; color: #b8b2c8; font-size: 0.85rem; margin-top: 6px; margin-bottom: 8px; }
+    .screenshot-slot::before { content: "Screenshot"; display: block; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #c8c0dc; }
+
+    /* Report header mockup */
+    .report-header-mock { background: #fafafa; border: 1px solid #efefef; border-radius: 12px; padding: 22px 24px; margin: 16px 0; }
+    .report-title-mock { font-size: 1.1rem; font-weight: 700; color: #0a0a0a; margin-bottom: 4px; }
+    .report-meta-mock { font-size: 12px; color: #888; margin-bottom: 16px; }
+    .summary-tiles { display: flex; gap: 10px; margin-bottom: 16px; flex-wrap: wrap; }
+    .tile { flex: 1; min-width: 90px; background: #fff; border: 1px solid #efefef; border-radius: 8px; padding: 10px 12px; text-align: center; }
+    .tile-val { font-size: 1.5rem; font-weight: 800; color: #0a0a0a; line-height: 1; margin-bottom: 3px; }
+    .tile-val.pass { color: #16a34a; }
+    .tile-val.fail { color: #dc2626; }
+    .tile-val.warn { color: #d97706; }
+    .tile-label { font-size: 10px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #bbb; }
+    .score-chip { display: inline-flex; align-items: center; gap: 8px; background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 8px 14px; }
+    .score-chip-num { font-size: 1.6rem; font-weight: 800; color: #16a34a; line-height: 1; }
+    .score-chip-label { font-size: 12px; color: #166534; font-weight: 600; }
+
+    /* Check section table */
+    .check-table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 0.91rem; }
+    .check-table th { text-align: left; font-size: 10px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: #aaa; padding: 7px 10px; border-bottom: 1px solid #efefef; }
+    .check-table td { padding: 9px 10px; border-bottom: 1px solid #f5f5f5; color: #333; vertical-align: top; }
+    .check-table tr:last-child td { border-bottom: none; }
+    .check-name { font-weight: 600; color: #0a0a0a; font-size: 0.9rem; }
+    .check-desc { font-size: 0.85rem; color: #666; }
+
+    /* Icon legend */
+    .icon-legend { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 12px 0; }
+    .icon-row { display: flex; align-items: flex-start; gap: 12px; background: #fafafa; border: 1px solid #efefef; border-radius: 8px; padding: 12px 14px; }
+    .icon-badge { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 13px; flex-shrink: 0; }
+    .icon-badge.pass { background: #dcfce7; color: #16a34a; }
+    .icon-badge.fail { background: #fee2e2; color: #dc2626; }
+    .icon-badge.warn { background: #fef3c7; color: #d97706; }
+    .icon-badge.info { background: #dbeafe; color: #2563eb; }
+    .icon-text strong { display: block; font-size: 0.88rem; color: #0a0a0a; margin-bottom: 2px; }
+    .icon-text span { font-size: 0.82rem; color: #777; }
+
+    /* Section header bar */
+    .section-bar { display: flex; justify-content: space-between; align-items: center; background: #f5f3ff; border: 1px solid #e8e0ff; border-radius: 8px; padding: 10px 14px; margin-bottom: 12px; }
+    .section-bar-name { font-weight: 700; color: #4c1d95; font-size: 0.95rem; }
+    .section-bar-count { font-size: 12px; color: #7c3aed; font-weight: 600; background: #ede9fe; border-radius: 999px; padding: 2px 10px; }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Breadcrumb -->
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="https://rankframe.com/help">Help Center</a>
+    <span>›</span>
+    <a href="https://rankframe.com/help/seo-audit">SEO Audit</a>
+    <span>›</span>
+    <span>Download Audit PDF Report</span>
+  </nav>
+
+  <!-- Header -->
+  <div class="article-category">SEO Audit</div>
+  <h1>Download Audit PDF Report</h1>
+  <p class="article-description">Generate a shareable PDF report directly from RankFrame's SEO Analyzer or from a per-page audit view. The report covers 29 checks across Basic SEO, Advanced SEO, Performance, and Security, and is ready to send to clients or teammates.</p>
+  <div class="article-meta">
+    <span>Updated May 2, 2026</span>
+    <span>8 min read</span>
+    <span>SEO Audit</span>
+  </div>
+
+  <!-- TOC -->
+  <div class="toc">
+    <div class="toc-title">On this page</div>
+    <ol>
+      <li><a href="#how-to-download">How to download the report</a></li>
+      <li><a href="#report-header">1. Report header</a></li>
+      <li><a href="#basic-seo">2. Basic SEO section (10 checks)</a></li>
+      <li><a href="#advanced-seo">3. Advanced SEO section (12 checks)</a></li>
+      <li><a href="#performance">4. Performance section (5 checks)</a></li>
+      <li><a href="#security">5. Security section (2 checks)</a></li>
+      <li><a href="#icons">6. Report icons</a></li>
+      <li><a href="#faq">Frequently asked questions</a></li>
+    </ol>
+  </div>
+
+  <!-- How to download -->
+  <h2 id="how-to-download">How to download the report</h2>
+  <p>RankFrame gives you two ways to generate the PDF report, depending on whether you want a site-wide or page-specific export.</p>
+
+  <ul class="step-list">
+    <li>
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <div class="step-title">Open the SEO Analyzer</div>
+        <div class="step-desc">Launch RankFrame from your Framer project and navigate to the <strong>SEO Analyzer</strong> page.</div>
+      </div>
+    </li>
+    <li>
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <div class="step-title">Click Download Audit</div>
+        <div class="step-desc">On the main <strong>SEO Analyzer</strong> page, click the <strong>Download Audit</strong> button to generate a site-level PDF covering all analyzed pages.</div>
+      </div>
+    </li>
+    <li>
+      <div class="step-num">3</div>
+      <div class="step-body">
+        <div class="step-title">Or download from a per-page view</div>
+        <div class="step-desc">Open any individual page audit inside RankFrame, then click the <strong>Download</strong> button to export a PDF scoped to that single page.</div>
+      </div>
+    </li>
+    <li>
+      <div class="step-num">4</div>
+      <div class="step-body">
+        <div class="step-title">Save or share the PDF</div>
+        <div class="step-desc">Your browser downloads the file automatically. Email it, upload it to a shared drive, or attach it to a client deliverable.</div>
+      </div>
+    </li>
+  </ul>
+
+  <div class="note">
+    <div class="note-label">Note</div>
+    <p>The PDF reflects the state of your site at the time the audit was last run. Click <strong>Re-analyze</strong> before downloading if you have published changes since your last analysis.</p>
+  </div>
+
+  <!-- Field blocks -->
+
+  <div class="field-block" id="report-header">
+    <div class="field-block-header">
+      <div class="field-num">1</div>
+      <div class="field-block-title">Report header</div>
+    </div>
+    <p class="field-block-desc">The top of every PDF report contains identifying information and a high-level summary so you can orient yourself and share the document without additional context.</p>
+
+    <div class="report-header-mock">
+      <div class="report-title-mock">SEO Audit Report : My Framer Site</div>
+      <div class="report-meta-mock">https://myframersite.framer.website &nbsp;|&nbsp; May 2, 2026</div>
+      <div class="summary-tiles">
+        <div class="tile"><div class="tile-val pass">18</div><div class="tile-label">Passed</div></div>
+        <div class="tile"><div class="tile-val fail">5</div><div class="tile-label">Failed</div></div>
+        <div class="tile"><div class="tile-val warn">6</div><div class="tile-label">Warnings</div></div>
+        <div class="tile"><div class="tile-val">29</div><div class="tile-label">Total Checks</div></div>
+      </div>
+      <div class="score-chip">
+        <div class="score-chip-num">82</div>
+        <div class="score-chip-label">SEO Score</div>
+      </div>
+    </div>
+
+    <p class="field-block-desc">The header contains:</p>
+    <ul>
+      <li><strong>Title</strong> formatted as "SEO Audit Report : [Site Title]"</li>
+      <li><strong>Site URL</strong> so the document is self-identifying</li>
+      <li><strong>Date</strong> the report was generated</li>
+      <li><strong>Summary tiles</strong> showing Passed, Failed, Warnings, and Total Checks counts at a glance</li>
+      <li><strong>SEO Score</strong> as a single number (for example, 82) summarizing overall health</li>
+    </ul>
+
+    <div class="screenshot-slot">PDF report header with summary tiles and SEO Score</div>
+
+    <div class="tip">
+      <div class="tip-label">Tip</div>
+      <p>Share the report header screenshot with stakeholders who need a quick overview. The summary tiles and SEO Score communicate site health without requiring anyone to read the full document.</p>
+    </div>
+  </div>
+
+  <div class="field-block" id="basic-seo">
+    <div class="field-block-header">
+      <div class="field-num">2</div>
+      <div class="field-block-title">Basic SEO section</div>
+    </div>
+    <p class="field-block-desc">The <strong>Basic SEO</strong> section covers 10 foundational checks. Each check shows a pass rate percentage so you can see how the page performs across the most essential on-page signals.</p>
+
+    <div class="section-bar">
+      <span class="section-bar-name">Basic SEO</span>
+      <span class="section-bar-count">10 checks</span>
+    </div>
+
+    <table class="check-table">
+      <thead>
+        <tr>
+          <th>Check</th>
+          <th>What it evaluates</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="check-name">SEO Title</span></td>
+          <td><span class="check-desc">Presence and appropriate length of the page title tag.</span></td>
+        </tr>
+        <tr>
+          <td><span class="check-name">H1</span></td>
+          <td><span class="check-desc">Presence of exactly one H1 heading per page.</span></td>
+        </tr>
+        <tr>
+          <td><span class="check-name">H2</span></td>
+          <td><span class="check-desc">Presence of H2 subheadings to structure content.</span></td>
+        </tr>
+        <tr>
+          <td><span class="check-name">Links Ratio</span></td>
+          <td><span class="check-desc">Balance between internal and external links on the page.</span></td>
+        </tr>
+        <tr>
+          <td><span class="check-name">Common Keywords</span></td>
+          <td><span class="check-desc">Most frequently used keywords with their occurrence count in the page content.</span></td>
+        </tr>
+        <tr>
+          <td><span class="check-name">SEO Description</span></td>
+          <td><span class="check-desc">Presence and appropriate length of the meta description tag.</span></td>
+        </tr>
+        <tr>
+          <td><span class="check-name">Image ALT Attributes</span></td>
+          <td><span class="check-desc">Whether all images have descriptive alt text. Missing alt tags are listed by specific image.</span></td>
+        </tr>
+        <tr>
+          <td><span class="check-name">Homepage Reachable</span></td>
+          <td><span class="check-desc">Whether the homepage returns a successful HTTP response.</span></td>
+        </tr>
+        <tr>
+          <td><span class="check-name">Responsive Design</span></td>
+          <td><span class="check-desc">Whether the page includes a viewport meta tag for mobile rendering.</span></td>
+        </tr>
+        <tr>
+          <td><span class="check-name">Keywords in Title and Description</span></td>
+          <td><span class="check-desc">Whether the target keyword appears in both the title tag and meta description.</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="screenshot-slot">Basic SEO section of the PDF report</div>
+
+    <div class="tip">
+      <div class="tip-label">Tip</div>
+      <p>If the <strong>Image ALT Attributes</strong> check fails, the report lists each image file that is missing alt text by name. Use that list to update assets directly in your Framer project without hunting for them manually.</p>
+    </div>
+  </div>
+
+  <div class="field-block" id="advanced-seo">
+    <div class="field-block-header">
+      <div class="field-num">3</div>
+      <div class="field-block-title">Advanced SEO section</div>
+    </div>
+    <p class="field-block-desc">The <strong>Advanced SEO</strong> section covers 12 checks targeting technical signals, metadata completeness, and rich previews. Several checks render visual outputs directly inside the PDF so you can verify how your site appears in search results without leaving the document.</p>
+
+    <div class="section-bar">
+      <span class="section-bar-name">Advanced SEO</span>
+      <span class="section-bar-count">12 checks</span>
+    </div>
+
+    <table class="check-table">
+      <thead>
+        <tr>
+          <th>Check</th>
+          <th>What it evaluates</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="check-name">Sitemaps</span></td>
+          <td><span class="check-desc">Whether a valid XML sitemap is present and accessible.</span></td>
+        </tr>
+        <tr>
+          <td><span class="check-name">Robots.txt</span></td>
+          <td><span class="check-desc">Whether robots.txt is present and correctly configured.</span></td>
+        </tr>
+        <tr>
+          <td><span class="check-name">Broken Links</span></td>
+          <td><span class="check-desc">Detection of links on the page that return error responses.</span></td>
+        </tr>
+        <tr>
+          <td><span class="check-name">Noindex Meta</span></td>
+          <td><span class="check-desc">Whether a noindex directive is unintentionally blocking search engine indexing.</span></td>
+        </tr>
+        <tr>
+          <td><span class="check-name">Canonical Tag</span></td>
+          <td><span class="check-desc">Presence of a canonical link element pointing to the preferred URL.</span></td>
+        </tr>
+        <tr>
+          <td><span class="check-name">OpenGraph Meta</span></td>
+          <td><span class="check-desc">Presence of og:title, og:description, og:image, and og:url tags for social sharing.</span></td>
+        </tr>
+        <tr>
+          <td><span class="check-name">Search Preview</span></td>
+          <td><span class="check-desc">A rendered desktop Google search snippet showing how the page appears in search results.</span></td>
+        </tr>
+        <tr>
+          <td><span class="check-name">Mobile Snapshot</span></td>
+          <td><span class="check-desc">A rendered mobile preview of the page to verify layout on small screens.</span></td>
+        </tr>
+        <tr>
+          <td><span class="check-name">Schema Meta Data</span></td>
+          <td><span class="check-desc">Presence and validity of structured data (JSON-LD) for rich results.</span></td>
+        </tr>
+        <tr>
+          <td><span class="check-name">WWW Canonicalization</span></td>
+          <td><span class="check-desc">Whether www and non-www versions of the domain redirect consistently to one canonical URL.</span></td>
+        </tr>
+        <tr>
+          <td><span class="check-name">Mobile Search Preview</span></td>
+          <td><span class="check-desc">A rendered mobile Google search snippet showing title, URL, and description as they appear on mobile devices.</span></td>
+        </tr>
+        <tr>
+          <td><span class="check-name">Keep your content fresh</span></td>
+          <td><span class="check-desc">A reminder check that flags pages where content has not been updated recently.</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="screenshot-slot">Advanced SEO section including Search Preview and Mobile Search Preview renders</div>
+
+    <div class="note">
+      <div class="note-label">Note</div>
+      <p>The <strong>Search Preview</strong> and <strong>Mobile Search Preview</strong> checks render actual snippet visuals inside the PDF. These previews are for reference only and show how Google might display your listing, not a guaranteed appearance.</p>
+    </div>
+  </div>
+
+  <div class="field-block" id="performance">
+    <div class="field-block-header">
+      <div class="field-num">4</div>
+      <div class="field-block-title">Performance section</div>
+    </div>
+    <p class="field-block-desc">The <strong>Performance</strong> section covers 5 checks that measure how efficiently your page delivers its content. These checks complement the detailed Speed Insights tab and give you a quick pass/fail view for each performance factor.</p>
+
+    <div class="section-bar">
+      <span class="section-bar-name">Performance</span>
+      <span class="section-bar-count">5 checks</span>
+    </div>
+
+    <table class="check-table">
+      <thead>
+        <tr>
+          <th>Check</th>
+          <th>What it evaluates</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="check-name">Page Size</span></td>
+          <td><span class="check-desc">Total transferred size of all page resources. Large pages increase load time on all devices.</span></td>
+        </tr>
+        <tr>
+          <td><span class="check-name">Mobile Speed</span></td>
+          <td><span class="check-desc">Estimated load speed on a mobile connection based on page weight and resource count.</span></td>
+        </tr>
+        <tr>
+          <td><span class="check-name">Page Objects</span></td>
+          <td><span class="check-desc">Number of individual HTTP requests (images, scripts, stylesheets) the page makes. Fewer requests typically means faster load.</span></td>
+        </tr>
+        <tr>
+          <td><span class="check-name">Response Time</span></td>
+          <td><span class="check-desc">Time for the server to respond to the initial page request. High response times slow every subsequent resource load.</span></td>
+        </tr>
+        <tr>
+          <td><span class="check-name">Image Headers Expire</span></td>
+          <td><span class="check-desc">Whether images are served with cache-control or Expires headers so browsers can cache them and avoid re-downloading on repeat visits.</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="screenshot-slot">Performance section of the PDF report</div>
+  </div>
+
+  <div class="field-block" id="security">
+    <div class="field-block-header">
+      <div class="field-num">5</div>
+      <div class="field-block-title">Security section</div>
+    </div>
+    <p class="field-block-desc">The <strong>Security</strong> section covers 2 checks that verify your site is configured for trust and safe browsing. Google uses HTTPS as a lightweight ranking signal, and theme visibility affects whether your Framer site is publicly accessible.</p>
+
+    <div class="section-bar">
+      <span class="section-bar-name">Security</span>
+      <span class="section-bar-count">2 checks</span>
+    </div>
+
+    <table class="check-table">
+      <thead>
+        <tr>
+          <th>Check</th>
+          <th>What it evaluates</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="check-name">Theme Visibility</span></td>
+          <td><span class="check-desc">Whether the site is set to public in Framer's publish settings. A private or password-protected site cannot be indexed.</span></td>
+        </tr>
+        <tr>
+          <td><span class="check-name">Secure Connection</span></td>
+          <td><span class="check-desc">Whether the site is served over HTTPS. A missing or invalid SSL certificate triggers browser warnings and can reduce search rankings.</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="screenshot-slot">Security section of the PDF report</div>
+
+    <div class="tip">
+      <div class="tip-label">Tip</div>
+      <p>Framer provides HTTPS by default on all published sites. If the <strong>Secure Connection</strong> check fails, verify that you are using a custom domain and that your domain's SSL certificate has fully propagated.</p>
+    </div>
+  </div>
+
+  <div class="field-block" id="icons">
+    <div class="field-block-header">
+      <div class="field-num">6</div>
+      <div class="field-block-title">Report icons</div>
+    </div>
+    <p class="field-block-desc">Each check in the PDF report shows an icon that immediately communicates its status. You do not need to read the full check description to understand the result at a glance.</p>
+
+    <div class="icon-legend">
+      <div class="icon-row">
+        <div class="icon-badge pass">&#10003;</div>
+        <div class="icon-text">
+          <strong>Pass (green check mark)</strong>
+          <span>The check met all requirements. No action needed.</span>
+        </div>
+      </div>
+      <div class="icon-row">
+        <div class="icon-badge fail">&#10007;</div>
+        <div class="icon-text">
+          <strong>Fail (red X)</strong>
+          <span>The check failed. Review the detail and fix the issue to improve your score.</span>
+        </div>
+      </div>
+      <div class="icon-row">
+        <div class="icon-badge warn">!</div>
+        <div class="icon-text">
+          <strong>Warning (orange !)</strong>
+          <span>The check identified something worth reviewing. May not be a hard failure but could affect rankings.</span>
+        </div>
+      </div>
+      <div class="icon-row">
+        <div class="icon-badge info">i</div>
+        <div class="icon-text">
+          <strong>Info / preview (blue i)</strong>
+          <span>An informational output or rendered visual preview such as a search snippet or mobile snapshot.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="screenshot-slot">Icon legend as it appears in the PDF report</div>
+
+    <p class="field-block-desc">The report footer confirms the source and date: "Generated by RankFrame, Report generated on [date]". This timestamp and attribution make it straightforward to version-control reports over time and compare progress across audits.</p>
+  </div>
+
+  <!-- FAQ -->
+  <div class="faq-section" id="faq">
+    <h2>Frequently asked questions</h2>
+
+    <div class="faq-item">
+      <div class="faq-q">Where do I find the Download Audit button in RankFrame?</div>
+      <div class="faq-a">You can find the <strong>Download Audit</strong> button on the main <strong>SEO Analyzer</strong> page. You can also find a <strong>Download</strong> button on any individual per-page audit view. Both generate the same style of PDF report for the selected scope.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">What is included in the SEO Audit PDF report?</div>
+      <div class="faq-a">The PDF includes a report header with your site title, URL, date, a summary tile row showing Passed, Failed, Warnings, and Total Checks counts, plus your SEO Score. The report body has four sections: Basic SEO (10 checks), Advanced SEO (12 checks), Performance (5 checks), and Security (2 checks), for a total of 29 checks.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">What does each icon in the PDF report mean?</div>
+      <div class="faq-a">A green check mark means the check passed. A red X means the check failed and requires action. An orange exclamation mark (!) is a warning that may need attention. A blue i icon indicates an informational item or visual preview such as a search snippet or mobile snapshot.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Can I share the PDF report with a client or team member?</div>
+      <div class="faq-a">Yes. The PDF is a self-contained document that you can email, upload to a shared drive, or attach to a project management ticket. It includes your site title, URL, and date so the recipient has full context without needing access to RankFrame.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">How is the SEO Score in the PDF report calculated?</div>
+      <div class="faq-a">The SEO Score is a weighted percentage based on the ratio of passed checks to total checks across all four sections. Failed checks reduce the score more than warnings, and some checks carry more weight than others based on their SEO impact.</div>
+    </div>
+  </div>
+
+  <!-- Related -->
+  <div class="related-section">
+    <h2>Related articles</h2>
+    <ul class="related-links">
+      <li><a href="https://rankframe.com/help/seo-audit-overview">SEO Audit overview</a></li>
+      <li><a href="https://rankframe.com/help/audit-score-panel">Audit score panel</a></li>
+      <li><a href="https://rankframe.com/help/speed-insights">Speed Insights</a></li>
+    </ul>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-box">
+    <h3>Generate your first audit report</h3>
+    <p>Open RankFrame, run an analysis on your published Framer site, then click <strong>Download Audit</strong> to get a complete PDF you can share with clients or save for your records.</p>
+    <a class="cta-btn" href="https://rankframe.com">Open RankFrame</a>
+  </div>
+
+  <!-- SEO panel -->
+  <div class="seo-panel">
+    <div class="seo-panel-header">
+      <div class="seo-panel-title">Page SEO Metadata</div>
+      <div class="seo-panel-sub">Live values read from this document's meta tags and JSON-LD blocks</div>
+    </div>
+    <div class="seo-fields" id="seo-panel-fields"></div>
+    <div class="seo-schemas" id="seo-panel-schemas"></div>
+  </div>
+
+</div><!-- /.page -->
+
+<script>
+(function() {
+  var fields = [
+    { label: 'Title', value: document.querySelector('title') ? document.querySelector('title').textContent : '' },
+    { label: 'Description', value: (document.querySelector('meta[name="description"]') || {}).content || '' },
+    { label: 'Keywords', value: (document.querySelector('meta[name="keywords"]') || {}).content || '' },
+    { label: 'Canonical', value: (document.querySelector('link[rel="canonical"]') || {}).href || '' }
+  ];
+  var fieldsHtml = fields.map(function(f) {
+    return '<div class="seo-field"><div class="seo-field-row"><span class="seo-field-label">' + f.label + '</span><button class="seo-copy-btn" onclick="copyVal(this,\'' + f.label + '\')">Copy</button></div><div class="seo-field-value">' + f.value + '</div></div>';
+  }).join('');
+  var schemas = Array.from(document.querySelectorAll('script[type="application/ld+json"]')).map(function(s) {
+    try { var obj = JSON.parse(s.textContent); var t = obj['@type'] || 'Schema'; return '<div class="seo-schema"><div class="seo-schema-header"><span class="seo-schema-type">' + t + ' / JSON-LD</span><button class="seo-copy-btn" onclick="copySchema(this,\'' + t + '\')">Copy</button></div><pre class="seo-schema-code">' + JSON.stringify(obj, null, 2) + '</pre></div>'; } catch(e) { return ''; }
+  }).join('');
+  document.getElementById('seo-panel-fields').innerHTML = fieldsHtml;
+  document.getElementById('seo-panel-schemas').innerHTML = schemas;
+})();
+function copyVal(btn, label) {
+  var val = btn.closest('.seo-field').querySelector('.seo-field-value').textContent;
+  navigator.clipboard.writeText(val).then(function() { btn.textContent = 'Copied'; btn.classList.add('ok'); setTimeout(function() { btn.textContent = 'Copy'; btn.classList.remove('ok'); }, 1500); });
+}
+function copySchema(btn, type) {
+  var code = btn.closest('.seo-schema').querySelector('.seo-schema-code').textContent;
+  navigator.clipboard.writeText(code).then(function() { btn.textContent = 'Copied'; btn.classList.add('ok'); setTimeout(function() { btn.textContent = 'Copy'; btn.classList.remove('ok'); }, 1500); });
+}
+</script>
+</body>
+</html>

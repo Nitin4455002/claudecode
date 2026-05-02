@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Audit Checks Explained: Green Zone, Red Zone, and Warnings | RankFrame Help</title>
+  <meta name="description" content="Understand every RankFrame audit check: what Green Zone, Red Zone, and Warnings mean, all 29 checks across Basic SEO, Advanced SEO, Performance, and Security, and how to use click-to-expand suggestions." />
+  <meta name="keywords" content="RankFrame, SEO audit checks, Green Zone, Red Zone, Warnings, Framer SEO, Basic SEO, Advanced SEO, Performance, Security, audit suggestions" />
+  <link rel="canonical" href="https://rankframe.com/help/audit-checks" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Audit Checks Explained: Green Zone, Red Zone, and Warnings",
+    "description": "Understand every RankFrame audit check: what Green Zone, Red Zone, and Warnings mean, all 29 checks across Basic SEO, Advanced SEO, Performance, and Security, and how to use click-to-expand suggestions.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "RankFrame",
+      "url": "https://rankframe.com"
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://rankframe.com/help/audit-checks"
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Help Center",
+        "item": "https://rankframe.com/help"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "SEO Audit",
+        "item": "https://rankframe.com/help/seo-audit"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Audit Checks Explained: Green Zone, Red Zone, and Warnings",
+        "item": "https://rankframe.com/help/audit-checks"
+      }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How do I see the detailed suggestion for a specific check?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Click any check item in the audit list and it expands to show a detailed suggestion panel for that specific issue. You can click multiple items and each one will display its own guidance."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How many checks does RankFrame run in total?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "RankFrame runs 29 checks in total: 10 Basic SEO checks, 12 Advanced SEO checks, 5 Performance checks, and 2 Security checks."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do I need to fix every Warning?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Warnings are not critical, but fixing them will push your score higher and improve the overall health of your site. After clearing all Red Zone items, work through Warnings in order of how much effort each one takes to resolve."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between Basic SEO and Advanced SEO checks?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Basic SEO checks cover the foundational elements every page needs, like a title tag, H1, meta description, and image alt attributes. Advanced SEO checks cover technical and structured-data requirements like sitemaps, robots.txt, canonical tags, OpenGraph meta, and schema markup."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why is Theme Visibility listed as a Security check?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Exposing your CMS or theme name in page source can make it easier for attackers to target known vulnerabilities in that software. RankFrame flags this as a Security check because it has both a security dimension and an indirect SEO impact if your site is compromised."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", sans-serif; background: #ffffff; color: #111111; line-height: 1.7; font-size: 16px; }
+    .page { max-width: 740px; margin: 0 auto; padding: 48px 24px 96px; }
+    .breadcrumb { display: flex; align-items: center; gap: 6px; font-size: 13px; color: #888; margin-bottom: 32px; flex-wrap: wrap; }
+    .breadcrumb a { color: #888; text-decoration: none; }
+    .breadcrumb a:hover { color: #7c3aed; }
+    .breadcrumb span { color: #ccc; }
+    .article-category { display: inline-block; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #7c3aed; background: #f3f0ff; padding: 3px 10px; border-radius: 999px; margin-bottom: 12px; }
+    h1 { font-size: 2rem; font-weight: 700; color: #0a0a0a; line-height: 1.25; margin-bottom: 14px; letter-spacing: -0.02em; }
+    .article-description { font-size: 1.05rem; color: #555; line-height: 1.65; margin-bottom: 10px; }
+    .article-meta { display: flex; gap: 16px; font-size: 13px; color: #aaa; margin-bottom: 36px; padding-bottom: 24px; border-bottom: 1px solid #f0f0f0; flex-wrap: wrap; }
+    .toc { background: #fafafa; border: 1px solid #efefef; border-radius: 10px; padding: 18px 22px; margin-bottom: 40px; }
+    .toc-title { font-size: 12px; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: #aaa; margin-bottom: 10px; }
+    .toc ol { list-style: none; padding: 0; }
+    .toc li { margin-bottom: 5px; }
+    .toc a { font-size: 14px; color: #555; text-decoration: none; }
+    .toc a:hover { color: #7c3aed; }
+    h2 { font-size: 1.3rem; font-weight: 600; color: #0a0a0a; margin: 40px 0 14px; padding-bottom: 8px; border-bottom: 1px solid #f0f0f0; letter-spacing: -0.01em; }
+    h3 { font-size: 1.05rem; font-weight: 600; color: #0a0a0a; margin: 24px 0 8px; }
+    p { color: #333; margin-bottom: 16px; }
+    ul, ol { padding-left: 22px; margin-bottom: 16px; }
+    li { color: #333; margin-bottom: 6px; }
+    strong { color: #0a0a0a; font-weight: 600; }
+    a { color: #7c3aed; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .tip { background: #f5f3ff; border-left: 3px solid #7c3aed; border-radius: 0 8px 8px 0; padding: 12px 16px; margin: 20px 0; }
+    .tip-label { font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #7c3aed; margin-bottom: 4px; }
+    .tip p { color: #4c1d95; margin: 0; font-size: 0.93rem; }
+    .note { background: #fff8f0; border-left: 3px solid #f59e0b; border-radius: 0 8px 8px 0; padding: 12px 16px; margin: 20px 0; }
+    .note-label { font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #d97706; margin-bottom: 4px; }
+    .note p { color: #78350f; margin: 0; font-size: 0.93rem; }
+    .step-list { list-style: none; padding: 0; counter-reset: steps; margin-bottom: 16px; }
+    .step-list li { counter-increment: steps; display: flex; gap: 14px; padding: 12px 0; border-bottom: 1px solid #f5f5f5; }
+    .step-list li:last-child { border-bottom: none; }
+    .step-num { width: 26px; height: 26px; background: #7c3aed; color: #fff; font-size: 12px; font-weight: 700; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+    .step-body { flex: 1; }
+    .step-title { font-weight: 600; color: #0a0a0a; font-size: 0.95rem; margin-bottom: 2px; }
+    .step-desc { color: #555; font-size: 0.9rem; }
+    .faq-section { margin-top: 48px; padding-top: 32px; border-top: 1px solid #f0f0f0; }
+    .faq-section h2 { border-bottom: none; padding-bottom: 0; margin-bottom: 24px; }
+    .faq-item { border: 1px solid #efefef; border-radius: 10px; padding: 18px 20px; margin-bottom: 10px; }
+    .faq-q { font-weight: 600; color: #0a0a0a; font-size: 0.95rem; margin-bottom: 8px; }
+    .faq-a { color: #555; font-size: 0.93rem; line-height: 1.65; }
+    .related-section { margin-top: 48px; padding-top: 32px; border-top: 1px solid #f0f0f0; }
+    .related-section h2 { border-bottom: none; padding-bottom: 0; margin-bottom: 16px; font-size: 1rem; color: #666; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; }
+    .related-links { list-style: none; padding: 0; }
+    .related-links li { margin-bottom: 8px; }
+    .related-links a { font-size: 0.95rem; color: #7c3aed; display: flex; align-items: center; gap: 6px; }
+    .related-links a::before { content: "→"; font-size: 12px; }
+    .cta-box { background: linear-gradient(135deg, #f5f3ff, #faf0ff); border: 1px solid #e8e0ff; border-radius: 12px; padding: 24px 28px; margin-top: 40px; text-align: center; }
+    .cta-box h3 { font-size: 1.1rem; color: #0a0a0a; margin-bottom: 8px; }
+    .cta-box p { color: #666; font-size: 0.9rem; margin-bottom: 16px; }
+    .cta-btn { display: inline-block; background: #7c3aed; color: #fff; font-weight: 600; font-size: 0.9rem; padding: 10px 22px; border-radius: 8px; text-decoration: none; }
+    .cta-btn:hover { background: #6d28d9; text-decoration: none; }
+    .seo-panel { margin-top: 64px; border-top: 2px dashed #e8e0ff; padding-top: 36px; }
+    .seo-panel-header { margin-bottom: 20px; }
+    .seo-panel-title { font-size: 11px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: #7c3aed; }
+    .seo-panel-sub { font-size: 12px; color: #aaa; margin-top: 3px; }
+    .seo-fields { display: grid; gap: 10px; margin-bottom: 28px; }
+    .seo-field { background: #fafafa; border: 1px solid #efefef; border-radius: 8px; padding: 14px 16px; position: relative; }
+    .seo-field-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+    .seo-field-label { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #bbb; }
+    .seo-copy-btn { font-size: 10px; font-weight: 600; color: #7c3aed; background: #f3f0ff; border: none; border-radius: 4px; padding: 3px 9px; cursor: pointer; transition: background 0.15s; }
+    .seo-copy-btn:hover { background: #e8e0ff; }
+    .seo-copy-btn.ok { color: #059669; background: #ecfdf5; }
+    .seo-field-value { font-size: 0.88rem; color: #333; line-height: 1.55; word-break: break-word; user-select: all; }
+    .seo-schemas { display: grid; gap: 14px; }
+    .seo-schema { border: 1px solid #efefef; border-radius: 8px; overflow: hidden; }
+    .seo-schema-header { display: flex; justify-content: space-between; align-items: center; padding: 10px 16px; background: #fafafa; border-bottom: 1px solid #efefef; }
+    .seo-schema-type { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #bbb; }
+    .seo-schema-code { background: #0d0d0d; color: #d4d4d4; font-family: "SF Mono","Fira Code",Consolas,monospace; font-size: 0.75rem; line-height: 1.65; padding: 16px 18px; margin: 0; overflow-x: auto; white-space: pre; user-select: all; }
+    .field-block { margin: 36px 0 28px; }
+    .field-block-header { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+    .field-num { display: inline-flex; align-items: center; justify-content: center; width: 38px; height: 38px; background: linear-gradient(135deg, #7c3aed, #a78bfa); color: #fff; font-weight: 700; font-size: 14px; border-radius: 8px; flex-shrink: 0; box-shadow: 0 2px 6px rgba(124,58,237,0.25); }
+    .field-block-title { font-size: 1.18rem; font-weight: 700; color: #0a0a0a; letter-spacing: -0.01em; }
+    .field-block-desc { color: #444; margin-bottom: 14px; font-size: 0.97rem; line-height: 1.7; }
+    .field-block-desc code { background: #f3f0ff; color: #6d28d9; padding: 1px 6px; border-radius: 4px; font-size: 0.85em; font-family: "SF Mono","Fira Code",Consolas,monospace; }
+    .screenshot-slot { background: #fafafa; border: 1px dashed #e0d8f0; border-radius: 10px; padding: 36px 20px; text-align: center; color: #b8b2c8; font-size: 0.85rem; margin-top: 6px; margin-bottom: 8px; }
+    .screenshot-slot::before { content: "Screenshot"; display: block; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #c8c0dc; }
+
+    /* Check list table styles */
+    .check-table { width: 100%; border-collapse: collapse; margin: 18px 0 24px; font-size: 0.9rem; }
+    .check-table th { text-align: left; font-size: 10px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: #aaa; padding: 8px 12px; border-bottom: 2px solid #f0f0f0; }
+    .check-table td { padding: 9px 12px; border-bottom: 1px solid #f5f5f5; color: #333; vertical-align: top; }
+    .check-table tr:last-child td { border-bottom: none; }
+    .check-table tr:hover td { background: #fafafa; }
+    .zone-badge { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 0.05em; padding: 2px 8px; border-radius: 999px; }
+    .zone-green { background: #dcfce7; color: #166534; }
+    .zone-red { background: #fee2e2; color: #991b1b; }
+    .zone-warn { background: #fef9c3; color: #854d0e; }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="https://rankframe.com/help">Help Center</a>
+      <span>/</span>
+      <a href="https://rankframe.com/help/seo-audit">SEO Audit</a>
+      <span>/</span>
+      <span>Audit Checks Explained: Green Zone, Red Zone, and Warnings</span>
+    </nav>
+
+    <!-- Header -->
+    <div class="article-category">SEO Audit</div>
+    <h1>Audit Checks Explained: Green Zone, Red Zone, and Warnings</h1>
+    <p class="article-description">
+      RankFrame runs 29 checks across four categories every time you audit your site. This article explains what each check zone means, lists every check by category, and shows you how to get detailed fix guidance directly inside the plugin.
+    </p>
+    <div class="article-meta">
+      <span>Article #39</span>
+      <span>Updated May 2, 2026</span>
+      <span>7 min read</span>
+    </div>
+
+    <!-- Sidebar tip callout -->
+    <div class="tip">
+      <div class="tip-label">SEO Analyzer Tip</div>
+      <p><strong>Pro Tip:</strong> Click any issue in the analyzer to see detailed suggestions.</p>
+    </div>
+
+    <!-- Table of Contents -->
+    <div class="toc">
+      <div class="toc-title">In this article</div>
+      <ol>
+        <li><a href="#zones-overview">The three check zones</a></li>
+        <li><a href="#field-1">1. Green Zone checks</a></li>
+        <li><a href="#field-2">2. Red Zone checks</a></li>
+        <li><a href="#field-3">3. Warnings</a></li>
+        <li><a href="#field-4">4. Clickable check items</a></li>
+        <li><a href="#basic-seo">Basic SEO checks (10)</a></li>
+        <li><a href="#advanced-seo">Advanced SEO checks (12)</a></li>
+        <li><a href="#performance">Performance checks (5)</a></li>
+        <li><a href="#security">Security checks (2)</a></li>
+        <li><a href="#faq">Frequently asked questions</a></li>
+      </ol>
+    </div>
+
+    <!-- Zones Overview -->
+    <h2 id="zones-overview">The three check zones</h2>
+    <p>
+      Every check that RankFrame runs is sorted into one of three zones based on its result. The zone assignment tells you immediately what action, if any, you need to take.
+    </p>
+    <ul>
+      <li><strong>Green Zone</strong> means the check passed. Your site is handling this correctly and no action is needed.</li>
+      <li><strong>Red Zone</strong> means the check failed critically. These issues have the highest negative impact on your rankings and must be fixed.</li>
+      <li><strong>Warnings</strong> means the check found a non-critical issue. Warnings should be addressed to push your score higher, but they are not emergencies.</li>
+    </ul>
+    <p>
+      You can filter the check list to any single zone at any time using the <strong>filter tabs</strong> at the top of the audit results. See <a href="https://rankframe.com/help/audit-score-panel">Understanding the Audit Score Panel</a> for details on how the tabs work.
+    </p>
+
+    <div class="screenshot-slot">Full audit check list showing all three zones with color-coded items</div>
+
+    <!-- Field 1: Green Zone -->
+    <div class="field-block" id="field-1">
+      <div class="field-block-header">
+        <span class="field-num">1</span>
+        <span class="field-block-title">Green Zone Checks (Passing)</span>
+      </div>
+      <p class="field-block-desc">
+        <strong>Green Zone</strong> checks are items your site is handling correctly. They appear with a green dot and a passing status. You do not need to do anything with these items.
+      </p>
+      <ul>
+        <li>Green Zone items contribute positively to your overall score.</li>
+        <li>Review these items before making large changes to your Framer project to avoid accidentally breaking something that is already working.</li>
+        <li>Use the <strong>Green Zone</strong> filter tab to see only passing checks at a glance.</li>
+      </ul>
+      <div class="screenshot-slot">Check list filtered to Green Zone, showing passing items with green indicators</div>
+    </div>
+
+    <!-- Field 2: Red Zone -->
+    <div class="field-block" id="field-2">
+      <div class="field-block-header">
+        <span class="field-num">2</span>
+        <span class="field-block-title">Red Zone Checks (Critical Fails)</span>
+      </div>
+      <p class="field-block-desc">
+        <strong>Red Zone</strong> checks are critical failures. They appear with a red dot and a failed status. These are the items with the highest negative impact on your search rankings, and they should be your first priority when working through audit results.
+      </p>
+      <ul>
+        <li>Each Red Zone item significantly lowers your overall audit score.</li>
+        <li>Click any Red Zone item to expand it and see a tailored suggestion for how to fix that specific issue.</li>
+        <li>Use the <strong>Red Zone</strong> filter tab to focus exclusively on critical fails without distraction.</li>
+      </ul>
+      <div class="note">
+        <div class="note-label">Priority</div>
+        <p>Always fix Red Zone items before addressing Warnings. Resolving even one critical fail can produce a noticeable score improvement.</p>
+      </div>
+      <div class="screenshot-slot">Check list filtered to Red Zone, showing critical fail items with red indicators</div>
+    </div>
+
+    <!-- Field 3: Warnings -->
+    <div class="field-block" id="field-3">
+      <div class="field-block-header">
+        <span class="field-num">3</span>
+        <span class="field-block-title">Warnings (Non-Critical Issues)</span>
+      </div>
+      <p class="field-block-desc">
+        <strong>Warnings</strong> appear with a yellow or amber dot. These checks identified an issue that is not severe enough to be a critical fail, but that is still worth resolving. Addressing all warnings after clearing your Red Zone items is the fastest path to reaching a score of 90 or above.
+      </p>
+      <ul>
+        <li>Warnings do not cause immediate ranking drops, but they do hold your score back.</li>
+        <li>Click any Warning item to expand it and see specific guidance on what to improve.</li>
+        <li>Common warnings involve missing optional meta tags, content freshness, and image-level settings.</li>
+      </ul>
+      <div class="screenshot-slot">Check list filtered to Warnings, showing amber-indicated items</div>
+    </div>
+
+    <!-- Field 4: Clickable check items -->
+    <div class="field-block" id="field-4">
+      <div class="field-block-header">
+        <span class="field-num">4</span>
+        <span class="field-block-title">Clickable Check Items</span>
+      </div>
+      <p class="field-block-desc">
+        Every item in the check list is interactive. Clicking a check item expands it to reveal a <strong>detailed suggestions panel</strong> specific to that issue. You do not need to search documentation or guess what to do next.
+      </p>
+      <ul>
+        <li>Expanded items show a plain-language explanation of why the issue matters.</li>
+        <li>Each expanded item includes a step-by-step suggestion for resolving that specific check.</li>
+        <li>You can expand multiple items at the same time to compare guidance side by side.</li>
+        <li>Click the item again to collapse it.</li>
+      </ul>
+      <div class="tip">
+        <div class="tip-label">SEO Analyzer Tip</div>
+        <p>Click any issue in the analyzer to see detailed suggestions. This is the fastest way to understand exactly what needs to change on your site.</p>
+      </div>
+      <div class="screenshot-slot">A Red Zone check item expanded to show its detailed suggestions panel</div>
+    </div>
+
+    <!-- Basic SEO -->
+    <h2 id="basic-seo">Basic SEO checks (10)</h2>
+    <p>
+      Basic SEO checks cover the foundational on-page elements that every site needs. A missing or misconfigured element in this group is almost always a <strong>Red Zone</strong> item.
+    </p>
+
+    <table class="check-table" aria-label="Basic SEO checks">
+      <thead>
+        <tr>
+          <th>Check</th>
+          <th>What it evaluates</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>SEO Title</strong></td>
+          <td>Verifies that the page has a title tag and that it falls within an effective length range.</td>
+        </tr>
+        <tr>
+          <td><strong>H1</strong></td>
+          <td>Confirms the page contains exactly one H1 heading, which signals the primary topic to search engines.</td>
+        </tr>
+        <tr>
+          <td><strong>H2</strong></td>
+          <td>Checks that the page uses H2 subheadings to give content proper hierarchical structure.</td>
+        </tr>
+        <tr>
+          <td><strong>Links Ratio</strong></td>
+          <td>Evaluates the ratio of internal to external links to ensure a healthy link profile.</td>
+        </tr>
+        <tr>
+          <td><strong>Common Keywords</strong></td>
+          <td>Checks that the most prominent keywords on the page appear consistently throughout the content.</td>
+        </tr>
+        <tr>
+          <td><strong>SEO Description</strong></td>
+          <td>Verifies that the page has a meta description tag with an effective length for search result snippets.</td>
+        </tr>
+        <tr>
+          <td><strong>Image ALT Attributes</strong></td>
+          <td>Checks that all images include descriptive alt text for accessibility and image search indexing.</td>
+        </tr>
+        <tr>
+          <td><strong>Homepage Reachable</strong></td>
+          <td>Confirms that the homepage returns a successful HTTP status code and is accessible to crawlers.</td>
+        </tr>
+        <tr>
+          <td><strong>Responsive Design</strong></td>
+          <td>Verifies that the page includes a responsive viewport meta tag required for mobile-first indexing.</td>
+        </tr>
+        <tr>
+          <td><strong>Keywords in Title and Description</strong></td>
+          <td>Checks that your target keywords appear in both the title tag and the meta description.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="screenshot-slot">Basic SEO section of the check list with zone indicators</div>
+
+    <!-- Advanced SEO -->
+    <h2 id="advanced-seo">Advanced SEO checks (12)</h2>
+    <p>
+      Advanced SEO checks cover technical configuration, structured data, and social sharing signals. These items are especially important for competitive sites aiming for a score above 85.
+    </p>
+
+    <table class="check-table" aria-label="Advanced SEO checks">
+      <thead>
+        <tr>
+          <th>Check</th>
+          <th>What it evaluates</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Sitemaps</strong></td>
+          <td>Verifies that an XML sitemap exists and is accessible so search engines can discover all your pages.</td>
+        </tr>
+        <tr>
+          <td><strong>Robots.txt</strong></td>
+          <td>Confirms that a robots.txt file is present and correctly configured to guide crawler access.</td>
+        </tr>
+        <tr>
+          <td><strong>Broken Links</strong></td>
+          <td>Scans the page for links that return 404 or other error responses, which hurt crawlability and user experience.</td>
+        </tr>
+        <tr>
+          <td><strong>Noindex Meta</strong></td>
+          <td>Checks whether the page unintentionally carries a noindex directive that would prevent it from appearing in search results.</td>
+        </tr>
+        <tr>
+          <td><strong>Canonical Tag</strong></td>
+          <td>Verifies that a canonical link element is present and points to the correct preferred URL to prevent duplicate content issues.</td>
+        </tr>
+        <tr>
+          <td><strong>OpenGraph Meta</strong></td>
+          <td>Checks that OpenGraph tags are in place so your pages display correctly when shared on social platforms.</td>
+        </tr>
+        <tr>
+          <td><strong>Search Preview</strong></td>
+          <td>Renders a desktop Google search snippet using your title and description so you can see exactly how your page appears in results.</td>
+        </tr>
+        <tr>
+          <td><strong>Mobile Snapshot</strong></td>
+          <td>Captures how the page renders on a mobile viewport to help you spot layout or content issues.</td>
+        </tr>
+        <tr>
+          <td><strong>Schema Meta Data</strong></td>
+          <td>Checks for valid JSON-LD or other structured data markup that enables rich results in search.</td>
+        </tr>
+        <tr>
+          <td><strong>WWW Canonicalization</strong></td>
+          <td>Verifies that your site consistently redirects between the www and non-www version to avoid splitting link equity.</td>
+        </tr>
+        <tr>
+          <td><strong>Mobile Search Preview</strong></td>
+          <td>Renders a mobile Google search snippet so you can verify how your title and description appear on smaller screens.</td>
+        </tr>
+        <tr>
+          <td><strong>Keep Content Fresh</strong></td>
+          <td>Checks whether your content has been updated recently, since search engines give preference to regularly maintained pages.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="screenshot-slot">Advanced SEO section of the check list</div>
+
+    <!-- Performance -->
+    <h2 id="performance">Performance checks (5)</h2>
+    <p>
+      Performance checks measure how fast and efficiently your site loads. These checks have a direct impact on both user experience and search engine rankings, particularly for mobile users.
+    </p>
+
+    <table class="check-table" aria-label="Performance checks">
+      <thead>
+        <tr>
+          <th>Check</th>
+          <th>What it evaluates</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Page Size</strong></td>
+          <td>Measures the total download size of the page and flags it if the size is likely to slow load times.</td>
+        </tr>
+        <tr>
+          <td><strong>Mobile Speed</strong></td>
+          <td>Evaluates how quickly the page loads on a mobile connection using performance benchmarks.</td>
+        </tr>
+        <tr>
+          <td><strong>Page Objects</strong></td>
+          <td>Counts the number of HTTP requests the page makes and flags an excessive count that adds load latency.</td>
+        </tr>
+        <tr>
+          <td><strong>Response Time</strong></td>
+          <td>Measures server response time in milliseconds, matching the <strong>Speed</strong> value shown in the score panel.</td>
+        </tr>
+        <tr>
+          <td><strong>Image Headers Expire</strong></td>
+          <td>Checks whether images are served with proper cache expiration headers, which lets browsers reuse assets instead of re-downloading them.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="screenshot-slot">Performance section of the check list showing Speed-related checks</div>
+
+    <!-- Security -->
+    <h2 id="security">Security checks (2)</h2>
+    <p>
+      Security checks look for configurations that could put your site or its visitors at risk. A site that is compromised or flagged as insecure will lose search visibility quickly.
+    </p>
+
+    <table class="check-table" aria-label="Security checks">
+      <thead>
+        <tr>
+          <th>Check</th>
+          <th>What it evaluates</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Theme Visibility</strong></td>
+          <td>Checks whether your CMS or theme name is exposed in page source, which can make it easier for attackers to target known vulnerabilities.</td>
+        </tr>
+        <tr>
+          <td><strong>Secure Connection</strong></td>
+          <td>Verifies that your site is served over HTTPS. Sites without a valid SSL certificate are flagged by browsers and penalized in search.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="screenshot-slot">Security section of the check list</div>
+
+    <!-- FAQ -->
+    <div class="faq-section" id="faq">
+      <h2>Frequently asked questions</h2>
+
+      <div class="faq-item">
+        <div class="faq-q">How do I see the detailed suggestion for a specific check?</div>
+        <div class="faq-a">Click any check item in the audit list and it expands to show a detailed suggestion panel for that specific issue. You can click multiple items and each one will display its own guidance.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">How many checks does RankFrame run in total?</div>
+        <div class="faq-a">RankFrame runs 29 checks in total: 10 Basic SEO checks, 12 Advanced SEO checks, 5 Performance checks, and 2 Security checks.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Do I need to fix every Warning?</div>
+        <div class="faq-a">Warnings are not critical, but fixing them will push your score higher and improve the overall health of your site. After clearing all Red Zone items, work through Warnings in order of how much effort each one takes to resolve.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">What is the difference between Basic SEO and Advanced SEO checks?</div>
+        <div class="faq-a">Basic SEO checks cover the foundational elements every page needs, like a title tag, H1, meta description, and image alt attributes. Advanced SEO checks cover technical and structured-data requirements like sitemaps, robots.txt, canonical tags, OpenGraph meta, and schema markup.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Why is Theme Visibility listed as a Security check?</div>
+        <div class="faq-a">Exposing your CMS or theme name in page source can make it easier for attackers to target known vulnerabilities in that software. RankFrame flags this as a Security check because it has both a security dimension and an indirect SEO impact if your site is compromised.</div>
+      </div>
+    </div>
+
+    <!-- Related -->
+    <div class="related-section">
+      <h2>Related articles</h2>
+      <ul class="related-links">
+        <li><a href="https://rankframe.com/help/audit-score-panel">Understanding the Audit Score Panel</a></li>
+        <li><a href="https://rankframe.com/help/seo-audit">SEO Audit Overview</a></li>
+        <li><a href="https://rankframe.com/help/running-an-audit">How to Run Your First Audit</a></li>
+        <li><a href="https://rankframe.com/help/improving-score">How to Improve Your Audit Score</a></li>
+      </ul>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-box">
+      <h3>See every check in action</h3>
+      <p>Install RankFrame in your Framer project and run a full audit to see which of the 29 checks your site is passing right now.</p>
+      <a class="cta-btn" href="https://rankframe.com" target="_blank" rel="noopener">Get RankFrame</a>
+    </div>
+
+    <!-- SEO Panel -->
+    <div class="seo-panel">
+      <div class="seo-panel-header">
+        <div class="seo-panel-title">Page SEO Inspector</div>
+        <div class="seo-panel-sub">Live meta tag and schema data read from this document</div>
+      </div>
+      <div class="seo-fields" id="seo-panel-fields"></div>
+      <div class="seo-schemas" id="seo-panel-schemas"></div>
+    </div>
+
+  </div><!-- /.page -->
+
+  <script>
+  (function() {
+    var fields = [
+      { label: 'Title', value: document.querySelector('title') ? document.querySelector('title').textContent : '' },
+      { label: 'Description', value: (document.querySelector('meta[name="description"]') || {}).content || '' },
+      { label: 'Keywords', value: (document.querySelector('meta[name="keywords"]') || {}).content || '' },
+      { label: 'Canonical', value: (document.querySelector('link[rel="canonical"]') || {}).href || '' }
+    ];
+    var fieldsHtml = fields.map(function(f) {
+      return '<div class="seo-field"><div class="seo-field-row"><span class="seo-field-label">' + f.label + '</span><button class="seo-copy-btn" onclick="copyVal(this,\'' + f.label + '\')">Copy</button></div><div class="seo-field-value">' + f.value + '</div></div>';
+    }).join('');
+    var schemas = Array.from(document.querySelectorAll('script[type="application/ld+json"]')).map(function(s) {
+      try { var obj = JSON.parse(s.textContent); var t = obj['@type'] || 'Schema'; return '<div class="seo-schema"><div class="seo-schema-header"><span class="seo-schema-type">' + t + ' / JSON-LD</span><button class="seo-copy-btn" onclick="copySchema(this,\'' + t + '\')">Copy</button></div><pre class="seo-schema-code">' + JSON.stringify(obj, null, 2) + '</pre></div>'; } catch(e) { return ''; }
+    }).join('');
+    document.getElementById('seo-panel-fields').innerHTML = fieldsHtml;
+    document.getElementById('seo-panel-schemas').innerHTML = schemas;
+  })();
+  function copyVal(btn, label) {
+    var val = btn.closest('.seo-field').querySelector('.seo-field-value').textContent;
+    navigator.clipboard.writeText(val).then(function() { btn.textContent = 'Copied'; btn.classList.add('ok'); setTimeout(function() { btn.textContent = 'Copy'; btn.classList.remove('ok'); }, 1500); });
+  }
+  function copySchema(btn, type) {
+    var code = btn.closest('.seo-schema').querySelector('.seo-schema-code').textContent;
+    navigator.clipboard.writeText(code).then(function() { btn.textContent = 'Copied'; btn.classList.add('ok'); setTimeout(function() { btn.textContent = 'Copy'; btn.classList.remove('ok'); }, 1500); });
+  }
+  </script>
+
+</body>
+</html>

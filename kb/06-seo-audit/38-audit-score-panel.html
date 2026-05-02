@@ -4,31 +4,55 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Understanding the Audit Score Panel | RankFrame Help</title>
-  <meta name="description" content="Learn how to read RankFrame's SEO Audit Score Panel, including the circular score, color-coded zones, speed metric, and filter tabs that let you drill into specific check categories." />
-  <meta name="keywords" content="RankFrame, Framer SEO, audit score panel, SEO score, red zone, green zone, warnings, speed, filter tabs" />
+  <meta name="description" content="Learn how to read the RankFrame audit score panel: circular score, Red Zone, Warnings, Green Zone, Speed, and filter tabs that let you focus on what matters most." />
+  <meta name="keywords" content="RankFrame, SEO audit, score panel, audit score, Framer SEO, Red Zone, Green Zone, Warnings, filter tabs" />
   <link rel="canonical" href="https://rankframe.com/help/audit-score-panel" />
+
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Article",
     "headline": "Understanding the Audit Score Panel",
-    "description": "Learn how to read RankFrame's SEO Audit Score Panel, including the circular score, color-coded zones, speed metric, and filter tabs.",
-    "author": { "@type": "Organization", "name": "RankFrame" },
-    "publisher": { "@type": "Organization", "name": "RankFrame" },
-    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://rankframe.com/help/audit-score-panel" }
+    "description": "Learn how to read the RankFrame audit score panel: circular score, Red Zone, Warnings, Green Zone, Speed, and filter tabs that let you focus on what matters most.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "RankFrame",
+      "url": "https://rankframe.com"
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://rankframe.com/help/audit-score-panel"
+    }
   }
   </script>
+
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": "Help Center", "item": "https://rankframe.com/help" },
-      { "@type": "ListItem", "position": 2, "name": "SEO Audit", "item": "https://rankframe.com/help/seo-audit" },
-      { "@type": "ListItem", "position": 3, "name": "Understanding the Audit Score Panel", "item": "https://rankframe.com/help/audit-score-panel" }
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Help Center",
+        "item": "https://rankframe.com/help"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "SEO Audit",
+        "item": "https://rankframe.com/help/seo-audit"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Understanding the Audit Score Panel",
+        "item": "https://rankframe.com/help/audit-score-panel"
+      }
     ]
   }
   </script>
+
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -36,18 +60,18 @@
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "What does the circular score number mean?",
+        "name": "What does the circular score number represent?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "The circular score is an overall SEO health score from 0 to 100. It is calculated from the ratio of passing checks, warnings, and critical fails across all audit categories. A score of 90 or above is considered good SEO by RankFrame."
+          "text": "The circular score is a composite 0-100 rating calculated from all audit checks across Basic SEO, Advanced SEO, Performance, and Security categories. A higher score means fewer critical issues and better overall site health."
         }
       },
       {
         "@type": "Question",
-        "name": "What is the target score I should aim for?",
+        "name": "What score should I aim for?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "RankFrame recommends targeting a score of 90 or higher. The score panel displays the label 'Good SEO. Target: 90+' to remind you of this benchmark."
+          "text": "RankFrame targets a score of 90 or above for Good SEO, shown in the target label on the right side of the score panel. Focus on clearing all Red Zone items first since those have the highest impact on your score."
         }
       },
       {
@@ -55,7 +79,7 @@
         "name": "What is the difference between Red Zone and Warnings?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Red Zone checks are critical failures that have the highest impact on your search rankings and should be fixed immediately. Warnings are non-critical issues that are worth addressing but will not cause the same level of harm if left unfixed for a short period."
+          "text": "Red Zone items are critical failures that must be fixed because they directly hurt your search rankings. Warnings are non-critical issues that should be addressed but will not cause immediate ranking drops on their own."
         }
       },
       {
@@ -63,20 +87,21 @@
         "name": "What does the Speed metric measure?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "The Speed metric shows your page's server response time in milliseconds. A fast response time is a positive ranking signal. You can click the Speed filter tab to isolate speed-related checks in the list below the panel."
+          "text": "Speed shows the server response time in milliseconds for your site. A lower number means faster server responses. This is one of the factors search engines use when evaluating site performance."
         }
       },
       {
         "@type": "Question",
-        "name": "Why is my score lower after adding new pages?",
+        "name": "What do the filter tabs do?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "New pages may introduce missing meta tags, missing ALT attributes, or other issues that the audit detects. Run a fresh audit from the score panel and review the Red Zone and Warnings tabs to identify which pages need attention."
+          "text": "The filter tabs below the score panel let you narrow the check list to a specific category: All, Green Zone, Red Zone, Warnings, or Speed. Selecting a tab hides all checks not in that category so you can focus on one area at a time."
         }
       }
     ]
   }
   </script>
+
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", sans-serif; background: #ffffff; color: #111111; line-height: 1.7; font-size: 16px; }
@@ -160,243 +185,269 @@
   </style>
 </head>
 <body>
-<div class="page">
+  <div class="page">
 
-  <!-- Breadcrumb -->
-  <nav class="breadcrumb" aria-label="Breadcrumb">
-    <a href="https://rankframe.com/help">Help Center</a>
-    <span>›</span>
-    <a href="https://rankframe.com/help/seo-audit">SEO Audit</a>
-    <span>›</span>
-    <span>Understanding the Audit Score Panel</span>
-  </nav>
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="https://rankframe.com/help">Help Center</a>
+      <span>/</span>
+      <a href="https://rankframe.com/help/seo-audit">SEO Audit</a>
+      <span>/</span>
+      <span>Understanding the Audit Score Panel</span>
+    </nav>
 
-  <!-- Category pill -->
-  <div class="article-category">SEO Audit</div>
-
-  <!-- Title -->
-  <h1>Understanding the Audit Score Panel</h1>
-  <p class="article-description">The Audit Score Panel gives you an at-a-glance health summary for your Framer site. This article explains every element in the panel and shows you how to use the filter tabs to focus on specific check categories.</p>
-
-  <div class="article-meta">
-    <span>RankFrame Help</span>
-    <span>Updated May 2, 2026</span>
-    <span>5 min read</span>
-  </div>
-
-  <!-- TOC -->
-  <nav class="toc" aria-label="Table of contents">
-    <div class="toc-title">In this article</div>
-    <ol>
-      <li><a href="#overview">Panel overview</a></li>
-      <li><a href="#circular-score">1. Circular Score</a></li>
-      <li><a href="#red-zone">2. Red Zone count</a></li>
-      <li><a href="#warnings">3. Warnings count</a></li>
-      <li><a href="#green-zone">4. Green Zone count</a></li>
-      <li><a href="#speed">5. Speed</a></li>
-      <li><a href="#filter-tabs">6. Filter tabs</a></li>
-      <li><a href="#brand-pill">Brand pill and target label</a></li>
-      <li><a href="#faq">Frequently asked questions</a></li>
-    </ol>
-  </nav>
-
-  <!-- Overview -->
-  <h2 id="overview">Panel overview</h2>
-  <p>When you run an SEO audit in RankFrame, the top of the results view displays the <strong>Score Panel</strong>. It contains the date the audit last ran, the full URL of your site, the overall score, a breakdown of check results by zone, and a set of filter tabs that control which checks appear in the list below.</p>
-  <p>On the right side of the panel you will see a <strong>brand pill</strong> reading "RankFrame, Best Framer SEO Plugin" and a <strong>target label</strong> reading "Good SEO. Target: 90+" to remind you of the benchmark to aim for.</p>
-
-  <div class="screenshot-slot">Score Panel overview screenshot</div>
-
-  <div class="tip">
-    <div class="tip-label">Tip</div>
-    <p>Run your audit regularly after publishing new pages or updating site content. The <strong>Last Checked</strong> date in the panel tells you exactly when the most recent scan was performed.</p>
-  </div>
-
-  <!-- Field 1 -->
-  <div class="field-block" id="circular-score">
-    <div class="field-block-header">
-      <span class="field-num">1</span>
-      <span class="field-block-title">Circular Score</span>
+    <!-- Header -->
+    <div class="article-category">SEO Audit</div>
+    <h1>Understanding the Audit Score Panel</h1>
+    <p class="article-description">
+      The audit score panel gives you an at-a-glance summary of your site's SEO health. This article explains every element in the panel and shows you how to use the filter tabs to zero in on the issues that matter most.
+    </p>
+    <div class="article-meta">
+      <span>Article #38</span>
+      <span>Updated May 2, 2026</span>
+      <span>5 min read</span>
     </div>
-    <p class="field-block-desc">The large circle in the center of the panel displays your overall SEO score as a number from <code>0</code> to <code>100</code>, surrounded by a purple ring. The ring fills proportionally to your score so you can gauge health at a glance.</p>
-    <p>The score is calculated from the combined weight of all passing checks, warnings, and critical fails across Basic SEO, Advanced SEO, Performance, and Security categories. A higher ratio of passing checks produces a higher score.</p>
-    <ul>
-      <li>Scores of <strong>90 and above</strong> indicate good SEO health.</li>
-      <li>Scores between <strong>70 and 89</strong> suggest notable issues that should be addressed soon.</li>
-      <li>Scores below <strong>70</strong> mean significant problems that need immediate attention.</li>
-    </ul>
-    <div class="screenshot-slot">Circular score with purple ring screenshot</div>
-  </div>
 
-  <!-- Field 2 -->
-  <div class="field-block" id="red-zone">
-    <div class="field-block-header">
-      <span class="field-num">2</span>
-      <span class="field-block-title">Red Zone count</span>
+    <!-- Table of Contents -->
+    <div class="toc">
+      <div class="toc-title">In this article</div>
+      <ol>
+        <li><a href="#overview">Score panel overview</a></li>
+        <li><a href="#field-1">1. Circular Score</a></li>
+        <li><a href="#field-2">2. Red Zone count</a></li>
+        <li><a href="#field-3">3. Warnings count</a></li>
+        <li><a href="#field-4">4. Green Zone count</a></li>
+        <li><a href="#field-5">5. Speed</a></li>
+        <li><a href="#field-6">6. Filter tabs</a></li>
+        <li><a href="#right-side">Brand pill and target label</a></li>
+        <li><a href="#faq">Frequently asked questions</a></li>
+      </ol>
     </div>
-    <p class="field-block-desc">The <strong>Red Zone</strong> count shows how many checks have returned a critical failure. A red dot appears next to the count to distinguish it from the other zones.</p>
-    <p>Critical fails have the highest negative impact on your search rankings. Prioritize fixing every Red Zone issue before addressing warnings or optimizing other areas.</p>
-    <div class="note">
-      <div class="note-label">Important</div>
-      <p>Even a single Red Zone failure, such as a missing canonical tag or a broken sitemap, can significantly reduce your site's crawlability and indexing. Address these first.</p>
-    </div>
-    <div class="screenshot-slot">Red Zone count indicator screenshot</div>
-  </div>
 
-  <!-- Field 3 -->
-  <div class="field-block" id="warnings">
-    <div class="field-block-header">
-      <span class="field-num">3</span>
-      <span class="field-block-title">Warnings count</span>
-    </div>
-    <p class="field-block-desc">The <strong>Warnings</strong> count shows how many checks have returned a non-critical issue. Warnings are not as urgent as Red Zone failures, but they still affect your overall score and should be resolved.</p>
-    <p>Common warning scenarios include suboptimal image sizes, missing keywords in descriptions, or pages that lack OpenGraph meta tags. Resolving warnings after all critical fails are cleared is the recommended approach.</p>
-    <div class="screenshot-slot">Warnings count indicator screenshot</div>
-  </div>
+    <!-- Overview -->
+    <h2 id="overview">Score panel overview</h2>
+    <p>
+      When you run a site audit in RankFrame, the top of the results view is the <strong>Score Panel</strong>. It combines your overall score, a breakdown by check type, your server response time, and quick-access filter tabs into a single compact view.
+    </p>
+    <p>
+      The panel displays the <strong>Last Checked</strong> date and your full site URL so you always know exactly which scan the data comes from. On the right side you will find the RankFrame brand pill and a target label reading "Good SEO. Target: 90+".
+    </p>
 
-  <!-- Field 4 -->
-  <div class="field-block" id="green-zone">
-    <div class="field-block-header">
-      <span class="field-num">4</span>
-      <span class="field-block-title">Green Zone count</span>
-    </div>
-    <p class="field-block-desc">The <strong>Green Zone</strong> count shows how many checks are passing. A green dot marks this figure. You do not need to take action on Green Zone items.</p>
-    <p>Use this number to track progress over time. As you fix Red Zone issues and resolve warnings, your Green Zone count should rise and your overall score should increase toward the 90+ target.</p>
-    <div class="screenshot-slot">Green Zone count indicator screenshot</div>
-  </div>
-
-  <!-- Field 5 -->
-  <div class="field-block" id="speed">
-    <div class="field-block-header">
-      <span class="field-num">5</span>
-      <span class="field-block-title">Speed</span>
-    </div>
-    <p class="field-block-desc">The <strong>Speed</strong> metric displays your server response time in milliseconds. A fast response time is a direct ranking signal for search engines and affects user experience.</p>
-    <p>Lower response times are better. If the value shown is high, switch to the <strong>Speed</strong> filter tab (described below) to review the individual performance checks and identify what is causing the slowdown.</p>
-    <ul>
-      <li>Under <strong>200 ms</strong>: excellent.</li>
-      <li><strong>200 to 500 ms</strong>: acceptable, with room to improve.</li>
-      <li>Above <strong>500 ms</strong>: should be investigated and optimized.</li>
-    </ul>
-    <div class="screenshot-slot">Speed metric screenshot</div>
-  </div>
-
-  <!-- Field 6 -->
-  <div class="field-block" id="filter-tabs">
-    <div class="field-block-header">
-      <span class="field-num">6</span>
-      <span class="field-block-title">Filter tabs</span>
-    </div>
-    <p class="field-block-desc">Below the score breakdown, five <strong>filter tabs</strong> let you narrow the check list to a specific zone: <strong>All</strong>, <strong>Green Zone</strong>, <strong>Red Zone</strong>, <strong>Warnings</strong>, and <strong>Speed</strong>.</p>
-    <p>Clicking a tab instantly filters the check list so that only items matching that category are shown. This makes it easier to work through one type of issue at a time without losing track of where you are.</p>
-    <ul>
-      <li><strong>All</strong>: shows every check result regardless of status.</li>
-      <li><strong>Green Zone</strong>: shows only passing checks.</li>
-      <li><strong>Red Zone</strong>: shows only critical failures.</li>
-      <li><strong>Warnings</strong>: shows only non-critical issues.</li>
-      <li><strong>Speed</strong>: shows only performance-related checks.</li>
-    </ul>
     <div class="tip">
       <div class="tip-label">Tip</div>
-      <p>Start with the <strong>Red Zone</strong> tab to work through your most urgent issues first, then move to <strong>Warnings</strong>, and finish by reviewing the <strong>Speed</strong> tab for performance improvements.</p>
-    </div>
-    <div class="screenshot-slot">Filter tabs screenshot</div>
-  </div>
-
-  <!-- Brand pill section -->
-  <h2 id="brand-pill">Brand pill and target label</h2>
-  <p>On the right side of the score panel you will find two visual elements:</p>
-  <ul>
-    <li>The <strong>brand pill</strong> displays "RankFrame, Best Framer SEO Plugin" and confirms which plugin produced the audit.</li>
-    <li>The <strong>target label</strong> reads "Good SEO. Target: 90+" and reminds you of the recommended score to reach for your site to be considered well-optimized.</li>
-  </ul>
-  <p>These elements are for reference only and do not require any interaction.</p>
-
-  <!-- CTA -->
-  <div class="cta-box">
-    <h3>Ready to improve your score?</h3>
-    <p>Install RankFrame in your Framer project and run your first full SEO audit in minutes.</p>
-    <a href="https://rankframe.com" class="cta-btn">Get RankFrame</a>
-  </div>
-
-  <!-- FAQ -->
-  <section class="faq-section" id="faq">
-    <h2>Frequently asked questions</h2>
-
-    <div class="faq-item">
-      <div class="faq-q">What does the circular score number mean?</div>
-      <div class="faq-a">The circular score is an overall SEO health score from 0 to 100. It is calculated from the ratio of passing checks, warnings, and critical fails across all audit categories. A score of 90 or above is considered good SEO by RankFrame.</div>
+      <p>Run the audit again after fixing issues to watch your score climb in real time.</p>
     </div>
 
-    <div class="faq-item">
-      <div class="faq-q">What is the target score I should aim for?</div>
-      <div class="faq-a">RankFrame recommends targeting a score of 90 or higher. The score panel displays the label "Good SEO. Target: 90+" to remind you of this benchmark.</div>
+    <div class="screenshot-slot">Annotated screenshot of the full Score Panel</div>
+
+    <!-- Field 1 -->
+    <div class="field-block" id="field-1">
+      <div class="field-block-header">
+        <span class="field-num">1</span>
+        <span class="field-block-title">Circular Score</span>
+      </div>
+      <p class="field-block-desc">
+        The large circular graphic at the center of the panel displays your site's composite SEO score as a number from <strong>0 to 100</strong>. A purple ring surrounds the number and fills proportionally as your score increases. The score is calculated from every check across all four audit categories: Basic SEO, Advanced SEO, Performance, and Security.
+      </p>
+      <ul>
+        <li>A score of <strong>90 or above</strong> is the target for Good SEO.</li>
+        <li>Scores below 70 typically indicate multiple critical issues that need immediate attention.</li>
+        <li>The ring becomes more complete as your score approaches 100.</li>
+      </ul>
+      <div class="screenshot-slot">Close-up of the circular score with purple ring (e.g., 82/100)</div>
     </div>
 
-    <div class="faq-item">
-      <div class="faq-q">What is the difference between Red Zone and Warnings?</div>
-      <div class="faq-a">Red Zone checks are critical failures that have the highest impact on your search rankings and should be fixed immediately. Warnings are non-critical issues that are worth addressing but will not cause the same level of harm if left unfixed for a short period.</div>
+    <!-- Field 2 -->
+    <div class="field-block" id="field-2">
+      <div class="field-block-header">
+        <span class="field-num">2</span>
+        <span class="field-block-title">Red Zone Count</span>
+      </div>
+      <p class="field-block-desc">
+        The <strong>Red Zone</strong> count, shown with a red dot, tells you how many checks have failed critically. These are the issues with the highest negative impact on your search rankings and should be fixed before anything else.
+      </p>
+      <ul>
+        <li>A Red Zone count of <strong>0</strong> means no critical failures are present.</li>
+        <li>Any Red Zone count above 0 requires action. Use the <strong>Red Zone</strong> filter tab to isolate these checks immediately.</li>
+      </ul>
+      <div class="note">
+        <div class="note-label">Important</div>
+        <p>Fix Red Zone items before addressing Warnings. Critical failures carry the most weight in your overall score calculation.</p>
+      </div>
+      <div class="screenshot-slot">Score breakdown row highlighting the Red Zone dot and count</div>
     </div>
 
-    <div class="faq-item">
-      <div class="faq-q">What does the Speed metric measure?</div>
-      <div class="faq-a">The Speed metric shows your page's server response time in milliseconds. A fast response time is a positive ranking signal. You can click the <strong>Speed</strong> filter tab to isolate speed-related checks in the list below the panel.</div>
+    <!-- Field 3 -->
+    <div class="field-block" id="field-3">
+      <div class="field-block-header">
+        <span class="field-num">3</span>
+        <span class="field-block-title">Warnings Count</span>
+      </div>
+      <p class="field-block-desc">
+        The <strong>Warnings</strong> count, shown with a yellow or amber dot, shows how many checks returned a non-critical issue. Warnings are not emergency fixes, but addressing them is the most reliable way to push your score toward 90 and beyond.
+      </p>
+      <ul>
+        <li>Common warnings include missing optional meta tags, sub-optimal image configurations, and content freshness issues.</li>
+        <li>Clearing all warnings after resolving Red Zone items will have a meaningful positive effect on your overall score.</li>
+      </ul>
+      <div class="screenshot-slot">Score breakdown row highlighting the Warnings dot and count</div>
     </div>
 
-    <div class="faq-item">
-      <div class="faq-q">Why is my score lower after adding new pages?</div>
-      <div class="faq-a">New pages may introduce missing meta tags, missing ALT attributes, or other issues that the audit detects. Run a fresh audit from the score panel and review the <strong>Red Zone</strong> and <strong>Warnings</strong> tabs to identify which pages need attention.</div>
+    <!-- Field 4 -->
+    <div class="field-block" id="field-4">
+      <div class="field-block-header">
+        <span class="field-num">4</span>
+        <span class="field-block-title">Green Zone Count</span>
+      </div>
+      <p class="field-block-desc">
+        The <strong>Green Zone</strong> count, shown with a green dot, tells you how many checks your site is passing. A higher Green Zone count means more of your SEO fundamentals are in good shape.
+      </p>
+      <ul>
+        <li>You do not need to take any action on Green Zone items.</li>
+        <li>Use the <strong>Green Zone</strong> filter tab to confirm which checks are already passing before you start making changes, so you do not accidentally break something that is working.</li>
+      </ul>
+      <div class="screenshot-slot">Score breakdown row highlighting the Green Zone dot and count</div>
     </div>
-  </section>
 
-  <!-- Related articles -->
-  <section class="related-section">
-    <h2>Related articles</h2>
-    <ul class="related-links">
-      <li><a href="https://rankframe.com/help/audit-checks">Understanding Audit Checks and Zones</a></li>
-      <li><a href="https://rankframe.com/help/seo-audit">SEO Audit overview</a></li>
-      <li><a href="https://rankframe.com/help">Help Center home</a></li>
+    <!-- Field 5 -->
+    <div class="field-block" id="field-5">
+      <div class="field-block-header">
+        <span class="field-num">5</span>
+        <span class="field-block-title">Speed</span>
+      </div>
+      <p class="field-block-desc">
+        The <strong>Speed</strong> metric shows your server response time in milliseconds (ms). This is measured at the time the audit runs and reflects how quickly your server responds to an incoming request.
+      </p>
+      <ul>
+        <li>Lower is better. Search engines factor response time into their quality signals.</li>
+        <li>Response times under 200 ms are generally considered fast.</li>
+        <li>If Speed appears in your <strong>Red Zone</strong>, prioritize server or hosting improvements alongside your SEO fixes.</li>
+      </ul>
+      <div class="screenshot-slot">Score breakdown row highlighting the Speed value in ms</div>
+    </div>
+
+    <!-- Field 6 -->
+    <div class="field-block" id="field-6">
+      <div class="field-block-header">
+        <span class="field-num">6</span>
+        <span class="field-block-title">Filter Tabs</span>
+      </div>
+      <p class="field-block-desc">
+        Below the score breakdown you will find five <strong>filter tabs</strong>: <strong>All</strong>, <strong>Green Zone</strong>, <strong>Red Zone</strong>, <strong>Warnings</strong>, and <strong>Speed</strong>. Clicking a tab filters the check list below the panel so only items from that category are visible.
+      </p>
+      <ul>
+        <li><strong>All</strong> shows every check from every category.</li>
+        <li><strong>Green Zone</strong> shows only passing checks.</li>
+        <li><strong>Red Zone</strong> shows only critical failures.</li>
+        <li><strong>Warnings</strong> shows only non-critical issues.</li>
+        <li><strong>Speed</strong> shows only performance-related checks.</li>
+      </ul>
+      <div class="tip">
+        <div class="tip-label">Tip</div>
+        <p>Start every audit session by clicking the <strong>Red Zone</strong> tab. This puts your most urgent issues at the top of your attention without any scrolling.</p>
+      </div>
+      <div class="screenshot-slot">Filter tabs row with Red Zone tab selected and filtered check list below</div>
+    </div>
+
+    <!-- Right side context -->
+    <h2 id="right-side">Brand pill and target label</h2>
+    <p>
+      On the right side of the score panel you will see two elements that provide context for your score:
+    </p>
+    <ul>
+      <li>The <strong>brand pill</strong> reads "RankFrame, Best Framer SEO Plugin" and identifies the tool powering your audit.</li>
+      <li>The <strong>target label</strong> reads "Good SEO. Target: 90+" and sets a clear benchmark for what you should work toward.</li>
     </ul>
-  </section>
+    <p>
+      Use the 90+ target as your guiding goal when prioritizing fixes. Once your circular score reaches 90, you have resolved the most impactful SEO issues on your site.
+    </p>
 
-  <!-- SEO Panel -->
-  <section class="seo-panel" aria-label="Page SEO data">
-    <div class="seo-panel-header">
-      <div class="seo-panel-title">Page SEO Data</div>
-      <div class="seo-panel-sub">Live meta tag values read from this page</div>
+    <!-- FAQ -->
+    <div class="faq-section" id="faq">
+      <h2>Frequently asked questions</h2>
+
+      <div class="faq-item">
+        <div class="faq-q">What does the circular score number represent?</div>
+        <div class="faq-a">The circular score is a composite 0-100 rating calculated from all audit checks across Basic SEO, Advanced SEO, Performance, and Security categories. A higher score means fewer critical issues and better overall site health.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">What score should I aim for?</div>
+        <div class="faq-a">RankFrame targets a score of 90 or above for Good SEO, shown in the target label on the right side of the score panel. Focus on clearing all Red Zone items first since those have the highest impact on your score.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">What is the difference between Red Zone and Warnings?</div>
+        <div class="faq-a">Red Zone items are critical failures that must be fixed because they directly hurt your search rankings. Warnings are non-critical issues that should be addressed but will not cause immediate ranking drops on their own.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">What does the Speed metric measure?</div>
+        <div class="faq-a">Speed shows the server response time in milliseconds for your site. A lower number means faster server responses. This is one of the factors search engines use when evaluating site performance.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">What do the filter tabs do?</div>
+        <div class="faq-a">The filter tabs below the score panel let you narrow the check list to a specific category: All, Green Zone, Red Zone, Warnings, or Speed. Selecting a tab hides all checks not in that category so you can focus on one area at a time.</div>
+      </div>
     </div>
-    <div class="seo-fields" id="seo-panel-fields"></div>
-    <div class="seo-schemas" id="seo-panel-schemas"></div>
-  </section>
 
-</div>
+    <!-- Related -->
+    <div class="related-section">
+      <h2>Related articles</h2>
+      <ul class="related-links">
+        <li><a href="https://rankframe.com/help/audit-checks">Audit Checks Explained: Green Zone, Red Zone, and Warnings</a></li>
+        <li><a href="https://rankframe.com/help/seo-audit">SEO Audit Overview</a></li>
+        <li><a href="https://rankframe.com/help/running-an-audit">How to Run Your First Audit</a></li>
+        <li><a href="https://rankframe.com/help/improving-score">How to Improve Your Audit Score</a></li>
+      </ul>
+    </div>
 
-<script>
-(function() {
-  var fields = [
-    { label: 'Title', value: document.querySelector('title') ? document.querySelector('title').textContent : '' },
-    { label: 'Description', value: (document.querySelector('meta[name="description"]') || {}).content || '' },
-    { label: 'Keywords', value: (document.querySelector('meta[name="keywords"]') || {}).content || '' },
-    { label: 'Canonical', value: (document.querySelector('link[rel="canonical"]') || {}).href || '' }
-  ];
-  var fieldsHtml = fields.map(function(f) {
-    return '<div class="seo-field"><div class="seo-field-row"><span class="seo-field-label">' + f.label + '</span><button class="seo-copy-btn" onclick="copyVal(this,\'' + f.label + '\')">Copy</button></div><div class="seo-field-value">' + f.value + '</div></div>';
-  }).join('');
-  var schemas = Array.from(document.querySelectorAll('script[type="application/ld+json"]')).map(function(s) {
-    try { var obj = JSON.parse(s.textContent); var t = obj['@type'] || 'Schema'; return '<div class="seo-schema"><div class="seo-schema-header"><span class="seo-schema-type">' + t + ' / JSON-LD</span><button class="seo-copy-btn" onclick="copySchema(this,\'' + t + '\')">Copy</button></div><pre class="seo-schema-code">' + JSON.stringify(obj, null, 2) + '</pre></div>'; } catch(e) { return ''; }
-  }).join('');
-  document.getElementById('seo-panel-fields').innerHTML = fieldsHtml;
-  document.getElementById('seo-panel-schemas').innerHTML = schemas;
-})();
-function copyVal(btn, label) {
-  var val = btn.closest('.seo-field').querySelector('.seo-field-value').textContent;
-  navigator.clipboard.writeText(val).then(function() { btn.textContent = 'Copied'; btn.classList.add('ok'); setTimeout(function() { btn.textContent = 'Copy'; btn.classList.remove('ok'); }, 1500); });
-}
-function copySchema(btn, type) {
-  var code = btn.closest('.seo-schema').querySelector('.seo-schema-code').textContent;
-  navigator.clipboard.writeText(code).then(function() { btn.textContent = 'Copied'; btn.classList.add('ok'); setTimeout(function() { btn.textContent = 'Copy'; btn.classList.remove('ok'); }, 1500); });
-}
-</script>
+    <!-- CTA -->
+    <div class="cta-box">
+      <h3>Ready to reach 90+?</h3>
+      <p>Open RankFrame in your Framer project and run a full audit to see exactly where your site stands today.</p>
+      <a class="cta-btn" href="https://rankframe.com" target="_blank" rel="noopener">Get RankFrame</a>
+    </div>
+
+    <!-- SEO Panel -->
+    <div class="seo-panel">
+      <div class="seo-panel-header">
+        <div class="seo-panel-title">Page SEO Inspector</div>
+        <div class="seo-panel-sub">Live meta tag and schema data read from this document</div>
+      </div>
+      <div class="seo-fields" id="seo-panel-fields"></div>
+      <div class="seo-schemas" id="seo-panel-schemas"></div>
+    </div>
+
+  </div><!-- /.page -->
+
+  <script>
+  (function() {
+    var fields = [
+      { label: 'Title', value: document.querySelector('title') ? document.querySelector('title').textContent : '' },
+      { label: 'Description', value: (document.querySelector('meta[name="description"]') || {}).content || '' },
+      { label: 'Keywords', value: (document.querySelector('meta[name="keywords"]') || {}).content || '' },
+      { label: 'Canonical', value: (document.querySelector('link[rel="canonical"]') || {}).href || '' }
+    ];
+    var fieldsHtml = fields.map(function(f) {
+      return '<div class="seo-field"><div class="seo-field-row"><span class="seo-field-label">' + f.label + '</span><button class="seo-copy-btn" onclick="copyVal(this,\'' + f.label + '\')">Copy</button></div><div class="seo-field-value">' + f.value + '</div></div>';
+    }).join('');
+    var schemas = Array.from(document.querySelectorAll('script[type="application/ld+json"]')).map(function(s) {
+      try { var obj = JSON.parse(s.textContent); var t = obj['@type'] || 'Schema'; return '<div class="seo-schema"><div class="seo-schema-header"><span class="seo-schema-type">' + t + ' / JSON-LD</span><button class="seo-copy-btn" onclick="copySchema(this,\'' + t + '\')">Copy</button></div><pre class="seo-schema-code">' + JSON.stringify(obj, null, 2) + '</pre></div>'; } catch(e) { return ''; }
+    }).join('');
+    document.getElementById('seo-panel-fields').innerHTML = fieldsHtml;
+    document.getElementById('seo-panel-schemas').innerHTML = schemas;
+  })();
+  function copyVal(btn, label) {
+    var val = btn.closest('.seo-field').querySelector('.seo-field-value').textContent;
+    navigator.clipboard.writeText(val).then(function() { btn.textContent = 'Copied'; btn.classList.add('ok'); setTimeout(function() { btn.textContent = 'Copy'; btn.classList.remove('ok'); }, 1500); });
+  }
+  function copySchema(btn, type) {
+    var code = btn.closest('.seo-schema').querySelector('.seo-schema-code').textContent;
+    navigator.clipboard.writeText(code).then(function() { btn.textContent = 'Copied'; btn.classList.add('ok'); setTimeout(function() { btn.textContent = 'Copy'; btn.classList.remove('ok'); }, 1500); });
+  }
+  </script>
 
 </body>
 </html>
