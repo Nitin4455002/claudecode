@@ -96,11 +96,14 @@
     .note { background: #fff8f0; border-left: 3px solid #f59e0b; border-radius: 0 8px 8px 0; padding: 12px 16px; margin: 20px 0; }
     .note-label { font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #d97706; margin-bottom: 4px; }
     .note p { color: #78350f; margin: 0; font-size: 0.93rem; }
-    .field-table { width: 100%; border-collapse: collapse; margin: 16px 0 24px; font-size: 0.9rem; }
-    .field-table th { text-align: left; padding: 10px 12px; background: #fafafa; border: 1px solid #efefef; color: #555; font-weight: 600; }
-    .field-table td { padding: 10px 12px; border: 1px solid #f0f0f0; vertical-align: top; }
-    .field-table tr:nth-child(even) td { background: #fafafa; }
-    .field-name { font-weight: 600; color: #0a0a0a; font-family: "SF Mono","Fira Code",Consolas,monospace; font-size: 0.85rem; }
+    .field-block { margin: 36px 0 28px; }
+    .field-block-header { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+    .field-num { display: inline-flex; align-items: center; justify-content: center; width: 38px; height: 38px; background: linear-gradient(135deg, #7c3aed, #a78bfa); color: #fff; font-weight: 700; font-size: 14px; border-radius: 8px; flex-shrink: 0; box-shadow: 0 2px 6px rgba(124,58,237,0.25); }
+    .field-block-title { font-size: 1.18rem; font-weight: 700; color: #0a0a0a; letter-spacing: -0.01em; }
+    .field-block-desc { color: #444; margin-bottom: 14px; font-size: 0.97rem; line-height: 1.7; }
+    .field-block-desc code { background: #f3f0ff; color: #6d28d9; padding: 1px 6px; border-radius: 4px; font-size: 0.85em; font-family: "SF Mono","Fira Code",Consolas,monospace; }
+    .screenshot-slot { background: #fafafa; border: 1px dashed #e0d8f0; border-radius: 10px; padding: 36px 20px; text-align: center; color: #b8b2c8; font-size: 0.85rem; margin-top: 6px; margin-bottom: 8px; }
+    .screenshot-slot::before { content: "Screenshot"; display: block; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #c8c0dc; }
     .faq-section { margin-top: 48px; padding-top: 32px; border-top: 1px solid #f0f0f0; }
     .faq-section h2 { border-bottom: none; padding-bottom: 0; margin-bottom: 24px; }
     .faq-item { border: 1px solid #efefef; border-radius: 10px; padding: 18px 20px; margin-bottom: 10px; }
@@ -172,77 +175,97 @@
   </section>
 
   <section id="all-fields">
-    <h2>All form fields explained</h2>
-    <p>The Service schema form contains eight fields organized into two groups: service details and contact information.</p>
+    <h2>Service Schema Setup &amp; Available Options</h2>
+    <p>Now let's have a closer look at each of the available options in detail. The form contains nine fields across two groups: service details and contact and pricing.</p>
 
     <h3>Service Details</h3>
-    <table class="field-table">
-      <thead>
-        <tr>
-          <th>Field</th>
-          <th>What to enter</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><span class="field-name">Service Name</span></td>
-          <td>The name of the specific service you are marking up (e.g. "Brand Identity Design", "SEO Consulting", "Web Development"). If you have multiple services, create a separate schema entry for each one. Becomes the <code>name</code> property.</td>
-        </tr>
-        <tr>
-          <td><span class="field-name">Description</span></td>
-          <td>A 1 to 3 sentence description of what the service includes, who it is for, and what outcome it delivers (e.g. "We design brand identities for early-stage startups. Each project includes logo, color system, typography, and brand guidelines."). Becomes the <code>description</code> property.</td>
-        </tr>
-        <tr>
-          <td><span class="field-name">URL</span></td>
-          <td>The canonical URL of the page describing this service (e.g. <code>https://yourdomain.com/services/seo</code>). Becomes the <code>url</code> property.</td>
-        </tr>
-        <tr>
-          <td><span class="field-name">Service Type</span></td>
-          <td>The category or type of service. Use a clear descriptive label (e.g. "Web Design", "Digital Marketing", "Legal Consulting", "Financial Planning", "Software Development"). Becomes the <code>serviceType</code> property.</td>
-        </tr>
-        <tr>
-          <td><span class="field-name">Provider Name</span></td>
-          <td>The name of the person or organization providing this service (e.g. "7 Seers" or "Jane Smith Consulting"). This links the service to an entity. Becomes <code>provider.name</code>.</td>
-        </tr>
-        <tr>
-          <td><span class="field-name">Area Served</span></td>
-          <td>The geographic region where this service is available (e.g. "New York", "United States", "Europe", "Worldwide", "Remote"). For purely digital or remote services, use "Worldwide" or "Remote". Becomes the <code>areaServed</code> property.</td>
-        </tr>
-      </tbody>
-    </table>
+
+    <div class="field-block">
+      <div class="field-block-header">
+        <div class="field-num">1</div>
+        <div class="field-block-title">Service Name</div>
+      </div>
+      <p class="field-block-desc">Enter the name of the specific service you are marking up (for example, "Brand Identity Design", "SEO Consulting", or "Web Development"). If you offer multiple services, create a separate schema entry for each one bound to its own page. Use the exact name you use in your proposals, invoices, and service pages. This value populates the <code>name</code> property in the JSON-LD output.</p>
+      <div class="screenshot-slot"></div>
+    </div>
+
+    <div class="field-block">
+      <div class="field-block-header">
+        <div class="field-num">2</div>
+        <div class="field-block-title">Description</div>
+      </div>
+      <p class="field-block-desc">Write a 1 to 3 sentence description of what the service includes, who it is for, and what outcome it delivers (for example, "We design brand identities for early-stage startups. Each project includes logo, color system, typography, and brand guidelines."). Write in a way that would attract your audience as well as help Google understand the service. This value populates the <code>description</code> property.</p>
+      <div class="screenshot-slot"></div>
+    </div>
+
+    <div class="field-block">
+      <div class="field-block-header">
+        <div class="field-num">3</div>
+        <div class="field-block-title">URL</div>
+      </div>
+      <p class="field-block-desc">Enter the canonical URL of the page describing this service (for example, <code>https://yourdomain.com/services/seo</code>). This should be the permanent, preferred address for this service page. Each service schema should point to its own dedicated page URL. This value populates the <code>url</code> property in the JSON-LD output.</p>
+      <div class="screenshot-slot"></div>
+    </div>
+
+    <div class="field-block">
+      <div class="field-block-header">
+        <div class="field-num">4</div>
+        <div class="field-block-title">Service Type</div>
+      </div>
+      <p class="field-block-desc">Enter a clear descriptive label for the category of service you provide (for example, "Web Design", "Digital Marketing", "Legal Consulting", "Financial Planning", or "Software Development"). This helps Google classify the service and match it to relevant search queries. Use the same label consistently across your schema entries and service pages. This value populates the <code>serviceType</code> property.</p>
+      <div class="screenshot-slot"></div>
+    </div>
+
+    <div class="field-block">
+      <div class="field-block-header">
+        <div class="field-num">5</div>
+        <div class="field-block-title">Provider Name</div>
+      </div>
+      <p class="field-block-desc">Enter the name of the person or organization providing this service (for example, "7 Seers" or "Jane Smith Consulting"). This links the service to an identifiable entity. Use the same name that appears in your Organization or Person schema entries to reinforce the entity signal across your schema. This value populates the <code>provider.name</code> property.</p>
+      <div class="screenshot-slot"></div>
+    </div>
+
+    <div class="field-block">
+      <div class="field-block-header">
+        <div class="field-num">6</div>
+        <div class="field-block-title">Area Served</div>
+      </div>
+      <p class="field-block-desc">Enter the geographic region where this service is available (for example, "New York", "United States", "Europe", or "Worldwide"). For fully remote or digital services, use "Worldwide" or "Remote". For local or regional services, be as specific as possible: "Brooklyn, New York" is more useful than just "United States". This value populates the <code>areaServed</code> property.</p>
+      <div class="screenshot-slot"></div>
+    </div>
 
     <h3>Contact and Pricing</h3>
-    <table class="field-table">
-      <thead>
-        <tr>
-          <th>Field</th>
-          <th>What to enter</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><span class="field-name">Telephone</span></td>
-          <td>The contact phone number for this service, including country code (e.g. +1-555-234-5678). Becomes <code>provider.telephone</code>. Leave empty if you do not accept phone inquiries.</td>
-        </tr>
-        <tr>
-          <td><span class="field-name">Price</span></td>
-          <td>The price for the service as a number (e.g. 1500 for a flat rate, or the starting price). For variable pricing, use the base or starting price. Becomes <code>offers.price</code>.</td>
-        </tr>
-        <tr>
-          <td><span class="field-name">Currency</span></td>
-          <td>The ISO 4217 three-letter currency code for the price (e.g. USD, EUR, GBP, INR, AUD). Must match the currency of the Price field. Becomes <code>offers.priceCurrency</code>.</td>
-        </tr>
-      </tbody>
-    </table>
+
+    <div class="field-block">
+      <div class="field-block-header">
+        <div class="field-num">7</div>
+        <div class="field-block-title">Telephone</div>
+      </div>
+      <p class="field-block-desc">Enter the contact phone number for inquiries about this service, including the country code (for example, +1-555-234-5678 or +91-98765-43210). Leave this field empty if you do not accept phone inquiries for this service. This value populates the <code>provider.telephone</code> property in the JSON-LD output.</p>
+      <div class="screenshot-slot"></div>
+    </div>
+
+    <div class="field-block">
+      <div class="field-block-header">
+        <div class="field-num">8</div>
+        <div class="field-block-title">Price</div>
+      </div>
+      <p class="field-block-desc">Enter the price for the service as a number (for example, 1500 for a flat rate, or the starting price for variable pricing). Do not include currency symbols in this field. If pricing is entirely custom or quote-based, you can leave this field empty. The schema remains valid without pricing data. This value populates the <code>offers.price</code> property.</p>
+      <div class="screenshot-slot"></div>
+    </div>
+
+    <div class="field-block">
+      <div class="field-block-header">
+        <div class="field-num">9</div>
+        <div class="field-block-title">Currency</div>
+      </div>
+      <p class="field-block-desc">Enter the ISO 4217 three-letter currency code for the price entered in the Price field (for example, USD for US dollars, EUR for euros, GBP for British pounds, INR for Indian rupees, AUD for Australian dollars). This must match the currency of the amount in the Price field. This value populates the <code>offers.priceCurrency</code> property.</p>
+      <div class="screenshot-slot"></div>
+    </div>
 
     <div class="tip">
       <div class="tip-label">Tip</div>
-      <p>If your service pricing is custom or quote-based, you can leave the Price and Currency fields empty. The schema remains valid without pricing data. Including a starting price when possible gives Google more context and can improve listing appearance.</p>
-    </div>
-
-    <div class="note">
-      <div class="note-label">Note</div>
-      <p>For agencies or studios with multiple service offerings (e.g. Brand Design, Web Development, SEO), create a separate Service schema entry for each service and bind each to its own page URL.</p>
+      <p>For agencies or studios with multiple service offerings, create a separate Service schema entry for each service and bind each to its own page URL. For example, create one entry for Brand Design on /services/brand and another for Web Development on /services/web.</p>
     </div>
   </section>
 

@@ -175,6 +175,8 @@ Every schema form has three tabs:
 - **Preview JSON:** see the raw JSON-LD output before injection
 - **Validator (Ext):** opens Google Rich Results Test in a new tab with the schema pre-loaded
 
+Bottom of every form has two buttons: **Copy JSON** and **Save Schema**.
+
 #### JSON-LD Preview Modal
 Clicking </> on any auto-generated page opens a modal showing the raw structured data, e.g.:
 ```json
@@ -186,6 +188,91 @@ Clicking </> on any auto-generated page opens a modal showing the raw structured
   "@context": "https://schema.org"
 }
 ```
+
+#### Auto-Generate: Current vs Future Behavior
+- **Current:** Auto-Generate uses the same schema type form fields as Manual Schema. The AI fills each field (Headline, URL, Description, Image URL, etc.) based on page content, URL, and Personalization data. The user then reviews and edits each field before saving.
+- **Future (roadmap):** Auto-Generate will shift to a fully AI-driven model where the AI reads the live page content directly and produces the entire schema without relying on the manual form field structure. This will produce more specific, page-aware schemas automatically.
+
+#### Schema Field Reference
+
+##### Person and Organization Schema Fields
+Both types share the same form. A radio toggle at the top switches between Person and Organization (sets the `@type`).
+
+| Field | JSON-LD property | Notes |
+|---|---|---|
+| Name | `name` | Full name of person or official brand name of organization |
+| URL | `url` | Canonical URL representing the entity, usually homepage or about page |
+| Image URL | `image` | Profile photo (Person) or logo (Organization). Square/near-square recommended |
+| Job Title | `jobTitle` | Person's professional role (e.g. "Founder", "Creative Director"). Person only |
+| Company | `worksFor.name` | Organization the person is affiliated with. Person only |
+| Social Profiles | `sameAs` (array) | Multiple URLs: LinkedIn, X, Instagram, Facebook, YouTube, Wikipedia, etc. One per entry |
+
+##### Article Schema Fields
+Article Type selector at top: **Article**, **BlogPosting**, **TechArticle**, **NewsArticle** (sets `@type`).
+
+| Field | JSON-LD property | Notes |
+|---|---|---|
+| Article Type | `@type` | One of: Article, BlogPosting, TechArticle, NewsArticle |
+| Headline | `headline` | Article title, under 110 chars, match visible H1 |
+| URL | `mainEntityOfPage.@id` | Canonical URL of the article page |
+| Description | `description` | 1-2 sentence summary |
+| Image URL | `image.url` | Featured image, absolute URL |
+| Image Width | `image.width` | Pixel width, Google recommends 1200+ |
+| Image Height | `image.height` | Pixel height, Google recommends 630+ |
+| Author Name | `author.name` | Individual who wrote the article |
+| Author URL | `author.url` | Author's profile or bio page |
+| Publisher Name | `publisher.name` | Publishing organization |
+| Publisher Logo URL | `publisher.logo.url` | Publisher logo, 600x60px preferred |
+| Date Published | `datePublished` | ISO 8601: YYYY-MM-DD |
+| Date Modified | `dateModified` | ISO 8601: YYYY-MM-DD, update on edits |
+
+##### Book Schema Fields
+
+| Field | JSON-LD property | Notes |
+|---|---|---|
+| Book Title | `name` | Full title as appears on cover |
+| URL | `url` | Canonical URL of the book page |
+| Author | `author.name` | Primary author's full name |
+| Reviewer Name | `review.author.name` | Person writing the review |
+| Rating Value | `review.reviewRating.ratingValue` | Numeric score given (e.g. 4.5) |
+| Best Rating | `review.reviewRating.bestRating` | Max possible score (e.g. 5 or 10) |
+| Edition: Format | `workExample.bookFormat` | Hardcover, Paperback, Ebook, Audiobook |
+| Edition: ISBN | `workExample.isbn` | ISBN for that specific edition |
+| Edition: URL | `workExample.url` | Purchase or download page for that edition |
+| Edition: Date | `workExample.datePublished` | ISO 8601 publication date for that edition |
+
+Editions section is a repeater: click Add Edition to add a new row per format.
+
+##### Restaurant Schema Fields
+
+| Field | JSON-LD property | Notes |
+|---|---|---|
+| Name | `name` | Official restaurant name |
+| Description | `description` | 1-3 sentences about cuisine, atmosphere, uniqueness |
+| Phone | `telephone` | Include country code (e.g. +1-555-234-5678) |
+| Street | `address.streetAddress` | Building number and street |
+| City | `address.addressLocality` | City or locality |
+| State | `address.addressRegion` | State, province, or region |
+| Postal Code | `address.postalCode` | ZIP or postal code |
+| Country | `address.addressCountry` | Two-letter ISO country code (e.g. US, IN, GB) |
+| Cuisine | `servesCuisine` | Cuisine type(s), comma-separated (e.g. "Italian, Mediterranean") |
+| Menu URL | `hasMenu` | URL to the online menu page |
+| Price Range | `priceRange` | Dollar sign notation: $, $$, $$$, $$$$ |
+| Working Hours | `openingHoursSpecification` | Per-day toggles (Mon-Sun). Each toggled day gets time slot rows with Opens and Closes in 24h format. Multi-shift: add multiple time slot rows per day |
+
+##### Service Schema Fields
+
+| Field | JSON-LD property | Notes |
+|---|---|---|
+| Service Name | `name` | Name of the specific service |
+| Description | `description` | 1-3 sentences on what the service includes and delivers |
+| URL | `url` | Canonical URL of the service page |
+| Service Type | `serviceType` | Category label (e.g. "Web Design", "SEO Consulting") |
+| Provider Name | `provider.name` | Person or organization providing the service |
+| Area Served | `areaServed` | City, country, or "Worldwide" for remote services |
+| Telephone | `provider.telephone` | Contact phone with country code |
+| Price | `offers.price` | Numeric price or starting price |
+| Currency | `offers.priceCurrency` | ISO 4217 code: USD, EUR, GBP, INR, etc. |
 
 ### 1D. 404 Monitor Tab
 "Keeps track of all 404 errors on the website."

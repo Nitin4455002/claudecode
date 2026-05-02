@@ -96,12 +96,14 @@
     .note { background: #fff8f0; border-left: 3px solid #f59e0b; border-radius: 0 8px 8px 0; padding: 12px 16px; margin: 20px 0; }
     .note-label { font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #d97706; margin-bottom: 4px; }
     .note p { color: #78350f; margin: 0; font-size: 0.93rem; }
-    .field-table { width: 100%; border-collapse: collapse; margin: 16px 0 24px; font-size: 0.9rem; }
-    .field-table th { text-align: left; padding: 10px 12px; background: #fafafa; border: 1px solid #efefef; color: #555; font-weight: 600; }
-    .field-table td { padding: 10px 12px; border: 1px solid #f0f0f0; vertical-align: top; }
-    .field-table tr:nth-child(even) td { background: #fafafa; }
-    .field-name { font-weight: 600; color: #0a0a0a; font-family: "SF Mono","Fira Code",Consolas,monospace; font-size: 0.85rem; }
-    .section-label { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #7c3aed; background: #f3f0ff; padding: 2px 8px; border-radius: 4px; margin-bottom: 10px; }
+    .field-block { margin: 36px 0 28px; }
+    .field-block-header { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+    .field-num { display: inline-flex; align-items: center; justify-content: center; width: 38px; height: 38px; background: linear-gradient(135deg, #7c3aed, #a78bfa); color: #fff; font-weight: 700; font-size: 14px; border-radius: 8px; flex-shrink: 0; box-shadow: 0 2px 6px rgba(124,58,237,0.25); }
+    .field-block-title { font-size: 1.18rem; font-weight: 700; color: #0a0a0a; letter-spacing: -0.01em; }
+    .field-block-desc { color: #444; margin-bottom: 14px; font-size: 0.97rem; line-height: 1.7; }
+    .field-block-desc code { background: #f3f0ff; color: #6d28d9; padding: 1px 6px; border-radius: 4px; font-size: 0.85em; font-family: "SF Mono","Fira Code",Consolas,monospace; }
+    .screenshot-slot { background: #fafafa; border: 1px dashed #e0d8f0; border-radius: 10px; padding: 36px 20px; text-align: center; color: #b8b2c8; font-size: 0.85rem; margin-top: 6px; margin-bottom: 8px; }
+    .screenshot-slot::before { content: "Screenshot"; display: block; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #c8c0dc; }
     .faq-section { margin-top: 48px; padding-top: 32px; border-top: 1px solid #f0f0f0; }
     .faq-section h2 { border-bottom: none; padding-bottom: 0; margin-bottom: 24px; }
     .faq-item { border: 1px solid #efefef; border-radius: 10px; padding: 18px 20px; margin-bottom: 10px; }
@@ -176,131 +178,154 @@
   </section>
 
   <section id="fields-basic">
-    <h2>Name, Description, Phone</h2>
-    <div class="section-label">Basic Info</div>
-    <table class="field-table">
-      <thead>
-        <tr>
-          <th>Field</th>
-          <th>What to enter</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><span class="field-name">Name</span></td>
-          <td>The official name of the restaurant exactly as it appears on signage and branding (e.g. "The Blue Spoon"). Becomes the <code>name</code> property.</td>
-        </tr>
-        <tr>
-          <td><span class="field-name">Description</span></td>
-          <td>A 1 to 3 sentence description of the restaurant. Describe the cuisine, atmosphere, or what makes this place unique. Becomes the <code>description</code> property.</td>
-        </tr>
-        <tr>
-          <td><span class="field-name">Phone</span></td>
-          <td>The restaurant's primary phone number including country code (e.g. +1-555-234-5678). Becomes the <code>telephone</code> property.</td>
-        </tr>
-      </tbody>
-    </table>
+    <h2>Restaurant Schema Setup &amp; Available Options</h2>
+    <p>Now let's have a closer look at each of the available options in detail.</p>
+
+    <h3>Basic Info</h3>
+
+    <div class="field-block">
+      <div class="field-block-header">
+        <div class="field-num">1</div>
+        <div class="field-block-title">Name</div>
+      </div>
+      <p class="field-block-desc">Enter the official name of the restaurant exactly as it appears on signage, menus, and branding (for example, "The Blue Spoon"). Do not include the location or a tagline in this field. Consistency across your schema, Google Business Profile, and directory listings is important for Google's local entity recognition. This value populates the <code>name</code> property in the JSON-LD output.</p>
+      <div class="screenshot-slot"></div>
+    </div>
+
+    <div class="field-block">
+      <div class="field-block-header">
+        <div class="field-num">2</div>
+        <div class="field-block-title">Description</div>
+      </div>
+      <p class="field-block-desc">Write 1 to 3 sentences describing the restaurant. Include the cuisine type, the atmosphere or dining experience, and what makes this place unique. Write something that would attract your audience as well as help search engines understand the business. This value populates the <code>description</code> property in the JSON-LD output.</p>
+      <div class="screenshot-slot"></div>
+    </div>
+
+    <div class="field-block">
+      <div class="field-block-header">
+        <div class="field-num">3</div>
+        <div class="field-block-title">Phone</div>
+      </div>
+      <p class="field-block-desc">Enter the restaurant's primary phone number including the country code (for example, +1-555-234-5678 or +44-20-1234-5678). Including the country code ensures Google can match this to a verified business listing across regions. This value populates the <code>telephone</code> property in the JSON-LD output.</p>
+      <div class="screenshot-slot"></div>
+    </div>
   </section>
 
   <section id="fields-address">
     <h2>Address</h2>
-    <div class="section-label">Address</div>
-    <p>The Address section maps directly to the <code>address</code> object in the JSON-LD, using the <code>PostalAddress</code> type. Fill every field that applies to your location.</p>
-    <table class="field-table">
-      <thead>
-        <tr>
-          <th>Field</th>
-          <th>What to enter</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><span class="field-name">Street</span></td>
-          <td>The street address including building number (e.g. "42 Main Street, Suite 3"). Becomes <code>address.streetAddress</code>.</td>
-        </tr>
-        <tr>
-          <td><span class="field-name">City</span></td>
-          <td>The city or locality (e.g. "Brooklyn"). Becomes <code>address.addressLocality</code>.</td>
-        </tr>
-        <tr>
-          <td><span class="field-name">State</span></td>
-          <td>The state, province, or region (e.g. "NY" or "New York"). Becomes <code>address.addressRegion</code>.</td>
-        </tr>
-        <tr>
-          <td><span class="field-name">Postal Code</span></td>
-          <td>The ZIP code or postal code (e.g. "11201"). Becomes <code>address.postalCode</code>.</td>
-        </tr>
-        <tr>
-          <td><span class="field-name">Country</span></td>
-          <td>The two-letter ISO country code (e.g. "US" for United States, "IN" for India, "GB" for United Kingdom). Becomes <code>address.addressCountry</code>.</td>
-        </tr>
-      </tbody>
-    </table>
-    <div class="tip">
-      <div class="tip-label">Tip</div>
-      <p>Accurate address data is critical for Google Maps integration. Make sure the address in your schema exactly matches the address on your Google Business Profile and other directory listings.</p>
+    <p>The Address section maps to the <code>address</code> object in the JSON-LD using the <code>PostalAddress</code> type. Fill every field that applies. Accuracy here is critical for Google Maps integration.</p>
+
+    <div class="field-block">
+      <div class="field-block-header">
+        <div class="field-num">4</div>
+        <div class="field-block-title">Street</div>
+      </div>
+      <p class="field-block-desc">Enter the street address including the building number and any suite or unit information (for example, "42 Main Street, Suite 3"). This should match the address as it appears on your Google Business Profile and other directory listings. This value populates the <code>address.streetAddress</code> property.</p>
+      <div class="screenshot-slot"></div>
+    </div>
+
+    <div class="field-block">
+      <div class="field-block-header">
+        <div class="field-num">5</div>
+        <div class="field-block-title">City</div>
+      </div>
+      <p class="field-block-desc">Enter the city or locality where the restaurant is located (for example, "Brooklyn" or "Mumbai"). Use the official city name, not a neighborhood or district name. This value populates the <code>address.addressLocality</code> property.</p>
+      <div class="screenshot-slot"></div>
+    </div>
+
+    <div class="field-block">
+      <div class="field-block-header">
+        <div class="field-num">6</div>
+        <div class="field-block-title">State</div>
+      </div>
+      <p class="field-block-desc">Enter the state, province, or region where the restaurant is located (for example, "NY" or "New York" or "Maharashtra"). You can use the full name or the standard abbreviation. This value populates the <code>address.addressRegion</code> property.</p>
+      <div class="screenshot-slot"></div>
+    </div>
+
+    <div class="field-block">
+      <div class="field-block-header">
+        <div class="field-num">7</div>
+        <div class="field-block-title">Postal Code</div>
+      </div>
+      <p class="field-block-desc">Enter the ZIP code or postal code for the restaurant's location (for example, "11201" or "400001"). This value populates the <code>address.postalCode</code> property and is used by Google Maps and local search to pinpoint the exact location.</p>
+      <div class="screenshot-slot"></div>
+    </div>
+
+    <div class="field-block">
+      <div class="field-block-header">
+        <div class="field-num">8</div>
+        <div class="field-block-title">Country</div>
+      </div>
+      <p class="field-block-desc">Enter the two-letter ISO 3166-1 alpha-2 country code for the country where the restaurant is located (for example, "US" for United States, "IN" for India, "GB" for United Kingdom, "AU" for Australia). Always use the two-letter code, not the full country name. This value populates the <code>address.addressCountry</code> property.</p>
+      <div class="screenshot-slot"></div>
     </div>
   </section>
 
   <section id="fields-details">
     <h2>Cuisine, Menu URL, Price Range</h2>
-    <div class="section-label">Restaurant Details</div>
-    <table class="field-table">
-      <thead>
-        <tr>
-          <th>Field</th>
-          <th>What to enter</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><span class="field-name">Cuisine</span></td>
-          <td>The type of cuisine served (e.g. "Italian", "Japanese", "Mediterranean", "Indian"). You can list multiple cuisine types separated by commas. Becomes the <code>servesCuisine</code> property.</td>
-        </tr>
-        <tr>
-          <td><span class="field-name">Menu URL</span></td>
-          <td>A direct URL to the online menu page (e.g. <code>https://yourdomain.com/menu</code>). Becomes the <code>hasMenu</code> property. Leave empty if no online menu exists.</td>
-        </tr>
-        <tr>
-          <td><span class="field-name">Price Range</span></td>
-          <td>The relative price level using dollar signs: <strong>$</strong> for inexpensive, <strong>$$</strong> for moderate, <strong>$$$</strong> for expensive, <strong>$$$$</strong> for very expensive. Becomes the <code>priceRange</code> property.</td>
-        </tr>
-      </tbody>
-    </table>
+
+    <div class="field-block">
+      <div class="field-block-header">
+        <div class="field-num">9</div>
+        <div class="field-block-title">Cuisine</div>
+      </div>
+      <p class="field-block-desc">Enter the type or types of cuisine served at the restaurant (for example, "Italian", "Japanese", "Mediterranean", "Indian"). You can list multiple cuisine types separated by commas if the restaurant serves more than one style. Be specific rather than generic: "South Indian" is more useful than just "Indian". This value populates the <code>servesCuisine</code> property.</p>
+      <div class="screenshot-slot"></div>
+    </div>
+
+    <div class="field-block">
+      <div class="field-block-header">
+        <div class="field-num">10</div>
+        <div class="field-block-title">Menu URL</div>
+      </div>
+      <p class="field-block-desc">Enter a direct URL to the online menu page (for example, <code>https://yourdomain.com/menu</code>). This should link to a page where visitors can see the actual menu. If the restaurant does not have an online menu page, leave this field empty. This value populates the <code>hasMenu</code> property in the JSON-LD output.</p>
+      <div class="screenshot-slot"></div>
+    </div>
+
+    <div class="field-block">
+      <div class="field-block-header">
+        <div class="field-num">11</div>
+        <div class="field-block-title">Price Range</div>
+      </div>
+      <p class="field-block-desc">Enter the relative price level using the standard dollar sign notation. Use <strong>$</strong> for inexpensive (street food, fast casual), <strong>$$</strong> for moderate (casual dining), <strong>$$$</strong> for expensive (upscale dining), and <strong>$$$$</strong> for very expensive (fine dining). This value populates the <code>priceRange</code> property and appears in Google Knowledge Panels and Maps listings.</p>
+      <div class="screenshot-slot"></div>
+    </div>
   </section>
 
   <section id="fields-hours">
     <h2>Working Hours</h2>
-    <div class="section-label">Working Hours</div>
-    <p>The Working Hours section lets you define opening hours for each day of the week. Each day has an individual toggle to mark it as open or closed. For days the restaurant is open, you add one or more time slots (shifts).</p>
+    <p>The Working Hours section lets you define opening hours for each day of the week. Each day has an individual toggle to mark it as open or closed. Days left off are treated as closed and excluded from the <code>openingHoursSpecification</code> in the JSON-LD.</p>
 
-    <h3>Day toggles</h3>
-    <p>Seven days appear: <strong>Monday through Sunday</strong>. Toggle each day on to mark it as a day the restaurant is open. Days left toggled off are treated as closed and excluded from the <code>openingHoursSpecification</code> in the JSON-LD.</p>
+    <div class="field-block">
+      <div class="field-block-header">
+        <div class="field-num">12</div>
+        <div class="field-block-title">Day Toggles (Monday through Sunday)</div>
+      </div>
+      <p class="field-block-desc">Seven day toggles appear: Monday through Sunday. Toggle each day on to mark it as a day the restaurant is open. Days left toggled off are treated as closed and will not appear in the JSON-LD output. For each day you toggle on, you will add one or more time slots below.</p>
+      <div class="screenshot-slot"></div>
+    </div>
 
-    <h3>Time slots and multi-shift support</h3>
-    <p>For each day that is toggled on, you can add time slots. Each time slot has two fields:</p>
-    <table class="field-table">
-      <thead>
-        <tr>
-          <th>Field</th>
-          <th>What to enter</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><span class="field-name">Opens</span></td>
-          <td>The opening time for this shift in 24-hour format (e.g. 09:00 for 9 AM, 18:00 for 6 PM). Becomes <code>openingHoursSpecification.opens</code>.</td>
-        </tr>
-        <tr>
-          <td><span class="field-name">Closes</span></td>
-          <td>The closing time for this shift in 24-hour format (e.g. 15:00 for 3 PM, 22:30 for 10:30 PM). Becomes <code>openingHoursSpecification.closes</code>.</td>
-        </tr>
-      </tbody>
-    </table>
-    <p>To add a second shift for the same day (for example, a lunch service and a dinner service), add a second time slot row for that day. Each shift is a separate <code>openingHoursSpecification</code> entry in the JSON-LD.</p>
+    <div class="field-block">
+      <div class="field-block-header">
+        <div class="field-num">13</div>
+        <div class="field-block-title">Opens</div>
+      </div>
+      <p class="field-block-desc">Enter the opening time for a shift in 24-hour format (for example, 09:00 for 9 AM, 12:00 for noon, 18:00 for 6 PM). Each time slot row has an Opens and a Closes field. For restaurants open in one continuous block, add one time slot per day. For multi-shift restaurants, add multiple rows. This value populates <code>openingHoursSpecification.opens</code>.</p>
+      <div class="screenshot-slot"></div>
+    </div>
+
+    <div class="field-block">
+      <div class="field-block-header">
+        <div class="field-num">14</div>
+        <div class="field-block-title">Closes</div>
+      </div>
+      <p class="field-block-desc">Enter the closing time for a shift in 24-hour format (for example, 15:00 for 3 PM, 22:30 for 10:30 PM). For a restaurant open for lunch 12:00-15:00 and dinner 18:00-22:00, add two rows for that day: one with Opens 12:00 Closes 15:00, and a second with Opens 18:00 Closes 22:00. Each shift becomes a separate <code>openingHoursSpecification</code> entry in the JSON-LD output.</p>
+      <div class="screenshot-slot"></div>
+    </div>
+
     <div class="note">
-      <div class="note-label">Example</div>
-      <p>A restaurant open for lunch 12:00-15:00 and dinner 18:00-22:00 on Fridays would have two rows for Friday: one with Opens 12:00 Closes 15:00, and a second with Opens 18:00 Closes 22:00.</p>
+      <div class="note-label">Multi-shift example</div>
+      <p>A restaurant open for lunch (12:00-15:00) and dinner (18:00-22:00) on Fridays needs two time slot rows for Friday. First row: Opens 12:00, Closes 15:00. Second row: Opens 18:00, Closes 22:00. Toggle Friday on and click Add Time Slot to create the second row.</p>
     </div>
   </section>
 

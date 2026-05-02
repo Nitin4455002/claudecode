@@ -96,12 +96,14 @@
     .note { background: #fff8f0; border-left: 3px solid #f59e0b; border-radius: 0 8px 8px 0; padding: 12px 16px; margin: 20px 0; }
     .note-label { font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #d97706; margin-bottom: 4px; }
     .note p { color: #78350f; margin: 0; font-size: 0.93rem; }
-    .field-table { width: 100%; border-collapse: collapse; margin: 16px 0 24px; font-size: 0.9rem; }
-    .field-table th { text-align: left; padding: 10px 12px; background: #fafafa; border: 1px solid #efefef; color: #555; font-weight: 600; }
-    .field-table td { padding: 10px 12px; border: 1px solid #f0f0f0; vertical-align: top; }
-    .field-table tr:nth-child(even) td { background: #fafafa; }
-    .field-name { font-weight: 600; color: #0a0a0a; font-family: "SF Mono","Fira Code",Consolas,monospace; font-size: 0.85rem; }
-    .section-label { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #7c3aed; background: #f3f0ff; padding: 2px 8px; border-radius: 4px; margin-bottom: 10px; }
+    .field-block { margin: 36px 0 28px; }
+    .field-block-header { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+    .field-num { display: inline-flex; align-items: center; justify-content: center; width: 38px; height: 38px; background: linear-gradient(135deg, #7c3aed, #a78bfa); color: #fff; font-weight: 700; font-size: 14px; border-radius: 8px; flex-shrink: 0; box-shadow: 0 2px 6px rgba(124,58,237,0.25); }
+    .field-block-title { font-size: 1.18rem; font-weight: 700; color: #0a0a0a; letter-spacing: -0.01em; }
+    .field-block-desc { color: #444; margin-bottom: 14px; font-size: 0.97rem; line-height: 1.7; }
+    .field-block-desc code { background: #f3f0ff; color: #6d28d9; padding: 1px 6px; border-radius: 4px; font-size: 0.85em; font-family: "SF Mono","Fira Code",Consolas,monospace; }
+    .screenshot-slot { background: #fafafa; border: 1px dashed #e0d8f0; border-radius: 10px; padding: 36px 20px; text-align: center; color: #b8b2c8; font-size: 0.85rem; margin-top: 6px; margin-bottom: 8px; }
+    .screenshot-slot::before { content: "Screenshot"; display: block; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #c8c0dc; }
     .faq-section { margin-top: 48px; padding-top: 32px; border-top: 1px solid #f0f0f0; }
     .faq-section h2 { border-bottom: none; padding-bottom: 0; margin-bottom: 24px; }
     .faq-item { border: 1px solid #efefef; border-radius: 10px; padding: 18px 20px; margin-bottom: 10px; }
@@ -193,138 +195,147 @@
   </section>
 
   <section id="fields-basic">
-    <h2>Article Type, Headline, URL, Description</h2>
-    <div class="section-label">Basic Fields</div>
-    <table class="field-table">
-      <thead>
-        <tr>
-          <th>Field</th>
-          <th>What to enter</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><span class="field-name">Article Type</span></td>
-          <td>Select from the four subtypes: Article, BlogPosting, TechArticle, or NewsArticle. This sets the <code>@type</code> property in the JSON-LD output.</td>
-        </tr>
-        <tr>
-          <td><span class="field-name">Headline</span></td>
-          <td>The title of the article as it should appear in structured data. Keep it under 110 characters. Match it closely to the visible heading on the page. Becomes the <code>headline</code> property.</td>
-        </tr>
-        <tr>
-          <td><span class="field-name">URL</span></td>
-          <td>The canonical URL of this article page (e.g. <code>https://yourdomain.com/blog/my-post</code>). Becomes the <code>mainEntityOfPage</code> identifier.</td>
-        </tr>
-        <tr>
-          <td><span class="field-name">Description</span></td>
-          <td>A brief summary of the article, ideally 1 to 2 sentences. This is not the meta description but the structured data description. Becomes the <code>description</code> property.</td>
-        </tr>
-      </tbody>
-    </table>
+    <h2>Article Schema Setup &amp; Available Options</h2>
+    <p>Now let's have a closer look at each of the available options in detail. The form is organized into five groups: basic info, image details, author details, publisher details, and dates.</p>
+
+    <h3>Basic Info</h3>
+
+    <div class="field-block">
+      <div class="field-block-header">
+        <div class="field-num">1</div>
+        <div class="field-block-title">Article Type</div>
+      </div>
+      <p class="field-block-desc">Select the article subtype that best describes your content. RankFrame supports four options: <strong>Article</strong> for general editorial content, <strong>BlogPosting</strong> for individual blog entries or posts, <strong>TechArticle</strong> for technical documentation and developer guides, and <strong>NewsArticle</strong> for news stories and press releases. This selection sets the <code>@type</code> property in the JSON-LD output. When in doubt, use BlogPosting for blog pages and TechArticle for help or documentation pages.</p>
+      <div class="screenshot-slot"></div>
+    </div>
+
+    <div class="field-block">
+      <div class="field-block-header">
+        <div class="field-num">2</div>
+        <div class="field-block-title">Headline</div>
+      </div>
+      <p class="field-block-desc">Enter the title of the article as it should appear in structured data. Keep it under 110 characters and match it closely to the visible heading on the page. You can enter the name of the person here, or add a headline that contains their name. Avoid clickbait or keyword-stuffed titles. This value populates the <code>headline</code> property in the JSON-LD output.</p>
+      <div class="screenshot-slot"></div>
+    </div>
+
+    <div class="field-block">
+      <div class="field-block-header">
+        <div class="field-num">3</div>
+        <div class="field-block-title">URL</div>
+      </div>
+      <p class="field-block-desc">Enter the canonical URL of this specific article page (for example, <code>https://yourdomain.com/blog/my-post</code>). This should be the permanent, preferred URL for this content. It tells Google which URL is authoritative if the same content exists at multiple addresses. This value becomes the <code>mainEntityOfPage</code> identifier in the JSON-LD output.</p>
+      <div class="screenshot-slot"></div>
+    </div>
+
+    <div class="field-block">
+      <div class="field-block-header">
+        <div class="field-num">4</div>
+        <div class="field-block-title">Description</div>
+      </div>
+      <p class="field-block-desc">Write a brief summary of the article in 1 to 2 sentences. This is the structured data description, not the meta description tag, though they can match. Write a description that would attract your audience as well as search engines. You can also use this to create a dynamic description of the content. This value populates the <code>description</code> property in the JSON-LD output.</p>
+      <div class="screenshot-slot"></div>
+    </div>
   </section>
 
   <section id="fields-image">
     <h2>Image Details</h2>
-    <div class="section-label">Image Details</div>
-    <p>Google requires at least one image in article schema for rich result eligibility. The Image Details section has three fields:</p>
-    <table class="field-table">
-      <thead>
-        <tr>
-          <th>Field</th>
-          <th>What to enter</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><span class="field-name">Image URL</span></td>
-          <td>A direct URL to the article's featured or hero image. Use a full absolute URL (e.g. <code>https://framerusercontent.com/images/...</code>). Becomes the <code>image.url</code> property.</td>
-        </tr>
-        <tr>
-          <td><span class="field-name">Image Width</span></td>
-          <td>The pixel width of the image (e.g. 1200). Google recommends images at least 1200 pixels wide for standard rich results. Becomes <code>image.width</code>.</td>
-        </tr>
-        <tr>
-          <td><span class="field-name">Image Height</span></td>
-          <td>The pixel height of the image (e.g. 630). Use the actual dimensions of the file to keep schema accurate. Becomes <code>image.height</code>.</td>
-        </tr>
-      </tbody>
-    </table>
-    <div class="note">
-      <div class="note-label">Note</div>
-      <p>Google recommends a 1.91:1 aspect ratio for article images. 1200 x 630 is the standard. Images below 1200 pixels wide may not qualify for rich result features.</p>
+    <p>Google requires at least one image in article schema for rich result eligibility. All three image fields should be filled for best results.</p>
+
+    <div class="field-block">
+      <div class="field-block-header">
+        <div class="field-num">5</div>
+        <div class="field-block-title">Image URL</div>
+      </div>
+      <p class="field-block-desc">Enter a direct URL to the article's featured or hero image. Use a full absolute URL (for example, <code>https://framerusercontent.com/images/...</code>). Do not use a relative path. The image should visually represent the article content. Google will use this image in rich results and article carousels. This value populates the <code>image.url</code> property.</p>
+      <div class="screenshot-slot"></div>
+    </div>
+
+    <div class="field-block">
+      <div class="field-block-header">
+        <div class="field-num">6</div>
+        <div class="field-block-title">Image Width</div>
+      </div>
+      <p class="field-block-desc">Enter the pixel width of the image as a number (for example, 1200). Google recommends images at least 1200 pixels wide for standard rich results. Use the actual pixel dimensions of your file to keep schema accurate. Images under 1200 pixels wide may not qualify for certain rich result features. This value populates the <code>image.width</code> property.</p>
+      <div class="screenshot-slot"></div>
+    </div>
+
+    <div class="field-block">
+      <div class="field-block-header">
+        <div class="field-num">7</div>
+        <div class="field-block-title">Image Height</div>
+      </div>
+      <p class="field-block-desc">Enter the pixel height of the image as a number (for example, 630). A 1.91:1 aspect ratio (1200 x 630 pixels) is the standard Google recommends for article images. Use the actual height of your file. This value populates the <code>image.height</code> property.</p>
+      <div class="screenshot-slot"></div>
     </div>
   </section>
 
   <section id="fields-author">
     <h2>Author Details</h2>
-    <div class="section-label">Author Details</div>
-    <p>The Author Details section identifies who wrote the article. Google uses this for authorship attribution and E-E-A-T signals.</p>
-    <table class="field-table">
-      <thead>
-        <tr>
-          <th>Field</th>
-          <th>What to enter</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><span class="field-name">Author Name</span></td>
-          <td>The full name of the individual who wrote the article (e.g. "Jane Smith"). Becomes <code>author.name</code>. If the author is an organization rather than a person, use the organization name.</td>
-        </tr>
-        <tr>
-          <td><span class="field-name">Author URL</span></td>
-          <td>A URL for the author's profile, bio page, or personal website. This helps Google connect the author name to a verifiable online identity. Becomes <code>author.url</code>.</td>
-        </tr>
-      </tbody>
-    </table>
+    <p>Author details identify who wrote the article. Google uses this for authorship attribution and E-E-A-T signals.</p>
+
+    <div class="field-block">
+      <div class="field-block-header">
+        <div class="field-num">8</div>
+        <div class="field-block-title">Author Name</div>
+      </div>
+      <p class="field-block-desc">Enter the full name of the individual who wrote the article (for example, "Jane Smith"). Use the name exactly as it appears on the author's bio or profile. If the author is an organization rather than a person, enter the organization name. This value populates the <code>author.name</code> property and helps Google attribute the content to a verifiable entity.</p>
+      <div class="screenshot-slot"></div>
+    </div>
+
+    <div class="field-block">
+      <div class="field-block-header">
+        <div class="field-num">9</div>
+        <div class="field-block-title">Author URL</div>
+      </div>
+      <p class="field-block-desc">Enter a URL for the author's profile, bio page, or personal website (for example, <code>https://yourdomain.com/about</code> or a LinkedIn profile URL). This helps Google connect the author name to a verifiable online identity and strengthens the E-E-A-T (Experience, Expertise, Authoritativeness, Trustworthiness) signal for your content. This value populates the <code>author.url</code> property.</p>
+      <div class="screenshot-slot"></div>
+    </div>
   </section>
 
   <section id="fields-publisher">
     <h2>Publisher Details</h2>
-    <div class="section-label">Publisher Details</div>
-    <p>The Publisher Details section identifies the organization that published the article. This is usually your brand, studio, or company.</p>
-    <table class="field-table">
-      <thead>
-        <tr>
-          <th>Field</th>
-          <th>What to enter</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><span class="field-name">Publisher Name</span></td>
-          <td>The official name of the publishing organization (e.g. "7 Seers" or "Acme Design Studio"). Becomes <code>publisher.name</code>.</td>
-        </tr>
-        <tr>
-          <td><span class="field-name">Publisher Logo URL</span></td>
-          <td>A direct URL to the publisher's logo image. Google prefers a rectangular logo with a white or transparent background, ideally 600 x 60 pixels or similar proportions. Becomes <code>publisher.logo.url</code>.</td>
-        </tr>
-      </tbody>
-    </table>
+    <p>Publisher details identify the organization that published the article. This is usually your brand, studio, or company.</p>
+
+    <div class="field-block">
+      <div class="field-block-header">
+        <div class="field-num">10</div>
+        <div class="field-block-title">Publisher Name</div>
+      </div>
+      <p class="field-block-desc">Enter the official name of the publishing organization (for example, "7 Seers" or "Acme Design Studio"). This should match the name you use across your branding and other schema entries. Google uses this to identify the publisher entity and verify it against other signals on the web. This value populates the <code>publisher.name</code> property.</p>
+      <div class="screenshot-slot"></div>
+    </div>
+
+    <div class="field-block">
+      <div class="field-block-header">
+        <div class="field-num">11</div>
+        <div class="field-block-title">Publisher Logo URL</div>
+      </div>
+      <p class="field-block-desc">Enter a direct URL to the publisher's logo image. Google prefers a rectangular logo with a white or transparent background, ideally 600 x 60 pixels or similar proportions. Use a full absolute URL. This image appears alongside publisher attribution in Google News and article rich results. This value populates the <code>publisher.logo.url</code> property.</p>
+      <div class="screenshot-slot"></div>
+    </div>
   </section>
 
   <section id="fields-dates">
     <h2>Dates</h2>
-    <div class="section-label">Dates</div>
-    <p>Both date fields are important for Google's freshness signals and rich result display.</p>
-    <table class="field-table">
-      <thead>
-        <tr>
-          <th>Field</th>
-          <th>What to enter</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><span class="field-name">Date Published</span></td>
-          <td>The date the article was first published. Use ISO 8601 format: YYYY-MM-DD (e.g. 2026-05-02). Becomes <code>datePublished</code>.</td>
-        </tr>
-        <tr>
-          <td><span class="field-name">Date Modified</span></td>
-          <td>The date the article was last updated. If the article has never been edited since publication, use the same date as Date Published. Keep this up to date when you revise the content. Becomes <code>dateModified</code>.</td>
-        </tr>
-      </tbody>
-    </table>
+    <p>Both date fields are important for Google's freshness signals and for display in rich results.</p>
+
+    <div class="field-block">
+      <div class="field-block-header">
+        <div class="field-num">12</div>
+        <div class="field-block-title">Date Published</div>
+      </div>
+      <p class="field-block-desc">Enter the date this article was first published. Use ISO 8601 format: YYYY-MM-DD (for example, 2026-05-02). This is the date the content first went live, not the date you added the schema. Google uses this date in rich results and for freshness ranking signals. This value populates the <code>datePublished</code> property.</p>
+      <div class="screenshot-slot"></div>
+    </div>
+
+    <div class="field-block">
+      <div class="field-block-header">
+        <div class="field-num">13</div>
+        <div class="field-block-title">Date Modified</div>
+      </div>
+      <p class="field-block-desc">Enter the date this article was last updated. Use ISO 8601 format: YYYY-MM-DD. If the article has never been edited since its original publication, use the same date as Date Published. Update this field every time you make meaningful edits to the article content so Google's freshness signals stay accurate. This value populates the <code>dateModified</code> property.</p>
+      <div class="screenshot-slot"></div>
+    </div>
   </section>
 
   <section id="save-inject">
