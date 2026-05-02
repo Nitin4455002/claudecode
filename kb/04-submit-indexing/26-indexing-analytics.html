@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Indexing Analytics: Performance Dashboard | RankFrame Help</title>
+  <meta name="description" content="View live Google Search Console data inside RankFrame without leaving Framer. Understand clicks, impressions, CTR, position, and top keywords from the Performance Dashboard." />
+  <meta name="keywords" content="rankframe indexing analytics, performance dashboard rankframe, google search console framer plugin, clicks impressions CTR framer, rankframe keywords report" />
+  <link rel="canonical" href="https://rankframe.com/help/indexing-analytics" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Indexing Analytics: Performance Dashboard",
+    "description": "View live Google Search Console data inside RankFrame without leaving Framer. Understand clicks, impressions, CTR, position, and top keywords from the Performance Dashboard.",
+    "author": { "@type": "Organization", "name": "7 Seers", "url": "https://rankframe.com" },
+    "publisher": { "@type": "Organization", "name": "RankFrame", "url": "https://rankframe.com" },
+    "datePublished": "2026-05-02",
+    "dateModified": "2026-05-02",
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://rankframe.com/help/indexing-analytics" },
+    "keywords": "rankframe analytics, performance dashboard, google search console framer, clicks impressions position framer seo"
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does the data in the Performance Dashboard come from?",
+        "acceptedAnswer": { "@type": "Answer", "text": "All data is pulled live from Google Search Console using the account you connected in the Setup tab. RankFrame queries the Search Console API directly, so the numbers match what you would see if you opened Search Console in a browser." }
+      },
+      {
+        "@type": "Question",
+        "name": "Why does Average Position show a higher number if my site is ranking well?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Google Search Console reports position as a rank number, where 1 is the top result. A lower average position number means your pages appear higher in search results. A higher number means there is room to improve. For example, an average position of 3.2 is better than an average position of 18.5." }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I change the date range shown in the Performance Dashboard?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. Use the date range dropdown at the top of the dashboard to change the reporting window. The default is Last 28 Days. After selecting a new range, click the Reload button to refresh all metrics, the chart, and the drill-down tables." }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I see which keywords are driving traffic to my site?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Open the Keywords tab in the drill-down section below the chart. The table shows each keyword alongside its click count, impression count, and average position. Rows are paginated at 10 per page. Use the pagination controls to browse all results." }
+      },
+      {
+        "@type": "Question",
+        "name": "Do I need to leave Framer or open Google Search Console separately to use these analytics?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No. The Performance Dashboard pulls data directly from Google Search Console inside the RankFrame plugin. You never need to open a browser tab or log in to Search Console separately. All analytics are available from within Framer." }
+      }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Help Center",
+        "item": "https://rankframe.com/help"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Submit Indexing",
+        "item": "https://rankframe.com/help/submit-indexing"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Indexing Analytics",
+        "item": "https://rankframe.com/help/indexing-analytics"
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", sans-serif; background: #ffffff; color: #111111; line-height: 1.7; font-size: 16px; }
+    .page { max-width: 740px; margin: 0 auto; padding: 48px 24px 96px; }
+    .breadcrumb { display: flex; align-items: center; gap: 6px; font-size: 13px; color: #888; margin-bottom: 32px; flex-wrap: wrap; }
+    .breadcrumb a { color: #888; text-decoration: none; }
+    .breadcrumb a:hover { color: #7c3aed; }
+    .breadcrumb span { color: #ccc; }
+    .article-category { display: inline-block; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #7c3aed; background: #f3f0ff; padding: 3px 10px; border-radius: 999px; margin-bottom: 12px; }
+    h1 { font-size: 2rem; font-weight: 700; color: #0a0a0a; line-height: 1.25; margin-bottom: 14px; letter-spacing: -0.02em; }
+    .article-description { font-size: 1.05rem; color: #555; line-height: 1.65; margin-bottom: 10px; }
+    .article-meta { display: flex; gap: 16px; font-size: 13px; color: #aaa; margin-bottom: 36px; padding-bottom: 24px; border-bottom: 1px solid #f0f0f0; flex-wrap: wrap; }
+    .toc { background: #fafafa; border: 1px solid #efefef; border-radius: 10px; padding: 18px 22px; margin-bottom: 40px; }
+    .toc-title { font-size: 12px; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: #aaa; margin-bottom: 10px; }
+    .toc ol { list-style: none; padding: 0; }
+    .toc li { margin-bottom: 5px; }
+    .toc a { font-size: 14px; color: #555; text-decoration: none; }
+    .toc a:hover { color: #7c3aed; }
+    h2 { font-size: 1.3rem; font-weight: 600; color: #0a0a0a; margin: 40px 0 14px; padding-bottom: 8px; border-bottom: 1px solid #f0f0f0; letter-spacing: -0.01em; }
+    h3 { font-size: 1.05rem; font-weight: 600; color: #0a0a0a; margin: 24px 0 8px; }
+    p { color: #333; margin-bottom: 16px; }
+    ul, ol { padding-left: 22px; margin-bottom: 16px; }
+    li { color: #333; margin-bottom: 6px; }
+    strong { color: #0a0a0a; font-weight: 600; }
+    a { color: #7c3aed; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .tip { background: #f5f3ff; border-left: 3px solid #7c3aed; border-radius: 0 8px 8px 0; padding: 12px 16px; margin: 20px 0; }
+    .tip-label { font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #7c3aed; margin-bottom: 4px; }
+    .tip p { color: #4c1d95; margin: 0; font-size: 0.93rem; }
+    .note { background: #fff8f0; border-left: 3px solid #f59e0b; border-radius: 0 8px 8px 0; padding: 12px 16px; margin: 20px 0; }
+    .note-label { font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #d97706; margin-bottom: 4px; }
+    .note p { color: #78350f; margin: 0; font-size: 0.93rem; }
+    .step-list { list-style: none; padding: 0; counter-reset: steps; margin-bottom: 16px; }
+    .step-list li { counter-increment: steps; display: flex; gap: 14px; padding: 12px 0; border-bottom: 1px solid #f5f5f5; }
+    .step-list li:last-child { border-bottom: none; }
+    .step-num { width: 26px; height: 26px; background: #7c3aed; color: #fff; font-size: 12px; font-weight: 700; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+    .step-body { flex: 1; }
+    .step-title { font-weight: 600; color: #0a0a0a; font-size: 0.95rem; margin-bottom: 2px; }
+    .step-desc { color: #555; font-size: 0.9rem; }
+    .faq-section { margin-top: 48px; padding-top: 32px; border-top: 1px solid #f0f0f0; }
+    .faq-section h2 { border-bottom: none; padding-bottom: 0; margin-bottom: 24px; }
+    .faq-item { border: 1px solid #efefef; border-radius: 10px; padding: 18px 20px; margin-bottom: 10px; }
+    .faq-q { font-weight: 600; color: #0a0a0a; font-size: 0.95rem; margin-bottom: 8px; }
+    .faq-a { color: #555; font-size: 0.93rem; line-height: 1.65; }
+    .related-section { margin-top: 48px; padding-top: 32px; border-top: 1px solid #f0f0f0; }
+    .related-section h2 { border-bottom: none; padding-bottom: 0; margin-bottom: 16px; font-size: 1rem; color: #666; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; }
+    .related-links { list-style: none; padding: 0; }
+    .related-links li { margin-bottom: 8px; }
+    .related-links a { font-size: 0.95rem; color: #7c3aed; display: flex; align-items: center; gap: 6px; }
+    .related-links a::before { content: "→"; font-size: 12px; }
+    .cta-box { background: linear-gradient(135deg, #f5f3ff, #faf0ff); border: 1px solid #e8e0ff; border-radius: 12px; padding: 24px 28px; margin-top: 40px; text-align: center; }
+    .cta-box h3 { font-size: 1.1rem; color: #0a0a0a; margin-bottom: 8px; }
+    .cta-box p { color: #666; font-size: 0.9rem; margin-bottom: 16px; }
+    .cta-btn { display: inline-block; background: #7c3aed; color: #fff; font-weight: 600; font-size: 0.9rem; padding: 10px 22px; border-radius: 8px; text-decoration: none; }
+    .cta-btn:hover { background: #6d28d9; text-decoration: none; }
+    .seo-panel { margin-top: 64px; border-top: 2px dashed #e8e0ff; padding-top: 36px; }
+    .seo-panel-header { margin-bottom: 20px; }
+    .seo-panel-title { font-size: 11px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: #7c3aed; }
+    .seo-panel-sub { font-size: 12px; color: #aaa; margin-top: 3px; }
+    .seo-fields { display: grid; gap: 10px; margin-bottom: 28px; }
+    .seo-field { background: #fafafa; border: 1px solid #efefef; border-radius: 8px; padding: 14px 16px; position: relative; }
+    .seo-field-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+    .seo-field-label { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #bbb; }
+    .seo-copy-btn { font-size: 10px; font-weight: 600; color: #7c3aed; background: #f3f0ff; border: none; border-radius: 4px; padding: 3px 9px; cursor: pointer; transition: background 0.15s; }
+    .seo-copy-btn:hover { background: #e8e0ff; }
+    .seo-copy-btn.ok { color: #059669; background: #ecfdf5; }
+    .seo-field-value { font-size: 0.88rem; color: #333; line-height: 1.55; word-break: break-word; user-select: all; }
+    .seo-schemas { display: grid; gap: 14px; }
+    .seo-schema { border: 1px solid #efefef; border-radius: 8px; overflow: hidden; }
+    .seo-schema-header { display: flex; justify-content: space-between; align-items: center; padding: 10px 16px; background: #fafafa; border-bottom: 1px solid #efefef; }
+    .seo-schema-type { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #bbb; }
+    .seo-schema-code { background: #0d0d0d; color: #d4d4d4; font-family: "SF Mono","Fira Code",Consolas,monospace; font-size: 0.75rem; line-height: 1.65; padding: 16px 18px; margin: 0; overflow-x: auto; white-space: pre; user-select: all; }
+    .field-block { margin: 36px 0 28px; }
+    .field-block-header { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+    .field-num { display: inline-flex; align-items: center; justify-content: center; width: 38px; height: 38px; background: linear-gradient(135deg, #7c3aed, #a78bfa); color: #fff; font-weight: 700; font-size: 14px; border-radius: 8px; flex-shrink: 0; box-shadow: 0 2px 6px rgba(124,58,237,0.25); }
+    .field-block-title { font-size: 1.18rem; font-weight: 700; color: #0a0a0a; letter-spacing: -0.01em; }
+    .field-block-desc { color: #444; margin-bottom: 14px; font-size: 0.97rem; line-height: 1.7; }
+    .field-block-desc code { background: #f3f0ff; color: #6d28d9; padding: 1px 6px; border-radius: 4px; font-size: 0.85em; font-family: "SF Mono","Fira Code",Consolas,monospace; }
+    .screenshot-slot { background: #fafafa; border: 1px dashed #e0d8f0; border-radius: 10px; padding: 36px 20px; text-align: center; color: #b8b2c8; font-size: 0.85rem; margin-top: 6px; margin-bottom: 8px; }
+    .screenshot-slot::before { content: "Screenshot"; display: block; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #c8c0dc; }
+    .metric-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 18px 0; }
+    .metric-card { background: #fafafa; border: 1px solid #efefef; border-radius: 10px; padding: 16px 18px; }
+    .metric-card-label { font-size: 11px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: #aaa; margin-bottom: 6px; }
+    .metric-card-value { font-size: 1.4rem; font-weight: 700; color: #7c3aed; letter-spacing: -0.02em; }
+    .metric-card-desc { font-size: 0.82rem; color: #888; margin-top: 4px; }
+    .tab-strip { display: flex; gap: 6px; flex-wrap: wrap; margin: 14px 0 8px; }
+    .tab-pill { display: inline-block; font-size: 13px; font-weight: 600; color: #555; background: #f3f0ff; padding: 5px 14px; border-radius: 999px; border: 1px solid #e8e0ff; }
+    .tab-pill.active { background: #7c3aed; color: #fff; border-color: #7c3aed; }
+    .data-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; margin-top: 12px; }
+    .data-table th { text-align: left; font-size: 10px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: #aaa; padding: 8px 10px; border-bottom: 1px solid #efefef; }
+    .data-table td { padding: 9px 10px; border-bottom: 1px solid #f5f5f5; color: #333; }
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table tr:hover td { background: #fafafa; }
+    .pagination-label { font-size: 12px; color: #aaa; margin-top: 10px; }
+    .verified-badge { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; color: #059669; background: #ecfdf5; border: 1px solid #bbf7d0; border-radius: 999px; padding: 3px 10px; }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <nav class="breadcrumb">
+    <a href="https://rankframe.com/help">Help Center</a>
+    <span>/</span>
+    <a href="https://rankframe.com/help/submit-indexing">Submit Indexing</a>
+    <span>/</span>
+    <span>Indexing Analytics</span>
+  </nav>
+
+  <div class="article-category">Submit Indexing</div>
+  <h1>Indexing Analytics: Performance Dashboard</h1>
+  <p class="article-description">The <strong>Performance Dashboard</strong> lets you view real Google Search Console data without ever leaving Framer. See clicks, impressions, CTR, average position, and your top keywords, all pulled live from your verified property.</p>
+  <div class="article-meta">
+    <span>4 min read</span>
+    <span>Last updated May 2, 2026</span>
+  </div>
+
+  <nav class="toc">
+    <div class="toc-title">On this page</div>
+    <ol>
+      <li><a href="#overview">Overview</a></li>
+      <li><a href="#controls">Field 1: Date Range and Reload</a></li>
+      <li><a href="#total-clicks">Field 2: Total Clicks</a></li>
+      <li><a href="#total-impressions">Field 3: Total Impressions</a></li>
+      <li><a href="#avg-ctr">Field 4: Average CTR</a></li>
+      <li><a href="#avg-position">Field 5: Avg Position</a></li>
+      <li><a href="#chart">Field 6: Clicks Over Time Chart</a></li>
+      <li><a href="#drilldown">Field 7: Drill-down Tabs</a></li>
+      <li><a href="#faq">Frequently asked questions</a></li>
+      <li><a href="#related">Related articles</a></li>
+    </ol>
+  </nav>
+
+  <section id="overview">
+    <h2>Overview</h2>
+    <p>The <strong>Performance Dashboard</strong> appears in the Analytics section of the Submit Indexing tab. It is labeled with the Google G logo and a <span class="verified-badge">Verified Property Insights</span> badge, confirming that the data comes directly from your connected Google Search Console property.</p>
+    <p>All metrics update in real time when you change the date range or click <strong>Reload</strong>. No data is stored inside RankFrame itself. Every number you see reflects what Google Search Console currently reports for your verified property.</p>
+
+    <div class="tip">
+      <div class="tip-label">Tip</div>
+      <p>You must complete the <strong>Setup</strong> tab (connect your Google account and verify your domain) before the Performance Dashboard shows any data. If the dashboard appears empty, check your connection status in the <strong>Setup</strong> tab first.</p>
+    </div>
+  </section>
+
+  <section id="controls">
+    <h2>Dashboard fields</h2>
+
+    <div class="field-block">
+      <div class="field-block-header">
+        <div class="field-num">1</div>
+        <div class="field-block-title">Date Range and Reload</div>
+      </div>
+
+      <p class="field-block-desc">These two controls sit at the top of the <strong>Performance Dashboard</strong> and determine which time window all metrics and charts reflect.</p>
+
+      <h3>Date Range dropdown</h3>
+      <p>Click the <strong>Date Range</strong> dropdown to choose a reporting window. The default is <strong>Last 28 Days</strong>. You can select a shorter or longer period depending on the trend you want to analyze. All four headline metrics, the bar chart, and the drill-down tables update together when you change this value.</p>
+
+      <h3>Reload button</h3>
+      <p>Click <strong>Reload</strong> to refresh all data from Google Search Console. Use this after changing the date range, or any time you want to pull the latest numbers. Data from Search Console typically has a delay of one to two days, so very recent activity may not appear immediately.</p>
+
+      <div class="screenshot-slot">Date Range dropdown and Reload button at top of Performance Dashboard</div>
+
+      <div class="note">
+        <div class="note-label">Note</div>
+        <p>Google Search Console data has an inherent delay of 24 to 48 hours. If today's traffic is not showing, that is expected behavior from Google, not a RankFrame issue.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="total-clicks">
+    <div class="field-block">
+      <div class="field-block-header">
+        <div class="field-num">2</div>
+        <div class="field-block-title">Total Clicks</div>
+      </div>
+
+      <p class="field-block-desc">The <strong>Total Clicks</strong> metric shows how many times users clicked through to your site from Google search results during the selected date range.</p>
+
+      <p>A click is counted each time a searcher selects one of your URLs from a Google results page. This metric is the most direct measure of traffic generated by organic search. Use it to track whether your SEO work is translating into actual visits.</p>
+
+      <div class="metric-grid">
+        <div class="metric-card">
+          <div class="metric-card-label">Total Clicks</div>
+          <div class="metric-card-value">1,240</div>
+          <div class="metric-card-desc">Example value for Last 28 Days</div>
+        </div>
+      </div>
+
+      <div class="tip">
+        <div class="tip-label">Tip</div>
+        <p>If impressions are high but clicks are low, your pages are appearing in search results but not compelling users to click. Review your page titles and meta descriptions to improve click-through rate.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="total-impressions">
+    <div class="field-block">
+      <div class="field-block-header">
+        <div class="field-num">3</div>
+        <div class="field-block-title">Total Impressions</div>
+      </div>
+
+      <p class="field-block-desc">The <strong>Total Impressions</strong> metric shows how many times any URL from your site appeared in Google search results during the selected date range, regardless of whether it was clicked.</p>
+
+      <p>An impression is counted each time one of your pages is shown in a results page, even if the user did not scroll down to see it. A growing impression count means Google is surfacing your content more often. Impressions often rise before clicks do, making this a useful early signal of improving SEO visibility.</p>
+
+      <div class="metric-grid">
+        <div class="metric-card">
+          <div class="metric-card-label">Total Impressions</div>
+          <div class="metric-card-value">48,300</div>
+          <div class="metric-card-desc">Example value for Last 28 Days</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="avg-ctr">
+    <div class="field-block">
+      <div class="field-block-header">
+        <div class="field-num">4</div>
+        <div class="field-block-title">Average CTR</div>
+      </div>
+
+      <p class="field-block-desc"><strong>Average CTR</strong> (click-through rate) is the percentage of impressions that resulted in a click. It is calculated as total clicks divided by total impressions, expressed as a percentage.</p>
+
+      <p>CTR tells you how well your search listings convert viewers into visitors. A higher CTR means your titles, descriptions, and rich results are resonating with searchers. Industry averages vary widely by position: pages at position 1 typically see CTR above 25%, while pages at position 10 often see less than 3%.</p>
+
+      <div class="metric-grid">
+        <div class="metric-card">
+          <div class="metric-card-label">Average CTR</div>
+          <div class="metric-card-value">2.6%</div>
+          <div class="metric-card-desc">Example value for Last 28 Days</div>
+        </div>
+      </div>
+
+      <div class="tip">
+        <div class="tip-label">Tip</div>
+        <p>To improve CTR without changing your ranking, rewrite your page titles to be more specific and action-oriented. Also make sure your meta descriptions accurately preview the page content.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="avg-position">
+    <div class="field-block">
+      <div class="field-block-header">
+        <div class="field-num">5</div>
+        <div class="field-block-title">Avg Position</div>
+      </div>
+
+      <p class="field-block-desc"><strong>Avg Position</strong> shows the average ranking position of your site's URLs across all search queries during the selected date range. Position 1 is the top result on page one.</p>
+
+      <p>A lower number is better. Position 1.0 means your pages consistently appear first. Position 15 means most of your pages appear on the second page of results. Watch this metric over time. A steady decrease in the average position number signals that your pages are climbing in Google rankings.</p>
+
+      <div class="metric-grid">
+        <div class="metric-card">
+          <div class="metric-card-label">Avg Position</div>
+          <div class="metric-card-value">14.2</div>
+          <div class="metric-card-desc">Lower is better. Position 1 = top result.</div>
+        </div>
+      </div>
+
+      <div class="note">
+        <div class="note-label">Note</div>
+        <p>Average position is a mean across all queries. A single high-traffic query ranked at position 2 combined with many low-traffic queries ranked at position 30 will produce a misleadingly high average. Use the <strong>Keywords</strong> drill-down tab to see per-query positions.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="chart">
+    <div class="field-block">
+      <div class="field-block-header">
+        <div class="field-num">6</div>
+        <div class="field-block-title">Clicks Over Time Chart</div>
+      </div>
+
+      <p class="field-block-desc">The <strong>Clicks Over Time</strong> bar chart visualizes your daily click volume across the selected date range. Each purple bar represents the number of clicks your site received on that day.</p>
+
+      <p>The chart title updates automatically to reflect the number of days in the selected range, for example: <strong>Clicks Over Time (28 Days)</strong>. Use this chart to spot trends, identify traffic spikes, and detect drops that may correspond to algorithm updates or site changes.</p>
+
+      <div class="screenshot-slot">Clicks Over Time bar chart with purple bars</div>
+
+      <ul>
+        <li>Taller bars indicate days with higher click volume.</li>
+        <li>A sudden drop may indicate a Google algorithm update, a page going down, or a significant ranking change.</li>
+        <li>A gradual upward trend over weeks indicates improving organic visibility.</li>
+      </ul>
+
+      <div class="tip">
+        <div class="tip-label">Tip</div>
+        <p>Compare two date ranges by reloading the dashboard with different selections. Note the shape of the click trend, not just the total. A consistent upward slope across 28 days is a stronger positive signal than one large spike.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="drilldown">
+    <div class="field-block">
+      <div class="field-block-header">
+        <div class="field-num">7</div>
+        <div class="field-block-title">Drill-down Tabs</div>
+      </div>
+
+      <p class="field-block-desc">Below the chart, four tabs let you break down your Search Console data by different dimensions. Each tab shows a sortable, paginated table with the columns most relevant to that dimension.</p>
+
+      <div class="tab-strip">
+        <span class="tab-pill active">Keywords</span>
+        <span class="tab-pill">Page</span>
+        <span class="tab-pill">Country</span>
+        <span class="tab-pill">Device</span>
+      </div>
+
+      <h3>Keywords tab</h3>
+      <p>The <strong>Keywords</strong> tab shows the search queries that drove traffic to your site. Each row in the table includes:</p>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Keyword</th>
+            <th>Clicks</th>
+            <th>Impr.</th>
+            <th>Position</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>7 seers</td>
+            <td>6</td>
+            <td>122</td>
+            <td>4.1</td>
+          </tr>
+          <tr>
+            <td>framer seo plugin</td>
+            <td>18</td>
+            <td>340</td>
+            <td>2.8</td>
+          </tr>
+          <tr>
+            <td>rankframe review</td>
+            <td>11</td>
+            <td>195</td>
+            <td>3.3</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="pagination-label">Showing 1-10 of 50</p>
+
+      <p>Use the pagination controls at the bottom of the table to browse all results. The default shows 10 rows per page.</p>
+
+      <h3>Page tab</h3>
+      <p>The <strong>Page</strong> tab groups performance by URL. Use it to identify which pages on your site are driving the most organic traffic and which pages have strong impressions but low CTR.</p>
+
+      <h3>Country tab</h3>
+      <p>The <strong>Country</strong> tab shows which countries your search traffic originates from. This is useful for understanding your audience's geographic distribution and for planning localization or hreflang strategy.</p>
+
+      <h3>Device tab</h3>
+      <p>The <strong>Device</strong> tab breaks down performance by device type: desktop, mobile, and tablet. Use this to confirm that your mobile experience is performing well, since Google uses mobile-first indexing.</p>
+
+      <div class="screenshot-slot">Drill-down tabs: Keywords table with pagination</div>
+
+      <div class="tip">
+        <div class="tip-label">Tip</div>
+        <p>Sort the <strong>Keywords</strong> table by impressions to find queries where your pages appear frequently but receive few clicks. These are opportunities to improve your titles and meta descriptions to win more traffic without needing to change your ranking.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="faq-section" id="faq">
+    <h2>Frequently asked questions</h2>
+
+    <div class="faq-item">
+      <div class="faq-q">Where does the data in the Performance Dashboard come from?</div>
+      <div class="faq-a">All data is pulled live from Google Search Console using the account you connected in the <strong>Setup</strong> tab. RankFrame queries the Search Console API directly, so the numbers match what you would see if you opened Search Console in a browser.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Why does Average Position show a higher number if my site is ranking well?</div>
+      <div class="faq-a">Google Search Console reports position as a rank number, where 1 is the top result. A lower average position number means your pages appear higher in search results. A higher number means there is room to improve. For example, an average position of 3.2 is better than an average position of 18.5.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Can I change the date range shown in the Performance Dashboard?</div>
+      <div class="faq-a">Yes. Use the <strong>Date Range</strong> dropdown at the top of the dashboard to change the reporting window. The default is <strong>Last 28 Days</strong>. After selecting a new range, click <strong>Reload</strong> to refresh all metrics, the chart, and the drill-down tables.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">How do I see which keywords are driving traffic to my site?</div>
+      <div class="faq-a">Open the <strong>Keywords</strong> tab in the drill-down section below the chart. The table shows each keyword alongside its click count, impression count, and average position. Rows are paginated at 10 per page. Use the pagination controls to browse all results.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Do I need to leave Framer or open Google Search Console separately to use these analytics?</div>
+      <div class="faq-a">No. The <strong>Performance Dashboard</strong> pulls data directly from Google Search Console inside the RankFrame plugin. You never need to open a browser tab or log in to Search Console separately. All analytics are available from within Framer.</div>
+    </div>
+  </section>
+
+  <section class="related-section" id="related">
+    <h2>Related articles</h2>
+    <ul class="related-links">
+      <li><a href="https://rankframe.com/help/google-account-setup">Google Account Setup for Indexing</a></li>
+      <li><a href="https://rankframe.com/help/submit-pages-for-indexing">How to submit pages for indexing</a></li>
+      <li><a href="https://rankframe.com/help/check-indexing-status">Checking the indexing status of a URL</a></li>
+      <li><a href="https://rankframe.com/help/instant-indexing-overview">Instant Indexing overview</a></li>
+      <li><a href="https://rankframe.com/help/troubleshooting-indexing">Troubleshooting indexing errors</a></li>
+    </ul>
+  </section>
+
+  <div class="cta-box">
+    <h3>See your real search performance inside Framer.</h3>
+    <p>Connect your Google account in the Setup tab and open the Analytics section to view your Performance Dashboard right now.</p>
+    <a href="https://rankframe.com" class="cta-btn">Get RankFrame</a>
+  </div>
+
+  <div class="seo-panel">
+    <div class="seo-panel-header">
+      <div class="seo-panel-title">SEO Panel</div>
+      <div class="seo-panel-sub">Live meta tags and structured data for this article</div>
+    </div>
+    <div class="seo-fields" id="seo-panel-fields"></div>
+    <div class="seo-schemas" id="seo-panel-schemas"></div>
+  </div>
+
+</div>
+
+<script>
+(function() {
+  var fields = [
+    { label: 'Title', value: document.querySelector('title') ? document.querySelector('title').textContent : '' },
+    { label: 'Description', value: (document.querySelector('meta[name="description"]') || {}).content || '' },
+    { label: 'Keywords', value: (document.querySelector('meta[name="keywords"]') || {}).content || '' },
+    { label: 'Canonical', value: (document.querySelector('link[rel="canonical"]') || {}).href || '' }
+  ];
+  var fieldsHtml = fields.map(function(f) {
+    return '<div class="seo-field"><div class="seo-field-row"><span class="seo-field-label">' + f.label + '</span><button class="seo-copy-btn" onclick="copyVal(this,\'' + f.label + '\')">Copy</button></div><div class="seo-field-value">' + f.value + '</div></div>';
+  }).join('');
+  var schemas = Array.from(document.querySelectorAll('script[type="application/ld+json"]')).map(function(s) {
+    try { var obj = JSON.parse(s.textContent); var t = obj['@type'] || 'Schema'; return '<div class="seo-schema"><div class="seo-schema-header"><span class="seo-schema-type">' + t + ' / JSON-LD</span><button class="seo-copy-btn" onclick="copySchema(this,\'' + t + '\')">Copy</button></div><pre class="seo-schema-code">' + JSON.stringify(obj, null, 2) + '</pre></div>'; } catch(e) { return ''; }
+  }).join('');
+  document.getElementById('seo-panel-fields').innerHTML = fieldsHtml;
+  document.getElementById('seo-panel-schemas').innerHTML = schemas;
+})();
+function copyVal(btn, label) {
+  var val = btn.closest('.seo-field').querySelector('.seo-field-value').textContent;
+  navigator.clipboard.writeText(val).then(function() { btn.textContent = 'Copied'; btn.classList.add('ok'); setTimeout(function() { btn.textContent = 'Copy'; btn.classList.remove('ok'); }, 1500); });
+}
+function copySchema(btn, type) {
+  var code = btn.closest('.seo-schema').querySelector('.seo-schema-code').textContent;
+  navigator.clipboard.writeText(code).then(function() { btn.textContent = 'Copied'; btn.classList.add('ok'); setTimeout(function() { btn.textContent = 'Copy'; btn.classList.remove('ok'); }, 1500); });
+}
+</script>
+
+</body>
+</html>
