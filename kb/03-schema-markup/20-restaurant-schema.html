@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Restaurant Schema in RankFrame | RankFrame Help</title>
+  <meta name="description" content="Add Restaurant schema to your Framer site using RankFrame. Every field covered: Name, Description, Phone, full Address, Cuisine, Menu URL, Price Range, and Working Hours with per-day toggles and multi-shift support." />
+  <meta name="keywords" content="restaurant schema framer, json-ld restaurant, local business schema framer, rankframe restaurant schema, structured data restaurant, framer local seo schema" />
+  <link rel="canonical" href="https://rankframe.com/help/restaurant-schema" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Restaurant Schema in RankFrame",
+    "description": "Add Restaurant schema to your Framer site using RankFrame. Covers Name, Description, Phone, Address, Cuisine, Menu URL, Price Range, and Working Hours with per-day toggles and multi-shift support.",
+    "author": { "@type": "Organization", "name": "7 Seers", "url": "https://rankframe.com" },
+    "publisher": { "@type": "Organization", "name": "RankFrame", "url": "https://rankframe.com" },
+    "datePublished": "2026-05-02",
+    "dateModified": "2026-05-02",
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://rankframe.com/help/restaurant-schema" },
+    "keywords": "restaurant schema, json-ld, framer seo, local business, structured data"
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What does Restaurant schema do for SEO?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Restaurant schema tells Google the business name, address, phone number, cuisine type, menu, price range, and opening hours. This data can appear in Google Maps, local search results, and knowledge panels, improving local SEO visibility significantly." }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I add multiple shifts for one day?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Within each day's working hours section, you can add multiple time slots. For example, a restaurant open for lunch 12:00-15:00 and dinner 18:00-22:00 can have two separate shift entries for that day." }
+      },
+      {
+        "@type": "Question",
+        "name": "What format should I use for Price Range?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Use the standard dollar sign notation: $ for inexpensive, $$ for moderate, $$$ for expensive, and $$$$ for very expensive. This maps to the priceRange property in the JSON-LD output." }
+      },
+      {
+        "@type": "Question",
+        "name": "Is Restaurant schema only for restaurants?",
+        "acceptedAnswer": { "@type": "Answer", "text": "The Restaurant schema type specifically represents a food service business. For other local businesses, the Service schema type in RankFrame is more appropriate." }
+      }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Help Center", "item": "https://rankframe.com/help" },
+      { "@type": "ListItem", "position": 2, "name": "Schema Markup", "item": "https://rankframe.com/help/schema-markup" },
+      { "@type": "ListItem", "position": 3, "name": "Restaurant Schema", "item": "https://rankframe.com/help/restaurant-schema" }
+    ]
+  }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", sans-serif; background: #ffffff; color: #111111; line-height: 1.7; font-size: 16px; }
+    .page { max-width: 740px; margin: 0 auto; padding: 48px 24px 96px; }
+    .breadcrumb { display: flex; align-items: center; gap: 6px; font-size: 13px; color: #888; margin-bottom: 32px; flex-wrap: wrap; }
+    .breadcrumb a { color: #888; text-decoration: none; }
+    .breadcrumb a:hover { color: #7c3aed; }
+    .breadcrumb span { color: #ccc; }
+    .article-category { display: inline-block; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #7c3aed; background: #f3f0ff; padding: 3px 10px; border-radius: 999px; margin-bottom: 12px; }
+    h1 { font-size: 2rem; font-weight: 700; color: #0a0a0a; line-height: 1.25; margin-bottom: 14px; letter-spacing: -0.02em; }
+    .article-description { font-size: 1.05rem; color: #555; line-height: 1.65; margin-bottom: 10px; }
+    .article-meta { display: flex; gap: 16px; font-size: 13px; color: #aaa; margin-bottom: 36px; padding-bottom: 24px; border-bottom: 1px solid #f0f0f0; flex-wrap: wrap; }
+    .toc { background: #fafafa; border: 1px solid #efefef; border-radius: 10px; padding: 18px 22px; margin-bottom: 40px; }
+    .toc-title { font-size: 12px; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: #aaa; margin-bottom: 10px; }
+    .toc ol { list-style: none; padding: 0; }
+    .toc li { margin-bottom: 5px; }
+    .toc a { font-size: 14px; color: #555; text-decoration: none; }
+    .toc a:hover { color: #7c3aed; }
+    h2 { font-size: 1.3rem; font-weight: 600; color: #0a0a0a; margin: 40px 0 14px; padding-bottom: 8px; border-bottom: 1px solid #f0f0f0; letter-spacing: -0.01em; }
+    h3 { font-size: 1.05rem; font-weight: 600; color: #0a0a0a; margin: 24px 0 8px; }
+    p { color: #333; margin-bottom: 16px; }
+    ul, ol { padding-left: 22px; margin-bottom: 16px; }
+    li { color: #333; margin-bottom: 6px; }
+    strong { color: #0a0a0a; font-weight: 600; }
+    a { color: #7c3aed; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .tip { background: #f5f3ff; border-left: 3px solid #7c3aed; border-radius: 0 8px 8px 0; padding: 12px 16px; margin: 20px 0; }
+    .tip-label { font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #7c3aed; margin-bottom: 4px; }
+    .tip p { color: #4c1d95; margin: 0; font-size: 0.93rem; }
+    .note { background: #fff8f0; border-left: 3px solid #f59e0b; border-radius: 0 8px 8px 0; padding: 12px 16px; margin: 20px 0; }
+    .note-label { font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #d97706; margin-bottom: 4px; }
+    .note p { color: #78350f; margin: 0; font-size: 0.93rem; }
+    .field-table { width: 100%; border-collapse: collapse; margin: 16px 0 24px; font-size: 0.9rem; }
+    .field-table th { text-align: left; padding: 10px 12px; background: #fafafa; border: 1px solid #efefef; color: #555; font-weight: 600; }
+    .field-table td { padding: 10px 12px; border: 1px solid #f0f0f0; vertical-align: top; }
+    .field-table tr:nth-child(even) td { background: #fafafa; }
+    .field-name { font-weight: 600; color: #0a0a0a; font-family: "SF Mono","Fira Code",Consolas,monospace; font-size: 0.85rem; }
+    .section-label { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #7c3aed; background: #f3f0ff; padding: 2px 8px; border-radius: 4px; margin-bottom: 10px; }
+    .faq-section { margin-top: 48px; padding-top: 32px; border-top: 1px solid #f0f0f0; }
+    .faq-section h2 { border-bottom: none; padding-bottom: 0; margin-bottom: 24px; }
+    .faq-item { border: 1px solid #efefef; border-radius: 10px; padding: 18px 20px; margin-bottom: 10px; }
+    .faq-q { font-weight: 600; color: #0a0a0a; font-size: 0.95rem; margin-bottom: 8px; }
+    .faq-a { color: #555; font-size: 0.93rem; line-height: 1.65; }
+    .related-section { margin-top: 48px; padding-top: 32px; border-top: 1px solid #f0f0f0; }
+    .related-section h2 { border-bottom: none; padding-bottom: 0; margin-bottom: 16px; font-size: 1rem; color: #666; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; }
+    .related-links { list-style: none; padding: 0; }
+    .related-links li { margin-bottom: 8px; }
+    .related-links a { font-size: 0.95rem; color: #7c3aed; display: flex; align-items: center; gap: 6px; }
+    .related-links a::before { content: "→"; font-size: 12px; }
+    .cta-box { background: linear-gradient(135deg, #f5f3ff, #faf0ff); border: 1px solid #e8e0ff; border-radius: 12px; padding: 24px 28px; margin-top: 40px; text-align: center; }
+    .cta-box h3 { font-size: 1.1rem; color: #0a0a0a; margin-bottom: 8px; }
+    .cta-box p { color: #666; font-size: 0.9rem; margin-bottom: 16px; }
+    .cta-btn { display: inline-block; background: #7c3aed; color: #fff; font-weight: 600; font-size: 0.9rem; padding: 10px 22px; border-radius: 8px; text-decoration: none; }
+    .cta-btn:hover { background: #6d28d9; text-decoration: none; }
+    .seo-panel { margin-top: 64px; border-top: 2px dashed #e8e0ff; padding-top: 36px; }
+    .seo-panel-header { margin-bottom: 20px; }
+    .seo-panel-title { font-size: 11px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: #7c3aed; }
+    .seo-panel-sub { font-size: 12px; color: #aaa; margin-top: 3px; }
+    .seo-fields { display: grid; gap: 10px; margin-bottom: 28px; }
+    .seo-field { background: #fafafa; border: 1px solid #efefef; border-radius: 8px; padding: 14px 16px; }
+    .seo-field-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+    .seo-field-label { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #bbb; }
+    .seo-copy-btn { font-size: 10px; font-weight: 600; color: #7c3aed; background: #f3f0ff; border: none; border-radius: 4px; padding: 3px 9px; cursor: pointer; transition: background 0.15s; }
+    .seo-copy-btn:hover { background: #e8e0ff; }
+    .seo-copy-btn.ok { color: #059669; background: #ecfdf5; }
+    .seo-field-value { font-size: 0.88rem; color: #333; line-height: 1.55; word-break: break-word; user-select: all; }
+    .seo-schemas { display: grid; gap: 14px; }
+    .seo-schema { border: 1px solid #efefef; border-radius: 8px; overflow: hidden; }
+    .seo-schema-header { display: flex; justify-content: space-between; align-items: center; padding: 10px 16px; background: #fafafa; border-bottom: 1px solid #efefef; }
+    .seo-schema-type { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #bbb; }
+    .seo-schema-code { background: #0d0d0d; color: #d4d4d4; font-family: "SF Mono","Fira Code",Consolas,monospace; font-size: 0.75rem; line-height: 1.65; padding: 16px 18px; margin: 0; overflow-x: auto; white-space: pre; user-select: all; }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <nav class="breadcrumb">
+    <a href="https://rankframe.com/help">Help Center</a>
+    <span>/</span>
+    <a href="https://rankframe.com/help/schema-markup">Schema Markup</a>
+    <span>/</span>
+    <span>Restaurant Schema</span>
+  </nav>
+
+  <div class="article-category">Schema Markup</div>
+  <h1>Restaurant Schema</h1>
+  <p class="article-description">Restaurant schema is one of the most powerful schema types for local SEO. It feeds Google Maps, local pack results, and knowledge panels with your restaurant's name, address, phone, hours, cuisine, and menu. RankFrame's Restaurant schema form covers every field including per-day working hours with multi-shift support.</p>
+  <div class="article-meta">
+    <span>5 min read</span>
+    <span>Last updated May 2, 2026</span>
+  </div>
+
+  <nav class="toc">
+    <div class="toc-title">On this page</div>
+    <ol>
+      <li><a href="#what-it-does">What restaurant schema does</a></li>
+      <li><a href="#fields-basic">Name, Description, Phone</a></li>
+      <li><a href="#fields-address">Address</a></li>
+      <li><a href="#fields-details">Cuisine, Menu URL, Price Range</a></li>
+      <li><a href="#fields-hours">Working Hours</a></li>
+      <li><a href="#save-inject">Saving and injecting</a></li>
+      <li><a href="#faq">Frequently asked questions</a></li>
+    </ol>
+  </nav>
+
+  <section id="what-it-does">
+    <h2>What restaurant schema does</h2>
+    <p>Restaurant schema is a subtype of LocalBusiness. It tells Google the essential details about a food service establishment: who they are, where they are, when they are open, what they serve, and how much it costs. Google uses this data to populate local search results, the local map pack, and knowledge panels.</p>
+    <p>For any Framer site representing a restaurant, cafe, bakery, or food business, this schema type is essential for local SEO visibility.</p>
+  </section>
+
+  <section id="fields-basic">
+    <h2>Name, Description, Phone</h2>
+    <div class="section-label">Basic Info</div>
+    <table class="field-table">
+      <thead>
+        <tr>
+          <th>Field</th>
+          <th>What to enter</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="field-name">Name</span></td>
+          <td>The official name of the restaurant exactly as it appears on signage and branding (e.g. "The Blue Spoon"). Becomes the <code>name</code> property.</td>
+        </tr>
+        <tr>
+          <td><span class="field-name">Description</span></td>
+          <td>A 1 to 3 sentence description of the restaurant. Describe the cuisine, atmosphere, or what makes this place unique. Becomes the <code>description</code> property.</td>
+        </tr>
+        <tr>
+          <td><span class="field-name">Phone</span></td>
+          <td>The restaurant's primary phone number including country code (e.g. +1-555-234-5678). Becomes the <code>telephone</code> property.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="fields-address">
+    <h2>Address</h2>
+    <div class="section-label">Address</div>
+    <p>The Address section maps directly to the <code>address</code> object in the JSON-LD, using the <code>PostalAddress</code> type. Fill every field that applies to your location.</p>
+    <table class="field-table">
+      <thead>
+        <tr>
+          <th>Field</th>
+          <th>What to enter</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="field-name">Street</span></td>
+          <td>The street address including building number (e.g. "42 Main Street, Suite 3"). Becomes <code>address.streetAddress</code>.</td>
+        </tr>
+        <tr>
+          <td><span class="field-name">City</span></td>
+          <td>The city or locality (e.g. "Brooklyn"). Becomes <code>address.addressLocality</code>.</td>
+        </tr>
+        <tr>
+          <td><span class="field-name">State</span></td>
+          <td>The state, province, or region (e.g. "NY" or "New York"). Becomes <code>address.addressRegion</code>.</td>
+        </tr>
+        <tr>
+          <td><span class="field-name">Postal Code</span></td>
+          <td>The ZIP code or postal code (e.g. "11201"). Becomes <code>address.postalCode</code>.</td>
+        </tr>
+        <tr>
+          <td><span class="field-name">Country</span></td>
+          <td>The two-letter ISO country code (e.g. "US" for United States, "IN" for India, "GB" for United Kingdom). Becomes <code>address.addressCountry</code>.</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="tip">
+      <div class="tip-label">Tip</div>
+      <p>Accurate address data is critical for Google Maps integration. Make sure the address in your schema exactly matches the address on your Google Business Profile and other directory listings.</p>
+    </div>
+  </section>
+
+  <section id="fields-details">
+    <h2>Cuisine, Menu URL, Price Range</h2>
+    <div class="section-label">Restaurant Details</div>
+    <table class="field-table">
+      <thead>
+        <tr>
+          <th>Field</th>
+          <th>What to enter</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="field-name">Cuisine</span></td>
+          <td>The type of cuisine served (e.g. "Italian", "Japanese", "Mediterranean", "Indian"). You can list multiple cuisine types separated by commas. Becomes the <code>servesCuisine</code> property.</td>
+        </tr>
+        <tr>
+          <td><span class="field-name">Menu URL</span></td>
+          <td>A direct URL to the online menu page (e.g. <code>https://yourdomain.com/menu</code>). Becomes the <code>hasMenu</code> property. Leave empty if no online menu exists.</td>
+        </tr>
+        <tr>
+          <td><span class="field-name">Price Range</span></td>
+          <td>The relative price level using dollar signs: <strong>$</strong> for inexpensive, <strong>$$</strong> for moderate, <strong>$$$</strong> for expensive, <strong>$$$$</strong> for very expensive. Becomes the <code>priceRange</code> property.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="fields-hours">
+    <h2>Working Hours</h2>
+    <div class="section-label">Working Hours</div>
+    <p>The Working Hours section lets you define opening hours for each day of the week. Each day has an individual toggle to mark it as open or closed. For days the restaurant is open, you add one or more time slots (shifts).</p>
+
+    <h3>Day toggles</h3>
+    <p>Seven days appear: <strong>Monday through Sunday</strong>. Toggle each day on to mark it as a day the restaurant is open. Days left toggled off are treated as closed and excluded from the <code>openingHoursSpecification</code> in the JSON-LD.</p>
+
+    <h3>Time slots and multi-shift support</h3>
+    <p>For each day that is toggled on, you can add time slots. Each time slot has two fields:</p>
+    <table class="field-table">
+      <thead>
+        <tr>
+          <th>Field</th>
+          <th>What to enter</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="field-name">Opens</span></td>
+          <td>The opening time for this shift in 24-hour format (e.g. 09:00 for 9 AM, 18:00 for 6 PM). Becomes <code>openingHoursSpecification.opens</code>.</td>
+        </tr>
+        <tr>
+          <td><span class="field-name">Closes</span></td>
+          <td>The closing time for this shift in 24-hour format (e.g. 15:00 for 3 PM, 22:30 for 10:30 PM). Becomes <code>openingHoursSpecification.closes</code>.</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>To add a second shift for the same day (for example, a lunch service and a dinner service), add a second time slot row for that day. Each shift is a separate <code>openingHoursSpecification</code> entry in the JSON-LD.</p>
+    <div class="note">
+      <div class="note-label">Example</div>
+      <p>A restaurant open for lunch 12:00-15:00 and dinner 18:00-22:00 on Fridays would have two rows for Friday: one with Opens 12:00 Closes 15:00, and a second with Opens 18:00 Closes 22:00.</p>
+    </div>
+  </section>
+
+  <section id="save-inject">
+    <h2>Saving and injecting</h2>
+    <ol>
+      <li>Click the <strong>Preview JSON</strong> tab to review the complete JSON-LD including the address object and opening hours specification.</li>
+      <li>Click <strong>Validator (Ext)</strong> to validate against Google Rich Results Test.</li>
+      <li>Click <strong>Copy JSON</strong> to copy the raw JSON-LD if needed.</li>
+      <li>Click <strong>Save Schema</strong> to save to Saved Schemas.</li>
+      <li>Toggle the schema on, then click <strong>Save and Inject</strong>.</li>
+    </ol>
+  </section>
+
+  <section id="faq" class="faq-section">
+    <h2>Frequently asked questions</h2>
+    <div class="faq-item">
+      <div class="faq-q">What does Restaurant schema do for SEO?</div>
+      <div class="faq-a">It tells Google the business name, address, phone, cuisine, menu, price range, and opening hours. This data populates Google Maps, local pack results, and knowledge panels, significantly improving local SEO visibility.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How do I add multiple shifts for one day?</div>
+      <div class="faq-a">Toggle the day on in Working Hours, then add multiple time slot rows for that day. Each row with Opens and Closes times represents one shift. For a restaurant open for lunch and dinner, add two rows for each relevant day.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What format should I use for Price Range?</div>
+      <div class="faq-a">Use dollar sign notation: $ for inexpensive, $$ for moderate, $$$ for expensive, $$$$ for very expensive. This maps to the priceRange property in JSON-LD.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Is Restaurant schema only for restaurants?</div>
+      <div class="faq-a">The Restaurant type specifically represents food service businesses. For other local businesses, the Service schema type in RankFrame is more appropriate.</div>
+    </div>
+  </section>
+
+  <section class="related-section">
+    <h2>Related articles</h2>
+    <ul class="related-links">
+      <li><a href="https://rankframe.com/help/schema-injection-overview">Schema Injection Overview</a></li>
+      <li><a href="https://rankframe.com/help/service-schema">Service Schema</a></li>
+      <li><a href="https://rankframe.com/help/person-organization-schema">Person and Organization Schema</a></li>
+      <li><a href="https://rankframe.com/help/auto-generate-schema">Auto-Generate Schema with AI</a></li>
+    </ul>
+  </section>
+
+  <div class="cta-box">
+    <h3>Add restaurant schema to your Framer site today</h3>
+    <p>Install RankFrame from the Framer Plugin Marketplace. 7-day free trial, no credit card required.</p>
+    <a class="cta-btn" href="https://rankframe.com">Start free trial</a>
+  </div>
+
+  <!-- SEO Details Panel -->
+  <div class="seo-panel">
+    <div class="seo-panel-header">
+      <div class="seo-panel-title">SEO Details</div>
+      <div class="seo-panel-sub">Click Copy on any field to grab it without touching page source</div>
+    </div>
+    <div class="seo-fields" id="rf-seo-fields"></div>
+    <div class="seo-schemas" id="rf-seo-schemas"></div>
+  </div>
+
+  <script>
+  (function () {
+    function copyBtn(text) {
+      const btn = document.createElement('button'); btn.className = 'seo-copy-btn'; btn.textContent = 'Copy';
+      btn.addEventListener('click', function () {
+        navigator.clipboard.writeText(text).then(function () {
+          btn.textContent = 'Copied'; btn.classList.add('ok');
+          setTimeout(function () { btn.textContent = 'Copy'; btn.classList.remove('ok'); }, 2000);
+        });
+      });
+      return btn;
+    }
+    var metaFields = [
+      { label: 'Meta Title', value: document.title },
+      { label: 'Meta Description', value: (document.querySelector('meta[name="description"]') || {}).content || '' },
+      { label: 'Meta Keywords', value: (document.querySelector('meta[name="keywords"]') || {}).content || '' },
+      { label: 'Canonical URL', value: (document.querySelector('link[rel="canonical"]') || {}).getAttribute('href') || '' },
+    ];
+    var fieldsEl = document.getElementById('rf-seo-fields');
+    metaFields.forEach(function (f) {
+      if (!f.value) return;
+      var wrap = document.createElement('div'); wrap.className = 'seo-field';
+      var row = document.createElement('div'); row.className = 'seo-field-row';
+      var lbl = document.createElement('div'); lbl.className = 'seo-field-label'; lbl.textContent = f.label;
+      row.appendChild(lbl); row.appendChild(copyBtn(f.value));
+      var val = document.createElement('div'); val.className = 'seo-field-value'; val.textContent = f.value;
+      wrap.appendChild(row); wrap.appendChild(val); fieldsEl.appendChild(wrap);
+    });
+    var schemasEl = document.getElementById('rf-seo-schemas');
+    document.querySelectorAll('script[type="application/ld+json"]').forEach(function (s) {
+      var parsed; try { parsed = JSON.parse(s.textContent); } catch (e) { return; }
+      var pretty = JSON.stringify(parsed, null, 2);
+      var wrap = document.createElement('div'); wrap.className = 'seo-schema';
+      var hdr = document.createElement('div'); hdr.className = 'seo-schema-header';
+      var typ = document.createElement('div'); typ.className = 'seo-schema-type';
+      typ.textContent = (parsed['@type'] || 'Schema') + ' / JSON-LD';
+      hdr.appendChild(typ); hdr.appendChild(copyBtn(pretty));
+      var pre = document.createElement('pre'); pre.className = 'seo-schema-code'; pre.textContent = pretty;
+      wrap.appendChild(hdr); wrap.appendChild(pre); schemasEl.appendChild(wrap);
+    });
+  })();
+  </script>
+
+</div>
+</body>
+</html>

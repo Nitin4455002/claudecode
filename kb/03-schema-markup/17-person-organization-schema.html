@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Person and Organization Schema in RankFrame | RankFrame Help</title>
+  <meta name="description" content="Add Person or Organization schema to your Framer site using RankFrame. Learn every field including Name, URL, Image URL, Job Title, Company, and Social Profiles. Covers both Person and Organization types in one unified form." />
+  <meta name="keywords" content="person schema framer, organization schema framer, json-ld person, json-ld organization, rankframe schema, structured data person organization" />
+  <link rel="canonical" href="https://rankframe.com/help/person-organization-schema" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Person and Organization Schema in RankFrame",
+    "description": "Add Person or Organization schema to your Framer site using RankFrame. Both types share one unified form with a radio toggle to switch between them.",
+    "author": { "@type": "Organization", "name": "7 Seers", "url": "https://rankframe.com" },
+    "publisher": { "@type": "Organization", "name": "RankFrame", "url": "https://rankframe.com" },
+    "datePublished": "2026-05-02",
+    "dateModified": "2026-05-02",
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://rankframe.com/help/person-organization-schema" },
+    "keywords": "person schema, organization schema, json-ld, framer seo, rankframe"
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is the difference between Person and Organization schema?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Person schema represents an individual. Organization schema represents a company or brand. RankFrame combines both into one form. Use the radio toggle at the top to choose which type you want. The fields are almost identical." }
+      },
+      {
+        "@type": "Question",
+        "name": "How many social profiles can I add?",
+        "acceptedAnswer": { "@type": "Answer", "text": "You can add multiple social profile URLs. Each one maps to a sameAs property in the JSON-LD output. Add any social profile URL including LinkedIn, Twitter, Instagram, Facebook, or YouTube." }
+      },
+      {
+        "@type": "Question",
+        "name": "Do I need to fill every field?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No. Fill the fields that apply to your subject. At minimum, Name and URL give Google enough to identify the entity. More fields produce richer structured data and improve recognition." }
+      },
+      {
+        "@type": "Question",
+        "name": "Where does this schema get injected?",
+        "acceptedAnswer": { "@type": "Answer", "text": "The schema is bound to the specific page you selected when you created it. It injects as a JSON-LD script tag on that page only. If you want the same schema on multiple pages, create a separate entry for each one." }
+      }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Help Center", "item": "https://rankframe.com/help" },
+      { "@type": "ListItem", "position": 2, "name": "Schema Markup", "item": "https://rankframe.com/help/schema-markup" },
+      { "@type": "ListItem", "position": 3, "name": "Person and Organization Schema", "item": "https://rankframe.com/help/person-organization-schema" }
+    ]
+  }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", sans-serif; background: #ffffff; color: #111111; line-height: 1.7; font-size: 16px; }
+    .page { max-width: 740px; margin: 0 auto; padding: 48px 24px 96px; }
+    .breadcrumb { display: flex; align-items: center; gap: 6px; font-size: 13px; color: #888; margin-bottom: 32px; flex-wrap: wrap; }
+    .breadcrumb a { color: #888; text-decoration: none; }
+    .breadcrumb a:hover { color: #7c3aed; }
+    .breadcrumb span { color: #ccc; }
+    .article-category { display: inline-block; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #7c3aed; background: #f3f0ff; padding: 3px 10px; border-radius: 999px; margin-bottom: 12px; }
+    h1 { font-size: 2rem; font-weight: 700; color: #0a0a0a; line-height: 1.25; margin-bottom: 14px; letter-spacing: -0.02em; }
+    .article-description { font-size: 1.05rem; color: #555; line-height: 1.65; margin-bottom: 10px; }
+    .article-meta { display: flex; gap: 16px; font-size: 13px; color: #aaa; margin-bottom: 36px; padding-bottom: 24px; border-bottom: 1px solid #f0f0f0; flex-wrap: wrap; }
+    .toc { background: #fafafa; border: 1px solid #efefef; border-radius: 10px; padding: 18px 22px; margin-bottom: 40px; }
+    .toc-title { font-size: 12px; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: #aaa; margin-bottom: 10px; }
+    .toc ol { list-style: none; padding: 0; }
+    .toc li { margin-bottom: 5px; }
+    .toc a { font-size: 14px; color: #555; text-decoration: none; }
+    .toc a:hover { color: #7c3aed; }
+    h2 { font-size: 1.3rem; font-weight: 600; color: #0a0a0a; margin: 40px 0 14px; padding-bottom: 8px; border-bottom: 1px solid #f0f0f0; letter-spacing: -0.01em; }
+    h3 { font-size: 1.05rem; font-weight: 600; color: #0a0a0a; margin: 24px 0 8px; }
+    p { color: #333; margin-bottom: 16px; }
+    ul, ol { padding-left: 22px; margin-bottom: 16px; }
+    li { color: #333; margin-bottom: 6px; }
+    strong { color: #0a0a0a; font-weight: 600; }
+    a { color: #7c3aed; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .tip { background: #f5f3ff; border-left: 3px solid #7c3aed; border-radius: 0 8px 8px 0; padding: 12px 16px; margin: 20px 0; }
+    .tip-label { font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #7c3aed; margin-bottom: 4px; }
+    .tip p { color: #4c1d95; margin: 0; font-size: 0.93rem; }
+    .note { background: #fff8f0; border-left: 3px solid #f59e0b; border-radius: 0 8px 8px 0; padding: 12px 16px; margin: 20px 0; }
+    .note-label { font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #d97706; margin-bottom: 4px; }
+    .note p { color: #78350f; margin: 0; font-size: 0.93rem; }
+    .field-table { width: 100%; border-collapse: collapse; margin: 16px 0 24px; font-size: 0.9rem; }
+    .field-table th { text-align: left; padding: 10px 12px; background: #fafafa; border: 1px solid #efefef; color: #555; font-weight: 600; }
+    .field-table td { padding: 10px 12px; border: 1px solid #f0f0f0; vertical-align: top; }
+    .field-table tr:nth-child(even) td { background: #fafafa; }
+    .field-name { font-weight: 600; color: #0a0a0a; font-family: "SF Mono","Fira Code",Consolas,monospace; font-size: 0.85rem; }
+    .field-required { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; background: #fef3c7; color: #92400e; border-radius: 4px; padding: 1px 6px; margin-left: 6px; }
+    .faq-section { margin-top: 48px; padding-top: 32px; border-top: 1px solid #f0f0f0; }
+    .faq-section h2 { border-bottom: none; padding-bottom: 0; margin-bottom: 24px; }
+    .faq-item { border: 1px solid #efefef; border-radius: 10px; padding: 18px 20px; margin-bottom: 10px; }
+    .faq-q { font-weight: 600; color: #0a0a0a; font-size: 0.95rem; margin-bottom: 8px; }
+    .faq-a { color: #555; font-size: 0.93rem; line-height: 1.65; }
+    .related-section { margin-top: 48px; padding-top: 32px; border-top: 1px solid #f0f0f0; }
+    .related-section h2 { border-bottom: none; padding-bottom: 0; margin-bottom: 16px; font-size: 1rem; color: #666; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; }
+    .related-links { list-style: none; padding: 0; }
+    .related-links li { margin-bottom: 8px; }
+    .related-links a { font-size: 0.95rem; color: #7c3aed; display: flex; align-items: center; gap: 6px; }
+    .related-links a::before { content: "→"; font-size: 12px; }
+    .cta-box { background: linear-gradient(135deg, #f5f3ff, #faf0ff); border: 1px solid #e8e0ff; border-radius: 12px; padding: 24px 28px; margin-top: 40px; text-align: center; }
+    .cta-box h3 { font-size: 1.1rem; color: #0a0a0a; margin-bottom: 8px; }
+    .cta-box p { color: #666; font-size: 0.9rem; margin-bottom: 16px; }
+    .cta-btn { display: inline-block; background: #7c3aed; color: #fff; font-weight: 600; font-size: 0.9rem; padding: 10px 22px; border-radius: 8px; text-decoration: none; }
+    .cta-btn:hover { background: #6d28d9; text-decoration: none; }
+    .seo-panel { margin-top: 64px; border-top: 2px dashed #e8e0ff; padding-top: 36px; }
+    .seo-panel-header { margin-bottom: 20px; }
+    .seo-panel-title { font-size: 11px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: #7c3aed; }
+    .seo-panel-sub { font-size: 12px; color: #aaa; margin-top: 3px; }
+    .seo-fields { display: grid; gap: 10px; margin-bottom: 28px; }
+    .seo-field { background: #fafafa; border: 1px solid #efefef; border-radius: 8px; padding: 14px 16px; }
+    .seo-field-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+    .seo-field-label { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #bbb; }
+    .seo-copy-btn { font-size: 10px; font-weight: 600; color: #7c3aed; background: #f3f0ff; border: none; border-radius: 4px; padding: 3px 9px; cursor: pointer; transition: background 0.15s; }
+    .seo-copy-btn:hover { background: #e8e0ff; }
+    .seo-copy-btn.ok { color: #059669; background: #ecfdf5; }
+    .seo-field-value { font-size: 0.88rem; color: #333; line-height: 1.55; word-break: break-word; user-select: all; }
+    .seo-schemas { display: grid; gap: 14px; }
+    .seo-schema { border: 1px solid #efefef; border-radius: 8px; overflow: hidden; }
+    .seo-schema-header { display: flex; justify-content: space-between; align-items: center; padding: 10px 16px; background: #fafafa; border-bottom: 1px solid #efefef; }
+    .seo-schema-type { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #bbb; }
+    .seo-schema-code { background: #0d0d0d; color: #d4d4d4; font-family: "SF Mono","Fira Code",Consolas,monospace; font-size: 0.75rem; line-height: 1.65; padding: 16px 18px; margin: 0; overflow-x: auto; white-space: pre; user-select: all; }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <nav class="breadcrumb">
+    <a href="https://rankframe.com/help">Help Center</a>
+    <span>/</span>
+    <a href="https://rankframe.com/help/schema-markup">Schema Markup</a>
+    <span>/</span>
+    <span>Person and Organization Schema</span>
+  </nav>
+
+  <div class="article-category">Schema Markup</div>
+  <h1>Person and Organization Schema</h1>
+  <p class="article-description">RankFrame combines Person and Organization schema into one unified form. Use the radio toggle at the top to choose which type to generate. Both types share the same fields, making it easy to switch or maintain either.</p>
+  <div class="article-meta">
+    <span>4 min read</span>
+    <span>Last updated May 2, 2026</span>
+  </div>
+
+  <nav class="toc">
+    <div class="toc-title">On this page</div>
+    <ol>
+      <li><a href="#what-it-does">What this schema type does</a></li>
+      <li><a href="#person-vs-org">Choosing Person or Organization</a></li>
+      <li><a href="#all-fields">All form fields explained</a></li>
+      <li><a href="#save-inject">Saving and injecting</a></li>
+      <li><a href="#faq">Frequently asked questions</a></li>
+    </ol>
+  </nav>
+
+  <section id="what-it-does">
+    <h2>What this schema type does</h2>
+    <p>Person and Organization schema tells Google who is behind a website or web page. It establishes entity identity, which helps Google connect your site to authoritative knowledge graph entries. This is especially valuable for founder pages, about pages, agency homepages, and professional profile pages.</p>
+    <p>Google uses this data to display rich results, knowledge panels, and authorship attribution in search. The more complete your schema, the stronger the entity signal.</p>
+  </section>
+
+  <section id="person-vs-org">
+    <h2>Choosing Person or Organization</h2>
+    <p>At the top of the form, a radio toggle lets you choose between <strong>Person</strong> and <strong>Organization</strong>. The fields are nearly identical between the two types. The choice determines the <code>@type</code> value in the JSON-LD output.</p>
+    <ul>
+      <li>Choose <strong>Person</strong> for an individual: a founder, author, consultant, or freelancer</li>
+      <li>Choose <strong>Organization</strong> for a company, agency, studio, or brand</li>
+    </ul>
+    <div class="tip">
+      <div class="tip-label">Tip</div>
+      <p>For a personal portfolio or founder page, use Person. For a company homepage or agency site, use Organization. If both apply, create two separate schema entries and bind each to the relevant page.</p>
+    </div>
+  </section>
+
+  <section id="all-fields">
+    <h2>All form fields explained</h2>
+    <p>The form contains the following fields. Fill as many as are accurate and applicable.</p>
+
+    <table class="field-table">
+      <thead>
+        <tr>
+          <th>Field</th>
+          <th>What to enter</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="field-name">Name</span></td>
+          <td>The full name of the person or organization. For a person, use their real name (e.g. "Jane Smith"). For an organization, use the official brand name (e.g. "7 Seers"). This becomes the <code>name</code> property in the JSON-LD.</td>
+        </tr>
+        <tr>
+          <td><span class="field-name">URL</span></td>
+          <td>The canonical URL that best represents this person or organization. Usually the homepage (e.g. <code>https://yourdomain.com</code>) or a dedicated about page. Becomes the <code>url</code> property.</td>
+        </tr>
+        <tr>
+          <td><span class="field-name">Image URL</span></td>
+          <td>A direct link to a profile photo (for Person) or a logo image (for Organization). Use a square or near-square image for best results with Google. Becomes the <code>image</code> property.</td>
+        </tr>
+        <tr>
+          <td><span class="field-name">Job Title</span></td>
+          <td>The person's professional title or role (e.g. "Founder", "Creative Director", "SEO Specialist"). Applies to Person schema only. Becomes the <code>jobTitle</code> property.</td>
+        </tr>
+        <tr>
+          <td><span class="field-name">Company</span></td>
+          <td>The name of the organization this person is affiliated with or works for. Relevant for Person schema. Helps Google connect the individual to their employer entity. Becomes the <code>worksFor</code> property.</td>
+        </tr>
+        <tr>
+          <td><span class="field-name">Social Profiles</span></td>
+          <td>One or more URLs to social media profiles or authoritative external profiles (e.g. LinkedIn, Twitter, Instagram, Facebook, YouTube, Wikipedia). Each URL you add becomes a separate entry in the <code>sameAs</code> array. Add as many as apply.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="note">
+      <div class="note-label">Note</div>
+      <p>The <code>sameAs</code> property is one of the most powerful fields for entity recognition. Adding your LinkedIn profile, Twitter handle, and any press mentions tells Google that all of these online presences belong to the same entity.</p>
+    </div>
+  </section>
+
+  <section id="save-inject">
+    <h2>Saving and injecting</h2>
+    <p>After filling out the form:</p>
+    <ol>
+      <li>Click the <strong>Preview JSON</strong> tab to review the raw JSON-LD output. Verify all fields look correct.</li>
+      <li>Optionally click <strong>Validator (Ext)</strong> to open Google Rich Results Test in a new tab and confirm the schema is valid.</li>
+      <li>Click <strong>Copy JSON</strong> if you want a copy of the raw JSON-LD for your records.</li>
+      <li>Click <strong>Save Schema</strong> to save it to the Manual sub-tab in Saved Schemas.</li>
+      <li>Return to the Advanced tab, toggle the schema on in Saved Schemas, then click <strong>Save and Inject</strong>.</li>
+    </ol>
+  </section>
+
+  <section id="faq" class="faq-section">
+    <h2>Frequently asked questions</h2>
+    <div class="faq-item">
+      <div class="faq-q">What is the difference between Person and Organization schema?</div>
+      <div class="faq-a">Person represents an individual. Organization represents a company or brand. RankFrame combines both into one form with a radio toggle. The fields are essentially the same and the toggle just changes the @type value in the JSON-LD output.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How many social profiles can I add?</div>
+      <div class="faq-a">As many as you like. Each URL adds a sameAs entry in the JSON-LD. Add LinkedIn, Twitter, Instagram, Facebook, YouTube, and any other authoritative profile pages that represent this entity.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Do I need to fill every field?</div>
+      <div class="faq-a">No. Fill what is accurate and applicable. At minimum, Name and URL give Google enough to identify the entity. More complete data produces stronger structured data signals.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Where does this schema get injected?</div>
+      <div class="faq-a">It injects on the specific page you selected when you created it. The schema is bound to that URL. To inject the same entity on multiple pages, create separate entries for each page.</div>
+    </div>
+  </section>
+
+  <section class="related-section">
+    <h2>Related articles</h2>
+    <ul class="related-links">
+      <li><a href="https://rankframe.com/help/schema-injection-overview">Schema Injection Overview</a></li>
+      <li><a href="https://rankframe.com/help/article-schema">Article Schema</a></li>
+      <li><a href="https://rankframe.com/help/service-schema">Service Schema</a></li>
+      <li><a href="https://rankframe.com/help/auto-generate-schema">Auto-Generate Schema with AI</a></li>
+    </ul>
+  </section>
+
+  <div class="cta-box">
+    <h3>Add entity schema to your Framer site today</h3>
+    <p>Install RankFrame from the Framer Plugin Marketplace. 7-day free trial, no credit card required.</p>
+    <a class="cta-btn" href="https://rankframe.com">Start free trial</a>
+  </div>
+
+  <!-- SEO Details Panel -->
+  <div class="seo-panel">
+    <div class="seo-panel-header">
+      <div class="seo-panel-title">SEO Details</div>
+      <div class="seo-panel-sub">Click Copy on any field to grab it without touching page source</div>
+    </div>
+    <div class="seo-fields" id="rf-seo-fields"></div>
+    <div class="seo-schemas" id="rf-seo-schemas"></div>
+  </div>
+
+  <script>
+  (function () {
+    function copyBtn(text) {
+      const btn = document.createElement('button'); btn.className = 'seo-copy-btn'; btn.textContent = 'Copy';
+      btn.addEventListener('click', function () {
+        navigator.clipboard.writeText(text).then(function () {
+          btn.textContent = 'Copied'; btn.classList.add('ok');
+          setTimeout(function () { btn.textContent = 'Copy'; btn.classList.remove('ok'); }, 2000);
+        });
+      });
+      return btn;
+    }
+    var metaFields = [
+      { label: 'Meta Title', value: document.title },
+      { label: 'Meta Description', value: (document.querySelector('meta[name="description"]') || {}).content || '' },
+      { label: 'Meta Keywords', value: (document.querySelector('meta[name="keywords"]') || {}).content || '' },
+      { label: 'Canonical URL', value: (document.querySelector('link[rel="canonical"]') || {}).getAttribute('href') || '' },
+    ];
+    var fieldsEl = document.getElementById('rf-seo-fields');
+    metaFields.forEach(function (f) {
+      if (!f.value) return;
+      var wrap = document.createElement('div'); wrap.className = 'seo-field';
+      var row = document.createElement('div'); row.className = 'seo-field-row';
+      var lbl = document.createElement('div'); lbl.className = 'seo-field-label'; lbl.textContent = f.label;
+      row.appendChild(lbl); row.appendChild(copyBtn(f.value));
+      var val = document.createElement('div'); val.className = 'seo-field-value'; val.textContent = f.value;
+      wrap.appendChild(row); wrap.appendChild(val); fieldsEl.appendChild(wrap);
+    });
+    var schemasEl = document.getElementById('rf-seo-schemas');
+    document.querySelectorAll('script[type="application/ld+json"]').forEach(function (s) {
+      var parsed; try { parsed = JSON.parse(s.textContent); } catch (e) { return; }
+      var pretty = JSON.stringify(parsed, null, 2);
+      var wrap = document.createElement('div'); wrap.className = 'seo-schema';
+      var hdr = document.createElement('div'); hdr.className = 'seo-schema-header';
+      var typ = document.createElement('div'); typ.className = 'seo-schema-type';
+      typ.textContent = (parsed['@type'] || 'Schema') + ' / JSON-LD';
+      hdr.appendChild(typ); hdr.appendChild(copyBtn(pretty));
+      var pre = document.createElement('pre'); pre.className = 'seo-schema-code'; pre.textContent = pretty;
+      wrap.appendChild(hdr); wrap.appendChild(pre); schemasEl.appendChild(wrap);
+    });
+  })();
+  </script>
+
+</div>
+</body>
+</html>
