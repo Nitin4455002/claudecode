@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Article Schema in RankFrame | RankFrame Help</title>
+  <meta name="description" content="Add Article schema to your Framer site using RankFrame. Covers all four article subtypes: Article, BlogPosting, TechArticle, and NewsArticle. Every field explained: Headline, Description, Image Details, Author Details, Publisher Details, and Dates." />
+  <meta name="keywords" content="article schema framer, blogposting schema, newsarticle schema, techarticle schema, json-ld article framer, rankframe article schema, structured data article" />
+  <link rel="canonical" href="https://rankframe.com/help/article-schema" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Article Schema in RankFrame",
+    "description": "Add Article, BlogPosting, TechArticle, or NewsArticle schema to your Framer site using RankFrame. Every field is covered: Headline, Description, Image Details, Author Details, Publisher Details, and date fields.",
+    "author": { "@type": "Organization", "name": "7 Seers", "url": "https://rankframe.com" },
+    "publisher": { "@type": "Organization", "name": "RankFrame", "url": "https://rankframe.com" },
+    "datePublished": "2026-05-02",
+    "dateModified": "2026-05-02",
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://rankframe.com/help/article-schema" },
+    "keywords": "article schema, blogposting, newsarticle, techarticle, json-ld, framer seo"
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Which article subtype should I choose?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Use Article for general editorial content. Use BlogPosting for blog entries or written posts. Use TechArticle for technical documentation, tutorials, or developer guides. Use NewsArticle for news stories or press releases." }
+      },
+      {
+        "@type": "Question",
+        "name": "What image dimensions should I use?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Google recommends at least 1200 x 630 pixels for article images. Enter the actual pixel width and height in the Image Width and Image Height fields so the schema is accurate." }
+      },
+      {
+        "@type": "Question",
+        "name": "Does the article schema affect my blog CMS pages in Framer?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Each schema entry in RankFrame is bound to one specific URL you select from the sitemap. For CMS collection pages, create individual schema entries for each post URL you want to cover." }
+      },
+      {
+        "@type": "Question",
+        "name": "What date format should I use for Date Published and Date Modified?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Use the ISO 8601 format: YYYY-MM-DD. For example, 2026-05-02. This is the format Google expects in JSON-LD date fields." }
+      }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Help Center", "item": "https://rankframe.com/help" },
+      { "@type": "ListItem", "position": 2, "name": "Schema Markup", "item": "https://rankframe.com/help/schema-markup" },
+      { "@type": "ListItem", "position": 3, "name": "Article Schema", "item": "https://rankframe.com/help/article-schema" }
+    ]
+  }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", sans-serif; background: #ffffff; color: #111111; line-height: 1.7; font-size: 16px; }
+    .page { max-width: 740px; margin: 0 auto; padding: 48px 24px 96px; }
+    .breadcrumb { display: flex; align-items: center; gap: 6px; font-size: 13px; color: #888; margin-bottom: 32px; flex-wrap: wrap; }
+    .breadcrumb a { color: #888; text-decoration: none; }
+    .breadcrumb a:hover { color: #7c3aed; }
+    .breadcrumb span { color: #ccc; }
+    .article-category { display: inline-block; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #7c3aed; background: #f3f0ff; padding: 3px 10px; border-radius: 999px; margin-bottom: 12px; }
+    h1 { font-size: 2rem; font-weight: 700; color: #0a0a0a; line-height: 1.25; margin-bottom: 14px; letter-spacing: -0.02em; }
+    .article-description { font-size: 1.05rem; color: #555; line-height: 1.65; margin-bottom: 10px; }
+    .article-meta { display: flex; gap: 16px; font-size: 13px; color: #aaa; margin-bottom: 36px; padding-bottom: 24px; border-bottom: 1px solid #f0f0f0; flex-wrap: wrap; }
+    .toc { background: #fafafa; border: 1px solid #efefef; border-radius: 10px; padding: 18px 22px; margin-bottom: 40px; }
+    .toc-title { font-size: 12px; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: #aaa; margin-bottom: 10px; }
+    .toc ol { list-style: none; padding: 0; }
+    .toc li { margin-bottom: 5px; }
+    .toc a { font-size: 14px; color: #555; text-decoration: none; }
+    .toc a:hover { color: #7c3aed; }
+    h2 { font-size: 1.3rem; font-weight: 600; color: #0a0a0a; margin: 40px 0 14px; padding-bottom: 8px; border-bottom: 1px solid #f0f0f0; letter-spacing: -0.01em; }
+    h3 { font-size: 1.05rem; font-weight: 600; color: #0a0a0a; margin: 24px 0 8px; }
+    p { color: #333; margin-bottom: 16px; }
+    ul, ol { padding-left: 22px; margin-bottom: 16px; }
+    li { color: #333; margin-bottom: 6px; }
+    strong { color: #0a0a0a; font-weight: 600; }
+    a { color: #7c3aed; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .tip { background: #f5f3ff; border-left: 3px solid #7c3aed; border-radius: 0 8px 8px 0; padding: 12px 16px; margin: 20px 0; }
+    .tip-label { font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #7c3aed; margin-bottom: 4px; }
+    .tip p { color: #4c1d95; margin: 0; font-size: 0.93rem; }
+    .note { background: #fff8f0; border-left: 3px solid #f59e0b; border-radius: 0 8px 8px 0; padding: 12px 16px; margin: 20px 0; }
+    .note-label { font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #d97706; margin-bottom: 4px; }
+    .note p { color: #78350f; margin: 0; font-size: 0.93rem; }
+    .field-table { width: 100%; border-collapse: collapse; margin: 16px 0 24px; font-size: 0.9rem; }
+    .field-table th { text-align: left; padding: 10px 12px; background: #fafafa; border: 1px solid #efefef; color: #555; font-weight: 600; }
+    .field-table td { padding: 10px 12px; border: 1px solid #f0f0f0; vertical-align: top; }
+    .field-table tr:nth-child(even) td { background: #fafafa; }
+    .field-name { font-weight: 600; color: #0a0a0a; font-family: "SF Mono","Fira Code",Consolas,monospace; font-size: 0.85rem; }
+    .section-label { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #7c3aed; background: #f3f0ff; padding: 2px 8px; border-radius: 4px; margin-bottom: 10px; }
+    .faq-section { margin-top: 48px; padding-top: 32px; border-top: 1px solid #f0f0f0; }
+    .faq-section h2 { border-bottom: none; padding-bottom: 0; margin-bottom: 24px; }
+    .faq-item { border: 1px solid #efefef; border-radius: 10px; padding: 18px 20px; margin-bottom: 10px; }
+    .faq-q { font-weight: 600; color: #0a0a0a; font-size: 0.95rem; margin-bottom: 8px; }
+    .faq-a { color: #555; font-size: 0.93rem; line-height: 1.65; }
+    .related-section { margin-top: 48px; padding-top: 32px; border-top: 1px solid #f0f0f0; }
+    .related-section h2 { border-bottom: none; padding-bottom: 0; margin-bottom: 16px; font-size: 1rem; color: #666; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; }
+    .related-links { list-style: none; padding: 0; }
+    .related-links li { margin-bottom: 8px; }
+    .related-links a { font-size: 0.95rem; color: #7c3aed; display: flex; align-items: center; gap: 6px; }
+    .related-links a::before { content: "→"; font-size: 12px; }
+    .cta-box { background: linear-gradient(135deg, #f5f3ff, #faf0ff); border: 1px solid #e8e0ff; border-radius: 12px; padding: 24px 28px; margin-top: 40px; text-align: center; }
+    .cta-box h3 { font-size: 1.1rem; color: #0a0a0a; margin-bottom: 8px; }
+    .cta-box p { color: #666; font-size: 0.9rem; margin-bottom: 16px; }
+    .cta-btn { display: inline-block; background: #7c3aed; color: #fff; font-weight: 600; font-size: 0.9rem; padding: 10px 22px; border-radius: 8px; text-decoration: none; }
+    .cta-btn:hover { background: #6d28d9; text-decoration: none; }
+    .seo-panel { margin-top: 64px; border-top: 2px dashed #e8e0ff; padding-top: 36px; }
+    .seo-panel-header { margin-bottom: 20px; }
+    .seo-panel-title { font-size: 11px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: #7c3aed; }
+    .seo-panel-sub { font-size: 12px; color: #aaa; margin-top: 3px; }
+    .seo-fields { display: grid; gap: 10px; margin-bottom: 28px; }
+    .seo-field { background: #fafafa; border: 1px solid #efefef; border-radius: 8px; padding: 14px 16px; }
+    .seo-field-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+    .seo-field-label { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #bbb; }
+    .seo-copy-btn { font-size: 10px; font-weight: 600; color: #7c3aed; background: #f3f0ff; border: none; border-radius: 4px; padding: 3px 9px; cursor: pointer; transition: background 0.15s; }
+    .seo-copy-btn:hover { background: #e8e0ff; }
+    .seo-copy-btn.ok { color: #059669; background: #ecfdf5; }
+    .seo-field-value { font-size: 0.88rem; color: #333; line-height: 1.55; word-break: break-word; user-select: all; }
+    .seo-schemas { display: grid; gap: 14px; }
+    .seo-schema { border: 1px solid #efefef; border-radius: 8px; overflow: hidden; }
+    .seo-schema-header { display: flex; justify-content: space-between; align-items: center; padding: 10px 16px; background: #fafafa; border-bottom: 1px solid #efefef; }
+    .seo-schema-type { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #bbb; }
+    .seo-schema-code { background: #0d0d0d; color: #d4d4d4; font-family: "SF Mono","Fira Code",Consolas,monospace; font-size: 0.75rem; line-height: 1.65; padding: 16px 18px; margin: 0; overflow-x: auto; white-space: pre; user-select: all; }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <nav class="breadcrumb">
+    <a href="https://rankframe.com/help">Help Center</a>
+    <span>/</span>
+    <a href="https://rankframe.com/help/schema-markup">Schema Markup</a>
+    <span>/</span>
+    <span>Article Schema</span>
+  </nav>
+
+  <div class="article-category">Schema Markup</div>
+  <h1>Article Schema</h1>
+  <p class="article-description">RankFrame supports four article schema subtypes: Article, BlogPosting, TechArticle, and NewsArticle. This guide covers every field across the form sections: Article Type, Headline, URL, Description, Image Details, Author Details, Publisher Details, and Dates.</p>
+  <div class="article-meta">
+    <span>5 min read</span>
+    <span>Last updated May 2, 2026</span>
+  </div>
+
+  <nav class="toc">
+    <div class="toc-title">On this page</div>
+    <ol>
+      <li><a href="#what-it-does">What article schema does</a></li>
+      <li><a href="#subtypes">The four article subtypes</a></li>
+      <li><a href="#fields-basic">Article Type, Headline, URL, Description</a></li>
+      <li><a href="#fields-image">Image Details</a></li>
+      <li><a href="#fields-author">Author Details</a></li>
+      <li><a href="#fields-publisher">Publisher Details</a></li>
+      <li><a href="#fields-dates">Dates</a></li>
+      <li><a href="#save-inject">Saving and injecting</a></li>
+      <li><a href="#faq">Frequently asked questions</a></li>
+    </ol>
+  </nav>
+
+  <section id="what-it-does">
+    <h2>What article schema does</h2>
+    <p>Article schema tells Google that a page contains editorial content written by a specific author and published by a specific organization. When present and valid, it enables rich results including article carousels, author attribution, and top stories eligibility in Google Search.</p>
+    <p>This schema type is particularly valuable for Framer blogs, case study pages, and editorial sections. Adding complete article schema with author and publisher data strengthens Google's understanding of content origin and credibility.</p>
+  </section>
+
+  <section id="subtypes">
+    <h2>The four article subtypes</h2>
+    <p>At the top of the Article schema form is an <strong>Article Type</strong> selector. Choose the subtype that best describes your content:</p>
+    <ul>
+      <li><strong>Article:</strong> general editorial content. Use this when none of the other subtypes apply precisely.</li>
+      <li><strong>BlogPosting:</strong> a blog entry or written post. Use this for individual posts on a Framer blog or journal section.</li>
+      <li><strong>TechArticle:</strong> technical documentation, tutorials, developer guides, or how-to content aimed at a technical audience.</li>
+      <li><strong>NewsArticle:</strong> a news story, press release, or announcement intended to report on recent events.</li>
+    </ul>
+    <div class="tip">
+      <div class="tip-label">Tip</div>
+      <p>For most Framer blog pages, <strong>BlogPosting</strong> is the right choice. For product documentation or help articles, use <strong>TechArticle</strong>.</p>
+    </div>
+  </section>
+
+  <section id="fields-basic">
+    <h2>Article Type, Headline, URL, Description</h2>
+    <div class="section-label">Basic Fields</div>
+    <table class="field-table">
+      <thead>
+        <tr>
+          <th>Field</th>
+          <th>What to enter</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="field-name">Article Type</span></td>
+          <td>Select from the four subtypes: Article, BlogPosting, TechArticle, or NewsArticle. This sets the <code>@type</code> property in the JSON-LD output.</td>
+        </tr>
+        <tr>
+          <td><span class="field-name">Headline</span></td>
+          <td>The title of the article as it should appear in structured data. Keep it under 110 characters. Match it closely to the visible heading on the page. Becomes the <code>headline</code> property.</td>
+        </tr>
+        <tr>
+          <td><span class="field-name">URL</span></td>
+          <td>The canonical URL of this article page (e.g. <code>https://yourdomain.com/blog/my-post</code>). Becomes the <code>mainEntityOfPage</code> identifier.</td>
+        </tr>
+        <tr>
+          <td><span class="field-name">Description</span></td>
+          <td>A brief summary of the article, ideally 1 to 2 sentences. This is not the meta description but the structured data description. Becomes the <code>description</code> property.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="fields-image">
+    <h2>Image Details</h2>
+    <div class="section-label">Image Details</div>
+    <p>Google requires at least one image in article schema for rich result eligibility. The Image Details section has three fields:</p>
+    <table class="field-table">
+      <thead>
+        <tr>
+          <th>Field</th>
+          <th>What to enter</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="field-name">Image URL</span></td>
+          <td>A direct URL to the article's featured or hero image. Use a full absolute URL (e.g. <code>https://framerusercontent.com/images/...</code>). Becomes the <code>image.url</code> property.</td>
+        </tr>
+        <tr>
+          <td><span class="field-name">Image Width</span></td>
+          <td>The pixel width of the image (e.g. 1200). Google recommends images at least 1200 pixels wide for standard rich results. Becomes <code>image.width</code>.</td>
+        </tr>
+        <tr>
+          <td><span class="field-name">Image Height</span></td>
+          <td>The pixel height of the image (e.g. 630). Use the actual dimensions of the file to keep schema accurate. Becomes <code>image.height</code>.</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="note">
+      <div class="note-label">Note</div>
+      <p>Google recommends a 1.91:1 aspect ratio for article images. 1200 x 630 is the standard. Images below 1200 pixels wide may not qualify for rich result features.</p>
+    </div>
+  </section>
+
+  <section id="fields-author">
+    <h2>Author Details</h2>
+    <div class="section-label">Author Details</div>
+    <p>The Author Details section identifies who wrote the article. Google uses this for authorship attribution and E-E-A-T signals.</p>
+    <table class="field-table">
+      <thead>
+        <tr>
+          <th>Field</th>
+          <th>What to enter</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="field-name">Author Name</span></td>
+          <td>The full name of the individual who wrote the article (e.g. "Jane Smith"). Becomes <code>author.name</code>. If the author is an organization rather than a person, use the organization name.</td>
+        </tr>
+        <tr>
+          <td><span class="field-name">Author URL</span></td>
+          <td>A URL for the author's profile, bio page, or personal website. This helps Google connect the author name to a verifiable online identity. Becomes <code>author.url</code>.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="fields-publisher">
+    <h2>Publisher Details</h2>
+    <div class="section-label">Publisher Details</div>
+    <p>The Publisher Details section identifies the organization that published the article. This is usually your brand, studio, or company.</p>
+    <table class="field-table">
+      <thead>
+        <tr>
+          <th>Field</th>
+          <th>What to enter</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="field-name">Publisher Name</span></td>
+          <td>The official name of the publishing organization (e.g. "7 Seers" or "Acme Design Studio"). Becomes <code>publisher.name</code>.</td>
+        </tr>
+        <tr>
+          <td><span class="field-name">Publisher Logo URL</span></td>
+          <td>A direct URL to the publisher's logo image. Google prefers a rectangular logo with a white or transparent background, ideally 600 x 60 pixels or similar proportions. Becomes <code>publisher.logo.url</code>.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="fields-dates">
+    <h2>Dates</h2>
+    <div class="section-label">Dates</div>
+    <p>Both date fields are important for Google's freshness signals and rich result display.</p>
+    <table class="field-table">
+      <thead>
+        <tr>
+          <th>Field</th>
+          <th>What to enter</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="field-name">Date Published</span></td>
+          <td>The date the article was first published. Use ISO 8601 format: YYYY-MM-DD (e.g. 2026-05-02). Becomes <code>datePublished</code>.</td>
+        </tr>
+        <tr>
+          <td><span class="field-name">Date Modified</span></td>
+          <td>The date the article was last updated. If the article has never been edited since publication, use the same date as Date Published. Keep this up to date when you revise the content. Becomes <code>dateModified</code>.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="save-inject">
+    <h2>Saving and injecting</h2>
+    <ol>
+      <li>Click the <strong>Preview JSON</strong> tab to review the complete JSON-LD output before saving.</li>
+      <li>Click <strong>Validator (Ext)</strong> to open Google Rich Results Test and confirm the schema is valid for rich result eligibility.</li>
+      <li>Click <strong>Copy JSON</strong> if you want a local copy of the raw JSON-LD.</li>
+      <li>Click <strong>Save Schema</strong> to save to the Manual sub-tab in Saved Schemas.</li>
+      <li>Toggle the schema on in Saved Schemas, then click <strong>Save and Inject</strong>.</li>
+    </ol>
+  </section>
+
+  <section id="faq" class="faq-section">
+    <h2>Frequently asked questions</h2>
+    <div class="faq-item">
+      <div class="faq-q">Which article subtype should I choose?</div>
+      <div class="faq-a">Use Article for general editorial content. Use BlogPosting for individual blog entries. Use TechArticle for technical documentation or tutorials. Use NewsArticle for news stories or press releases.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What image dimensions should I use?</div>
+      <div class="faq-a">Google recommends at least 1200 x 630 pixels. Enter the actual pixel width and height in Image Width and Image Height so the schema is accurate.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Does article schema affect CMS pages in Framer?</div>
+      <div class="faq-a">Each schema entry is bound to one specific URL from the sitemap. For CMS collection pages, create individual schema entries for each post URL you want to cover.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What date format should I use?</div>
+      <div class="faq-a">Use ISO 8601 format: YYYY-MM-DD. For example, 2026-05-02. This is the format Google expects in JSON-LD date fields.</div>
+    </div>
+  </section>
+
+  <section class="related-section">
+    <h2>Related articles</h2>
+    <ul class="related-links">
+      <li><a href="https://rankframe.com/help/schema-injection-overview">Schema Injection Overview</a></li>
+      <li><a href="https://rankframe.com/help/person-organization-schema">Person and Organization Schema</a></li>
+      <li><a href="https://rankframe.com/help/book-schema">Book Schema</a></li>
+      <li><a href="https://rankframe.com/help/auto-generate-schema">Auto-Generate Schema with AI</a></li>
+    </ul>
+  </section>
+
+  <div class="cta-box">
+    <h3>Add article schema to your Framer blog today</h3>
+    <p>Install RankFrame from the Framer Plugin Marketplace. 7-day free trial, no credit card required.</p>
+    <a class="cta-btn" href="https://rankframe.com">Start free trial</a>
+  </div>
+
+  <!-- SEO Details Panel -->
+  <div class="seo-panel">
+    <div class="seo-panel-header">
+      <div class="seo-panel-title">SEO Details</div>
+      <div class="seo-panel-sub">Click Copy on any field to grab it without touching page source</div>
+    </div>
+    <div class="seo-fields" id="rf-seo-fields"></div>
+    <div class="seo-schemas" id="rf-seo-schemas"></div>
+  </div>
+
+  <script>
+  (function () {
+    function copyBtn(text) {
+      const btn = document.createElement('button'); btn.className = 'seo-copy-btn'; btn.textContent = 'Copy';
+      btn.addEventListener('click', function () {
+        navigator.clipboard.writeText(text).then(function () {
+          btn.textContent = 'Copied'; btn.classList.add('ok');
+          setTimeout(function () { btn.textContent = 'Copy'; btn.classList.remove('ok'); }, 2000);
+        });
+      });
+      return btn;
+    }
+    var metaFields = [
+      { label: 'Meta Title', value: document.title },
+      { label: 'Meta Description', value: (document.querySelector('meta[name="description"]') || {}).content || '' },
+      { label: 'Meta Keywords', value: (document.querySelector('meta[name="keywords"]') || {}).content || '' },
+      { label: 'Canonical URL', value: (document.querySelector('link[rel="canonical"]') || {}).getAttribute('href') || '' },
+    ];
+    var fieldsEl = document.getElementById('rf-seo-fields');
+    metaFields.forEach(function (f) {
+      if (!f.value) return;
+      var wrap = document.createElement('div'); wrap.className = 'seo-field';
+      var row = document.createElement('div'); row.className = 'seo-field-row';
+      var lbl = document.createElement('div'); lbl.className = 'seo-field-label'; lbl.textContent = f.label;
+      row.appendChild(lbl); row.appendChild(copyBtn(f.value));
+      var val = document.createElement('div'); val.className = 'seo-field-value'; val.textContent = f.value;
+      wrap.appendChild(row); wrap.appendChild(val); fieldsEl.appendChild(wrap);
+    });
+    var schemasEl = document.getElementById('rf-seo-schemas');
+    document.querySelectorAll('script[type="application/ld+json"]').forEach(function (s) {
+      var parsed; try { parsed = JSON.parse(s.textContent); } catch (e) { return; }
+      var pretty = JSON.stringify(parsed, null, 2);
+      var wrap = document.createElement('div'); wrap.className = 'seo-schema';
+      var hdr = document.createElement('div'); hdr.className = 'seo-schema-header';
+      var typ = document.createElement('div'); typ.className = 'seo-schema-type';
+      typ.textContent = (parsed['@type'] || 'Schema') + ' / JSON-LD';
+      hdr.appendChild(typ); hdr.appendChild(copyBtn(pretty));
+      var pre = document.createElement('pre'); pre.className = 'seo-schema-code'; pre.textContent = pretty;
+      wrap.appendChild(hdr); wrap.appendChild(pre); schemasEl.appendChild(wrap);
+    });
+  })();
+  </script>
+
+</div>
+</body>
+</html>

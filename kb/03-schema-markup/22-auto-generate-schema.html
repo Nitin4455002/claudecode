@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Auto-Generate Schema with AI in RankFrame | RankFrame Help</title>
+  <meta name="description" content="Use RankFrame's Auto-Generate feature to create JSON-LD schema for every page in your Framer sitemap at once. AI scans your site and pre-fills schema forms page by page. Learn the full workflow from Pages Found to Save and Inject." />
+  <meta name="keywords" content="auto generate schema framer, ai schema framer, rankframe auto schema, json-ld generator framer, ai structured data framer, automatic schema markup framer, framer seo ai" />
+  <link rel="canonical" href="https://rankframe.com/help/auto-generate-schema" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Auto-Generate Schema with AI in RankFrame",
+    "description": "Use RankFrame's Auto-Generate feature to create JSON-LD schema for every page in your Framer sitemap. AI pre-fills the schema forms and you review, edit, and inject with a single click.",
+    "author": { "@type": "Organization", "name": "7 Seers", "url": "https://rankframe.com" },
+    "publisher": { "@type": "Organization", "name": "RankFrame", "url": "https://rankframe.com" },
+    "datePublished": "2026-05-02",
+    "dateModified": "2026-05-02",
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://rankframe.com/help/auto-generate-schema" },
+    "keywords": "auto generate schema, ai schema, framer seo, json-ld, rankframe, structured data automation"
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How does Auto-Generate schema work in RankFrame?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Auto-Generate scans your Framer sitemap and opens a Pages Found screen listing every URL. For pages without schema, a Generate button lets AI pre-fill the schema form fields for that page. You review and edit the AI output, save it, then toggle it on and click Save and Inject to push it live." }
+      },
+      {
+        "@type": "Question",
+        "name": "Where do auto-generated schemas go after I save them?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Auto-generated schemas that you review and save appear in the Generated sub-tab inside Saved Schemas. They are separate from manually created schemas which appear in the Manual sub-tab." }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I edit the AI-generated schema before injecting?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. Clicking Generate opens the full schema form pre-filled with AI content. Every field is editable. Review the content, correct anything that is inaccurate, then save. Never inject AI-generated content without reviewing it first." }
+      },
+      {
+        "@type": "Question",
+        "name": "What happens to pages that already have schema in Auto-Generate?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Pages that already have a schema show a green dot, the schema type, a view JSON button, and a regenerate button. You can view the existing JSON or regenerate the schema for that page if you want a fresh AI draft." }
+      },
+      {
+        "@type": "Question",
+        "name": "How is Auto-Generate different from Manual Schema?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Manual Schema asks you to fill every field yourself for one page at a time. Auto-Generate uses AI to pre-fill the form fields across your entire sitemap at once. Auto-Generate saves time when you need schema on many pages quickly." }
+      }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Help Center", "item": "https://rankframe.com/help" },
+      { "@type": "ListItem", "position": 2, "name": "Schema Markup", "item": "https://rankframe.com/help/schema-markup" },
+      { "@type": "ListItem", "position": 3, "name": "Auto-Generate Schema with AI", "item": "https://rankframe.com/help/auto-generate-schema" }
+    ]
+  }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", sans-serif; background: #ffffff; color: #111111; line-height: 1.7; font-size: 16px; }
+    .page { max-width: 740px; margin: 0 auto; padding: 48px 24px 96px; }
+    .breadcrumb { display: flex; align-items: center; gap: 6px; font-size: 13px; color: #888; margin-bottom: 32px; flex-wrap: wrap; }
+    .breadcrumb a { color: #888; text-decoration: none; }
+    .breadcrumb a:hover { color: #7c3aed; }
+    .breadcrumb span { color: #ccc; }
+    .article-category { display: inline-block; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #7c3aed; background: #f3f0ff; padding: 3px 10px; border-radius: 999px; margin-bottom: 12px; }
+    h1 { font-size: 2rem; font-weight: 700; color: #0a0a0a; line-height: 1.25; margin-bottom: 14px; letter-spacing: -0.02em; }
+    .article-description { font-size: 1.05rem; color: #555; line-height: 1.65; margin-bottom: 10px; }
+    .article-meta { display: flex; gap: 16px; font-size: 13px; color: #aaa; margin-bottom: 36px; padding-bottom: 24px; border-bottom: 1px solid #f0f0f0; flex-wrap: wrap; }
+    .toc { background: #fafafa; border: 1px solid #efefef; border-radius: 10px; padding: 18px 22px; margin-bottom: 40px; }
+    .toc-title { font-size: 12px; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: #aaa; margin-bottom: 10px; }
+    .toc ol { list-style: none; padding: 0; }
+    .toc li { margin-bottom: 5px; }
+    .toc a { font-size: 14px; color: #555; text-decoration: none; }
+    .toc a:hover { color: #7c3aed; }
+    h2 { font-size: 1.3rem; font-weight: 600; color: #0a0a0a; margin: 40px 0 14px; padding-bottom: 8px; border-bottom: 1px solid #f0f0f0; letter-spacing: -0.01em; }
+    h3 { font-size: 1.05rem; font-weight: 600; color: #0a0a0a; margin: 24px 0 8px; }
+    p { color: #333; margin-bottom: 16px; }
+    ul, ol { padding-left: 22px; margin-bottom: 16px; }
+    li { color: #333; margin-bottom: 6px; }
+    strong { color: #0a0a0a; font-weight: 600; }
+    a { color: #7c3aed; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .tip { background: #f5f3ff; border-left: 3px solid #7c3aed; border-radius: 0 8px 8px 0; padding: 12px 16px; margin: 20px 0; }
+    .tip-label { font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #7c3aed; margin-bottom: 4px; }
+    .tip p { color: #4c1d95; margin: 0; font-size: 0.93rem; }
+    .note { background: #fff8f0; border-left: 3px solid #f59e0b; border-radius: 0 8px 8px 0; padding: 12px 16px; margin: 20px 0; }
+    .note-label { font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #d97706; margin-bottom: 4px; }
+    .note p { color: #78350f; margin: 0; font-size: 0.93rem; }
+    .info { background: #f0f9ff; border-left: 3px solid #0ea5e9; border-radius: 0 8px 8px 0; padding: 12px 16px; margin: 20px 0; }
+    .info-label { font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #0369a1; margin-bottom: 4px; }
+    .info p { color: #0c4a6e; margin: 0; font-size: 0.93rem; }
+    .step-list { list-style: none; padding: 0; counter-reset: steps; margin-bottom: 16px; }
+    .step-list li { counter-increment: steps; display: flex; gap: 14px; padding: 12px 0; border-bottom: 1px solid #f5f5f5; }
+    .step-list li:last-child { border-bottom: none; }
+    .step-num { width: 26px; height: 26px; background: #7c3aed; color: #fff; font-size: 12px; font-weight: 700; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+    .step-body { flex: 1; }
+    .step-title { font-weight: 600; color: #0a0a0a; font-size: 0.95rem; margin-bottom: 2px; }
+    .step-desc { color: #555; font-size: 0.9rem; }
+    .faq-section { margin-top: 48px; padding-top: 32px; border-top: 1px solid #f0f0f0; }
+    .faq-section h2 { border-bottom: none; padding-bottom: 0; margin-bottom: 24px; }
+    .faq-item { border: 1px solid #efefef; border-radius: 10px; padding: 18px 20px; margin-bottom: 10px; }
+    .faq-q { font-weight: 600; color: #0a0a0a; font-size: 0.95rem; margin-bottom: 8px; }
+    .faq-a { color: #555; font-size: 0.93rem; line-height: 1.65; }
+    .related-section { margin-top: 48px; padding-top: 32px; border-top: 1px solid #f0f0f0; }
+    .related-section h2 { border-bottom: none; padding-bottom: 0; margin-bottom: 16px; font-size: 1rem; color: #666; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; }
+    .related-links { list-style: none; padding: 0; }
+    .related-links li { margin-bottom: 8px; }
+    .related-links a { font-size: 0.95rem; color: #7c3aed; display: flex; align-items: center; gap: 6px; }
+    .related-links a::before { content: "→"; font-size: 12px; }
+    .cta-box { background: linear-gradient(135deg, #f5f3ff, #faf0ff); border: 1px solid #e8e0ff; border-radius: 12px; padding: 24px 28px; margin-top: 40px; text-align: center; }
+    .cta-box h3 { font-size: 1.1rem; color: #0a0a0a; margin-bottom: 8px; }
+    .cta-box p { color: #666; font-size: 0.9rem; margin-bottom: 16px; }
+    .cta-btn { display: inline-block; background: #7c3aed; color: #fff; font-weight: 600; font-size: 0.9rem; padding: 10px 22px; border-radius: 8px; text-decoration: none; }
+    .cta-btn:hover { background: #6d28d9; text-decoration: none; }
+    .seo-panel { margin-top: 64px; border-top: 2px dashed #e8e0ff; padding-top: 36px; }
+    .seo-panel-header { margin-bottom: 20px; }
+    .seo-panel-title { font-size: 11px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: #7c3aed; }
+    .seo-panel-sub { font-size: 12px; color: #aaa; margin-top: 3px; }
+    .seo-fields { display: grid; gap: 10px; margin-bottom: 28px; }
+    .seo-field { background: #fafafa; border: 1px solid #efefef; border-radius: 8px; padding: 14px 16px; }
+    .seo-field-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+    .seo-field-label { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #bbb; }
+    .seo-copy-btn { font-size: 10px; font-weight: 600; color: #7c3aed; background: #f3f0ff; border: none; border-radius: 4px; padding: 3px 9px; cursor: pointer; transition: background 0.15s; }
+    .seo-copy-btn:hover { background: #e8e0ff; }
+    .seo-copy-btn.ok { color: #059669; background: #ecfdf5; }
+    .seo-field-value { font-size: 0.88rem; color: #333; line-height: 1.55; word-break: break-word; user-select: all; }
+    .seo-schemas { display: grid; gap: 14px; }
+    .seo-schema { border: 1px solid #efefef; border-radius: 8px; overflow: hidden; }
+    .seo-schema-header { display: flex; justify-content: space-between; align-items: center; padding: 10px 16px; background: #fafafa; border-bottom: 1px solid #efefef; }
+    .seo-schema-type { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #bbb; }
+    .seo-schema-code { background: #0d0d0d; color: #d4d4d4; font-family: "SF Mono","Fira Code",Consolas,monospace; font-size: 0.75rem; line-height: 1.65; padding: 16px 18px; margin: 0; overflow-x: auto; white-space: pre; user-select: all; }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <nav class="breadcrumb">
+    <a href="https://rankframe.com/help">Help Center</a>
+    <span>/</span>
+    <a href="https://rankframe.com/help/schema-markup">Schema Markup</a>
+    <span>/</span>
+    <span>Auto-Generate Schema with AI</span>
+  </nav>
+
+  <div class="article-category">Schema Markup</div>
+  <h1>Auto-Generate Schema with AI</h1>
+  <p class="article-description">RankFrame's Auto-Generate feature scans your entire Framer sitemap and uses AI to pre-fill schema forms for every page. Instead of creating each schema one at a time, you review and confirm AI-generated content for each page, then inject everything in one click.</p>
+  <div class="article-meta">
+    <span>5 min read</span>
+    <span>Last updated May 2, 2026</span>
+  </div>
+
+  <nav class="toc">
+    <div class="toc-title">On this page</div>
+    <ol>
+      <li><a href="#how-it-works">How Auto-Generate works</a></li>
+      <li><a href="#how-ai-generates">How the AI generates schema content</a></li>
+      <li><a href="#pages-found">The Pages Found screen</a></li>
+      <li><a href="#generating-a-schema">Generating a schema for a page</a></li>
+      <li><a href="#reviewing-editing">Reviewing and editing the AI output</a></li>
+      <li><a href="#saving-injecting">Saving and injecting</a></li>
+      <li><a href="#vs-manual">Auto-Generate vs Manual Schema</a></li>
+      <li><a href="#faq">Frequently asked questions</a></li>
+    </ol>
+  </nav>
+
+  <section id="how-it-works">
+    <h2>How Auto-Generate works</h2>
+    <p>Auto-Generate is the AI-powered path for adding schema to your Framer site. Click the <strong>Auto-Generate</strong> button (the purple button in the Advanced tab under Global Settings) to start.</p>
+    <p>RankFrame reads your sitemap and shows you every URL it finds. For each page without an existing schema, you can trigger AI generation with one click. The AI pre-fills the schema form fields for that page so you only need to review and confirm, not type everything from scratch.</p>
+    <div class="info">
+      <div class="info-label">Product Banner</div>
+      <p>"This view displays raw AI-generated schemas. Any schemas you edit and save will appear in the Saved Schemas section."</p>
+    </div>
+  </section>
+
+  <section id="how-ai-generates">
+    <h2>How the AI generates schema content</h2>
+    <p>Currently, Auto-Generate uses the same schema type form fields as the Manual Schema path to structure and populate the output. The AI fills each field based on context it reads from your site, including page content, URLs, and your brand personalization settings from the Onboarding/Personalization screen.</p>
+    <p>This means the quality of AI output improves when your Personalization data is complete. If you have filled in your Brand Name, Brand About, Industry, Audience, and Main Goals in Personalization, the AI produces more specific and accurate schema content.</p>
+    <div class="note">
+      <div class="note-label">Roadmap note</div>
+      <p>In a future update, the Auto-Generate AI engine will move to a fully independent generation model: the AI will analyze your live pages directly and produce schema entirely from that content, without using the manual schema form fields as a template. This will make generated schemas more detailed and page-specific. The current version provides a solid starting point that covers the essential schema fields for every page.</p>
+    </div>
+  </section>
+
+  <section id="pages-found">
+    <h2>The Pages Found screen</h2>
+    <p>After clicking <strong>Auto-Generate</strong>, the <strong>Pages Found</strong> screen appears. It lists every URL RankFrame found in your sitemap with the total count shown at the top.</p>
+    <p>Each row in the list shows the page URL and its current schema state:</p>
+    <ul>
+      <li><strong>Page with existing schema:</strong> a green dot, a schema type badge (e.g. ARTICLE, ORGANIZATION), a view JSON button (&lt;/&gt;), and a regenerate button (refresh icon)</li>
+      <li><strong>Page without schema:</strong> a "No Schema" label and a <strong>Generate</strong> button</li>
+    </ul>
+    <p>For pages that already have schema, click the <strong>&lt;/&gt;</strong> button to view the raw JSON-LD in a modal. Click the regenerate button to create a fresh AI draft for that page, replacing the existing one.</p>
+  </section>
+
+  <section id="generating-a-schema">
+    <h2>Generating a schema for a page</h2>
+    <p>Click the <strong>Generate</strong> button on any page that shows "No Schema". RankFrame opens the schema form for that page with fields pre-filled by the AI. The form has the same structure as Manual Schema: the <strong>Edit</strong> tab shows the pre-filled fields, <strong>Preview JSON</strong> shows the JSON-LD output, and <strong>Validator (Ext)</strong> opens Google Rich Results Test.</p>
+    <p>The AI typically pre-fills:</p>
+    <ul>
+      <li>The schema type based on the page content (Article for blog posts, Service for service pages, etc.)</li>
+      <li>The headline or name field based on the page title</li>
+      <li>The URL bound to that specific page</li>
+      <li>A description based on the page content</li>
+      <li>Image URL if a featured image is detected</li>
+    </ul>
+  </section>
+
+  <section id="reviewing-editing">
+    <h2>Reviewing and editing the AI output</h2>
+    <p>Always review AI-generated content before saving. The AI produces a solid first draft but you should verify accuracy on every field.</p>
+    <ol class="step-list">
+      <li>
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <div class="step-title">Check the Edit tab fields</div>
+          <div class="step-desc">Read through every pre-filled field. Correct anything that is inaccurate, incomplete, or that uses generic filler language. Replace AI copy with your actual business details where needed.</div>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <div class="step-title">Switch to Preview JSON</div>
+          <div class="step-desc">Click the Preview JSON tab to see the complete JSON-LD output. Confirm the structure looks correct and all key fields are populated.</div>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <div class="step-title">Validate with Google (optional)</div>
+          <div class="step-desc">Click Validator (Ext) to open Google Rich Results Test in a new tab. This confirms whether the schema is valid and eligible for rich results.</div>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <div class="step-title">Save the schema</div>
+          <div class="step-desc">Click Save Schema. This moves the schema from the Auto-Generate view into the Generated sub-tab inside Saved Schemas. It does not inject live yet.</div>
+        </div>
+      </li>
+    </ol>
+    <div class="tip">
+      <div class="tip-label">Tip</div>
+      <p>Use <strong>Copy JSON</strong> at the bottom of the form to copy the raw JSON-LD to your clipboard at any point. This is useful for keeping a local backup before saving.</p>
+    </div>
+  </section>
+
+  <section id="saving-injecting">
+    <h2>Saving and injecting</h2>
+    <p>After you have reviewed and saved schemas for the pages you want, go back to the Advanced tab in Global Settings. The Generated sub-tab in Saved Schemas will show all the schemas you saved from Auto-Generate.</p>
+    <ol>
+      <li>Enable the <strong>Schema Injection</strong> toggle at the top of the Advanced tab if it is not already on</li>
+      <li>Toggle on each schema in the Generated sub-tab that you want to push live</li>
+      <li>Check the count in the bottom bar: "N schemas ready for injection"</li>
+      <li>Click <strong>Save and Inject</strong> to push all toggled-on schemas to your live Framer site</li>
+    </ol>
+    <p>You can inject Manual and Generated schemas together. Both sub-tabs feed the same injection pipeline and the Save and Inject button pushes everything that is toggled on regardless of which tab it came from.</p>
+  </section>
+
+  <section id="vs-manual">
+    <h2>Auto-Generate vs Manual Schema</h2>
+    <p>Both paths create the same output format: JSON-LD schemas saved in Saved Schemas and injected via Save and Inject. The difference is in how you fill the form fields.</p>
+    <ul>
+      <li><strong>Manual Schema:</strong> you fill every field yourself. One page at a time. Best for high-priority pages where you want complete control over the content.</li>
+      <li><strong>Auto-Generate:</strong> AI pre-fills the fields based on your page content. Faster for covering many pages quickly. Requires review before saving.</li>
+    </ul>
+    <p>A common workflow is to use Auto-Generate for bulk coverage across your sitemap, then use Manual Schema to fine-tune or supplement specific pages that need more precision.</p>
+  </section>
+
+  <section id="faq" class="faq-section">
+    <h2>Frequently asked questions</h2>
+    <div class="faq-item">
+      <div class="faq-q">How does Auto-Generate schema work?</div>
+      <div class="faq-a">Click Auto-Generate in the Advanced tab. A Pages Found screen lists every URL in your sitemap. For pages without schema, click Generate to open a pre-filled schema form for that page. Review the AI output, edit if needed, save, toggle on, and click Save and Inject.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Where do auto-generated schemas go after I save them?</div>
+      <div class="faq-a">They appear in the Generated sub-tab inside Saved Schemas on the Advanced tab. They are separate from manually created schemas, which appear in the Manual sub-tab.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Can I edit the AI-generated schema before injecting?</div>
+      <div class="faq-a">Yes. Every field is editable after the AI pre-fills it. Review the content carefully before saving. Never inject AI output you have not checked for accuracy.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What happens to pages that already have schema?</div>
+      <div class="faq-a">They show a green dot, the schema type, a view JSON button, and a regenerate button. You can view the existing schema or regenerate a fresh AI draft for that page.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How is Auto-Generate different from Manual Schema?</div>
+      <div class="faq-a">Manual Schema asks you to fill every field yourself for one page at a time. Auto-Generate uses AI to pre-fill the fields across your sitemap. Auto-Generate saves time when you need to cover many pages. Manual Schema gives complete control over every field value.</div>
+    </div>
+  </section>
+
+  <section class="related-section">
+    <h2>Related articles</h2>
+    <ul class="related-links">
+      <li><a href="https://rankframe.com/help/schema-injection-overview">Schema Injection Overview</a></li>
+      <li><a href="https://rankframe.com/help/person-organization-schema">Person and Organization Schema</a></li>
+      <li><a href="https://rankframe.com/help/article-schema">Article Schema</a></li>
+      <li><a href="https://rankframe.com/help/service-schema">Service Schema</a></li>
+    </ul>
+  </section>
+
+  <div class="cta-box">
+    <h3>Generate schema for your entire Framer site today</h3>
+    <p>Install RankFrame from the Framer Plugin Marketplace. 7-day free trial, no credit card required.</p>
+    <a class="cta-btn" href="https://rankframe.com">Start free trial</a>
+  </div>
+
+  <!-- SEO Details Panel -->
+  <div class="seo-panel">
+    <div class="seo-panel-header">
+      <div class="seo-panel-title">SEO Details</div>
+      <div class="seo-panel-sub">Click Copy on any field to grab it without touching page source</div>
+    </div>
+    <div class="seo-fields" id="rf-seo-fields"></div>
+    <div class="seo-schemas" id="rf-seo-schemas"></div>
+  </div>
+
+  <script>
+  (function () {
+    function copyBtn(text) {
+      const btn = document.createElement('button'); btn.className = 'seo-copy-btn'; btn.textContent = 'Copy';
+      btn.addEventListener('click', function () {
+        navigator.clipboard.writeText(text).then(function () {
+          btn.textContent = 'Copied'; btn.classList.add('ok');
+          setTimeout(function () { btn.textContent = 'Copy'; btn.classList.remove('ok'); }, 2000);
+        });
+      });
+      return btn;
+    }
+    var metaFields = [
+      { label: 'Meta Title', value: document.title },
+      { label: 'Meta Description', value: (document.querySelector('meta[name="description"]') || {}).content || '' },
+      { label: 'Meta Keywords', value: (document.querySelector('meta[name="keywords"]') || {}).content || '' },
+      { label: 'Canonical URL', value: (document.querySelector('link[rel="canonical"]') || {}).getAttribute('href') || '' },
+    ];
+    var fieldsEl = document.getElementById('rf-seo-fields');
+    metaFields.forEach(function (f) {
+      if (!f.value) return;
+      var wrap = document.createElement('div'); wrap.className = 'seo-field';
+      var row = document.createElement('div'); row.className = 'seo-field-row';
+      var lbl = document.createElement('div'); lbl.className = 'seo-field-label'; lbl.textContent = f.label;
+      row.appendChild(lbl); row.appendChild(copyBtn(f.value));
+      var val = document.createElement('div'); val.className = 'seo-field-value'; val.textContent = f.value;
+      wrap.appendChild(row); wrap.appendChild(val); fieldsEl.appendChild(wrap);
+    });
+    var schemasEl = document.getElementById('rf-seo-schemas');
+    document.querySelectorAll('script[type="application/ld+json"]').forEach(function (s) {
+      var parsed; try { parsed = JSON.parse(s.textContent); } catch (e) { return; }
+      var pretty = JSON.stringify(parsed, null, 2);
+      var wrap = document.createElement('div'); wrap.className = 'seo-schema';
+      var hdr = document.createElement('div'); hdr.className = 'seo-schema-header';
+      var typ = document.createElement('div'); typ.className = 'seo-schema-type';
+      typ.textContent = (parsed['@type'] || 'Schema') + ' / JSON-LD';
+      hdr.appendChild(typ); hdr.appendChild(copyBtn(pretty));
+      var pre = document.createElement('pre'); pre.className = 'seo-schema-code'; pre.textContent = pretty;
+      wrap.appendChild(hdr); wrap.appendChild(pre); schemasEl.appendChild(wrap);
+    });
+  })();
+  </script>
+
+</div>
+</body>
+</html>
