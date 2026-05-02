@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Schema Markup Overview | RankFrame Help</title>
+  <meta name="description" content="Learn what schema markup is, why it matters for your Framer site, and how RankFrame auto-injects JSON-LD structured data on every publish." />
+  <meta name="keywords" content="schema markup framer, structured data framer, json-ld framer seo, rich results framer, framer schema markup" />
+  <link rel="canonical" href="https://rankframe.com/help/schema-markup-overview" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Schema Markup Overview",
+    "description": "Learn what schema markup is, why it matters for your Framer site, and how RankFrame auto-injects JSON-LD structured data on every publish.",
+    "author": { "@type": "Organization", "name": "7 Seers", "url": "https://rankframe.com" },
+    "publisher": { "@type": "Organization", "name": "RankFrame", "url": "https://rankframe.com" },
+    "datePublished": "2026-05-02",
+    "dateModified": "2026-05-02",
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://rankframe.com/help/schema-markup-overview" },
+    "keywords": "schema markup framer, structured data, json-ld, rich results, rankframe schema"
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Does schema markup directly improve my search rankings?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Schema markup does not directly change your position in search results. It helps Google understand your content better and can unlock rich results features like FAQ dropdowns, breadcrumb trails, and knowledge panel entries. These richer appearances increase click-through rates, which over time signals relevance to Google." }
+      },
+      {
+        "@type": "Question",
+        "name": "Do I need to add schema markup manually to every page?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No. RankFrame generates and injects schema automatically for every page in your Framer sitemap. You can also set a global schema type for the whole site and override it on specific pages." }
+      },
+      {
+        "@type": "Question",
+        "name": "What schema types does RankFrame support?",
+        "acceptedAnswer": { "@type": "Answer", "text": "RankFrame supports Organization, Article, BlogPosting, Service, Person, Product, LocalBusiness, and FAQPage schema types. You can apply one type globally and override it per page." }
+      },
+      {
+        "@type": "Question",
+        "name": "Will schema markup affect how my Framer site looks?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No. JSON-LD schema is injected into the page head as a script tag. It is invisible to visitors and has no effect on your site's visual design or layout." }
+      },
+      {
+        "@type": "Question",
+        "name": "How does Google use JSON-LD schema?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Google reads JSON-LD to extract structured facts about your page: who created it, what it is about, how it is organized, and whether it qualifies for enhanced search features. It uses this to build knowledge graphs, display rich snippets, and route queries to the most relevant results." }
+      }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Help Center", "item": "https://rankframe.com/help" },
+      { "@type": "ListItem", "position": 2, "name": "Schema Markup", "item": "https://rankframe.com/help/schema-markup" },
+      { "@type": "ListItem", "position": 3, "name": "Schema Markup Overview", "item": "https://rankframe.com/help/schema-markup-overview" }
+    ]
+  }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", sans-serif; background: #ffffff; color: #111111; line-height: 1.7; font-size: 16px; }
+    .page { max-width: 740px; margin: 0 auto; padding: 48px 24px 96px; }
+    .breadcrumb { display: flex; align-items: center; gap: 6px; font-size: 13px; color: #888; margin-bottom: 32px; flex-wrap: wrap; }
+    .breadcrumb a { color: #888; text-decoration: none; } .breadcrumb a:hover { color: #7c3aed; } .breadcrumb span { color: #ccc; }
+    .article-category { display: inline-block; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #7c3aed; background: #f3f0ff; padding: 3px 10px; border-radius: 999px; margin-bottom: 12px; }
+    h1 { font-size: 2rem; font-weight: 700; color: #0a0a0a; line-height: 1.25; margin-bottom: 14px; letter-spacing: -0.02em; }
+    .article-description { font-size: 1.05rem; color: #555; line-height: 1.65; margin-bottom: 10px; }
+    .article-meta { display: flex; gap: 16px; font-size: 13px; color: #aaa; margin-bottom: 36px; padding-bottom: 24px; border-bottom: 1px solid #f0f0f0; flex-wrap: wrap; }
+    .toc { background: #fafafa; border: 1px solid #efefef; border-radius: 10px; padding: 18px 22px; margin-bottom: 40px; }
+    .toc-title { font-size: 12px; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: #aaa; margin-bottom: 10px; }
+    .toc ol { list-style: none; padding: 0; } .toc li { margin-bottom: 5px; }
+    .toc a { font-size: 14px; color: #555; text-decoration: none; } .toc a:hover { color: #7c3aed; }
+    h2 { font-size: 1.3rem; font-weight: 600; color: #0a0a0a; margin: 40px 0 14px; padding-bottom: 8px; border-bottom: 1px solid #f0f0f0; letter-spacing: -0.01em; }
+    h3 { font-size: 1.05rem; font-weight: 600; color: #0a0a0a; margin: 24px 0 8px; }
+    p { color: #333; margin-bottom: 16px; } ul, ol { padding-left: 22px; margin-bottom: 16px; } li { color: #333; margin-bottom: 6px; }
+    strong { color: #0a0a0a; font-weight: 600; } a { color: #7c3aed; text-decoration: none; } a:hover { text-decoration: underline; }
+    .tip { background: #f5f3ff; border-left: 3px solid #7c3aed; border-radius: 0 8px 8px 0; padding: 12px 16px; margin: 20px 0; }
+    .tip-label { font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #7c3aed; margin-bottom: 4px; }
+    .tip p { color: #4c1d95; margin: 0; font-size: 0.93rem; }
+    .note { background: #fff8f0; border-left: 3px solid #f59e0b; border-radius: 0 8px 8px 0; padding: 12px 16px; margin: 20px 0; }
+    .note-label { font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #d97706; margin-bottom: 4px; }
+    .note p { color: #78350f; margin: 0; font-size: 0.93rem; }
+    .schema-type-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 20px 0 28px; }
+    @media (max-width: 560px) { .schema-type-grid { grid-template-columns: 1fr; } }
+    .schema-type-card { border: 1px solid #efefef; border-radius: 10px; padding: 16px 18px; }
+    .schema-type-name { font-size: 0.9rem; font-weight: 700; color: #0a0a0a; margin-bottom: 4px; }
+    .schema-type-use { font-size: 0.85rem; color: #666; line-height: 1.5; }
+    .schema-type-badge { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; background: #f3f0ff; color: #7c3aed; border-radius: 4px; padding: 2px 7px; margin-bottom: 6px; }
+    .rich-result-list { list-style: none; padding: 0; margin: 16px 0 24px; }
+    .rich-result-list li { display: flex; gap: 12px; padding: 11px 0; border-bottom: 1px solid #f5f5f5; }
+    .rich-result-list li:last-child { border-bottom: none; }
+    .rich-icon { width: 22px; height: 22px; border-radius: 5px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .rich-icon.green { background: #ecfdf5; color: #059669; }
+    .rich-icon.purple { background: #f3f0ff; color: #7c3aed; }
+    .rich-icon.blue { background: #eff6ff; color: #2563eb; }
+    .rich-icon.orange { background: #fff7ed; color: #ea580c; }
+    .rich-name { font-size: 0.9rem; font-weight: 600; color: #0a0a0a; display: block; margin-bottom: 2px; }
+    .rich-desc { font-size: 0.85rem; color: #666; }
+    .faq-section { margin-top: 48px; padding-top: 32px; border-top: 1px solid #f0f0f0; }
+    .faq-section h2 { border-bottom: none; padding-bottom: 0; margin-bottom: 24px; }
+    .faq-item { border: 1px solid #efefef; border-radius: 10px; padding: 18px 20px; margin-bottom: 10px; }
+    .faq-q { font-weight: 600; color: #0a0a0a; font-size: 0.95rem; margin-bottom: 8px; }
+    .faq-a { color: #555; font-size: 0.93rem; line-height: 1.65; }
+    .related-section { margin-top: 48px; padding-top: 32px; border-top: 1px solid #f0f0f0; }
+    .related-section h2 { border-bottom: none; padding-bottom: 0; margin-bottom: 16px; font-size: 1rem; color: #666; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; }
+    .related-links { list-style: none; padding: 0; } .related-links li { margin-bottom: 8px; }
+    .related-links a { font-size: 0.95rem; color: #7c3aed; display: flex; align-items: center; gap: 6px; }
+    .related-links a::before { content: "→"; font-size: 12px; }
+    .cta-box { background: linear-gradient(135deg, #f5f3ff, #faf0ff); border: 1px solid #e8e0ff; border-radius: 12px; padding: 24px 28px; margin-top: 40px; text-align: center; }
+    .cta-box h3 { font-size: 1.1rem; color: #0a0a0a; margin-bottom: 8px; }
+    .cta-box p { color: #666; font-size: 0.9rem; margin-bottom: 16px; }
+    .cta-btn { display: inline-block; background: #7c3aed; color: #fff; font-weight: 600; font-size: 0.9rem; padding: 10px 22px; border-radius: 8px; text-decoration: none; }
+    .cta-btn:hover { background: #6d28d9; text-decoration: none; }
+    /* SEO Panel */
+    .seo-panel { margin-top: 64px; border-top: 2px dashed #e8e0ff; padding-top: 36px; }
+    .seo-panel-header { margin-bottom: 20px; }
+    .seo-panel-title { font-size: 11px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: #7c3aed; }
+    .seo-panel-sub { font-size: 12px; color: #aaa; margin-top: 3px; }
+    .seo-fields { display: grid; gap: 10px; margin-bottom: 28px; }
+    .seo-field { background: #fafafa; border: 1px solid #efefef; border-radius: 8px; padding: 14px 16px; position: relative; }
+    .seo-field-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+    .seo-field-label { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #bbb; }
+    .seo-copy-btn { font-size: 10px; font-weight: 600; color: #7c3aed; background: #f3f0ff; border: none; border-radius: 4px; padding: 3px 9px; cursor: pointer; transition: background 0.15s; }
+    .seo-copy-btn:hover { background: #e8e0ff; } .seo-copy-btn.ok { color: #059669; background: #ecfdf5; }
+    .seo-field-value { font-size: 0.88rem; color: #333; line-height: 1.55; word-break: break-word; user-select: all; }
+    .seo-schemas { display: grid; gap: 14px; }
+    .seo-schema { border: 1px solid #efefef; border-radius: 8px; overflow: hidden; }
+    .seo-schema-header { display: flex; justify-content: space-between; align-items: center; padding: 10px 16px; background: #fafafa; border-bottom: 1px solid #efefef; }
+    .seo-schema-type { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #bbb; }
+    .seo-schema-code { background: #0d0d0d; color: #d4d4d4; font-family: "SF Mono","Fira Code",Consolas,monospace; font-size: 0.75rem; line-height: 1.65; padding: 16px 18px; margin: 0; overflow-x: auto; white-space: pre; user-select: all; }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <nav class="breadcrumb">
+    <a href="https://rankframe.com/help">Help Center</a>
+    <span>/</span>
+    <a href="https://rankframe.com/help/schema-markup">Schema Markup</a>
+    <span>/</span>
+    <span>Schema Markup Overview</span>
+  </nav>
+
+  <div class="article-category">Schema Markup</div>
+  <h1>Schema Markup Overview</h1>
+  <p class="article-description">Schema markup tells Google exactly what your pages are about. RankFrame generates and injects JSON-LD structured data for every page automatically, without touching your Framer code.</p>
+  <div class="article-meta">
+    <span>5 min read</span>
+    <span>Last updated May 2, 2026</span>
+  </div>
+
+  <nav class="toc">
+    <div class="toc-title">On this page</div>
+    <ol>
+      <li><a href="#what-is-schema">What is schema markup</a></li>
+      <li><a href="#rich-results">What rich results schema unlocks</a></li>
+      <li><a href="#json-ld">Why RankFrame uses JSON-LD</a></li>
+      <li><a href="#schema-types">Schema types in RankFrame</a></li>
+      <li><a href="#how-rankframe-injects">How RankFrame injects schema</a></li>
+      <li><a href="#faq">Frequently asked questions</a></li>
+    </ol>
+  </nav>
+
+  <section id="what-is-schema">
+    <h2>What is schema markup</h2>
+    <p>Schema markup is structured data you add to a webpage to help search engines understand its content. It uses a vocabulary defined at <strong>Schema.org</strong>, agreed on by Google, Bing, and other major search engines.</p>
+    <p>Without schema markup, Google reads your page text and guesses what the page is about. With schema markup, you tell Google explicitly: this is an article written by this organization, published on this date, targeting this topic. Google uses that information to build richer search results and route queries more accurately.</p>
+    <p>Schema markup does not change anything visible on your page. It lives in the <code>&lt;head&gt;</code> as a JSON script tag and is read only by search engine crawlers.</p>
+  </section>
+
+  <section id="rich-results">
+    <h2>What rich results schema unlocks</h2>
+    <p>When Google validates your schema, it can display your page with enhanced features in search results. These are called rich results. They make your listing larger, more informative, and visually distinct from plain blue links.</p>
+    <ul class="rich-result-list">
+      <li>
+        <div class="rich-icon green">B</div>
+        <div>
+          <span class="rich-name">Breadcrumb trail</span>
+          <span class="rich-desc">Shows your site hierarchy below the page title instead of a raw URL. Improves click-through rate and makes your brand feel more authoritative.</span>
+        </div>
+      </li>
+      <li>
+        <div class="rich-icon purple">F</div>
+        <div>
+          <span class="rich-name">FAQ dropdowns</span>
+          <span class="rich-desc">Expands question-and-answer pairs directly in the search result. Your listing takes up significantly more vertical space on the results page.</span>
+        </div>
+      </li>
+      <li>
+        <div class="rich-icon blue">A</div>
+        <div>
+          <span class="rich-name">Article date and author</span>
+          <span class="rich-desc">Surfaces the publish date, author name, and publisher for news and article pages. Signals freshness and credibility.</span>
+        </div>
+      </li>
+      <li>
+        <div class="rich-icon orange">K</div>
+        <div>
+          <span class="rich-name">Knowledge panel entries</span>
+          <span class="rich-desc">Organization schema can feed Google's knowledge panel for your brand. Helps branded searches show a rich right-side card with your logo, links, and description.</span>
+        </div>
+      </li>
+    </ul>
+
+    <div class="tip">
+      <div class="tip-label">Tip</div>
+      <p>Rich results are not guaranteed just because schema is present. Google decides whether to display them based on content quality, schema accuracy, and query relevance. But without schema, you have no chance of qualifying for them at all.</p>
+    </div>
+  </section>
+
+  <section id="json-ld">
+    <h2>Why RankFrame uses JSON-LD</h2>
+    <p>There are three ways to add schema to a page: JSON-LD, Microdata, and RDFa. Google recommends JSON-LD because it lives in one clean script block in the page head, separate from your HTML content.</p>
+    <p>Microdata and RDFa require you to annotate individual HTML elements with schema attributes. This couples your schema to your markup and makes it fragile: changing a heading or a paragraph can break your structured data silently.</p>
+    <p>JSON-LD has no such dependency. RankFrame injects a single <code>&lt;script type="application/ld+json"&gt;</code> block per page. If you redesign your Framer site completely, your schema is unaffected.</p>
+
+    <div class="note">
+      <div class="note-label">Note</div>
+      <p>RankFrame uses a deduplication check on every publish. If a page already has a schema block from a previous RankFrame injection, the old one is replaced cleanly. You will never end up with duplicate script tags stacking up in your page head.</p>
+    </div>
+  </section>
+
+  <section id="schema-types">
+    <h2>Schema types in RankFrame</h2>
+    <p>RankFrame supports eight schema types. Each targets a different kind of page or site. You can set one default type at the global level and override it on any individual page.</p>
+    <div class="schema-type-grid">
+      <div class="schema-type-card">
+        <div class="schema-type-badge">Most common</div>
+        <div class="schema-type-name">Organization</div>
+        <div class="schema-type-use">Best for company homepages, about pages, and brand landing pages. Establishes your business identity in Google's knowledge graph.</div>
+      </div>
+      <div class="schema-type-card">
+        <div class="schema-type-badge">Blog and news</div>
+        <div class="schema-type-name">Article / BlogPosting</div>
+        <div class="schema-type-use">Best for written content: blog posts, case studies, announcements. Surfaces author, date, and publisher in search results.</div>
+      </div>
+      <div class="schema-type-card">
+        <div class="schema-type-badge">Services</div>
+        <div class="schema-type-name">Service</div>
+        <div class="schema-type-use">Best for agency service pages and SaaS feature pages. Describes what the service does, who it is for, and who provides it.</div>
+      </div>
+      <div class="schema-type-card">
+        <div class="schema-type-badge">Personal brand</div>
+        <div class="schema-type-name">Person</div>
+        <div class="schema-type-use">Best for portfolio sites, personal brands, and freelancer pages. Identifies the individual, their job title, and their online presence.</div>
+      </div>
+      <div class="schema-type-card">
+        <div class="schema-type-badge">E-commerce</div>
+        <div class="schema-type-name">Product</div>
+        <div class="schema-type-use">Best for product landing pages and Framer sites selling digital goods. Can include price, availability, and ratings.</div>
+      </div>
+      <div class="schema-type-card">
+        <div class="schema-type-badge">Local</div>
+        <div class="schema-type-name">LocalBusiness</div>
+        <div class="schema-type-use">Best for businesses with a physical location. Feeds Google Maps, local pack results, and opening hours displays.</div>
+      </div>
+      <div class="schema-type-card">
+        <div class="schema-type-badge">Help content</div>
+        <div class="schema-type-name">FAQPage</div>
+        <div class="schema-type-use">Best for FAQ sections, help center articles, and support pages. Unlocks FAQ rich result dropdowns directly in search results.</div>
+      </div>
+      <div class="schema-type-card">
+        <div class="schema-type-badge">Events</div>
+        <div class="schema-type-name">Event</div>
+        <div class="schema-type-use">Best for conference pages, webinar landing pages, and event registrations. Surfaces event date, location, and registration link in search.</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="how-rankframe-injects">
+    <h2>How RankFrame injects schema</h2>
+    <p>RankFrame reads your Framer sitemap to discover every page on your site. When you generate schema, RankFrame creates the correct JSON-LD block for each page based on the schema type you select and the context you have added in your <strong>Personalization</strong> settings.</p>
+    <p>The injection process works in three stages:</p>
+    <ol>
+      <li><strong>Generation:</strong> RankFrame builds the JSON-LD object for each page using your brand context, page title, and page URL.</li>
+      <li><strong>Review:</strong> You see a preview of each schema block before it goes live. You can edit any field or regenerate using AI.</li>
+      <li><strong>Injection:</strong> RankFrame pushes the confirmed schema to each page head via the Framer API. It replaces any previously injected schema block to prevent duplication.</li>
+    </ol>
+    <p>Once injected, schema persists across Framer publishes. You only need to regenerate if you change your site structure, add new pages, or want to update the schema content.</p>
+
+    <div class="tip">
+      <div class="tip-label">Tip</div>
+      <p>Fill out your <strong>Personalization</strong> settings before generating schema. The more context RankFrame has about your brand, the more accurate and keyword-rich the generated schema will be.</p>
+    </div>
+  </section>
+
+  <section id="faq" class="faq-section">
+    <h2>Frequently asked questions</h2>
+    <div class="faq-item">
+      <div class="faq-q">Does schema markup directly improve my search rankings?</div>
+      <div class="faq-a">Schema markup does not directly change your position in search results. It helps Google understand your content better and can unlock rich results features like FAQ dropdowns, breadcrumb trails, and knowledge panel entries. These richer appearances increase click-through rates, which over time signals relevance to Google.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Do I need to add schema markup manually to every page?</div>
+      <div class="faq-a">No. RankFrame generates and injects schema automatically for every page in your Framer sitemap. You can set a global schema type for the whole site and override it on specific pages.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What schema types does RankFrame support?</div>
+      <div class="faq-a">RankFrame supports Organization, Article, BlogPosting, Service, Person, Product, LocalBusiness, FAQPage, and Event schema types. You can apply one type globally and override it per page.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Will schema markup affect how my Framer site looks?</div>
+      <div class="faq-a">No. JSON-LD schema is injected into the page head as a script tag. It is invisible to visitors and has no effect on your site's visual design or layout.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How does Google use JSON-LD schema?</div>
+      <div class="faq-a">Google reads JSON-LD to extract structured facts about your page: who created it, what it is about, how it is organized, and whether it qualifies for enhanced search features. It uses this to build knowledge graphs, display rich snippets, and route queries to the most relevant results.</div>
+    </div>
+  </section>
+
+  <section class="related-section">
+    <h2>Related articles</h2>
+    <ul class="related-links">
+      <li><a href="https://rankframe.com/help/schema-types-supported">Schema Types Supported in RankFrame</a></li>
+      <li><a href="https://rankframe.com/help/generate-schema-with-ai">How to Generate Schema with AI</a></li>
+      <li><a href="https://rankframe.com/help/edit-schema-fields">How to Edit and Customize Schema Fields</a></li>
+      <li><a href="https://rankframe.com/help/validate-schema">How to Test and Validate Your Schema</a></li>
+    </ul>
+  </section>
+
+  <div class="cta-box">
+    <h3>Ready to add schema to your Framer site?</h3>
+    <p>RankFrame generates and injects JSON-LD for every page automatically. 7-day free trial, no credit card required.</p>
+    <a class="cta-btn" href="https://rankframe.com">Start free trial</a>
+  </div>
+
+  <!-- SEO Details Panel -->
+  <div class="seo-panel">
+    <div class="seo-panel-header">
+      <div class="seo-panel-title">SEO Details</div>
+      <div class="seo-panel-sub">Click Copy on any field to grab it without touching page source</div>
+    </div>
+    <div class="seo-fields" id="rf-seo-fields"></div>
+    <div class="seo-schemas" id="rf-seo-schemas"></div>
+  </div>
+
+  <script>
+  (function () {
+    function copyBtn(text) {
+      var btn = document.createElement('button');
+      btn.className = 'seo-copy-btn';
+      btn.textContent = 'Copy';
+      btn.addEventListener('click', function () {
+        navigator.clipboard.writeText(text).then(function () {
+          btn.textContent = 'Copied'; btn.classList.add('ok');
+          setTimeout(function () { btn.textContent = 'Copy'; btn.classList.remove('ok'); }, 2000);
+        });
+      });
+      return btn;
+    }
+    var metaFields = [
+      { label: 'Meta Title', value: document.title },
+      { label: 'Meta Description', value: (document.querySelector('meta[name="description"]') || {}).content || '' },
+      { label: 'Meta Keywords', value: (document.querySelector('meta[name="keywords"]') || {}).content || '' },
+      { label: 'Canonical URL', value: (document.querySelector('link[rel="canonical"]') || {}).getAttribute('href') || '' },
+    ];
+    var fieldsEl = document.getElementById('rf-seo-fields');
+    metaFields.forEach(function (f) {
+      if (!f.value) return;
+      var wrap = document.createElement('div'); wrap.className = 'seo-field';
+      var row = document.createElement('div'); row.className = 'seo-field-row';
+      var lbl = document.createElement('div'); lbl.className = 'seo-field-label'; lbl.textContent = f.label;
+      row.appendChild(lbl); row.appendChild(copyBtn(f.value));
+      var val = document.createElement('div'); val.className = 'seo-field-value'; val.textContent = f.value;
+      wrap.appendChild(row); wrap.appendChild(val); fieldsEl.appendChild(wrap);
+    });
+    var schemasEl = document.getElementById('rf-seo-schemas');
+    document.querySelectorAll('script[type="application/ld+json"]').forEach(function (s) {
+      var parsed; try { parsed = JSON.parse(s.textContent); } catch (e) { return; }
+      var pretty = JSON.stringify(parsed, null, 2);
+      var wrap = document.createElement('div'); wrap.className = 'seo-schema';
+      var hdr = document.createElement('div'); hdr.className = 'seo-schema-header';
+      var typ = document.createElement('div'); typ.className = 'seo-schema-type'; typ.textContent = (parsed['@type'] || 'Schema') + ' / JSON-LD';
+      hdr.appendChild(typ); hdr.appendChild(copyBtn(pretty));
+      var pre = document.createElement('pre'); pre.className = 'seo-schema-code'; pre.textContent = pretty;
+      wrap.appendChild(hdr); wrap.appendChild(pre); schemasEl.appendChild(wrap);
+    });
+  })();
+  </script>
+
+</div>
+</body>
+</html>
