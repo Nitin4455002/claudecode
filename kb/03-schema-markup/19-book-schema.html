@@ -96,12 +96,14 @@
     .note { background: #fff8f0; border-left: 3px solid #f59e0b; border-radius: 0 8px 8px 0; padding: 12px 16px; margin: 20px 0; }
     .note-label { font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #d97706; margin-bottom: 4px; }
     .note p { color: #78350f; margin: 0; font-size: 0.93rem; }
-    .field-table { width: 100%; border-collapse: collapse; margin: 16px 0 24px; font-size: 0.9rem; }
-    .field-table th { text-align: left; padding: 10px 12px; background: #fafafa; border: 1px solid #efefef; color: #555; font-weight: 600; }
-    .field-table td { padding: 10px 12px; border: 1px solid #f0f0f0; vertical-align: top; }
-    .field-table tr:nth-child(even) td { background: #fafafa; }
-    .field-name { font-weight: 600; color: #0a0a0a; font-family: "SF Mono","Fira Code",Consolas,monospace; font-size: 0.85rem; }
-    .section-label { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #7c3aed; background: #f3f0ff; padding: 2px 8px; border-radius: 4px; margin-bottom: 10px; }
+    .field-block { margin: 36px 0 28px; }
+    .field-block-header { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+    .field-num { display: inline-flex; align-items: center; justify-content: center; width: 38px; height: 38px; background: linear-gradient(135deg, #7c3aed, #a78bfa); color: #fff; font-weight: 700; font-size: 14px; border-radius: 8px; flex-shrink: 0; box-shadow: 0 2px 6px rgba(124,58,237,0.25); }
+    .field-block-title { font-size: 1.18rem; font-weight: 700; color: #0a0a0a; letter-spacing: -0.01em; }
+    .field-block-desc { color: #444; margin-bottom: 14px; font-size: 0.97rem; line-height: 1.7; }
+    .field-block-desc code { background: #f3f0ff; color: #6d28d9; padding: 1px 6px; border-radius: 4px; font-size: 0.85em; font-family: "SF Mono","Fira Code",Consolas,monospace; }
+    .screenshot-slot { background: #fafafa; border: 1px dashed #e0d8f0; border-radius: 10px; padding: 36px 20px; text-align: center; color: #b8b2c8; font-size: 0.85rem; margin-top: 6px; margin-bottom: 8px; }
+    .screenshot-slot::before { content: "Screenshot"; display: block; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #c8c0dc; }
     .faq-section { margin-top: 48px; padding-top: 32px; border-top: 1px solid #f0f0f0; }
     .faq-section h2 { border-bottom: none; padding-bottom: 0; margin-bottom: 24px; }
     .faq-item { border: 1px solid #efefef; border-radius: 10px; padding: 18px 20px; margin-bottom: 10px; }
@@ -175,98 +177,114 @@
   </section>
 
   <section id="fields-basic">
-    <h2>Book Title, URL, Author</h2>
-    <div class="section-label">Basic Fields</div>
-    <table class="field-table">
-      <thead>
-        <tr>
-          <th>Field</th>
-          <th>What to enter</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><span class="field-name">Book Title</span></td>
-          <td>The full title of the book exactly as it appears on the cover (e.g. "The Design of Everyday Things"). Becomes the <code>name</code> property in the JSON-LD output.</td>
-        </tr>
-        <tr>
-          <td><span class="field-name">URL</span></td>
-          <td>The canonical URL of the page about this book (e.g. <code>https://yourdomain.com/books/my-book</code>). Becomes the <code>url</code> property.</td>
-        </tr>
-        <tr>
-          <td><span class="field-name">Author</span></td>
-          <td>The full name of the book's author (e.g. "Don Norman"). If there are multiple authors, enter the primary author. Becomes <code>author.name</code>.</td>
-        </tr>
-      </tbody>
-    </table>
+    <h2>Book Schema Setup &amp; Available Options</h2>
+    <p>Now let's have a closer look at each of the available options in detail.</p>
+
+    <h3>Basic Info</h3>
+
+    <div class="field-block">
+      <div class="field-block-header">
+        <div class="field-num">1</div>
+        <div class="field-block-title">Book Title</div>
+      </div>
+      <p class="field-block-desc">Enter the full title of the book exactly as it appears on the cover and title page (for example, "The Design of Everyday Things"). Do not abbreviate or alter the title. Google uses this to match the schema against its knowledge graph of books. This value populates the <code>name</code> property in the JSON-LD output.</p>
+      <div class="screenshot-slot"></div>
+    </div>
+
+    <div class="field-block">
+      <div class="field-block-header">
+        <div class="field-num">2</div>
+        <div class="field-block-title">URL</div>
+      </div>
+      <p class="field-block-desc">Enter the canonical URL of the page about this book (for example, <code>https://yourdomain.com/books/my-book</code>). This should be the permanent, preferred address for this page. This value populates the <code>url</code> property in the JSON-LD output.</p>
+      <div class="screenshot-slot"></div>
+    </div>
+
+    <div class="field-block">
+      <div class="field-block-header">
+        <div class="field-num">3</div>
+        <div class="field-block-title">Author</div>
+      </div>
+      <p class="field-block-desc">Enter the full name of the book's primary author (for example, "Don Norman"). If there are multiple authors, enter the primary author here. Use the name exactly as it appears in official publications and author profiles so Google can match the entity. This value populates the <code>author.name</code> property.</p>
+      <div class="screenshot-slot"></div>
+    </div>
   </section>
 
   <section id="fields-review">
     <h2>Review Details</h2>
-    <div class="section-label">Review Details</div>
-    <p>The Review Details section adds a structured review to the book schema. This data enables review stars in Google Search results when the schema is valid.</p>
-    <table class="field-table">
-      <thead>
-        <tr>
-          <th>Field</th>
-          <th>What to enter</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><span class="field-name">Reviewer Name</span></td>
-          <td>The name of the person or organization writing the review (e.g. "Jane Smith" or "Acme Book Reviews"). Becomes <code>review.author.name</code>.</td>
-        </tr>
-        <tr>
-          <td><span class="field-name">Rating Value</span></td>
-          <td>The numeric score given to the book (e.g. 4.5). Must be a number between 1 and the Best Rating value. Becomes <code>review.reviewRating.ratingValue</code>.</td>
-        </tr>
-        <tr>
-          <td><span class="field-name">Best Rating</span></td>
-          <td>The maximum possible score on the rating scale (e.g. 5 for a 5-star scale, or 10 for a 10-point scale). Becomes <code>review.reviewRating.bestRating</code>.</td>
-        </tr>
-      </tbody>
-    </table>
-    <div class="note">
-      <div class="note-label">Note</div>
-      <p>For review stars to appear in Google Search, the rating must follow Google's structured data review guidelines. The reviewer should be the website owner or a real person publishing the review on that page, not an aggregated third-party rating.</p>
+    <p>The Review Details section adds a structured review to the book schema. Valid review data with a rating can trigger review stars in Google Search results.</p>
+
+    <div class="field-block">
+      <div class="field-block-header">
+        <div class="field-num">4</div>
+        <div class="field-block-title">Reviewer Name</div>
+      </div>
+      <p class="field-block-desc">Enter the name of the person or organization writing the review (for example, "Jane Smith" or "Acme Book Reviews"). The reviewer should be the website owner or a real person publishing an original review on this page, not a third-party aggregated rating. This value populates the <code>review.author.name</code> property.</p>
+      <div class="screenshot-slot"></div>
+    </div>
+
+    <div class="field-block">
+      <div class="field-block-header">
+        <div class="field-num">5</div>
+        <div class="field-block-title">Rating Value</div>
+      </div>
+      <p class="field-block-desc">Enter the numeric score given to the book in this review (for example, 4.5 on a 5-point scale). The value must be greater than or equal to 1 and less than or equal to the Best Rating value. Use the actual score you would give this book, not an averaged third-party score. This value populates the <code>review.reviewRating.ratingValue</code> property.</p>
+      <div class="screenshot-slot"></div>
+    </div>
+
+    <div class="field-block">
+      <div class="field-block-header">
+        <div class="field-num">6</div>
+        <div class="field-block-title">Best Rating</div>
+      </div>
+      <p class="field-block-desc">Enter the maximum possible score on your rating scale. If you rate books out of 5 stars, enter 5. If you rate out of 10, enter 10. This value must be greater than or equal to the Rating Value. It tells Google the ceiling of your scale so the rating can be interpreted correctly. This value populates the <code>review.reviewRating.bestRating</code> property.</p>
+      <div class="screenshot-slot"></div>
     </div>
   </section>
 
   <section id="fields-editions">
     <h2>Editions</h2>
-    <div class="section-label">Editions</div>
-    <p>The Editions section is a repeater. Each row represents one edition or format of the book. Click <strong>Add Edition</strong> to add a new row. You can add as many editions as apply.</p>
-    <p>Each edition row contains four fields:</p>
-    <table class="field-table">
-      <thead>
-        <tr>
-          <th>Field</th>
-          <th>What to enter</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><span class="field-name">Format</span></td>
-          <td>The physical or digital format of this edition (e.g. Hardcover, Paperback, Ebook, Audiobook). Becomes <code>workExample.bookFormat</code>.</td>
-        </tr>
-        <tr>
-          <td><span class="field-name">ISBN</span></td>
-          <td>The International Standard Book Number for this specific edition (e.g. 978-0-465-06710-7). Each format typically has a different ISBN. Becomes <code>workExample.isbn</code>.</td>
-        </tr>
-        <tr>
-          <td><span class="field-name">URL</span></td>
-          <td>A direct URL to a purchase page, listing page, or download page for this specific edition format. Becomes <code>workExample.url</code>.</td>
-        </tr>
-        <tr>
-          <td><span class="field-name">Date</span></td>
-          <td>The publication date for this edition in ISO 8601 format: YYYY-MM-DD (e.g. 2024-03-15). Becomes <code>workExample.datePublished</code>.</td>
-        </tr>
-      </tbody>
-    </table>
+    <p>The Editions section is a repeater. Click <strong>Add Edition</strong> to add a new row for each format of the book. Each row represents one edition and has four fields. Add as many rows as you have edition formats (Hardcover, Paperback, Ebook, Audiobook, etc.).</p>
+
+    <div class="field-block">
+      <div class="field-block-header">
+        <div class="field-num">7</div>
+        <div class="field-block-title">Format</div>
+      </div>
+      <p class="field-block-desc">Enter the physical or digital format of this edition (for example, Hardcover, Paperback, Ebook, or Audiobook). Use a clear, consistent label for each format so readers and Google understand the difference between editions. This value populates the <code>workExample.bookFormat</code> property for this edition row.</p>
+      <div class="screenshot-slot"></div>
+    </div>
+
+    <div class="field-block">
+      <div class="field-block-header">
+        <div class="field-num">8</div>
+        <div class="field-block-title">ISBN</div>
+      </div>
+      <p class="field-block-desc">Enter the International Standard Book Number for this specific edition (for example, 978-0-465-06710-7). Each format typically has a different ISBN. Use the ISBN-13 format when available. This value populates the <code>workExample.isbn</code> property and allows Google to uniquely identify this edition in its book database.</p>
+      <div class="screenshot-slot"></div>
+    </div>
+
+    <div class="field-block">
+      <div class="field-block-header">
+        <div class="field-num">9</div>
+        <div class="field-block-title">URL</div>
+      </div>
+      <p class="field-block-desc">Enter a direct URL to a purchase page, listing page, or download page for this specific edition format (for example, an Amazon product page or a direct download link for the Ebook). This helps readers go directly to the format they want. This value populates the <code>workExample.url</code> property for this edition row.</p>
+      <div class="screenshot-slot"></div>
+    </div>
+
+    <div class="field-block">
+      <div class="field-block-header">
+        <div class="field-num">10</div>
+        <div class="field-block-title">Date</div>
+      </div>
+      <p class="field-block-desc">Enter the publication date for this specific edition in ISO 8601 format: YYYY-MM-DD (for example, 2024-03-15). Different editions are often published on different dates. Use the date this format was first made available to readers. This value populates the <code>workExample.datePublished</code> property for this edition row.</p>
+      <div class="screenshot-slot"></div>
+    </div>
+
     <div class="tip">
       <div class="tip-label">Tip</div>
-      <p>Add one edition row per format. If a book has Hardcover, Paperback, and Ebook editions, add three rows, one for each.</p>
+      <p>Add one edition row per format. A book with Hardcover, Paperback, and Ebook editions needs three rows, one for each. Each row can have a different ISBN, URL, and publication date.</p>
     </div>
   </section>
 
