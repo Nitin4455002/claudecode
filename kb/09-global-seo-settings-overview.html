@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Global SEO Settings Overview | RankFrame Help</title>
+  <meta name="description" content="A complete guide to RankFrame's Global SEO Settings: what each of the four tabs does, when to use Global vs Per-Page settings, and how changes apply to your Framer site." />
+  <meta name="keywords" content="rankframe global settings, framer global seo, framer site-wide seo, rankframe seo settings, framer seo tabs, rankframe basic tab" />
+  <link rel="canonical" href="https://rankframe.com/help/global-seo-settings-overview" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Global SEO Settings Overview",
+    "description": "A guided overview of RankFrame's Global SEO Settings: the Basic, Keywords, Advanced, and 404 Monitor tabs.",
+    "author": { "@type": "Organization", "name": "7 Seers", "url": "https://rankframe.com" },
+    "publisher": { "@type": "Organization", "name": "RankFrame", "url": "https://rankframe.com" },
+    "datePublished": "2026-05-02",
+    "dateModified": "2026-05-02",
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://rankframe.com/help/global-seo-settings-overview" }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is the difference between Global Settings and Per-Page Settings in RankFrame?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Global Settings apply across your entire Framer site by default. Per-Page Settings, available in the Pages section, override the global values for individual pages. Use Global Settings to define your default site-wide title, description, and SEO behavior. Use Per-Page Settings to fine-tune specific pages." }
+      },
+      {
+        "@type": "Question",
+        "name": "Do changes in Global Settings apply immediately to my live Framer site?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Most changes save immediately to RankFrame, but they only take effect on your live Framer site after you republish in Framer. Schema injection, focus keyword script, and 404 monitoring scripts also require a republish to update on the live site." }
+      },
+      {
+        "@type": "Question",
+        "name": "How many tabs does Global SEO Settings have?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Four tabs: Basic, Keywords, Advanced, and 404 Monitor. Basic handles meta tags. Keywords handles focus keyword management. Advanced handles schema markup injection. 404 Monitor tracks broken links." }
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", sans-serif; background: #ffffff; color: #111111; line-height: 1.7; font-size: 16px; }
+    .page { max-width: 740px; margin: 0 auto; padding: 48px 24px 96px; }
+    .breadcrumb { display: flex; align-items: center; gap: 6px; font-size: 13px; color: #888; margin-bottom: 32px; flex-wrap: wrap; }
+    .breadcrumb a { color: #888; text-decoration: none; } .breadcrumb a:hover { color: #7c3aed; } .breadcrumb span { color: #ccc; }
+    .article-category { display: inline-block; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #7c3aed; background: #f3f0ff; padding: 3px 10px; border-radius: 999px; margin-bottom: 12px; }
+    h1 { font-size: 2rem; font-weight: 700; color: #0a0a0a; line-height: 1.25; margin-bottom: 14px; letter-spacing: -0.02em; }
+    .article-description { font-size: 1.05rem; color: #555; line-height: 1.65; margin-bottom: 10px; }
+    .article-meta { display: flex; gap: 16px; font-size: 13px; color: #aaa; margin-bottom: 36px; padding-bottom: 24px; border-bottom: 1px solid #f0f0f0; flex-wrap: wrap; }
+    .toc { background: #fafafa; border: 1px solid #efefef; border-radius: 10px; padding: 18px 22px; margin-bottom: 40px; }
+    .toc-title { font-size: 12px; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: #aaa; margin-bottom: 10px; }
+    .toc ol { list-style: none; padding: 0; } .toc li { margin-bottom: 5px; }
+    .toc a { font-size: 14px; color: #555; text-decoration: none; } .toc a:hover { color: #7c3aed; }
+    h2 { font-size: 1.3rem; font-weight: 600; color: #0a0a0a; margin: 40px 0 14px; padding-bottom: 8px; border-bottom: 1px solid #f0f0f0; letter-spacing: -0.01em; }
+    h3 { font-size: 1.05rem; font-weight: 600; color: #0a0a0a; margin: 24px 0 8px; }
+    p { color: #333; margin-bottom: 16px; } ul, ol { padding-left: 22px; margin-bottom: 16px; } li { color: #333; margin-bottom: 6px; }
+    strong { color: #0a0a0a; font-weight: 600; } a { color: #7c3aed; text-decoration: none; } a:hover { text-decoration: underline; }
+    .tip { background: #f5f3ff; border-left: 3px solid #7c3aed; border-radius: 0 8px 8px 0; padding: 12px 16px; margin: 20px 0; }
+    .tip-label { font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #7c3aed; margin-bottom: 4px; }
+    .tip p { color: #4c1d95; margin: 0; font-size: 0.93rem; }
+    .note { background: #fff8f0; border-left: 3px solid #f59e0b; border-radius: 0 8px 8px 0; padding: 12px 16px; margin: 20px 0; }
+    .note-label { font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #d97706; margin-bottom: 4px; }
+    .note p { color: #78350f; margin: 0; font-size: 0.93rem; }
+    .tab-card { display: flex; gap: 14px; padding: 14px 0; border-bottom: 1px solid #f5f5f5; align-items: flex-start; }
+    .tab-card:last-child { border-bottom: none; }
+    .tab-icon { width: 36px; height: 36px; background: #f3f0ff; border: 1px solid #e5e0f8; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: #7c3aed; font-weight: 700; font-size: 14px; }
+    .tab-info { flex: 1; }
+    .tab-name { font-weight: 600; color: #0a0a0a; font-size: 0.96rem; margin-bottom: 3px; }
+    .tab-desc { color: #666; font-size: 0.89rem; line-height: 1.55; }
+    .compare-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; margin: 16px 0 24px; }
+    .compare-table th { text-align: left; padding: 10px 14px; background: #fafafa; border: 1px solid #efefef; color: #555; font-weight: 600; }
+    .compare-table td { padding: 10px 14px; border: 1px solid #f5f5f5; color: #333; }
+    .faq-section { margin-top: 48px; padding-top: 32px; border-top: 1px solid #f0f0f0; }
+    .faq-section h2 { border-bottom: none; padding-bottom: 0; margin-bottom: 24px; }
+    .faq-item { border: 1px solid #efefef; border-radius: 10px; padding: 18px 20px; margin-bottom: 10px; }
+    .faq-q { font-weight: 600; color: #0a0a0a; font-size: 0.95rem; margin-bottom: 8px; }
+    .faq-a { color: #555; font-size: 0.93rem; line-height: 1.65; }
+    .related-section { margin-top: 48px; padding-top: 32px; border-top: 1px solid #f0f0f0; }
+    .related-section h2 { border-bottom: none; padding-bottom: 0; margin-bottom: 16px; font-size: 1rem; color: #666; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; }
+    .related-links { list-style: none; padding: 0; } .related-links li { margin-bottom: 8px; }
+    .related-links a { font-size: 0.95rem; color: #7c3aed; display: flex; align-items: center; gap: 6px; }
+    .related-links a::before { content: "→"; font-size: 12px; }
+    .cta-box { background: linear-gradient(135deg, #f5f3ff, #faf0ff); border: 1px solid #e8e0ff; border-radius: 12px; padding: 24px 28px; margin-top: 40px; text-align: center; }
+    .cta-box h3 { font-size: 1.1rem; color: #0a0a0a; margin-bottom: 8px; }
+    .cta-box p { color: #666; font-size: 0.9rem; margin-bottom: 16px; }
+    .cta-btn { display: inline-block; background: #7c3aed; color: #fff; font-weight: 600; font-size: 0.9rem; padding: 10px 22px; border-radius: 8px; text-decoration: none; }
+    .cta-btn:hover { background: #6d28d9; text-decoration: none; }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <nav class="breadcrumb">
+    <a href="https://rankframe.com/help">Help Center</a>
+    <span>/</span>
+    <a href="https://rankframe.com/help/global-seo-settings">Global SEO Settings</a>
+    <span>/</span>
+    <span>Overview</span>
+  </nav>
+
+  <div class="article-category">Global SEO Settings</div>
+  <h1>Global SEO Settings Overview</h1>
+  <p class="article-description">Global SEO Settings is where you control your Framer site's site-wide SEO behavior. This article walks through the four tabs and explains when to use each one.</p>
+  <div class="article-meta">
+    <span>4 min read</span>
+    <span>Last updated May 2, 2026</span>
+  </div>
+
+  <nav class="toc">
+    <div class="toc-title">On this page</div>
+    <ol>
+      <li><a href="#what-it-is">What Global SEO Settings does</a></li>
+      <li><a href="#tabs">The four tabs explained</a></li>
+      <li><a href="#global-vs-page">Global vs Per-Page Settings</a></li>
+      <li><a href="#when-changes-apply">When changes apply</a></li>
+      <li><a href="#faq">Frequently asked questions</a></li>
+    </ol>
+  </nav>
+
+  <section id="what-it-is">
+    <h2>What Global SEO Settings does</h2>
+    <p>Global SEO Settings is the first item in the RankFrame sidebar. It controls SEO behavior that applies across your entire Framer site by default.</p>
+    <p>Use it to set your default site-wide meta title and description, manage focus keywords, configure schema injection, and run the 404 monitor. Anything you set here applies to every page that does not have a per-page override.</p>
+  </section>
+
+  <section id="tabs">
+    <h2>The four tabs explained</h2>
+
+    <div class="tab-card">
+      <div class="tab-icon">B</div>
+      <div class="tab-info">
+        <div class="tab-name">Basic</div>
+        <div class="tab-desc">Set your global site title and description. View the current live values side-by-side with AI-generated alternatives. Use the <strong>Write with AI</strong> button to generate fresh, keyword-rich copy based on your brand context.</div>
+      </div>
+    </div>
+
+    <div class="tab-card">
+      <div class="tab-icon">K</div>
+      <div class="tab-info">
+        <div class="tab-name">Keywords</div>
+        <div class="tab-desc">Manage focus keywords for any page on your Framer site. Toggle the focus keyword script on or off. Look up Search Volume, Difficulty (KD), Competition, and CPC for any keyword. Review keyword density across your homepage.</div>
+      </div>
+    </div>
+
+    <div class="tab-card">
+      <div class="tab-icon">A</div>
+      <div class="tab-info">
+        <div class="tab-name">Advanced (Schema)</div>
+        <div class="tab-desc">Inject JSON-LD structured data across your site. Build schemas manually or auto-generate them across your entire sitemap. Toggle the schema injection script on or off. Review and edit saved schemas.</div>
+      </div>
+    </div>
+
+    <div class="tab-card">
+      <div class="tab-icon">4</div>
+      <div class="tab-info">
+        <div class="tab-name">404 Monitor</div>
+        <div class="tab-desc">Track every 404 error on your site in real time. View URI, user agent, timestamp, and hit count. Add Exception Routes to whitelist intentional catch-all paths.</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="global-vs-page">
+    <h2>Global vs Per-Page Settings</h2>
+    <p>RankFrame has two layers of SEO control: <strong>Global Settings</strong> and <strong>Per-Page Settings</strong>. Understanding when to use each one is the foundation of your workflow.</p>
+
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>Setting</th>
+          <th>Global</th>
+          <th>Per-Page</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Meta title and description</td><td>Site default</td><td>Override per page</td></tr>
+        <tr><td>Focus keyword</td><td>Site-wide toggle</td><td>Assigned per page via Target Page dropdown</td></tr>
+        <tr><td>Schema markup</td><td>Auto-generated for all pages</td><td>Editable per page</td></tr>
+        <tr><td>Audit checks</td><td>Site-wide score</td><td>Detailed per-page audit</td></tr>
+      </tbody>
+    </table>
+
+    <p>The general workflow is to set strong defaults in Global Settings, then customize specific high-priority pages in the Pages section.</p>
+
+    <div class="tip">
+      <div class="tip-label">Tip</div>
+      <p>Set your Global meta description to describe your brand and primary value proposition. Then override it on key landing pages with copy specific to that page's offer or topic.</p>
+    </div>
+  </section>
+
+  <section id="when-changes-apply">
+    <h2>When changes apply</h2>
+    <p>Most changes save to RankFrame immediately. But changes only show on your live Framer site after you republish your project from Framer.</p>
+    <ul>
+      <li><strong>Meta title and description:</strong> Save in RankFrame, then republish your Framer site to apply.</li>
+      <li><strong>Schema injection:</strong> Save your schema in RankFrame, click Save & Inject, then republish in Framer.</li>
+      <li><strong>Focus keyword script:</strong> Toggle on in RankFrame, then republish in Framer.</li>
+      <li><strong>404 Monitor:</strong> Toggle on in RankFrame, then republish in Framer to add the tracking script to your live site.</li>
+    </ul>
+
+    <div class="note">
+      <div class="note-label">Note</div>
+      <p>If you make significant changes to your Framer site (new pages, new images, restructured content), use <strong>Recrawl Website</strong> in the RankFrame sidebar so the plugin reflects the latest version of your site.</p>
+    </div>
+  </section>
+
+  <section id="faq" class="faq-section">
+    <h2>Frequently asked questions</h2>
+
+    <div class="faq-item">
+      <div class="faq-q">What is the difference between Global Settings and Per-Page Settings?</div>
+      <div class="faq-a">Global Settings apply across your entire Framer site by default. Per-Page Settings, available in the Pages section, override the global values for individual pages. Use Global to set your defaults. Use Per-Page to fine-tune specific pages.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Do changes in Global Settings apply immediately to my live site?</div>
+      <div class="faq-a">Changes save immediately to RankFrame, but they only take effect on your live Framer site after you republish in Framer. Schema, focus keyword script, and 404 monitor scripts all require a republish to push to the live site.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How many tabs does Global SEO Settings have?</div>
+      <div class="faq-a">Four tabs: Basic, Keywords, Advanced (Schema), and 404 Monitor. Each tab handles a different area of site-wide SEO behavior.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Can I disable a Global setting for a specific page?</div>
+      <div class="faq-a">Yes. Open the Pages section, click the page you want to customize, and edit the meta tags, keyword assignment, or schema there. Per-page values override the global defaults.</div>
+    </div>
+  </section>
+
+  <section class="related-section">
+    <h2>Related articles</h2>
+    <ul class="related-links">
+      <li><a href="https://rankframe.com/help/site-wide-meta-title-description">How to Set Site-wide Meta Title and Description</a></li>
+      <li><a href="https://rankframe.com/help/ai-meta-tag-generation">Using AI to Generate Meta Tags</a></li>
+      <li><a href="https://rankframe.com/help/manage-focus-keywords">Managing Focus Keywords for Your Framer Site</a></li>
+      <li><a href="https://rankframe.com/help/understanding-the-dashboard">Understanding the RankFrame Dashboard</a></li>
+    </ul>
+  </section>
+
+  <div class="cta-box">
+    <h3>Set up your Global SEO defaults</h3>
+    <p>Strong Global Settings give every new page a solid SEO baseline. Open RankFrame to start.</p>
+    <a class="cta-btn" href="https://rankframe.com">Open RankFrame</a>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Using AI to Generate Meta Tags in RankFrame | RankFrame Help</title>
+  <meta name="description" content="Use the Write with AI button in RankFrame to generate keyword-rich meta titles and descriptions for your Framer site. Learn how Personalization shapes the output." />
+  <meta name="keywords" content="ai meta tag generator, framer ai seo, write with ai rankframe, ai meta title framer, ai meta description, rankframe ai credits, ai seo for framer" />
+  <link rel="canonical" href="https://rankframe.com/help/ai-meta-tag-generation" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How to Use AI to Generate Meta Tags in RankFrame",
+    "description": "Generate keyword-rich meta titles and descriptions with the Write with AI button.",
+    "step": [
+      { "@type": "HowToStep", "name": "Confirm Personalization is set", "text": "Make sure your Personalization data is filled in. AI uses it to write copy that matches your brand." },
+      { "@type": "HowToStep", "name": "Open the Basic tab in Global Settings", "text": "The Basic tab shows your current meta values on the left and AI-generated alternatives on the right." },
+      { "@type": "HowToStep", "name": "Click Write with AI", "text": "Click the Write with AI button next to the title or description field. RankFrame generates a fresh, keyword-rich version in seconds." },
+      { "@type": "HowToStep", "name": "Edit or regenerate", "text": "Edit the AI output to fit your voice, or click Write with AI again to generate another option." },
+      { "@type": "HowToStep", "name": "Copy and save", "text": "Click the Copy button to use the AI version, or paste it directly into the title or description field. Save your changes." }
+    ],
+    "author": { "@type": "Organization", "name": "7 Seers", "url": "https://rankframe.com" },
+    "publisher": { "@type": "Organization", "name": "RankFrame", "url": "https://rankframe.com" }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How many credits does Write with AI use?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Each AI generation uses 1 credit. Generating a meta title costs 1 credit. Generating a meta description costs 1 credit. Generating both costs 2 credits." }
+      },
+      {
+        "@type": "Question",
+        "name": "Why does my AI-generated meta sound generic?",
+        "acceptedAnswer": { "@type": "Answer", "text": "AI quality is directly tied to your Personalization data. If your Brand Name, Brand About, Industry, and Audience fields are empty or vague, the AI has no context. Fill in the Personalization tab in detail and regenerate." }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I regenerate a meta description if I do not like the first version?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. Click Write with AI again to generate a new version. Each regeneration uses 1 credit. You can edit the output manually before saving without using extra credits." }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I use AI generation on individual pages too?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. The same Write with AI feature is available in the Pages section for per-page meta tags. The AI considers the page's specific content alongside your brand context." }
+      },
+      {
+        "@type": "Question",
+        "name": "Is the AI output original?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. RankFrame uses generative AI to write fresh copy based on your brand context. Output is original and tailored to your inputs. As with any AI output, review and edit before publishing." }
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", sans-serif; background: #ffffff; color: #111111; line-height: 1.7; font-size: 16px; }
+    .page { max-width: 740px; margin: 0 auto; padding: 48px 24px 96px; }
+    .breadcrumb { display: flex; align-items: center; gap: 6px; font-size: 13px; color: #888; margin-bottom: 32px; flex-wrap: wrap; }
+    .breadcrumb a { color: #888; text-decoration: none; } .breadcrumb a:hover { color: #7c3aed; } .breadcrumb span { color: #ccc; }
+    .article-category { display: inline-block; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #7c3aed; background: #f3f0ff; padding: 3px 10px; border-radius: 999px; margin-bottom: 12px; }
+    h1 { font-size: 2rem; font-weight: 700; color: #0a0a0a; line-height: 1.25; margin-bottom: 14px; letter-spacing: -0.02em; }
+    .article-description { font-size: 1.05rem; color: #555; line-height: 1.65; margin-bottom: 10px; }
+    .article-meta { display: flex; gap: 16px; font-size: 13px; color: #aaa; margin-bottom: 36px; padding-bottom: 24px; border-bottom: 1px solid #f0f0f0; flex-wrap: wrap; }
+    .toc { background: #fafafa; border: 1px solid #efefef; border-radius: 10px; padding: 18px 22px; margin-bottom: 40px; }
+    .toc-title { font-size: 12px; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: #aaa; margin-bottom: 10px; }
+    .toc ol { list-style: none; padding: 0; } .toc li { margin-bottom: 5px; }
+    .toc a { font-size: 14px; color: #555; text-decoration: none; } .toc a:hover { color: #7c3aed; }
+    h2 { font-size: 1.3rem; font-weight: 600; color: #0a0a0a; margin: 40px 0 14px; padding-bottom: 8px; border-bottom: 1px solid #f0f0f0; letter-spacing: -0.01em; }
+    h3 { font-size: 1.05rem; font-weight: 600; color: #0a0a0a; margin: 24px 0 8px; }
+    p { color: #333; margin-bottom: 16px; } ul, ol { padding-left: 22px; margin-bottom: 16px; } li { color: #333; margin-bottom: 6px; }
+    strong { color: #0a0a0a; font-weight: 600; } a { color: #7c3aed; text-decoration: none; } a:hover { text-decoration: underline; }
+    .tip { background: #f5f3ff; border-left: 3px solid #7c3aed; border-radius: 0 8px 8px 0; padding: 12px 16px; margin: 20px 0; }
+    .tip-label { font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #7c3aed; margin-bottom: 4px; }
+    .tip p { color: #4c1d95; margin: 0; font-size: 0.93rem; }
+    .note { background: #fff8f0; border-left: 3px solid #f59e0b; border-radius: 0 8px 8px 0; padding: 12px 16px; margin: 20px 0; }
+    .note-label { font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #d97706; margin-bottom: 4px; }
+    .note p { color: #78350f; margin: 0; font-size: 0.93rem; }
+    .steps { list-style: none; padding: 0; margin: 16px 0 24px; }
+    .steps li { display: flex; gap: 16px; padding: 14px 0; border-bottom: 1px solid #f5f5f5; }
+    .steps li:last-child { border-bottom: none; }
+    .step-num { width: 28px; height: 28px; background: #7c3aed; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; flex-shrink: 0; margin-top: 2px; }
+    .step-content { flex: 1; }
+    .step-title { font-weight: 600; color: #0a0a0a; margin-bottom: 3px; font-size: 0.95rem; }
+    .step-desc { color: #555; font-size: 0.92rem; line-height: 1.6; }
+    .input-output { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 16px 0 24px; }
+    @media (max-width: 540px) { .input-output { grid-template-columns: 1fr; } }
+    .io-card { background: #fafafa; border: 1px solid #efefef; border-radius: 10px; padding: 16px 18px; }
+    .io-label { font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #7c3aed; margin-bottom: 8px; }
+    .io-content { font-size: 0.88rem; color: #444; line-height: 1.55; }
+    .faq-section { margin-top: 48px; padding-top: 32px; border-top: 1px solid #f0f0f0; }
+    .faq-section h2 { border-bottom: none; padding-bottom: 0; margin-bottom: 24px; }
+    .faq-item { border: 1px solid #efefef; border-radius: 10px; padding: 18px 20px; margin-bottom: 10px; }
+    .faq-q { font-weight: 600; color: #0a0a0a; font-size: 0.95rem; margin-bottom: 8px; }
+    .faq-a { color: #555; font-size: 0.93rem; line-height: 1.65; }
+    .related-section { margin-top: 48px; padding-top: 32px; border-top: 1px solid #f0f0f0; }
+    .related-section h2 { border-bottom: none; padding-bottom: 0; margin-bottom: 16px; font-size: 1rem; color: #666; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; }
+    .related-links { list-style: none; padding: 0; } .related-links li { margin-bottom: 8px; }
+    .related-links a { font-size: 0.95rem; color: #7c3aed; display: flex; align-items: center; gap: 6px; }
+    .related-links a::before { content: "→"; font-size: 12px; }
+    .cta-box { background: linear-gradient(135deg, #f5f3ff, #faf0ff); border: 1px solid #e8e0ff; border-radius: 12px; padding: 24px 28px; margin-top: 40px; text-align: center; }
+    .cta-box h3 { font-size: 1.1rem; color: #0a0a0a; margin-bottom: 8px; }
+    .cta-box p { color: #666; font-size: 0.9rem; margin-bottom: 16px; }
+    .cta-btn { display: inline-block; background: #7c3aed; color: #fff; font-weight: 600; font-size: 0.9rem; padding: 10px 22px; border-radius: 8px; text-decoration: none; }
+    .cta-btn:hover { background: #6d28d9; text-decoration: none; }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <nav class="breadcrumb">
+    <a href="https://rankframe.com/help">Help Center</a>
+    <span>/</span>
+    <a href="https://rankframe.com/help/global-seo-settings">Global SEO Settings</a>
+    <span>/</span>
+    <span>Using AI to Generate Meta Tags</span>
+  </nav>
+
+  <div class="article-category">Global SEO Settings</div>
+  <h1>Using AI to Generate Meta Tags in RankFrame</h1>
+  <p class="article-description">RankFrame's Write with AI button generates keyword-rich meta titles and descriptions in seconds. The output quality depends on how well you set up Personalization.</p>
+  <div class="article-meta">
+    <span>3 min read</span>
+    <span>Last updated May 2, 2026</span>
+  </div>
+
+  <nav class="toc">
+    <div class="toc-title">On this page</div>
+    <ol>
+      <li><a href="#what-it-does">What Write with AI does</a></li>
+      <li><a href="#personalization">Why Personalization matters</a></li>
+      <li><a href="#steps">How to use it</a></li>
+      <li><a href="#examples">Example output</a></li>
+      <li><a href="#credits">Credit usage</a></li>
+      <li><a href="#faq">Frequently asked questions</a></li>
+    </ol>
+  </nav>
+
+  <section id="what-it-does">
+    <h2>What Write with AI does</h2>
+    <p>The <strong>Write with AI</strong> button appears next to your meta title and description fields in the Basic tab. Click it to generate a fresh, keyword-rich version in seconds.</p>
+    <p>The AI is not a generic ChatGPT prompt. It is tuned for SEO copywriting and pulls context from your Personalization data: brand name, business description, goals, industry, target audience, and competitors.</p>
+    <p>That means the output sounds like your brand, not a template.</p>
+  </section>
+
+  <section id="personalization">
+    <h2>Why Personalization matters</h2>
+    <p>If your Personalization data is empty or vague, the AI has nothing to work with. It will generate generic copy that could apply to any business.</p>
+    <p>If your Personalization data is detailed, specific, and current, the AI generates copy that is tailored to your exact brand and audience.</p>
+
+    <div class="tip">
+      <div class="tip-label">Tip</div>
+      <p>Before using Write with AI for the first time, fill in every field in the Personalization tab. The 5 minutes you spend there pay off across every AI generation forever. See <a href="https://rankframe.com/help/managing-your-account">Managing Your RankFrame Account</a>.</p>
+    </div>
+  </section>
+
+  <section id="steps">
+    <h2>How to use it</h2>
+
+    <ol class="steps">
+      <li>
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <div class="step-title">Confirm Personalization is filled in</div>
+          <div class="step-desc">Click the account block in the sidebar. Open the <strong>Personalization</strong> tab. Make sure Brand Name, Brand About, Industry, and Audience are all filled in.</div>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <div class="step-title">Open Global Settings, Basic tab</div>
+          <div class="step-desc">Click <strong>Global Settings</strong> in the sidebar. The <strong>Basic</strong> tab is selected by default.</div>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <div class="step-title">Click Write with AI</div>
+          <div class="step-desc">Click the <strong>Write with AI</strong> button next to the title or description field. RankFrame generates a fresh version in seconds. The output appears in the AI-Generated column on the right.</div>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <div class="step-title">Edit or regenerate</div>
+          <div class="step-desc">Edit the AI output to match your voice, or click <strong>Write with AI</strong> again to generate another option. Each regeneration uses 1 credit.</div>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">5</div>
+        <div class="step-content">
+          <div class="step-title">Copy and save</div>
+          <div class="step-desc">Click the <strong>Copy</strong> button next to the AI output to put it on your clipboard, or paste it directly into the title or description field. Click <strong>Save</strong> to apply.</div>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">6</div>
+        <div class="step-content">
+          <div class="step-title">Republish your Framer site</div>
+          <div class="step-desc">Open Framer and republish your project. The new meta tags appear on your live site after the publish completes.</div>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <section id="examples">
+    <h2>Example output</h2>
+    <p>Same brand. Two different Personalization setups. Two very different AI outputs.</p>
+
+    <h3>Sparse Personalization</h3>
+    <div class="input-output">
+      <div class="io-card">
+        <div class="io-label">Personalization input</div>
+        <div class="io-content">Brand Name: 7 Seers<br>Brand About: We design websites.<br>Industry: (empty)<br>Audience: (empty)</div>
+      </div>
+      <div class="io-card">
+        <div class="io-label">AI output (generic)</div>
+        <div class="io-content">7 Seers Web Design | Professional Websites for Business</div>
+      </div>
+    </div>
+
+    <h3>Detailed Personalization</h3>
+    <div class="input-output">
+      <div class="io-card">
+        <div class="io-label">Personalization input</div>
+        <div class="io-content">Brand Name: 7 Seers<br>Brand About: Design and software studio building Framer sites and SEO tools for SaaS founders and agencies.<br>Industry: Agency, SaaS<br>Audience: SaaS Founders, Agency Owners</div>
+      </div>
+      <div class="io-card">
+        <div class="io-label">AI output (specific)</div>
+        <div class="io-content">7 Seers: Framer Sites & SEO Tools for SaaS Founders & Agencies</div>
+      </div>
+    </div>
+
+    <p>The second output is more keyword-relevant, more targeted, and more likely to win clicks from the right audience.</p>
+  </section>
+
+  <section id="credits">
+    <h2>Credit usage</h2>
+    <p>Each AI generation uses 1 credit.</p>
+    <ul>
+      <li>Generating a meta title once: 1 credit</li>
+      <li>Generating a meta description once: 1 credit</li>
+      <li>Regenerating either: 1 credit per regeneration</li>
+    </ul>
+    <p>Editing the AI output manually does not use extra credits. You only spend a credit when you click <strong>Write with AI</strong>.</p>
+    <p>If you run low, click <strong>Buy Credits</strong> in the Image SEO header to refill. See <a href="https://rankframe.com/help/plans-and-pricing">Plans and Pricing</a> for credit pricing.</p>
+
+    <div class="note">
+      <div class="note-label">Note</div>
+      <p>Credits are non-refundable once used. Take a moment to refine your Personalization data before generating, so the first output is closer to what you want.</p>
+    </div>
+  </section>
+
+  <section id="faq" class="faq-section">
+    <h2>Frequently asked questions</h2>
+
+    <div class="faq-item">
+      <div class="faq-q">How many credits does Write with AI use?</div>
+      <div class="faq-a">Each AI generation uses 1 credit. Generating a title costs 1. Generating a description costs 1. Generating both costs 2.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Why does my AI-generated meta sound generic?</div>
+      <div class="faq-a">AI quality is directly tied to your Personalization data. If your Brand About, Industry, or Audience fields are empty or vague, the AI has no context. Fill in the Personalization tab in detail and regenerate.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Can I regenerate a meta description?</div>
+      <div class="faq-a">Yes. Click Write with AI again. Each regeneration uses 1 credit. You can also edit the AI output manually without using extra credits.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Can I use AI generation on individual pages?</div>
+      <div class="faq-a">Yes. The same Write with AI feature is available in the Pages section for per-page meta tags. The AI considers the specific page content alongside your brand context.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Is the AI output original?</div>
+      <div class="faq-a">Yes. RankFrame uses generative AI to write fresh copy based on your brand context. Always review and edit AI output before publishing.</div>
+    </div>
+  </section>
+
+  <section class="related-section">
+    <h2>Related articles</h2>
+    <ul class="related-links">
+      <li><a href="https://rankframe.com/help/site-wide-meta-title-description">How to Set Site-wide Meta Title and Description</a></li>
+      <li><a href="https://rankframe.com/help/managing-your-account">Managing Your RankFrame Account (Personalization)</a></li>
+      <li><a href="https://rankframe.com/help/plans-and-pricing">RankFrame Plans and Pricing</a></li>
+      <li><a href="https://rankframe.com/help/global-seo-settings-overview">Global SEO Settings Overview</a></li>
+    </ul>
+  </section>
+
+  <div class="cta-box">
+    <h3>Generate better meta in seconds</h3>
+    <p>Set up Personalization, then click Write with AI. Open RankFrame to start.</p>
+    <a class="cta-btn" href="https://rankframe.com">Open RankFrame</a>
+  </div>
+
+</div>
+</body>
+</html>
