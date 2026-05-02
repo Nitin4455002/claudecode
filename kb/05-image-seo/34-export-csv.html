@@ -4,89 +4,75 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Export Image Data as CSV | RankFrame Help</title>
-  <meta name="description" content="Learn how to export all image data from your Framer site as a CSV file using RankFrame's Image SEO panel. Audit alt text, share with clients, and review images offline." />
+  <meta name="description" content="Download a complete spreadsheet of every image on your Framer site -- filenames, URLs, alt text status, and source -- for auditing, client sharing, and offline review." />
+  <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://rankframe.com/help/export-image-csv" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Export Image Data as CSV | RankFrame Help" />
+  <meta property="og:description" content="Download a complete spreadsheet of every image on your Framer site -- filenames, URLs, alt text status, and source -- for auditing, client sharing, and offline review." />
+  <meta property="og:url" content="https://rankframe.com/help/export-image-csv" />
+  <meta property="og:site_name" content="RankFrame" />
+
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Article",
-    "headline": "Export Image Data as CSV",
-    "description": "Learn how to export all image data from your Framer site as a CSV file using RankFrame's Image SEO panel. Audit alt text, share with clients, and review images offline.",
-    "url": "https://rankframe.com/help/export-image-csv",
-    "publisher": {
-      "@type": "Organization",
-      "name": "RankFrame",
-      "url": "https://rankframe.com"
-    },
-    "breadcrumb": {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Help Center", "item": "https://rankframe.com/help" },
-        { "@type": "ListItem", "position": 2, "name": "Image SEO", "item": "https://rankframe.com/help/image-seo" },
-        { "@type": "ListItem", "position": 3, "name": "Export Image Data as CSV", "item": "https://rankframe.com/help/export-image-csv" }
-      ]
-    }
-  }
-  </script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
+    "@graph": [
       {
-        "@type": "Question",
-        "name": "What columns does the exported CSV include?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "The CSV includes four columns: image filename, URL or path, current alt text (blank if missing), and image source (Canvas or the name of the CMS collection the image comes from)."
-        }
+        "@type": "Article",
+        "@id": "https://rankframe.com/help/export-image-csv#article",
+        "headline": "Export Image Data as CSV",
+        "description": "Download a complete spreadsheet of every image on your Framer site for auditing, client sharing, and offline review.",
+        "url": "https://rankframe.com/help/export-image-csv",
+        "inLanguage": "en",
+        "publisher": { "@type": "Organization", "name": "RankFrame", "url": "https://rankframe.com" },
+        "datePublished": "2025-01-01",
+        "dateModified": "2026-05-02",
+        "mainEntityOfPage": { "@type": "WebPage", "@id": "https://rankframe.com/help/export-image-csv" }
       },
       {
-        "@type": "Question",
-        "name": "Does the export include every image on my site?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "The export reflects whatever is currently loaded in the Image SEO panel. If you have applied a filter (for example, showing only images with missing alt text), the CSV will contain only those filtered results. Remove any filters first if you want a complete export."
-        }
+        "@type": "FAQPage",
+        "@id": "https://rankframe.com/help/export-image-csv#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What data is included in the exported CSV?",
+            "acceptedAnswer": { "@type": "Answer", "text": "The CSV includes four columns for every image: filename, URL or path, current alt text (blank if missing), and the source -- either Canvas or the name of the CMS collection the image belongs to." }
+          },
+          {
+            "@type": "Question",
+            "name": "Does the CSV include images I have filtered out?",
+            "acceptedAnswer": { "@type": "Answer", "text": "No. The export reflects whatever is currently loaded in the Image SEO panel. If you have applied a filter, only the filtered set appears in the CSV. Remove all filters first to export every image." }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I import an edited CSV back into RankFrame?",
+            "acceptedAnswer": { "@type": "Answer", "text": "CSV import is not currently supported. The export is for auditing and sharing. Alt text must be set inside the Image SEO panel directly." }
+          },
+          {
+            "@type": "Question",
+            "name": "Where is the Export button?",
+            "acceptedAnswer": { "@type": "Answer", "text": "The Export button is purple with a download arrow icon. It sits in the controls row at the top of the Image SEO panel, next to the search bar and filter controls." }
+          },
+          {
+            "@type": "Question",
+            "name": "Do I need a paid plan to export?",
+            "acceptedAnswer": { "@type": "Answer", "text": "The CSV export is available to all RankFrame users and does not consume credits. It is a data utility, not an AI feature." }
+          }
+        ]
       },
       {
-        "@type": "Question",
-        "name": "Can I edit the CSV and re-import it?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Not at this time. The export is read-only and intended for auditing and sharing. Alt text must be added or edited directly inside the Image SEO panel in RankFrame."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Where does the downloaded file go?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "The file downloads to your browser's default downloads folder, the same as any other file download. The filename will reference your site and the export date."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Is the Export button available on the free trial plan?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes. Exporting image data as CSV is available to all users regardless of plan, because it is an auditing tool that does not consume AI credits."
-        }
+        "@type": "BreadcrumbList",
+        "@id": "https://rankframe.com/help/export-image-csv#breadcrumb",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Help Center", "item": "https://rankframe.com/help" },
+          { "@type": "ListItem", "position": 2, "name": "Image SEO", "item": "https://rankframe.com/help/image-seo" },
+          { "@type": "ListItem", "position": 3, "name": "Export Image Data as CSV", "item": "https://rankframe.com/help/export-image-csv" }
+        ]
       }
     ]
   }
   </script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": "Help Center", "item": "https://rankframe.com/help" },
-      { "@type": "ListItem", "position": 2, "name": "Image SEO", "item": "https://rankframe.com/help/image-seo" },
-      { "@type": "ListItem", "position": 3, "name": "Export Image Data as CSV", "item": "https://rankframe.com/help/export-image-csv" }
-    ]
-  }
-  </script>
+
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", sans-serif; background: #ffffff; color: #111111; line-height: 1.7; font-size: 16px; }
@@ -154,11 +140,6 @@
     .seo-copy-btn:hover { background: #e8e0ff; }
     .seo-copy-btn.ok { color: #059669; background: #ecfdf5; }
     .seo-field-value { font-size: 0.88rem; color: #333; line-height: 1.55; word-break: break-word; user-select: all; }
-    .seo-schemas { display: grid; gap: 14px; }
-    .seo-schema { border: 1px solid #efefef; border-radius: 8px; overflow: hidden; }
-    .seo-schema-header { display: flex; justify-content: space-between; align-items: center; padding: 10px 16px; background: #fafafa; border-bottom: 1px solid #efefef; }
-    .seo-schema-type { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #bbb; }
-    .seo-schema-code { background: #0d0d0d; color: #d4d4d4; font-family: "SF Mono","Fira Code",Consolas,monospace; font-size: 0.75rem; line-height: 1.65; padding: 16px 18px; margin: 0; overflow-x: auto; white-space: pre; user-select: all; }
     .field-block { margin: 36px 0 28px; }
     .field-block-header { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
     .field-num { display: inline-flex; align-items: center; justify-content: center; width: 38px; height: 38px; background: linear-gradient(135deg, #7c3aed, #a78bfa); color: #fff; font-weight: 700; font-size: 14px; border-radius: 8px; flex-shrink: 0; box-shadow: 0 2px 6px rgba(124,58,237,0.25); }
@@ -180,207 +161,215 @@
     <span>Export Image Data as CSV</span>
   </nav>
 
-  <span class="article-category">Image SEO</span>
+  <div class="article-category">Image SEO</div>
   <h1>Export Image Data as CSV</h1>
-  <p class="article-description">Download a complete spreadsheet of every image on your Framer site, including filenames, paths, alt text status, and source. Ideal for audits, client handoffs, and offline review.</p>
+  <p class="article-description">Download a complete spreadsheet of every image on your Framer site, including filenames, URLs, alt text status, and source. Ideal for auditing, client handoffs, and bulk offline review.</p>
+
   <div class="article-meta">
     <span>Article #34</span>
-    <span>Image SEO</span>
-    <span>RankFrame</span>
+    <span>Updated May 2, 2026</span>
+    <span>4 min read</span>
   </div>
 
-  <div class="toc">
-    <div class="toc-title">On this page</div>
+  <nav class="toc" aria-label="Table of contents">
+    <div class="toc-title">In this article</div>
     <ol>
-      <li><a href="#export-button">Export button</a></li>
-      <li><a href="#csv-contents">CSV contents</a></li>
-      <li><a href="#when-to-use">When to use export</a></li>
+      <li><a href="#field-1">1. Export button</a></li>
+      <li><a href="#field-2">2. CSV contents</a></li>
+      <li><a href="#field-3">3. When to use the export</a></li>
+      <li><a href="#how-to">How to export your image data</a></li>
       <li><a href="#faq">Frequently asked questions</a></li>
     </ol>
-  </div>
+  </nav>
 
-  <p>The Export feature in the Image SEO panel lets you pull all image metadata out of RankFrame and into a CSV file in one click. Whether you are auditing a site with hundreds of images or handing off an alt text review to a client, the CSV gives you everything you need outside the plugin.</p>
+  <p>RankFrame tracks the alt text status of every image across your Framer site. The CSV export turns that live data into a portable file you can open in Excel, Google Sheets, or any spreadsheet tool. One click, one file, every image.</p>
 
-  <!-- Field Block 1 -->
-  <div class="field-block" id="export-button">
+  <!-- Field block 1 -->
+  <div class="field-block" id="field-1">
     <div class="field-block-header">
       <div class="field-num">1</div>
       <div class="field-block-title">Export button</div>
     </div>
+    <p class="field-block-desc">
+      The <strong>Export button</strong> is purple with a download arrow icon. It sits in the controls row at the top of the Image SEO panel, next to the search bar and filter controls. No menu navigation is required -- a single click immediately triggers a file download to your browser.
+    </p>
     <div class="screenshot-slot">Export button in the Image SEO controls row</div>
-    <p class="field-block-desc">
-      The <strong>Export button</strong> sits in the controls row at the top of the Image SEO panel. It is styled in <strong>purple</strong> with a <strong>download arrow icon</strong>, making it easy to spot alongside the filter and search controls. No configuration is required before clicking it.
-    </p>
-    <p class="field-block-desc">
-      Clicking the button triggers an immediate download. No confirmation dialog appears. The file lands in your browser's default downloads folder as a <code>.csv</code> file.
-    </p>
     <div class="tip">
       <div class="tip-label">Tip</div>
-      <p>If you have applied a filter before clicking Export (for example, filtering to show only images with missing alt text), the downloaded CSV will reflect that filtered view. This makes it easy to share a targeted list with a copywriter or client.</p>
+      <p>The button becomes active only after images have finished loading. If you see a loading indicator in the panel, wait for it to complete before clicking Export.</p>
     </div>
   </div>
 
-  <!-- Field Block 2 -->
-  <div class="field-block" id="csv-contents">
+  <!-- Field block 2 -->
+  <div class="field-block" id="field-2">
     <div class="field-block-header">
       <div class="field-num">2</div>
       <div class="field-block-title">CSV contents</div>
     </div>
-    <div class="screenshot-slot">Example CSV opened in a spreadsheet application</div>
-    <p class="field-block-desc">Every row in the exported file represents one image. The CSV contains four columns:</p>
+    <p class="field-block-desc">The downloaded file contains one row per image with four columns:</p>
     <ul>
-      <li><strong>Filename</strong> - The image file name as stored in Framer (for example, <code>hero-background.webp</code>).</li>
-      <li><strong>URL / Path</strong> - The full URL or relative path where the image is served.</li>
-      <li><strong>Alt text</strong> - The current alt text value. This column is blank when alt text has not been added yet, making it easy to spot gaps at a glance.</li>
-      <li><strong>Source</strong> - Either <code>Canvas</code> for images placed directly on Framer pages, or the name of the CMS collection the image belongs to (for example, <code>Blog Posts</code>).</li>
+      <li><strong>Filename</strong> -- the image file name as stored in Framer's asset system</li>
+      <li><strong>URL / Path</strong> -- the full URL or relative path used to render the image on the page</li>
+      <li><strong>Alt Text</strong> -- the current alt text value, or an empty cell if no alt text has been set yet</li>
+      <li><strong>Source</strong> -- either <code>Canvas</code> (placed directly on the canvas) or the name of the CMS collection the image belongs to</li>
     </ul>
+    <div class="screenshot-slot">Example CSV open in a spreadsheet application</div>
     <div class="note">
       <div class="note-label">Note</div>
-      <p>The CSV is a read-only export. You cannot re-import edited values back into RankFrame. Any changes to alt text must be made inside the Image SEO panel.</p>
+      <p>The CSV is read-only for import purposes. Editing the file and re-uploading it is not supported. To update alt text, return to the Image SEO panel inside RankFrame.</p>
     </div>
   </div>
 
-  <!-- Field Block 3 -->
-  <div class="field-block" id="when-to-use">
+  <!-- Field block 3 -->
+  <div class="field-block" id="field-3">
     <div class="field-block-header">
       <div class="field-num">3</div>
-      <div class="field-block-title">When to use export</div>
+      <div class="field-block-title">When to use the export</div>
     </div>
-    <div class="screenshot-slot">Workflow diagram: export, review offline, update in panel</div>
-    <p class="field-block-desc">The Export feature is most useful in three scenarios:</p>
-
-    <h3>Alt text audit</h3>
-    <p>Open the CSV in a spreadsheet, sort by the alt text column, and immediately see every image that is missing a description. This works especially well on large sites where scrolling through the Image SEO grid would be slow.</p>
-
-    <h3>Client or team handoff</h3>
-    <p>Share the CSV with a client, copywriter, or content team so they can draft alt text suggestions in a familiar spreadsheet environment. Once you receive their edits, enter the values into the Image SEO panel.</p>
-
-    <h3>Bulk offline review</h3>
-    <p>Before running a batch AI generation job, export the current state as a baseline. After the job completes, export again and compare the two files to confirm every image was updated correctly.</p>
-
+    <p class="field-block-desc">The export is most valuable in three situations:</p>
+    <ul>
+      <li><strong>Alt text audit</strong> -- Sort by the Alt Text column to instantly find which images are missing descriptions, even across a site with hundreds of images.</li>
+      <li><strong>Client or team sharing</strong> -- Share the spreadsheet with a copywriter, client, or project manager who does not have access to Framer or RankFrame, so they can draft alt text and return it to you.</li>
+      <li><strong>Bulk offline review</strong> -- Work through images outside the plugin environment, annotate the spreadsheet, then apply changes in batches when you return to RankFrame.</li>
+    </ul>
     <div class="tip">
       <div class="tip-label">Tip</div>
-      <p>Remove all active filters before exporting if you want a complete record of every image on the site, not just the currently visible subset.</p>
+      <p>Apply a filter before exporting if you only need a subset -- for example, images from one CMS collection. The CSV will include only what is currently visible in the panel.</p>
     </div>
   </div>
 
+  <!-- Steps -->
+  <h2 id="how-to">How to export your image data</h2>
+  <ul class="step-list">
+    <li>
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <div class="step-title">Open the Image SEO panel</div>
+        <div class="step-desc">Launch RankFrame inside Framer and click Image SEO in the left navigation.</div>
+      </div>
+    </li>
+    <li>
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <div class="step-title">Wait for images to load</div>
+        <div class="step-desc">RankFrame scans your site automatically. A loading indicator appears while this completes. The Export button becomes active once all images are listed.</div>
+      </div>
+    </li>
+    <li>
+      <div class="step-num">3</div>
+      <div class="step-body">
+        <div class="step-title">Apply filters (optional)</div>
+        <div class="step-desc">Use the search bar or filter controls to narrow the list if you only want a subset of images in the export.</div>
+      </div>
+    </li>
+    <li>
+      <div class="step-num">4</div>
+      <div class="step-body">
+        <div class="step-title">Click the purple Export button</div>
+        <div class="step-desc">Your browser downloads a CSV file immediately. No confirmation dialog appears.</div>
+      </div>
+    </li>
+    <li>
+      <div class="step-num">5</div>
+      <div class="step-body">
+        <div class="step-title">Open in your spreadsheet tool</div>
+        <div class="step-desc">Open the file in Excel, Google Sheets, or Numbers to review, sort, and annotate your image data.</div>
+      </div>
+    </li>
+  </ul>
+
   <div class="cta-box">
-    <h3>Ready to audit your images?</h3>
-    <p>Open the Image SEO panel in RankFrame, then click the purple Export button to download your CSV instantly.</p>
+    <h3>Ready to audit your image alt text?</h3>
+    <p>Open RankFrame in Framer, load the Image SEO panel, and export your full image inventory in one click.</p>
     <a href="https://rankframe.com" class="cta-btn">Open RankFrame</a>
   </div>
 
+  <!-- FAQ -->
   <div class="faq-section" id="faq">
     <h2>Frequently asked questions</h2>
-
     <div class="faq-item">
-      <div class="faq-q">What columns does the exported CSV include?</div>
-      <div class="faq-a">The CSV includes four columns: image filename, URL or path, current alt text (blank if missing), and image source (Canvas or the name of the CMS collection the image comes from).</div>
+      <div class="faq-q">What data is included in the exported CSV?</div>
+      <div class="faq-a">The CSV includes four columns for every image: filename, URL or path, current alt text (blank if missing), and the source -- either Canvas or the name of the CMS collection the image belongs to.</div>
     </div>
-
     <div class="faq-item">
-      <div class="faq-q">Does the export include every image on my site?</div>
-      <div class="faq-a">The export reflects whatever is currently loaded in the Image SEO panel. If you have applied a filter (for example, showing only images with missing alt text), the CSV will contain only those filtered results. Remove any filters first if you want a complete export.</div>
+      <div class="faq-q">Does the CSV include images I have filtered out?</div>
+      <div class="faq-a">No. The export reflects whatever is currently loaded in the Image SEO panel. If you have applied a filter, only the filtered set appears in the CSV. Remove all filters first to export every image on the site.</div>
     </div>
-
     <div class="faq-item">
-      <div class="faq-q">Can I edit the CSV and re-import it?</div>
-      <div class="faq-a">Not at this time. The export is read-only and intended for auditing and sharing. Alt text must be added or edited directly inside the Image SEO panel in RankFrame.</div>
+      <div class="faq-q">Can I import an edited CSV back into RankFrame?</div>
+      <div class="faq-a">CSV import is not currently supported. The export is for auditing and sharing purposes. Alt text must be set inside the Image SEO panel directly.</div>
     </div>
-
     <div class="faq-item">
-      <div class="faq-q">Where does the downloaded file go?</div>
-      <div class="faq-a">The file downloads to your browser's default downloads folder, the same as any other file download. The filename will reference your site and the export date.</div>
+      <div class="faq-q">Where is the Export button?</div>
+      <div class="faq-a">The Export button is purple with a download arrow icon. It sits in the controls row at the top of the Image SEO panel, next to the search bar and filter controls.</div>
     </div>
-
     <div class="faq-item">
-      <div class="faq-q">Is the Export button available on the free trial plan?</div>
-      <div class="faq-a">Yes. Exporting image data as CSV is available to all users regardless of plan, because it is an auditing tool that does not consume AI credits.</div>
+      <div class="faq-q">Do I need a paid plan to export?</div>
+      <div class="faq-a">The CSV export is available to all RankFrame users and does not consume any credits. It is a data utility, not an AI feature.</div>
     </div>
   </div>
 
+  <!-- Related -->
   <div class="related-section">
     <h2>Related articles</h2>
     <ul class="related-links">
-      <li><a href="https://rankframe.com/help/minimized-mode">Using minimized mode for bulk image review</a></li>
+      <li><a href="https://rankframe.com/help/minimized-mode">Using Minimized Mode to see more images at once</a></li>
       <li><a href="https://rankframe.com/help/buy-credits">Buying credits for AI alt text generation</a></li>
+      <li><a href="https://rankframe.com/help/image-seo">Image SEO overview</a></li>
     </ul>
   </div>
 
-  <!-- SEO Panel -->
+  <!-- SEO panel -->
   <div class="seo-panel" id="seo-panel">
     <div class="seo-panel-header">
-      <div class="seo-panel-title">SEO Panel</div>
-      <div class="seo-panel-sub">Live meta tag values read from this page</div>
+      <div class="seo-panel-title">Page SEO data</div>
+      <div class="seo-panel-sub" id="seo-panel-url"></div>
     </div>
     <div class="seo-fields">
       <div class="seo-field">
         <div class="seo-field-row">
-          <span class="seo-field-label">Title</span>
+          <div class="seo-field-label">Title tag</div>
           <button class="seo-copy-btn" data-target="seo-title">Copy</button>
         </div>
         <div class="seo-field-value" id="seo-title"></div>
       </div>
       <div class="seo-field">
         <div class="seo-field-row">
-          <span class="seo-field-label">Meta Description</span>
+          <div class="seo-field-label">Meta description</div>
           <button class="seo-copy-btn" data-target="seo-desc">Copy</button>
         </div>
         <div class="seo-field-value" id="seo-desc"></div>
       </div>
       <div class="seo-field">
         <div class="seo-field-row">
-          <span class="seo-field-label">Canonical URL</span>
+          <div class="seo-field-label">Canonical URL</div>
           <button class="seo-copy-btn" data-target="seo-canonical">Copy</button>
         </div>
         <div class="seo-field-value" id="seo-canonical"></div>
       </div>
     </div>
-    <div class="seo-schemas">
-      <div class="seo-schema">
-        <div class="seo-schema-header">
-          <span class="seo-schema-type">JSON-LD Schemas</span>
-          <button class="seo-copy-btn" data-target="seo-schema-all">Copy all</button>
-        </div>
-        <pre class="seo-schema-code" id="seo-schema-all"></pre>
-      </div>
-    </div>
   </div>
 
 </div>
-
 <script>
   (function () {
-    // Populate meta fields
-    var title = document.title || '';
-    var desc = (document.querySelector('meta[name="description"]') || {}).content || '';
-    var canonical = (document.querySelector('link[rel="canonical"]') || {}).href || '';
-
-    document.getElementById('seo-title').textContent = title;
-    document.getElementById('seo-desc').textContent = desc;
-    document.getElementById('seo-canonical').textContent = canonical;
-
-    // Collect all JSON-LD scripts
-    var schemas = Array.from(document.querySelectorAll('script[type="application/ld+json"]'));
-    var combined = schemas.map(function (s) {
-      try { return JSON.stringify(JSON.parse(s.textContent), null, 2); }
-      catch (e) { return s.textContent; }
-    }).join('\n\n');
-    document.getElementById('seo-schema-all').textContent = combined;
-
-    // Copy buttons
+    var titleEl = document.getElementById('seo-title');
+    var descEl = document.getElementById('seo-desc');
+    var canonicalEl = document.getElementById('seo-canonical');
+    var urlEl = document.getElementById('seo-panel-url');
+    titleEl.textContent = document.title || '';
+    var metaDesc = document.querySelector('meta[name="description"]');
+    descEl.textContent = metaDesc ? metaDesc.getAttribute('content') : '';
+    var linkCanonical = document.querySelector('link[rel="canonical"]');
+    canonicalEl.textContent = linkCanonical ? linkCanonical.getAttribute('href') : window.location.href;
+    urlEl.textContent = window.location.href;
     document.querySelectorAll('.seo-copy-btn').forEach(function (btn) {
       btn.addEventListener('click', function () {
-        var targetId = btn.getAttribute('data-target');
-        var el = document.getElementById(targetId);
-        if (!el) return;
-        navigator.clipboard.writeText(el.textContent).then(function () {
-          btn.textContent = 'Copied!';
+        var val = document.getElementById(btn.getAttribute('data-target')).textContent;
+        navigator.clipboard.writeText(val).then(function () {
+          btn.textContent = 'Copied';
           btn.classList.add('ok');
-          setTimeout(function () {
-            btn.textContent = targetId === 'seo-schema-all' ? 'Copy all' : 'Copy';
-            btn.classList.remove('ok');
-          }, 1800);
+          setTimeout(function () { btn.textContent = 'Copy'; btn.classList.remove('ok'); }, 1800);
         });
       });
     });
