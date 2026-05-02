@@ -1,0 +1,1203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RankFrame: Week 1 Launch Posts</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #0e0e0e;
+      color: #e8e8e8;
+      line-height: 1.65;
+      padding: 40px 20px;
+    }
+    .container { max-width: 860px; margin: 0 auto; }
+
+    h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+    .subtitle {
+      color: #888;
+      font-size: 0.95rem;
+      margin-bottom: 48px;
+    }
+
+    .week-header {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #7c3aed;
+      margin-bottom: 32px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #1e1e1e;
+    }
+
+    .day-block {
+      margin-bottom: 56px;
+    }
+    .day-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #555;
+      margin-bottom: 20px;
+    }
+
+    .post-card {
+      background: #141414;
+      border: 1px solid #222;
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 16px;
+    }
+    .post-card:hover { border-color: #333; }
+
+    .post-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+    .channel-pill {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      padding: 4px 10px;
+      border-radius: 999px;
+      text-transform: uppercase;
+    }
+    .pill-harsh-x     { background: #1a1a2e; color: #a78bfa; border: 1px solid #3b1e8e; }
+    .pill-utkarsh-x   { background: #1a2a1e; color: #6ee7b7; border: 1px solid #1b4a30; }
+    .pill-rankframe-x { background: #2a1a1e; color: #f9a8d4; border: 1px solid #6b1a30; }
+    .pill-harsh-reddit   { background: #2a1a0e; color: #fbbf24; border: 1px solid #6b380e; }
+    .pill-utkarsh-reddit { background: #1a2a2a; color: #67e8f9; border: 1px solid #0e4a4a; }
+    .pill-framer      { background: #1e1e2a; color: #c4b5fd; border: 1px solid #3b2e6e; }
+
+    .post-type {
+      font-size: 0.7rem;
+      color: #555;
+      font-style: italic;
+    }
+    .post-note {
+      font-size: 0.72rem;
+      background: #7c3aed22;
+      color: #a78bfa;
+      border: 1px solid #7c3aed44;
+      border-radius: 6px;
+      padding: 3px 8px;
+      font-weight: 600;
+    }
+
+    .post-body { }
+
+    /* Twitter thread */
+    .thread { }
+    .tweet {
+      padding: 14px 0;
+      border-bottom: 1px solid #1e1e1e;
+      font-size: 0.93rem;
+      color: #d4d4d4;
+      position: relative;
+      padding-left: 20px;
+    }
+    .tweet:last-child { border-bottom: none; }
+    .tweet::before {
+      content: "";
+      position: absolute;
+      left: 6px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: #2a2a2a;
+    }
+    .tweet:last-child::before { display: none; }
+    .tweet-num {
+      font-size: 0.65rem;
+      font-weight: 700;
+      color: #444;
+      margin-bottom: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    /* Single tweet */
+    .single-tweet {
+      font-size: 0.93rem;
+      color: #d4d4d4;
+    }
+    .char-count {
+      font-size: 0.68rem;
+      color: #555;
+      margin-top: 8px;
+      text-align: right;
+    }
+
+    /* Reddit */
+    .reddit-post { }
+    .reddit-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+    .reddit-sub {
+      font-size: 0.72rem;
+      color: #fbbf24;
+      margin-bottom: 14px;
+      font-weight: 600;
+    }
+    .reddit-body {
+      font-size: 0.9rem;
+      color: #c4c4c4;
+      white-space: pre-wrap;
+    }
+
+    /* Framer community */
+    .framer-post { }
+    .framer-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+    .framer-body {
+      font-size: 0.9rem;
+      color: #c4c4c4;
+      white-space: pre-wrap;
+    }
+
+    .visual-note {
+      font-size: 0.75rem;
+      background: #1a1a1a;
+      border: 1px dashed #333;
+      border-radius: 6px;
+      padding: 6px 10px;
+      color: #666;
+      margin-top: 10px;
+      font-style: italic;
+    }
+
+    .divider {
+      height: 1px;
+      background: #1a1a1a;
+      margin: 48px 0;
+    }
+
+    .goal-banner {
+      background: #7c3aed15;
+      border: 1px solid #7c3aed33;
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin-bottom: 48px;
+    }
+    .goal-banner h2 {
+      font-size: 0.85rem;
+      color: #a78bfa;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .goal-banner ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .goal-banner li {
+      font-size: 0.82rem;
+      color: #888;
+      background: #1a1a1a;
+      border: 1px solid #2a2a2a;
+      padding: 4px 12px;
+      border-radius: 999px;
+    }
+    .goal-banner li strong { color: #d4d4d4; }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <h1>RankFrame: Week 1 Launch Posts</h1>
+  <p class="subtitle">Full captions for all 6 channels. Days 1 to 7. No em dashes. No filler.</p>
+
+  <div class="goal-banner">
+    <h2>Week 1 Goal</h2>
+    <ul>
+      <li><strong>Goal:</strong> Maximum launch visibility across Framer, indie maker, and SEO communities</li>
+      <li><strong>Tone:</strong> Founder-led, transparent, specific</li>
+      <li><strong>Rule:</strong> Never use em dashes</li>
+      <li><strong>Rule:</strong> First Reddit post mentions 1 paying customer at $15</li>
+      <li><strong>Channels:</strong> Harsh X, Harsh Reddit, Utkarsh X, Utkarsh Reddit, RankFrame X, Framer Community</li>
+    </ul>
+  </div>
+
+  <div class="week-header">Week 1: Launch Week (Days 1 to 7)</div>
+
+  <!-- ========== DAY 1 ========== -->
+  <div class="day-block">
+    <div class="day-label">Day 1 / Launch Day</div>
+
+    <!-- RankFrame X Launch Thread -->
+    <div class="post-card">
+      <div class="post-meta">
+        <span class="channel-pill pill-rankframe-x">RankFrame X</span>
+        <span class="post-type">Launch Thread (8 tweets)</span>
+      </div>
+      <div class="thread">
+        <div class="tweet">
+          <div class="tweet-num">Tweet 1 (Hook)</div>
+          Framer is the best website builder in the world.<br><br>
+          Its SEO situation? Genuinely painful. Until today.<br><br>
+          Introducing RankFrame: the first and only native SEO plugin built for Framer.<br><br>
+          A thread on what it does:
+        </div>
+        <div class="tweet">
+          <div class="tweet-num">Tweet 2</div>
+          Framer designers have been stuck duct-taping external tools to a platform that deserved better.<br><br>
+          Separate dashboards. Manual API setups. Copy-pasting schema into code embeds. Verifying Search Console by hand.<br><br>
+          None of it was built around how Framer actually works.
+        </div>
+        <div class="tweet">
+          <div class="tweet-num">Tweet 3 (Feature list)</div>
+          RankFrame lives inside your Framer panel. It gives you:<br><br>
+          - Meta tags for every page (global + per-page)<br>
+          - JSON-LD schema injection (Organization, Article, Person, Service and more)<br>
+          - Instant Google indexing via the official API<br>
+          - AI alt text for every image on your site<br>
+          - 404 error monitoring with exception routes<br>
+          - Site speed and Core Web Vitals<br>
+          - Keyword tracker with position history<br>
+          - Live GSC analytics inside the plugin
+        </div>
+        <div class="tweet">
+          <div class="tweet-num">Tweet 4 (Schema detail)</div>
+          The schema injection took months to get right.<br><br>
+          Most tools paste a new script tag into the head on every republish. You end up with 10 duplicate schemas.<br><br>
+          RankFrame finds the existing script and updates it in place. One clean injection. No duplicates. Ever.
+        </div>
+        <div class="tweet">
+          <div class="tweet-num">Tweet 5 (Image SEO)</div>
+          The image alt text situation on Framer sites is quietly terrible.<br><br>
+          RankFrame scans every image, Canvas and CMS. Shows you exactly which ones have no alt text. Lets you bulk-generate AI descriptions in one click.<br><br>
+          500 images. 500 AI-written alt texts. One button.
+        </div>
+        <div class="tweet">
+          <div class="tweet-num">Tweet 6 (Indexing)</div>
+          The instant indexing feature uses the official Google Indexing API. Not a sitemap ping. The actual API.<br><br>
+          Select your pages. Click push. Done.<br><br>
+          Then click "Check Live" on any URL to see Google's actual indexing status, confirmed in real time, without leaving Framer.
+        </div>
+        <div class="tweet">
+          <div class="tweet-num">Tweet 7 (Built by us)</div>
+          We are 7 Seers, a design and software studio from Lucknow, India.<br><br>
+          We built every Framer site for our clients. We lived through every SEO problem first. This plugin is the tool we needed and could not find.
+        </div>
+        <div class="tweet">
+          <div class="tweet-num">Tweet 8 (CTA)</div>
+          Free 7-day trial. No credit card required. Full access from day one.<br><br>
+          Install RankFrame from the Framer Plugin Marketplace today.<br><br>
+          [link to Framer marketplace listing]<br><br>
+          If you build on Framer, this is the plugin you have been waiting for.
+        </div>
+      </div>
+      <div class="visual-note">Attach: clean plugin screenshot showing the sidebar, SEO score widget, and one open feature panel</div>
+    </div>
+
+    <!-- Harsh X Launch Thread -->
+    <div class="post-card">
+      <div class="post-meta">
+        <span class="channel-pill pill-harsh-x">Harsh X</span>
+        <span class="post-type">Personal Founder Thread (7 tweets)</span>
+      </div>
+      <div class="thread">
+        <div class="tweet">
+          <div class="tweet-num">Tweet 1 (Hook)</div>
+          Today we launched RankFrame on the Framer Plugin Marketplace.<br><br>
+          Two founders. Lucknow, India. Six months of building.<br><br>
+          Here is the real story behind why this exists:
+        </div>
+        <div class="tweet">
+          <div class="tweet-num">Tweet 2</div>
+          My co-founder Utkarsh and I run 7 Seers, a design and software studio.<br><br>
+          We have built 30+ Framer sites for clients. Every single one ended the same way: great design, zero SEO infrastructure.<br><br>
+          Not because we didn't care. Because no good tool existed for Framer.
+        </div>
+        <div class="tweet">
+          <div class="tweet-num">Tweet 3</div>
+          We tried every option available.<br><br>
+          External SEO dashboards that required manually adding property IDs and verification codes. Code injection workarounds that broke on every republish. WordPress plugins that had never heard of Framer.<br><br>
+          Every solution was built for a different world.
+        </div>
+        <div class="tweet">
+          <div class="tweet-num">Tweet 4</div>
+          The breaking point was a client product launch.<br><br>
+          We submitted the site to Google Search Console by hand. Three weeks later, not a single page was indexed. Meanwhile their competitors were ranking.<br><br>
+          That is when we decided to build the indexing feature ourselves.
+        </div>
+        <div class="tweet">
+          <div class="tweet-num">Tweet 5</div>
+          Six months later: RankFrame.<br><br>
+          Meta tags. Schema injection. Instant Google indexing. AI image alt text. 404 monitoring. Speed audits. Keyword tracking. Live Search Console analytics.<br><br>
+          Everything we needed. Built native to Framer. No external dashboards. No code required.
+        </div>
+        <div class="tweet">
+          <div class="tweet-num">Tweet 6</div>
+          We are building this in public.<br><br>
+          I will share every number, every milestone, every mistake. If you want to follow two founders from a tier-2 city building a global SaaS product, this is the feed for it.
+        </div>
+        <div class="tweet">
+          <div class="tweet-num">Tweet 7 (CTA)</div>
+          RankFrame is live today on the Framer Plugin Marketplace.<br><br>
+          7-day free trial, no card required. Full access from day one.<br><br>
+          If you build on Framer, install it and tell me what you think. I genuinely want to hear it.<br><br>
+          [link]
+        </div>
+      </div>
+      <div class="visual-note">Attach: photo of you and Utkarsh, or a screenshot of the plugin open in Framer on a real site</div>
+    </div>
+
+    <!-- Framer Community Post -->
+    <div class="post-card">
+      <div class="post-meta">
+        <span class="channel-pill pill-framer">Framer Community</span>
+        <span class="post-type">Launch Announcement Post</span>
+      </div>
+      <div class="framer-post">
+        <div class="framer-title">We built RankFrame: the first native SEO plugin for Framer. Here is everything it does.</div>
+        <div class="framer-body">
+Hey Framer community,
+
+I'm Harsh, co-founder of 7 Seers (a design and software studio). My co-founder Utkarsh and I have been building Framer sites for clients for years.
+
+We kept running into the same wall: Framer is unbeatable for design, but getting a Framer site properly ranked on Google required an embarrassing amount of manual work. Schema? Paste JSON-LD into a code embed and pray it doesn't duplicate on the next publish. Image alt text? Edit every image one by one. Google indexing? Log in to Search Console, manually submit, wait weeks. 404 monitoring? You only find out from a client complaint.
+
+So we built RankFrame.
+
+---
+
+WHAT RANKFRAME IS
+
+RankFrame is a native Framer SEO plugin. It lives inside your Framer panel, reads your site structure automatically, and gives you complete SEO control without leaving the editor.
+
+---
+
+WHAT IT DOES
+
+META TAGS (Global and Per-Page)
+Set your global title and description with character counters. Override both on any individual page. AI-powered generation pulls from your brand context so it sounds like you, not a template.
+
+SCHEMA INJECTION
+Auto-generate JSON-LD schemas for your entire sitemap in one flow. Organization, Article, Person, Service, Book, Restaurant. RankFrame injects clean structured data into your site without duplicate script tags on republish.
+
+SUBMIT INDEXING (Powered by Google Indexing API)
+Select the pages you want indexed right now and push them directly to Google. Not a sitemap ping. The official Google Indexing API. You can then click "Check Live" on any URL to see Google's confirmed indexing status inline.
+
+IMAGE SEO
+RankFrame scans every image on your site (Canvas and CMS collections). Tells you exactly how many are missing alt text. Lets you bulk-generate AI alt text with a single click. 500 images, 500 alt texts, one button. Export the full list as CSV.
+
+SEO ANALYZER
+Site-wide audit covering Basic SEO, Advanced SEO, Performance (Core Web Vitals via Google PageSpeed Insights), and Security. 29 individual checks. Download as a PDF report.
+
+PER-PAGE AUDIT
+Click any page and get a split view: live preview of your actual Framer page on the left, full SEO audit with meta controls on the right. Every issue is clickable and shows you exactly what needs fixing.
+
+404 MONITOR
+Tracking script that catches every 404 hit on your site. Shows the URI, user agent, timestamp, and hit count. Exception Routes let you whitelist intentional paths so they don't pollute your error log.
+
+KEYWORD TRACKER
+Add keywords you want to rank for. Track impressions, clicks, search position, and position history over time with sparkline charts.
+
+SEARCH CONSOLE ANALYTICS
+Clicks, impressions, CTR, average position, and top keywords, all pulled live from your verified Google Search Console property, directly inside the plugin.
+
+---
+
+PRICING
+
+Personal Plan: $15/month (or $108/year, saves 40%). One Framer site. Full access.
+Agency Plan: $40/month (or $288/year, saves 40%). Unlimited sites. Ideal for studios.
+
+7-day free trial on both. No credit card required.
+
+---
+
+WHY WE BUILT IT NATIVE
+
+Every existing SEO tool was built for WordPress. They assume you have a developer, a separate CMS, and an hour to spend on manual configuration. Framer designers don't work that way.
+
+RankFrame is built around how Framer sites are actually made: visual, fast, component-driven. The plugin reads your site structure automatically. No property IDs to paste. No verification steps. You open it and it works.
+
+---
+
+We would love your feedback. Install it from the Framer Plugin Marketplace and tell us what breaks, what's missing, and what you'd prioritize next.
+
+We're building this in public and the community has been part of Framer from the beginning. Your input will directly shape what ships next.
+
+Install here: [Framer Marketplace Link]
+Website: rankframe.com
+Support: hello@7seersmedia.com
+        </div>
+      </div>
+      <div class="visual-note">Attach: collage of 4 screenshots showing the main plugin views (Global Settings, Pages split view, SEO Analyzer, Image SEO)</div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ========== DAY 2 ========== -->
+  <div class="day-block">
+    <div class="day-label">Day 2</div>
+
+    <!-- Harsh Reddit Post 1 -->
+    <div class="post-card">
+      <div class="post-meta">
+        <span class="channel-pill pill-harsh-reddit">Harsh Reddit</span>
+        <span class="post-type">r/indiehackers</span>
+        <span class="post-note">First Reddit post: must mention $15 paying customer</span>
+      </div>
+      <div class="reddit-post">
+        <div class="reddit-title">We launched a Framer SEO plugin. We have exactly 1 paying customer at $15. Here is everything we know after launch week.</div>
+        <div class="reddit-sub">r/indiehackers</div>
+        <div class="reddit-body">
+I'll be real with you: this post is mostly for accountability. We are two founders, Harsh and Utkarsh, from Lucknow, India. We just shipped RankFrame, a native SEO plugin for Framer, to the Framer Plugin Marketplace. After launch day, we have exactly one paying customer who paid us $15.
+
+I'm writing this because I've read a lot of "we launched and got 100 users in 24 hours" posts on here. This isn't that. This is the other 99% of launches. And I want to document it honestly.
+
+---
+
+WHAT WE BUILT AND WHY
+
+My co-founder Utkarsh and I run a design and software studio called 7 Seers. We've been building Framer sites for clients for years. Framer is exceptional for design. Its SEO situation has always been terrible.
+
+No native meta management. No schema injection. No Google indexing integration. Designers were copy-pasting JSON-LD into code embeds and hoping for the best. The breaking point for me personally was a client product launch where we submitted to Search Console manually and nothing showed up on Google for three weeks. Their competitors were ranking. We looked bad.
+
+So Utkarsh and I decided to build the tool we needed. Six months of product, design, and engineering. RankFrame is the result.
+
+It does: meta tags for every page, JSON-LD schema injection for the entire sitemap, instant Google indexing via the official API, AI alt text bulk generation for images, 404 monitoring, site speed and Core Web Vitals, keyword tracking with position history, and live Search Console analytics. All inside the Framer plugin panel.
+
+No external dashboards. No developer required. You open it and it works.
+
+---
+
+THE LAUNCH
+
+We published to the Framer Plugin Marketplace yesterday. We posted on X. We posted in the Framer Community forum. We told people we know.
+
+Results at 24 hours:
+- 1 paying customer at $15/month (Personal plan)
+- Several free trial signups
+- A few kind replies from the Framer community
+- No viral moment. No Product Hunt spike. Just real people finding it.
+
+The $15 is the most important number to me right now. Not because of the money. Because it proves the concept. One real person decided this was worth $15 of their money. That's the signal we needed.
+
+---
+
+WHAT WE'RE DOING NEXT
+
+The honest answer is: we don't know exactly. We know we need more distribution. The Framer marketplace is a niche channel. We need to be in front of Framer designers on Reddit, X, YouTube, newsletters, everywhere they actually spend time.
+
+We are committing to building this fully in public. Every week I'll post updates here with real numbers.
+
+Goal: 500 paying customers. I have no idea how long it takes to get there. But the first $15 is step one, and it happened.
+
+---
+
+A FEW THINGS I'VE LEARNED SO FAR
+
+1. Shipping to a niche marketplace is a slow burn. The Framer plugin ecosystem is growing but it's not a fire hose of traffic. You have to bring your own audience.
+
+2. The product needs to be obviously better the moment someone opens it. First impressions inside a plugin panel are brutal. If it doesn't feel intuitive in 30 seconds, people close it and forget.
+
+3. Founder-led distribution is the only distribution at this stage. No budget for ads. No team. Just Utkarsh and me posting, engaging, and being helpful wherever Framer people gather.
+
+---
+
+If you have ever built a native plugin for a web builder (Framer, Webflow, Figma, etc.) I'd love to hear what worked for distribution. Especially early on, before you had any social proof.
+
+If you build on Framer and want to try it: rankframe.com. 7-day free trial, no card.
+
+Happy to answer any questions about what we built technically or how the Framer plugin ecosystem works. Genuinely learning in public here.
+        </div>
+      </div>
+    </div>
+
+    <!-- RankFrame X Schema Post -->
+    <div class="post-card">
+      <div class="post-meta">
+        <span class="channel-pill pill-rankframe-x">RankFrame X</span>
+        <span class="post-type">Single Post + Visual</span>
+      </div>
+      <div class="single-tweet">
+        Most Framer sites have zero structured data.<br><br>
+        Google cannot tell if your page is a blog post, a service page, a portfolio piece, or an organization homepage without schema markup.<br><br>
+        RankFrame auto-generates JSON-LD for your entire sitemap. Organization, Article, Service, Person, and more. One flow. Every page. No code blocks required.<br><br>
+        Try it free: rankframe.com
+      </div>
+      <div class="visual-note">Attach: screenshot of the Auto-Generate schema screen showing pages with green dot schema badges and the JSON preview modal</div>
+    </div>
+
+    <!-- Utkarsh X First Post -->
+    <div class="post-card">
+      <div class="post-meta">
+        <span class="channel-pill pill-utkarsh-x">Utkarsh X</span>
+        <span class="post-type">Personal Launch Thread (5 tweets)</span>
+      </div>
+      <div class="thread">
+        <div class="tweet">
+          <div class="tweet-num">Tweet 1 (Hook)</div>
+          My co-founder Harsh and I just launched RankFrame on the Framer Plugin Marketplace.<br><br>
+          I built most of the core. Six months of engineering a native Framer SEO plugin taught me things about SEO that no blog post ever did.<br><br>
+          A thread on what I learned:
+        </div>
+        <div class="tweet">
+          <div class="tweet-num">Tweet 2</div>
+          Schema markup is misunderstood.<br><br>
+          Most developers either skip it entirely or paste a generic template. The actual value comes from precision: the right type for the right page, with accurate fields, injected cleanly without duplicating on every site rebuild.<br><br>
+          Getting that right inside a Framer plugin was the hardest engineering problem I solved this year.
+        </div>
+        <div class="tweet">
+          <div class="tweet-num">Tweet 3</div>
+          The Google Indexing API is not just for news sites.<br><br>
+          It is the fastest path from "I just published this page" to "Google knows this page exists." We integrated it directly into RankFrame so you can push any page to Google in one click from inside Framer.
+        </div>
+        <div class="tweet">
+          <div class="tweet-num">Tweet 4</div>
+          Image alt text at scale is a genuinely hard problem.<br><br>
+          On a site with 500+ images across Canvas and multiple CMS collections, manually writing alt text is days of work. We built AI bulk generation that reads the image, understands the brand context from the Personalization setup, and writes alt text that actually sounds like the brand.
+        </div>
+        <div class="tweet">
+          <div class="tweet-num">Tweet 5 (CTA)</div>
+          RankFrame is live now. Free 7-day trial, no card required.<br><br>
+          If you build on Framer and care about SEO, this is the plugin we built for you.<br><br>
+          [link]<br><br>
+          And if you want to follow what it's like building a niche SaaS from Lucknow, India, I'll be posting here regularly.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ========== DAY 3 ========== -->
+  <div class="day-block">
+    <div class="day-label">Day 3</div>
+
+    <!-- Harsh X Data Post -->
+    <div class="post-card">
+      <div class="post-meta">
+        <span class="channel-pill pill-harsh-x">Harsh X</span>
+        <span class="post-type">Single Post (Data/Confession)</span>
+      </div>
+      <div class="single-tweet">
+        I ran a full SEO audit on our own studio site this morning through RankFrame.<br><br>
+        Results:<br>
+        82/100 score<br>
+        72 images with zero alt text<br>
+        1 broken link<br>
+        Schema on 0 pages<br><br>
+        This is the site of the people who built the SEO plugin.<br><br>
+        If this is what our site looks like, imagine what the average Framer site looks like. This is exactly why we built this.
+      </div>
+      <div class="visual-note">Attach: screenshot of RankFrame SEO Analyzer showing the 82/100 score with the red zone and warning counts visible</div>
+    </div>
+
+    <!-- RankFrame X Image SEO Thread -->
+    <div class="post-card">
+      <div class="post-meta">
+        <span class="channel-pill pill-rankframe-x">RankFrame X</span>
+        <span class="post-type">Feature Thread: Image SEO (6 tweets)</span>
+      </div>
+      <div class="thread">
+        <div class="tweet">
+          <div class="tweet-num">Tweet 1 (Hook)</div>
+          The image alt text problem on Framer sites is worse than most people know.<br><br>
+          Here is why it matters and what to do about it:
+        </div>
+        <div class="tweet">
+          <div class="tweet-num">Tweet 2</div>
+          Alt text is not just for accessibility (though that matters).<br><br>
+          Google's crawler cannot see images. It reads alt text to understand what the image shows, and that directly affects how your page ranks for visual and product searches.<br><br>
+          A Framer portfolio site with 200 images and zero alt text is invisible to Google on image-related queries.
+        </div>
+        <div class="tweet">
+          <div class="tweet-num">Tweet 3</div>
+          The average Framer site has dozens to hundreds of images.<br><br>
+          Writing alt text manually for all of them is not realistic. Designers skip it. The site launches with zero alt coverage. Nobody fixes it after the fact.
+        </div>
+        <div class="tweet">
+          <div class="tweet-num">Tweet 4</div>
+          RankFrame scans your entire site, Canvas and CMS collections.<br><br>
+          Every image gets a card. Red dot on the thumbnail means missing alt text. You can see the total count at the top: 517 images, 72 missing.
+        </div>
+        <div class="tweet">
+          <div class="tweet-num">Tweet 5</div>
+          Bulk generation: select all images, click "Generate Alt Text (N)." RankFrame writes AI alt text for every selected image in one pass.<br><br>
+          The AI pulls from your brand context (business description, industry, audience) set in Personalization. The alt text sounds like your brand, not a generic description.
+        </div>
+        <div class="tweet">
+          <div class="tweet-num">Tweet 6 (CTA)</div>
+          Export the full list as CSV. Add a global suffix to every alt text across the site (e.g. "by Studio Name"). Works in Minimized Mode for bulk sessions on large sites.<br><br>
+          Try Image SEO free in RankFrame: [link]
+        </div>
+      </div>
+      <div class="visual-note">Attach: Image SEO grid view showing thumbnails, red dots on missing-alt images, and the "Generate Alt Text (72)" button visible</div>
+    </div>
+
+    <!-- Utkarsh Reddit Post 1 -->
+    <div class="post-card">
+      <div class="post-meta">
+        <span class="channel-pill pill-utkarsh-reddit">Utkarsh Reddit</span>
+        <span class="post-type">r/framer</span>
+      </div>
+      <div class="reddit-post">
+        <div class="reddit-title">I built a schema injection system for Framer that doesn't create duplicates on every republish. Here is how it works.</div>
+        <div class="reddit-sub">r/framer</div>
+        <div class="reddit-body">
+One of the most common SEO workarounds for Framer sites is pasting JSON-LD schema directly into a code embed in the head. It works. Until you republish.
+
+On every Framer publish, if you're using a simple script injection, you can end up with the same schema tag added again and again. Google sees multiple conflicting Organization schemas. The rich results validator throws warnings. It's a mess.
+
+When we built RankFrame (a native Framer SEO plugin), we needed to solve this cleanly. Here's the approach we landed on:
+
+Instead of blindly appending a new script tag on every publish, RankFrame writes a unique identifier into the injected script tag. On each subsequent publish, it looks for that identifier first. If it finds an existing schema tag from a previous injection, it replaces the content in place rather than adding a new tag.
+
+Result: one clean script tag, always up to date, never duplicated.
+
+This also means schema changes made inside RankFrame (editing a field, toggling a schema off, updating the organization URL) take effect immediately on the next publish without any manual cleanup.
+
+The inject-or-update logic is the part I'm most proud of in the engineering. It's not flashy, but it's the difference between a feature that's reliable and one that quietly breaks.
+
+If you've been managing schema on Framer sites manually and running into duplicate issues, give RankFrame a try. 7-day free trial at rankframe.com.
+
+Happy to answer any questions about the technical implementation if anyone's curious.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ========== DAY 4 ========== -->
+  <div class="day-block">
+    <div class="day-label">Day 4</div>
+
+    <!-- RankFrame X Indexing Thread -->
+    <div class="post-card">
+      <div class="post-meta">
+        <span class="channel-pill pill-rankframe-x">RankFrame X</span>
+        <span class="post-type">Feature Thread: Instant Indexing (5 tweets)</span>
+      </div>
+      <div class="thread">
+        <div class="tweet">
+          <div class="tweet-num">Tweet 1 (Hook)</div>
+          "My Framer site isn't showing up on Google."<br><br>
+          This is the most common complaint from Framer designers. The solution is not patience. The solution is the Google Indexing API.<br><br>
+          Here is how RankFrame uses it:
+        </div>
+        <div class="tweet">
+          <div class="tweet-num">Tweet 2</div>
+          Submitting a sitemap to Google Search Console tells Google your site exists. That's it.<br><br>
+          Google then decides when to crawl it. That can take days or weeks depending on your domain authority, crawl budget, and a dozen other signals you can't control.
+        </div>
+        <div class="tweet">
+          <div class="tweet-num">Tweet 3</div>
+          The Google Indexing API is different. It directly notifies Google that a specific URL has been added or updated and requests immediate crawling.<br><br>
+          It's the difference between dropping a letter in a mailbox and handing it directly to the postman.
+        </div>
+        <div class="tweet">
+          <div class="tweet-num">Tweet 4</div>
+          Inside RankFrame: connect your Google account (one click), select the pages you want indexed, click Push.<br><br>
+          Domain verification is handled automatically. No manual Search Console property setup. No DNS records. No verification meta tags.
+        </div>
+        <div class="tweet">
+          <div class="tweet-num">Tweet 5 (Check Live)</div>
+          After pushing, go to Indexing History and click "Check Live" on any URL.<br><br>
+          RankFrame queries Google in real time and returns the actual indexing status: "Submitted and indexed" or still pending.<br><br>
+          This is the only Framer tool that gives you live Google indexing confirmation inside the design tool.<br><br>
+          Try it: [link]
+        </div>
+      </div>
+      <div class="visual-note">Attach: screenshot of Indexing History tab showing the Check Live button and the "Indexed by Google" tooltip on a submitted URL</div>
+    </div>
+
+    <!-- Harsh X Behind the Scenes -->
+    <div class="post-card">
+      <div class="post-meta">
+        <span class="channel-pill pill-harsh-x">Harsh X</span>
+        <span class="post-type">Behind the Scenes (Single Post)</span>
+      </div>
+      <div class="single-tweet">
+        The most underrated feature in RankFrame is the per-page split view.<br><br>
+        Left panel: your actual live Framer page. Right panel: full SEO audit for that specific page.<br><br>
+        You edit the meta description while looking at the hero section you wrote it about. You see the Google snippet preview update in real time.<br><br>
+        Small thing. Massive difference. This is what "native" actually means.
+      </div>
+      <div class="visual-note">Attach: screenshot of the per-page split view with live Framer page on the left and SEO panel on the right</div>
+    </div>
+
+    <!-- Utkarsh X Post -->
+    <div class="post-card">
+      <div class="post-meta">
+        <span class="channel-pill pill-utkarsh-x">Utkarsh X</span>
+        <span class="post-type">Single Post (Design Perspective)</span>
+      </div>
+      <div class="single-tweet">
+        One design decision I'm proud of in RankFrame:<br><br>
+        Every audit check on the per-page view is clickable. Clicking a failing check expands to show you the exact element causing the issue. The specific img tag with no alt. The exact heading count. The real response time.<br><br>
+        Not "you have an issue." Exactly what the issue is and where it is.<br><br>
+        SEO tools should treat designers like adults.
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ========== DAY 5 ========== -->
+  <div class="day-block">
+    <div class="day-label">Day 5</div>
+
+    <!-- Harsh Reddit Post 2 -->
+    <div class="post-card">
+      <div class="post-meta">
+        <span class="channel-pill pill-harsh-reddit">Harsh Reddit</span>
+        <span class="post-type">r/framer</span>
+      </div>
+      <div class="reddit-post">
+        <div class="reddit-title">SEO on Framer sites is broken by default. Here is the checklist I use before every launch.</div>
+        <div class="reddit-sub">r/framer</div>
+        <div class="reddit-body">
+I've built 30+ Framer sites for clients and agencies. Every time, the SEO situation at launch is roughly the same: beautiful design, zero SEO infrastructure. This is a quick checklist of what I check before every Framer site goes live.
+
+---
+
+1. META TITLE AND DESCRIPTION (Every page)
+
+Set a unique title (under 70 characters) and description (150-160 characters) for every page. The global fallback in Framer is not enough. Each page needs its own. Don't let Google pick one for you.
+
+2. SCHEMA MARKUP
+
+At minimum, add an Organization schema to your homepage with your name, URL, logo, and description. If you have blog posts, add Article schema. Without structured data, Google has to guess what kind of content you are.
+
+3. SITEMAP SUBMISSION
+
+Framer generates a sitemap at /sitemap.xml automatically. Go to Google Search Console and submit it. Do this on launch day, not a week later.
+
+4. FORCE INDEXING FOR KEY PAGES
+
+Don't just submit the sitemap and wait. Use the Google Indexing API to push your homepage, main service pages, and any campaign pages directly. This is the fastest path from "just published" to "appearing in search."
+
+5. IMAGE ALT TEXT
+
+Every image on your Framer site should have descriptive alt text. Google cannot see images. It reads alt text. A portfolio site with 100 images and zero alt text is invisible for image-related searches.
+
+6. 404 MONITORING
+
+Set up 404 tracking before you launch. You will get broken links from external sources, from old URLs you changed, and from typos in your own navigation. The earlier you catch them, the less crawl budget you waste.
+
+7. CANONICAL TAGS
+
+Confirm your canonical tags are pointing to the right version of each URL. Framer handles this reasonably well by default, but check that www and non-www both resolve correctly.
+
+8. CORE WEB VITALS
+
+Check your Mobile and Desktop performance scores before launch. Large images are the most common culprit on Framer sites. Compress and convert to WebP before publishing.
+
+---
+
+I built all of this into RankFrame (native Framer SEO plugin) so I can run through this checklist in one place without leaving the editor. But even if you're doing it manually, this list will save you pain.
+
+Happy to answer questions on any of these. SEO for Framer specifically has some quirks that generic SEO advice doesn't cover well.
+        </div>
+      </div>
+    </div>
+
+    <!-- RankFrame X SEO Analyzer Post -->
+    <div class="post-card">
+      <div class="post-meta">
+        <span class="channel-pill pill-rankframe-x">RankFrame X</span>
+        <span class="post-type">Single Post (SEO Analyzer)</span>
+      </div>
+      <div class="single-tweet">
+        RankFrame's SEO Analyzer runs 29 checks across your entire Framer site.<br><br>
+        Basic SEO. Advanced SEO. Performance. Security.<br><br>
+        Every failing check is clickable. Click it to see the exact issue and a specific suggestion.<br><br>
+        When you're done, download the full report as a PDF. Agency plan users: white-label reports are coming so you can send this directly to clients under your own brand.<br><br>
+        See what your Framer site's actual score is: [link]
+      </div>
+      <div class="visual-note">Attach: screenshot of the SEO Analyzer score panel showing 82/100, the red zone and warning counts, and the filter tabs</div>
+    </div>
+
+    <!-- Harsh X Engagement Post -->
+    <div class="post-card">
+      <div class="post-meta">
+        <span class="channel-pill pill-harsh-x">Harsh X</span>
+        <span class="post-type">Engagement Post (Question)</span>
+      </div>
+      <div class="single-tweet">
+        Question for Framer designers:<br><br>
+        What is the most painful part of SEO on your Framer sites right now?<br><br>
+        a) Getting pages indexed on Google<br>
+        b) Writing meta descriptions for every page<br>
+        c) Schema markup<br>
+        d) Image alt text<br>
+        e) Something else entirely<br><br>
+        Genuinely asking. Every answer helps us decide what to build next.
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ========== DAY 6 ========== -->
+  <div class="day-block">
+    <div class="day-label">Day 6</div>
+
+    <!-- Utkarsh X Building in Public -->
+    <div class="post-card">
+      <div class="post-meta">
+        <span class="channel-pill pill-utkarsh-x">Utkarsh X</span>
+        <span class="post-type">Building in Public Update (Thread, 4 tweets)</span>
+      </div>
+      <div class="thread">
+        <div class="tweet">
+          <div class="tweet-num">Tweet 1</div>
+          Day 5 since we launched RankFrame on the Framer Plugin Marketplace.<br><br>
+          Sharing an honest update on what has happened:
+        </div>
+        <div class="tweet">
+          <div class="tweet-num">Tweet 2</div>
+          What went well: the Framer community has been genuinely warm. People tried it, gave feedback, reported a couple of UI things we fixed same day.<br><br>
+          The product held up. No major crashes. The schema injection, indexing API, and image SEO all worked as intended on real sites.
+        </div>
+        <div class="tweet">
+          <div class="tweet-num">Tweet 3</div>
+          What we're working on: we keep hearing the same request: "I want to see how my pages rank over time, not just a one-time score." Keyword Tracker has sparklines but people want more historical depth.<br><br>
+          That's next on the roadmap.
+        </div>
+        <div class="tweet">
+          <div class="tweet-num">Tweet 4</div>
+          Biggest lesson from week one: distribution is the real product at this stage.<br><br>
+          The plugin is good. But it needs to be in front of the right people. We're two founders doing this alongside client work. Every post, every reply, every conversation matters.<br><br>
+          If you build on Framer, go try it. Your feedback is the fuel.
+        </div>
+      </div>
+    </div>
+
+    <!-- RankFrame X 404 Monitor Post -->
+    <div class="post-card">
+      <div class="post-meta">
+        <span class="channel-pill pill-rankframe-x">RankFrame X</span>
+        <span class="post-type">Feature Spotlight: 404 Monitor (Single Post)</span>
+      </div>
+      <div class="single-tweet">
+        Most Framer designers find out about broken links from a client complaint or a sharp drop in traffic.<br><br>
+        RankFrame's 404 Monitor catches them as they happen.<br><br>
+        Every 404 hit is logged: URI, user agent, timestamp, hit count. You see which routes are generating the most errors and when they happened.<br><br>
+        Exception Routes let you whitelist intentional paths (like /404 itself or redirect test URLs) so they don't pollute your log.<br><br>
+        Set it up once. Forget about broken links.
+      </div>
+      <div class="visual-note">Attach: screenshot of the 404 Monitor tab showing the errors table, top stats (Total 404 Errors, Unique Routes), and the Exception Routes section</div>
+    </div>
+
+    <!-- Utkarsh Reddit Post 2 -->
+    <div class="post-card">
+      <div class="post-meta">
+        <span class="channel-pill pill-utkarsh-reddit">Utkarsh Reddit</span>
+        <span class="post-type">r/indiehackers</span>
+      </div>
+      <div class="reddit-post">
+        <div class="reddit-title">We are two co-founders from Lucknow building a SaaS product. Day 5 update: what actually happened after launch.</div>
+        <div class="reddit-sub">r/indiehackers</div>
+        <div class="reddit-body">
+My co-founder Harsh posted here a couple of days ago about our launch. I wanted to add the engineering perspective.
+
+We shipped RankFrame, a native SEO plugin for Framer, to the Framer Plugin Marketplace this week. We've been running a design studio (7 Seers) for years and built this because no good SEO tool existed for Framer.
+
+Here is what the first 5 days actually looked like from the inside:
+
+---
+
+WHAT WORKED
+
+The product itself worked. That sounds obvious, but it's not. Building a Framer plugin that integrates with Google's Indexing API, PageSpeed Insights API, and Search Console API while staying fast and stable inside the Framer panel was genuinely hard. The first few days after launch are the proof that it holds up on real sites.
+
+The Framer community is surprisingly warm to well-made tools. A few people found us organically through the marketplace. A couple of those converted to paid immediately because the problem we're solving is one they have right now.
+
+---
+
+WHAT WAS HARDER THAN EXPECTED
+
+Getting noticed in a niche marketplace is slow. The Framer plugin marketplace is not like the App Store. There's no featured banner. No trending section. You land in a list of SEO plugins and people find you if they search specifically.
+
+We knew this going in, but the reality of it hit differently. Distribution is fully on us.
+
+---
+
+WHAT I WISH I HAD DONE BEFORE LAUNCH
+
+Built an audience first. Even a small one. We had no X following with Framer reach. No newsletter. No YouTube presence. We shipped to a cold start.
+
+The product is good. But "good product, cold start" is hard.
+
+---
+
+WHAT WE ARE DOING NOW
+
+Posting. A lot. On X, Reddit, Framer Community, anywhere Framer designers gather. Not spamming, but genuinely being present and useful.
+
+We're also building in public. Every week, real numbers. Because I believe the transparency itself is a form of distribution.
+
+---
+
+If you are building something for a niche community (no-code builders, specific design tools, etc.) I'd love to hear what worked for you in the early days.
+
+RankFrame is at rankframe.com if anyone wants to look.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ========== DAY 7 ========== -->
+  <div class="day-block">
+    <div class="day-label">Day 7 / End of Week 1</div>
+
+    <!-- Harsh X Week Recap Thread -->
+    <div class="post-card">
+      <div class="post-meta">
+        <span class="channel-pill pill-harsh-x">Harsh X</span>
+        <span class="post-type">Week 1 Recap Thread (6 tweets)</span>
+      </div>
+      <div class="thread">
+        <div class="tweet">
+          <div class="tweet-num">Tweet 1 (Hook)</div>
+          Week 1 of building RankFrame in public is done.<br><br>
+          Real numbers. Real lessons. No spin.<br><br>
+          A thread:
+        </div>
+        <div class="tweet">
+          <div class="tweet-num">Tweet 2 (Numbers)</div>
+          What happened this week:<br><br>
+          Launched on the Framer Plugin Marketplace<br>
+          Got our first paying customer ($15/month Personal plan)<br>
+          Posted across X, Reddit, and Framer Community<br>
+          Fixed 3 UI issues from user feedback same day they were reported<br><br>
+          Revenue: $15. That number is going up.
+        </div>
+        <div class="tweet">
+          <div class="tweet-num">Tweet 3 (What I learned)</div>
+          The thing nobody tells you about launching a niche SaaS: the marketplace does not do the work for you.<br><br>
+          The Framer plugin marketplace is not search traffic. It's a list. You land in it and wait for someone to scroll to you. Your job is to bring people to it.
+        </div>
+        <div class="tweet">
+          <div class="tweet-num">Tweet 4</div>
+          The best feedback I got this week was from a Framer agency owner who said: "I knew I needed this but I didn't know it existed."<br><br>
+          That is not a discovery problem. That is a distribution problem. My only job for the next month is making sure people who need this know it exists.
+        </div>
+        <div class="tweet">
+          <div class="tweet-num">Tweet 5 (What's next)</div>
+          Week 2 plan:<br><br>
+          - More education content on Framer SEO specifically<br>
+          - Deep feature demos for schema and indexing<br>
+          - Reach out directly to Framer designers and studios we respect<br>
+          - Keep shipping: one product improvement per week minimum
+        </div>
+        <div class="tweet">
+          <div class="tweet-num">Tweet 6 (Follow)</div>
+          If you want to follow a real build-in-public journey from Lucknow, India to 500 paying customers, this is the feed.<br><br>
+          Week 2 starts tomorrow.<br><br>
+          And if you build on Framer: rankframe.com. Try it free for 7 days. Tell me what's wrong with it.
+        </div>
+      </div>
+    </div>
+
+    <!-- RankFrame X Weekend Tip -->
+    <div class="post-card">
+      <div class="post-meta">
+        <span class="channel-pill pill-rankframe-x">RankFrame X</span>
+        <span class="post-type">Weekend Tip (Single Post)</span>
+      </div>
+      <div class="single-tweet">
+        Weekend Framer SEO tip:<br><br>
+        Run RankFrame's SEO Analyzer on your site right now and filter by "Red Zone."<br><br>
+        Whatever is in there is actively costing you rankings. Fix one red zone item today. Take a screenshot of the before and after scores.<br><br>
+        Small improvements compound. One red to green per week over a year is a meaningfully better-ranked site.<br><br>
+        Free 7-day trial: rankframe.com
+      </div>
+    </div>
+
+    <!-- Harsh X Personal Post (bonus) -->
+    <div class="post-card">
+      <div class="post-meta">
+        <span class="channel-pill pill-harsh-x">Harsh X</span>
+        <span class="post-type">Personal / Human Post</span>
+      </div>
+      <div class="single-tweet">
+        Something nobody prepares you for:<br><br>
+        Seeing the first $15 hit your Polar.sh dashboard.<br><br>
+        Not because of the money. Because of what it means. A real person, somewhere, decided our work was worth paying for.<br><br>
+        We are going to get 499 more of those. Week 1 is done. Week 2 starts tomorrow.
+      </div>
+      <div class="visual-note">Attach: screenshot of Polar.sh showing first payment notification (can blur personal details)</div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Summary Table -->
+  <div class="week-header" style="margin-top:0;">Week 1 Post Summary</div>
+  <div class="post-card" style="overflow-x:auto;">
+    <table style="width:100%;border-collapse:collapse;font-size:0.82rem;">
+      <thead>
+        <tr style="border-bottom:1px solid #2a2a2a;">
+          <th style="text-align:left;padding:8px 12px;color:#666;font-weight:600;">Day</th>
+          <th style="text-align:left;padding:8px 12px;color:#666;font-weight:600;">Channel</th>
+          <th style="text-align:left;padding:8px 12px;color:#666;font-weight:600;">Format</th>
+          <th style="text-align:left;padding:8px 12px;color:#666;font-weight:600;">Topic</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom:1px solid #1a1a1a;">
+          <td style="padding:8px 12px;color:#888;">1</td>
+          <td style="padding:8px 12px;"><span class="channel-pill pill-rankframe-x" style="font-size:0.65rem;">RankFrame X</span></td>
+          <td style="padding:8px 12px;color:#888;">8-tweet thread</td>
+          <td style="padding:8px 12px;color:#c4c4c4;">Official launch announcement</td>
+        </tr>
+        <tr style="border-bottom:1px solid #1a1a1a;">
+          <td style="padding:8px 12px;color:#888;">1</td>
+          <td style="padding:8px 12px;"><span class="channel-pill pill-harsh-x" style="font-size:0.65rem;">Harsh X</span></td>
+          <td style="padding:8px 12px;color:#888;">7-tweet thread</td>
+          <td style="padding:8px 12px;color:#c4c4c4;">Personal founder story</td>
+        </tr>
+        <tr style="border-bottom:1px solid #1a1a1a;">
+          <td style="padding:8px 12px;color:#888;">1</td>
+          <td style="padding:8px 12px;"><span class="channel-pill pill-framer" style="font-size:0.65rem;">Framer Community</span></td>
+          <td style="padding:8px 12px;color:#888;">Long-form post</td>
+          <td style="padding:8px 12px;color:#c4c4c4;">Full feature breakdown for Framer users</td>
+        </tr>
+        <tr style="border-bottom:1px solid #1a1a1a;">
+          <td style="padding:8px 12px;color:#888;">2</td>
+          <td style="padding:8px 12px;"><span class="channel-pill pill-harsh-reddit" style="font-size:0.65rem;">Harsh Reddit</span></td>
+          <td style="padding:8px 12px;color:#888;">r/indiehackers post</td>
+          <td style="padding:8px 12px;color:#c4c4c4;"><strong style="color:#fbbf24;">First $15 customer story (required)</strong></td>
+        </tr>
+        <tr style="border-bottom:1px solid #1a1a1a;">
+          <td style="padding:8px 12px;color:#888;">2</td>
+          <td style="padding:8px 12px;"><span class="channel-pill pill-rankframe-x" style="font-size:0.65rem;">RankFrame X</span></td>
+          <td style="padding:8px 12px;color:#888;">Single post</td>
+          <td style="padding:8px 12px;color:#c4c4c4;">Schema feature spotlight</td>
+        </tr>
+        <tr style="border-bottom:1px solid #1a1a1a;">
+          <td style="padding:8px 12px;color:#888;">2</td>
+          <td style="padding:8px 12px;"><span class="channel-pill pill-utkarsh-x" style="font-size:0.65rem;">Utkarsh X</span></td>
+          <td style="padding:8px 12px;color:#888;">5-tweet thread</td>
+          <td style="padding:8px 12px;color:#c4c4c4;">What building RankFrame taught me about SEO</td>
+        </tr>
+        <tr style="border-bottom:1px solid #1a1a1a;">
+          <td style="padding:8px 12px;color:#888;">3</td>
+          <td style="padding:8px 12px;"><span class="channel-pill pill-harsh-x" style="font-size:0.65rem;">Harsh X</span></td>
+          <td style="padding:8px 12px;color:#888;">Single post</td>
+          <td style="padding:8px 12px;color:#c4c4c4;">Confession: our own site had 72 missing alt texts</td>
+        </tr>
+        <tr style="border-bottom:1px solid #1a1a1a;">
+          <td style="padding:8px 12px;color:#888;">3</td>
+          <td style="padding:8px 12px;"><span class="channel-pill pill-rankframe-x" style="font-size:0.65rem;">RankFrame X</span></td>
+          <td style="padding:8px 12px;color:#888;">6-tweet thread</td>
+          <td style="padding:8px 12px;color:#c4c4c4;">Image SEO deep dive</td>
+        </tr>
+        <tr style="border-bottom:1px solid #1a1a1a;">
+          <td style="padding:8px 12px;color:#888;">3</td>
+          <td style="padding:8px 12px;"><span class="channel-pill pill-utkarsh-reddit" style="font-size:0.65rem;">Utkarsh Reddit</span></td>
+          <td style="padding:8px 12px;color:#888;">r/framer post</td>
+          <td style="padding:8px 12px;color:#c4c4c4;">How we solved schema duplicate injection</td>
+        </tr>
+        <tr style="border-bottom:1px solid #1a1a1a;">
+          <td style="padding:8px 12px;color:#888;">4</td>
+          <td style="padding:8px 12px;"><span class="channel-pill pill-rankframe-x" style="font-size:0.65rem;">RankFrame X</span></td>
+          <td style="padding:8px 12px;color:#888;">5-tweet thread</td>
+          <td style="padding:8px 12px;color:#c4c4c4;">Instant Indexing (Google Indexing API)</td>
+        </tr>
+        <tr style="border-bottom:1px solid #1a1a1a;">
+          <td style="padding:8px 12px;color:#888;">4</td>
+          <td style="padding:8px 12px;"><span class="channel-pill pill-harsh-x" style="font-size:0.65rem;">Harsh X</span></td>
+          <td style="padding:8px 12px;color:#888;">Single post</td>
+          <td style="padding:8px 12px;color:#c4c4c4;">Per-page split view as the best native UX decision</td>
+        </tr>
+        <tr style="border-bottom:1px solid #1a1a1a;">
+          <td style="padding:8px 12px;color:#888;">4</td>
+          <td style="padding:8px 12px;"><span class="channel-pill pill-utkarsh-x" style="font-size:0.65rem;">Utkarsh X</span></td>
+          <td style="padding:8px 12px;color:#888;">Single post</td>
+          <td style="padding:8px 12px;color:#c4c4c4;">Clickable audit checks design philosophy</td>
+        </tr>
+        <tr style="border-bottom:1px solid #1a1a1a;">
+          <td style="padding:8px 12px;color:#888;">5</td>
+          <td style="padding:8px 12px;"><span class="channel-pill pill-harsh-reddit" style="font-size:0.65rem;">Harsh Reddit</span></td>
+          <td style="padding:8px 12px;color:#888;">r/framer post</td>
+          <td style="padding:8px 12px;color:#c4c4c4;">SEO checklist before every Framer site launch</td>
+        </tr>
+        <tr style="border-bottom:1px solid #1a1a1a;">
+          <td style="padding:8px 12px;color:#888;">5</td>
+          <td style="padding:8px 12px;"><span class="channel-pill pill-rankframe-x" style="font-size:0.65rem;">RankFrame X</span></td>
+          <td style="padding:8px 12px;color:#888;">Single post</td>
+          <td style="padding:8px 12px;color:#c4c4c4;">SEO Analyzer: 29 checks, PDF report, white-label coming</td>
+        </tr>
+        <tr style="border-bottom:1px solid #1a1a1a;">
+          <td style="padding:8px 12px;color:#888;">5</td>
+          <td style="padding:8px 12px;"><span class="channel-pill pill-harsh-x" style="font-size:0.65rem;">Harsh X</span></td>
+          <td style="padding:8px 12px;color:#888;">Single post (poll)</td>
+          <td style="padding:8px 12px;color:#c4c4c4;">Engagement: biggest SEO pain on Framer?</td>
+        </tr>
+        <tr style="border-bottom:1px solid #1a1a1a;">
+          <td style="padding:8px 12px;color:#888;">6</td>
+          <td style="padding:8px 12px;"><span class="channel-pill pill-utkarsh-x" style="font-size:0.65rem;">Utkarsh X</span></td>
+          <td style="padding:8px 12px;color:#888;">4-tweet thread</td>
+          <td style="padding:8px 12px;color:#c4c4c4;">Day 5 building-in-public update</td>
+        </tr>
+        <tr style="border-bottom:1px solid #1a1a1a;">
+          <td style="padding:8px 12px;color:#888;">6</td>
+          <td style="padding:8px 12px;"><span class="channel-pill pill-rankframe-x" style="font-size:0.65rem;">RankFrame X</span></td>
+          <td style="padding:8px 12px;color:#888;">Single post</td>
+          <td style="padding:8px 12px;color:#c4c4c4;">404 Monitor feature spotlight</td>
+        </tr>
+        <tr style="border-bottom:1px solid #1a1a1a;">
+          <td style="padding:8px 12px;color:#888;">6</td>
+          <td style="padding:8px 12px;"><span class="channel-pill pill-utkarsh-reddit" style="font-size:0.65rem;">Utkarsh Reddit</span></td>
+          <td style="padding:8px 12px;color:#888;">r/indiehackers post</td>
+          <td style="padding:8px 12px;color:#c4c4c4;">Engineering co-founder: honest day 5 update</td>
+        </tr>
+        <tr style="border-bottom:1px solid #1a1a1a;">
+          <td style="padding:8px 12px;color:#888;">7</td>
+          <td style="padding:8px 12px;"><span class="channel-pill pill-harsh-x" style="font-size:0.65rem;">Harsh X</span></td>
+          <td style="padding:8px 12px;color:#888;">6-tweet thread</td>
+          <td style="padding:8px 12px;color:#c4c4c4;">Week 1 recap with real numbers</td>
+        </tr>
+        <tr style="border-bottom:1px solid #1a1a1a;">
+          <td style="padding:8px 12px;color:#888;">7</td>
+          <td style="padding:8px 12px;"><span class="channel-pill pill-rankframe-x" style="font-size:0.65rem;">RankFrame X</span></td>
+          <td style="padding:8px 12px;color:#888;">Single post</td>
+          <td style="padding:8px 12px;color:#c4c4c4;">Weekend SEO tip</td>
+        </tr>
+        <tr>
+          <td style="padding:8px 12px;color:#888;">7</td>
+          <td style="padding:8px 12px;"><span class="channel-pill pill-harsh-x" style="font-size:0.65rem;">Harsh X</span></td>
+          <td style="padding:8px 12px;color:#888;">Single post</td>
+          <td style="padding:8px 12px;color:#c4c4c4;">First $15 payment moment, Week 2 starts tomorrow</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+</body>
+</html>
