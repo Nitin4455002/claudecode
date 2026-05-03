@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RankFrame Billing Overview: Plans, Pricing, and Credits</title>
+  <meta name="description" content="Overview of RankFrame billing. Compare Personal and Agency plans, understand AI credit pricing, and learn how to manage your subscription via the Polar.sh billing portal.">
+  <meta name="keywords" content="RankFrame pricing, Framer SEO plugin pricing, RankFrame plans, billing portal">
+  <link rel="canonical" href="https://rankframe.com/help/billing-overview">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "RankFrame Billing Overview: Plans, Pricing, and Credits",
+    "description": "Overview of RankFrame billing. Compare Personal and Agency plans, understand AI credit pricing, and learn how to manage your subscription via the Polar.sh billing portal.",
+    "author": {
+      "@type": "Organization",
+      "name": "7 Seers",
+      "email": "hello@7seersmedia.com"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "7 Seers",
+      "url": "https://rankframe.com"
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://rankframe.com/help/billing-overview"
+    },
+    "datePublished": "2026-05-03",
+    "dateModified": "2026-05-03"
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Are the plan and credits billed separately?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. The plan is a recurring subscription (monthly or annual). AI Credits are a separate one-time purchase. Both are processed through Polar.sh."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I switch from monthly to annual?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Open the billing portal via the See Billing button and switch billing frequency. The 40% saving applies immediately on the next billing cycle."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do credits expire?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Credits do not expire while your subscription is active. They are non-refundable once used."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What currency is billing in?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "All pricing is in USD. Your card is charged in USD regardless of location."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Where do I find my invoices?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Open the Polar.sh billing portal via the See Billing button. Invoices are listed in your billing history and are downloadable as PDF."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Help Center",
+        "item": "https://rankframe.com/help"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Billing",
+        "item": "https://rankframe.com/help/billing"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Billing Overview",
+        "item": "https://rankframe.com/help/billing-overview"
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: #fff;
+      color: #1a0533;
+      line-height: 1.6;
+      padding: 0;
+    }
+
+    .page-wrapper {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 48px 32px 80px;
+    }
+
+    /* Breadcrumb */
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: .8rem;
+      color: #7c3aed;
+      margin-bottom: 28px;
+      flex-wrap: wrap;
+    }
+    .breadcrumb a {
+      color: #7c3aed;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .breadcrumb span { color: #c4b5fd; font-size: .75rem; }
+
+    /* Header */
+    .article-header {
+      border-bottom: 2px solid #f3eeff;
+      padding-bottom: 28px;
+      margin-bottom: 36px;
+    }
+    .article-tag {
+      display: inline-block;
+      background: linear-gradient(135deg, #7c3aed, #a78bfa);
+      color: #fff;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 20px;
+      margin-bottom: 14px;
+    }
+    h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #1a0533;
+      line-height: 1.25;
+      margin-bottom: 14px;
+    }
+    .article-intro {
+      font-size: 1.05rem;
+      color: #4b4b6b;
+      line-height: 1.75;
+    }
+
+    /* Field blocks */
+    .field-block { margin: 36px 0 28px; }
+    .field-block-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+    .field-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      background: linear-gradient(135deg, #7c3aed, #a78bfa);
+      color: #fff;
+      font-weight: 700;
+      font-size: 14px;
+      border-radius: 8px;
+      flex-shrink: 0;
+      box-shadow: 0 2px 6px rgba(124,58,237,.25);
+    }
+    .field-block-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #1a0533;
+    }
+    .field-block-desc {
+      font-size: .93rem;
+      color: #4b4b6b;
+      line-height: 1.7;
+    }
+    .field-block-desc ul {
+      margin: 8px 0 0 20px;
+    }
+    .field-block-desc li {
+      margin-bottom: 4px;
+    }
+
+    /* Screenshot slot */
+    .screenshot-slot {
+      background: #fafafa;
+      border: 1px dashed #e0d8f0;
+      border-radius: 10px;
+      padding: 36px 20px;
+      text-align: center;
+      color: #b8b2c8;
+      font-size: .85rem;
+      margin-top: 6px;
+      margin-bottom: 8px;
+    }
+    .screenshot-slot::before {
+      content: "Screenshot";
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: #c8c0dc;
+    }
+
+    /* Section divider */
+    .section-divider {
+      border: none;
+      border-top: 1px solid #f3eeff;
+      margin: 44px 0;
+    }
+
+    /* FAQ Section */
+    .faq-section { margin-top: 48px; }
+    .faq-section h2 {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: #1a0533;
+      margin-bottom: 24px;
+    }
+    .faq-item {
+      border: 1px solid #ede8fb;
+      border-radius: 10px;
+      margin-bottom: 12px;
+      overflow: hidden;
+    }
+    .faq-question {
+      font-size: .95rem;
+      font-weight: 700;
+      color: #1a0533;
+      padding: 16px 20px;
+      background: #faf8ff;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      border: none;
+      width: 100%;
+      text-align: left;
+    }
+    .faq-question:hover { background: #f3eeff; }
+    .faq-question .chevron {
+      flex-shrink: 0;
+      width: 18px;
+      height: 18px;
+      color: #7c3aed;
+      transition: transform .2s;
+    }
+    .faq-answer {
+      font-size: .92rem;
+      color: #4b4b6b;
+      line-height: 1.7;
+      padding: 0 20px 16px;
+      background: #fff;
+    }
+
+    /* Info callout */
+    .callout {
+      background: #faf8ff;
+      border-left: 4px solid #7c3aed;
+      border-radius: 0 10px 10px 0;
+      padding: 16px 20px;
+      margin: 20px 0;
+      font-size: .9rem;
+      color: #3b1f6e;
+      line-height: 1.65;
+    }
+    .callout strong { color: #5b21b6; }
+
+    /* Comparison table */
+    .plan-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      font-size: .9rem;
+    }
+    .plan-table th {
+      background: linear-gradient(135deg, #7c3aed, #a78bfa);
+      color: #fff;
+      font-weight: 700;
+      padding: 12px 16px;
+      text-align: left;
+    }
+    .plan-table th:first-child { border-radius: 8px 0 0 0; }
+    .plan-table th:last-child { border-radius: 0 8px 0 0; }
+    .plan-table td {
+      padding: 11px 16px;
+      border-bottom: 1px solid #f0ebfc;
+      color: #1a0533;
+    }
+    .plan-table tr:last-child td { border-bottom: none; }
+    .plan-table tr:nth-child(even) td { background: #faf8ff; }
+
+    /* Footer */
+    .article-footer {
+      margin-top: 56px;
+      padding-top: 24px;
+      border-top: 1px solid #f3eeff;
+      font-size: .82rem;
+      color: #9989b8;
+    }
+    .article-footer a { color: #7c3aed; text-decoration: none; }
+    .article-footer a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <div class="page-wrapper">
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="https://rankframe.com/help">Help Center</a>
+      <span>&#8250;</span>
+      <a href="https://rankframe.com/help/billing">Billing</a>
+      <span>&#8250;</span>
+      <span aria-current="page">Billing Overview</span>
+    </nav>
+
+    <!-- Article header -->
+    <header class="article-header">
+      <div class="article-tag">Billing</div>
+      <h1>Billing Overview</h1>
+      <p class="article-intro">
+        RankFrame offers two subscription plans and a separate AI Credits system. Plans cover access to all features. AI Credits are consumed each time the AI generates a meta title, description, alt text, or schema field. This article explains how the two billing streams work, where to manage them, and how to avoid running out of credits mid-project.
+      </p>
+    </header>
+
+    <!-- Plan comparison table -->
+    <table class="plan-table" aria-label="Plan comparison">
+      <thead>
+        <tr>
+          <th>Plan</th>
+          <th>Monthly</th>
+          <th>Annual</th>
+          <th>Sites</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Personal</strong></td>
+          <td>$15 / mo</td>
+          <td>$108 / yr ($9/mo)</td>
+          <td>1 site</td>
+        </tr>
+        <tr>
+          <td><strong>Agency</strong></td>
+          <td>$40 / mo</td>
+          <td>$288 / yr ($24/mo)</td>
+          <td>Unlimited sites</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="screenshot-slot">Plan selection screen inside RankFrame</div>
+
+    <hr class="section-divider">
+
+    <!-- Field Block 1 -->
+    <div class="field-block">
+      <div class="field-block-header">
+        <div class="field-num">1</div>
+        <div class="field-block-title">Two Plans: Personal and Agency</div>
+      </div>
+      <div class="field-block-desc">
+        <p>Personal costs $15 per month or $108 per year and covers one Framer site. Agency costs $40 per month or $288 per year and covers unlimited Framer sites. Both plans include every RankFrame feature with no capability restrictions. Choosing annual billing saves 40% on both plans compared to paying month to month.</p>
+        <ul>
+          <li><strong>Personal:</strong> $15/mo or $108/yr -- ideal for a single Framer site</li>
+          <li><strong>Agency:</strong> $40/mo or $288/yr -- unlimited sites, priority support</li>
+          <li>Annual saves 40% on both plans</li>
+        </ul>
+      </div>
+      <div class="screenshot-slot">Plan selection with Personal and Agency toggle, monthly/annual pricing</div>
+    </div>
+
+    <!-- Field Block 2 -->
+    <div class="field-block">
+      <div class="field-block-header">
+        <div class="field-num">2</div>
+        <div class="field-block-title">AI Credits</div>
+      </div>
+      <div class="field-block-desc">
+        <p>AI Credits are billed separately from your plan subscription. One credit is consumed each time the AI generates a meta title, description, alt text, or schema field. You purchase credits directly inside the plugin through the Image SEO Buy Credits modal.</p>
+        <ul>
+          <li><strong>First-time offer:</strong> 30,000 credits for $49</li>
+          <li><strong>Regular refill:</strong> 30,000 credits for $100</li>
+          <li>Free trial includes starter credits at no charge</li>
+          <li>Credits do not expire while your subscription is active</li>
+        </ul>
+      </div>
+      <div class="screenshot-slot">Image SEO Buy Credits modal showing credit packages and pricing</div>
+    </div>
+
+    <!-- Field Block 3 -->
+    <div class="field-block">
+      <div class="field-block-header">
+        <div class="field-num">3</div>
+        <div class="field-block-title">See Billing Button</div>
+      </div>
+      <div class="field-block-desc">
+        <p>The purple full-width "See Billing" button sits at the bottom of the RankFrame left sidebar. Clicking it opens the Polar.sh billing portal directly in your browser. From the portal you can:</p>
+        <ul>
+          <li>View your active plan and next renewal date</li>
+          <li>Switch between monthly and annual billing</li>
+          <li>Update your payment method</li>
+          <li>Download invoices as PDF</li>
+          <li>Cancel your subscription</li>
+        </ul>
+      </div>
+      <div class="screenshot-slot">RankFrame left sidebar with the purple See Billing button at the bottom</div>
+    </div>
+
+    <!-- Field Block 4 -->
+    <div class="field-block">
+      <div class="field-block-header">
+        <div class="field-num">4</div>
+        <div class="field-block-title">Payment Processor (Polar.sh)</div>
+      </div>
+      <div class="field-block-desc">
+        <p>All billing is handled by Polar.sh, RankFrame's payment partner. When you click See Billing, you are redirected to your Polar.sh customer portal. Polar.sh processes card charges, manages subscription state, and stores billing records. You interact with Polar.sh directly for card updates, invoice downloads, and cancellation requests.</p>
+      </div>
+      <div class="screenshot-slot">Polar.sh billing portal overview page showing plan, payment method, and invoice history</div>
+    </div>
+
+    <!-- Field Block 5 -->
+    <div class="field-block">
+      <div class="field-block-header">
+        <div class="field-num">5</div>
+        <div class="field-block-title">Free Trial</div>
+      </div>
+      <div class="field-block-desc">
+        <p>Both the Personal and Agency plans offer a 7-day free trial with no credit card required. You get full feature access from day one with trial-specific soft limits. For example, URL submission is limited to 2 during the trial, schema pages are capped at 3, and recrawls are limited to 1. All limits lift immediately the moment you upgrade to a paid plan.</p>
+      </div>
+      <div class="screenshot-slot">Trial upgrade prompt inside RankFrame showing remaining trial days</div>
+    </div>
+
+    <!-- Field Block 6 -->
+    <div class="field-block">
+      <div class="field-block-header">
+        <div class="field-num">6</div>
+        <div class="field-block-title">Renewal Countdown</div>
+      </div>
+      <div class="field-block-desc">
+        <p>Your current plan name and renewal date are always visible at the bottom of the RankFrame sidebar without needing to open the billing portal. For example, you might see "Agency Yearly Plan, Renews in 357 days." This lets you track your billing cycle at a glance while working inside the plugin.</p>
+      </div>
+      <div class="screenshot-slot">RankFrame sidebar footer showing plan name and renewal countdown</div>
+    </div>
+
+    <div class="callout">
+      <strong>Questions about billing?</strong> Contact the 7 Seers team directly at <strong>hello@7seersmedia.com</strong>. For plan management, card updates, and invoice downloads, use the Polar.sh portal accessed via the See Billing button in the sidebar.
+    </div>
+
+    <hr class="section-divider">
+
+    <!-- FAQ Section -->
+    <section class="faq-section" aria-label="Frequently asked questions">
+      <h2>Frequently Asked Questions</h2>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="true">
+          Are the plan and credits billed separately?
+          <svg class="chevron" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+        </button>
+        <div class="faq-answer">
+          Yes. The plan is a recurring subscription (monthly or annual). AI Credits are a separate one-time purchase. Both are processed through Polar.sh.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          Can I switch from monthly to annual?
+          <svg class="chevron" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+        </button>
+        <div class="faq-answer">
+          Yes. Open the billing portal via the See Billing button and switch billing frequency. The 40% saving applies immediately on the next billing cycle.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          Do credits expire?
+          <svg class="chevron" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+        </button>
+        <div class="faq-answer">
+          Credits do not expire while your subscription is active. They are non-refundable once used.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          What currency is billing in?
+          <svg class="chevron" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+        </button>
+        <div class="faq-answer">
+          All pricing is in USD. Your card is charged in USD regardless of location.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          Where do I find my invoices?
+          <svg class="chevron" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+        </button>
+        <div class="faq-answer">
+          Open the Polar.sh billing portal via the See Billing button. Invoices are listed in your billing history and are downloadable as PDF.
+        </div>
+      </div>
+    </section>
+
+    <!-- Article footer -->
+    <footer class="article-footer">
+      <p>RankFrame by <a href="https://rankframe.com">7 Seers</a> &middot; Support: <a href="mailto:hello@7seersmedia.com">hello@7seersmedia.com</a> &middot; Billing powered by <a href="https://polar.sh" rel="noopener">Polar.sh</a></p>
+    </footer>
+
+    <!-- SEO Details Panel -->
+    <div id="seo-details" style="margin:60px 0 0;padding:28px 32px;background:#f8f6ff;border:1px solid #e8e0fa;border-radius:14px;">
+      <h3 style="font-size:1rem;font-weight:700;color:#1a0533;margin:0 0 20px;">SEO Details</h3>
+      <div id="seo-fields"></div>
+    </div>
+
+  </div><!-- /page-wrapper -->
+
+  <script>
+    (function(){
+      var f=[
+        {label:'Title',value:document.querySelector('title')?document.querySelector('title').textContent:''},
+        {label:'Description',value:(document.querySelector('meta[name="description"]')||{}).content||''},
+        {label:'Keywords',value:(document.querySelector('meta[name="keywords"]')||{}).content||''},
+        {label:'Canonical',value:(document.querySelector('link[rel="canonical"]')||{}).href||''}
+      ];
+      var s=Array.from(document.querySelectorAll('script[type="application/ld+json"]')).map(function(x,i){
+        return{label:'Schema '+(i+1),value:x.textContent.trim()};
+      });
+      var all=f.concat(s);
+      var h='';
+      all.forEach(function(x){
+        h+='<div style="margin-bottom:14px"><div style="font-size:.78rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#7c3aed;margin-bottom:4px">'+x.label+'</div><div style="display:flex;align-items:flex-start;gap:8px"><code style="flex:1;background:#fff;border:1px solid #e0d8f0;border-radius:6px;padding:8px 10px;font-size:.82rem;color:#1a0533;white-space:pre-wrap;word-break:break-all">'+x.value.replace(/</g,'&lt;').replace(/>/g,'&gt;')+'</code><button onclick="navigator.clipboard.writeText(this.dataset.v)" data-v="'+x.value.replace(/"/g,'&quot;')+'" style="flex-shrink:0;padding:6px 12px;background:#7c3aed;color:#fff;border:none;border-radius:6px;font-size:.78rem;font-weight:700;cursor:pointer">Copy</button></div></div>';
+      });
+      document.getElementById('seo-fields').innerHTML=h;
+    })();
+  </script>
+
+</body>
+</html>

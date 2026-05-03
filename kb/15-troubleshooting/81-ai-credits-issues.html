@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fixing AI Credit Issues in RankFrame</title>
+  <meta name="description" content="Troubleshoot RankFrame AI credit problems: zero balance, failed generations, credits not appearing after purchase, and bulk operations stopping mid-way." />
+  <meta name="keywords" content="RankFrame credits not working, AI generation failed Framer, buy credits not showing, RankFrame credit balance" />
+  <link rel="canonical" href="https://rankframe.com/help/ai-credits-issues" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Fixing AI Credit Issues in RankFrame",
+    "description": "Troubleshoot RankFrame AI credit problems: zero balance, failed generations, credits not appearing after purchase, and bulk operations stopping mid-way.",
+    "author": {
+      "@type": "Organization",
+      "name": "7 Seers",
+      "email": "hello@7seersmedia.com"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "7 Seers",
+      "url": "https://rankframe.com"
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://rankframe.com/help/ai-credits-issues"
+    },
+    "datePublished": "2026-05-03",
+    "dateModified": "2026-05-03"
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What happens when credits run out during a bulk generation?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "When your credit balance reaches zero mid-bulk, RankFrame stops generating at that point. Images that were already processed keep their generated alt text. Images that had not yet been processed are left blank. You can purchase more credits and reselect the unprocessed images to finish the batch."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Are credits refunded if a generation fails due to an error?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Credits are consumed at the moment a generation request is sent to the AI. If the generation fails due to a network error or temporary API outage, the credit is still consumed. Retry the generation to get your output. If you experience repeated failures, contact hello@7seersmedia.com and the team can review your account."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I check my credit purchase history?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "All purchases are processed through Polar.sh. Log in to your Polar.sh account to view your order history and receipts. Your RankFrame account email must match the email used at checkout. If you need help locating a purchase, email hello@7seersmedia.com with the approximate date and amount."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can AI credits be transferred between accounts?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. AI credits are tied to the specific RankFrame account that made the purchase. Credits cannot be transferred, combined, or shared across different accounts."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How long does a credit purchase take to appear in my account?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "In most cases the credit balance updates within seconds of a completed payment. If the balance has not updated after 5 minutes, click the refresh icon inside the credits badge in the Image SEO header. If it still has not updated after another 5 minutes, email hello@7seersmedia.com with your Polar.sh receipt and your account email."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Help Center",
+        "item": "https://rankframe.com/help"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Troubleshooting",
+        "item": "https://rankframe.com/help/troubleshooting"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "AI Credit Issues",
+        "item": "https://rankframe.com/help/ai-credits-issues"
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: #fff;
+      color: #1a0533;
+      line-height: 1.7;
+    }
+
+    /* ---- Layout ---- */
+    .page-wrap {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 48px 24px 80px;
+    }
+
+    /* ---- Breadcrumb ---- */
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: .82rem;
+      color: #9b8db8;
+      margin-bottom: 36px;
+      flex-wrap: wrap;
+    }
+    .breadcrumb a {
+      color: #7c3aed;
+      text-decoration: none;
+    }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .breadcrumb-sep { color: #d0c8e8; }
+
+    /* ---- Header ---- */
+    .article-header { margin-bottom: 40px; }
+    .article-tag {
+      display: inline-block;
+      background: linear-gradient(135deg, #7c3aed, #a78bfa);
+      color: #fff;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 16px;
+    }
+    h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #1a0533;
+      line-height: 1.25;
+      margin-bottom: 18px;
+    }
+    .article-intro {
+      font-size: 1.05rem;
+      color: #4b4b6b;
+      line-height: 1.75;
+      border-left: 3px solid #a78bfa;
+      padding-left: 18px;
+    }
+
+    /* ---- Section headings ---- */
+    h2 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #1a0533;
+      margin: 48px 0 20px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #f0eaff;
+    }
+    h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #1a0533;
+    }
+
+    /* ---- Field blocks ---- */
+    .field-block { margin: 36px 0 28px; }
+    .field-block-header { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+    .field-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      background: linear-gradient(135deg, #7c3aed, #a78bfa);
+      color: #fff;
+      font-weight: 700;
+      font-size: 14px;
+      border-radius: 8px;
+      flex-shrink: 0;
+      box-shadow: 0 2px 6px rgba(124,58,237,.25);
+    }
+    .field-block-title { font-size: 1rem; font-weight: 700; color: #1a0533; }
+    .field-block-desc { font-size: .93rem; color: #4b4b6b; line-height: 1.7; }
+    .field-block-desc strong { color: #1a0533; }
+
+    /* ---- Screenshot slot ---- */
+    .screenshot-slot {
+      background: #fafafa;
+      border: 1px dashed #e0d8f0;
+      border-radius: 10px;
+      padding: 36px 20px;
+      text-align: center;
+      color: #b8b2c8;
+      font-size: .85rem;
+      margin-top: 6px;
+      margin-bottom: 8px;
+    }
+    .screenshot-slot::before {
+      content: "Screenshot";
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: #c8c0dc;
+    }
+
+    /* ---- Callout ---- */
+    .callout {
+      background: linear-gradient(135deg, #f5f0ff, #ede8ff);
+      border: 1px solid #d6caff;
+      border-left: 4px solid #7c3aed;
+      border-radius: 10px;
+      padding: 20px 24px;
+      margin: 36px 0;
+    }
+    .callout-label {
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+      color: #7c3aed;
+      margin-bottom: 8px;
+    }
+    .callout p {
+      font-size: .93rem;
+      color: #3b2060;
+      line-height: 1.7;
+    }
+
+    /* ---- FAQ ---- */
+    .faq-section { margin-top: 56px; }
+    .faq-item {
+      border: 1px solid #ede8ff;
+      border-radius: 10px;
+      margin-bottom: 12px;
+      overflow: hidden;
+    }
+    .faq-question {
+      font-size: .95rem;
+      font-weight: 700;
+      color: #1a0533;
+      padding: 18px 20px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      background: #fff;
+      border: none;
+      width: 100%;
+      text-align: left;
+    }
+    .faq-question:hover { background: #faf8ff; }
+    .faq-icon {
+      flex-shrink: 0;
+      width: 22px;
+      height: 22px;
+      background: linear-gradient(135deg, #7c3aed, #a78bfa);
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 700;
+      transition: transform .2s;
+    }
+    .faq-answer {
+      font-size: .93rem;
+      color: #4b4b6b;
+      line-height: 1.75;
+      padding: 0 20px 18px;
+      display: none;
+    }
+    .faq-item.open .faq-answer { display: block; }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+
+    /* ---- Divider ---- */
+    .section-divider {
+      border: none;
+      border-top: 2px solid #f0eaff;
+      margin: 48px 0;
+    }
+
+    /* ---- Footer ---- */
+    .article-footer {
+      margin-top: 60px;
+      padding-top: 28px;
+      border-top: 2px solid #f0eaff;
+      font-size: .88rem;
+      color: #9b8db8;
+    }
+    .article-footer a { color: #7c3aed; text-decoration: none; }
+    .article-footer a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+<div class="page-wrap">
+
+  <!-- Breadcrumb -->
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="https://rankframe.com/help">Help Center</a>
+    <span class="breadcrumb-sep">&#8250;</span>
+    <a href="https://rankframe.com/help/troubleshooting">Troubleshooting</a>
+    <span class="breadcrumb-sep">&#8250;</span>
+    <span>AI Credit Issues</span>
+  </nav>
+
+  <!-- Article header -->
+  <header class="article-header">
+    <div class="article-tag">Troubleshooting</div>
+    <h1>Fixing AI Credit Issues</h1>
+    <p class="article-intro">AI Credits power every generation in RankFrame. When something goes wrong with credits (balance not showing, generation failing, purchase not reflecting), the fix is usually quick. This article covers every credits-related symptom and its resolution.</p>
+  </header>
+
+  <!-- Section: Symptoms and Fixes -->
+  <h2>Symptoms and Fixes</h2>
+
+  <!-- Block 1 -->
+  <div class="field-block">
+    <div class="field-block-header">
+      <span class="field-num">1</span>
+      <span class="field-block-title">Balance Shows 0 and You Cannot Generate</span>
+    </div>
+    <div class="field-block-desc">
+      Your credits are exhausted. No AI generations can run while the balance is at zero.
+      <br /><br />
+      <strong>Fix:</strong> Click the <strong>Buy Credits</strong> button in the Image SEO header and purchase a refill. The balance updates immediately after a successful payment.
+    </div>
+    <div class="screenshot-slot">Credits badge showing 0 with the Buy Credits button highlighted in the Image SEO header</div>
+  </div>
+
+  <!-- Block 2 -->
+  <div class="field-block">
+    <div class="field-block-header">
+      <span class="field-num">2</span>
+      <span class="field-block-title">You Purchased Credits but Balance Did Not Update</span>
+    </div>
+    <div class="field-block-desc">
+      Payment succeeded but the sync between Polar.sh and RankFrame is sometimes delayed by a few seconds.
+      <br /><br />
+      <strong>Fix:</strong> Click the <strong>refresh icon</strong> inside the credits badge in the Image SEO header. If the balance still does not update after 5 minutes, email <a href="mailto:hello@7seersmedia.com">hello@7seersmedia.com</a> and include your Polar.sh receipt so the team can apply the credits manually.
+    </div>
+    <div class="screenshot-slot">Refresh icon inside the credits badge, Image SEO header</div>
+  </div>
+
+  <!-- Block 3 -->
+  <div class="field-block">
+    <div class="field-block-header">
+      <span class="field-num">3</span>
+      <span class="field-block-title">AI Generation Produces Blank or Very Short Output</span>
+    </div>
+    <div class="field-block-desc">
+      The AI uses your Personalization settings to tailor output. When Personalization is empty or sparse, the AI has nothing to work with and may produce minimal results.
+      <br /><br />
+      <strong>Fix:</strong> Open <strong>Account Settings &gt; Personalization</strong> tab. Fill in your Brand Name, Brand About, and at least two Strategy fields. Save your changes, then retry the generation.
+    </div>
+    <div class="screenshot-slot">Account Settings Personalization tab with Brand Name, Brand About, and Strategy fields visible</div>
+  </div>
+
+  <!-- Block 4 -->
+  <div class="field-block">
+    <div class="field-block-header">
+      <span class="field-num">4</span>
+      <span class="field-block-title">Bulk Alt Text Stopped Mid-Generation</span>
+    </div>
+    <div class="field-block-desc">
+      A bulk run consumes one credit per image. If your balance reaches zero before the batch finishes, the run stops at that point.
+      <br /><br />
+      <strong>Fix:</strong> Check the credits badge balance. Purchase a refill using the <strong>Buy Credits</strong> button. Then reselect only the images that did not receive generated alt text and run <strong>Generate Alt Text</strong> again.
+    </div>
+    <div class="screenshot-slot">Image SEO bulk selection with unprocessed images highlighted, Buy Credits prompt visible</div>
+  </div>
+
+  <!-- Callout -->
+  <div class="callout">
+    <div class="callout-label">Tip: Plan ahead for bulk runs</div>
+    <p>Before bulk-generating, check your credit balance. Multiply the number of selected images by 1 to estimate the credit cost. Purchase enough credits before starting so the entire batch completes in one run.</p>
+  </div>
+
+  <!-- Block 5 -->
+  <div class="field-block">
+    <div class="field-block-header">
+      <span class="field-num">5</span>
+      <span class="field-block-title">Generation Fails with an Error Message</span>
+    </div>
+    <div class="field-block-desc">
+      An error message during generation usually points to a temporary network issue or a brief API outage on the server side.
+      <br /><br />
+      <strong>Fix:</strong> Wait 2 to 3 minutes and retry. If the error continues, confirm that the plugin has a working network connection and that you are not behind a VPN or corporate firewall that blocks external API calls. If the error persists beyond 10 minutes, contact <a href="mailto:hello@7seersmedia.com">hello@7seersmedia.com</a>.
+    </div>
+    <div class="screenshot-slot">Error message state in the Image SEO generation panel</div>
+  </div>
+
+  <!-- Block 6 -->
+  <div class="field-block">
+    <div class="field-block-header">
+      <span class="field-num">6</span>
+      <span class="field-block-title">Credits Were Consumed but Output Was Wrong</span>
+    </div>
+    <div class="field-block-desc">
+      Credits are consumed at the moment a generation request is sent. This happens regardless of whether the output meets your expectations. This is expected behavior.
+      <br /><br />
+      <strong>Options:</strong> You can run the generation again (this costs one additional credit) to get a different result. Alternatively, edit the AI-generated output manually directly in the alt text field. Improving your Personalization settings often produces better output on the next attempt.
+    </div>
+    <div class="screenshot-slot">Alt text field with AI-generated output ready for manual editing</div>
+  </div>
+
+  <hr class="section-divider" />
+
+  <!-- FAQ -->
+  <section class="faq-section">
+    <h2>Frequently Asked Questions</h2>
+
+    <div class="faq-item">
+      <button class="faq-question" aria-expanded="false" onclick="toggleFaq(this)">
+        What happens when credits run out during a bulk generation?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">When your credit balance reaches zero mid-bulk, RankFrame stops generating at that point. Images that were already processed keep their generated alt text. Images that had not yet been processed are left blank. Purchase more credits and reselect the unprocessed images to finish the batch.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" aria-expanded="false" onclick="toggleFaq(this)">
+        Are credits refunded if a generation fails due to an error?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">Credits are consumed at the moment a generation request is sent to the AI. If the generation fails due to a network error or temporary API outage, the credit is still consumed. Retry the generation to get your output. If you experience repeated failures, contact <a href="mailto:hello@7seersmedia.com">hello@7seersmedia.com</a> and the team can review your account.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" aria-expanded="false" onclick="toggleFaq(this)">
+        How do I check my credit purchase history?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">All purchases are processed through Polar.sh. Log in to your Polar.sh account to view your order history and receipts. Your RankFrame account email must match the email used at checkout. If you need help locating a purchase, email <a href="mailto:hello@7seersmedia.com">hello@7seersmedia.com</a> with the approximate date and payment amount.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" aria-expanded="false" onclick="toggleFaq(this)">
+        Can AI credits be transferred between accounts?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">No. AI credits are tied to the specific RankFrame account that made the purchase. Credits cannot be transferred, combined, or shared across different accounts.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" aria-expanded="false" onclick="toggleFaq(this)">
+        How long does a credit purchase take to appear in my account?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">In most cases the credit balance updates within seconds of a completed payment. If the balance has not updated after 5 minutes, click the refresh icon inside the credits badge in the Image SEO header. If it still has not updated after another 5 minutes, email <a href="mailto:hello@7seersmedia.com">hello@7seersmedia.com</a> with your Polar.sh receipt and your account email.</div>
+    </div>
+
+  </section>
+
+  <!-- Footer -->
+  <footer class="article-footer">
+    <p>Still having trouble? Email <a href="mailto:hello@7seersmedia.com">hello@7seersmedia.com</a> and include your account email, a description of the issue, and your Polar.sh receipt if the problem is purchase-related. RankFrame is built by <strong>7 Seers</strong>.</p>
+  </footer>
+
+  <!-- SEO Details Panel -->
+  <div id="seo-details" style="margin:60px 0 0;padding:28px 32px;background:#f8f6ff;border:1px solid #e8e0fa;border-radius:14px;">
+    <h3 style="font-size:1rem;font-weight:700;color:#1a0533;margin:0 0 20px;">SEO Details</h3>
+    <div id="seo-fields"></div>
+  </div>
+
+</div><!-- /page-wrap -->
+
+<script>
+  function toggleFaq(btn) {
+    var item = btn.closest('.faq-item');
+    var open = item.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  }
+</script>
+
+<script>
+(function(){
+  var f=[
+    {label:'Title',value:document.querySelector('title')?document.querySelector('title').textContent:''},
+    {label:'Description',value:(document.querySelector('meta[name="description"]')||{}).content||''},
+    {label:'Keywords',value:(document.querySelector('meta[name="keywords"]')||{}).content||''},
+    {label:'Canonical',value:(document.querySelector('link[rel="canonical"]')||{}).href||''}
+  ];
+  var s=Array.from(document.querySelectorAll('script[type="application/ld+json"]')).map(function(x,i){
+    return{label:'Schema '+(i+1),value:x.textContent.trim()};
+  });
+  var all=f.concat(s);
+  var h='';
+  all.forEach(function(x){
+    h+='<div style="margin-bottom:14px"><div style="font-size:.78rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#7c3aed;margin-bottom:4px">'+x.label+'</div><div style="display:flex;align-items:flex-start;gap:8px"><code style="flex:1;background:#fff;border:1px solid #e0d8f0;border-radius:6px;padding:8px 10px;font-size:.82rem;color:#1a0533;white-space:pre-wrap;word-break:break-all">'+x.value.replace(/</g,'&lt;').replace(/>/g,'&gt;')+'</code><button onclick="navigator.clipboard.writeText(this.dataset.v)" data-v="'+x.value.replace(/"/g,'&quot;')+'" style="flex-shrink:0;padding:6px 12px;background:#7c3aed;color:#fff;border:none;border-radius:6px;font-size:.78rem;font-weight:700;cursor:pointer">Copy</button></div></div>';
+  });
+  document.getElementById('seo-fields').innerHTML=h;
+})();
+</script>
+
+</body>
+</html>
