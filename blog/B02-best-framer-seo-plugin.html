@@ -964,23 +964,32 @@
   </section>
 
   <!-- SEO Details Panel -->
-  <div class="seo-panel">
-    <div class="seo-panel-title" onclick="this.nextElementSibling.classList.toggle('open')">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
-      SEO Details
-    </div>
-    <div class="seo-panel-body">
-      <div class="seo-row"><span class="seo-label">Target keyword</span><span class="seo-value">framer seo plugin / best framer seo plugin</span></div>
-      <div class="seo-row"><span class="seo-label">Secondary keywords</span><span class="seo-value">framer seo tool, rankframe plugin, framer plugin for seo</span></div>
-      <div class="seo-row"><span class="seo-label">Meta title</span><span class="seo-value">Best Framer SEO Plugin in 2026: RankFrame Reviewed</span></div>
-      <div class="seo-row"><span class="seo-label">Meta description</span><span class="seo-value">Looking for the best SEO plugin for Framer? RankFrame is the only native option built for Framer designers. Full review: features, pricing, and what it actually does.</span></div>
-      <div class="seo-row"><span class="seo-label">Canonical URL</span><span class="seo-value">https://rankframe.com/blog/best-framer-seo-plugin</span></div>
-      <div class="seo-row"><span class="seo-label">Word count target</span><span class="seo-value">3,500+ words</span></div>
-      <div class="seo-row"><span class="seo-label">Schemas included</span><span class="seo-value">Article, Organization, BreadcrumbList, FAQPage</span></div>
-      <div class="seo-row"><span class="seo-label">Last updated</span><span class="seo-value">May 2026</span></div>
-    </div>
+  <div id="seo-details" style="margin:60px 0 0;padding:28px 32px;background:#f8f6ff;border:1px solid #e8e0fa;border-radius:14px;">
+    <h3 style="font-size:1rem;font-weight:700;color:#1a0533;margin:0 0 20px;">SEO Details</h3>
+    <div id="seo-fields"></div>
   </div>
 
 </div>
+
+<script>
+(function(){
+  var f=[
+    {label:'Title',value:document.querySelector('title')?document.querySelector('title').textContent:''},
+    {label:'Description',value:(document.querySelector('meta[name="description"]')||{}).content||''},
+    {label:'Keywords',value:(document.querySelector('meta[name="keywords"]')||{}).content||''},
+    {label:'Canonical',value:(document.querySelector('link[rel="canonical"]')||{}).href||''}
+  ];
+  var s=Array.from(document.querySelectorAll('script[type="application/ld+json"]')).map(function(x,i){
+    return{label:'Schema '+(i+1),value:x.textContent.trim()};
+  });
+  var all=f.concat(s);
+  var h='';
+  all.forEach(function(x){
+    h+='<div style="margin-bottom:14px"><div style="font-size:.78rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#7c3aed;margin-bottom:4px">'+x.label+'</div><div style="display:flex;align-items:flex-start;gap:8px"><code style="flex:1;background:#fff;border:1px solid #e0d8f0;border-radius:6px;padding:8px 10px;font-size:.82rem;color:#1a0533;white-space:pre-wrap;word-break:break-all">'+x.value.replace(/</g,'&lt;').replace(/>/g,'&gt;')+'</code><button onclick="navigator.clipboard.writeText(this.dataset.v)" data-v="'+x.value.replace(/"/g,'&quot;')+'" style="flex-shrink:0;padding:6px 12px;background:#7c3aed;color:#fff;border:none;border-radius:6px;font-size:.78rem;font-weight:700;cursor:pointer">Copy</button></div></div>';
+  });
+  document.getElementById('seo-fields').innerHTML=h;
+})();
+</script>
+
 </body>
 </html>
