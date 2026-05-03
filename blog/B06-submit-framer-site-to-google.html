@@ -31,7 +31,7 @@
       "url": "https://rankframe.com",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://rankframe.com/logo.png"
+        "url": "https://framerusercontent.com/images/XE1sqaQyYF9jXODewkOIlcQ3KKo.png"
       }
     },
     "mainEntityOfPage": {
@@ -750,10 +750,8 @@
     {label:'Keywords',value:(document.querySelector('meta[name="keywords"]')||{}).content||''},
     {label:'Canonical',value:(document.querySelector('link[rel="canonical"]')||{}).href||''}
   ];
-  var s=Array.from(document.querySelectorAll('script[type="application/ld+json"]')).map(function(x,i){
-    return{label:'Schema '+(i+1),value:x.textContent.trim()};
-  });
-  var all=f.concat(s);
+  var schemas=[];var _si=0;Array.from(document.querySelectorAll('script[type="application/ld+json"]')).forEach(function(x){try{var j=JSON.parse(x.textContent);if(j['@graph']&&Array.isArray(j['@graph'])){j['@graph'].forEach(function(item){var t=item['@type']||'Schema';schemas.push({label:'Schema: '+t,value:JSON.stringify(item,null,2)});});}else{var t=j['@type']||('Schema '+(++_si));schemas.push({label:'Schema: '+t,value:x.textContent.trim()});}}catch(e){schemas.push({label:'Schema '+(++_si),value:x.textContent.trim()});}});
+  var all=f.concat(schemas);
   var h='';
   all.forEach(function(x){
     h+='<div style="margin-bottom:14px"><div style="font-size:.78rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#7c3aed;margin-bottom:4px">'+x.label+'</div><div style="display:flex;align-items:flex-start;gap:8px"><code style="flex:1;background:#fff;border:1px solid #e0d8f0;border-radius:6px;padding:8px 10px;font-size:.82rem;color:#1a0533;white-space:pre-wrap;word-break:break-all">'+x.value.replace(/</g,'&lt;').replace(/>/g,'&gt;')+'</code><button onclick="navigator.clipboard.writeText(this.dataset.v)" data-v="'+x.value.replace(/"/g,'&quot;')+'" style="flex-shrink:0;padding:6px 12px;background:#7c3aed;color:#fff;border:none;border-radius:6px;font-size:.78rem;font-weight:700;cursor:pointer">Copy</button></div></div>';
