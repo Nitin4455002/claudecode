@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fixing Google Connection Issues in RankFrame</title>
+  <meta name="description" content="Troubleshoot Google account connection problems in RankFrame. Fix expired OAuth, wrong account errors, and domain verification failures in the Submit Indexing Setup tab." />
+  <meta name="keywords" content="RankFrame Google connection, OAuth error Framer, reconnect Google RankFrame, domain verification RankFrame" />
+  <link rel="canonical" href="https://rankframe.com/help/google-connection-issues" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Fixing Google Connection Issues in RankFrame",
+    "description": "Troubleshoot Google account connection problems in RankFrame. Fix expired OAuth, wrong account errors, and domain verification failures in the Submit Indexing Setup tab.",
+    "author": {
+      "@type": "Organization",
+      "name": "7 Seers",
+      "email": "hello@7seersmedia.com"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "7 Seers",
+      "url": "https://rankframe.com"
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://rankframe.com/help/google-connection-issues"
+    },
+    "datePublished": "2026-05-03",
+    "dateModified": "2026-05-03"
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Why does my Google OAuth connection expire in RankFrame?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Google OAuth tokens expire after a period of inactivity or when you revoke access through your Google Account security settings. When this happens, RankFrame loses its ability to communicate with Search Console and the Indexing API. To fix it, open Submit Indexing, go to the Setup tab, disconnect the current account, and reconnect with your Google account."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What happens if I connect the wrong Google account to RankFrame?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "If you connect a Google account that does not have access to the Search Console property for your domain, domain verification will fail, no Analytics data will load, and URL submissions will be rejected. Disconnect the account in the Setup tab and reconnect using the Google account that has Owner or Full User access to your Search Console property."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What level of Search Console access does my Google account need?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Your connected Google account needs at least Full User access, though Owner access is recommended. Restricted User access does not grant the permissions required for the Google Indexing API. You can check and update access levels in Google Search Console under Settings, then Users and permissions."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How many Indexing API requests does Google allow per day?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Google's standard Indexing API quota is 200 requests per day per project. If you submit a large batch of URLs in a short period you may exhaust this quota, causing subsequent submissions to return errors. Wait 24 hours for the quota to reset, then resubmit in smaller batches. Prioritize your most important or recently updated pages."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What should I do if reconnecting Google still does not fix the issue?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "If you have disconnected and reconnected the correct Google account and the issue persists, check that your Search Console property is set up as a Domain property (not a URL-prefix property) for the broadest API access. If it still does not work, contact 7 Seers support at hello@7seersmedia.com with your Framer site URL and a description of the error message you see."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Help Center",
+        "item": "https://rankframe.com/help"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Troubleshooting",
+        "item": "https://rankframe.com/help/troubleshooting"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Google Connection Issues",
+        "item": "https://rankframe.com/help/google-connection-issues"
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background: #ffffff;
+      color: #1a0533;
+      line-height: 1.7;
+    }
+
+    .page-wrapper {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 48px 24px 80px;
+    }
+
+    /* Breadcrumb */
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: .8rem;
+      color: #9585b4;
+      margin-bottom: 32px;
+      flex-wrap: wrap;
+    }
+    .breadcrumb a { color: #7c3aed; text-decoration: none; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .breadcrumb-sep { color: #c4b8d8; }
+
+    /* Header */
+    .article-header { margin-bottom: 40px; }
+    .article-tag {
+      display: inline-block;
+      background: linear-gradient(135deg, #7c3aed, #a78bfa);
+      color: #fff;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 16px;
+    }
+    h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #1a0533;
+      line-height: 1.25;
+      margin-bottom: 16px;
+    }
+    .article-intro {
+      font-size: 1.05rem;
+      color: #4b4b6b;
+      line-height: 1.75;
+      border-left: 4px solid #a78bfa;
+      padding-left: 16px;
+      margin-bottom: 8px;
+    }
+
+    /* Section headings */
+    h2 {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: #1a0533;
+      margin: 52px 0 6px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #f0eaff;
+    }
+    h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #1a0533;
+      margin: 28px 0 8px;
+    }
+
+    /* Field blocks */
+    .field-block { margin: 36px 0 28px; }
+    .field-block-header { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+    .field-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      background: linear-gradient(135deg, #7c3aed, #a78bfa);
+      color: #fff;
+      font-weight: 700;
+      font-size: 14px;
+      border-radius: 8px;
+      flex-shrink: 0;
+      box-shadow: 0 2px 6px rgba(124,58,237,.25);
+    }
+    .field-block-title { font-size: 1rem; font-weight: 700; color: #1a0533; }
+    .field-block-desc { font-size: .93rem; color: #4b4b6b; line-height: 1.7; }
+    .field-block-desc strong { color: #1a0533; }
+
+    /* Screenshot slot */
+    .screenshot-slot {
+      background: #fafafa;
+      border: 1px dashed #e0d8f0;
+      border-radius: 10px;
+      padding: 36px 20px;
+      text-align: center;
+      color: #b8b2c8;
+      font-size: .85rem;
+      margin-top: 6px;
+      margin-bottom: 8px;
+    }
+    .screenshot-slot::before {
+      content: "Screenshot";
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: #c8c0dc;
+    }
+
+    /* Step list */
+    .step-list {
+      list-style: none;
+      margin: 20px 0;
+      padding: 0;
+    }
+    .step-list li {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      margin-bottom: 16px;
+    }
+    .step-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      min-width: 28px;
+      background: linear-gradient(135deg, #7c3aed, #a78bfa);
+      color: #fff;
+      font-weight: 700;
+      font-size: 13px;
+      border-radius: 50%;
+      box-shadow: 0 2px 6px rgba(124,58,237,.2);
+      margin-top: 2px;
+    }
+    .step-text {
+      font-size: .93rem;
+      color: #4b4b6b;
+      line-height: 1.7;
+    }
+    .step-text strong { color: #1a0533; }
+
+    /* Callout */
+    .callout {
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin: 36px 0;
+    }
+    .callout-warning {
+      background: #fffbeb;
+      border-left: 4px solid #f59e0b;
+    }
+    .callout-info {
+      background: #f0eaff;
+      border-left: 4px solid #7c3aed;
+    }
+    .callout-support {
+      background: #f0fdf4;
+      border-left: 4px solid #22c55e;
+    }
+    .callout-title {
+      font-size: .85rem;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .callout-warning .callout-title { color: #b45309; }
+    .callout-info .callout-title { color: #7c3aed; }
+    .callout-support .callout-title { color: #16a34a; }
+    .callout p { font-size: .93rem; color: #4b4b6b; line-height: 1.7; }
+    .callout a { color: #7c3aed; font-weight: 600; text-decoration: none; }
+    .callout a:hover { text-decoration: underline; }
+
+    /* Symptom/Cause/Fix label rows */
+    .scf-row {
+      display: grid;
+      grid-template-columns: 90px 1fr;
+      gap: 4px 12px;
+      margin-bottom: 4px;
+      font-size: .93rem;
+    }
+    .scf-label {
+      font-weight: 700;
+      color: #7c3aed;
+      font-size: .82rem;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      padding-top: 2px;
+    }
+    .scf-value { color: #4b4b6b; line-height: 1.65; }
+    .scf-value strong { color: #1a0533; }
+
+    /* FAQ */
+    .faq-item {
+      border: 1px solid #e8e0fa;
+      border-radius: 10px;
+      margin-bottom: 12px;
+      overflow: hidden;
+    }
+    .faq-question {
+      font-size: .95rem;
+      font-weight: 700;
+      color: #1a0533;
+      padding: 16px 20px;
+      background: #faf8ff;
+      border-bottom: 1px solid #e8e0fa;
+    }
+    .faq-answer {
+      font-size: .9rem;
+      color: #4b4b6b;
+      padding: 14px 20px;
+      line-height: 1.7;
+    }
+    .faq-answer a { color: #7c3aed; font-weight: 600; text-decoration: none; }
+    .faq-answer a:hover { text-decoration: underline; }
+
+    /* Footer */
+    .article-footer {
+      margin-top: 64px;
+      padding-top: 24px;
+      border-top: 1px solid #f0eaff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .article-footer-brand { font-size: .82rem; color: #9585b4; }
+    .article-footer-brand a { color: #7c3aed; text-decoration: none; font-weight: 600; }
+    .related-links { display: flex; gap: 12px; flex-wrap: wrap; }
+    .related-link {
+      font-size: .82rem;
+      color: #7c3aed;
+      text-decoration: none;
+      background: #f0eaff;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-weight: 600;
+    }
+    .related-link:hover { background: #e0d8f0; }
+  </style>
+</head>
+<body>
+  <div class="page-wrapper">
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="https://rankframe.com/help">Help Center</a>
+      <span class="breadcrumb-sep">&#8250;</span>
+      <a href="https://rankframe.com/help/troubleshooting">Troubleshooting</a>
+      <span class="breadcrumb-sep">&#8250;</span>
+      <span>Google Connection Issues</span>
+    </nav>
+
+    <!-- Header -->
+    <header class="article-header">
+      <div class="article-tag">Troubleshooting</div>
+      <h1>Fixing Google Connection Issues</h1>
+      <p class="article-intro">RankFrame connects to Google via OAuth to enable Submit Indexing (URL pushes, Analytics, Keyword Tracker, and Indexing History). If that connection breaks or was set up with the wrong account, none of these features work. This article walks through every connection symptom and how to fix each one.</p>
+    </header>
+
+    <main>
+
+      <h2>Connection Symptoms and Fixes</h2>
+
+      <!-- Field Block 1 -->
+      <div class="field-block">
+        <div class="field-block-header">
+          <span class="field-num">1</span>
+          <span class="field-block-title">Submit Indexing Shows "Not Connected" or Fails to Load Data</span>
+        </div>
+        <div class="field-block-desc">
+          <div class="scf-row"><span class="scf-label">Symptom</span><span class="scf-value">Submit Indexing displays "Not Connected", the panel spins indefinitely, or all data fields are blank.</span></div>
+          <div class="scf-row"><span class="scf-label">Cause</span><span class="scf-value">Your OAuth token has expired or was revoked through Google Account security settings.</span></div>
+          <div class="scf-row"><span class="scf-label">Fix</span><span class="scf-value">Open <strong>Submit Indexing</strong>, go to the <strong>Setup</strong> tab, click the red <strong>Disconnect</strong> link to clear the expired token, then click <strong>Connect Google Account</strong> and sign in again.</span></div>
+        </div>
+        <div class="screenshot-slot">Submit Indexing Setup tab showing "Not Connected" state and the red Disconnect link</div>
+      </div>
+
+      <!-- Field Block 2 -->
+      <div class="field-block">
+        <div class="field-block-header">
+          <span class="field-num">2</span>
+          <span class="field-block-title">Wrong Google Account Connected</span>
+        </div>
+        <div class="field-block-desc">
+          <div class="scf-row"><span class="scf-label">Symptom</span><span class="scf-value">The plugin shows a connected account, but Analytics shows zeros, keyword data is empty, and domain verification fails.</span></div>
+          <div class="scf-row"><span class="scf-label">Cause</span><span class="scf-value">You signed in with a personal Gmail account instead of the Google account that owns the Search Console property for your domain.</span></div>
+          <div class="scf-row"><span class="scf-label">Fix</span><span class="scf-value">Go to <strong>Submit Indexing &gt; Setup</strong> tab, click <strong>Disconnect</strong>, then reconnect using the exact Google account that has Owner or Full User access to your domain in Search Console.</span></div>
+        </div>
+        <div class="screenshot-slot">Setup tab showing the connected account email address and Disconnect option</div>
+      </div>
+
+      <!-- Field Block 3 -->
+      <div class="field-block">
+        <div class="field-block-header">
+          <span class="field-num">3</span>
+          <span class="field-block-title">Domain Verification Shows Failed or Pending</span>
+        </div>
+        <div class="field-block-desc">
+          <div class="scf-row"><span class="scf-label">Symptom</span><span class="scf-value">The Domain Verification step in the Setup tab shows a failed or pending status even after connecting a Google account.</span></div>
+          <div class="scf-row"><span class="scf-label">Cause</span><span class="scf-value">The connected Google account does not have Search Console access to the domain RankFrame is trying to verify.</span></div>
+          <div class="scf-row"><span class="scf-label">Fix</span><span class="scf-value">Go to <a href="https://search.google.com/search-console" style="color:#7c3aed;font-weight:600;">Google Search Console</a>, open your property, go to <strong>Settings &gt; Users and permissions</strong>, and confirm your connected account is listed as Owner or Full User. Then return to RankFrame, disconnect, and reconnect that account.</span></div>
+        </div>
+        <div class="screenshot-slot">Setup tab showing Domain Verification step with a failed status indicator</div>
+      </div>
+
+      <!-- Field Block 4 -->
+      <div class="field-block">
+        <div class="field-block-header">
+          <span class="field-num">4</span>
+          <span class="field-block-title">Analytics Data Shows Zeros or "No Data"</span>
+        </div>
+        <div class="field-block-desc">
+          <div class="scf-row"><span class="scf-label">Symptom</span><span class="scf-value">The Analytics tab in Submit Indexing shows all zeros or a "No data available" message immediately after connecting.</span></div>
+          <div class="scf-row"><span class="scf-label">Cause</span><span class="scf-value">A new OAuth connection needs 48 to 72 hours to pull historical data from Search Console. The property may also not have accumulated enough impressions or clicks yet.</span></div>
+          <div class="scf-row"><span class="scf-label">Fix</span><span class="scf-value">Wait 48 to 72 hours after connecting, then reload the Analytics tab. If data still does not appear after 72 hours, disconnect and reconnect, then wait again.</span></div>
+        </div>
+        <div class="screenshot-slot">Analytics tab showing loading state and expected data layout after population</div>
+      </div>
+
+      <!-- Field Block 5 -->
+      <div class="field-block">
+        <div class="field-block-header">
+          <span class="field-num">5</span>
+          <span class="field-block-title">Indexing History Shows Errors on Every Submission</span>
+        </div>
+        <div class="field-block-desc">
+          <div class="scf-row"><span class="scf-label">Symptom</span><span class="scf-value">Every URL in the Indexing History shows an error status, even URLs that were previously submitted successfully.</span></div>
+          <div class="scf-row"><span class="scf-label">Cause</span><span class="scf-value">Google's Indexing API quota was exceeded (typically 200 requests per day). Batch-submitting a large sitemap at once is the most common way this happens.</span></div>
+          <div class="scf-row"><span class="scf-label">Fix</span><span class="scf-value">Wait 24 hours for the daily quota to reset. When you resubmit, prioritize your most important or recently updated pages rather than submitting every URL at once.</span></div>
+        </div>
+        <div class="screenshot-slot">Indexing History tab showing error states alongside the submission date and URL columns</div>
+      </div>
+
+      <div class="callout callout-warning">
+        <div class="callout-title">Quota Tip</div>
+        <p>Google's standard Indexing API quota is 200 requests per day per project. Submitting your entire sitemap at once uses that quota immediately. Submit new and updated pages in small batches to avoid exhausting it.</p>
+      </div>
+
+      <!-- Reconnect guide -->
+      <h2>How to Reconnect Your Google Account</h2>
+      <p style="font-size:.93rem;color:#4b4b6b;margin-bottom:20px;">Follow these steps to fully disconnect and reconnect a Google account in RankFrame.</p>
+
+      <ol class="step-list">
+        <li>
+          <span class="step-num">1</span>
+          <span class="step-text">Open the RankFrame plugin in Framer and click on the <strong>Submit Indexing</strong> panel in the sidebar.</span>
+        </li>
+        <li>
+          <span class="step-num">2</span>
+          <span class="step-text">Click the <strong>Setup</strong> tab at the top of the Submit Indexing panel.</span>
+        </li>
+        <li>
+          <span class="step-num">3</span>
+          <span class="step-text">Click the red <strong>Disconnect</strong> link next to the currently connected account. Confirm the disconnection if prompted.</span>
+        </li>
+        <li>
+          <span class="step-num">4</span>
+          <span class="step-text">Click <strong>Connect Google Account</strong>. A Google sign-in window will open in your browser.</span>
+        </li>
+        <li>
+          <span class="step-num">5</span>
+          <span class="step-text">Sign in with the Google account that has <strong>Owner</strong> or <strong>Full User</strong> access to your Search Console property. Do not use a generic Gmail account.</span>
+        </li>
+        <li>
+          <span class="step-num">6</span>
+          <span class="step-text">Grant all requested permissions when prompted. RankFrame needs Search Console read access and Indexing API write access.</span>
+        </li>
+        <li>
+          <span class="step-num">7</span>
+          <span class="step-text">Return to the Setup tab. Confirm the Domain Verification step now shows a green checkmark. If it shows pending, wait one to two minutes and refresh.</span>
+        </li>
+      </ol>
+
+      <div class="screenshot-slot">Seven-step reconnect flow: Setup tab, Disconnect click, Google sign-in window, and verified connection state</div>
+
+      <div class="callout callout-info">
+        <div class="callout-title">Which Account Should I Use?</div>
+        <p>Use the Google account you logged into when you set up your Search Console property. If you are not sure which account that is, open Search Console at <a href="https://search.google.com/search-console">search.google.com/search-console</a> and check which account owns the property for your domain.</p>
+      </div>
+
+      <!-- FAQ -->
+      <h2>Frequently Asked Questions</h2>
+
+      <div class="faq-item">
+        <div class="faq-question">Why does my Google OAuth connection expire in RankFrame?</div>
+        <div class="faq-answer">Google OAuth tokens expire after a period of inactivity or when you revoke access through your Google Account security settings. When this happens, RankFrame loses its ability to communicate with Search Console and the Indexing API. To fix it, open Submit Indexing, go to the Setup tab, disconnect the current account, and reconnect with your Google account.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">What happens if I connect the wrong Google account to RankFrame?</div>
+        <div class="faq-answer">If you connect a Google account that does not have access to the Search Console property for your domain, domain verification will fail, no Analytics data will load, and URL submissions will be rejected. Disconnect the account in the Setup tab and reconnect using the Google account that has Owner or Full User access to your Search Console property.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">What level of Search Console access does my Google account need?</div>
+        <div class="faq-answer">Your connected Google account needs at least Full User access, though Owner access is recommended. Restricted User access does not grant the permissions required for the Google Indexing API. You can check and update access levels in Google Search Console under Settings, then Users and permissions.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">How many Indexing API requests does Google allow per day?</div>
+        <div class="faq-answer">Google's standard Indexing API quota is 200 requests per day per project. If you submit a large batch of URLs in a short period you may exhaust this quota, causing subsequent submissions to return errors. Wait 24 hours for the quota to reset, then resubmit in smaller batches. Prioritize your most important or recently updated pages.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">What should I do if reconnecting Google still does not fix the issue?</div>
+        <div class="faq-answer">If you have disconnected and reconnected the correct Google account and the issue persists, check that your Search Console property is set up as a Domain property (not a URL-prefix property) for the broadest API access. If it still does not work, contact 7 Seers support at <a href="mailto:hello@7seersmedia.com">hello@7seersmedia.com</a> with your Framer site URL and a description of the error message you see.</div>
+      </div>
+
+      <div class="callout callout-support">
+        <div class="callout-title">Need More Help?</div>
+        <p>If none of the steps above resolved your issue, reach out to the 7 Seers team at <a href="mailto:hello@7seersmedia.com">hello@7seersmedia.com</a>. Include the email address of the Google account you connected and any error text shown in the Setup tab.</p>
+      </div>
+
+    </main>
+
+    <!-- Related articles -->
+    <footer class="article-footer">
+      <div class="article-footer-brand">RankFrame by <a href="https://rankframe.com">7 Seers</a> &mdash; <a href="mailto:hello@7seersmedia.com">hello@7seersmedia.com</a></div>
+      <div class="related-links">
+        <a class="related-link" href="https://rankframe.com/help/troubleshooting-overview">Troubleshooting Overview</a>
+        <a class="related-link" href="https://rankframe.com/help/indexing-not-working">Indexing Not Working</a>
+      </div>
+    </footer>
+
+    <!-- SEO Details panel -->
+    <div id="seo-details" style="margin:60px 0 0;padding:28px 32px;background:#f8f6ff;border:1px solid #e8e0fa;border-radius:14px;">
+      <h3 style="font-size:1rem;font-weight:700;color:#1a0533;margin:0 0 20px;">SEO Details</h3>
+      <div id="seo-fields"></div>
+    </div>
+
+  </div><!-- end page-wrapper -->
+
+  <script>
+    (function(){
+      var f=[
+        {label:'Title',value:document.querySelector('title')?document.querySelector('title').textContent:''},
+        {label:'Description',value:(document.querySelector('meta[name="description"]')||{}).content||''},
+        {label:'Keywords',value:(document.querySelector('meta[name="keywords"]')||{}).content||''},
+        {label:'Canonical',value:(document.querySelector('link[rel="canonical"]')||{}).href||''}
+      ];
+      var s=Array.from(document.querySelectorAll('script[type="application/ld+json"]')).map(function(x,i){
+        return{label:'Schema '+(i+1),value:x.textContent.trim()};
+      });
+      var all=f.concat(s);
+      var h='';
+      all.forEach(function(x){
+        h+='<div style="margin-bottom:14px"><div style="font-size:.78rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#7c3aed;margin-bottom:4px">'+x.label+'</div><div style="display:flex;align-items:flex-start;gap:8px"><code style="flex:1;background:#fff;border:1px solid #e0d8f0;border-radius:6px;padding:8px 10px;font-size:.82rem;color:#1a0533;white-space:pre-wrap;word-break:break-all">'+x.value.replace(/</g,'&lt;').replace(/>/g,'&gt;')+'</code><button onclick="navigator.clipboard.writeText(this.dataset.v)" data-v="'+x.value.replace(/"/g,'&quot;')+'" style="flex-shrink:0;padding:6px 12px;background:#7c3aed;color:#fff;border:none;border-radius:6px;font-size:.78rem;font-weight:700;cursor:pointer">Copy</button></div></div>';
+      });
+      document.getElementById('seo-fields').innerHTML=h;
+    })();
+  </script>
+
+</body>
+</html>
