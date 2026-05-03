@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Framer Canonical Tags: How They Work and How to Set Them</title>
+  <meta name="description" content="Everything about canonical tags in Framer: how Framer handles them automatically on paid plans, when you need to override them, and how to avoid duplicate content issues." />
+  <meta name="keywords" content="framer canonical tags, canonical tag in framer, framer canonical url, framer rel canonical, how to set canonical url framer, framer duplicate content" />
+  <link rel="canonical" href="https://rankframe.com/blog/framer-canonical-tags" />
+  <meta property="og:title" content="Framer Canonical Tags: How They Work and How to Set Them" />
+  <meta property="og:description" content="Everything about canonical tags in Framer: how Framer handles them automatically on paid plans, when you need to override them, and how to avoid duplicate content issues." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://rankframe.com/blog/framer-canonical-tags" />
+  <meta property="og:site_name" content="RankFrame" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Framer Canonical Tags: How They Work and How to Set Them" />
+  <meta name="twitter:description" content="Everything about canonical tags in Framer: how Framer handles them automatically on paid plans, when you need to override them, and how to avoid duplicate content issues." />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Framer Canonical Tags: How They Work and How to Set Them",
+    "description": "Everything about canonical tags in Framer: how Framer handles them automatically on paid plans, when you need to override them, and how to avoid duplicate content issues.",
+    "datePublished": "2026-05-03",
+    "dateModified": "2026-05-03",
+    "author": {
+      "@type": "Organization",
+      "name": "7 Seers",
+      "url": "https://rankframe.com"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "7 Seers",
+      "url": "https://rankframe.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://framerusercontent.com/images/XE1sqaQyYF9jXODewkOIlcQ3KKo.png"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://rankframe.com/blog/framer-canonical-tags"
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://rankframe.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://rankframe.com/blog/" },
+      { "@type": "ListItem", "position": 3, "name": "Framer Canonical Tags: How They Work and How to Set Them", "item": "https://rankframe.com/blog/framer-canonical-tags" }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "7 Seers",
+    "url": "https://rankframe.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://framerusercontent.com/images/XE1sqaQyYF9jXODewkOIlcQ3KKo.png"
+    },
+    "email": "hello@7seersmedia.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Lucknow",
+      "addressCountry": "IN"
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Does Framer automatically add canonical tags?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, on paid Framer plans with a custom domain connected. Framer automatically inserts a self-referencing canonical tag in the head of each published page. This canonical points to the page's own URL, which is the correct default behavior. On the free plan with a .framer.app URL, Framer may not add canonical tags or may add them pointing to the preview URL, which is one reason connecting a custom domain matters for SEO."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I check the canonical tag on a Framer page?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Open your published Framer page in a browser. Right-click and choose 'View Page Source' (or press Ctrl+U). Use Ctrl+F to search for 'canonical'. You will find a line like: link rel='canonical' href='https://yourdomain.com/your-page'. The href value is the canonical URL Google is being told to use for that page. You can also use browser extensions like Detailed SEO Extension or run a RankFrame site audit to check canonical tags across all your pages at once."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can you set a custom canonical URL on Framer CMS pages?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, but it requires adding custom code to the CMS template page's head rather than using a per-item field. In Framer, open the CMS template page, go to Page Settings, and add a custom canonical link tag in the Custom Code head section. This tag will apply to all items using that template. If you need per-item canonical URLs (for example, different canonical values for each blog post), you would need to use a custom code component that reads from a CMS field."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What happens if my Framer canonical tag is wrong?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "If a canonical tag points to the wrong URL, Google may consolidate ranking signals from the real page onto the canonical URL instead. This means the page you want to rank may lose authority to a different URL. If the canonical points to a non-existent URL, Google will likely ignore the canonical hint and make its own determination about which URL to use. In both cases, rankings and indexing can be harmed. Always verify canonical tags after publishing changes in Framer."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you need canonical tags on every Framer page?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Framer adds self-referencing canonicals automatically on paid plans, so you do not need to manually add them to every page. You only need to intervene when the default self-referencing canonical is not what you want: for example, when cross-posting content to Medium and pointing canonical back to your Framer site, when setting up staging-to-production canonical redirects, or when handling specific duplicate content patterns in CMS collections."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; color: #1a0533; background: #fff; line-height: 1.7; font-size: 1rem; }
+    a { color: #7c3aed; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .site-header { background: #7c3aed; padding: 14px 24px; display: flex; align-items: center; gap: 12px; }
+    .site-header a { color: #fff; font-weight: 700; font-size: 1.1rem; }
+    .site-header span { color: rgba(255,255,255,0.6); font-size: .9rem; }
+    .breadcrumb { background: #f8f6ff; border-bottom: 1px solid #e8e0fa; padding: 10px 24px; font-size: .82rem; color: #6b7280; }
+    .breadcrumb a { color: #7c3aed; }
+    .breadcrumb span { margin: 0 6px; }
+    .container { max-width: 820px; margin: 0 auto; padding: 40px 24px 80px; }
+    .article-meta { margin-bottom: 32px; }
+    .article-category { display: inline-block; background: #f3eeff; color: #7c3aed; font-size: .78rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; padding: 4px 10px; border-radius: 20px; margin-bottom: 14px; }
+    h1 { font-size: 2.2rem; font-weight: 800; line-height: 1.2; color: #1a0533; margin-bottom: 16px; }
+    .article-byline { font-size: .85rem; color: #6b7280; }
+    .article-byline strong { color: #1a0533; }
+    .toc { background: #f8f6ff; border: 1px solid #e8e0fa; border-radius: 12px; padding: 24px 28px; margin: 32px 0; }
+    .toc h2 { font-size: 1rem; font-weight: 700; margin-bottom: 14px; color: #1a0533; }
+    .toc ol { padding-left: 20px; }
+    .toc li { margin-bottom: 6px; font-size: .9rem; }
+    h2 { font-size: 1.55rem; font-weight: 800; color: #1a0533; margin: 48px 0 16px; padding-top: 8px; border-top: 2px solid #f3eeff; }
+    h3 { font-size: 1.15rem; font-weight: 700; color: #3b0764; margin: 28px 0 10px; }
+    p { margin-bottom: 18px; }
+    ul, ol { padding-left: 22px; margin-bottom: 18px; }
+    li { margin-bottom: 8px; }
+    .intro-box { background: #f3eeff; border-left: 4px solid #7c3aed; border-radius: 0 10px 10px 0; padding: 20px 24px; margin: 24px 0 32px; font-size: 1.05rem; }
+    .callout { border-radius: 10px; padding: 18px 22px; margin: 24px 0; font-size: .93rem; }
+    .callout-info { background: #eff6ff; border: 1px solid #bfdbfe; }
+    .callout-warning { background: #fffbeb; border: 1px solid #fcd34d; }
+    .callout-success { background: #f0fdf4; border: 1px solid #86efac; }
+    .callout strong { display: block; margin-bottom: 6px; font-weight: 700; }
+    .code-block { background: #1e1b4b; color: #e0e7ff; font-family: 'Courier New', monospace; font-size: .82rem; padding: 20px 22px; border-radius: 10px; overflow-x: auto; margin: 20px 0; line-height: 1.6; white-space: pre; }
+    table { width: 100%; border-collapse: collapse; margin: 24px 0; font-size: .9rem; }
+    th { background: #7c3aed; color: #fff; padding: 12px 14px; text-align: left; font-weight: 700; }
+    td { padding: 11px 14px; border-bottom: 1px solid #e8e0fa; vertical-align: top; }
+    tr:nth-child(even) td { background: #faf8ff; }
+    tr:last-child td { border-bottom: none; }
+    .step-section { background: #faf8ff; border: 1px solid #e8e0fa; border-radius: 14px; padding: 28px 30px; margin: 32px 0; }
+    .step-section-header { display: flex; align-items: center; gap: 16px; margin-bottom: 20px; }
+    .step-section-num { width: 48px; height: 48px; background: #7c3aed; color: #fff; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.3rem; flex-shrink: 0; }
+    .step-section h2 { border: none; padding: 0; margin: 0; font-size: 1.35rem; }
+    .screenshot-suggestion { background: #fdf4ff; border: 1px dashed #c084fc; border-radius: 8px; padding: 12px 16px; font-size: .85rem; color: #6b21a8; margin: 20px 0; }
+    .cta-block { background: linear-gradient(135deg, #7c3aed 0%, #5b21b6 100%); color: #fff; border-radius: 16px; padding: 36px 40px; margin: 48px 0; text-align: center; }
+    .cta-block h3 { font-size: 1.5rem; font-weight: 800; margin-bottom: 12px; color: #fff; border: none; padding: 0; }
+    .cta-block p { color: rgba(255,255,255,0.9); margin-bottom: 0; font-size: 1rem; }
+    .cta-btn { display: inline-block; background: #fff; color: #7c3aed; font-weight: 800; font-size: 1rem; padding: 14px 28px; border-radius: 8px; margin: 20px 0 10px; text-decoration: none; }
+    .cta-btn:hover { background: #f3eeff; text-decoration: none; }
+    .cta-sub { font-size: .82rem; color: rgba(255,255,255,0.7); margin-top: 0; }
+    .faq-item { border-bottom: 1px solid #e8e0fa; padding: 0; }
+    .faq-question { width: 100%; background: none; border: none; text-align: left; padding: 18px 0; font-size: 1rem; font-weight: 700; color: #1a0533; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+    .faq-question:hover { color: #7c3aed; }
+    .faq-icon { flex-shrink: 0; width: 22px; height: 22px; background: #f3eeff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: .85rem; color: #7c3aed; font-weight: 700; transition: transform .2s; }
+    .faq-answer { padding: 0 0 18px; font-size: .95rem; color: #374151; display: none; }
+    .faq-item.open .faq-answer { display: block; }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="https://rankframe.com">RankFrame</a>
+  <span>|</span>
+  <a href="https://rankframe.com/blog" style="color:rgba(255,255,255,0.8);font-weight:400">Blog</a>
+</header>
+
+<nav class="breadcrumb">
+  <a href="https://rankframe.com">Home</a><span>›</span>
+  <a href="https://rankframe.com/blog">Blog</a><span>›</span>
+  Framer Canonical Tags
+</nav>
+
+<main class="container">
+
+  <div class="article-meta">
+    <span class="article-category">Technical SEO</span>
+    <h1>Framer Canonical Tags: How They Work and How to Set Them</h1>
+    <p class="article-byline">By <strong>RankFrame Team</strong> &nbsp;·&nbsp; Updated May 3, 2026 &nbsp;·&nbsp; 11 min read</p>
+  </div>
+
+  <div class="intro-box">
+    Canonical tags are one of those SEO elements that most site owners never think about until something goes wrong. On a Framer site, they mostly take care of themselves, but there are specific situations where the default behavior is not enough: cross-posting content, staging environments, CMS pages with overlapping content, and more. This guide explains exactly how Framer handles canonical tags, when you need to intervene, and how to verify everything is set up correctly.
+  </div>
+
+  <nav class="toc">
+    <h2>Table of Contents</h2>
+    <ol>
+      <li><a href="#what-are-canonical-tags">What Canonical Tags Are and Why They Matter</a></li>
+      <li><a href="#how-framer-handles-canonicals">How Framer Handles Canonical Tags Automatically</a></li>
+      <li><a href="#when-to-override">When You Need to Override the Default Canonical</a></li>
+      <li><a href="#how-to-set-canonical">How to Add a Custom Canonical in Framer</a></li>
+      <li><a href="#canonical-on-cms">Setting Canonical Tags on Framer CMS Pages</a></li>
+      <li><a href="#common-mistakes">Common Canonical Mistakes on Framer Sites</a></li>
+      <li><a href="#canonical-vs-noindex">Canonical vs. noindex: When to Use Which</a></li>
+      <li><a href="#how-to-verify">How to Verify Canonical Tags Are Correct</a></li>
+      <li><a href="#faq">Frequently Asked Questions</a></li>
+    </ol>
+  </nav>
+
+  <h2 id="what-are-canonical-tags">What Canonical Tags Are and Why They Matter</h2>
+
+  <p>A canonical tag is an HTML element that tells search engines which URL is the "preferred" version of a page when the same or very similar content is accessible at more than one URL. It lives in the <code>&lt;head&gt;</code> section of a page and looks like this:</p>
+
+  <div class="code-block">&lt;link rel="canonical" href="https://yourdomain.com/blog/my-article" /&gt;</div>
+
+  <p>The <code>href</code> value is the canonical URL: the address you want Google to treat as authoritative. When Google encounters duplicate or near-duplicate content at multiple URLs, it uses canonical signals to decide which version to index and which version should accumulate link equity and ranking signals.</p>
+
+  <h3>Why duplicate content happens without canonical tags</h3>
+
+  <p>Duplicate content is more common than most people realize. It can arise from:</p>
+
+  <ul>
+    <li>HTTP and HTTPS versions of the same page both being accessible</li>
+    <li>www and non-www versions both resolving (e.g., both www.yourdomain.com and yourdomain.com returning the same content)</li>
+    <li>URL parameters creating multiple URLs for the same content (e.g., /blog?sort=date vs. /blog)</li>
+    <li>Staging or preview URLs serving the same content as production</li>
+    <li>Cross-posting: the same article published on both your Framer site and a platform like Medium</li>
+    <li>CMS template pages with very similar structures and overlapping content across items</li>
+  </ul>
+
+  <p>When Google encounters duplicate content and there is no canonical tag pointing to the preferred URL, it makes its own judgment about which version to index. That judgment may not match what you want, and ranking signals can get split across multiple versions instead of concentrating on one.</p>
+
+  <div class="callout callout-info">
+    <strong>Canonical tags are a strong hint, not an absolute directive.</strong>
+    Google treats canonical tags as a strong signal, but it is not obligated to follow them. If other signals contradict the canonical (for example, if the canonical URL has no inbound links and the non-canonical version has many), Google may override your hint. That is why canonical tags work best when combined with consistent internal linking and proper redirect configuration.
+  </div>
+
+  <h3>The SEO impact of getting canonicals wrong</h3>
+
+  <p>When canonical tags point to the wrong URL or are missing in situations where duplicates exist, the consequences include:</p>
+
+  <ul>
+    <li><strong>Ranking dilution:</strong> Link equity and click-through signals are split across multiple URLs instead of consolidating on one.</li>
+    <li><strong>Wrong page indexed:</strong> Google may index your staging URL, your www variant, or a third-party repost instead of your actual canonical page.</li>
+    <li><strong>Crawl budget waste:</strong> Googlebot crawls multiple versions of the same content instead of spending that budget on unique pages.</li>
+    <li><strong>Impression and click data fragmented:</strong> Google Search Console shows performance data split across URL variants, making it harder to understand how a page is actually performing.</li>
+  </ul>
+
+  <h2 id="how-framer-handles-canonicals">How Framer Handles Canonical Tags Automatically</h2>
+
+  <p>On paid Framer plans with a custom domain connected, Framer automatically inserts a self-referencing canonical tag in the <code>&lt;head&gt;</code> of every published page. A self-referencing canonical simply points back to the page's own URL, like this:</p>
+
+  <div class="code-block">&lt;!-- On the page https://yourdomain.com/about --&gt;
+&lt;link rel="canonical" href="https://yourdomain.com/about" /&gt;</div>
+
+  <p>This is the correct default behavior. A self-referencing canonical signals to Google that this URL is the intended version of the page, preventing any confusion from URL variants like trailing slashes, query strings, or case variations.</p>
+
+  <h3>What Framer's automatic canonicals cover</h3>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Page Type</th>
+        <th>Canonical Behavior</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Static pages (Home, About, Services, etc.)</td>
+        <td>Self-referencing canonical added automatically on paid plans</td>
+      </tr>
+      <tr>
+        <td>CMS collection template pages</td>
+        <td>Self-referencing canonical added for each item URL automatically</td>
+      </tr>
+      <tr>
+        <td>Pages on .framer.app preview URL</td>
+        <td>Canonical behavior varies; may not be present or may point to preview URL</td>
+      </tr>
+      <tr>
+        <td>Pages on free plan without custom domain</td>
+        <td>Canonical tags may not be reliably added</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="callout callout-warning">
+    <strong>Canonical tags require a custom domain on a paid plan.</strong>
+    If your site is still on the .framer.app subdomain or on the free plan, Framer's automatic canonical tag behavior may not function as expected. This is one of several SEO reasons to connect a custom domain early in your site setup.
+  </div>
+
+  <h3>How Framer handles www vs. non-www</h3>
+
+  <p>Framer automatically redirects one of the two variants (www vs. non-www) to the other based on how you configure your custom domain. This redirect handles the www/non-www duplicate content issue at the server level, so you do not need a separate canonical tag for it. The canonical that Framer inserts will always point to the version your domain is configured to use.</p>
+
+  <h3>How Framer handles HTTP vs. HTTPS</h3>
+
+  <p>All Framer sites use HTTPS by default. HTTP requests are automatically redirected to HTTPS. Framer's canonical tags always point to the HTTPS version of URLs, so HTTP/HTTPS duplication is handled automatically.</p>
+
+  <h2 id="when-to-override">When You Need to Override the Default Canonical</h2>
+
+  <p>Framer's automatic self-referencing canonicals handle the majority of cases correctly. There are specific scenarios, however, where you need to set a custom canonical that points to a different URL entirely.</p>
+
+  <h3>Scenario 1: Cross-posting content to external platforms</h3>
+
+  <p>If you publish an article on your Framer site and then republish the same article on Medium, LinkedIn Articles, Dev.to, or another platform, you have duplicate content at two URLs. You want Google to treat your Framer site as the canonical source, not the platform.</p>
+
+  <p>The fix is to set the canonical on the external platform to point back to your Framer URL. Most major publishing platforms (Medium, Dev.to, Hashnode) have a "canonical URL" field in their post settings for exactly this purpose. Your Framer page's canonical remains self-referencing (the default), and the external copy points to your Framer URL.</p>
+
+  <h3>Scenario 2: Staging or preview environments</h3>
+
+  <p>If you use a staging subdomain (e.g., staging.yourdomain.com) or a Framer preview URL to review changes before publishing, and that staging URL becomes publicly accessible, Google may discover and index it. The staging pages should have a canonical pointing to the production URL so Google understands they are not independent pages.</p>
+
+  <p>You can either add a custom canonical in the staging environment's custom code head, or simply add a noindex tag to all staging pages. See the section on <a href="#canonical-vs-noindex">canonical vs. noindex</a> for guidance on which approach to use when.</p>
+
+  <h3>Scenario 3: Near-duplicate CMS pages</h3>
+
+  <p>CMS collections in Framer can sometimes produce pages with very similar content, especially if items share the same category, tag, or author. If multiple CMS items are nearly identical (for example, a product listing with only the SKU changing), you may want to point all variants to one canonical URL.</p>
+
+  <p>This is a less common situation for most Framer sites, but it can arise in e-commerce-style CMS setups where variant pages (color, size, configuration) share essentially the same content.</p>
+
+  <h3>Scenario 4: Content migrated from another domain</h3>
+
+  <p>If you are rebuilding an existing site in Framer and moving content from a previous domain, you need to decide whether to use 301 redirects (the standard approach) or canonicals. Redirects are almost always the right choice for a full migration. Canonicals are not a substitute for redirects and should not be used as the primary mechanism for domain migrations.</p>
+
+  <div class="callout callout-info">
+    <strong>When in doubt: use a self-referencing canonical (Framer's default) for your Framer pages.</strong>
+    You only need to override Framer's default canonical when you have a specific cross-domain duplicate content situation. For the vast majority of Framer sites, the automatic canonical is correct and complete.
+  </div>
+
+  <h2 id="how-to-set-canonical">How to Add a Custom Canonical in Framer</h2>
+
+  <p>Framer does not currently provide a dedicated "Custom Canonical URL" field in its page settings interface. To override the default self-referencing canonical with a custom URL, you add the canonical tag directly in the page's custom code head section.</p>
+
+  <div class="callout callout-warning">
+    <strong>Important: adding a custom canonical via custom code will override Framer's automatic canonical.</strong>
+    If you add a canonical link tag in a page's Custom Code head, it will appear alongside Framer's automatic canonical. When two canonical tags appear on one page, Google will likely ignore both. You need to ensure only one canonical tag is present. The safest approach is to add your custom canonical and then check the published page source to confirm only one canonical exists.
+  </div>
+
+  <h3>Step-by-step: Adding a custom canonical to a static Framer page</h3>
+
+  <ol>
+    <li>In the Framer editor, select the page you want to modify in the left panel.</li>
+    <li>Open Page Settings (the gear icon next to the page name, or click the page and use the settings panel).</li>
+    <li>Scroll down to the "Custom Code" section within Page Settings.</li>
+    <li>In the Head section, add the following tag, replacing the href with your desired canonical URL:</li>
+  </ol>
+
+  <div class="code-block">&lt;link rel="canonical" href="https://yourdomain.com/your-canonical-page" /&gt;</div>
+
+  <ol start="5">
+    <li>Publish your site.</li>
+    <li>Open the published page in a browser, view the page source (Ctrl+U), and search for "canonical."</li>
+    <li>Verify that only one canonical tag appears and that it shows the correct href value.</li>
+  </ol>
+
+  <div class="screenshot-suggestion">Screenshot suggestion: Framer page settings panel showing the Custom Code section with a custom canonical link tag in the Head field.</div>
+
+  <h3>Site-wide custom canonical via Site Settings</h3>
+
+  <p>If you need to apply the same canonical logic across your entire site (a rare scenario, but possible when a full site is a mirror of a canonical domain), you can add the canonical tag in Site Settings under Custom Code (Head), rather than per-page settings. Be very careful with this approach: a site-wide canonical in the head will apply the same canonical URL to every page on your site, which is almost certainly not what you want.</p>
+
+  <p>The per-page approach described above is appropriate for most real-world scenarios.</p>
+
+  <h2 id="canonical-on-cms">Setting Canonical Tags on Framer CMS Pages</h2>
+
+  <p>Framer CMS pages (collection items) present a specific challenge because each item is rendered using the same template. You cannot set a unique canonical per item through the standard Framer UI without using dynamic CMS fields in custom code.</p>
+
+  <h3>Option 1: Template-level custom canonical (same canonical for all items)</h3>
+
+  <p>If you want to point all CMS items to the same canonical URL (for example, if you are syndicating all items and want Google to treat a different domain as canonical), you can add a single canonical tag to the CMS template page's Custom Code head. This applies the same canonical to every item using that template.</p>
+
+  <p>This is not a common use case, but it is technically straightforward:</p>
+
+  <ol>
+    <li>Open the CMS collection template page in Framer.</li>
+    <li>Go to Page Settings for the template page.</li>
+    <li>Add your canonical tag in the Custom Code head section.</li>
+    <li>Publish.</li>
+  </ol>
+
+  <h3>Option 2: Dynamic canonical per CMS item using a custom code component</h3>
+
+  <p>If you need a unique canonical URL for each CMS item (for example, if each blog post was originally published on a different external URL), you can use a Framer custom code component that reads from a CMS field and outputs a canonical link tag in the document head.</p>
+
+  <p>This requires some technical setup. The general approach is:</p>
+
+  <ol>
+    <li>Add a "Canonical URL" text field to your CMS collection in Framer.</li>
+    <li>Populate this field for the items where you need a non-default canonical.</li>
+    <li>Create a custom code component that uses Framer's CMS variable binding to render a <code>&lt;link rel="canonical"&gt;</code> tag using the field value.</li>
+    <li>Add this component to your CMS template page and bind it to the Canonical URL field.</li>
+  </ol>
+
+  <div class="callout callout-info">
+    <strong>For most Framer CMS sites, the default self-referencing canonical is correct.</strong>
+    Unless you have a specific reason to set custom canonicals on individual CMS items (cross-domain syndication being the main one), Framer's automatic canonical handles CMS pages correctly. Do not add custom canonicals just because your pages have similar structures or templates.
+  </div>
+
+  <div class="screenshot-suggestion">Screenshot suggestion: Framer CMS collection settings panel showing a custom "Canonical URL" text field added to the collection schema.</div>
+
+  <h2 id="common-mistakes">Common Canonical Mistakes on Framer Sites</h2>
+
+  <p>Here are the canonical tag errors that appear most frequently on Framer sites, along with how to identify and fix each one.</p>
+
+  <h3>Mistake 1: Two canonical tags on the same page</h3>
+
+  <p>This happens when you add a custom canonical tag via Framer's page Custom Code head on a page where Framer is already inserting its own canonical automatically. The page ends up with two <code>&lt;link rel="canonical"&gt;</code> tags pointing to different URLs. Google will likely ignore both.</p>
+
+  <p>The fix is to check the published page source after adding any custom canonical tag and confirm only one canonical tag appears. If two appear, you may need to find a way to suppress Framer's automatic canonical (typically not directly possible), or accept that the Framer-generated canonical takes precedence and find an alternative approach.</p>
+
+  <h3>Mistake 2: Canonical pointing to a redirected URL</h3>
+
+  <p>If your canonical tag contains an old URL that now 301-redirects to a new URL, you have a canonical chain. Google will generally follow the chain and understand the intent, but it adds unnecessary complexity and can slow down how quickly Google processes your canonical signal. Always update canonical tags when you change a page's URL.</p>
+
+  <h3>Mistake 3: Canonical pointing to a noindex page</h3>
+
+  <p>This creates a contradiction: you are telling Google "this is the canonical URL" while also telling Google "do not index this URL." Google cannot index a noindex page, so the canonical instruction becomes useless. Check that all canonical target URLs are indexable pages.</p>
+
+  <h3>Mistake 4: Using canonical instead of a 301 redirect for duplicate content</h3>
+
+  <p>Canonical tags and 301 redirects both tell Google about preferred URLs, but they serve different purposes. A 301 redirect moves users and bots from the old URL to the new one. A canonical tag says "consider this the preferred version" while both URLs remain accessible. For truly duplicate content where you want to consolidate everything to one URL, use a 301 redirect, not a canonical.</p>
+
+  <h3>Mistake 5: Missing canonical on cross-posted content</h3>
+
+  <p>If you repost articles from your Framer blog to Medium, LinkedIn, or other platforms without setting the canonical on the external copy to point back to your Framer URL, Google may decide the external platform is the canonical source. Medium and other platforms often have high domain authority, which can lead Google to prefer the external copy. Always set canonical URLs when cross-posting.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Mistake</th>
+        <th>Impact</th>
+        <th>Fix</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Two canonical tags on one page</td>
+        <td>Both canonicals ignored by Google</td>
+        <td>Ensure only one canonical tag per page in published source</td>
+      </tr>
+      <tr>
+        <td>Canonical to a redirected URL</td>
+        <td>Canonical chain, slower processing</td>
+        <td>Update canonical to point directly to final destination URL</td>
+      </tr>
+      <tr>
+        <td>Canonical to a noindex page</td>
+        <td>Canonical cannot be indexed, signal wasted</td>
+        <td>Ensure canonical target pages are indexable</td>
+      </tr>
+      <tr>
+        <td>Canonical used instead of redirect</td>
+        <td>Both URLs accessible, weaker consolidation</td>
+        <td>Use 301 redirect for full URL consolidation</td>
+      </tr>
+      <tr>
+        <td>No canonical on cross-posted content</td>
+        <td>External platform may be indexed as canonical</td>
+        <td>Set canonical on external copy to point to Framer URL</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2 id="canonical-vs-noindex">Canonical vs. noindex: When to Use Which</h2>
+
+  <p>These two directives are often confused because they both relate to controlling what Google indexes, but they work in fundamentally different ways and are appropriate for different situations.</p>
+
+  <h3>What canonical does</h3>
+
+  <p>A canonical tag tells Google which version of a page to treat as the primary version for indexing and ranking purposes. The page with the canonical tag pointing elsewhere may still be crawled and even indexed temporarily, but over time, Google consolidates signals to the canonical URL. Both the canonical page and the non-canonical page may remain accessible to users.</p>
+
+  <p>Use a canonical when: you want Google to know which of two accessible URLs is the "real" one, and you want ranking signals to consolidate on that URL.</p>
+
+  <h3>What noindex does</h3>
+
+  <p>A noindex tag tells Google not to include a page in search results at all. The page can still be crawled (Googlebot will visit it to read the noindex instruction), but it will be removed from or never added to the search index. The page remains accessible to users via direct URL.</p>
+
+  <p>Use noindex when: you have a page you want to keep accessible but never want to appear in Google search results (staging pages, admin pages, thank-you pages, duplicate utility pages).</p>
+
+  <h3>Decision guide</h3>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Situation</th>
+        <th>Use Canonical</th>
+        <th>Use noindex</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Two URLs with same content, both should stay accessible</td>
+        <td>Yes, point both to preferred URL</td>
+        <td>No</td>
+      </tr>
+      <tr>
+        <td>Staging page that should never appear in Google</td>
+        <td>Possible, but imprecise</td>
+        <td>Yes, cleaner solution</td>
+      </tr>
+      <tr>
+        <td>Cross-posted content on external platform</td>
+        <td>Yes, on the external copy</td>
+        <td>No</td>
+      </tr>
+      <tr>
+        <td>Thank-you or confirmation page</td>
+        <td>No</td>
+        <td>Yes</td>
+      </tr>
+      <tr>
+        <td>Thin or low-value CMS items</td>
+        <td>Only if there's a better canonical to point to</td>
+        <td>Yes, if page has no indexing value</td>
+      </tr>
+      <tr>
+        <td>Old URL that has been fully replaced</td>
+        <td>No (use 301 redirect)</td>
+        <td>No (use 301 redirect)</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="callout callout-warning">
+    <strong>Do not use canonical as a substitute for noindex.</strong>
+    If you set a canonical on a staging page pointing to your production page, Google may still index the staging page for a period. noindex is a cleaner and more direct signal for pages you never want indexed. Conversely, do not use noindex when you want Google to index content but attribute it to a different URL: that is the job of canonical.
+  </div>
+
+  <div class="cta-block">
+    <h3>Audit Your Framer Site's SEO Technical Health</h3>
+    <p>RankFrame's site audit surfaces technical SEO issues across your Framer pages, including canonical tag verification, meta tag checks, and indexing status monitoring.</p>
+    <a href="https://www.framer.com/marketplace/plugins/rankframe/" class="cta-btn" target="_blank" rel="noopener">Try RankFrame Free</a>
+    <p class="cta-sub">14-day free trial. Credit card required. Cancel anytime.</p>
+  </div>
+
+  <h2 id="how-to-verify">How to Verify Canonical Tags Are Correct</h2>
+
+  <p>After setting up or modifying canonical tags in Framer, you need to confirm that the live published pages reflect what you intended. There are several methods to do this, ranging from a manual browser check to automated audits.</p>
+
+  <h3>Method 1: View page source in your browser</h3>
+
+  <p>This is the fastest manual check. Open your published Framer page in a browser, right-click and select "View Page Source" (Ctrl+U in Chrome or Firefox). Use Ctrl+F to search for "canonical." You should see a single line like:</p>
+
+  <div class="code-block">&lt;link rel="canonical" href="https://yourdomain.com/your-page" /&gt;</div>
+
+  <p>Verify three things:</p>
+  <ul>
+    <li>Only one canonical tag is present (not two or more)</li>
+    <li>The href value matches the URL you intended</li>
+    <li>The href uses the correct protocol (https), correct www/non-www format, and has no trailing slash discrepancies</li>
+  </ul>
+
+  <div class="screenshot-suggestion">Screenshot suggestion: Browser "View Page Source" tab with the canonical link tag highlighted in the head section.</div>
+
+  <h3>Method 2: Use a browser SEO extension</h3>
+
+  <p>Browser extensions like Detailed SEO Extension (Chrome), SEO Meta in 1 Click, or similar tools show canonical tags and other SEO meta data for the current page without having to search through source code. These are useful for quick spot-checks when reviewing multiple pages.</p>
+
+  <h3>Method 3: Use Google Search Console URL Inspection</h3>
+
+  <p>The URL Inspection tool in Google Search Console shows the canonical URL that Google has determined for a page, which may differ from what you declared in the tag. If Google is overriding your canonical, it will show the canonical it is using under "Google-selected canonical" vs. "User-declared canonical." A mismatch between these two means Google disagrees with your canonical declaration.</p>
+
+  <p>To check:</p>
+  <ol>
+    <li>Open Google Search Console for your Framer site.</li>
+    <li>Click URL Inspection in the left sidebar.</li>
+    <li>Enter the page URL you want to check.</li>
+    <li>Expand the "Indexing" or "Coverage" section in the results.</li>
+    <li>Look for "Canonical URL reported by page" and "Google-selected canonical."</li>
+    <li>If they differ, investigate why Google is overriding your declared canonical.</li>
+  </ol>
+
+  <div class="screenshot-suggestion">Screenshot suggestion: Google Search Console URL Inspection result showing the "User-declared canonical" and "Google-selected canonical" fields, both matching.</div>
+
+  <h3>Method 4: Use RankFrame for site-wide canonical verification</h3>
+
+  <p>Checking canonical tags page by page is manageable for small sites, but for Framer sites with dozens of pages or large CMS collections, a site-wide audit is much more efficient. RankFrame's site audit feature scans all pages in your Framer sitemap and flags technical SEO issues, including canonical tag problems.</p>
+
+  <p>Important note: RankFrame audits and surfaces canonical tag information. It does not set or modify canonical tags. Canonicals on Framer pages are set either by Framer's automatic behavior or by custom code you add in Framer's page or site settings.</p>
+
+  <p>To use RankFrame for canonical verification:</p>
+  <ol>
+    <li>Open RankFrame in your Framer project.</li>
+    <li>Run a site audit from the audit panel.</li>
+    <li>Review the results for any canonical tag issues flagged across your pages.</li>
+    <li>For any pages with issues, use the page source method or GSC URL Inspection to investigate and fix the underlying problem in Framer.</li>
+  </ol>
+
+  <div class="callout callout-success">
+    <strong>Best practice: verify canonical tags after every significant Framer publish.</strong>
+    Major structural changes to your Framer site (URL slugs changing, CMS collections restructuring, new domain connections) can affect canonical tags. Build a habit of spot-checking canonical tags on key pages after significant publishes.
+  </div>
+
+  <h2 id="faq">Frequently Asked Questions</h2>
+
+  <div class="faq-item">
+    <button class="faq-question">
+      Does Framer automatically add canonical tags?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-answer">
+      <p>Yes, on paid Framer plans with a custom domain connected. Framer automatically inserts a self-referencing canonical tag in the head of each published page. This canonical points to the page's own URL, which is the correct default behavior. On the free plan with a .framer.app URL, Framer may not add canonical tags or may add them pointing to the preview URL, which is one reason connecting a custom domain matters for SEO.</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question">
+      How do I check the canonical tag on a Framer page?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-answer">
+      <p>Open your published Framer page in a browser. Right-click and choose "View Page Source" (or press Ctrl+U). Use Ctrl+F to search for "canonical." You will find a line like: <code>&lt;link rel="canonical" href="https://yourdomain.com/your-page"&gt;</code>. The href value is the canonical URL Google is being told to use for that page. You can also use browser extensions like Detailed SEO Extension or run a RankFrame site audit to check canonical tags across all your pages at once.</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question">
+      Can you set a custom canonical URL on Framer CMS pages?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-answer">
+      <p>Yes, but it requires adding custom code to the CMS template page's head rather than using a per-item field in the standard Framer UI. In Framer, open the CMS template page, go to Page Settings, and add a custom canonical link tag in the Custom Code head section. This tag will apply to all items using that template. If you need per-item canonical URLs (for example, different canonical values for each blog post pointing back to original publication URLs), you would need a custom code component that reads a canonical URL from a CMS field.</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question">
+      What happens if my Framer canonical tag is wrong?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-answer">
+      <p>If a canonical tag points to the wrong URL, Google may consolidate ranking signals from the real page onto the canonical URL instead. This means the page you want to rank may lose authority to a different URL. If the canonical points to a non-existent URL, Google will likely ignore the canonical hint and make its own determination about which URL to use. In both cases, rankings and indexing can be negatively affected. Use Google Search Console's URL Inspection tool to check whether Google is following your declared canonical or overriding it.</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question">
+      Do you need canonical tags on every Framer page?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-answer">
+      <p>Framer adds self-referencing canonicals automatically on paid plans with a custom domain, so you do not need to manually add them to every page. You only need to intervene when the default self-referencing canonical is not what you want: for example, when cross-posting content to Medium and pointing canonical back to your Framer site, when handling specific duplicate content patterns in CMS collections, or when setting up a staging-to-production canonical relationship. For standard Framer pages with unique content and no cross-domain duplication, the automatic canonical is correct and complete.</p>
+    </div>
+  </div>
+
+  <div class="cta-block">
+    <h3>Keep Your Framer SEO Technical Health in Check</h3>
+    <p>RankFrame audits your Framer site for canonical tag issues, indexing problems, and other technical SEO factors so you can find and fix problems before they affect your rankings.</p>
+    <a href="https://www.framer.com/marketplace/plugins/rankframe/" class="cta-btn" target="_blank" rel="noopener">Install RankFrame Free</a>
+    <p class="cta-sub">14-day free trial. Credit card required. Cancel anytime.</p>
+  </div>
+
+  <!-- SEO Details Panel -->
+  <div id="seo-details" style="margin:60px 0 0;padding:28px 32px;background:#f8f6ff;border:1px solid #e8e0fa;border-radius:14px;">
+    <h3 style="font-size:1rem;font-weight:700;color:#1a0533;margin:0 0 20px;">SEO Details</h3>
+    <div id="seo-fields"></div>
+  </div>
+
+</main>
+
+<script>
+  document.querySelectorAll('.faq-question').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var item = this.closest('.faq-item');
+      var isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(function(i) { i.classList.remove('open'); });
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+</script>
+
+<script>
+(function(){
+  var f=[
+    {label:'Title',value:document.querySelector('title')?document.querySelector('title').textContent:''},
+    {label:'Description',value:(document.querySelector('meta[name="description"]')||{}).content||''},
+    {label:'Keywords',value:(document.querySelector('meta[name="keywords"]')||{}).content||''},
+    {label:'Canonical',value:(document.querySelector('link[rel="canonical"]')||{}).href||''}
+  ];
+  var schemas=[];var _si=0;Array.from(document.querySelectorAll('script[type="application/ld+json"]')).forEach(function(x){try{var j=JSON.parse(x.textContent);if(j['@graph']&&Array.isArray(j['@graph'])){j['@graph'].forEach(function(item){var t=item['@type']||'Schema';schemas.push({label:'Schema: '+t,value:JSON.stringify(item,null,2)});});}else{var t=j['@type']||('Schema '+(++_si));schemas.push({label:'Schema: '+t,value:x.textContent.trim()});}}catch(e){schemas.push({label:'Schema '+(++_si),value:x.textContent.trim()});}});
+  var all=f.concat(schemas);
+  var h='';
+  all.forEach(function(x){
+    h+='<div style="margin-bottom:14px"><div style="font-size:.78rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#7c3aed;margin-bottom:4px">'+x.label+'</div><div style="display:flex;align-items:flex-start;gap:8px"><code style="flex:1;background:#fff;border:1px solid #e0d8f0;border-radius:6px;padding:8px 10px;font-size:.82rem;color:#1a0533;white-space:pre-wrap;word-break:break-all">'+x.value.replace(/</g,'&lt;').replace(/>/g,'&gt;')+'</code><button onclick="navigator.clipboard.writeText(this.dataset.v)" data-v="'+x.value.replace(/"/g,'&quot;')+'" style="flex-shrink:0;padding:6px 12px;background:#7c3aed;color:#fff;border:none;border-radius:6px;font-size:.78rem;font-weight:700;cursor:pointer">Copy</button></div></div>';
+  });
+  document.getElementById('seo-fields').innerHTML=h;
+})();
+</script>
+
+</body>
+</html>

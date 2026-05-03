@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How to Add JSON-LD Schema to a Framer Site (2026 Guide)</title>
+  <meta name="description" content="Two ways to add JSON-LD schema markup to Framer: manually via custom code, or automatically with RankFrame. Complete guide with code examples and schema validator instructions." />
+  <meta name="keywords" content="how to add json-ld to framer, framer json-ld schema, framer schema markup code, framer structured data, add schema to framer, framer custom code schema" />
+  <link rel="canonical" href="https://rankframe.com/blog/how-to-add-json-ld-framer" />
+  <meta property="og:title" content="How to Add JSON-LD Schema to a Framer Site (2026 Guide)" />
+  <meta property="og:description" content="Two ways to add JSON-LD schema markup to Framer: manually via custom code, or automatically with RankFrame. Complete guide with code examples and schema validator instructions." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://rankframe.com/blog/how-to-add-json-ld-framer" />
+  <meta property="og:site_name" content="RankFrame" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="How to Add JSON-LD Schema to a Framer Site (2026 Guide)" />
+  <meta name="twitter:description" content="Two ways to add JSON-LD schema markup to Framer: manually via custom code, or automatically with RankFrame. Complete guide with code examples and schema validator instructions." />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "How to Add JSON-LD Schema to a Framer Site (2026 Guide)",
+    "description": "Two ways to add JSON-LD schema markup to Framer: manually via custom code, or automatically with RankFrame. Complete guide with code examples and schema validator instructions.",
+    "datePublished": "2026-05-03",
+    "dateModified": "2026-05-03",
+    "author": {
+      "@type": "Organization",
+      "name": "7 Seers",
+      "url": "https://rankframe.com"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "7 Seers",
+      "url": "https://rankframe.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://framerusercontent.com/images/XE1sqaQyYF9jXODewkOIlcQ3KKo.png"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://rankframe.com/blog/how-to-add-json-ld-framer"
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://rankframe.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://rankframe.com/blog/" },
+      { "@type": "ListItem", "position": 3, "name": "How to Add JSON-LD Schema to a Framer Site", "item": "https://rankframe.com/blog/how-to-add-json-ld-framer" }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "7 Seers",
+    "url": "https://rankframe.com",
+    "email": "hello@7seersmedia.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://framerusercontent.com/images/XE1sqaQyYF9jXODewkOIlcQ3KKo.png"
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Lucknow",
+      "addressCountry": "IN"
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How to Add JSON-LD Schema Markup to a Framer Site",
+    "description": "Add structured data JSON-LD schema to your Framer website using either manual custom code injection or the RankFrame plugin for automatic schema generation.",
+    "step": [
+      {
+        "@type": "HowToStep",
+        "position": 1,
+        "name": "Choose your implementation method",
+        "text": "Decide whether you will add JSON-LD manually via Framer's Custom Code setting (good for one or two static pages) or use RankFrame for automatic schema generation across all pages including CMS collections."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 2,
+        "name": "Write or generate your JSON-LD script",
+        "text": "For manual injection, write a script tag with type application/ld+json containing your schema object. Use schema.org as your reference for required and recommended properties. For RankFrame, open the plugin panel and use the visual form or AI auto-generate to create the schema."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 3,
+        "name": "Inject the schema into your Framer page",
+        "text": "For manual: open the page in the Framer editor, go to Page Settings, click the SEO tab, and paste your JSON-LD script into the Custom Code (Head) field. For RankFrame: click Inject Schema in the plugin panel. The schema is written directly to the page head."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 4,
+        "name": "Publish your Framer site",
+        "text": "Schema injected via Custom Code or RankFrame only becomes live after you publish. Click the Publish button in the Framer editor to push your changes to the live site."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 5,
+        "name": "Validate the schema",
+        "text": "Paste your live page URL into Google's Rich Results Test (search.google.com/test/rich-results) or the Schema.org Validator (validator.schema.org). Confirm the schema type is detected, all required fields are present, and no errors are reported."
+      }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Does Framer support JSON-LD schema markup?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Framer does not have a native JSON-LD schema builder. However, Framer does support adding custom code to the page head, which is where JSON-LD scripts live. You can paste JSON-LD scripts manually via Custom Code in page settings, or use a plugin like RankFrame to generate and inject schema automatically."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Where do you add JSON-LD in Framer?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "JSON-LD goes in the head section of your page. In Framer, open the page you want to add schema to, click on Page Settings in the right panel, navigate to the SEO tab, and paste your JSON-LD script block into the Custom Code (Head) field. Publish after saving. For site-wide schema like Organization, use Site Settings instead of Page Settings."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can you add JSON-LD to Framer CMS pages?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Manually adding unique JSON-LD to individual Framer CMS pages is not practical because you cannot edit the custom code of each CMS item independently in the Framer editor. The custom code on a CMS template applies to all items in that collection. RankFrame solves this by generating and injecting page-specific schema for each CMS item based on its content."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does Framer add schema markup automatically?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Framer does not automatically add any JSON-LD schema markup to your pages. It generates a sitemap and allows you to set meta titles and descriptions, but structured data is entirely your responsibility. You need to add schema manually or use a plugin like RankFrame."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What happens if you have duplicate JSON-LD in Framer?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Duplicate JSON-LD schema on a Framer page causes Google to see conflicting structured data signals. Google may choose to process one of the duplicate schemas, ignore both, or flag an error. Common causes include adding schema manually and then also injecting with a plugin (double injection), or forgetting to remove old custom code when updating schema. Always check your source code after adding schema to confirm there is only one instance of each schema type."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What schema types are most important for Framer sites?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "For most Framer sites, the highest-priority schemas are: Organization (homepage, establishes brand identity), Article or BlogPosting (blog posts), BreadcrumbList (all pages, enables breadcrumb rich results), and FAQPage (FAQ sections). Service-based sites should add LocalBusiness or Service schema. Sites with tutorials should use HowTo schema."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I validate JSON-LD schema on a Framer site?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "After publishing, paste your page URL into Google's Rich Results Test at search.google.com/test/rich-results. This shows which schema types Google detected, whether required fields are present, and any errors or warnings. The Schema.org Validator at validator.schema.org provides a more detailed property-level analysis. Both tools are free."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; color: #1a0533; background: #fff; line-height: 1.7; font-size: 1rem; }
+    a { color: #7c3aed; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .site-header { background: #7c3aed; padding: 14px 24px; display: flex; align-items: center; gap: 12px; }
+    .site-header a { color: #fff; font-weight: 700; font-size: 1.1rem; }
+    .site-header span { color: rgba(255,255,255,0.6); font-size: .9rem; }
+    .breadcrumb { background: #f8f6ff; border-bottom: 1px solid #e8e0fa; padding: 10px 24px; font-size: .82rem; color: #6b7280; }
+    .breadcrumb a { color: #7c3aed; }
+    .breadcrumb span { margin: 0 6px; }
+    .container { max-width: 820px; margin: 0 auto; padding: 40px 24px 80px; }
+    .article-meta { margin-bottom: 32px; }
+    .article-category { display: inline-block; background: #f3eeff; color: #7c3aed; font-size: .78rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; padding: 4px 10px; border-radius: 20px; margin-bottom: 14px; }
+    h1 { font-size: 2.2rem; font-weight: 800; line-height: 1.2; color: #1a0533; margin-bottom: 16px; }
+    .article-byline { font-size: .85rem; color: #6b7280; }
+    .article-byline strong { color: #1a0533; }
+    .toc { background: #f8f6ff; border: 1px solid #e8e0fa; border-radius: 12px; padding: 24px 28px; margin: 32px 0; }
+    .toc h2 { font-size: 1rem; font-weight: 700; margin-bottom: 14px; color: #1a0533; border: none; padding: 0; margin-top: 0; }
+    .toc ol { padding-left: 20px; }
+    .toc li { margin-bottom: 6px; font-size: .9rem; }
+    h2 { font-size: 1.55rem; font-weight: 800; color: #1a0533; margin: 48px 0 16px; padding-top: 8px; border-top: 2px solid #f3eeff; }
+    h3 { font-size: 1.15rem; font-weight: 700; color: #3b0764; margin: 28px 0 10px; }
+    p { margin-bottom: 18px; }
+    ul, ol { padding-left: 22px; margin-bottom: 18px; }
+    li { margin-bottom: 8px; }
+    .intro-box { background: #f3eeff; border-left: 4px solid #7c3aed; border-radius: 0 10px 10px 0; padding: 20px 24px; margin: 24px 0 32px; font-size: 1.05rem; }
+    .callout { border-radius: 10px; padding: 18px 22px; margin: 24px 0; font-size: .93rem; }
+    .callout-info { background: #eff6ff; border: 1px solid #bfdbfe; }
+    .callout-warning { background: #fffbeb; border: 1px solid #fcd34d; }
+    .callout-success { background: #f0fdf4; border: 1px solid #86efac; }
+    .callout strong { display: block; margin-bottom: 6px; font-weight: 700; }
+    .code-block { background: #1e1b4b; color: #e0e7ff; font-family: 'Courier New', monospace; font-size: .82rem; padding: 20px 22px; border-radius: 10px; overflow-x: auto; margin: 20px 0; line-height: 1.6; white-space: pre; }
+    table { width: 100%; border-collapse: collapse; margin: 24px 0; font-size: .9rem; }
+    th { background: #7c3aed; color: #fff; padding: 12px 14px; text-align: left; font-weight: 700; }
+    td { padding: 11px 14px; border-bottom: 1px solid #e8e0fa; vertical-align: top; }
+    tr:nth-child(even) td { background: #faf8ff; }
+    tr:last-child td { border-bottom: none; }
+    .step-section { background: #faf8ff; border: 1px solid #e8e0fa; border-radius: 14px; padding: 28px 30px; margin: 32px 0; }
+    .step-section-header { display: flex; align-items: center; gap: 16px; margin-bottom: 20px; }
+    .step-section-num { width: 48px; height: 48px; background: #7c3aed; color: #fff; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.3rem; flex-shrink: 0; }
+    .step-section h2 { border: none; padding: 0; margin: 0; font-size: 1.35rem; }
+    .screenshot-suggestion { background: #fdf4ff; border: 1px dashed #c084fc; border-radius: 8px; padding: 12px 16px; font-size: .85rem; color: #6b21a8; margin: 20px 0; }
+    .cta-block { background: linear-gradient(135deg, #7c3aed 0%, #5b21b6 100%); color: #fff; border-radius: 16px; padding: 36px 40px; margin: 48px 0; text-align: center; }
+    .cta-block h3 { font-size: 1.5rem; font-weight: 800; margin-bottom: 12px; color: #fff; border: none; padding: 0; }
+    .cta-block p { color: rgba(255,255,255,0.9); margin-bottom: 0; font-size: 1rem; }
+    .cta-btn { display: inline-block; background: #fff; color: #7c3aed; font-weight: 800; font-size: 1rem; padding: 14px 28px; border-radius: 8px; margin: 20px 0 10px; text-decoration: none; }
+    .cta-btn:hover { background: #f3eeff; text-decoration: none; }
+    .cta-sub { font-size: .82rem; color: rgba(255,255,255,0.7); margin-top: 0; }
+    .faq-item { border-bottom: 1px solid #e8e0fa; padding: 0; }
+    .faq-question { width: 100%; background: none; border: none; text-align: left; padding: 18px 0; font-size: 1rem; font-weight: 700; color: #1a0533; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+    .faq-question:hover { color: #7c3aed; }
+    .faq-icon { flex-shrink: 0; width: 22px; height: 22px; background: #f3eeff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: .85rem; color: #7c3aed; font-weight: 700; transition: transform .2s; }
+    .faq-answer { padding: 0 0 18px; font-size: .95rem; color: #374151; display: none; }
+    .faq-item.open .faq-answer { display: block; }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="https://rankframe.com">RankFrame</a>
+  <span>|</span>
+  <a href="https://rankframe.com/blog" style="color:rgba(255,255,255,0.8);font-weight:400">Blog</a>
+</header>
+
+<nav class="breadcrumb">
+  <a href="https://rankframe.com">Home</a><span>›</span>
+  <a href="https://rankframe.com/blog">Blog</a><span>›</span>
+  How to Add JSON-LD Schema to a Framer Site
+</nav>
+
+<main class="container">
+
+  <div class="article-meta">
+    <span class="article-category">SEO Guide</span>
+    <h1>How to Add JSON-LD Schema to a Framer Site (2026 Guide)</h1>
+    <p class="article-byline">By <strong>RankFrame Team</strong> &nbsp;·&nbsp; Updated May 3, 2026 &nbsp;·&nbsp; 13 min read</p>
+  </div>
+
+  <div class="intro-box">
+    Framer does not add JSON-LD schema for you. There are two ways to get it done: paste it manually via Custom Code, or let RankFrame generate and inject it automatically. This guide covers both methods in full, with a real code example, a comparison of when to use each approach, and instructions for validating your schema in Google.
+  </div>
+
+  <nav class="toc">
+    <h2>Table of Contents</h2>
+    <ol>
+      <li><a href="#what-is-json-ld">What Is JSON-LD and Why Do Framer Sites Need It?</a></li>
+      <li><a href="#schema-types">Schema Types That Matter for Framer Sites</a></li>
+      <li><a href="#method-1">Method 1: Adding JSON-LD Manually via Custom Code</a></li>
+      <li><a href="#method-2">Method 2: Automatic Injection with RankFrame</a></li>
+      <li><a href="#manual-vs-automatic">Manual vs. Automatic: Which Should You Use?</a></li>
+      <li><a href="#cms-pages">JSON-LD on Framer CMS Pages</a></li>
+      <li><a href="#pitfalls">Pitfalls of Manual JSON-LD Injection in Framer</a></li>
+      <li><a href="#validate">How to Validate Your Schema</a></li>
+      <li><a href="#faq">Frequently Asked Questions</a></li>
+    </ol>
+  </nav>
+
+  <h2 id="what-is-json-ld">What Is JSON-LD and Why Do Framer Sites Need It?</h2>
+
+  <p>JSON-LD stands for JavaScript Object Notation for Linked Data. It is the format Google recommends for adding structured data to web pages. A JSON-LD block is a script tag placed in the page head that describes the content of the page in a machine-readable format, using vocabulary defined at schema.org.</p>
+
+  <p>Here is why this matters for a Framer site specifically. When Google crawls your pages, it reads the HTML and attempts to understand what the page is about. Without structured data, it is making inferences from your text, headings, and links. With JSON-LD schema, you are explicitly telling Google: this page is an Article, the author is this person, the publication date is this date, and the topic is this subject. That explicitness is what makes pages eligible for rich results in Google Search.</p>
+
+  <h3>What are rich results?</h3>
+  <p>Rich results are the enhanced search listings Google displays when it has enough structured data to do so. Common examples include:</p>
+  <ul>
+    <li>FAQ dropdowns that expand directly in the search results page</li>
+    <li>Article metadata showing author name, publication date, and article image</li>
+    <li>Breadcrumb trails beneath the page URL in search results</li>
+    <li>Star ratings and review snippets for products and local businesses</li>
+    <li>HowTo step displays for instructional content</li>
+  </ul>
+
+  <p>Rich results do not guarantee a ranking boost, but they consistently improve click-through rates. A search listing with a FAQ accordion or breadcrumb trail stands out visually from plain blue links, and users click them at higher rates. For a Framer site competing in any established niche, rich result eligibility is a meaningful advantage.</p>
+
+  <h3>Framer does not add schema automatically</h3>
+  <p>Unlike some WordPress SEO plugins that generate basic schema by default, Framer adds no structured data to your pages at all. The meta title and description fields in Framer's SEO settings control open graph and title tags, not schema. Every JSON-LD block on a Framer site has to come from somewhere intentional, either manual Custom Code injection or a plugin.</p>
+
+  <div class="callout callout-info">
+    <strong>Google's format preference</strong>
+    Google supports three formats for structured data: JSON-LD, Microdata, and RDFa. Google officially recommends JSON-LD because it is the easiest to implement and maintain. It lives in its own script tag, separate from your HTML, which means you can add or update it without touching your design. All examples and tools in this guide use JSON-LD.
+  </div>
+
+  <h2 id="schema-types">Schema Types That Matter for Framer Sites</h2>
+
+  <p>Not every schema type from the schema.org vocabulary is relevant to a typical Framer site. The following types cover the vast majority of Framer use cases, from portfolios and agencies to blogs and local businesses.</p>
+
+  <h3>Organization</h3>
+  <p>Organization schema goes on your homepage and describes your business or brand. It includes your name, URL, logo, contact email, and social profile links. This is the single highest-priority schema type for any Framer site because it establishes brand identity in Google's Knowledge Graph. If you only add schema to one page on your Framer site, make it Organization schema on the homepage.</p>
+
+  <h3>Article and BlogPosting</h3>
+  <p>Article schema (and its subtype BlogPosting) goes on individual blog post pages. It describes the headline, author, publication date, modification date, and the article's main image. Google uses this to populate the article carousel in search results and to enable article rich results. Any Framer site with a blog should have Article or BlogPosting schema on every post.</p>
+
+  <h3>BreadcrumbList</h3>
+  <p>BreadcrumbList schema tells Google the hierarchical position of a page within your site structure. It enables the breadcrumb trail that appears below your URL in search results (e.g., Home > Blog > Post Title). This schema is valuable on nearly every page because breadcrumb rich results are commonly displayed and improve click-through rates.</p>
+
+  <h3>FAQPage</h3>
+  <p>FAQPage schema marks up question-and-answer content on a page. When Google detects valid FAQPage schema, it may display the questions as expandable dropdowns directly in the search results, increasing the amount of screen space your listing occupies. Any Framer page with a FAQ section should have FAQPage schema.</p>
+
+  <h3>HowTo</h3>
+  <p>HowTo schema describes step-by-step instructional content. Pages with numbered process guides, tutorials, or walkthroughs should use HowTo schema. Google may display individual steps in the search results for matching queries, which is particularly valuable for instructional content targeting "how to" keywords.</p>
+
+  <h3>LocalBusiness</h3>
+  <p>LocalBusiness schema (and its subtypes like Restaurant, MedicalBusiness, LegalService) is essential for any Framer site representing a physical location or service-area business. It includes business name, address, phone number, hours, and geographic coordinates. This schema directly influences local pack rankings and Knowledge Panel eligibility.</p>
+
+  <h3>Service</h3>
+  <p>Service schema describes a specific service offering, including its name, description, provider, and area served. Agencies and consultants using Framer for their service pages should add Service schema to make those offerings machine-readable to Google.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Schema Type</th>
+        <th>Best For</th>
+        <th>Rich Result Type</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Organization</td>
+        <td>Homepage, brand pages</td>
+        <td>Knowledge Panel</td>
+      </tr>
+      <tr>
+        <td>Article / BlogPosting</td>
+        <td>Blog posts, news</td>
+        <td>Article rich results, Top Stories</td>
+      </tr>
+      <tr>
+        <td>BreadcrumbList</td>
+        <td>All pages</td>
+        <td>Breadcrumb trail in SERPs</td>
+      </tr>
+      <tr>
+        <td>FAQPage</td>
+        <td>Pages with FAQ sections</td>
+        <td>FAQ accordion dropdowns</td>
+      </tr>
+      <tr>
+        <td>HowTo</td>
+        <td>Tutorial pages, step guides</td>
+        <td>HowTo step display</td>
+      </tr>
+      <tr>
+        <td>LocalBusiness</td>
+        <td>Local and physical businesses</td>
+        <td>Local pack, Knowledge Panel</td>
+      </tr>
+      <tr>
+        <td>Service</td>
+        <td>Agency and consulting pages</td>
+        <td>None currently, but improves entity understanding</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2 id="method-1">Method 1: Adding JSON-LD Manually via Custom Code</h2>
+
+  <p>Framer gives you access to the page head via the Custom Code field in Page Settings. This is where you paste JSON-LD script blocks. The process is straightforward for static pages, but it comes with meaningful limitations for sites with many pages or CMS collections (covered in the pitfalls section).</p>
+
+  <div class="step-section">
+    <div class="step-section-header">
+      <div class="step-section-num">1</div>
+      <h2>Open Page Settings in the Framer editor</h2>
+    </div>
+    <p>Click on the page you want to add schema to in the Pages panel on the left side of the Framer editor. Then open the right-side panel and navigate to the Settings tab. You will see sections for SEO, Social, and Custom Code.</p>
+    <p>For schema that should appear site-wide (like Organization schema on every page), use Site Settings instead of Page Settings. Go to the Framer canvas, click the site name at the top, and open Site Settings. The Custom Code field there injects code into every page on the site.</p>
+    <div class="screenshot-suggestion">
+      Screenshot suggestion: Framer editor with a page selected, right panel showing the Settings tab with the Custom Code Head section highlighted.
+    </div>
+  </div>
+
+  <div class="step-section">
+    <div class="step-section-header">
+      <div class="step-section-num">2</div>
+      <h2>Write your JSON-LD schema block</h2>
+    </div>
+    <p>A JSON-LD script block is a <code>&lt;script&gt;</code> tag with the attribute <code>type="application/ld+json"</code> containing a JSON object that describes the page. Here is a complete Article schema example for a Framer blog post:</p>
+
+    <div class="code-block">&lt;script type="application/ld+json"&gt;
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "How to Build a Portfolio in Framer",
+  "description": "A step-by-step guide to building a professional portfolio site in Framer, covering layout, CMS setup, and SEO optimization.",
+  "datePublished": "2026-03-15",
+  "dateModified": "2026-05-01",
+  "author": {
+    "@type": "Person",
+    "name": "Jamie Chen",
+    "url": "https://yourdomain.com/about"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Your Brand Name",
+    "url": "https://yourdomain.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://yourdomain.com/logo.png"
+    }
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://yourdomain.com/images/framer-portfolio-guide.jpg",
+    "width": 1200,
+    "height": 630
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://yourdomain.com/blog/framer-portfolio-guide"
+  }
+}
+&lt;/script&gt;</div>
+
+    <p>Replace the placeholder values with your actual page data. Pay attention to the following required fields for Article schema: <code>headline</code>, <code>author</code>, <code>publisher</code> (with a logo ImageObject), <code>datePublished</code>, and <code>image</code>. Missing required fields will not cause schema to fail validation entirely, but they may prevent certain rich results from triggering.</p>
+  </div>
+
+  <div class="step-section">
+    <div class="step-section-header">
+      <div class="step-section-num">3</div>
+      <h2>Paste the script into the Custom Code (Head) field</h2>
+    </div>
+    <p>In the Framer Page Settings panel, locate the "Custom Code" section and click on the "Head" tab or input. Paste your complete JSON-LD script block, including the opening and closing script tags, into this field. Click Save or confirm the edit.</p>
+    <p>Do not paste JSON-LD into the "Body Start" or "Body End" fields. While Google can technically parse JSON-LD in the body, the head is the correct and recommended location. Placing schema in the body can cause validation warnings.</p>
+    <div class="screenshot-suggestion">
+      Screenshot suggestion: Framer Page Settings showing the Custom Code Head field with a JSON-LD script block pasted in, with the script tag clearly visible.
+    </div>
+  </div>
+
+  <div class="step-section">
+    <div class="step-section-header">
+      <div class="step-section-num">4</div>
+      <h2>Publish and verify</h2>
+    </div>
+    <p>Custom Code changes in Framer only take effect after you publish. Click the Publish button in the top-right corner of the Framer editor. Once published, open your page in a browser, right-click, and select "View Page Source." Search for "application/ld+json" to confirm your schema block is present in the head.</p>
+    <p>If you do not see the script in the page source, check that you saved the Custom Code field correctly and that you published after saving. Changes that are saved but not published will not appear on the live site.</p>
+  </div>
+
+  <h2 id="method-2">Method 2: Automatic Injection with RankFrame</h2>
+
+  <p>RankFrame is an SEO plugin for Framer that, among other things, handles JSON-LD schema generation and injection automatically. For sites with multiple pages, a blog, or CMS collections, it is significantly more practical than the manual approach.</p>
+
+  <h3>How RankFrame injects schema</h3>
+  <p>When you add schema through RankFrame, the plugin writes the JSON-LD directly into the Framer page head using Framer's native plugin API. The schema is stored in RankFrame's data layer and re-injected automatically whenever you publish the site. This means your schema stays in sync with your content without any manual intervention.</p>
+
+  <p>RankFrame uses Framer's official plugin injection mechanism, which means it does not write to the Custom Code field in your Page Settings. The schema is managed entirely through RankFrame's own data layer. This is important because it prevents conflicts: RankFrame schema and manually pasted Custom Code schema coexist independently.</p>
+
+  <div class="screenshot-suggestion">
+    Screenshot suggestion: RankFrame plugin panel inside the Framer editor showing the Schema section with a completed Article schema form and the Inject Schema button highlighted.
+  </div>
+
+  <h3>Visual schema builder</h3>
+  <p>Instead of writing JSON by hand, RankFrame provides a form-based interface for each schema type. Select "Article" from the schema type dropdown and RankFrame presents labeled input fields for headline, author, datePublished, image URL, and all other relevant properties. No JSON knowledge required. The plugin validates field values in real time and flags missing required properties before you inject.</p>
+
+  <h3>AI auto-generate for the full site</h3>
+  <p>For sites with large numbers of pages, RankFrame's AI auto-generate feature reads your sitemap, visits each page, analyzes the content, and generates appropriate schema for every page in one action. It assigns schema types based on the page content (Article for blog posts, Organization for the homepage, Service for service pages) and fills in field values from the page content automatically.</p>
+
+  <p>This is particularly valuable for Framer CMS blogs. Instead of manually writing Article schema for every post, the AI generates it for the entire collection at once and injects it into each item page individually.</p>
+
+  <h3>No duplicate injection</h3>
+  <p>One of the most important aspects of how RankFrame injects schema is that it uses a keyed injection system. Each schema type has a unique key, and RankFrame checks for an existing injection with that key before writing a new one. If you run the schema generator twice or update your schema, RankFrame replaces the existing injection rather than adding a second one. This prevents the duplicate schema problem that plagues manual injection workflows.</p>
+
+  <h3>Schema updates on republish</h3>
+  <p>When you update page content and republish your Framer site, RankFrame re-injects the schema as part of the publish pipeline. If you use the AI-generated schema, it re-reads the page content at publish time and refreshes the schema values. This keeps your schema accurate without requiring you to manually update it every time you edit a page.</p>
+
+  <div class="callout callout-success">
+    <strong>When to use RankFrame vs. manual injection</strong>
+    Use manual Custom Code injection if you have one or two static pages and you are comfortable writing JSON-LD. Use RankFrame if you have a blog, CMS collections, multiple service pages, or if you want schema that stays accurate over time without manual maintenance.
+  </div>
+
+  <h2 id="manual-vs-automatic">Manual vs. Automatic: Which Should You Use?</h2>
+
+  <p>The honest answer depends on your site's complexity and how much time you want to spend maintaining schema over time.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Factor</th>
+        <th>Manual (Custom Code)</th>
+        <th>RankFrame (Automatic)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Setup time</td>
+        <td>Fast for 1-2 pages</td>
+        <td>Fast for any number of pages</td>
+      </tr>
+      <tr>
+        <td>Maintenance</td>
+        <td>Manual update required on every content change</td>
+        <td>Auto-updates on republish</td>
+      </tr>
+      <tr>
+        <td>CMS pages</td>
+        <td>Cannot individualize per CMS item</td>
+        <td>Per-item schema for every CMS record</td>
+      </tr>
+      <tr>
+        <td>Duplicate risk</td>
+        <td>High if not tracked carefully</td>
+        <td>None (keyed injection system)</td>
+      </tr>
+      <tr>
+        <td>Schema types supported</td>
+        <td>Any (you write the JSON)</td>
+        <td>All major types via visual form</td>
+      </tr>
+      <tr>
+        <td>JSON knowledge needed</td>
+        <td>Yes</td>
+        <td>No</td>
+      </tr>
+      <tr>
+        <td>Validation built in</td>
+        <td>No (use external tools)</td>
+        <td>Yes (real-time field validation)</td>
+      </tr>
+      <tr>
+        <td>Cost</td>
+        <td>Free</td>
+        <td>Paid plugin (14-day free trial)</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2 id="cms-pages">JSON-LD on Framer CMS Pages</h2>
+
+  <p>Adding JSON-LD to Framer CMS pages is where the manual approach breaks down. Here is the core problem: when you add Custom Code to a CMS collection template in Framer, that code is the same for every item in the collection. You cannot write different JSON-LD for each blog post using static Custom Code.</p>
+
+  <h3>The static template limitation</h3>
+  <p>Imagine you have a blog with 50 posts in a Framer CMS collection. If you add an Article schema block to the blog post template using Custom Code, every single post will have the exact same schema, including the same headline, date, and description values. Google will see 50 pages all claiming to be the same article. That is worse than having no schema at all.</p>
+
+  <p>Some workarounds exist using Framer's CMS variable bindings in the Custom Code field, but these are limited and technically complex. They also require the schema values to exist as explicit CMS fields (which they should, but often do not).</p>
+
+  <h3>How RankFrame handles CMS schema</h3>
+  <p>RankFrame reads the actual content of each CMS item page and generates schema values specific to that page. The headline field is populated from the page's H1 or title, the description from the page's meta description or first paragraph, and the datePublished from the CMS date field. The result is genuinely unique Article schema for every post, injected individually at publish time.</p>
+
+  <p>For agencies or creators building Framer sites for clients with active blogs, this capability alone justifies using the plugin over manual schema injection.</p>
+
+  <div class="callout callout-warning">
+    <strong>The CMS template trap</strong>
+    If you add a JSON-LD script with static values to a Framer CMS collection template, Google will see hundreds of pages with identical schema. This can trigger a "Duplicate field value" error in Google Search Console's rich results report and may prevent any of your blog posts from earning rich results. Always use dynamic, per-item schema for CMS collections.
+  </div>
+
+  <h2 id="pitfalls">Pitfalls of Manual JSON-LD Injection in Framer</h2>
+
+  <p>Manual JSON-LD injection in Framer is viable for simple sites, but there are several pitfalls that cause problems for real-world implementations. Knowing these in advance saves significant debugging time.</p>
+
+  <h3>Pitfall 1: Duplicate schema after republishing</h3>
+  <p>This is the most common issue. If you paste a JSON-LD block into the Custom Code field, then later update the schema by pasting a new version, you may end up with two versions of the same schema type in the page head if you forgot to remove the old one. Google may process one, ignore one, or flag both as conflicting. Always view source after publishing to count your schema blocks.</p>
+
+  <h3>Pitfall 2: Schema not updating when content changes</h3>
+  <p>Static JSON-LD you paste into Custom Code does not update when you change the page's content. If you change the headline of a blog post, update the article date, or switch authors, the schema still reflects the old values until you manually edit the Custom Code field. Over time, stale schema values create discrepancies between what Google sees in structured data and what users see on the page, which can reduce the quality score of your structured data.</p>
+
+  <h3>Pitfall 3: Invalid JSON syntax</h3>
+  <p>JSON has strict syntax requirements: every string must be in double quotes, trailing commas are not allowed, and the structure must be perfectly nested. A single syntax error in a JSON-LD block causes the entire schema block to fail silently. Googlebot will not report this as an error in the crawl report. You only discover it when you run the URL through the Rich Results Test and see nothing detected.</p>
+  <p>Before pasting JSON-LD into Framer, validate it at <a href="https://jsonlint.com" target="_blank">jsonlint.com</a> to catch syntax errors. This takes 30 seconds and prevents hours of debugging.</p>
+
+  <h3>Pitfall 4: Site Settings vs. Page Settings confusion</h3>
+  <p>Framer has two Custom Code fields: one in Site Settings (applies to every page) and one in Page Settings (applies to a single page). Organization schema belongs in Site Settings, since it describes the overall brand. Article schema for a specific post belongs in that post's Page Settings. Mixing these up results in Organization schema appearing on every page (harmless but redundant) or Article schema from one post appearing on all pages (actively harmful).</p>
+
+  <h3>Pitfall 5: Forgetting to publish after saving Custom Code</h3>
+  <p>This sounds obvious, but it trips up many Framer users. Changes to Custom Code are saved in the Framer editor but do not go live until you publish. If you add schema to a page and immediately test it with the Rich Results Test using the live URL, the schema will not be detected because the publish step has not happened yet. Always publish before testing.</p>
+
+  <div class="screenshot-suggestion">
+    Screenshot suggestion: Framer editor showing the Publish button highlighted after a Custom Code change has been made, with a note that schema only goes live after publishing.
+  </div>
+
+  <h3>Pitfall 6: Wrong content type for Custom Code</h3>
+  <p>Framer's Custom Code field accepts raw HTML, including script tags. The JSON-LD must be wrapped in a <code>&lt;script type="application/ld+json"&gt;</code> tag. Pasting just the JSON object without the script tag wrapper will not produce a valid schema block. Framer will not warn you about this. The JSON will appear as raw text in the page source rather than a recognized schema block.</p>
+
+  <h2 id="validate">How to Validate Your Schema</h2>
+
+  <p>Adding schema is only half the job. Validating it confirms the schema is correctly structured, Google can parse it, and the right rich result types are eligible. Here are the tools to use and when to use each.</p>
+
+  <div class="step-section">
+    <div class="step-section-header">
+      <div class="step-section-num">1</div>
+      <h2>Google's Rich Results Test</h2>
+    </div>
+    <p>The Rich Results Test at <a href="https://search.google.com/test/rich-results" target="_blank">search.google.com/test/rich-results</a> is the primary validation tool for schema markup. Enter your published page URL and click Test URL. Google fetches the page and reports:</p>
+    <ul>
+      <li>Which schema types were detected</li>
+      <li>Whether rich results are eligible for those types</li>
+      <li>Any errors (missing required fields)</li>
+      <li>Any warnings (recommended but not required fields)</li>
+    </ul>
+    <p>Errors prevent rich results. Warnings do not, but they indicate schema that could be improved. Address all errors and as many warnings as practical before considering validation complete.</p>
+    <div class="screenshot-suggestion">
+      Screenshot suggestion: Google Rich Results Test results page showing detected Article schema with a green "Valid items" indicator and a list of detected properties.
+    </div>
+  </div>
+
+  <div class="step-section">
+    <div class="step-section-header">
+      <div class="step-section-num">2</div>
+      <h2>Schema.org Validator</h2>
+    </div>
+    <p>The Schema.org Validator at <a href="https://validator.schema.org" target="_blank">validator.schema.org</a> provides a more detailed analysis than the Rich Results Test. It checks schema against the full schema.org vocabulary, not just Google's supported rich result types. Use this tool when you want to verify that properties like <code>publisher</code>, <code>image</code>, and nested objects are correctly structured according to the full schema specification.</p>
+    <p>You can test by URL (for published pages) or by pasting raw code (for testing before publishing). The code input mode is useful for validating schema while you are still writing it, before it goes live.</p>
+  </div>
+
+  <div class="step-section">
+    <div class="step-section-header">
+      <div class="step-section-num">3</div>
+      <h2>Google Search Console Rich Results report</h2>
+    </div>
+    <p>After your site has been crawled, Google Search Console shows a Rich Results section under the Enhancements menu. This report aggregates schema errors and warnings across your entire site, grouped by schema type and error category. It is the best way to identify systematic schema problems, such as Article schema missing the required <code>image</code> field across all your blog posts.</p>
+    <p>The Rich Results report lags behind real-time validation by several days, since it reflects Googlebot's actual crawl data. Use it for ongoing monitoring rather than immediate post-publish verification.</p>
+  </div>
+
+  <div class="cta-block">
+    <h3>Skip the manual JSON-LD work entirely</h3>
+    <p>RankFrame generates, injects, and maintains JSON-LD schema for every page on your Framer site, including CMS collections, with no duplicate risk and no code required.</p>
+    <a class="cta-btn" href="https://www.framer.com/marketplace/plugins/rankframe/" target="_blank">Install RankFrame Free</a>
+    <p class="cta-sub">14-day free trial. Credit card required. Cancel anytime.</p>
+  </div>
+
+  <h2 id="faq">Frequently Asked Questions</h2>
+
+  <div class="faq-item">
+    <button class="faq-question">Does Framer support JSON-LD schema markup? <span class="faq-icon">+</span></button>
+    <div class="faq-answer">Framer does not have a native JSON-LD schema builder, but it does support Custom Code injection in the page head, which is where JSON-LD scripts live. You can paste JSON-LD scripts manually via Custom Code in Page Settings or Site Settings. Alternatively, the RankFrame plugin generates and injects schema automatically without requiring you to write any JSON.</div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question">Where do you add JSON-LD in Framer? <span class="faq-icon">+</span></button>
+    <div class="faq-answer">JSON-LD goes in the head section of your page. In Framer, open the page in the editor, click on Page Settings in the right panel, and navigate to the Custom Code section. Paste your JSON-LD script block into the Head field. For site-wide schema like Organization, use Site Settings rather than Page Settings so the schema appears on every page. Remember to publish after saving.</div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question">Can you add JSON-LD to Framer CMS pages? <span class="faq-icon">+</span></button>
+    <div class="faq-answer">Manually adding unique JSON-LD to individual Framer CMS pages is not practical using the native Custom Code field, because the same code applies to every item in a CMS collection. You would end up with identical schema on every blog post, which is incorrect. RankFrame solves this by generating and injecting page-specific schema for each CMS item based on its individual content, giving every post its own unique Article schema.</div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question">Does Framer add schema markup automatically? <span class="faq-icon">+</span></button>
+    <div class="faq-answer">No. Framer does not automatically add any JSON-LD schema markup to your pages. It generates a sitemap and allows you to configure meta titles and descriptions, but structured data is entirely your responsibility. Every schema block on a Framer site must be added manually via Custom Code or through a plugin like RankFrame.</div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question">What happens if you have duplicate JSON-LD in Framer? <span class="faq-icon">+</span></button>
+    <div class="faq-answer">Duplicate JSON-LD on a Framer page causes Google to see conflicting structured data for the same schema type. Google may process one instance and ignore the other, show an error in the Search Console Rich Results report, or treat the page as having invalid schema. Common causes include adding schema manually and then also injecting via a plugin (double injection), or forgetting to remove old custom code when updating schema. Always view the live page source after adding schema to confirm only one instance of each type is present.</div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question">What schema types are most important for Framer sites? <span class="faq-icon">+</span></button>
+    <div class="faq-answer">For most Framer sites, start with Organization schema on the homepage (establishes brand identity), Article or BlogPosting on blog posts, and BreadcrumbList on all pages. If your pages have FAQ sections, add FAQPage schema. If you have instructional content, add HowTo schema. Local businesses should prioritize LocalBusiness schema. Service-based sites should add Service schema to their service pages.</div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question">How do I validate JSON-LD schema on a Framer site? <span class="faq-icon">+</span></button>
+    <div class="faq-answer">After publishing your Framer site with schema, paste the page URL into Google's Rich Results Test at search.google.com/test/rich-results. This shows which schema types were detected, whether rich results are eligible, and any errors or warnings. The Schema.org Validator at validator.schema.org provides a deeper property-level analysis. Google Search Console's Rich Results report (under Enhancements) tracks schema health across your full site over time.</div>
+  </div>
+
+  <div class="cta-block">
+    <h3>Every Framer page, properly structured for Google</h3>
+    <p>RankFrame handles schema, meta tags, keyword tracking, and indexing monitoring all inside the Framer editor. No switching tabs, no manual JSON, no duplicate schema risk.</p>
+    <a class="cta-btn" href="https://www.framer.com/marketplace/plugins/rankframe/" target="_blank">Try RankFrame Free</a>
+    <p class="cta-sub">14-day free trial. Credit card required. Cancel anytime.</p>
+  </div>
+
+  <p style="font-size:.8rem;color:#9ca3af;margin-top:32px">Always validate schemas using <a href="https://search.google.com/test/rich-results" target="_blank">Google's Rich Results Test</a> or the <a href="https://validator.schema.org/" target="_blank">Schema.org Validator</a>.</p>
+
+  <!-- SEO Details Panel -->
+  <div id="seo-details" style="margin:60px 0 0;padding:28px 32px;background:#f8f6ff;border:1px solid #e8e0fa;border-radius:14px;">
+    <h3 style="font-size:1rem;font-weight:700;color:#1a0533;margin:0 0 20px;">SEO Details</h3>
+    <div id="seo-fields"></div>
+  </div>
+
+</main>
+
+<script>
+  document.querySelectorAll('.faq-question').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var item = this.closest('.faq-item');
+      var isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(function(i) { i.classList.remove('open'); });
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+</script>
+
+<script>
+(function(){
+  var f=[
+    {label:'Title',value:document.querySelector('title')?document.querySelector('title').textContent:''},
+    {label:'Description',value:(document.querySelector('meta[name="description"]')||{}).content||''},
+    {label:'Keywords',value:(document.querySelector('meta[name="keywords"]')||{}).content||''},
+    {label:'Canonical',value:(document.querySelector('link[rel="canonical"]')||{}).href||''}
+  ];
+  var schemas=[];var _si=0;Array.from(document.querySelectorAll('script[type="application/ld+json"]')).forEach(function(x){try{var j=JSON.parse(x.textContent);if(j['@graph']&&Array.isArray(j['@graph'])){j['@graph'].forEach(function(item){var t=item['@type']||'Schema';schemas.push({label:'Schema: '+t,value:JSON.stringify(item,null,2)});});}else{var t=j['@type']||('Schema '+(++_si));schemas.push({label:'Schema: '+t,value:x.textContent.trim()});}}catch(e){schemas.push({label:'Schema '+(++_si),value:x.textContent.trim()});}});
+  var all=f.concat(schemas);
+  var h='';
+  all.forEach(function(x){
+    h+='<div style="margin-bottom:14px"><div style="font-size:.78rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#7c3aed;margin-bottom:4px">'+x.label+'</div><div style="display:flex;align-items:flex-start;gap:8px"><code style="flex:1;background:#fff;border:1px solid #e0d8f0;border-radius:6px;padding:8px 10px;font-size:.82rem;color:#1a0533;white-space:pre-wrap;word-break:break-all">'+x.value.replace(/</g,'&lt;').replace(/>/g,'&gt;')+'</code><button onclick="navigator.clipboard.writeText(this.dataset.v)" data-v="'+x.value.replace(/"/g,'&quot;')+'" style="flex-shrink:0;padding:6px 12px;background:#7c3aed;color:#fff;border:none;border-radius:6px;font-size:.78rem;font-weight:700;cursor:pointer">Copy</button></div></div>';
+  });
+  document.getElementById('seo-fields').innerHTML=h;
+})();
+</script>
+
+</body>
+</html>
