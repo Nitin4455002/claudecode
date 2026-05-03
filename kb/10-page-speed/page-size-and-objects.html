@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Page Size, Objects, and Response Time: Per-Page Performance in RankFrame</title>
+<meta name="description" content="Understand the per-page Performance audit in RankFrame: Page Size, Mobile Speed, Page Objects, Response Time, and Image Headers Expire. Learn what each value means and how to bring each one into the green.">
+<meta name="keywords" content="page size Framer, response time Framer, page objects, image headers expire, per-page performance audit">
+<link rel="canonical" href="https://rankframe.com/help/page-size-and-objects">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Page Size, Objects, and Response Time: Per-Page Performance in RankFrame",
+  "description": "Understand the per-page Performance audit in RankFrame: Page Size, Mobile Speed, Page Objects, Response Time, and Image Headers Expire.",
+  "author": {"@type": "Organization", "name": "7 Seers", "email": "hello@7seersmedia.com"},
+  "publisher": {"@type": "Organization", "name": "7 Seers"},
+  "datePublished": "2026-05-03",
+  "dateModified": "2026-05-03",
+  "mainEntityOfPage": "https://rankframe.com/help/page-size-and-objects"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "Why does RankFrame show a warning on a 50 KB page?", "acceptedAnswer": {"@type": "Answer", "text": "The warning thresholds are content-aware. A 50 KB page with no images may indicate missing assets or a broken page. Check the page in the live preview before assuming the warning is wrong."}},
+    {"@type": "Question", "name": "My response time is 2 seconds. What is causing it?", "acceptedAnswer": {"@type": "Answer", "text": "On Framer, the most common cause is a complex CMS query rendering at request time, a custom code component making a blocking external API call, or a third-party embed delaying first byte. Audit your CMS bindings and code components."}},
+    {"@type": "Question", "name": "Is Page Objects the same as the number of files in my Framer project?", "acceptedAnswer": {"@type": "Answer", "text": "No. Page Objects counts every network request the live page makes when loaded in a browser, including images, fonts, and embeds. Files inside your Framer project are unrelated."}},
+    {"@type": "Question", "name": "My Image Headers Expire check fails. How do I fix it?", "acceptedAnswer": {"@type": "Answer", "text": "Identify any externally hosted images on the page (URLs not on framerusercontent.com). Move them into Framer's asset hosting where caching is handled automatically."}},
+    {"@type": "Question", "name": "Should I aim for the lowest possible Page Size?", "acceptedAnswer": {"@type": "Answer", "text": "Aim for the lowest size that preserves your design intent. A 600 KB page that looks rich is better than a 200 KB page that looks empty. Use the suggestions list to find waste, not to strip your design."}}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Help Center", "item": "https://rankframe.com/help"},
+    {"@type": "ListItem", "position": 2, "name": "Page Speed", "item": "https://rankframe.com/help/page-speed"},
+    {"@type": "ListItem", "position": 3, "name": "Page Size, Objects, Response Time", "item": "https://rankframe.com/help/page-size-and-objects"}
+  ]
+}
+</script>
+<style>
+* { box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #fff; color: #2a1a4a; line-height: 1.65; margin: 0; padding: 0; }
+.container { max-width: 820px; margin: 0 auto; padding: 48px 28px 80px; }
+.breadcrumb { font-size: 0.82rem; color: #7c6ea0; margin-bottom: 24px; }
+.breadcrumb a { color: #7c3aed; text-decoration: none; }
+.breadcrumb a:hover { text-decoration: underline; }
+h1 { font-size: 2.1rem; font-weight: 800; color: #1a0533; margin: 0 0 18px; line-height: 1.25; }
+h2 { font-size: 1.35rem; font-weight: 700; color: #1a0533; margin: 44px 0 14px; }
+h3 { font-size: 1.05rem; font-weight: 700; color: #1a0533; margin: 28px 0 10px; }
+.intro { font-size: 1.02rem; color: #4b4b6b; margin-bottom: 24px; }
+p { font-size: 0.96rem; color: #3a2f5a; }
+.field-block { margin: 36px 0 28px; }
+.field-block-header { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+.field-num { display: inline-flex; align-items: center; justify-content: center; width: 38px; height: 38px; background: linear-gradient(135deg, #7c3aed, #a78bfa); color: #fff; font-weight: 700; font-size: 14px; border-radius: 8px; flex-shrink: 0; box-shadow: 0 2px 6px rgba(124,58,237,0.25); }
+.field-block-title { font-size: 1rem; font-weight: 700; color: #1a0533; }
+.field-block-desc { font-size: 0.93rem; color: #4b4b6b; line-height: 1.7; }
+.screenshot-slot { background: #fafafa; border: 1px dashed #e0d8f0; border-radius: 10px; padding: 36px 20px; text-align: center; color: #b8b2c8; font-size: 0.85rem; margin-top: 6px; margin-bottom: 8px; }
+.screenshot-slot::before { content: "Screenshot"; display: block; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #c8c0dc; }
+.callout { background: #f8f6ff; border-left: 4px solid #7c3aed; border-radius: 8px; padding: 18px 22px; margin: 28px 0; }
+.callout h3 { margin-top: 0; }
+table.ref { width: 100%; border-collapse: collapse; margin: 22px 0; font-size: 0.9rem; }
+table.ref th { background: linear-gradient(135deg, #7c3aed, #a78bfa); color: #fff; text-align: left; padding: 10px 14px; font-weight: 700; }
+table.ref td { padding: 10px 14px; border-bottom: 1px solid #ede5fa; color: #3a2f5a; vertical-align: top; }
+table.ref tr:last-child td { border-bottom: none; }
+.faq-item { margin: 20px 0; padding: 18px 22px; background: #faf8ff; border: 1px solid #ede5fa; border-radius: 10px; }
+.faq-q { font-weight: 700; color: #1a0533; margin-bottom: 8px; font-size: 0.96rem; }
+.faq-a { color: #4b4b6b; font-size: 0.92rem; }
+</style>
+</head>
+<body>
+<div class="container">
+<div class="breadcrumb"><a href="https://rankframe.com/help">Help Center</a> &gt; <a href="https://rankframe.com/help/page-speed">Page Speed</a> &gt; Page Size, Objects, Response Time</div>
+
+<h1>Page Size, Objects, and Response Time</h1>
+<p class="intro">When you open any page in the Pages section and expand the Performance accordion in the right panel, RankFrame shows five granular checks scoped to that single page. These complement the site-wide Speed tab data by telling you exactly what each individual page weighs, how many requests it makes, and how fast your server responds.</p>
+
+<div class="screenshot-slot">Performance accordion expanded in the Pages right panel</div>
+
+<h2>The five per-page checks</h2>
+
+<div class="field-block">
+  <div class="field-block-header"><span class="field-num">1</span><span class="field-block-title">Page Size (KB)</span></div>
+  <div class="field-block-desc">The total size of the page including HTML, CSS, JavaScript, fonts, and images. Reported in KB. Targets: under 1,000 KB is good for marketing pages, under 2,000 KB is acceptable for image-heavy portfolios, anything above 3,000 KB warrants investigation. RankFrame shows a warning when the page is moderately large (e.g. 50.51 KB triggers a warning depending on context). Cut weight by compressing images and removing unused custom code.</div>
+  <div class="screenshot-slot">Page Size value with warning indicator</div>
+</div>
+
+<div class="field-block">
+  <div class="field-block-header"><span class="field-num">2</span><span class="field-block-title">Mobile Speed</span></div>
+  <div class="field-block-desc">A qualitative rating (good, fair, or poor) based on the mobile Lighthouse Performance score for this specific page. Distinct from the gauge in the SEO Analyzer because it reflects this single page, not the homepage or sitewide average. A page rated "poor" needs attention even if your sitewide mobile gauge looks healthy.</div>
+  <div class="screenshot-slot">Mobile Speed rating pill</div>
+</div>
+
+<div class="field-block">
+  <div class="field-block-header"><span class="field-num">3</span><span class="field-block-title">Page Objects</span></div>
+  <div class="field-block-desc">The total count of resource requests the page makes (HTML doc, CSS files, JS files, images, fonts, embeds). Reported as a single number (e.g. 47). High object counts increase total load time even if each object is small. Aim for under 50 on most Framer pages. Reduce by removing unused fonts, consolidating embeds, and deleting hidden elements.</div>
+  <div class="screenshot-slot">Page Objects count display</div>
+</div>
+
+<div class="field-block">
+  <div class="field-block-header"><span class="field-num">4</span><span class="field-block-title">Response Time (ms)</span></div>
+  <div class="field-block-desc">Time from request to first byte of HTML, in milliseconds (e.g. 1063ms). Anything under 600ms is good, 600 to 1500ms is fair, above 1500ms is poor and almost always a backend bottleneck. On Framer, high response time usually traces back to a heavy CMS query or a custom data fetch on the page.</div>
+  <div class="screenshot-slot">Response Time millisecond reading</div>
+</div>
+
+<div class="field-block">
+  <div class="field-block-header"><span class="field-num">5</span><span class="field-block-title">Image Headers Expire</span></div>
+  <div class="field-block-desc">A caching check on the page's local images. Confirms that images are served with cache-control headers that allow browsers to reuse them on subsequent visits. Framer handles this for assets it controls. A failure here usually means an externally hosted image without proper cache headers.</div>
+  <div class="screenshot-slot">Image Headers Expire pass or fail status</div>
+</div>
+
+<h2>Quick reference table</h2>
+<table class="ref">
+  <thead>
+    <tr><th>Check</th><th>Good</th><th>Action if Failing</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Page Size</td><td>Under 1,000 KB</td><td>Compress images, remove unused custom code, audit fonts.</td></tr>
+    <tr><td>Mobile Speed</td><td>Good rating</td><td>Open the Speed tab and apply the per-page suggestions.</td></tr>
+    <tr><td>Page Objects</td><td>Under 50</td><td>Consolidate embeds, drop unused fonts, remove hidden frames.</td></tr>
+    <tr><td>Response Time</td><td>Under 600ms</td><td>Simplify CMS queries, defer external API calls.</td></tr>
+    <tr><td>Image Headers Expire</td><td>Pass</td><td>Move external images into Framer asset hosting.</td></tr>
+  </tbody>
+</table>
+
+<div class="callout">
+  <h3>How these per-page checks relate to the site-wide Speed tab</h3>
+  <p>The Speed tab gives you the bird's-eye view (gauges, Core Web Vitals, sitewide suggestions). The per-page Performance audit gives you the page-by-page breakdown so you can spot which pages are dragging the average down. Use the Speed tab to set goals, then use the Pages section to find and fix the worst offenders one page at a time.</p>
+</div>
+
+<h2>Frequently asked questions</h2>
+
+<div class="faq-item"><div class="faq-q">Why does RankFrame show a warning on a 50 KB page?</div><div class="faq-a">The warning thresholds are content-aware. A 50 KB page with no images may indicate missing assets or a broken page. Check the page in the live preview before assuming the warning is wrong.</div></div>
+<div class="faq-item"><div class="faq-q">My response time is 2 seconds. What is causing it?</div><div class="faq-a">On Framer, the most common cause is a complex CMS query rendering at request time, a custom code component making a blocking external API call, or a third-party embed delaying first byte. Audit your CMS bindings and code components.</div></div>
+<div class="faq-item"><div class="faq-q">Is Page Objects the same as the number of files in my Framer project?</div><div class="faq-a">No. Page Objects counts every network request the live page makes when loaded in a browser, including images, fonts, and embeds. Files inside your Framer project are unrelated.</div></div>
+<div class="faq-item"><div class="faq-q">My Image Headers Expire check fails. How do I fix it?</div><div class="faq-a">Identify any externally hosted images on the page (URLs not on framerusercontent.com). Move them into Framer's asset hosting where caching is handled automatically.</div></div>
+<div class="faq-item"><div class="faq-q">Should I aim for the lowest possible Page Size?</div><div class="faq-a">Aim for the lowest size that preserves your design intent. A 600 KB page that looks rich is better than a 200 KB page that looks empty. Use the suggestions list to find waste, not to strip your design.</div></div>
+
+<p style="margin-top:40px;font-size:0.88rem;color:#7c6ea0;">Need a hand? Email the 7 Seers team at <a href="mailto:hello@7seersmedia.com" style="color:#7c3aed;">hello@7seersmedia.com</a>.</p>
+
+<div id="seo-details" style="margin:60px 0 0;padding:28px 32px;background:#f8f6ff;border:1px solid #e8e0fa;border-radius:14px;">
+  <h3 style="font-size:1rem;font-weight:700;color:#1a0533;margin:0 0 20px;">SEO Details</h3>
+  <div id="seo-fields"></div>
+</div>
+<script>
+(function(){
+  var fields=[
+    {label:'Title',value:document.querySelector('title')?document.querySelector('title').textContent:''},
+    {label:'Description',value:(document.querySelector('meta[name="description"]')||{}).content||''},
+    {label:'Keywords',value:(document.querySelector('meta[name="keywords"]')||{}).content||''},
+    {label:'Canonical',value:(document.querySelector('link[rel="canonical"]')||{}).href||''}
+  ];
+  var schemas=Array.from(document.querySelectorAll('script[type="application/ld+json"]')).map(function(s,i){return {label:'Schema '+(i+1),value:s.textContent.trim()};});
+  var all=fields.concat(schemas);
+  var html='';
+  all.forEach(function(f){
+    html+='<div style="margin-bottom:14px;"><div style="font-size:0.78rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:#7c3aed;margin-bottom:4px;">'+f.label+'</div><div style="display:flex;align-items:flex-start;gap:8px;"><code style="flex:1;background:#fff;border:1px solid #e0d8f0;border-radius:6px;padding:8px 10px;font-size:0.82rem;color:#1a0533;white-space:pre-wrap;word-break:break-all;">'+f.value.replace(/</g,'&lt;').replace(/>/g,'&gt;')+'</code><button onclick="navigator.clipboard.writeText(this.dataset.v)" data-v="'+f.value.replace(/"/g,'&quot;')+'" style="flex-shrink:0;padding:6px 12px;background:#7c3aed;color:#fff;border:none;border-radius:6px;font-size:0.78rem;font-weight:700;cursor:pointer;">Copy</button></div></div>';
+  });
+  document.getElementById('seo-fields').innerHTML=html;
+})();
+</script>
+</div>
+</body>
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Core Web Vitals Explained: FCP, LCP, CLS for Framer Sites</title>
+<meta name="description" content="Understand the three Core Web Vitals metrics in RankFrame: First Contentful Paint, Largest Contentful Paint, and Cumulative Layout Shift. Learn target thresholds and how to fix each one in Framer.">
+<meta name="keywords" content="Core Web Vitals Framer, LCP Framer, CLS Framer, FCP Framer, Largest Contentful Paint">
+<link rel="canonical" href="https://rankframe.com/help/core-web-vitals">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Core Web Vitals Explained: FCP, LCP, CLS for Framer Sites",
+  "description": "Understand the three Core Web Vitals metrics in RankFrame: First Contentful Paint, Largest Contentful Paint, and Cumulative Layout Shift. Learn target thresholds and how to fix each one in Framer.",
+  "author": {"@type": "Organization", "name": "7 Seers", "email": "hello@7seersmedia.com"},
+  "publisher": {"@type": "Organization", "name": "7 Seers"},
+  "datePublished": "2026-05-03",
+  "dateModified": "2026-05-03",
+  "mainEntityOfPage": "https://rankframe.com/help/core-web-vitals"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "Why isn't INP (Interaction to Next Paint) shown?", "acceptedAnswer": {"@type": "Answer", "text": "RankFrame currently surfaces FCP, LCP, and CLS, the three Web Vitals available from Lighthouse synthetic audits. INP requires real-user data (field data) which RankFrame does not yet pull."}},
+    {"@type": "Question", "name": "My LCP is 3.5 seconds. What is the fastest fix?", "acceptedAnswer": {"@type": "Answer", "text": "Optimize the hero image. Convert to WebP, compress to under 200KB, and set explicit dimensions. This single change often drops LCP below 2.5s on Framer sites."}},
+    {"@type": "Question", "name": "What causes a high CLS score on Framer?", "acceptedAnswer": {"@type": "Answer", "text": "Usually images and fonts loading without reserved space. Set width and height on every image in Framer's properties panel and avoid dynamic content that pushes layout after the initial paint."}},
+    {"@type": "Question", "name": "Are Core Web Vitals more important than overall Performance score?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. The Performance score is a synthetic average. Core Web Vitals are the metrics Google uses to rank pages. A Performance score of 70 with all Web Vitals in Good is better than a 90 with one Web Vital in Poor."}},
+    {"@type": "Question", "name": "How do I know which element is causing the LCP measurement?", "acceptedAnswer": {"@type": "Answer", "text": "Click Optimize large images or any LCP-related suggestion in RankFrame's Speed Optimization Suggestions list. The suggestion identifies the specific element triggering LCP."}}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Help Center", "item": "https://rankframe.com/help"},
+    {"@type": "ListItem", "position": 2, "name": "Page Speed", "item": "https://rankframe.com/help/page-speed"},
+    {"@type": "ListItem", "position": 3, "name": "Core Web Vitals Explained", "item": "https://rankframe.com/help/core-web-vitals"}
+  ]
+}
+</script>
+<style>
+* { box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; margin: 0; padding: 0; background: #fff; color: #1a0533; line-height: 1.6; }
+.container { max-width: 820px; margin: 0 auto; padding: 48px 28px 80px; }
+.breadcrumb { font-size: 0.82rem; color: #7c3aed; margin-bottom: 18px; }
+.breadcrumb a { color: #7c3aed; text-decoration: none; }
+.breadcrumb span { color: #b8b2c8; margin: 0 6px; }
+h1 { font-size: 2.1rem; font-weight: 800; color: #1a0533; margin: 0 0 18px; line-height: 1.2; }
+.intro { font-size: 1.05rem; color: #4b4b6b; margin-bottom: 36px; }
+h2 { font-size: 1.4rem; font-weight: 700; color: #1a0533; margin: 48px 0 16px; }
+h3 { font-size: 1.05rem; font-weight: 700; color: #1a0533; margin: 22px 0 8px; }
+p { color: #4b4b6b; }
+.field-block { margin: 36px 0 28px; }
+.field-block-header { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+.field-num { display: inline-flex; align-items: center; justify-content: center; width: 38px; height: 38px; background: linear-gradient(135deg, #7c3aed, #a78bfa); color: #fff; font-weight: 700; font-size: 14px; border-radius: 8px; flex-shrink: 0; box-shadow: 0 2px 6px rgba(124,58,237,0.25); }
+.field-block-title { font-size: 1rem; font-weight: 700; color: #1a0533; }
+.field-block-desc { font-size: 0.93rem; color: #4b4b6b; line-height: 1.7; }
+.screenshot-slot { background: #fafafa; border: 1px dashed #e0d8f0; border-radius: 10px; padding: 36px 20px; text-align: center; color: #b8b2c8; font-size: 0.85rem; margin-top: 6px; margin-bottom: 8px; }
+.screenshot-slot::before { content: "Screenshot"; display: block; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #c8c0dc; }
+.threshold-table { width: 100%; border-collapse: collapse; margin: 24px 0; font-size: 0.92rem; }
+.threshold-table th { background: linear-gradient(135deg, #7c3aed, #a78bfa); color: #fff; padding: 12px 14px; text-align: left; font-weight: 700; }
+.threshold-table th:first-child { border-radius: 8px 0 0 0; }
+.threshold-table th:last-child { border-radius: 0 8px 0 0; }
+.threshold-table td { padding: 12px 14px; border-bottom: 1px solid #e8e0fa; color: #4b4b6b; }
+.threshold-table tr:last-child td { border-bottom: none; }
+.threshold-table .good { color: #15803d; font-weight: 600; }
+.threshold-table .ni { color: #b45309; font-weight: 600; }
+.threshold-table .poor { color: #b91c1c; font-weight: 600; }
+.fix-card { background: #f8f6ff; border: 1px solid #e8e0fa; border-radius: 10px; padding: 18px 22px; margin: 14px 0; }
+.fix-card h3 { margin-top: 0; color: #7c3aed; }
+.fix-card ul { margin: 0; padding-left: 20px; color: #4b4b6b; font-size: 0.92rem; }
+.fix-card li { margin-bottom: 6px; }
+.faq { margin: 18px 0; padding: 18px 22px; background: #faf8ff; border-left: 3px solid #7c3aed; border-radius: 8px; }
+.faq-q { font-weight: 700; color: #1a0533; margin-bottom: 6px; }
+.faq-a { color: #4b4b6b; font-size: 0.93rem; }
+@media (max-width: 600px) { h1 { font-size: 1.6rem; } .threshold-table { font-size: 0.82rem; } }
+</style>
+</head>
+<body>
+<div class="container">
+<div class="breadcrumb"><a href="/help">Help Center</a><span>&rsaquo;</span><a href="/help/page-speed">Page Speed</a><span>&rsaquo;</span>Core Web Vitals Explained</div>
+<h1>Core Web Vitals Explained</h1>
+<p class="intro">RankFrame shows the three Core Web Vitals (FCP, LCP, CLS) for both mobile and desktop in the Speed tab of the SEO Analyzer. These are the metrics Google uses to score the user experience of your Framer pages. Each one measures a different moment in the loading journey.</p>
+
+<div class="field-block">
+  <div class="field-block-header"><div class="field-num">1</div><div class="field-block-title">First Contentful Paint (FCP)</div></div>
+  <p class="field-block-desc">The time between the user clicking your link and the first piece of content appearing on screen (any text, image, or non-blank canvas). Targets: under 1.8s = Good, 1.8 to 3.0s = Needs Improvement, over 3.0s = Poor. Common Framer causes of slow FCP: heavy custom code components blocking the initial render, render-blocking fonts loaded synchronously, large CSS files. Fix by deferring non-critical scripts and using Framer's built-in font loading.</p>
+  <div class="screenshot-slot">FCP metric card showing mobile and desktop values</div>
+</div>
+
+<div class="field-block">
+  <div class="field-block-header"><div class="field-num">2</div><div class="field-block-title">Largest Contentful Paint (LCP)</div></div>
+  <p class="field-block-desc">The time it takes for the largest visible element on the page (usually the hero image or H1 text) to fully render. This is the most important Core Web Vital. Targets: under 2.5s = Good, 2.5 to 4.0s = Needs Improvement, over 4.0s = Poor. The single biggest LCP fix on Framer is image optimization: serve hero images as WebP, set explicit width/height, and ensure they are not larger than the rendered display size.</p>
+  <div class="screenshot-slot">LCP metric card with thresholds</div>
+</div>
+
+<div class="field-block">
+  <div class="field-block-header"><div class="field-num">3</div><div class="field-block-title">Cumulative Layout Shift (CLS)</div></div>
+  <p class="field-block-desc">A score (not a time) that measures how much the page layout shifts unexpectedly while loading. Score 0 means no shift. Targets: under 0.1 = Good, 0.1 to 0.25 = Needs Improvement, over 0.25 = Poor. Common Framer causes: images without explicit dimensions, web fonts swapping after page load, content that pushes other content down (banners, embeds). Fix by setting image dimensions in Framer and reserving vertical space for embeds.</p>
+  <div class="screenshot-slot">CLS metric card displaying layout shift score</div>
+</div>
+
+<h2>Target Thresholds</h2>
+<table class="threshold-table">
+  <thead><tr><th>Metric</th><th>Good</th><th>Needs Improvement</th><th>Poor</th></tr></thead>
+  <tbody>
+    <tr><td><strong>FCP</strong></td><td class="good">Under 1.8s</td><td class="ni">1.8 to 3.0s</td><td class="poor">Over 3.0s</td></tr>
+    <tr><td><strong>LCP</strong></td><td class="good">Under 2.5s</td><td class="ni">2.5 to 4.0s</td><td class="poor">Over 4.0s</td></tr>
+    <tr><td><strong>CLS</strong></td><td class="good">Under 0.1</td><td class="ni">0.1 to 0.25</td><td class="poor">Over 0.25</td></tr>
+  </tbody>
+</table>
+
+<h2>How to Fix Each Metric in Framer</h2>
+<div class="fix-card">
+  <h3>FCP Fixes</h3>
+  <ul>
+    <li>Defer non-critical custom code components so they load after first paint.</li>
+    <li>Use Framer's built-in font loading instead of synchronous external font scripts.</li>
+    <li>Remove unused CSS by trimming overrides and unused style variants.</li>
+  </ul>
+</div>
+<div class="fix-card">
+  <h3>LCP Fixes</h3>
+  <ul>
+    <li>Convert hero images to WebP and compress to under 200KB.</li>
+    <li>Set explicit width and height on the hero so the browser reserves space.</li>
+    <li>Avoid serving an image larger than its rendered display size.</li>
+  </ul>
+</div>
+<div class="fix-card">
+  <h3>CLS Fixes</h3>
+  <ul>
+    <li>Add width and height to every image in Framer's properties panel.</li>
+    <li>Reserve vertical space for embeds (videos, forms, third-party widgets).</li>
+    <li>Avoid late-injected banners or cookie bars that push content down.</li>
+  </ul>
+</div>
+
+<h2>Frequently Asked Questions</h2>
+<div class="faq"><div class="faq-q">Why isn't INP (Interaction to Next Paint) shown?</div><div class="faq-a">RankFrame currently surfaces FCP, LCP, and CLS, the three Web Vitals available from Lighthouse synthetic audits. INP requires real-user data (field data) which RankFrame does not yet pull.</div></div>
+<div class="faq"><div class="faq-q">My LCP is 3.5 seconds. What is the fastest fix?</div><div class="faq-a">Optimize the hero image. Convert to WebP, compress to under 200KB, and set explicit dimensions. This single change often drops LCP below 2.5s on Framer sites.</div></div>
+<div class="faq"><div class="faq-q">What causes a high CLS score on Framer?</div><div class="faq-a">Usually images and fonts loading without reserved space. Set width and height on every image in Framer's properties panel and avoid dynamic content that pushes layout after the initial paint.</div></div>
+<div class="faq"><div class="faq-q">Are Core Web Vitals more important than overall Performance score?</div><div class="faq-a">Yes. The Performance score is a synthetic average. Core Web Vitals are the metrics Google uses to rank pages. A Performance score of 70 with all Web Vitals in Good is better than a 90 with one Web Vital in Poor.</div></div>
+<div class="faq"><div class="faq-q">How do I know which element is causing the LCP measurement?</div><div class="faq-a">Click "Optimize large images" or any LCP-related suggestion in RankFrame's Speed Optimization Suggestions list. The suggestion identifies the specific element triggering LCP.</div></div>
+
+<div id="seo-details" style="margin:60px 0 0;padding:28px 32px;background:#f8f6ff;border:1px solid #e8e0fa;border-radius:14px;">
+  <h3 style="font-size:1rem;font-weight:700;color:#1a0533;margin:0 0 20px;">SEO Details</h3>
+  <div id="seo-fields"></div>
+</div>
+<script>
+(function(){
+  var fields=[
+    {label:'Title',value:document.querySelector('title')?document.querySelector('title').textContent:''},
+    {label:'Description',value:(document.querySelector('meta[name="description"]')||{}).content||''},
+    {label:'Keywords',value:(document.querySelector('meta[name="keywords"]')||{}).content||''},
+    {label:'Canonical',value:(document.querySelector('link[rel="canonical"]')||{}).href||''}
+  ];
+  var schemas=Array.from(document.querySelectorAll('script[type="application/ld+json"]')).map(function(s,i){return {label:'Schema '+(i+1),value:s.textContent.trim()};});
+  var all=fields.concat(schemas);
+  var html='';
+  all.forEach(function(f){
+    html+='<div style="margin-bottom:14px;"><div style="font-size:0.78rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:#7c3aed;margin-bottom:4px;">'+f.label+'</div><div style="display:flex;align-items:flex-start;gap:8px;"><code style="flex:1;background:#fff;border:1px solid #e0d8f0;border-radius:6px;padding:8px 10px;font-size:0.82rem;color:#1a0533;white-space:pre-wrap;word-break:break-all;">'+f.value.replace(/</g,'&lt;').replace(/>/g,'&gt;')+'</code><button onclick="navigator.clipboard.writeText(this.dataset.v)" data-v="'+f.value.replace(/"/g,'&quot;')+'" style="flex-shrink:0;padding:6px 12px;background:#7c3aed;color:#fff;border:none;border-radius:6px;font-size:0.78rem;font-weight:700;cursor:pointer;">Copy</button></div></div>';
+  });
+  document.getElementById('seo-fields').innerHTML=html;
+})();
+</script>
+</div>
+</body>
+</html>
