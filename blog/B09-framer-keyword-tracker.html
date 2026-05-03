@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How to Track Keyword Rankings for Your Framer Site</title>
+  <meta name="description" content="Framer's built-in analytics shows visitors, not rankings. Learn how to track keyword positions, impressions, and ranking trends directly inside Framer using RankFrame." />
+  <meta name="keywords" content="framer keyword tracker, track keyword rankings framer, keyword ranking framer, framer keyword position, framer seo tracking" />
+  <link rel="canonical" href="https://rankframe.com/blog/framer-keyword-tracker" />
+  <meta property="og:title" content="How to Track Keyword Rankings for Your Framer Site" />
+  <meta property="og:description" content="Framer's built-in analytics shows visitors, not rankings. Learn how to track keyword positions, impressions, and ranking trends directly inside Framer using RankFrame." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://rankframe.com/blog/framer-keyword-tracker" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "How to Track Keyword Rankings for Your Framer Site",
+    "description": "Framer's built-in analytics shows visitors, not rankings. Learn how to track keyword positions, impressions, and ranking trends directly inside Framer using RankFrame.",
+    "url": "https://rankframe.com/blog/framer-keyword-tracker",
+    "datePublished": "2026-05-03",
+    "dateModified": "2026-05-03",
+    "author": {
+      "@type": "Organization",
+      "name": "7 Seers",
+      "url": "https://rankframe.com"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "7 Seers",
+      "url": "https://rankframe.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://rankframe.com/logo.png"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://rankframe.com/blog/framer-keyword-tracker"
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://rankframe.com"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Blog",
+        "item": "https://rankframe.com/blog"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "How to Track Keyword Rankings for Your Framer Site",
+        "item": "https://rankframe.com/blog/framer-keyword-tracker"
+      }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "7 Seers",
+    "url": "https://rankframe.com",
+    "email": "hello@7seersmedia.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Lucknow",
+      "addressCountry": "IN"
+    },
+    "sameAs": [
+      "https://www.framer.com/marketplace/plugins/rankframe/"
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Does Framer have built-in keyword tracking?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Framer Analytics shows visitor counts, pageviews, and bounce rate but has no keyword tracking or search position monitoring. For keyword and ranking data you need to connect Google Search Console separately, or use RankFrame's Keyword Tracker, which pulls GSC data and displays curated keyword position history directly inside the Framer editor."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does RankFrame's Keyword Tracker work?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "You add keywords to the tracker (individually or as a comma-separated batch). RankFrame pulls data from Google Search Console and displays each keyword in a table showing impressions, clicks, current search position, and a sparkline chart of position history. A green arrow with a delta value indicates position improvement since the last data point."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How long does it take for keyword tracking data to appear?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Google Search Console data has an inherent lag of 48 to 72 hours. After adding a keyword to the tracker, allow two to three days before expecting position data to populate. This lag is on Google's side and affects all tools that read from the GSC API."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How many keywords should I track in RankFrame?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Focus on 10 to 30 keywords per site. Track your primary target keyword for each major page, plus two or three secondary keywords per page. Tracking hundreds of keywords dilutes your attention. A focused list of 20 well-chosen keywords gives you clear signal about whether your SEO efforts are working."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between Framer Analytics and the RankFrame Keyword Tracker?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Framer Analytics shows traffic metrics: visitors, pageviews, session duration, and bounce rate. It tells you how many people came to your site and how they behaved. The RankFrame Keyword Tracker shows search performance metrics: the position your site ranks for specific keywords, how often those keywords appear in search results (impressions), how often users click your result (clicks), and how position has changed over time."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What does the sparkline in the Keyword Tracker show?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The sparkline is a small inline chart showing the position history for a keyword over the recent tracking period. Because search position is measured as a rank (lower number equals better position), a sparkline trending downward visually represents improving rankings. An upward trend means the keyword is dropping in position. A flat sparkline means position is stable."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I track keywords for specific pages in RankFrame?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. In RankFrame's keyword research section (Global Settings Keywords tab), you can assign specific keywords to individual pages. This creates a direct link between the keyword you are targeting and the page you have optimized for it, allowing you to monitor whether that page is ranking for its assigned keyword."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why is keyword tracking important if I already use Google Search Console?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Google Search Console shows you all queries your site has received impressions for, which can be hundreds or thousands of terms. The RankFrame Keyword Tracker lets you curate the specific 10 to 30 keywords that matter most to your business, see them in one clean view inside Framer, and track position changes week over week without logging into a separate platform or filtering through GSC data."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How to Track Keyword Rankings for a Framer Site Using RankFrame",
+    "description": "Step-by-step guide to setting up keyword tracking inside Framer using RankFrame's Keyword Tracker and GSC integration.",
+    "step": [
+      {
+        "@type": "HowToStep",
+        "position": 1,
+        "name": "Install RankFrame and connect Google Search Console",
+        "text": "Install RankFrame from the Framer Plugin Marketplace. In the plugin settings, connect your Google Search Console account for the domain you want to track."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 2,
+        "name": "Identify the keywords you want to track",
+        "text": "Use RankFrame's keyword research panel to research search volume, keyword difficulty, competition, and CPC for candidate keywords. Select 10 to 30 keywords that are strategically important to your business."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 3,
+        "name": "Add keywords to the Keyword Tracker",
+        "text": "Navigate to the Submit Indexing section in RankFrame and open the Keyword Tracker. Add keywords individually or as a comma-separated batch. RankFrame will begin fetching data from Google Search Console for each keyword."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 4,
+        "name": "Wait 48 to 72 hours for data to populate",
+        "text": "Google Search Console has an inherent data lag of 48 to 72 hours. Allow this time to pass before expecting position data to appear in the tracker."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 5,
+        "name": "Review the keyword table and sparklines",
+        "text": "Once data populates, review the table showing impressions, clicks, search position, and sparkline history for each keyword. Identify keywords with declining positions or flat sparklines that may need page optimization."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 6,
+        "name": "Optimize pages for keywords showing opportunity",
+        "text": "For keywords ranking in positions 8 to 20, run a per-page SEO audit in RankFrame, improve the page's title, meta description, content, internal links, and schema markup to target a top-5 ranking."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 7,
+        "name": "Monitor position improvement week over week",
+        "text": "Return to the Keyword Tracker each week to review sparkline trends and position change indicators. Track which optimization efforts are moving keywords up and which pages need further work."
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 1.05rem;
+      line-height: 1.75;
+      color: #1a0533;
+      background: #fff;
+    }
+    a { color: #7c3aed; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .site-header {
+      background: #fff;
+      border-bottom: 1px solid #e8e0fa;
+      padding: 0 24px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .site-header-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      height: 60px;
+      gap: 32px;
+    }
+    .logo { font-weight: 800; font-size: 1.1rem; color: #7c3aed; letter-spacing: -0.02em; }
+    .logo span { color: #1a0533; }
+    .nav-links { display: flex; gap: 24px; font-size: .9rem; }
+    .nav-links a { color: #4b2d7a; font-weight: 500; }
+
+    .breadcrumb {
+      max-width: 860px;
+      margin: 24px auto 0;
+      padding: 0 24px;
+      font-size: .83rem;
+      color: #6b5c8a;
+    }
+    .breadcrumb a { color: #7c3aed; }
+    .breadcrumb span { margin: 0 6px; }
+
+    .article-header {
+      max-width: 860px;
+      margin: 20px auto 0;
+      padding: 0 24px;
+    }
+    .article-category {
+      display: inline-block;
+      background: #f3eeff;
+      color: #7c3aed;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 16px;
+    }
+    .article-header h1 {
+      font-size: clamp(1.7rem, 4vw, 2.5rem);
+      font-weight: 800;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      color: #1a0533;
+      margin-bottom: 16px;
+    }
+    .article-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      font-size: .85rem;
+      color: #6b5c8a;
+      margin-bottom: 32px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid #e8e0fa;
+    }
+    .article-meta strong { color: #1a0533; }
+
+    .toc {
+      background: #f8f6ff;
+      border: 1px solid #e8e0fa;
+      border-radius: 12px;
+      padding: 24px 28px;
+      margin: 0 24px 40px;
+      max-width: 860px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .toc h2 {
+      font-size: .9rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      color: #7c3aed;
+      margin-bottom: 12px;
+    }
+    .toc ol { padding-left: 20px; display: flex; flex-direction: column; gap: 6px; }
+    .toc ol li { font-size: .92rem; }
+    .toc ol a { color: #4b2d7a; }
+
+    .article-body {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 24px 60px;
+    }
+    .article-body h2 {
+      font-size: 1.55rem;
+      font-weight: 800;
+      color: #1a0533;
+      margin: 52px 0 18px;
+      padding-top: 16px;
+      border-top: 2px solid #f3eeff;
+      letter-spacing: -0.01em;
+    }
+    .article-body h3 {
+      font-size: 1.18rem;
+      font-weight: 700;
+      color: #2d1060;
+      margin: 32px 0 12px;
+    }
+    .article-body h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #3d1a7a;
+      margin: 24px 0 8px;
+    }
+    .article-body p { margin-bottom: 18px; }
+    .article-body ul, .article-body ol { padding-left: 22px; margin-bottom: 18px; }
+    .article-body li { margin-bottom: 6px; }
+    .article-body strong { color: #1a0533; }
+
+    .table-wrap { overflow-x: auto; margin: 24px 0; }
+    table { width: 100%; border-collapse: collapse; font-size: .9rem; }
+    thead th {
+      background: #7c3aed;
+      color: #fff;
+      padding: 10px 14px;
+      text-align: left;
+      font-weight: 700;
+    }
+    tbody tr:nth-child(even) { background: #f8f6ff; }
+    tbody td {
+      padding: 10px 14px;
+      border-bottom: 1px solid #e8e0fa;
+      vertical-align: top;
+    }
+
+    .callout {
+      border-radius: 10px;
+      padding: 18px 22px;
+      margin: 24px 0;
+      font-size: .93rem;
+    }
+    .callout-info { background: #f0ebff; border-left: 4px solid #7c3aed; }
+    .callout-warning { background: #fff8e6; border-left: 4px solid #f59e0b; }
+    .callout-success { background: #edfff4; border-left: 4px solid #10b981; }
+    .callout strong { display: block; margin-bottom: 6px; }
+
+    .screenshot-suggestion {
+      background: #f8f6ff;
+      border: 2px dashed #c4b0f0;
+      border-radius: 10px;
+      padding: 16px 20px;
+      font-size: .88rem;
+      color: #5a3f9a;
+      margin: 20px 0;
+    }
+
+    .cta-block {
+      background: linear-gradient(135deg, #7c3aed 0%, #5b21b6 100%);
+      color: #fff;
+      border-radius: 16px;
+      padding: 40px 44px;
+      text-align: center;
+      margin: 48px 0;
+    }
+    .cta-block h3 { font-size: 1.5rem; font-weight: 800; margin-bottom: 14px; color: #fff; }
+    .cta-block p { font-size: 1rem; margin-bottom: 24px; opacity: .92; max-width: 540px; margin-left: auto; margin-right: auto; }
+    .cta-btn {
+      display: inline-block;
+      background: #fff;
+      color: #7c3aed;
+      font-weight: 800;
+      font-size: .95rem;
+      padding: 14px 32px;
+      border-radius: 50px;
+      text-decoration: none;
+      box-shadow: 0 4px 20px rgba(0,0,0,.2);
+    }
+    .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,.25); text-decoration: none; }
+    .cta-sub { font-size: .82rem; opacity: .75; margin-top: 14px; }
+
+    .steps { margin: 24px 0; }
+    .step { display: flex; gap: 18px; margin-bottom: 28px; align-items: flex-start; }
+    .step-num {
+      flex-shrink: 0;
+      width: 36px;
+      height: 36px;
+      background: #7c3aed;
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: .9rem;
+      margin-top: 2px;
+    }
+    .step-content h4 { margin-top: 0; margin-bottom: 6px; }
+    .step-content p { margin: 0; font-size: .95rem; }
+
+    .sparkline-legend {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin: 24px 0;
+    }
+    .sparkline-card {
+      background: #f8f6ff;
+      border: 1px solid #e8e0fa;
+      border-radius: 10px;
+      padding: 16px 18px;
+    }
+    .sparkline-card h4 { font-size: .92rem; color: #7c3aed; margin-bottom: 6px; }
+    .sparkline-card p { font-size: .85rem; margin: 0; color: #3d1a7a; }
+    .sparkline-demo {
+      height: 28px;
+      display: flex;
+      align-items: flex-end;
+      gap: 3px;
+      margin-bottom: 10px;
+    }
+    .bar { width: 8px; border-radius: 2px 2px 0 0; background: #7c3aed; }
+
+    .tracker-table-demo {
+      background: #1a0533;
+      border-radius: 10px;
+      padding: 20px;
+      margin: 24px 0;
+      overflow-x: auto;
+    }
+    .tracker-table-demo table { width: 100%; }
+    .tracker-table-demo thead th {
+      background: #2d1060;
+      color: #c4b0f0;
+      padding: 8px 12px;
+      font-size: .78rem;
+      letter-spacing: .06em;
+    }
+    .tracker-table-demo tbody td {
+      color: #e8e0fa;
+      padding: 8px 12px;
+      font-size: .85rem;
+      border-bottom: 1px solid #2d1060;
+    }
+    .tracker-table-demo tbody tr:nth-child(even) { background: #200a40; }
+    .pos-up { color: #34d399; font-weight: 700; }
+    .pos-neutral { color: #c4b0f0; }
+    .pos-down { color: #f87171; font-weight: 700; }
+
+    .metric-card-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+      margin: 24px 0;
+    }
+    .metric-card {
+      background: #f8f6ff;
+      border: 1px solid #e8e0fa;
+      border-radius: 10px;
+      padding: 18px 20px;
+      text-align: center;
+    }
+    .metric-card .metric-label { font-size: .78rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: #7c3aed; margin-bottom: 6px; }
+    .metric-card .metric-value { font-size: 1.4rem; font-weight: 800; color: #1a0533; }
+    .metric-card .metric-desc { font-size: .82rem; color: #6b5c8a; margin-top: 4px; }
+
+    .faq-list { margin: 24px 0; }
+    .faq-item { border: 1px solid #e8e0fa; border-radius: 10px; margin-bottom: 10px; overflow: hidden; }
+    .faq-question {
+      width: 100%;
+      background: #f8f6ff;
+      border: none;
+      padding: 16px 20px;
+      text-align: left;
+      font-weight: 700;
+      font-size: .95rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #1a0533;
+      font-family: inherit;
+    }
+    .faq-question:hover { background: #f0ebff; }
+    .faq-icon { font-size: 1.2rem; color: #7c3aed; font-weight: 400; transition: transform .2s; }
+    .faq-answer { display: none; padding: 16px 20px; font-size: .93rem; border-top: 1px solid #e8e0fa; line-height: 1.7; }
+    .faq-item.open .faq-answer { display: block; }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+
+    footer {
+      background: #1a0533;
+      color: #c4b0f0;
+      text-align: center;
+      padding: 32px 24px;
+      font-size: .85rem;
+    }
+    footer a { color: #c4b0f0; }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <div class="logo">Rank<span>Frame</span></div>
+    <nav class="nav-links">
+      <a href="https://rankframe.com">Home</a>
+      <a href="https://rankframe.com/blog">Blog</a>
+      <a href="https://www.framer.com/marketplace/plugins/rankframe/">Install Plugin</a>
+    </nav>
+  </div>
+</header>
+
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <a href="https://rankframe.com">Home</a>
+  <span>&rsaquo;</span>
+  <a href="https://rankframe.com/blog">Blog</a>
+  <span>&rsaquo;</span>
+  <span>How to Track Keyword Rankings for Your Framer Site</span>
+</nav>
+
+<header class="article-header">
+  <div class="article-category">Keyword Tracking</div>
+  <h1>How to Track Keyword Rankings for Your Framer Site</h1>
+  <div class="article-meta">
+    <span>By <strong>7 Seers</strong></span>
+    <span>Published <strong>May 3, 2026</strong></span>
+    <span>Updated <strong>May 3, 2026</strong></span>
+    <span>16 min read</span>
+  </div>
+</header>
+
+<nav class="toc" aria-label="Table of contents">
+  <h2>In This Guide</h2>
+  <ol>
+    <li><a href="#the-gap">The Tracking Gap in Framer's Toolset</a></li>
+    <li><a href="#why-tracking-matters">Why Keyword Tracking Matters for Framer Sites</a></li>
+    <li><a href="#tool-comparison">Framer Analytics vs. Google Search Console vs. Keyword Tracking</a></li>
+    <li><a href="#how-tracker-works">How RankFrame's Keyword Tracker Works</a></li>
+    <li><a href="#research-to-monitoring">Keyword Research Plus Tracking: The Full Loop</a></li>
+    <li><a href="#how-many-keywords">How Many Keywords Should You Track?</a></li>
+    <li><a href="#reading-sparklines">Reading Sparkline Patterns</a></li>
+    <li><a href="#faq">Frequently Asked Questions</a></li>
+  </ol>
+</nav>
+
+<main class="article-body">
+
+  <p>Framer Analytics tells you how many people visited your site. Google Search Console tells you what queries your site received impressions for. Neither tool is inside your Framer editor, and neither gives you a focused view of the specific keywords you are actively targeting — how they are ranking, whether positions are improving, and which pages need further optimization.</p>
+
+  <p>This is the keyword tracking gap for Framer site owners. You can see traffic. You can see aggregate search performance. But unless you have a curated list of target keywords with position history tracking, you are essentially guessing whether your SEO work is having any effect.</p>
+
+  <p>RankFrame's Keyword Tracker closes this gap by pulling data from Google Search Console and surfacing curated keyword position data, with sparkline history and change indicators, directly inside the Framer editor. This guide explains why keyword tracking matters, how the three tools in a typical Framer SEO stack differ from each other, how RankFrame's tracker works in practice, and how to build a research-to-monitoring workflow that tells you exactly whether your pages are climbing in search rankings.</p>
+
+  <h2 id="the-gap">The Tracking Gap in Framer's Toolset</h2>
+
+  <p>Framer's native toolset handles the technical side of SEO well. The platform auto-generates a sitemap, creates canonical tags, handles robots.txt, and provides clean, fast hosting infrastructure. What Framer does not provide is any way to monitor the outcome of SEO work in terms of search rankings.</p>
+
+  <p>Consider a realistic scenario: you are a Framer developer who has optimized a SaaS landing page for the keyword "project management tool for designers." You have added a strong title tag, written a focused meta description, added schema markup, fixed all image alt text, and ensured the page has a clean heading structure. You publish the page and wait.</p>
+
+  <p>Two weeks later, you open Framer Analytics. Visitors are up slightly. Pageviews are steady. You cannot tell whether the page is ranking for your target keyword, whether you are at position 34 or position 8, or whether the optimization moved the needle at all. You would need to open Google Search Console in a separate browser tab, filter by the page URL, sort by query, and find the keyword manually. Then you would need to remember what position you were at before making changes, which you likely did not record.</p>
+
+  <p>This is the workflow RankFrame's Keyword Tracker replaces. You add your target keywords once. The tracker shows you position, impressions, clicks, and position history every time you open the plugin. No browser tab switching, no manual GSC filtering, no trying to remember your baseline.</p>
+
+  <div class="callout callout-warning">
+    <strong>Ranking Without Tracking Is Guessing</strong>
+    SEO optimization without position tracking is like exercising without ever stepping on a scale. You are putting in the work but have no objective measure of whether it is working. Position tracking turns SEO from an act of faith into a measurable, iterative process.
+  </div>
+
+  <h2 id="why-tracking-matters">Why Keyword Tracking Matters for Framer Sites</h2>
+
+  <p>Keyword tracking serves several distinct functions in a Framer site's SEO workflow. Each function addresses a different information need that neither Framer Analytics nor a quick glance at Google Search Console can satisfy.</p>
+
+  <h3>Confirming That Optimizations Are Working</h3>
+  <p>When you update a page's title tag, expand thin content, add internal links, or fix schema markup, you want to know whether those changes moved the keyword ranking. Position tracking with a history log gives you this confirmation. If your target keyword was at position 22 before the update and is now at position 14 two weeks later, the tracking record makes that improvement visible and attributable.</p>
+
+  <h3>Identifying Ranking Opportunities</h3>
+  <p>Pages ranking in positions 8 to 20 are in the zone where additional optimization often yields significant traffic gains. A page at position 8 for a high-volume keyword might only need an improved title tag, a more compelling meta description, and three additional internal links to move to position 3. Without tracking, you do not know which pages are in this opportunity zone. With tracking, those pages surface clearly.</p>
+
+  <h3>Detecting Ranking Drops Before They Become Traffic Losses</h3>
+  <p>Keyword rankings can drop suddenly after a Google algorithm update, after a site redesign, or after an accidental change to a page's title or canonical tag. Position tracking with sparkline history makes these drops visible immediately, often before they have had time to cause significant traffic loss. Early detection means early remediation.</p>
+
+  <h3>Understanding What Drives Impressions vs. Clicks</h3>
+  <p>The combination of impressions, clicks, and position data in the keyword tracker tells you more than just where you rank. A keyword with high impressions but very low clicks at position 4 suggests a title tag and meta description that are not compelling enough to earn clicks at that position. This insight drives specific copywriting improvements that traffic data alone would never surface.</p>
+
+  <div class="metric-card-row">
+    <div class="metric-card">
+      <div class="metric-label">Position</div>
+      <div class="metric-value">7.2</div>
+      <div class="metric-desc">Average ranking for tracked keyword</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-label">Impressions</div>
+      <div class="metric-value">3,420</div>
+      <div class="metric-desc">Times your result appeared in search</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-label">Clicks</div>
+      <div class="metric-value">187</div>
+      <div class="metric-desc">Times users clicked your result</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-label">CTR</div>
+      <div class="metric-value">5.5%</div>
+      <div class="metric-desc">Click-through rate at this position</div>
+    </div>
+  </div>
+
+  <h2 id="tool-comparison">Framer Analytics vs. Google Search Console vs. Keyword Tracking</h2>
+
+  <p>These three tools show fundamentally different things. Understanding what each one is for prevents the confusion of looking for information in the wrong place.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Tool</th>
+          <th>What It Shows</th>
+          <th>What It Does NOT Show</th>
+          <th>Where You Access It</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Framer Analytics</strong></td>
+          <td>Visitors, pageviews, session duration, bounce rate, traffic sources (direct, referral, organic)</td>
+          <td>Search queries, keyword positions, impressions, click-through rates, ranking trends</td>
+          <td>Framer editor, Analytics tab</td>
+        </tr>
+        <tr>
+          <td><strong>Google Search Console</strong></td>
+          <td>All queries generating impressions, aggregate clicks, CTR, average position, URL performance, index status, coverage errors</td>
+          <td>Curated keyword list tracking, sparkline history, position change indicators, site health score</td>
+          <td>Separate browser tab at search.google.com/search-console</td>
+        </tr>
+        <tr>
+          <td><strong>RankFrame Keyword Tracker</strong></td>
+          <td>Curated keyword list with individual impressions, clicks, search position, sparkline position history, position change delta (e.g. 2.4 up 0.3)</td>
+          <td>Full visitor behavior data (pages per session, session duration, bounce by source)</td>
+          <td>Framer editor, RankFrame plugin</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>The three tools are complementary, not competitive. Framer Analytics tells you about user behavior on your site. Google Search Console tells you about search visibility in aggregate. RankFrame's Keyword Tracker tells you how your specific target keywords are performing, how positions are moving over time, and where to direct optimization effort.</p>
+
+  <p>The key advantage of the Keyword Tracker over using GSC directly is curation and convenience. GSC shows hundreds or thousands of queries. The Keyword Tracker shows the 10 to 30 keywords that you have deliberately chosen to target and monitor. That focus is the difference between data and actionable intelligence.</p>
+
+  <div class="callout callout-info">
+    <strong>GSC Connection Required</strong>
+    RankFrame's Keyword Tracker pulls data from Google Search Console via the GSC API. You need to connect your GSC account to RankFrame in the plugin settings. The site must also be verified in Google Search Console and have been receiving search impressions for the keywords you want to track.
+  </div>
+
+  <h2 id="how-tracker-works">How RankFrame's Keyword Tracker Works</h2>
+
+  <p>The Keyword Tracker is located in RankFrame's Submit Indexing section. Here is a precise description of every element you will encounter when using it.</p>
+
+  <div class="screenshot-suggestion">Screenshot: RankFrame Keyword Tracker panel showing a table with five keywords, each displaying impressions, clicks, search position, a sparkline, and a green position change indicator</div>
+
+  <h3>Adding Keywords</h3>
+  <p>You can add keywords to the tracker individually or as a comma-separated batch. For a new site or a new tracking campaign, the comma-separated batch input is the fastest way to populate your list. Type your keywords separated by commas ("framer seo plugin, framer alt text, framer keyword tracker"), click Add, and all three will appear in the table simultaneously.</p>
+
+  <p>For detailed instructions on adding keywords, see the <a href="/kb/11-keyword-tracker/62-adding-keywords-to-tracker.html">Adding Keywords to Tracker guide</a>.</p>
+
+  <h3>The Keyword Table</h3>
+  <p>Once keywords are added, they appear in a table with the following columns:</p>
+
+  <div class="tracker-table-demo">
+    <table>
+      <thead>
+        <tr>
+          <th>KEYWORD</th>
+          <th>IMPRESSIONS</th>
+          <th>CLICKS</th>
+          <th>SEARCH POSITION</th>
+          <th>POSITION HISTORY</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>framer seo plugin</td>
+          <td>4,210</td>
+          <td>312</td>
+          <td class="pos-up">2.4 &#8593; 0.3</td>
+          <td><span style="color:#34d399;font-size:.8rem;">trending up</span></td>
+        </tr>
+        <tr>
+          <td>framer alt text</td>
+          <td>1,840</td>
+          <td>98</td>
+          <td class="pos-up">5.1 &#8593; 1.2</td>
+          <td><span style="color:#34d399;font-size:.8rem;">improving</span></td>
+        </tr>
+        <tr>
+          <td>framer seo audit</td>
+          <td>2,660</td>
+          <td>204</td>
+          <td class="pos-neutral">3.8 &#8596; 0.0</td>
+          <td><span style="color:#c4b0f0;font-size:.8rem;">stable</span></td>
+        </tr>
+        <tr>
+          <td>framer keyword tracker</td>
+          <td>890</td>
+          <td>61</td>
+          <td class="pos-down">12.4 &#8595; 2.1</td>
+          <td><span style="color:#f87171;font-size:.8rem;">dropping</span></td>
+        </tr>
+        <tr>
+          <td>framer schema markup</td>
+          <td>1,120</td>
+          <td>87</td>
+          <td class="pos-up">4.7 &#8593; 0.8</td>
+          <td><span style="color:#34d399;font-size:.8rem;">improving</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>Each column serves a specific diagnostic purpose:</p>
+
+  <ul>
+    <li><strong>Keyword:</strong> The search query you are tracking.</li>
+    <li><strong>Impressions:</strong> The number of times your site appeared in search results for this keyword in the tracked period. High impressions with low clicks indicate a CTR problem (weak title or meta description at the current position).</li>
+    <li><strong>Clicks:</strong> The number of times users clicked your search result for this keyword. Low clicks relative to impressions at a high position (1-3) is a strong signal to rewrite your title and meta description.</li>
+    <li><strong>Search Position:</strong> Your average ranking position for this keyword. Remember: lower is better. Position 1 is the top of page one. Position 11 is the first result on page two.</li>
+    <li><strong>Position History:</strong> A sparkline chart showing how position has changed over the tracking period.</li>
+  </ul>
+
+  <h3>The Position Change Indicator</h3>
+  <p>Next to the search position number, RankFrame displays a change indicator. A green upward arrow with a delta value (for example, "2.4 up 0.3") means the keyword's average position improved by 0.3 positions since the previous data point. A downward arrow in red with a delta indicates a position decline. No arrow means no significant change.</p>
+
+  <p>Because search position is measured as a rank number, "up 0.3" means the position number decreased by 0.3 (for example, from 7.2 to 6.9). This is a ranking improvement. The green up arrow indicates better rankings, even though the position number is going down.</p>
+
+  <h3>Sparkline Interpretation</h3>
+  <p>The sparkline is a compact inline chart showing position history over time. Because position is a rank (lower number equals better ranking), a sparkline that trends visually downward on the chart represents improving rankings. For a full explanation of how to read sparkline patterns, see the <a href="/kb/11-keyword-tracker/63-reading-position-history.html">Reading Position History guide</a>.</p>
+
+  <h3>The 48-to-72 Hour Data Lag</h3>
+  <p>Google Search Console data has an inherent lag of 48 to 72 hours. This means the position data in RankFrame's tracker is always showing you where you ranked 2 to 3 days ago, not your live ranking at this moment. This lag is built into the GSC API and affects every tool that reads from it. It does not indicate a problem with RankFrame; it is the nature of how GSC data is refreshed.</p>
+
+  <p>For practical tracking purposes, this lag is irrelevant. Keyword rankings change gradually. Meaningful position movements happen over days and weeks, not hours. The 48-to-72 hour lag does not impair your ability to make informed optimization decisions based on the tracker data.</p>
+
+  <p>For a full reference on the keyword tracker's capabilities and setup, see the <a href="/kb/11-keyword-tracker/61-keyword-tracker-overview.html">Keyword Tracker Overview</a>.</p>
+
+  <div class="cta-block">
+    <h3>Ready to rank your Framer site?</h3>
+    <p>RankFrame is the only native SEO plugin built for Framer. Schema, indexing, image SEO, site audits, keyword tracking — all inside the Framer editor. No switching tools. No code required.</p>
+    <a href="https://www.framer.com/marketplace/plugins/rankframe/" class="cta-btn">Install RankFrame Free — 14-Day Trial</a>
+    <p class="cta-sub">Credit card required. Cancel anytime. Full feature access from day one.</p>
+  </div>
+
+  <h2 id="research-to-monitoring">Keyword Research Plus Tracking: The Full Loop</h2>
+
+  <p>The most effective keyword SEO workflow is a closed loop: research a keyword, optimize a page for it, add it to the tracker, and monitor whether the page is climbing for that keyword. RankFrame supports the full loop from a single plugin.</p>
+
+  <h3>Step 1: Research Keywords with the Keywords Tab</h3>
+  <p>RankFrame's Global Settings Keywords tab is a keyword research tool that pulls Search Volume, Keyword Difficulty (KD), Competition level, and Cost Per Click (CPC) for any keyword you enter. This data gives you the information you need to make informed targeting decisions before you invest time in page optimization.</p>
+
+  <p>When evaluating keywords for a Framer site, four metrics matter most:</p>
+
+  <ul>
+    <li><strong>Search Volume:</strong> How many monthly searches does this keyword receive? A keyword with zero volume is not worth targeting regardless of how well you rank for it.</li>
+    <li><strong>Keyword Difficulty:</strong> How competitive is this keyword? A low-volume, low-difficulty keyword on a new site is often more achievable than a high-volume, high-difficulty keyword that established sites dominate.</li>
+    <li><strong>Competition:</strong> Advertiser competition in the keyword's paid search market. High competition often correlates with commercial intent, which can be a positive signal if you are targeting buyers.</li>
+    <li><strong>CPC:</strong> Cost Per Click in paid search. High CPC keywords represent high commercial value. Ranking organically for a keyword with a $15 CPC is equivalent to receiving free paid traffic at that rate per click.</li>
+  </ul>
+
+  <p>For detailed guidance on reading these metrics, see the <a href="/kb/09-keyword-research/53-keyword-metrics-explained.html">Keyword Metrics Explained guide</a>. For an overview of the keyword research panel, see the <a href="/kb/09-keyword-research/51-keyword-research-overview.html">Keyword Research Overview</a>.</p>
+
+  <div class="screenshot-suggestion">Screenshot: RankFrame Global Settings Keywords tab showing a keyword research table with columns for Keyword, Search Volume, KD, Competition, and CPC</div>
+
+  <h3>Step 2: Assign Keywords to Pages</h3>
+  <p>In the Keywords tab, you can assign researched keywords to specific pages in your Framer project. This creates an explicit target assignment: "this page is being optimized for this keyword." The assignment also enables the Focus Keyword Script toggle, which activates on-page focus keyword analysis for the assigned page.</p>
+
+  <h3>Step 3: Optimize the Page</h3>
+  <p>With a keyword assigned, run the per-page SEO audit in RankFrame to check whether the page is currently optimized for the target keyword. Key optimization points include the title tag (target keyword should appear near the start), meta description (target keyword should appear naturally), H1 heading (target keyword or close variant), page body text (keyword should appear in the first paragraph and several times throughout), image alt text (at least one image should reference the keyword context), and internal links from related pages using keyword-rich anchor text.</p>
+
+  <p>For specific guidance on title and meta description optimization, see the <a href="/kb/08-pages/47-page-title-description.html">Page Title and Description guide</a>.</p>
+
+  <h3>Step 4: Add the Keyword to the Tracker</h3>
+  <p>Once the page is optimized and published, add the target keyword to the Keyword Tracker. This establishes your tracking baseline. Note the current position in your own records so you have a clear before-and-after reference point when you review progress in three to four weeks.</p>
+
+  <h3>Step 5: Monitor Position Improvement Week Over Week</h3>
+  <p>Check the Keyword Tracker each week. Look for keywords where the sparkline is trending in the improving direction and the position change indicator shows a green upward arrow. These are your wins. Look also for keywords where position is flat or declining. Flat keywords at positions 8 to 20 often benefit from content expansion, more internal links, or improved title and meta description writing. Declining keywords need immediate investigation: check whether the page was recently changed, whether the canonical tag is still correct, and whether a competitor has recently published stronger content.</p>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <h4>Research keywords using the Keywords tab</h4>
+        <p>Check Search Volume, KD, Competition, and CPC for candidate keywords. Choose terms with achievable difficulty and meaningful volume.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <h4>Assign keywords to target pages</h4>
+        <p>Use the assign-to-page function to create a clear targeting plan: one primary keyword per page, with two to three secondary keywords.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <h4>Optimize the page for the target keyword</h4>
+        <p>Run the per-page SEO audit. Update title, meta description, H1, body text, alt text, and internal links to reflect the target keyword naturally.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-content">
+        <h4>Add the keyword to the Keyword Tracker</h4>
+        <p>Record your starting position. Allow 48 to 72 hours for GSC data to populate. Check back after one week.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">5</div>
+      <div class="step-content">
+        <h4>Monitor weekly and iterate</h4>
+        <p>Review sparklines and position changes every week. Investigate declining keywords. Identify flat keywords in positions 8 to 20 for further optimization pushes.</p>
+      </div>
+    </div>
+  </div>
+
+  <h2 id="how-many-keywords">How Many Keywords Should You Track?</h2>
+
+  <p>The answer depends on your site's size and the complexity of your keyword strategy, but a focused list almost always outperforms a sprawling one.</p>
+
+  <h3>For a Single-Product SaaS Site (5-10 pages)</h3>
+  <p>Track 10 to 15 keywords. One primary keyword per major page plus two secondary keywords per page is a reasonable starting list. For a site with 5 core pages (home, product, pricing, blog, about), that is 15 keywords maximum. Each keyword in the list has a clear owner page and a clear optimization rationale.</p>
+
+  <h3>For a Multi-Service Agency Site (10-20 pages)</h3>
+  <p>Track 20 to 30 keywords. One primary keyword per service page, one per location page if applicable, and one per top-performing blog post. Keep the total under 30 to maintain focus and make the tracker actionable rather than overwhelming.</p>
+
+  <h3>For a Framer Blog or Content Site (50+ pages)</h3>
+  <p>Track 30 to 50 keywords for your most important content pages. Focus on pages that are in positions 8 to 20 (high opportunity) and your top 10 currently ranking pages (protect and improve). Do not attempt to track every page's keyword; instead, review your top pages in GSC quarterly and add new keywords to the tracker when you publish new optimized content.</p>
+
+  <div class="callout callout-success">
+    <strong>Quality Over Quantity</strong>
+    Twenty well-chosen keywords that you review weekly and act on will drive more SEO progress than 200 keywords that you never have time to investigate. The value of keyword tracking comes from the action it enables, not from the number of keywords in the list.
+  </div>
+
+  <h3>Keywords to Always Track</h3>
+  <ul>
+    <li>Your primary brand keyword (your business or product name)</li>
+    <li>Your homepage's target keyword (your primary value proposition query)</li>
+    <li>One primary keyword per service or product page</li>
+    <li>Keywords for your top three organic traffic blog posts</li>
+    <li>Keywords where you are in positions 8 to 20 with high search volume</li>
+  </ul>
+
+  <h3>Keywords to Consider Tracking Later</h3>
+  <ul>
+    <li>Long-tail variations of primary keywords after you have established rankings for the head terms</li>
+    <li>Competitor brand keywords to monitor comparative visibility</li>
+    <li>New keyword targets as you publish new content or launch new pages</li>
+  </ul>
+
+  <h2 id="reading-sparklines">Reading Sparkline Patterns</h2>
+
+  <p>Sparklines are small inline charts. Without knowing how to interpret them in the context of position tracking, they can be misleading. Here is how to read the three common patterns you will encounter.</p>
+
+  <div class="sparkline-legend">
+    <div class="sparkline-card">
+      <div class="sparkline-demo">
+        <div class="bar" style="height:22px;"></div>
+        <div class="bar" style="height:19px;"></div>
+        <div class="bar" style="height:16px;"></div>
+        <div class="bar" style="height:13px;"></div>
+        <div class="bar" style="height:10px;"></div>
+        <div class="bar" style="height:7px;background:#10b981;"></div>
+      </div>
+      <h4>Downward Trend (Improving)</h4>
+      <p>A sparkline trending visually downward means position numbers are decreasing. In keyword ranking, lower numbers mean better positions. This is a positive trend: your keyword is climbing toward page one.</p>
+    </div>
+    <div class="sparkline-card">
+      <div class="sparkline-demo">
+        <div class="bar" style="height:12px;"></div>
+        <div class="bar" style="height:13px;"></div>
+        <div class="bar" style="height:11px;"></div>
+        <div class="bar" style="height:12px;"></div>
+        <div class="bar" style="height:12px;"></div>
+        <div class="bar" style="height:13px;background:#a78bfa;"></div>
+      </div>
+      <h4>Flat Line (Stable)</h4>
+      <p>A flat sparkline means position is not changing significantly. This can be positive (you are holding a good position) or a signal for action (you are stuck in a suboptimal position and need further optimization).</p>
+    </div>
+    <div class="sparkline-card">
+      <div class="sparkline-demo">
+        <div class="bar" style="height:7px;"></div>
+        <div class="bar" style="height:10px;"></div>
+        <div class="bar" style="height:13px;"></div>
+        <div class="bar" style="height:17px;"></div>
+        <div class="bar" style="height:21px;"></div>
+        <div class="bar" style="height:24px;background:#ef4444;"></div>
+      </div>
+      <h4>Upward Trend (Declining)</h4>
+      <p>A sparkline trending visually upward means position numbers are increasing, which means rankings are getting worse. A keyword dropping from position 4 to position 12 requires immediate investigation.</p>
+    </div>
+    <div class="sparkline-card">
+      <div class="sparkline-demo">
+        <div class="bar" style="height:12px;"></div>
+        <div class="bar" style="height:11px;"></div>
+        <div class="bar" style="height:6px;background:#f59e0b;"></div>
+        <div class="bar" style="height:11px;"></div>
+        <div class="bar" style="height:12px;"></div>
+        <div class="bar" style="height:13px;"></div>
+      </div>
+      <h4>Spike Down Then Recovery</h4>
+      <p>A sharp dip in the sparkline (position number suddenly much lower = much better ranking) that then returns toward normal may indicate a featured snippet win or a temporary SERP change. Monitor to see if the improvement holds.</p>
+    </div>
+    <div class="sparkline-card">
+      <div class="sparkline-demo">
+        <div class="bar" style="height:12px;"></div>
+        <div class="bar" style="height:11px;"></div>
+        <div class="bar" style="height:13px;background:#ef4444;"></div>
+        <div class="bar" style="height:24px;background:#ef4444;"></div>
+        <div class="bar" style="height:20px;background:#f59e0b;"></div>
+        <div class="bar" style="height:16px;"></div>
+      </div>
+      <h4>Sharp Drop Then Stabilizing</h4>
+      <p>A sudden position number spike (ranking drops badly) that then stabilizes at a new worse level often indicates a Google algorithm update, a competitor publishing stronger content, or an on-page change that hurt the page's relevance signals.</p>
+    </div>
+    <div class="sparkline-card">
+      <div class="sparkline-demo">
+        <div class="bar" style="height:18px;"></div>
+        <div class="bar" style="height:16px;"></div>
+        <div class="bar" style="height:14px;"></div>
+        <div class="bar" style="height:11px;"></div>
+        <div class="bar" style="height:8px;background:#10b981;"></div>
+        <div class="bar" style="height:6px;background:#10b981;"></div>
+      </div>
+      <h4>Steady Improvement</h4>
+      <p>A gradual, consistent downward trend in the sparkline is the ideal pattern for a newly optimized page. It shows your page is systematically moving up in position as Google gains more confidence in its relevance. This is the pattern SEO work aims to produce.</p>
+    </div>
+  </div>
+
+  <h3>What to Do When You Spot a Problem Pattern</h3>
+  <p>A keyword showing an upward (worsening) sparkline should trigger an immediate investigation workflow:</p>
+
+  <ol>
+    <li>Check whether the page's title tag, meta description, or H1 was recently changed. Framer site updates can accidentally modify these if a designer edits a shared text component.</li>
+    <li>Check the page's canonical tag in the RankFrame per-page audit. A canonical pointing to the wrong URL will cause the page to lose all its ranking signals.</li>
+    <li>Check whether the page is still being indexed. Look for accidental noindex tags in the Advanced SEO audit section.</li>
+    <li>Review the keyword in Google Search Console directly to see the full position history and whether the drop correlates with a known algorithm update date.</li>
+    <li>Review the top-ranking competitors for the keyword. If a competitor recently published a more comprehensive page on the topic, you may need to expand your content to compete.</li>
+  </ol>
+
+  <div class="callout callout-info">
+    <strong>Patience Is Part of the Process</strong>
+    Keyword position improvements happen on a timeline of weeks to months, not hours. After optimizing a page, add the target keyword to the tracker and give it at least three to four weeks before drawing conclusions. Google needs time to re-crawl the page, evaluate the changes, and update its ranking assessment. Checking for results daily leads to anxiety without insight. Weekly reviews are the right cadence.
+  </div>
+
+  <h2 id="faq">Frequently Asked Questions</h2>
+
+  <div class="faq-list">
+    <div class="faq-item">
+      <button class="faq-question" aria-expanded="false">Does Framer have built-in keyword tracking? <span class="faq-icon">+</span></button>
+      <div class="faq-answer">No. Framer Analytics shows visitor counts, pageviews, and bounce rate but has no keyword tracking or search position monitoring. For keyword and ranking data you need to connect Google Search Console separately, or use RankFrame's Keyword Tracker, which pulls GSC data and displays curated keyword position history directly inside the Framer editor.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" aria-expanded="false">How does RankFrame's Keyword Tracker work? <span class="faq-icon">+</span></button>
+      <div class="faq-answer">You add keywords to the tracker individually or as a comma-separated batch. RankFrame pulls data from Google Search Console and displays each keyword in a table showing impressions, clicks, current search position, and a sparkline chart of position history. A green arrow with a delta value indicates position improvement since the last data point.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" aria-expanded="false">How long does it take for keyword tracking data to appear? <span class="faq-icon">+</span></button>
+      <div class="faq-answer">Google Search Console data has an inherent lag of 48 to 72 hours. After adding a keyword to the tracker, allow two to three days before expecting position data to populate. This lag is on Google's side and affects all tools that read from the GSC API.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" aria-expanded="false">How many keywords should I track in RankFrame? <span class="faq-icon">+</span></button>
+      <div class="faq-answer">Focus on 10 to 30 keywords per site. Track your primary target keyword for each major page, plus two or three secondary keywords per page. Tracking hundreds of keywords dilutes attention. A focused list of 20 well-chosen keywords gives you clear signal about whether your SEO efforts are working.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" aria-expanded="false">What is the difference between Framer Analytics and the RankFrame Keyword Tracker? <span class="faq-icon">+</span></button>
+      <div class="faq-answer">Framer Analytics shows traffic metrics: visitors, pageviews, session duration, and bounce rate. It tells you how many people came to your site. The RankFrame Keyword Tracker shows search performance metrics: position for specific keywords, impressions, clicks, and position history over time. Both are necessary for a complete picture of site performance.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" aria-expanded="false">What does the sparkline in the Keyword Tracker show? <span class="faq-icon">+</span></button>
+      <div class="faq-answer">The sparkline is a small inline chart showing position history over the recent tracking period. Because search position is measured as a rank (lower number equals better position), a sparkline trending visually downward represents improving rankings. An upward trend means the keyword is dropping in position. A flat sparkline means position is stable.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" aria-expanded="false">Can I track keywords for specific pages in RankFrame? <span class="faq-icon">+</span></button>
+      <div class="faq-answer">Yes. In RankFrame's keyword research section (Global Settings Keywords tab), you can assign specific keywords to individual pages. This creates a direct link between the keyword you are targeting and the page optimized for it, allowing you to monitor whether that page is ranking for its assigned keyword.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" aria-expanded="false">Why use RankFrame for keyword tracking if I already have Google Search Console? <span class="faq-icon">+</span></button>
+      <div class="faq-answer">Google Search Console shows all queries your site has received impressions for, which can be hundreds or thousands of terms. The RankFrame Keyword Tracker lets you curate the specific 10 to 30 keywords that matter most to your business, see them in one clean view inside Framer, and track position changes week over week without logging into a separate platform or filtering through GSC data.</div>
+    </div>
+  </div>
+
+  <div class="callout callout-info">
+    <strong>Schema Validator Note</strong>
+    Always validate your schema before publishing using <a href="https://search.google.com/test/rich-results">Google's Rich Results Test</a> or the <a href="https://validator.schema.org">Schema.org Validator</a>. RankFrame currently supports Organization, Person, Article, BlogPosting, TechArticle, NewsArticle, Service, Restaurant, and Book schemas — with HowTo, FAQPage, Product, LocalBusiness, and BreadcrumbList planned for upcoming releases.
+  </div>
+
+  <div class="cta-block">
+    <h3>Ready to rank your Framer site?</h3>
+    <p>RankFrame is the only native SEO plugin built for Framer. Schema, indexing, image SEO, site audits, keyword tracking — all inside the Framer editor. No switching tools. No code required.</p>
+    <a href="https://www.framer.com/marketplace/plugins/rankframe/" class="cta-btn">Install RankFrame Free — 14-Day Trial</a>
+    <p class="cta-sub">Credit card required. Cancel anytime. Full feature access from day one.</p>
+  </div>
+
+  <div id="seo-details" style="margin:60px 0 0;padding:28px 32px;background:#f8f6ff;border:1px solid #e8e0fa;border-radius:14px;">
+    <h3 style="font-size:1rem;font-weight:700;color:#1a0533;margin:0 0 20px;">SEO Details</h3>
+    <div id="seo-fields"></div>
+  </div>
+  <script>(function(){var f=[{label:'Title',value:document.querySelector('title')?document.querySelector('title').textContent:''},{label:'Description',value:(document.querySelector('meta[name="description"]')||{}).content||''},{label:'Keywords',value:(document.querySelector('meta[name="keywords"]')||{}).content||''},{label:'Canonical',value:(document.querySelector('link[rel="canonical"]')||{}).href||''}];var s=Array.from(document.querySelectorAll('script[type="application/ld+json"]')).map(function(x,i){return{label:'Schema '+(i+1),value:x.textContent.trim()};});var all=f.concat(s);var h='';all.forEach(function(x){h+='<div style="margin-bottom:14px"><div style="font-size:.78rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#7c3aed;margin-bottom:4px">'+x.label+'</div><div style="display:flex;align-items:flex-start;gap:8px"><code style="flex:1;background:#fff;border:1px solid #e0d8f0;border-radius:6px;padding:8px 10px;font-size:.82rem;color:#1a0533;white-space:pre-wrap;word-break:break-all">'+x.value.replace(/</g,'&lt;').replace(/>/g,'&gt;')+'</code><button onclick="navigator.clipboard.writeText(this.dataset.v)" data-v="'+x.value.replace(/"/g,'&quot;')+'" style="flex-shrink:0;padding:6px 12px;background:#7c3aed;color:#fff;border:none;border-radius:6px;font-size:.78rem;font-weight:700;cursor:pointer">Copy</button></div></div>';});document.getElementById('seo-fields').innerHTML=h;})();</script>
+
+</main>
+
+<footer>
+  <p>&copy; 2026 7 Seers &mdash; <a href="https://rankframe.com">rankframe.com</a> &mdash; <a href="mailto:hello@7seersmedia.com">hello@7seersmedia.com</a> &mdash; Lucknow, India</p>
+  <p style="margin-top:8px"><a href="https://www.framer.com/marketplace/plugins/rankframe/">Install RankFrame on Framer Marketplace</a></p>
+</footer>
+
+<script>
+  document.querySelectorAll('.faq-question').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var item = this.closest('.faq-item');
+      var isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(function(el) { el.classList.remove('open'); });
+      if (!isOpen) item.classList.add('open');
+      this.setAttribute('aria-expanded', !isOpen);
+    });
+  });
+</script>
+
+</body>
+</html>
