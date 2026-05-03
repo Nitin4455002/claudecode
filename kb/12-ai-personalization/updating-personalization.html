@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Updating Personalization in RankFrame</title>
+<meta name="description" content="Learn how to update your RankFrame Personalization data, what changes propagate to AI features automatically, and when you need to regenerate existing AI-written meta tags or schemas.">
+<meta name="keywords" content="update personalization RankFrame, refresh AI Framer, rebrand SEO Framer, regenerate meta title Framer">
+<link rel="canonical" href="https://rankframe.com/help/updating-personalization">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Updating Personalization in RankFrame",
+  "description": "Learn how to update your RankFrame Personalization data, what changes propagate to AI features automatically, and when you need to regenerate existing AI-written meta tags or schemas.",
+  "author": { "@type": "Organization", "name": "7 Seers", "email": "hello@7seersmedia.com" },
+  "publisher": { "@type": "Organization", "name": "7 Seers" },
+  "datePublished": "2026-05-03",
+  "dateModified": "2026-05-03",
+  "mainEntityOfPage": "https://rankframe.com/help/updating-personalization"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Will updating Personalization affect my Google rankings?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Updating Personalization itself does not affect rankings. Regenerating and publishing updated meta tags can affect how your pages appear in search results, which can change CTR. Keep core SEO best practices (focus keywords, length limits) consistent across regenerations." }
+    },
+    {
+      "@type": "Question",
+      "name": "Is there an undo for Personalization changes?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Personalization does not currently have version history. Save thoughtfully. If you accidentally clear a field, retype the previous value before clicking Save Settings." }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I A/B test two Personalization variants?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Not within a single account. The current model is one Personalization per account. Use a separate trial account for experimentation if you need to compare two distinct positioning approaches." }
+    },
+    {
+      "@type": "Question",
+      "name": "What happens to credits when I regenerate?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Each regeneration uses 1 credit, the same as the original generation. Refreshing 50 page meta titles costs 50 credits. Plan refresh batches against your credit balance." }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need to recrawl my site after updating Personalization?",
+      "acceptedAnswer": { "@type": "Answer", "text": "No. Personalization is independent of the site crawl. The crawl reads page content. Personalization is metadata you supply directly. Update one without affecting the other." }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Help Center", "item": "https://rankframe.com/help" },
+    { "@type": "ListItem", "position": 2, "name": "AI Personalization", "item": "https://rankframe.com/help/ai-personalization" },
+    { "@type": "ListItem", "position": 3, "name": "Updating Personalization", "item": "https://rankframe.com/help/updating-personalization" }
+  ]
+}
+</script>
+<style>
+* { box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; margin: 0; padding: 0; background: #fff; color: #2a1a4a; line-height: 1.65; }
+.container { max-width: 820px; margin: 0 auto; padding: 48px 24px 80px; }
+.breadcrumb { font-size: 0.85rem; color: #7c6da8; margin-bottom: 24px; }
+.breadcrumb a { color: #7c3aed; text-decoration: none; }
+.breadcrumb span { margin: 0 8px; color: #c8c0dc; }
+h1 { font-size: 2rem; font-weight: 800; color: #1a0533; margin: 0 0 16px; line-height: 1.25; }
+h2 { font-size: 1.35rem; font-weight: 700; color: #1a0533; margin: 44px 0 14px; }
+h3 { font-size: 1.05rem; font-weight: 700; color: #1a0533; margin: 28px 0 10px; }
+.intro { font-size: 1.02rem; color: #4b4b6b; margin-bottom: 12px; }
+p { font-size: 0.95rem; color: #3a2a5a; }
+.field-block { margin: 36px 0 28px; }
+.field-block-header { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+.field-num { display: inline-flex; align-items: center; justify-content: center; width: 38px; height: 38px; background: linear-gradient(135deg, #7c3aed, #a78bfa); color: #fff; font-weight: 700; font-size: 14px; border-radius: 8px; flex-shrink: 0; box-shadow: 0 2px 6px rgba(124,58,237,0.25); }
+.field-block-title { font-size: 1rem; font-weight: 700; color: #1a0533; }
+.field-block-desc { font-size: 0.93rem; color: #4b4b6b; line-height: 1.7; }
+.screenshot-slot { background: #fafafa; border: 1px dashed #e0d8f0; border-radius: 10px; padding: 36px 20px; text-align: center; color: #b8b2c8; font-size: 0.85rem; margin-top: 6px; margin-bottom: 8px; }
+.screenshot-slot::before { content: "Screenshot"; display: block; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #c8c0dc; }
+.step-list { list-style: none; padding: 0; margin: 28px 0; }
+.step-list li { display: flex; gap: 16px; margin-bottom: 24px; }
+.step-num { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; min-width: 32px; background: linear-gradient(135deg, #7c3aed, #a78bfa); color: #fff; font-weight: 700; font-size: 0.85rem; border-radius: 50%; }
+.step-body { flex: 1; }
+.step-body strong { display: block; font-size: 0.97rem; color: #1a0533; margin-bottom: 4px; }
+.step-body p { font-size: 0.92rem; color: #4b4b6b; line-height: 1.7; margin: 0; }
+.callout { background: linear-gradient(135deg, #f8f6ff, #fdfaff); border-left: 4px solid #7c3aed; padding: 20px 24px; border-radius: 8px; margin: 32px 0; }
+.callout strong { color: #1a0533; display: block; margin-bottom: 6px; font-size: 0.95rem; }
+.callout p { margin: 0; color: #3a2a5a; font-size: 0.92rem; }
+.faq-item { border: 1px solid #e8e0fa; border-radius: 10px; padding: 18px 20px; margin-bottom: 12px; background: #fff; }
+.faq-q { font-weight: 700; color: #1a0533; font-size: 0.95rem; margin-bottom: 8px; }
+.faq-a { color: #4b4b6b; font-size: 0.92rem; line-height: 1.7; }
+.contact { font-size: 0.85rem; color: #7c6da8; margin-top: 40px; padding-top: 20px; border-top: 1px solid #f0eaf8; }
+.contact a { color: #7c3aed; text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="breadcrumb">
+    <a href="/help">Help Center</a><span>&rsaquo;</span><a href="/help/ai-personalization">AI Personalization</a><span>&rsaquo;</span>Updating Personalization
+  </div>
+
+  <h1>Updating Personalization</h1>
+  <p class="intro">Brands evolve. You may reposition, target new audiences, or expand into new industries. When that happens, your RankFrame Personalization data should update too. This article covers how to edit Personalization, what changes apply automatically to future AI generations, and what you need to manually regenerate to keep your existing AI outputs aligned with the new positioning.</p>
+
+  <div class="screenshot-slot">Account Settings, Personalization tab open for editing</div>
+
+  <h2>What changes when you update Personalization</h2>
+
+  <div class="field-block">
+    <div class="field-block-header">
+      <div class="field-num">1</div>
+      <div class="field-block-title">Where to Edit Personalization</div>
+    </div>
+    <div class="field-block-desc">Click your avatar block at the bottom of the left sidebar to open Account Settings. Click the Personalization tab. Edit any field in either the Brand Identity or Strategy section. Click the Save Settings button at the bottom to persist the change.</div>
+    <div class="screenshot-slot">Avatar block, Account Settings, Personalization tab</div>
+  </div>
+
+  <div class="field-block">
+    <div class="field-block-header">
+      <div class="field-num">2</div>
+      <div class="field-block-title">What Updates Automatically</div>
+    </div>
+    <div class="field-block-desc">All future AI generations from the moment you click Save use the new Personalization data. This includes new "Write with AI" clicks on titles and descriptions, new alt text generations, and new schema auto-generations. There is no waiting period: the next generation reflects the update.</div>
+    <div class="screenshot-slot">Save Settings button at the bottom of the Personalization tab</div>
+  </div>
+
+  <div class="field-block">
+    <div class="field-block-header">
+      <div class="field-num">3</div>
+      <div class="field-block-title">What Does Not Update Automatically</div>
+    </div>
+    <div class="field-block-desc">Anything you have already generated and saved stays saved. Old meta titles, old meta descriptions, old alt text, old schema fields remain as they were. RankFrame does not retroactively rewrite your saved SEO content. This is intentional: you may have edited the AI output and you do not want it overwritten.</div>
+    <div class="screenshot-slot">Existing saved meta tags untouched after a Personalization update</div>
+  </div>
+
+  <div class="field-block">
+    <div class="field-block-header">
+      <div class="field-num">4</div>
+      <div class="field-block-title">How to Refresh Existing AI Outputs</div>
+    </div>
+    <div class="field-block-desc">To bring saved AI content in line with new Personalization, you regenerate it manually. For meta titles and descriptions: open Global Settings or each page and click the Write with AI / Generate button. For alt text: open Image SEO and click the wand on individual images, or use Select All + Generate Alt Text for bulk. For schemas: re-run Auto-Generate on the pages whose schemas you want refreshed.</div>
+    <div class="screenshot-slot">Regenerate flow across meta tags, alt text, and schemas</div>
+  </div>
+
+  <div class="field-block">
+    <div class="field-block-header">
+      <div class="field-num">5</div>
+      <div class="field-block-title">When a Refresh Is Worth the Credits</div>
+    </div>
+    <div class="field-block-desc">Refreshing all AI outputs costs credits (1 per generation). Worth doing when: you change Brand Name, you do a significant rebrand, you change Audience to a different ICP, or you change your primary Main Goal (e.g. from Brand Awareness to Generate Leads). Not worth doing for small wording tweaks in Brand About or adding one new competitor URL.</div>
+    <div class="screenshot-slot">Credit balance and bulk regenerate cost preview</div>
+  </div>
+
+  <div class="field-block">
+    <div class="field-block-header">
+      <div class="field-num">6</div>
+      <div class="field-block-title">Multi-Site Considerations</div>
+    </div>
+    <div class="field-block-desc">Personalization is account-level. If you connect multiple Framer sites under the same RankFrame account, all sites share the same Personalization. Updating Personalization affects every site's future AI output. If you manage truly separate brands, use separate RankFrame accounts.</div>
+    <div class="screenshot-slot">Multiple connected sites sharing one Personalization profile</div>
+  </div>
+
+  <h2>Personalization update workflow</h2>
+  <ol class="step-list">
+    <li>
+      <span class="step-num">1</span>
+      <div class="step-body">
+        <strong>Open Account Settings and click the Personalization tab.</strong>
+        <p>Click your avatar at the bottom of the left sidebar, then switch to the Personalization tab.</p>
+      </div>
+    </li>
+    <li>
+      <span class="step-num">2</span>
+      <div class="step-body">
+        <strong>Edit the fields that have changed.</strong>
+        <p>Update Brand Name, Brand About, Goals, Industry, Audience, and Competitors as needed across the Brand Identity and Strategy sections.</p>
+      </div>
+    </li>
+    <li>
+      <span class="step-num">3</span>
+      <div class="step-body">
+        <strong>Click Save Settings at the bottom.</strong>
+        <p>The full-width purple Save Settings button persists every edit in the Personalization tab in one action.</p>
+      </div>
+    </li>
+    <li>
+      <span class="step-num">4</span>
+      <div class="step-body">
+        <strong>Decide which AI outputs to refresh.</strong>
+        <p>Critical pages first: homepage, top-traffic pages, conversion pages. Lower-priority pages can refresh later or not at all.</p>
+      </div>
+    </li>
+    <li>
+      <span class="step-num">5</span>
+      <div class="step-body">
+        <strong>Regenerate per page and asset.</strong>
+        <p>Click Write with AI / Generate to refresh meta title and description on each page. Run Auto-Generate again for schemas if needed. Run Image SEO bulk alt text if image branding is affected.</p>
+      </div>
+    </li>
+    <li>
+      <span class="step-num">6</span>
+      <div class="step-body">
+        <strong>Verify and tighten.</strong>
+        <p>Confirm the new outputs read the way you expect. Edit any AI output manually if you want to tighten the wording.</p>
+      </div>
+    </li>
+  </ol>
+
+  <div class="callout">
+    <strong>Tip</strong>
+    <p>Batch your regeneration work. Refreshing 30 pages in one sitting is faster than spreading it across weeks, and it keeps your live SEO consistent with the new positioning.</p>
+  </div>
+
+  <h2>Frequently asked questions</h2>
+
+  <div class="faq-item">
+    <div class="faq-q">Will updating Personalization affect my Google rankings?</div>
+    <div class="faq-a">Updating Personalization itself does not affect rankings. Regenerating and publishing updated meta tags can affect how your pages appear in search results, which can change CTR. Keep core SEO best practices (focus keywords, length limits) consistent across regenerations.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">Is there an undo for Personalization changes?</div>
+    <div class="faq-a">Personalization does not currently have version history. Save thoughtfully. If you accidentally clear a field, retype the previous value before clicking Save Settings.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">Can I A/B test two Personalization variants?</div>
+    <div class="faq-a">Not within a single account. The current model is one Personalization per account. Use a separate trial account for experimentation if you need to compare two distinct positioning approaches.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">What happens to credits when I regenerate?</div>
+    <div class="faq-a">Each regeneration uses 1 credit, the same as the original generation. Refreshing 50 page meta titles costs 50 credits. Plan refresh batches against your credit balance.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">Do I need to recrawl my site after updating Personalization?</div>
+    <div class="faq-a">No. Personalization is independent of the site crawl. The crawl reads page content. Personalization is metadata you supply directly. Update one without affecting the other.</div>
+  </div>
+
+  <p class="contact">Questions about a rebrand or large refresh? Email <a href="mailto:hello@7seersmedia.com">hello@7seersmedia.com</a>. RankFrame is built by 7 Seers.</p>
+
+<div id="seo-details" style="margin:60px 0 0;padding:28px 32px;background:#f8f6ff;border:1px solid #e8e0fa;border-radius:14px;">
+  <h3 style="font-size:1rem;font-weight:700;color:#1a0533;margin:0 0 20px;">SEO Details</h3>
+  <div id="seo-fields"></div>
+</div>
+<script>
+(function(){
+  var fields=[
+    {label:'Title',value:document.querySelector('title')?document.querySelector('title').textContent:''},
+    {label:'Description',value:(document.querySelector('meta[name="description"]')||{}).content||''},
+    {label:'Keywords',value:(document.querySelector('meta[name="keywords"]')||{}).content||''},
+    {label:'Canonical',value:(document.querySelector('link[rel="canonical"]')||{}).href||''}
+  ];
+  var schemas=Array.from(document.querySelectorAll('script[type="application/ld+json"]')).map(function(s,i){return {label:'Schema '+(i+1),value:s.textContent.trim()};});
+  var all=fields.concat(schemas);
+  var html='';
+  all.forEach(function(f){
+    html+='<div style="margin-bottom:14px;"><div style="font-size:0.78rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:#7c3aed;margin-bottom:4px;">'+f.label+'</div><div style="display:flex;align-items:flex-start;gap:8px;"><code style="flex:1;background:#fff;border:1px solid #e0d8f0;border-radius:6px;padding:8px 10px;font-size:0.82rem;color:#1a0533;white-space:pre-wrap;word-break:break-all;">'+f.value.replace(/</g,'&lt;').replace(/>/g,'&gt;')+'</code><button onclick="navigator.clipboard.writeText(this.dataset.v)" data-v="'+f.value.replace(/"/g,'&quot;')+'" style="flex-shrink:0;padding:6px 12px;background:#7c3aed;color:#fff;border:none;border-radius:6px;font-size:0.78rem;font-weight:700;cursor:pointer;">Copy</button></div></div>';
+  });
+  document.getElementById('seo-fields').innerHTML=html;
+})();
+</script>
+</div>
+</body>
+</html>
