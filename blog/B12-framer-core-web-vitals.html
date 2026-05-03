@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Framer Core Web Vitals: How to Measure and Improve Your Scores</title>
+  <meta name="description" content="Framer is fast by default. But animations, large images, and third-party embeds hurt Core Web Vitals. Learn how to measure FCP, LCP, CLS on your Framer site and fix what's slow." />
+  <meta name="keywords" content="framer core web vitals, framer page speed seo, framer lcp, framer cls, framer performance score, framer lighthouse" />
+  <link rel="canonical" href="https://rankframe.com/blog/framer-core-web-vitals" />
+  <meta property="og:title" content="Framer Core Web Vitals: How to Measure and Improve Your Scores" />
+  <meta property="og:description" content="Framer is fast by default. But animations, large images, and third-party embeds hurt Core Web Vitals. Learn how to measure FCP, LCP, CLS on your Framer site and fix what's slow." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://rankframe.com/blog/framer-core-web-vitals" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Framer Core Web Vitals: How to Measure and Improve Your Scores",
+    "description": "Framer is fast by default. But animations, large images, and third-party embeds hurt Core Web Vitals. Learn how to measure FCP, LCP, CLS on your Framer site and fix what's slow.",
+    "url": "https://rankframe.com/blog/framer-core-web-vitals",
+    "datePublished": "2026-05-03",
+    "dateModified": "2026-05-03",
+    "author": {
+      "@type": "Organization",
+      "name": "7 Seers",
+      "url": "https://rankframe.com"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "7 Seers",
+      "url": "https://rankframe.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://rankframe.com/logo.png"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://rankframe.com/blog/framer-core-web-vitals"
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://rankframe.com"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Blog",
+        "item": "https://rankframe.com/blog"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Framer Core Web Vitals: How to Measure and Improve Your Scores",
+        "item": "https://rankframe.com/blog/framer-core-web-vitals"
+      }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "7 Seers",
+    "url": "https://rankframe.com",
+    "email": "hello@7seersmedia.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Lucknow",
+      "addressCountry": "IN"
+    },
+    "sameAs": ["https://www.framer.com/marketplace/plugins/rankframe/"]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Does Framer automatically optimize Core Web Vitals?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Framer gives you a strong structural foundation: static site generation, edge CDN delivery, automatic WebP image conversion, and Rolldown-based code splitting. These optimizations handle a significant portion of the performance baseline. However, Framer does not prevent you from adding heavy animations, large uncompressed images, layout-shifting embeds, or synchronous third-party scripts -- all of which hurt Core Web Vitals scores. The platform optimizes what it controls; you are responsible for optimizing what you add to it."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is a good Core Web Vitals score for a Framer site?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Google's passing thresholds are: LCP under 2.5 seconds, CLS under 0.1, and FCP under 1.8 seconds. For Framer sites with good optimization, a mobile Lighthouse score of 75 or above is achievable for most site types. SaaS landing pages with minimal imagery and no heavy animations can reach mobile scores of 90 or above. Image-heavy portfolio sites typically score in the 60-75 range on mobile without significant image optimization work."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why is my Framer site slower on mobile than desktop?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Google Lighthouse simulates a mid-tier mobile device with a slower CPU and throttled network connection for mobile testing. A Framer animation that runs smoothly on a modern desktop at 60fps may cause significant layout calculation overhead and main thread blocking on a mobile CPU with less processing power. Additionally, large images that desktop connections download quickly may timeout or delay LCP on mobile network speeds. Mobile scores are almost always lower than desktop scores for visually rich Framer sites."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do Framer animations hurt Core Web Vitals?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, they can. Framer's animation system is built on Framer Motion, which uses JavaScript to drive many animation types. JavaScript-driven animations that run on the main thread compete with rendering and can delay both FCP and LCP. Animations that cause elements to shift position or change size after the initial render directly contribute to CLS. The safest animations from a CWV perspective are CSS transform and opacity transitions, which run on the GPU compositor thread rather than the main thread."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is CLS and what causes it on Framer sites?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Cumulative Layout Shift (CLS) measures how much your page layout shifts during loading. A CLS of 0 means the page renders exactly as final from the first paint. The target is below 0.1. On Framer sites, the most common CLS causes are: images without explicit width and height attributes (the browser does not know how much space to reserve before the image loads), embedded content like HubSpot forms or videos that load asynchronously and push content down, and custom web fonts that cause text reflow when they swap in after the initial render."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does RankFrame measure Core Web Vitals for Framer sites?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "RankFrame's Page Speed feature runs Google Lighthouse audits for both mobile and desktop for any page on your Framer site. It surfaces the Lighthouse performance score alongside the three Core Web Vitals measurements: FCP, LCP, and CLS. Each metric is shown per device type so you can compare mobile versus desktop performance. A Re-analyze button triggers a fresh Lighthouse run after you make changes, so you can verify improvements without leaving the Framer editor."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Should I focus on mobile or desktop Core Web Vitals?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Mobile. Google uses mobile-first indexing, meaning it primarily uses the mobile version of your site for indexing and ranking. Google's Core Web Vitals ranking signal is based on real-world mobile user data collected through the Chrome User Experience Report (CrUX). Desktop scores are useful diagnostics but the mobile score is the one that influences your search rankings. For most Framer sites, mobile scores are significantly lower than desktop scores -- optimization effort should focus on mobile performance first."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the LCP element on a typical Framer site?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "On most Framer landing pages and portfolio sites, the LCP element is the largest above-the-fold image -- typically a hero image, background image, or a prominent product screenshot. On text-heavy pages (blog posts, documentation), the LCP element may be a large heading text block. Google PageSpeed Insights and RankFrame's Page Speed audit will identify the specific LCP element for each page, which is the starting point for LCP optimization."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 1.0625rem;
+      line-height: 1.75;
+      color: #1a0533;
+      background: #ffffff;
+    }
+    a { color: #7c3aed; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .site-header {
+      background: #1a0533;
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .site-header a { color: #fff; font-weight: 700; font-size: 1.1rem; }
+    .site-header span { color: #a78bfa; font-size: 0.875rem; }
+
+    .breadcrumb {
+      background: #f8f6ff;
+      border-bottom: 1px solid #e8e0fa;
+      padding: 10px 0;
+    }
+    .breadcrumb ol {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 24px;
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      font-size: 0.85rem;
+      color: #6b7280;
+    }
+    .breadcrumb li + li::before { content: '/'; margin-right: 6px; color: #c4b5fd; }
+    .breadcrumb a { color: #7c3aed; }
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 48px 24px 80px;
+    }
+
+    .article-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 28px;
+    }
+    .badge {
+      display: inline-block;
+      background: #ede9fe;
+      color: #7c3aed;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 20px;
+    }
+    .article-meta time { font-size: 0.875rem; color: #6b7280; }
+    .read-time { font-size: 0.875rem; color: #6b7280; }
+
+    h1 {
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-weight: 800;
+      line-height: 1.2;
+      color: #1a0533;
+      margin-bottom: 20px;
+    }
+    .intro-lead {
+      font-size: 1.15rem;
+      color: #4b5563;
+      border-left: 4px solid #7c3aed;
+      padding-left: 18px;
+      margin-bottom: 36px;
+    }
+
+    .toc {
+      background: #f8f6ff;
+      border: 1px solid #e8e0fa;
+      border-radius: 12px;
+      padding: 24px 28px;
+      margin-bottom: 48px;
+    }
+    .toc h2 {
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: #7c3aed;
+      margin-bottom: 14px;
+      border: none;
+      padding: 0;
+    }
+    .toc ol { padding-left: 20px; }
+    .toc li { margin-bottom: 6px; font-size: 0.925rem; }
+    .toc a { color: #4b3f72; }
+    .toc a:hover { color: #7c3aed; }
+
+    h2 {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: #1a0533;
+      margin: 52px 0 18px;
+      padding-top: 8px;
+      border-top: 2px solid #ede9fe;
+    }
+    h3 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #1a0533;
+      margin: 32px 0 12px;
+    }
+    p { margin-bottom: 18px; }
+    ul, ol { padding-left: 24px; margin-bottom: 18px; }
+    li { margin-bottom: 7px; }
+
+    .callout {
+      border-radius: 10px;
+      padding: 18px 22px;
+      margin: 28px 0;
+      font-size: 0.95rem;
+    }
+    .callout-warning {
+      background: #fff7ed;
+      border-left: 4px solid #f97316;
+      color: #7c2d12;
+    }
+    .callout-info {
+      background: #eff6ff;
+      border-left: 4px solid #3b82f6;
+      color: #1e3a5f;
+    }
+    .callout-tip {
+      background: #f0fdf4;
+      border-left: 4px solid #22c55e;
+      color: #14532d;
+    }
+    .callout strong { display: block; margin-bottom: 6px; font-size: 0.8rem; letter-spacing: .07em; text-transform: uppercase; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 28px 0;
+      font-size: 0.9rem;
+    }
+    thead { background: #7c3aed; color: #fff; }
+    th { padding: 12px 14px; text-align: left; font-weight: 700; }
+    td { padding: 11px 14px; border-bottom: 1px solid #e8e0fa; }
+    tbody tr:nth-child(even) { background: #f8f6ff; }
+    tbody tr:hover { background: #ede9fe; }
+
+    .screenshot-suggestion {
+      background: #f8f6ff;
+      border: 2px dashed #c4b5fd;
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin: 24px 0;
+      font-size: 0.875rem;
+      color: #6b21a8;
+      font-style: italic;
+    }
+
+    code {
+      background: #f3f0ff;
+      color: #6d28d9;
+      border-radius: 4px;
+      padding: 2px 7px;
+      font-size: 0.875rem;
+      font-family: 'Fira Code', 'Consolas', monospace;
+    }
+
+    .metric-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin: 28px 0;
+    }
+    .metric-card {
+      background: #f8f6ff;
+      border: 1px solid #e8e0fa;
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+    }
+    .metric-card .metric-name {
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: #7c3aed;
+      margin-bottom: 8px;
+    }
+    .metric-card .metric-full {
+      font-size: 0.875rem;
+      color: #6b7280;
+      margin-bottom: 14px;
+    }
+    .metric-card .metric-target {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: #1a0533;
+      margin-bottom: 4px;
+    }
+    .metric-card .metric-label {
+      font-size: 0.75rem;
+      color: #6b7280;
+    }
+    .metric-card.good { border-top: 3px solid #22c55e; }
+    .metric-card.needs-improvement { border-top: 3px solid #f59e0b; }
+    .metric-card.poor { border-top: 3px solid #ef4444; }
+
+    .score-target-table td:nth-child(2),
+    .score-target-table td:nth-child(3) {
+      text-align: center;
+      font-weight: 700;
+    }
+
+    .cta-block {
+      background: linear-gradient(135deg, #1a0533 0%, #4c1d95 100%);
+      border-radius: 16px;
+      padding: 40px 36px;
+      text-align: center;
+      margin: 52px 0;
+      color: #fff;
+    }
+    .cta-block h3 {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #fff;
+      margin: 0 0 14px;
+    }
+    .cta-block p { color: #c4b5fd; margin-bottom: 24px; font-size: 1rem; }
+    .cta-btn {
+      display: inline-block;
+      background: #7c3aed;
+      color: #fff;
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 14px 32px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background .2s;
+    }
+    .cta-btn:hover { background: #6d28d9; text-decoration: none; }
+    .cta-sub { font-size: 0.8rem; color: #a78bfa; margin-top: 14px; margin-bottom: 0; }
+
+    .faq-section { margin-top: 52px; }
+    .faq-item {
+      border: 1px solid #e8e0fa;
+      border-radius: 10px;
+      margin-bottom: 12px;
+      overflow: hidden;
+    }
+    .faq-question {
+      width: 100%;
+      background: #f8f6ff;
+      border: none;
+      padding: 18px 20px;
+      text-align: left;
+      font-size: 1rem;
+      font-weight: 700;
+      color: #1a0533;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+    .faq-question:hover { background: #ede9fe; }
+    .faq-icon { font-size: 1.2rem; color: #7c3aed; flex-shrink: 0; transition: transform .2s; }
+    .faq-answer {
+      display: none;
+      padding: 16px 20px 20px;
+      font-size: 0.95rem;
+      color: #374151;
+      background: #fff;
+      border-top: 1px solid #e8e0fa;
+    }
+    .faq-answer p { margin-bottom: 0; }
+    .faq-item.open .faq-answer { display: block; }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+
+    .fix-list { list-style: none; padding: 0; }
+    .fix-list li {
+      padding: 14px 18px 14px 48px;
+      position: relative;
+      border-left: 3px solid #ede9fe;
+      margin-bottom: 10px;
+      background: #fafafa;
+      border-radius: 0 8px 8px 0;
+    }
+    .fix-list li::before {
+      content: attr(data-num);
+      position: absolute;
+      left: 12px;
+      top: 14px;
+      width: 22px;
+      height: 22px;
+      background: #7c3aed;
+      color: #fff;
+      font-weight: 800;
+      font-size: 0.75rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      line-height: 1;
+    }
+    .fix-list li strong { display: block; margin-bottom: 4px; }
+
+    @media (max-width: 600px) {
+      .metric-cards { grid-template-columns: 1fr; }
+      h2 { font-size: 1.35rem; }
+      .cta-block { padding: 28px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="https://rankframe.com">RankFrame</a>
+  <span>by 7 Seers</span>
+</header>
+
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="https://rankframe.com">Home</a></li>
+    <li><a href="https://rankframe.com/blog">Blog</a></li>
+    <li>Framer Core Web Vitals: Measure and Improve Your Scores</li>
+  </ol>
+</nav>
+
+<main class="container">
+
+  <div class="article-meta">
+    <span class="badge">Performance &amp; Speed</span>
+    <time datetime="2026-05-03">May 3, 2026</time>
+    <span class="read-time">18 min read</span>
+  </div>
+
+  <h1>Framer Core Web Vitals: How to Measure and Improve Your Scores</h1>
+
+  <p class="intro-lead">Framer's SSG architecture and edge CDN give your site a genuine performance head start. But the same design freedom that makes Framer powerful -- scroll animations, parallax effects, large hero images, embedded forms -- is exactly what sends Core Web Vitals scores into the red. This guide covers how to measure, interpret, and systematically improve your Framer site's Core Web Vitals.</p>
+
+  <nav class="toc" aria-label="Table of contents">
+    <h2>In This Article</h2>
+    <ol>
+      <li><a href="#what-are-cwv">What Core Web Vitals Are (and Why They Matter)</a></li>
+      <li><a href="#framer-performance-native">How Framer Handles Performance Natively</a></li>
+      <li><a href="#measuring-cwv">How to Measure Core Web Vitals for Your Framer Site</a></li>
+      <li><a href="#improving-lcp">Improving LCP on Framer Sites</a></li>
+      <li><a href="#improving-cls">Improving CLS on Framer Sites</a></li>
+      <li><a href="#improving-fcp">Improving FCP on Framer Sites</a></li>
+      <li><a href="#speed-suggestions">Speed Optimization Suggestions in RankFrame</a></li>
+      <li><a href="#score-targets">Core Web Vitals Score Targets by Site Type</a></li>
+      <li><a href="#faq">Frequently Asked Questions</a></li>
+    </ol>
+  </nav>
+
+  <!-- SECTION 1 -->
+  <h2 id="what-are-cwv">What Core Web Vitals Are (and Why They Matter for Framer Sites)</h2>
+
+  <p>Core Web Vitals are a set of standardized, user-centric performance metrics that Google uses to measure real-world page experience. They are not abstract benchmarks -- they measure how a real user experiences the act of loading your page: how quickly content appears, how stable the layout is, and how quickly the page responds to interaction.</p>
+
+  <p>Google officially incorporated Core Web Vitals as a ranking signal as part of the Page Experience update. This does not mean a perfect performance score guarantees top rankings -- content relevance remains the dominant ranking factor. But among pages that are otherwise comparable in content quality and backlink profile, page experience (including Core Web Vitals) can be a tiebreaker. More practically, poor Core Web Vitals directly harm user experience, increase bounce rates, and reduce conversion rates -- all of which have downstream effects on your site's performance in search.</p>
+
+  <h3>The Three Core Metrics</h3>
+
+  <div class="metric-cards">
+    <div class="metric-card good">
+      <div class="metric-name">FCP</div>
+      <div class="metric-full">First Contentful Paint</div>
+      <div class="metric-target">Under 1.8s</div>
+      <div class="metric-label">Good threshold</div>
+    </div>
+    <div class="metric-card good">
+      <div class="metric-name">LCP</div>
+      <div class="metric-full">Largest Contentful Paint</div>
+      <div class="metric-target">Under 2.5s</div>
+      <div class="metric-label">Good threshold</div>
+    </div>
+    <div class="metric-card good">
+      <div class="metric-name">CLS</div>
+      <div class="metric-full">Cumulative Layout Shift</div>
+      <div class="metric-target">Under 0.1</div>
+      <div class="metric-label">Good threshold</div>
+    </div>
+  </div>
+
+  <p><strong>First Contentful Paint (FCP)</strong> measures the time from navigation start to the moment the browser renders the first piece of DOM content -- any text, image, canvas, or SVG. It is a measure of how quickly the user sees that something is happening. A fast FCP (under 1.8 seconds) reduces the perception of a slow or unresponsive page.</p>
+
+  <p><strong>Largest Contentful Paint (LCP)</strong> measures the time from navigation start to when the largest visible element in the viewport has fully rendered. On most Framer landing pages, this is the hero image or the hero headline text. LCP is the most direct measure of perceived main content load time and is the metric that most Framer sites struggle with on mobile. Google's "good" threshold is under 2.5 seconds; "needs improvement" is 2.5 to 4.0 seconds; anything above 4.0 seconds is "poor."</p>
+
+  <p><strong>Cumulative Layout Shift (CLS)</strong> measures the sum of all unexpected layout shift scores during the page's lifetime. A layout shift occurs when a visible element changes its position between frames -- for instance, when a font loads and causes text to reflow, or when an image loads without reserved space and pushes content down. CLS is scored as a unitless value; lower is better. The target is below 0.1.</p>
+
+  <h3>Why Mobile Score Is the One That Counts</h3>
+
+  <p>Google uses mobile-first indexing. This means Google primarily crawls and indexes the mobile version of your site. The Core Web Vitals data that Google collects through the Chrome User Experience Report (CrUX) is real-world data from mobile Chrome users. Your desktop Lighthouse score can be excellent while your mobile score is poor -- and it is the mobile score that affects your rankings.</p>
+
+  <p>For most visually rich Framer sites, the mobile Lighthouse performance score is 20 to 40 points lower than the desktop score. This is partly because Lighthouse simulates a mid-tier mobile device with a throttled CPU and slower network for mobile testing -- conditions that reflect the actual devices many of your users are on, particularly in markets outside North America and Western Europe.</p>
+
+  <div class="callout callout-info">
+    <strong>Mobile-First Mindset</strong>
+    When prioritizing performance improvements, test on mobile first and desktop second. A change that improves desktop LCP by 0.3 seconds is useful; a change that improves mobile LCP by 0.8 seconds is urgent. Focus your effort where Google's ranking signal is measured.
+  </div>
+
+
+  <!-- SECTION 2 -->
+  <h2 id="framer-performance-native">How Framer Handles Performance Natively</h2>
+
+  <p>Framer's publishing infrastructure provides a solid performance foundation that most web builders do not match. Understanding what Framer does automatically helps you identify what is left for you to optimize.</p>
+
+  <h3>Static Site Generation (SSG)</h3>
+
+  <p>Framer generates static HTML files at build time rather than rendering pages dynamically on each request. This means when a user or Googlebot requests a page, the server sends a pre-built HTML file rather than executing server-side code. Static files are faster to deliver and eliminate server-side rendering bottlenecks.</p>
+
+  <h3>Edge CDN Delivery</h3>
+
+  <p>Framer delivers your static site through a global edge network. Your pages are cached at edge nodes geographically close to your users -- a visitor in Tokyo gets served from an edge node in the Asia-Pacific region rather than from a data center in the United States. Edge delivery reduces Time to First Byte (TTFB), which is a prerequisite for good FCP and LCP.</p>
+
+  <h3>Rolldown Code Splitting</h3>
+
+  <p>Framer uses Rolldown (a Rust-based JavaScript bundler) for code splitting -- the process of breaking your JavaScript into smaller chunks that can be loaded on demand rather than all at once. According to Framer's own benchmarks, Rolldown-based code splitting has delivered LCP improvements of up to 41% compared to previous bundling approaches. This means less JavaScript is blocking the main thread during the critical first paint window.</p>
+
+  <h3>Automatic Image Optimization</h3>
+
+  <p>When you upload images to Framer, they are automatically converted to WebP format (a modern image format that is 25-35% smaller than JPEG at equivalent visual quality) and served through Framer's CDN. Images are also resized and served at appropriate dimensions for the device viewing them. This automatic optimization handles a large portion of image-related performance overhead for images uploaded through Framer's native asset uploader.</p>
+
+  <h3>Where Framer Falls Short Natively</h3>
+
+  <p>Despite this foundation, Framer cannot optimize what you deliberately add to the design:</p>
+
+  <ul>
+    <li><strong>Heavy animations.</strong> Scroll-triggered animations, parallax effects, and complex entrance animations built with Framer Motion run JavaScript on the main thread and can delay FCP and LCP on mobile devices.</li>
+    <li><strong>Third-party embeds.</strong> HubSpot forms, Typeform embeds, video players, Intercom widgets, and other third-party scripts load synchronously or near-synchronously and add significant JavaScript execution time that delays LCP and contributes to layout shifts.</li>
+    <li><strong>Images larger than their display size.</strong> Framer's optimization works on images uploaded through the asset uploader, but oversized images that were already too large before upload can still be unnecessarily heavy.</li>
+    <li><strong>Custom code components with unoptimized external dependencies.</strong> Any custom React component that imports a heavy library (charting libraries, 3D rendering, rich text editors) adds to the JavaScript bundle and delays FCP.</li>
+    <li><strong>Fonts without explicit size reservations.</strong> Custom web fonts that are loaded asynchronously can cause text reflow (CLS) and delayed FCP if not configured correctly.</li>
+  </ul>
+
+  <div class="screenshot-suggestion">📸 Screenshot: Google PageSpeed Insights mobile audit for a Framer site showing LCP and CLS values with red/yellow indicators alongside specific opportunities listed</div>
+
+
+  <!-- SECTION 3 -->
+  <h2 id="measuring-cwv">How to Measure Core Web Vitals for Your Framer Site</h2>
+
+  <p>Measurement is the prerequisite for improvement. Without baseline data, you cannot know whether changes are helping or hurting, and you cannot prioritize which issues to fix first.</p>
+
+  <h3>Google PageSpeed Insights</h3>
+
+  <p>Google PageSpeed Insights (PSI) at <a href="https://pagespeed.web.dev" rel="noopener noreferrer">pagespeed.web.dev</a> is the free, authoritative tool for Core Web Vitals measurement. Enter your page URL and PSI returns two types of data: lab data (a Lighthouse audit run in controlled conditions) and field data (real-world data from Chrome users in the CrUX dataset, if your site has enough traffic).</p>
+
+  <p>Field data represents actual user experiences over the past 28 days. For ranking purposes, Google primarily uses CrUX field data rather than lab data. However, lab data (Lighthouse) gives you the specific file-level diagnostics needed to understand what is causing performance issues. Use lab data for diagnosis; use field data to confirm that improvements have propagated to real users.</p>
+
+  <h3>RankFrame Page Speed: Integrated Lighthouse for Framer</h3>
+
+  <p>Running PSI manually is useful but creates friction when you are iterating on design changes. You have to copy your URL, open a browser tab, paste the URL, wait for results, and interpret the output outside of your design context. RankFrame's <a href="/kb/10-page-speed/56-page-speed-overview.html">Page Speed feature</a> removes this friction by running Google Lighthouse audits for mobile and desktop directly inside the Framer editor.</p>
+
+  <p>The Page Speed tab displays:</p>
+
+  <ul>
+    <li><strong>Mobile and desktop Lighthouse performance gauges</strong> -- the 0-100 composite score for each device type, color-coded (green for 90+, yellow for 50-89, red for under 50)</li>
+    <li><strong>Core Web Vitals per device</strong> -- FCP, LCP, and CLS values for both mobile and desktop in a clear layout with pass/fail color coding against Google's thresholds</li>
+    <li><strong>Speed Optimization Suggestions</strong> -- actionable recommendations that name the specific files, resources, and sizes involved in each performance issue</li>
+    <li><strong>Re-analyze button</strong> -- triggers a fresh Lighthouse run after you make changes, letting you confirm improvements without switching tools</li>
+  </ul>
+
+  <div class="screenshot-suggestion">📸 Screenshot: RankFrame Page Speed tab showing mobile and desktop gauge charts with performance scores, FCP/LCP/CLS values for each device, and the Speed Optimization Suggestions list below</div>
+
+  <p>The <a href="/kb/10-page-speed/58-mobile-vs-desktop-performance.html">mobile vs. desktop comparison</a> in RankFrame is particularly useful for identifying the gap between what looks fast on your design machine and what real mobile users experience. This side-by-side view makes the mobile-first optimization priority concrete and visible.</p>
+
+
+  <!-- SECTION 4 -->
+  <h2 id="improving-lcp">Improving LCP on Framer Sites</h2>
+
+  <p>LCP is the Core Web Vital that most directly reflects how quickly users see the main content of your page. For Framer sites, it is also the metric most likely to be in the "needs improvement" or "poor" range on mobile. LCP optimization on Framer sites follows a clear set of priorities.</p>
+
+  <h3>Identify the LCP Element First</h3>
+
+  <p>Before optimizing LCP, identify exactly which element Google is measuring as the LCP element on your page. Run your page through Google PageSpeed Insights and look for the "Largest Contentful Paint element" in the diagnostics section. This will tell you whether LCP is triggered by your hero image, a background image, or a large text block. The optimization approach differs significantly based on the element type.</p>
+
+  <h3>Optimize the Hero Image</h3>
+
+  <p>If the LCP element is a hero image (the most common case for Framer landing pages), the following optimizations apply:</p>
+
+  <ul>
+    <li><strong>Use WebP format.</strong> Framer's asset uploader converts images to WebP automatically. However, if you are using an external image URL in a custom code component, ensure that image is WebP or compressed AVIF.</li>
+    <li><strong>Size images to their display dimensions.</strong> If your hero image displays at 1400px wide at maximum viewport width, your source image should be approximately 1400px wide (or 2800px for high-DPI retina displays). Uploading a 4000px wide raw export from Figma and relying on CSS to scale it down sends unnecessary bytes to every user.</li>
+    <li><strong>Set explicit dimensions.</strong> In Framer's properties panel, ensure your hero image has explicit width and height values set. This allows the browser to allocate the correct space before the image loads, which also prevents CLS.</li>
+    <li><strong>Use Framer's native image hosting.</strong> Images hosted on Framer's CDN are optimized and served from edge nodes. Images hosted on external services or raw GitHub URLs are not. Keep your images in Framer's asset library wherever possible.</li>
+  </ul>
+
+  <h3>Avoid Render-Blocking Resources</h3>
+
+  <p>Render-blocking resources are scripts and stylesheets that must be downloaded and processed before the browser can render any content. Every millisecond spent on render-blocking resources directly delays FCP and LCP.</p>
+
+  <p>In Framer, the most common render-blocking additions are:</p>
+
+  <ul>
+    <li>Synchronous third-party analytics scripts (older Google Analytics UA implementations, Hotjar, etc.)</li>
+    <li>Chat widget scripts (Intercom, Crisp, HubSpot chat) loaded in the <code>&lt;head&gt;</code></li>
+    <li>Custom web font stylesheets without <code>display=swap</code></li>
+  </ul>
+
+  <p>For third-party scripts added through Framer's custom code injection, use the <code>defer</code> or <code>async</code> attribute to prevent them from blocking rendering. Place non-critical scripts at the end of the <code>&lt;body&gt;</code> rather than in the <code>&lt;head&gt;</code>.</p>
+
+  <h3>Minimize Animation Initialization Before LCP</h3>
+
+  <p>Framer's animation system initializes JavaScript before rendering begins. If your hero section contains heavy entrance animations (scale transforms, opacity fades tied to a complex intersection observer setup), the JavaScript initialization for those animations can push back the moment when the LCP element fully renders.</p>
+
+  <p>The simplest fix is to either remove entrance animations from the LCP element itself, or set a very short (under 100ms) delay before the hero section animation starts. This lets the browser render the LCP element first, then apply the animation overlay. The perceived visual experience is nearly identical; the LCP measurement improves significantly.</p>
+
+  <div class="callout callout-tip">
+    <strong>Animation vs. Performance Balance</strong>
+    You do not need to remove all animations. Animations that run after the LCP element has already rendered do not affect the LCP score. The optimization target is specifically: do not let JavaScript execution for animations delay the initial render of the largest above-the-fold element.
+  </div>
+
+
+  <!-- SECTION 5 -->
+  <h2 id="improving-cls">Improving CLS on Framer Sites</h2>
+
+  <p>Cumulative Layout Shift is often the most confusing Core Web Vital to understand and the most surprising to encounter on Framer sites. A site can look visually stable and still have poor CLS if elements are shifting positions during loading in ways that happen too fast for the designer to notice during preview.</p>
+
+  <h3>Set Explicit Dimensions on All Images</h3>
+
+  <p>The most common cause of CLS on Framer sites is images without explicit width and height attributes. When a browser loads an image without knowing its dimensions, it allocates zero space for the image initially. When the image data arrives, the browser reallocates space for it and shifts all surrounding content. This shift is measured as CLS.</p>
+
+  <p>In Framer's properties panel, set explicit width and height values for every image on your page -- particularly images in the first viewport (above the fold). For responsive images that scale with viewport width, setting at least the aspect ratio through Framer's frame properties accomplishes the same goal.</p>
+
+  <p>Framer's auto-layout components generally handle this correctly when images are placed inside frames with fixed dimensions. The problem typically arises with freeform canvas layouts, images inside rich text components, or CMS images where the dimensions vary by item.</p>
+
+  <h3>Reserve Space for Third-Party Embeds</h3>
+
+  <p>HubSpot forms, Typeform embeds, Calendly widgets, and video players (YouTube, Vimeo) all load content asynchronously. If the containing frame in Framer has auto-height or does not have fixed dimensions, the embed loads with zero height and then expands to its full height after the iframe content loads. This expansion is a significant layout shift.</p>
+
+  <p>The fix is to set a fixed minimum height on the containing frame in Framer that matches the typical rendered height of the embed. For a HubSpot contact form, set the container to at least 400px tall. For a YouTube video, the container should have the correct 16:9 aspect ratio reserved. This ensures that when the embed loads, it fills space that was already reserved rather than pushing content down.</p>
+
+  <div class="screenshot-suggestion">📸 Screenshot: Framer canvas showing a HubSpot form embed in a frame with a fixed height set in the properties panel, preventing layout shift when the form loads</div>
+
+  <h3>Manage Font Loading to Prevent Text Reflow</h3>
+
+  <p>Custom web fonts that load after the initial page render cause text reflow. The browser first renders text in a fallback system font (which has different character widths and line heights), then swaps to the custom font when it loads. This swap can cause paragraphs to change height, buttons to shift, and navigation items to move -- all contributing to CLS.</p>
+
+  <p>Framer's native Google Fonts integration includes <code>display=swap</code> by default, which allows text to be visible in the fallback font immediately and then swaps when the custom font is ready. However, the size differential between the fallback font and the custom font still causes reflow. To minimize this, choose fallback fonts that are dimensionally similar to your custom font, or use the CSS <code>size-adjust</code> property to bring fallback font metrics closer to the custom font metrics.</p>
+
+  <h3>Avoid JavaScript-Triggered Layout Changes After Load</h3>
+
+  <p>Any Framer component or custom code that modifies the DOM layout after the page has loaded contributes to CLS. This includes cookie consent banners that appear after a delay, pop-up modals that shift the scrollbar, notification bars that slide down from the top of the page, and chat widgets that expand from a floating button.</p>
+
+  <p>For cookie banners and notification bars, reserve the space they occupy from the initial render rather than inserting them into the layout after load. Use <code>position: fixed</code> overlays that do not affect the document flow rather than inserting banners into the page body.</p>
+
+
+  <!-- SECTION 6 -->
+  <h2 id="improving-fcp">Improving FCP on Framer Sites</h2>
+
+  <p>First Contentful Paint is usually the easiest Core Web Vital to bring into "good" range on Framer sites because the platform's SSG and edge CDN already handle the heaviest lifting. When FCP is poor on a Framer site, it almost always traces back to render-blocking resources.</p>
+
+  <h3>Defer Non-Critical Custom Code Components</h3>
+
+  <p>Framer supports custom code components -- React components you write or import from npm packages. If a custom component loads a heavy JavaScript library synchronously, it blocks rendering until that library is downloaded and executed. The fix is to use dynamic imports in React (<code>React.lazy</code> with <code>Suspense</code>) to defer loading the component until after the initial render, or to restructure the component so its heaviest work happens after the critical rendering path completes.</p>
+
+  <p>If you are using a Framer plugin or community component that imports a large library (a 3D library, a charting library, a complex form framework), audit the component's bundle size. A single component that imports a 500KB library is a significant FCP risk on mobile.</p>
+
+  <h3>Reduce Synchronous External Script Loads</h3>
+
+  <p>Every synchronous script tag in your page's <code>&lt;head&gt;</code> blocks rendering. Review all custom code you have added to Framer's global code injection -- anything in the head section. Audit each script for whether it genuinely needs to run before the page renders. Most analytics scripts, chat widgets, and marketing pixels can be loaded asynchronously without any functional impact.</p>
+
+  <p>In Framer's Site Settings under Custom Code, move any scripts that do not need to block rendering to the "End of Body" section and add the <code>async</code> attribute. Analytics scripts are almost always safe to load asynchronously.</p>
+
+  <div class="callout callout-warning">
+    <strong>Third-Party Script Audit</strong>
+    If your Framer site has added multiple marketing and analytics tools over time -- Google Analytics, Google Tag Manager, Meta Pixel, LinkedIn Insight Tag, Hotjar, Intercom, HubSpot tracking -- run a PageSpeed Insights audit and look at the "Reduce the impact of third-party code" opportunity. Each script adds to the main thread execution time. For sites with six or more third-party scripts, consider whether each tool is genuinely being used and generating value.
+  </div>
+
+
+  <!-- SECTION 7 -->
+  <h2 id="speed-suggestions">Speed Optimization Suggestions in RankFrame</h2>
+
+  <p>Generic performance advice is easy to find; specific, actionable suggestions for your exact site are harder. RankFrame's <a href="/kb/10-page-speed/59-speed-optimization-suggestions.html">Speed Optimization Suggestions</a> go beyond the generic by naming the specific files, resources, and byte sizes involved in each performance issue on your Framer site.</p>
+
+  <h3>How to Read the Suggestions</h3>
+
+  <p>Each suggestion in RankFrame's Page Speed panel follows a consistent format: the issue type, the specific resource or file causing the issue, and the potential improvement in seconds or bytes. For example:</p>
+
+  <ul>
+    <li>"Defer offscreen images -- hero-background.webp (340 KB) -- potential saving: 0.8s LCP"</li>
+    <li>"Eliminate render-blocking resources -- analytics.js (82 KB) -- potential saving: 0.4s FCP"</li>
+    <li>"Serve images in next-gen formats -- case-study-thumbnail.png (1.2 MB) -- convert to WebP"</li>
+    <li>"Properly size images -- team-photo.webp displayed at 400px, delivered at 1800px"</li>
+  </ul>
+
+  <p>This specificity is what makes the suggestions actionable. You know exactly which file to fix and approximately how much improvement to expect. Without this specificity, performance optimization is guesswork.</p>
+
+  <h3>Common Suggestion Types and How to Act on Each</h3>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Suggestion Type</th>
+        <th>What It Means</th>
+        <th>How to Fix in Framer</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Properly size images</td>
+        <td>Image delivered at larger dimensions than displayed</td>
+        <td>Re-export the image at the correct display dimensions before uploading to Framer</td>
+      </tr>
+      <tr>
+        <td>Serve images in next-gen formats</td>
+        <td>Image is PNG or JPEG rather than WebP</td>
+        <td>Upload through Framer's asset uploader (auto-converts to WebP) or convert manually</td>
+      </tr>
+      <tr>
+        <td>Eliminate render-blocking resources</td>
+        <td>Script in &lt;head&gt; blocking render</td>
+        <td>Move script to End of Body in Framer's Custom Code settings; add async attribute</td>
+      </tr>
+      <tr>
+        <td>Defer offscreen images</td>
+        <td>Below-fold images loading at page load</td>
+        <td>Enable lazy loading on below-fold images in Framer's image properties</td>
+      </tr>
+      <tr>
+        <td>Reduce unused JavaScript</td>
+        <td>JavaScript bundle includes unused code</td>
+        <td>Audit custom code components for unused imports; remove unused Framer plugins</td>
+      </tr>
+      <tr>
+        <td>Avoid enormous network payloads</td>
+        <td>Total page size is excessively large</td>
+        <td>Compress images, remove unused custom fonts, audit third-party scripts</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Iterating with the Re-analyze Button</h3>
+
+  <p>After implementing a fix -- recompressing an image, deferring a script, removing an unused custom code component -- click the Re-analyze button in RankFrame's Page Speed panel to trigger a fresh Lighthouse run. This gives you immediate confirmation of whether the fix improved the score and by how much. The ability to iterate without leaving Framer dramatically speeds up the optimization feedback loop compared to manually running PSI audits after each change.</p>
+
+  <div class="screenshot-suggestion">📸 Screenshot: RankFrame Speed Optimization Suggestions panel showing specific file names, sizes, and expected improvement for each suggestion, with a Re-analyze button visible</div>
+
+
+  <!-- SECTION 8 -->
+  <h2 id="score-targets">Core Web Vitals Score Targets for Different Framer Site Types</h2>
+
+  <p>A single performance benchmark does not apply to every Framer site. An image-heavy portfolio showcasing high-resolution photography is inherently more LCP-challenged than a text-dominant SaaS pricing page. Setting realistic targets helps you evaluate whether your optimization efforts are achieving what is possible for your site type.</p>
+
+  <table class="score-target-table">
+    <thead>
+      <tr>
+        <th>Site Type</th>
+        <th>Mobile Target</th>
+        <th>Desktop Target</th>
+        <th>Biggest Challenge</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>SaaS landing page (minimal imagery)</td>
+        <td>80+</td>
+        <td>95+</td>
+        <td>Third-party scripts</td>
+      </tr>
+      <tr>
+        <td>Portfolio (image-heavy)</td>
+        <td>65+</td>
+        <td>85+</td>
+        <td>LCP from large images</td>
+      </tr>
+      <tr>
+        <td>Blog / content site</td>
+        <td>75+</td>
+        <td>92+</td>
+        <td>Font loading, CLS</td>
+      </tr>
+      <tr>
+        <td>Agency website (animation-heavy)</td>
+        <td>55+</td>
+        <td>80+</td>
+        <td>Animation JS, LCP delay</td>
+      </tr>
+      <tr>
+        <td>E-commerce / product catalog</td>
+        <td>70+</td>
+        <td>88+</td>
+        <td>Multiple product images</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>These are realistic targets, not perfect targets. The goal is to be in the "Good" range for CWV metrics (LCP under 2.5s, CLS under 0.1, FCP under 1.8s) on mobile, not to achieve a theoretical perfect 100 score. A 100 Lighthouse score is practically impossible to maintain on a real Framer site with third-party integrations and dynamic content.</p>
+
+  <h3>Portfolio and Photography Sites: LCP Is the Focus</h3>
+
+  <p>For portfolio sites where the primary content is large, high-resolution images, LCP optimization dominates performance work. The key strategies are: export hero images at the correct display dimensions before uploading, ensure above-the-fold project thumbnails are not loading full-resolution exports, and consider a staggered loading approach where the first viewport image loads immediately and below-fold items load lazily.</p>
+
+  <p>Mobile scores of 65 to 70 are achievable for well-optimized image-heavy Framer portfolios. Trying to push beyond this while maintaining visual quality is a diminishing-returns exercise -- the remaining score gap typically requires trade-offs in image quality or design fidelity that are not worth making for a portfolio site.</p>
+
+  <h3>SaaS Landing Pages: Third-Party Scripts Are the Focus</h3>
+
+  <p>SaaS marketing sites on Framer typically have modest image requirements but accumulate marketing technology stacks over time. A common pattern: Google Analytics, a chat widget, a CRM tracking pixel, an A/B testing tool, and a heatmap tool all loaded on the same page. Each script adds 100 to 400 milliseconds to the main thread execution time on mobile.</p>
+
+  <p>For SaaS landing pages, the highest-impact optimization is almost always script management. Load tag manager asynchronously, defer chat widgets until after user interaction (most users do not need the chat widget before they read your headline), and consolidate analytics into a single tag manager container rather than loading multiple pixel scripts directly.</p>
+
+  <p>With good script discipline, SaaS landing pages on Framer can achieve mobile scores of 85 to 90 -- comfortably in the "Good" range for all Core Web Vitals.</p>
+
+  <h3>Agency Websites: Animation vs. Performance Trade-Off</h3>
+
+  <p>Agency websites built in Framer are often showcase pieces that push animation capabilities to the limit. Parallax hero sections, cursor-following effects, scroll-triggered reveal animations, and 3D canvas elements are all common. These features are what make Framer agency sites visually distinctive -- and they are also what drives mobile Lighthouse scores into the 40 to 60 range.</p>
+
+  <p>The practical approach is to accept lower mobile scores as a deliberate trade-off and focus on ensuring the Core Web Vitals raw values (LCP under 4s, CLS under 0.25) are at least in the "needs improvement" range rather than "poor." Search visibility for agency sites typically depends more on their content marketing, case studies, and backlinks than on marginal performance improvements. Completely removing animations to gain 15 Lighthouse points on mobile is not a rational trade-off for most creative agencies.</p>
+
+  <div class="callout callout-tip">
+    <strong>Reducing Animation Scope on Mobile</strong>
+    Framer's responsive design controls allow you to disable or simplify animations specifically for mobile breakpoints. Consider using simpler fade-in animations on mobile while keeping the full parallax and scroll-trigger effects on desktop. This is a pragmatic middle ground that preserves the desktop showcase experience while improving mobile Core Web Vitals.
+  </div>
+
+  <div class="cta-block">
+    <h3>Ready to rank your Framer site?</h3>
+    <p>RankFrame is the only native SEO plugin built for Framer. Schema, indexing, image SEO, site audits, keyword tracking -- all inside the Framer editor. No switching tools. No code required.</p>
+    <a href="https://www.framer.com/marketplace/plugins/rankframe/" class="cta-btn">Install RankFrame Free -- 14-Day Trial</a>
+    <p class="cta-sub">Credit card required. Cancel anytime. Full feature access from day one.</p>
+  </div>
+
+
+  <!-- FAQ -->
+  <div class="faq-section" id="faq">
+    <h2>Frequently Asked Questions</h2>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+        Does Framer automatically optimize Core Web Vitals?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>Framer gives you a strong structural foundation: static site generation, edge CDN delivery, automatic WebP image conversion, and Rolldown-based code splitting. These optimizations handle a significant portion of the performance baseline. However, Framer does not prevent you from adding heavy animations, large uncompressed images, layout-shifting embeds, or synchronous third-party scripts -- all of which hurt Core Web Vitals scores. The platform optimizes what it controls; you are responsible for optimizing what you add to it.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+        What is a good Core Web Vitals score for a Framer site?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>Google's passing thresholds are: LCP under 2.5 seconds, CLS under 0.1, and FCP under 1.8 seconds. For Framer sites with good optimization, a mobile Lighthouse score of 75 or above is achievable for most site types. SaaS landing pages with minimal imagery and no heavy animations can reach mobile scores of 90 or above. Image-heavy portfolio sites typically score in the 60-75 range on mobile without significant image optimization work.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+        Why is my Framer site slower on mobile than desktop?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>Google Lighthouse simulates a mid-tier mobile device with a slower CPU and throttled network connection for mobile testing. A Framer animation that runs smoothly on a modern desktop at 60fps may cause significant layout calculation overhead and main thread blocking on a mobile CPU with less processing power. Additionally, large images that desktop connections download quickly may take much longer on mobile network speeds. Mobile scores are almost always lower than desktop scores for visually rich Framer sites -- this is expected and normal.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+        Do Framer animations hurt Core Web Vitals?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>Yes, they can. Framer's animation system is built on Framer Motion, which uses JavaScript to drive many animation types. JavaScript-driven animations that run on the main thread compete with rendering and can delay both FCP and LCP. Animations that cause elements to shift position or change size after the initial render directly contribute to CLS. The safest animations from a CWV perspective are CSS transform and opacity transitions, which run on the GPU compositor thread rather than the main thread.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+        What is CLS and what causes it on Framer sites?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>Cumulative Layout Shift (CLS) measures how much your page layout shifts during loading. The target is below 0.1. On Framer sites, the most common CLS causes are: images without explicit width and height attributes (the browser reserves no space before the image loads), embedded content like HubSpot forms or videos that load asynchronously and push content down, and custom web fonts that cause text reflow when they swap in after the initial render. Set explicit dimensions on all images and reserve space for all embeds to address the most common CLS sources.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+        How does RankFrame measure Core Web Vitals for Framer sites?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>RankFrame's Page Speed feature runs Google Lighthouse audits for both mobile and desktop for any page on your Framer site, directly inside the Framer editor. It surfaces the Lighthouse performance score alongside FCP, LCP, and CLS values for each device type. Speed Optimization Suggestions name the specific files and sizes involved in each performance issue. A Re-analyze button triggers a fresh Lighthouse run after you make changes, letting you confirm improvements without switching tools or leaving Framer.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+        Should I focus on mobile or desktop Core Web Vitals?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>Mobile. Google uses mobile-first indexing, and Google's Core Web Vitals ranking signal is based on real-world mobile user data collected through the Chrome User Experience Report. Desktop scores are useful diagnostics but the mobile score is the one that influences your search rankings. For most Framer sites, mobile scores are significantly lower than desktop scores -- optimization effort should focus on mobile performance first.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+        What is the LCP element on a typical Framer site?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>On most Framer landing pages and portfolio sites, the LCP element is the largest above-the-fold image -- typically a hero image, background image, or a prominent product screenshot. On text-heavy pages like blog posts, the LCP element may be a large heading text block. Google PageSpeed Insights and RankFrame's Page Speed audit will identify the specific LCP element for each page, which is the starting point for LCP optimization work.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="cta-block">
+    <h3>Ready to rank your Framer site?</h3>
+    <p>RankFrame is the only native SEO plugin built for Framer. Schema, indexing, image SEO, site audits, keyword tracking -- all inside the Framer editor. No switching tools. No code required.</p>
+    <a href="https://www.framer.com/marketplace/plugins/rankframe/" class="cta-btn">Install RankFrame Free -- 14-Day Trial</a>
+    <p class="cta-sub">Credit card required. Cancel anytime. Full feature access from day one.</p>
+  </div>
+
+  <!-- SEO Details Panel -->
+  <div id="seo-details" style="margin:60px 0 0;padding:28px 32px;background:#f8f6ff;border:1px solid #e8e0fa;border-radius:14px;">
+    <h3 style="font-size:1rem;font-weight:700;color:#1a0533;margin:0 0 20px;">SEO Details</h3>
+    <div id="seo-fields"></div>
+  </div>
+
+</main>
+
+<script>
+(function(){
+  var f=[
+    {label:'Title',value:document.querySelector('title')?document.querySelector('title').textContent:''},
+    {label:'Description',value:(document.querySelector('meta[name="description"]')||{}).content||''},
+    {label:'Keywords',value:(document.querySelector('meta[name="keywords"]')||{}).content||''},
+    {label:'Canonical',value:(document.querySelector('link[rel="canonical"]')||{}).href||''}
+  ];
+  var s=Array.from(document.querySelectorAll('script[type="application/ld+json"]')).map(function(x,i){
+    return{label:'Schema '+(i+1),value:x.textContent.trim()};
+  });
+  var all=f.concat(s);
+  var h='';
+  all.forEach(function(x){
+    h+='<div style="margin-bottom:14px"><div style="font-size:.78rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#7c3aed;margin-bottom:4px">'+x.label+'</div><div style="display:flex;align-items:flex-start;gap:8px"><code style="flex:1;background:#fff;border:1px solid #e0d8f0;border-radius:6px;padding:8px 10px;font-size:.82rem;color:#1a0533;white-space:pre-wrap;word-break:break-all">'+x.value.replace(/</g,'&lt;').replace(/>/g,'&gt;')+'</code><button onclick="navigator.clipboard.writeText(this.dataset.v)" data-v="'+x.value.replace(/"/g,'&quot;')+'" style="flex-shrink:0;padding:6px 12px;background:#7c3aed;color:#fff;border:none;border-radius:6px;font-size:.78rem;font-weight:700;cursor:pointer">Copy</button></div></div>';
+  });
+  document.getElementById('seo-fields').innerHTML=h;
+})();
+</script>
+
+</body>
+</html>
