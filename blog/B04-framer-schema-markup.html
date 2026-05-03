@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How to Add Schema Markup to Framer Without Writing Code</title>
+  <meta name="description" content="Framer has no native schema UI. Learn every schema type that matters for Framer sites, how to implement them, and how RankFrame generates them automatically — no code required." />
+  <meta name="keywords" content="framer schema markup, framer json-ld, structured data framer, framer schema without code, how to add schema markup to framer" />
+  <link rel="canonical" href="https://rankframe.com/blog/framer-schema-markup" />
+  <meta property="og:title" content="How to Add Schema Markup to Framer Without Writing Code" />
+  <meta property="og:description" content="Framer has no native schema UI. Learn every schema type that matters for Framer sites, how to implement them, and how RankFrame generates them automatically — no code required." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://rankframe.com/blog/framer-schema-markup" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "How to Add Schema Markup to Framer Without Writing Code",
+    "description": "Framer has no native schema UI. Learn every schema type that matters for Framer sites, how to implement them, and how RankFrame generates them automatically — no code required.",
+    "url": "https://rankframe.com/blog/framer-schema-markup",
+    "datePublished": "2026-05-03",
+    "dateModified": "2026-05-03",
+    "author": {
+      "@type": "Organization",
+      "name": "7 Seers",
+      "url": "https://rankframe.com"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "7 Seers",
+      "url": "https://rankframe.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://rankframe.com/logo.png"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://rankframe.com/blog/framer-schema-markup"
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://rankframe.com"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Blog",
+        "item": "https://rankframe.com/blog"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "How to Add Schema Markup to Framer Without Writing Code",
+        "item": "https://rankframe.com/blog/framer-schema-markup"
+      }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "7 Seers",
+    "url": "https://rankframe.com",
+    "email": "hello@7seersmedia.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Lucknow",
+      "addressCountry": "IN"
+    },
+    "sameAs": [
+      "https://www.framer.com/marketplace/plugins/rankframe/"
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Does Framer support schema markup natively?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Framer has no built-in schema markup UI. You can add JSON-LD manually via Custom Code in the page head on any paid plan, but there is no visual form or automation. RankFrame adds a full schema UI directly inside the Framer editor."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the best schema type for a Framer blog?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "For blog posts, use BlogPosting or Article schema. These tell Google the content is editorial, include author and date signals, and can unlock rich results in search. TechArticle is appropriate for technical documentation or developer tutorials."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I add schema to Framer CMS collection pages?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, but manually adding unique JSON-LD to each CMS page is not practical. RankFrame's auto-generate feature can scan your full sitemap and generate appropriate schema for every page, including CMS collection items, using AI."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does schema markup directly improve Google rankings?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Schema does not directly boost rankings, but it enables rich results (star ratings, FAQ dropdowns, article carousels) that significantly increase click-through rates. Higher CTR signals relevance to Google and indirectly supports ranking improvement."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What schema types does RankFrame currently support?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "RankFrame currently supports Organization, Person, Article, BlogPosting, TechArticle, NewsArticle, Service, Restaurant, and Book schemas. HowTo, FAQPage, Product, LocalBusiness, and BreadcrumbList are planned for upcoming releases."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I validate schema markup on my Framer site?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Use Google's Rich Results Test (https://search.google.com/test/rich-results) and the Schema.org Validator (https://validator.schema.org). Paste your live URL or the raw JSON-LD to check for errors and preview eligible rich results."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How many schema types can I add to a single Framer page?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "You can add multiple JSON-LD blocks to a single page. A typical blog post might include Article, BreadcrumbList, and Organization (as publisher). Google reads each block independently, so stacking schemas is both allowed and encouraged."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is RankFrame's schema generation free?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "RankFrame offers a 14-day free trial with full feature access. After the trial, schema generation is available on the Personal plan ($15/month or $108/year) and Agency plan ($40/month or $288/year)."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How to Add Schema Markup to a Framer Site",
+    "description": "Step-by-step guide to adding JSON-LD schema markup to Framer pages manually and automatically using RankFrame.",
+    "step": [
+      {
+        "@type": "HowToStep",
+        "position": 1,
+        "name": "Choose the right schema type",
+        "text": "Identify the content type for each page: Organization for your homepage, Article or BlogPosting for blog posts, Service for service pages, and so on."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 2,
+        "name": "Write or generate the JSON-LD",
+        "text": "Write the JSON-LD script manually following Schema.org specifications, or use RankFrame's schema UI to fill a form and auto-generate the code."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 3,
+        "name": "Inject the JSON-LD into the Framer page head",
+        "text": "In Framer, open Site Settings > Custom Code > Head (for site-wide) or Page Settings > Custom Code > Head (for per-page). Paste the script tag. RankFrame injects schema automatically on save."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 4,
+        "name": "Publish your Framer project",
+        "text": "Publish your Framer site to make the schema live. Changes to custom code require a re-publish to take effect."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 5,
+        "name": "Validate with Google's Rich Results Test",
+        "text": "Paste your live URL into Google's Rich Results Test (https://search.google.com/test/rich-results) to confirm the schema is detected and error-free."
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 1.05rem;
+      line-height: 1.75;
+      color: #1a0533;
+      background: #fff;
+    }
+    a { color: #7c3aed; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Layout */
+    .site-header {
+      background: #fff;
+      border-bottom: 1px solid #e8e0fa;
+      padding: 0 24px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .site-header-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      height: 60px;
+      gap: 32px;
+    }
+    .logo {
+      font-weight: 800;
+      font-size: 1.1rem;
+      color: #7c3aed;
+      letter-spacing: -0.02em;
+    }
+    .logo span { color: #1a0533; }
+    .nav-links { display: flex; gap: 24px; font-size: .9rem; }
+    .nav-links a { color: #4b2d7a; font-weight: 500; }
+
+    .breadcrumb {
+      max-width: 860px;
+      margin: 24px auto 0;
+      padding: 0 24px;
+      font-size: .83rem;
+      color: #6b5c8a;
+    }
+    .breadcrumb a { color: #7c3aed; }
+    .breadcrumb span { margin: 0 6px; }
+
+    .article-header {
+      max-width: 860px;
+      margin: 20px auto 0;
+      padding: 0 24px;
+    }
+    .article-category {
+      display: inline-block;
+      background: #f3eeff;
+      color: #7c3aed;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 16px;
+    }
+    .article-header h1 {
+      font-size: clamp(1.7rem, 4vw, 2.5rem);
+      font-weight: 800;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      color: #1a0533;
+      margin-bottom: 16px;
+    }
+    .article-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      font-size: .85rem;
+      color: #6b5c8a;
+      margin-bottom: 32px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid #e8e0fa;
+    }
+    .article-meta strong { color: #1a0533; }
+
+    /* Table of Contents */
+    .toc {
+      background: #f8f6ff;
+      border: 1px solid #e8e0fa;
+      border-radius: 12px;
+      padding: 24px 28px;
+      margin: 0 24px 40px;
+      max-width: 860px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .toc h2 {
+      font-size: .9rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      color: #7c3aed;
+      margin-bottom: 12px;
+    }
+    .toc ol {
+      padding-left: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .toc ol li { font-size: .92rem; }
+    .toc ol a { color: #4b2d7a; }
+
+    /* Article body */
+    .article-body {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 24px 60px;
+    }
+    .article-body h2 {
+      font-size: 1.55rem;
+      font-weight: 800;
+      color: #1a0533;
+      margin: 52px 0 18px;
+      padding-top: 16px;
+      border-top: 2px solid #f3eeff;
+      letter-spacing: -0.01em;
+    }
+    .article-body h3 {
+      font-size: 1.18rem;
+      font-weight: 700;
+      color: #2d1060;
+      margin: 32px 0 12px;
+    }
+    .article-body h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #3d1a7a;
+      margin: 24px 0 8px;
+    }
+    .article-body p { margin-bottom: 18px; }
+    .article-body ul, .article-body ol {
+      padding-left: 22px;
+      margin-bottom: 18px;
+    }
+    .article-body li { margin-bottom: 6px; }
+    .article-body strong { color: #1a0533; }
+
+    /* Code blocks */
+    .code-block {
+      background: #1a0533;
+      color: #e8e0fa;
+      padding: 20px 24px;
+      border-radius: 10px;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: .85rem;
+      line-height: 1.6;
+      margin: 20px 0;
+      overflow-x: auto;
+      white-space: pre;
+    }
+
+    /* Tables */
+    .table-wrap { overflow-x: auto; margin: 24px 0; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .9rem;
+    }
+    thead th {
+      background: #7c3aed;
+      color: #fff;
+      padding: 10px 14px;
+      text-align: left;
+      font-weight: 700;
+    }
+    tbody tr:nth-child(even) { background: #f8f6ff; }
+    tbody td {
+      padding: 10px 14px;
+      border-bottom: 1px solid #e8e0fa;
+      vertical-align: top;
+    }
+
+    /* Callout boxes */
+    .callout {
+      border-radius: 10px;
+      padding: 18px 22px;
+      margin: 24px 0;
+      font-size: .93rem;
+    }
+    .callout-info {
+      background: #f0ebff;
+      border-left: 4px solid #7c3aed;
+    }
+    .callout-warning {
+      background: #fff8e6;
+      border-left: 4px solid #f59e0b;
+    }
+    .callout-success {
+      background: #edfff4;
+      border-left: 4px solid #10b981;
+    }
+    .callout strong { display: block; margin-bottom: 6px; }
+
+    /* Schema type cards */
+    .schema-card {
+      background: #fff;
+      border: 1px solid #e8e0fa;
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin: 20px 0;
+    }
+    .schema-card-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+    .schema-badge {
+      background: #7c3aed;
+      color: #fff;
+      font-size: .75rem;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 20px;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+    .schema-card h3 {
+      margin: 0;
+      font-size: 1.05rem;
+      color: #1a0533;
+    }
+    .schema-card p { margin: 0 0 8px; font-size: .92rem; }
+    .schema-card ul { margin: 0; padding-left: 18px; font-size: .92rem; }
+
+    /* Screenshot suggestion */
+    .screenshot-suggestion {
+      background: #f8f6ff;
+      border: 2px dashed #c4b0f0;
+      border-radius: 10px;
+      padding: 16px 20px;
+      font-size: .88rem;
+      color: #5a3f9a;
+      margin: 20px 0;
+    }
+
+    /* CTA block */
+    .cta-block {
+      background: linear-gradient(135deg, #7c3aed 0%, #5b21b6 100%);
+      color: #fff;
+      border-radius: 16px;
+      padding: 40px 44px;
+      text-align: center;
+      margin: 48px 0;
+    }
+    .cta-block h3 {
+      font-size: 1.5rem;
+      font-weight: 800;
+      margin-bottom: 14px;
+      color: #fff;
+    }
+    .cta-block p {
+      font-size: 1rem;
+      margin-bottom: 24px;
+      opacity: .92;
+      max-width: 540px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .cta-btn {
+      display: inline-block;
+      background: #fff;
+      color: #7c3aed;
+      font-weight: 800;
+      font-size: .95rem;
+      padding: 14px 32px;
+      border-radius: 50px;
+      text-decoration: none;
+      transition: transform .15s, box-shadow .15s;
+      box-shadow: 0 4px 20px rgba(0,0,0,.2);
+    }
+    .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,.25); text-decoration: none; }
+    .cta-sub {
+      font-size: .82rem;
+      opacity: .75;
+      margin-top: 14px;
+    }
+
+    /* Steps */
+    .steps { counter-reset: step; }
+    .step {
+      display: flex;
+      gap: 18px;
+      margin-bottom: 28px;
+      align-items: flex-start;
+    }
+    .step-num {
+      flex-shrink: 0;
+      width: 36px;
+      height: 36px;
+      background: #7c3aed;
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: .9rem;
+      margin-top: 2px;
+    }
+    .step-content h4 { margin-top: 0; }
+
+    /* FAQ */
+    .faq-list { margin: 24px 0; }
+    .faq-item {
+      border: 1px solid #e8e0fa;
+      border-radius: 10px;
+      margin-bottom: 10px;
+      overflow: hidden;
+    }
+    .faq-question {
+      width: 100%;
+      background: #f8f6ff;
+      border: none;
+      padding: 16px 20px;
+      text-align: left;
+      font-weight: 700;
+      font-size: .95rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #1a0533;
+      font-family: inherit;
+    }
+    .faq-question:hover { background: #f0ebff; }
+    .faq-icon { font-size: 1.2rem; color: #7c3aed; font-weight: 400; transition: transform .2s; }
+    .faq-answer {
+      display: none;
+      padding: 16px 20px;
+      font-size: .93rem;
+      border-top: 1px solid #e8e0fa;
+      line-height: 1.7;
+    }
+    .faq-item.open .faq-answer { display: block; }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+
+    /* Footer */
+    footer {
+      background: #1a0533;
+      color: #c4b0f0;
+      text-align: center;
+      padding: 32px 24px;
+      font-size: .85rem;
+    }
+    footer a { color: #c4b0f0; }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <div class="logo">Rank<span>Frame</span></div>
+    <nav class="nav-links">
+      <a href="https://rankframe.com">Home</a>
+      <a href="https://rankframe.com/blog">Blog</a>
+      <a href="https://www.framer.com/marketplace/plugins/rankframe/">Install Plugin</a>
+    </nav>
+  </div>
+</header>
+
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <a href="https://rankframe.com">Home</a>
+  <span>&#8250;</span>
+  <a href="https://rankframe.com/blog">Blog</a>
+  <span>&#8250;</span>
+  <span>Framer Schema Markup</span>
+</nav>
+
+<div class="article-header">
+  <span class="article-category">Schema Markup</span>
+  <h1>How to Add Schema Markup to Framer (Without Writing a Single Line of Code)</h1>
+  <div class="article-meta">
+    <span>By <strong>7 Seers</strong></span>
+    <span>Published <strong>May 3, 2026</strong></span>
+    <span>Updated <strong>May 3, 2026</strong></span>
+    <span>Reading time: <strong>~15 min</strong></span>
+  </div>
+</div>
+
+<nav class="toc" aria-label="Table of contents">
+  <h2>Table of Contents</h2>
+  <ol>
+    <li><a href="#what-is-schema">What is Schema Markup and Why Does It Matter?</a></li>
+    <li><a href="#framer-native">How Framer Handles Schema Markup Natively</a></li>
+    <li><a href="#schema-types">Every Schema Type That Matters for Framer Sites</a></li>
+    <li><a href="#rankframe-solution">How RankFrame Solves the Framer Schema Problem</a></li>
+    <li><a href="#how-to-steps">Step-by-Step: Adding Schema With RankFrame</a></li>
+    <li><a href="#validate">How to Validate Schema Before Going Live</a></li>
+    <li><a href="#strategy">Schema Markup Strategy for Framer Sites</a></li>
+    <li><a href="#faq">Frequently Asked Questions</a></li>
+  </ol>
+</nav>
+
+<article class="article-body">
+
+  <p>If you have ever searched for your competitor in Google and noticed their result showing star ratings, FAQ dropdowns directly in the SERP, or a carousel of recent articles with rich preview images, you have seen schema markup at work. These enhanced search results, called rich results, do not happen by accident. They require structured data injected into the HTML of your pages, telling Google precisely what kind of content you are publishing.</p>
+
+  <p>The challenge for Framer users is straightforward and frustrating: <strong>Framer has no native schema UI.</strong> Unlike WordPress with Yoast SEO or Webflow with its structured data settings, Framer provides no visual form for entering schema data. If you want schema on your Framer site today, you must write raw JSON-LD, wrap it in a script tag, and paste it into your page's custom code head. For most designers and founders using Framer, that process is either completely opaque or error-prone enough to produce broken markup.</p>
+
+  <p>This guide covers everything: what schema markup is, why it matters, every type relevant to Framer sites, how to add it manually, and how to automate the entire process without touching a single line of JSON.</p>
+
+  <h2 id="what-is-schema">What is Schema Markup and Why Does It Matter?</h2>
+
+  <p>Schema markup is structured data written in a format called JSON-LD (JavaScript Object Notation for Linked Data). It lives inside a <code>&lt;script type="application/ld+json"&gt;</code> tag in your page's HTML and tells search engines not just what your page <em>says</em>, but what your content <em>is</em>. There is a meaningful difference between those two things.</p>
+
+  <p>Without schema, Google reads your page like a document and tries to infer meaning from text and context. With schema, you are explicitly stating: "This page is an Article, written by this author, published on this date, about this topic, belonging to this organization." Google no longer has to guess.</p>
+
+  <h3>What Rich Results Can Schema Unlock?</h3>
+
+  <p>The most tangible benefit of schema is eligibility for rich results. Depending on the schema types you implement, Google may display your content with visual enhancements in the SERP, including:</p>
+
+  <ul>
+    <li><strong>FAQ dropdowns</strong> directly beneath your search result, expanding to show question and answer pairs</li>
+    <li><strong>Star ratings and review counts</strong> for products, recipes, and local businesses</li>
+    <li><strong>Article rich results</strong> with headline, image, author, and publication date in news carousels</li>
+    <li><strong>How-To step previews</strong> showing numbered steps within the SERP</li>
+    <li><strong>Sitelinks search box</strong> on branded queries, allowing users to search your site from within Google</li>
+    <li><strong>Breadcrumb trails</strong> replacing the URL in your search result with a clean navigation path</li>
+    <li><strong>Event listings</strong> with date, time, and location shown inline</li>
+  </ul>
+
+  <p>Rich results consistently improve click-through rates. Studies from major SEO platforms have found that FAQ-enriched results can increase CTR by 20 to 30 percent compared to standard blue-link results. That CTR improvement signals relevance to Google, which has indirect effects on ranking over time.</p>
+
+  <div class="callout callout-info">
+    <strong>Does schema directly improve rankings?</strong>
+    Schema markup is not a direct ranking factor in the traditional sense. Google has confirmed it does not boost rankings purely from presence. However, it enables rich results, and rich results improve CTR, and improved CTR does influence how Google evaluates a page's relevance and authority. The relationship is real, just indirect.
+  </div>
+
+  <h3>The Technical Format: JSON-LD</h3>
+
+  <p>There are three formats for structured data: JSON-LD, Microdata, and RDFa. Google recommends JSON-LD because it lives separately from your HTML content in a single script block, making it easier to add, modify, and validate without touching your visible page code. Framer's custom code injection supports JSON-LD perfectly.</p>
+
+  <p>A minimal Article schema looks like this:</p>
+
+  <div class="code-block">&lt;script type="application/ld+json"&gt;
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "How to Add Schema Markup to Framer",
+  "author": {
+    "@type": "Person",
+    "name": "Jane Smith"
+  },
+  "datePublished": "2026-05-03",
+  "publisher": {
+    "@type": "Organization",
+    "name": "7 Seers",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://rankframe.com/logo.png"
+    }
+  }
+}
+&lt;/script&gt;
