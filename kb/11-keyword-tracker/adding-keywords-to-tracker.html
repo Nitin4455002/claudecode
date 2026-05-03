@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How to Add Keywords to the RankFrame Keyword Tracker</title>
+  <meta name="description" content="Step-by-step guide to adding single and multiple keywords to the RankFrame Keyword Tracker. Learn how to use comma-separated entry, verify keywords were saved, and build a focused keyword tracking list for your Framer site." />
+  <meta name="keywords" content="add keyword tracker RankFrame, track keyword Framer, keyword tracking setup, comma separated keywords RankFrame" />
+  <link rel="canonical" href="https://rankframe.com/help/adding-keywords-to-tracker" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "How to Add Keywords to the RankFrame Keyword Tracker",
+    "description": "Step-by-step guide to adding single and multiple keywords to the RankFrame Keyword Tracker. Learn how to use comma-separated entry, verify keywords were saved, and build a focused keyword tracking list for your Framer site.",
+    "author": {
+      "@type": "Organization",
+      "name": "7 Seers",
+      "email": "hello@7seersmedia.com"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "7 Seers",
+      "url": "https://rankframe.com"
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://rankframe.com/help/adding-keywords-to-tracker"
+    },
+    "datePublished": "2026-05-03",
+    "dateModified": "2026-05-03"
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Can I add the same keyword twice?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "If you type a keyword already in the tracker, it is added as a duplicate row. Check the Keyword Manager before adding to avoid duplicates."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I delete a tracked keyword?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Look for a delete option (trash or remove icon) on each keyword row in the Keyword Manager. If no direct delete is visible, contact support at hello@7seersmedia.com for guidance on managing your tracked list."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is there a limit to how many keywords I can add in one batch?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "There is no documented limit on batch entry. Separate as many keywords as you need with commas and click Save."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What if I made a typo in a keyword?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Delete the keyword with the typo and re-add the corrected version. Tracked keywords are not editable in place."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "When will I see position data after adding a keyword?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Position data comes from Google Search Console, which typically has a 48 to 72 hour lag. Keywords added today may not show data until 3 to 4 days later."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Help Center",
+        "item": "https://rankframe.com/help"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Keyword Tracker",
+        "item": "https://rankframe.com/help/keyword-tracker"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Adding Keywords to the Tracker",
+        "item": "https://rankframe.com/help/adding-keywords-to-tracker"
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: #fff;
+      color: #1a0533;
+      line-height: 1.7;
+    }
+
+    .topbar {
+      background: linear-gradient(135deg, #7c3aed 0%, #a78bfa 100%);
+      padding: 14px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .topbar-brand {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -0.01em;
+    }
+    .topbar-brand span { opacity: 0.75; font-weight: 400; }
+    .topbar-link { font-size: 0.85rem; color: rgba(255,255,255,0.85); text-decoration: none; }
+    .topbar-link:hover { color: #fff; }
+
+    .breadcrumb {
+      padding: 16px 32px;
+      font-size: 0.82rem;
+      color: #9b8fba;
+      border-bottom: 1px solid #f0ecfa;
+    }
+    .breadcrumb a { color: #7c3aed; text-decoration: none; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .breadcrumb-sep { margin: 0 7px; color: #c8c0dc; }
+
+    .page-wrap {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 48px 32px 80px;
+    }
+
+    .article-badge {
+      display: inline-block;
+      background: #f3eeff;
+      color: #7c3aed;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #1a0533;
+      line-height: 1.25;
+      margin-bottom: 20px;
+      letter-spacing: -0.02em;
+    }
+
+    .intro {
+      font-size: 1.05rem;
+      color: #4b4b6b;
+      line-height: 1.75;
+      margin-bottom: 40px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid #f0ecfa;
+    }
+
+    h2 {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: #1a0533;
+      margin: 48px 0 16px;
+      letter-spacing: -0.01em;
+    }
+
+    p {
+      font-size: 0.97rem;
+      color: #4b4b6b;
+      line-height: 1.75;
+      margin-bottom: 16px;
+    }
+
+    /* Step list */
+    .step-list { list-style: none; padding: 0; margin: 28px 0; }
+    .step-list li { display: flex; gap: 16px; margin-bottom: 24px; }
+    .step-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      min-width: 32px;
+      background: linear-gradient(135deg, #7c3aed, #a78bfa);
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.85rem;
+      border-radius: 50%;
+    }
+    .step-body { flex: 1; }
+    .step-body strong { display: block; font-size: 0.97rem; color: #1a0533; margin-bottom: 4px; }
+    .step-body p { font-size: 0.92rem; color: #4b4b6b; line-height: 1.7; margin: 0; }
+
+    /* Field blocks */
+    .field-block { margin: 36px 0 28px; }
+    .field-block-header { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+    .field-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      background: linear-gradient(135deg, #7c3aed, #a78bfa);
+      color: #fff;
+      font-weight: 700;
+      font-size: 14px;
+      border-radius: 8px;
+      flex-shrink: 0;
+      box-shadow: 0 2px 6px rgba(124,58,237,0.25);
+    }
+    .field-block-title { font-size: 1rem; font-weight: 700; color: #1a0533; }
+    .field-block-desc { font-size: 0.93rem; color: #4b4b6b; line-height: 1.7; }
+
+    .screenshot-slot {
+      background: #fafafa;
+      border: 1px dashed #e0d8f0;
+      border-radius: 10px;
+      padding: 36px 20px;
+      text-align: center;
+      color: #b8b2c8;
+      font-size: 0.85rem;
+      margin-top: 6px;
+      margin-bottom: 8px;
+    }
+    .screenshot-slot::before {
+      content: "Screenshot";
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #c8c0dc;
+    }
+
+    /* Input mock */
+    .input-mock {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border: 1.5px solid #e0d8f0;
+      border-radius: 10px;
+      padding: 10px 14px;
+      margin: 16px 0;
+      background: #fafafa;
+    }
+    .input-mock-icon {
+      width: 22px;
+      height: 22px;
+      background: #f3eeff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .input-mock-icon svg { display: block; }
+    .input-mock-text {
+      flex: 1;
+      font-size: 0.88rem;
+      color: #b8b2c8;
+      font-style: italic;
+    }
+    .input-mock-btn {
+      background: linear-gradient(135deg, #7c3aed, #a78bfa);
+      color: #fff;
+      border: none;
+      border-radius: 7px;
+      padding: 7px 18px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: default;
+    }
+    .input-helper {
+      font-size: 0.82rem;
+      color: #9b8fba;
+      margin-top: -6px;
+      margin-bottom: 16px;
+    }
+
+    /* Tips callout */
+    .tips-callout {
+      background: #f3eeff;
+      border: 1px solid #d8cafc;
+      border-radius: 12px;
+      padding: 24px 28px;
+      margin: 36px 0;
+    }
+    .tips-callout h3 {
+      font-size: 0.97rem;
+      font-weight: 800;
+      color: #7c3aed;
+      margin-bottom: 14px;
+      letter-spacing: -0.01em;
+    }
+    .tips-callout ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .tips-callout ul li {
+      font-size: 0.92rem;
+      color: #3b1f6b;
+      line-height: 1.7;
+      padding: 5px 0 5px 22px;
+      position: relative;
+    }
+    .tips-callout ul li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 13px;
+      width: 7px;
+      height: 7px;
+      background: linear-gradient(135deg, #7c3aed, #a78bfa);
+      border-radius: 50%;
+    }
+
+    /* FAQ */
+    .faq-section { margin-top: 56px; }
+    .faq-item {
+      border: 1px solid #f0ecfa;
+      border-radius: 10px;
+      margin-bottom: 12px;
+      overflow: hidden;
+    }
+    .faq-q {
+      width: 100%;
+      background: #fafafa;
+      border: none;
+      cursor: pointer;
+      text-align: left;
+      padding: 16px 20px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #1a0533;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+    .faq-q:hover { background: #f3eeff; }
+    .faq-arrow {
+      flex-shrink: 0;
+      width: 22px;
+      height: 22px;
+      background: #7c3aed;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 13px;
+      transition: transform 0.2s;
+      line-height: 1;
+    }
+    .faq-a {
+      padding: 0 20px;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.25s ease;
+    }
+    .faq-a p { padding: 14px 0; margin: 0; font-size: 0.93rem; color: #4b4b6b; line-height: 1.7; }
+    .faq-item.open .faq-a { max-height: 400px; }
+    .faq-item.open .faq-arrow { transform: rotate(180deg); }
+
+    /* Inline code */
+    code {
+      background: #f3eeff;
+      color: #7c3aed;
+      font-size: 0.88em;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+    }
+
+    .footer {
+      margin-top: 72px;
+      padding-top: 28px;
+      border-top: 1px solid #f0ecfa;
+      font-size: 0.83rem;
+      color: #9b8fba;
+    }
+    .footer a { color: #7c3aed; text-decoration: none; }
+    .footer a:hover { text-decoration: underline; }
+
+    @media (max-width: 600px) {
+      .page-wrap { padding: 32px 20px 60px; }
+      h1 { font-size: 1.5rem; }
+      .topbar { padding: 12px 20px; }
+      .breadcrumb { padding: 14px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="topbar-brand">RankFrame <span>by 7 Seers</span></div>
+    <a href="https://rankframe.com/help" class="topbar-link">Help Center</a>
+  </header>
+
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="https://rankframe.com/help">Help Center</a>
+    <span class="breadcrumb-sep">&#8250;</span>
+    <a href="https://rankframe.com/help/keyword-tracker">Keyword Tracker</a>
+    <span class="breadcrumb-sep">&#8250;</span>
+    Adding Keywords to the Tracker
+  </nav>
+
+  <main class="page-wrap">
+
+    <div class="article-badge">Article 62 &middot; Keyword Tracker</div>
+
+    <h1>How to Add Keywords to the Keyword Tracker</h1>
+
+    <p class="intro">
+      Adding keywords to track in RankFrame takes seconds. You can add one keyword at a time or batch-add multiple keywords in a single entry by separating them with commas. The keywords appear in the Keyword Manager table and begin accumulating Google Search Console data automatically.
+    </p>
+
+    <h2>Step-by-Step: Adding Keywords</h2>
+
+    <div class="screenshot-slot">Keyword Tracker tab open with the Add New Keyword input field visible at the top</div>
+
+    <ol class="step-list">
+      <li>
+        <span class="step-num">1</span>
+        <div class="step-body">
+          <strong>Open Submit Indexing and navigate to the Keyword Tracker tab.</strong>
+          <p>Click the lightning bolt icon in the left sidebar of RankFrame to open Submit Indexing. Then click the <strong>Keyword Tracker</strong> tab across the top of the panel.</p>
+        </div>
+      </li>
+      <li>
+        <span class="step-num">2</span>
+        <div class="step-body">
+          <strong>Click the keyword input field.</strong>
+          <p>The input field sits at the top of the tab, above the Keyword Manager table. It has a target/bullseye icon on the left and placeholder text that reads "seo on wordpress, rank math vs yoast..." to show the expected format. Click anywhere in the field to activate it.</p>
+        </div>
+      </li>
+      <li>
+        <span class="step-num">3</span>
+        <div class="step-body">
+          <strong>Type your keyword or keywords.</strong>
+          <p>To add a single keyword, type it and proceed. To add multiple keywords at once, separate them with commas. For example: <code>Framer SEO plugin, best Framer plugin, Framer schema markup</code>. No space after the comma is required.</p>
+        </div>
+      </li>
+      <li>
+        <span class="step-num">4</span>
+        <div class="step-body">
+          <strong>Click Save.</strong>
+          <p>Each comma-separated term becomes its own row in the Keyword Manager table immediately. The Save button sits to the right of the input field.</p>
+        </div>
+      </li>
+      <li>
+        <span class="step-num">5</span>
+        <div class="step-body">
+          <strong>Wait 48 to 72 hours for data to populate.</strong>
+          <p>Google Search Console data has a built-in lag. Impressions, Clicks, and Search Position cells will fill in automatically as Search Console data becomes available for your new keywords.</p>
+        </div>
+      </li>
+    </ol>
+
+    <div class="screenshot-slot">Comma-separated keywords typed into the Add New Keyword input field before clicking Save</div>
+
+    <h2>Understanding Each Input Element</h2>
+
+    <div class="field-block">
+      <div class="field-block-header">
+        <span class="field-num">1</span>
+        <span class="field-block-title">The Keyword Input Field</span>
+      </div>
+      <p class="field-block-desc">
+        The input field spans the full width of the tab, above the Keyword Manager. It has a target/bullseye icon on the left (decorative, not clickable) and placeholder text suggesting example keywords in the expected format.
+      </p>
+      <div class="input-mock" aria-label="Add New Keyword input field mockup">
+        <div class="input-mock-icon">
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
+            <circle cx="6.5" cy="6.5" r="5.5" stroke="#7c3aed" stroke-width="1.5"/>
+            <circle cx="6.5" cy="6.5" r="2.5" stroke="#7c3aed" stroke-width="1.5"/>
+            <circle cx="6.5" cy="6.5" r="0.75" fill="#7c3aed"/>
+          </svg>
+        </div>
+        <span class="input-mock-text">seo on wordpress, rank math vs yoast...</span>
+        <button class="input-mock-btn" tabindex="-1" aria-hidden="true">Save</button>
+      </div>
+      <p class="input-helper">You can add multiple keywords at a time by separating them with commas.</p>
+      <div class="screenshot-slot">Add New Keyword input field with bullseye icon, placeholder text, and Save button</div>
+    </div>
+
+    <div class="field-block">
+      <div class="field-block-header">
+        <span class="field-num">2</span>
+        <span class="field-block-title">Adding Multiple Keywords at Once</span>
+      </div>
+      <p class="field-block-desc">
+        Separate keywords with commas. No space after the comma is required, though adding one does not cause any issue. Example entry:
+      </p>
+      <p class="field-block-desc">
+        <code>Framer SEO, SEO plugin Framer, best Framer tools</code>
+      </p>
+      <p class="field-block-desc">
+        After clicking Save, each term becomes an individual tracked keyword row in the table. Batch entry is the fastest way to seed your tracker on day one with all of your target terms.
+      </p>
+      <div class="screenshot-slot">Multiple comma-separated keywords entered in the input field before saving</div>
+    </div>
+
+    <div class="field-block">
+      <div class="field-block-header">
+        <span class="field-num">3</span>
+        <span class="field-block-title">What Happens After Clicking Save</span>
+      </div>
+      <p class="field-block-desc">
+        Your keywords appear immediately in the Keyword Manager table. At first, the Impressions, Clicks, Search Position, and Position History cells are empty. These fill in automatically as Google Search Console data becomes available for each term.
+      </p>
+      <p class="field-block-desc">
+        If you added a keyword that Google has no data for yet (a very new page or a very niche term), the cells may remain empty for several days. This is normal. Data appears once Search Console has indexed impressions for that query on your site.
+      </p>
+      <div class="screenshot-slot">Keyword Manager table immediately after saving, showing new keyword rows with empty data cells</div>
+    </div>
+
+    <div class="field-block">
+      <div class="field-block-header">
+        <span class="field-num">4</span>
+        <span class="field-block-title">Keyword Manager Search</span>
+      </div>
+      <p class="field-block-desc">
+        Once you have multiple keywords saved, use the search field in the Keyword Manager header to filter the table in real time. Type part of any keyword to show only matching rows. This is especially useful when your tracking list grows beyond 20 or 30 keywords and you want to jump to a specific term quickly.
+      </p>
+      <div class="screenshot-slot">Keyword Manager search field filtering the table to show only matching keyword rows</div>
+    </div>
+
+    <div class="tips-callout" role="note">
+      <h3>Tips for Building a Useful Tracking List</h3>
+      <ul>
+        <li>Track your primary target keywords from day one, before you see data, so you build baseline history from the start.</li>
+        <li>Include branded terms such as your studio name or product name to monitor branded search growth over time.</li>
+        <li>Include competitor comparison terms ("X vs Y") if your content targets that intent.</li>
+        <li>Keep the list under 50 keywords to keep the table readable and your reviews focused on what matters most.</li>
+      </ul>
+    </div>
+
+    <section class="faq-section" aria-label="Frequently asked questions">
+      <h2>Frequently Asked Questions</h2>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Can I add the same keyword twice?
+          <span class="faq-arrow" aria-hidden="true">&#8964;</span>
+        </button>
+        <div class="faq-a" role="region">
+          <p>If you type a keyword that is already in the tracker, it is added as a duplicate row. Check the Keyword Manager before adding terms to avoid duplicates. Use the Keyword Manager search field to quickly confirm whether a term is already tracked.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          How do I delete a tracked keyword?
+          <span class="faq-arrow" aria-hidden="true">&#8964;</span>
+        </button>
+        <div class="faq-a" role="region">
+          <p>Look for a delete option (trash icon or remove button) on each keyword row in the Keyword Manager. If no direct delete control is visible in your version of RankFrame, contact the support team at <a href="mailto:hello@7seersmedia.com">hello@7seersmedia.com</a> for guidance on managing your tracked list.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Is there a limit to how many keywords I can add in one batch?
+          <span class="faq-arrow" aria-hidden="true">&#8964;</span>
+        </button>
+        <div class="faq-a" role="region">
+          <p>There is no documented limit on batch entry. Separate as many keywords as you need with commas and click Save. All terms are added in a single action.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          What if I made a typo in a keyword?
+          <span class="faq-arrow" aria-hidden="true">&#8964;</span>
+        </button>
+        <div class="faq-a" role="region">
+          <p>Delete the keyword row containing the typo and re-add the corrected version. Tracked keywords are not editable in place, so deletion and re-entry is the correct approach.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          When will I see position data after adding a keyword?
+          <span class="faq-arrow" aria-hidden="true">&#8964;</span>
+        </button>
+        <div class="faq-a" role="region">
+          <p>Position data comes from Google Search Console, which typically has a 48 to 72 hour lag. Keywords you add today may not display Impressions, Clicks, or Search Position data until 3 to 4 days later. This delay is a Google-side limitation, not a RankFrame issue.</p>
+        </div>
+      </div>
+    </section>
+
+    <div id="seo-details" style="margin:60px 0 0;padding:28px 32px;background:#f8f6ff;border:1px solid #e8e0fa;border-radius:14px;">
+      <h3 style="font-size:1rem;font-weight:700;color:#1a0533;margin:0 0 20px;">SEO Details</h3>
+      <div id="seo-fields"></div>
+    </div>
+
+    <footer class="footer">
+      <p>Questions? Contact the RankFrame support team at <a href="mailto:hello@7seersmedia.com">hello@7seersmedia.com</a>. RankFrame is a product by <a href="https://rankframe.com">7 Seers</a>.</p>
+    </footer>
+
+  </main>
+
+  <script>
+  document.querySelectorAll('.faq-q').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var item = btn.closest('.faq-item');
+      var isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(function(i) {
+        i.classList.remove('open');
+        i.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+
+  (function(){
+    var fields=[
+      {label:'Title',value:document.querySelector('title')?document.querySelector('title').textContent:''},
+      {label:'Description',value:(document.querySelector('meta[name="description"]')||{}).content||''},
+      {label:'Keywords',value:(document.querySelector('meta[name="keywords"]')||{}).content||''},
+      {label:'Canonical',value:(document.querySelector('link[rel="canonical"]')||{}).href||''}
+    ];
+    var schemas=Array.from(document.querySelectorAll('script[type="application/ld+json"]')).map(function(s,i){return {label:'Schema '+(i+1),value:s.textContent.trim()};});
+    var all=fields.concat(schemas);
+    var html='';
+    all.forEach(function(f){
+      html+='<div style="margin-bottom:14px;"><div style="font-size:0.78rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:#7c3aed;margin-bottom:4px;">'+f.label+'</div><div style="display:flex;align-items:flex-start;gap:8px;"><code style="flex:1;background:#fff;border:1px solid #e0d8f0;border-radius:6px;padding:8px 10px;font-size:0.82rem;color:#1a0533;white-space:pre-wrap;word-break:break-all;">'+f.value.replace(/</g,'&lt;').replace(/>/g,'&gt;')+'</code><button onclick="navigator.clipboard.writeText(this.dataset.v)" data-v="'+f.value.replace(/"/g,'&quot;')+'" style="flex-shrink:0;padding:6px 12px;background:#7c3aed;color:#fff;border:none;border-radius:6px;font-size:0.78rem;font-weight:700;cursor:pointer;">Copy</button></div></div>';
+    });
+    document.getElementById('seo-fields').innerHTML=html;
+  })();
+  </script>
+
+</body>
+</html>

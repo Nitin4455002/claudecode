@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reading Position History and Ranking Changes in RankFrame</title>
+  <meta name="description" content="Learn how to interpret the position history sparklines and ranking change indicators in the RankFrame Keyword Tracker. Understand what movements mean and how to use trend data to guide your Framer SEO decisions." />
+  <meta name="keywords" content="keyword position history RankFrame, ranking tracker sparkline, keyword position change Framer, SERP position tracking" />
+  <link rel="canonical" href="https://rankframe.com/help/reading-position-history" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Reading Position History and Ranking Changes in RankFrame",
+    "description": "Learn how to interpret the position history sparklines and ranking change indicators in the RankFrame Keyword Tracker. Understand what movements mean and how to use trend data to guide your Framer SEO decisions.",
+    "url": "https://rankframe.com/help/reading-position-history",
+    "datePublished": "2026-05-03",
+    "dateModified": "2026-05-03",
+    "author": {
+      "@type": "Organization",
+      "name": "7 Seers",
+      "email": "hello@7seersmedia.com"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "7 Seers",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://rankframe.com/logo.png"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://rankframe.com/help/reading-position-history"
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "My sparkline shows no data. Why?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Newly added keywords need 48 to 72 hours for Search Console data to appear. Keywords for which your site has no impressions yet (for example, you have never ranked for that term) will show no history until Google starts returning your pages for that query."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "The position indicator shows 'up 0.3'. Is that meaningful?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A 0.3 position improvement is small but in the right direction. Movements of 1 or more positions are more significant. Track trends over weeks rather than reacting to small individual changes."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I see historical data from before I added the keyword to RankFrame?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. RankFrame pulls Search Console data for your verified property, which includes historical data Google has already collected. If your site ranked for a keyword before you added it to the tracker, that history should populate in the sparkline."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "A keyword's position dropped sharply. What should I do?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "First, check if the drop coincides with a Google core update (check industry news for update dates). If so, wait 2 to 4 weeks before acting. If not, review the page that ranks for that keyword: check for thin content, missing schema, slow load speed, or removed backlinks."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why does the same keyword show different positions at different times of day?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Search Console averages position across many searches and refreshes data in batches. Real-time position tracking is not currently offered. The Keyword Tracker reflects Search Console's rolling averages, which stabilize over 48 to 72 hours."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Help Center",
+        "item": "https://rankframe.com/help"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Keyword Tracker",
+        "item": "https://rankframe.com/help/keyword-tracker"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Reading Position History",
+        "item": "https://rankframe.com/help/reading-position-history"
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: #ffffff;
+      color: #1a0533;
+      line-height: 1.7;
+      font-size: 16px;
+    }
+
+    /* Top bar */
+    .topbar {
+      background: linear-gradient(135deg, #7c3aed 0%, #5b21b6 100%);
+      padding: 0 32px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .topbar-logo {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -0.02em;
+    }
+    .topbar-logo span { color: #c4b5fd; }
+    .topbar-sep { color: #a78bfa; font-size: 0.85rem; margin: 0 4px; }
+    .topbar-section { color: #ddd6fe; font-size: 0.85rem; }
+
+    /* Breadcrumb */
+    .breadcrumb-bar {
+      background: #faf8ff;
+      border-bottom: 1px solid #ede9fe;
+      padding: 10px 32px;
+      font-size: 0.8rem;
+      color: #7c3aed;
+    }
+    .breadcrumb-bar a { color: #7c3aed; text-decoration: none; }
+    .breadcrumb-bar a:hover { text-decoration: underline; }
+    .breadcrumb-bar span { color: #a78bfa; margin: 0 6px; }
+
+    /* Layout */
+    .page-wrap {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 48px 32px 80px;
+    }
+
+    /* Article header */
+    .article-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: #f3eeff;
+      border: 1px solid #ddd6fe;
+      border-radius: 20px;
+      padding: 4px 14px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #7c3aed;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+    .article-badge::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #7c3aed;
+      display: inline-block;
+    }
+
+    h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #1a0533;
+      line-height: 1.25;
+      letter-spacing: -0.03em;
+      margin-bottom: 20px;
+    }
+
+    .intro {
+      font-size: 1.05rem;
+      color: #4b4b6b;
+      line-height: 1.75;
+      padding: 22px 24px;
+      background: #faf8ff;
+      border-left: 4px solid #7c3aed;
+      border-radius: 0 10px 10px 0;
+      margin-bottom: 40px;
+    }
+
+    /* Divider */
+    .section-divider {
+      border: none;
+      border-top: 1px solid #ede9fe;
+      margin: 40px 0;
+    }
+
+    /* Section headings */
+    h2 {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: #1a0533;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
+    h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #1a0533;
+      margin-bottom: 10px;
+    }
+
+    p { color: #4b4b6b; line-height: 1.75; margin-bottom: 14px; }
+    p:last-child { margin-bottom: 0; }
+
+    /* Field blocks */
+    .field-block { margin: 36px 0 28px; }
+    .field-block-header { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+    .field-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      background: linear-gradient(135deg, #7c3aed, #a78bfa);
+      color: #fff;
+      font-weight: 700;
+      font-size: 14px;
+      border-radius: 8px;
+      flex-shrink: 0;
+      box-shadow: 0 2px 6px rgba(124,58,237,0.25);
+    }
+    .field-block-title { font-size: 1rem; font-weight: 700; color: #1a0533; }
+    .field-block-desc { font-size: 0.93rem; color: #4b4b6b; line-height: 1.7; }
+
+    /* Screenshot slot */
+    .screenshot-slot {
+      background: #fafafa;
+      border: 1px dashed #e0d8f0;
+      border-radius: 10px;
+      padding: 36px 20px;
+      text-align: center;
+      color: #b8b2c8;
+      font-size: 0.85rem;
+      margin-top: 6px;
+      margin-bottom: 8px;
+    }
+    .screenshot-slot::before {
+      content: "Screenshot";
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #c8c0dc;
+    }
+
+    /* Sparkline patterns */
+    .patterns-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      margin: 24px 0;
+    }
+    .pattern-card {
+      border: 1px solid #ede9fe;
+      border-radius: 12px;
+      padding: 20px 22px;
+      background: #fff;
+    }
+    .pattern-card-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .pattern-card-label.up { color: #059669; }
+    .pattern-card-label.flat { color: #7c3aed; }
+    .pattern-card-label.spike { color: #d97706; }
+    .pattern-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+    .dot-up { background: #059669; }
+    .dot-flat { background: #7c3aed; }
+    .dot-spike { background: #d97706; }
+    .pattern-title { font-size: 0.97rem; font-weight: 700; color: #1a0533; margin-bottom: 6px; }
+    .pattern-body { font-size: 0.9rem; color: #4b4b6b; line-height: 1.65; }
+
+    /* FAQ */
+    .faq-section { margin-top: 48px; }
+    .faq-item {
+      border: 1px solid #ede9fe;
+      border-radius: 12px;
+      padding: 20px 22px;
+      margin-bottom: 14px;
+      background: #fff;
+    }
+    .faq-item:last-child { margin-bottom: 0; }
+    .faq-q {
+      font-size: 0.97rem;
+      font-weight: 700;
+      color: #1a0533;
+      margin-bottom: 8px;
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+    }
+    .faq-q-badge {
+      flex-shrink: 0;
+      width: 22px;
+      height: 22px;
+      background: #7c3aed;
+      color: #fff;
+      font-size: 0.7rem;
+      font-weight: 800;
+      border-radius: 5px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 1px;
+    }
+    .faq-a { font-size: 0.9rem; color: #4b4b6b; line-height: 1.7; padding-left: 32px; }
+
+    /* Footer */
+    .article-footer {
+      margin-top: 60px;
+      padding-top: 28px;
+      border-top: 1px solid #ede9fe;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .footer-brand { font-size: 0.82rem; color: #9d8cbf; }
+    .footer-brand a { color: #7c3aed; text-decoration: none; }
+    .footer-brand a:hover { text-decoration: underline; }
+
+    @media (max-width: 640px) {
+      .page-wrap { padding: 32px 18px 60px; }
+      h1 { font-size: 1.5rem; }
+      .topbar { padding: 0 18px; }
+      .breadcrumb-bar { padding: 10px 18px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top bar -->
+  <div class="topbar">
+    <div class="topbar-logo">Rank<span>Frame</span></div>
+    <div class="topbar-sep">/</div>
+    <div class="topbar-section">Help Center</div>
+  </div>
+
+  <!-- Breadcrumb -->
+  <div class="breadcrumb-bar">
+    <a href="https://rankframe.com/help">Help Center</a>
+    <span>&#8250;</span>
+    <a href="https://rankframe.com/help/keyword-tracker">Keyword Tracker</a>
+    <span>&#8250;</span>
+    Reading Position History
+  </div>
+
+  <div class="page-wrap">
+
+    <div class="article-badge">Keyword Tracker</div>
+
+    <h1>Reading Position History and Ranking Changes</h1>
+
+    <div class="intro">
+      The Position History column in the RankFrame Keyword Tracker shows a sparkline chart for every tracked keyword. A sparkline is a miniature line chart that fits inside a single table cell. It gives you a visual read on whether a keyword is trending up, down, or staying flat, without opening any external analytics platform. Next to the current Search Position value you may also see a change indicator: a green up arrow with a delta (for example, "2.4 up 0.3") showing how much the position improved since the last data update.
+    </div>
+
+    <hr class="section-divider" />
+
+    <!-- Field block 1 -->
+    <div class="field-block">
+      <div class="field-block-header">
+        <div class="field-num">1</div>
+        <div class="field-block-title">The Position History Sparkline</div>
+      </div>
+      <div class="field-block-desc">
+        A small line chart appears in the rightmost column of the keyword table. Each data point on the sparkline represents the average Google position for that keyword during a reporting period. The line runs left (oldest data) to right (most recent). A line trending downward (lower position numbers) means better ranking. A line trending upward means the ranking dropped. Think of the sparkline as a quick health signal: no deep analysis required, just a glance tells you the direction.
+      </div>
+      <div class="screenshot-slot">Position History column with sparkline charts visible in the keyword table</div>
+    </div>
+
+    <!-- Field block 2 -->
+    <div class="field-block">
+      <div class="field-block-header">
+        <div class="field-num">2</div>
+        <div class="field-block-title">Position Numbers: Lower Is Better</div>
+      </div>
+      <div class="field-block-desc">
+        Search position 1 means your page is the top organic result. Position 10 is the last result on the first page. Position 11 and above means page 2 or beyond. When a sparkline trends toward smaller numbers over time, your ranking is improving. When it trends toward larger numbers, your ranking dropped. Keep this inverse relationship in mind: a sparkline line moving visually downward on screen (toward smaller Y-axis values) is good news for your SEO.
+      </div>
+      <div class="screenshot-slot">Position column showing decimal values such as 2.4, 7.8, 14.1 across different keywords</div>
+    </div>
+
+    <!-- Field block 3 -->
+    <div class="field-block">
+      <div class="field-block-header">
+        <div class="field-num">3</div>
+        <div class="field-block-title">The Position Change Indicator</div>
+      </div>
+      <div class="field-block-desc">
+        When position improves since the previous data point, a green up arrow appears next to the current position number with the numeric delta. For example, "up 0.3" means your average position moved from 2.7 to 2.4. This indicator is absent if position stayed the same or declined. A red or downward indicator (if present) signals a drop. Use this indicator as a quick check during your weekly review: green deltas across multiple keywords confirm your optimization work is moving in the right direction.
+      </div>
+      <div class="screenshot-slot">Position change indicators showing green up arrows and red down arrows beside position values</div>
+    </div>
+
+    <!-- Field block 4 -->
+    <div class="field-block">
+      <div class="field-block-header">
+        <div class="field-num">4</div>
+        <div class="field-block-title">Impressions and Clicks Columns</div>
+      </div>
+      <div class="field-block-desc">
+        These columns show total impressions and clicks from Google Search Console for the period. A keyword with high impressions but low clicks has a low CTR (click-through rate), meaning your page appears in results but does not attract clicks. This is worth improving: check if your meta title and description are compelling for that query. Improving CTR does not require any Google ranking change; it is purely about how your result looks in the SERP compared to competitors.
+      </div>
+      <div class="screenshot-slot">Impressions and Clicks columns in the Keyword Tracker table with example values</div>
+    </div>
+
+    <!-- Field block 5 -->
+    <div class="field-block">
+      <div class="field-block-header">
+        <div class="field-num">5</div>
+        <div class="field-block-title">Search Position Column</div>
+      </div>
+      <div class="field-block-desc">
+        The current average position displays as a decimal (for example, 2.4). This is the average across all Google searches that triggered an impression for that keyword during the data period. A position of 4.9 means your page typically appears in roughly the 5th spot. Decimals are normal and expected: because position is averaged across many queries and devices, round numbers are rare. Do not read too much into small decimal differences between check-ins.
+      </div>
+      <div class="screenshot-slot">Search Position column showing decimal values alongside the keyword names</div>
+    </div>
+
+    <!-- Field block 6 -->
+    <div class="field-block">
+      <div class="field-block-header">
+        <div class="field-num">6</div>
+        <div class="field-block-title">Data Refresh Cadence</div>
+      </div>
+      <div class="field-block-desc">
+        Google Search Console data has a built-in lag of 48 to 72 hours. Position history sparklines update as new data arrives. Do not expect daily changes: weekly reviews of position trends are the most useful cadence for SEO decision-making. Checking your Keyword Tracker every day can create a false sense of urgency around normal data delays. Set a recurring weekly review instead, and look at 4-week or 8-week trend windows for the clearest signal.
+      </div>
+      <div class="screenshot-slot">Keyword Tracker showing data refresh timestamp and sparkline chart with multi-week trend</div>
+    </div>
+
+    <hr class="section-divider" />
+
+    <!-- Sparkline patterns section -->
+    <h2>How to Interpret Common Sparkline Patterns</h2>
+    <p>Three patterns appear frequently once you have a few weeks of data. Recognizing them quickly cuts down the time you spend trying to decide whether to act.</p>
+
+    <div class="patterns-grid">
+      <div class="pattern-card">
+        <div class="pattern-card-label up">
+          <div class="pattern-dot dot-up"></div>
+          Pattern 1: Improving
+        </div>
+        <div class="pattern-title">Steady downward trend (positions improving over weeks)</div>
+        <div class="pattern-body">Your SEO work is compounding. A consistent drift toward lower position numbers over 4 to 8 weeks means your content updates, internal links, and schema are having the intended effect. Keep publishing and optimizing. Resist the urge to make dramatic changes when something is already working.</div>
+      </div>
+
+      <div class="pattern-card">
+        <div class="pattern-card-label flat">
+          <div class="pattern-dot dot-flat"></div>
+          Pattern 2: Stable
+        </div>
+        <div class="pattern-title">Flat line with no change</div>
+        <div class="pattern-body">The keyword is stable. Google has settled on a consistent position for your page relative to competitors. Consider whether to invest more content effort on this term or accept the current position. A flat line around position 8 to 12 is a candidate for a focused content refresh: strengthening the page could push it into the top 5. A flat line at position 2 to 3 is a sign to maintain, not over-optimize.</div>
+      </div>
+
+      <div class="pattern-card">
+        <div class="pattern-card-label spike">
+          <div class="pattern-dot dot-spike"></div>
+          Pattern 3: Spike and Recovery
+        </div>
+        <div class="pattern-title">Sharp upward spike then recovery</div>
+        <div class="pattern-body">A sudden jump in position number (for example, moving from 5 to 18 in one data period) often coincides with a Google core update temporarily shifting rankings. If position returned to baseline within 2 to 4 weeks, no action is needed. If it did not recover, revisit on-page optimization: check heading structure, content depth, E-E-A-T signals, and whether any competitor significantly updated their page during that window.</div>
+      </div>
+    </div>
+
+    <div class="screenshot-slot">Three sparkline examples showing improving trend, flat trend, and spike-recovery pattern</div>
+
+    <hr class="section-divider" />
+
+    <!-- FAQ section -->
+    <div class="faq-section">
+      <h2>Frequently Asked Questions</h2>
+
+      <div class="faq-item">
+        <div class="faq-q">
+          <span class="faq-q-badge">Q</span>
+          My sparkline shows no data. Why?
+        </div>
+        <div class="faq-a">Newly added keywords need 48 to 72 hours for Search Console data to appear. Keywords for which your site has no impressions yet (for example, you have never ranked for that term) will show no history until Google starts returning your pages for that query. If you recently published the page, wait a few days and check again after Google has had time to crawl and index it.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">
+          <span class="faq-q-badge">Q</span>
+          The position indicator shows "up 0.3". Is that meaningful?
+        </div>
+        <div class="faq-a">A 0.3 position improvement is small but in the right direction. Movements of 1 or more positions are more significant, especially in the top-10 range where each position represents a meaningful change in click-through rate. Track trends over weeks rather than reacting to small individual changes. One week of up 0.3 is noise; four weeks of consistent improvement adds up to real progress.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">
+          <span class="faq-q-badge">Q</span>
+          Can I see historical data from before I added the keyword to RankFrame?
+        </div>
+        <div class="faq-a">Yes. RankFrame pulls Search Console data for your verified property, which includes historical data Google has already collected. If your site ranked for a keyword before you added it to the tracker, that history should populate in the sparkline going back as far as Search Console has data (typically 16 months). This means adding a keyword today can immediately show you months of trend data.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">
+          <span class="faq-q-badge">Q</span>
+          A keyword's position dropped sharply. What should I do?
+        </div>
+        <div class="faq-a">First, check if the drop coincides with a Google core update (check industry news for update dates). If so, wait 2 to 4 weeks before acting, since core updates often shuffle results before settling. If there was no core update, review the page that ranks for that keyword: check for thin content, missing schema, slow load speed, or removed backlinks. Compare your page to the top-ranking competitors for the same query to identify gaps.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">
+          <span class="faq-q-badge">Q</span>
+          Why does the same keyword show different positions at different times of day?
+        </div>
+        <div class="faq-a">Search Console averages position across many searches and refreshes data in batches. Real-time position tracking is not currently offered. The Keyword Tracker reflects Search Console's rolling averages, which stabilize over 48 to 72 hours. Day-to-day variation is normal and expected: focus on the weekly or monthly trend rather than point-in-time snapshots.</div>
+      </div>
+
+    </div>
+
+    <!-- SEO Details panel -->
+    <div id="seo-details" style="margin:60px 0 0;padding:28px 32px;background:#f8f6ff;border:1px solid #e8e0fa;border-radius:14px;">
+      <h3 style="font-size:1rem;font-weight:700;color:#1a0533;margin:0 0 20px;">SEO Details</h3>
+      <div id="seo-fields"></div>
+    </div>
+
+    <!-- Article footer -->
+    <div class="article-footer">
+      <div class="footer-brand">
+        RankFrame is a product by <a href="mailto:hello@7seersmedia.com">7 Seers</a>. Questions? Email us at hello@7seersmedia.com.
+      </div>
+    </div>
+
+  </div><!-- /page-wrap -->
+
+  <script>
+  (function(){
+    var fields=[
+      {label:'Title',value:document.querySelector('title')?document.querySelector('title').textContent:''},
+      {label:'Description',value:(document.querySelector('meta[name="description"]')||{}).content||''},
+      {label:'Keywords',value:(document.querySelector('meta[name="keywords"]')||{}).content||''},
+      {label:'Canonical',value:(document.querySelector('link[rel="canonical"]')||{}).href||''}
+    ];
+    var schemas=Array.from(document.querySelectorAll('script[type="application/ld+json"]')).map(function(s,i){return {label:'Schema '+(i+1),value:s.textContent.trim()};});
+    var all=fields.concat(schemas);
+    var html='';
+    all.forEach(function(f){
+      html+='<div style="margin-bottom:14px;"><div style="font-size:0.78rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:#7c3aed;margin-bottom:4px;">'+f.label+'</div><div style="display:flex;align-items:flex-start;gap:8px;"><code style="flex:1;background:#fff;border:1px solid #e0d8f0;border-radius:6px;padding:8px 10px;font-size:0.82rem;color:#1a0533;white-space:pre-wrap;word-break:break-all;">'+f.value.replace(/</g,'&lt;').replace(/>/g,'&gt;')+'</code><button onclick="navigator.clipboard.writeText(this.dataset.v)" data-v="'+f.value.replace(/"/g,'&quot;')+'" style="flex-shrink:0;padding:6px 12px;background:#7c3aed;color:#fff;border:none;border-radius:6px;font-size:0.78rem;font-weight:700;cursor:pointer;">Copy</button></div></div>';
+    });
+    document.getElementById('seo-fields').innerHTML=html;
+  })();
+  </script>
+
+</body>
+</html>

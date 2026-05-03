@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Keyword Tracker Overview: Track Rankings in RankFrame</title>
-  <meta name="description" content="Learn how the RankFrame Keyword Tracker monitors your Framer site's search rankings. Understand the keyword table, position history sparklines, and how data is pulled from Google Search Console.">
-  <meta name="keywords" content="keyword rank tracker Framer, RankFrame keyword tracker, track keyword rankings Framer, Google Search Console Framer">
-  <link rel="canonical" href="https://rankframe.com/help/keyword-tracker-overview">
+  <meta name="description" content="Learn how the RankFrame Keyword Tracker monitors your Framer site's search rankings. Understand the keyword table, position history sparklines, and how data is pulled from Google Search Console." />
+  <meta name="keywords" content="keyword rank tracker Framer, RankFrame keyword tracker, track keyword rankings Framer, Google Search Console Framer" />
+  <link rel="canonical" href="https://rankframe.com/help/keyword-tracker-overview" />
 
   <script type="application/ld+json">
   {
@@ -29,8 +29,7 @@
       "@id": "https://rankframe.com/help/keyword-tracker-overview"
     },
     "datePublished": "2026-05-03",
-    "dateModified": "2026-05-03",
-    "keywords": "keyword rank tracker Framer, RankFrame keyword tracker, track keyword rankings Framer, Google Search Console Framer"
+    "dateModified": "2026-05-03"
   }
   </script>
 
@@ -114,67 +113,56 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      background: #ffffff;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: #fff;
       color: #1a0533;
       line-height: 1.7;
     }
 
-    /* Top bar */
     .topbar {
-      background: linear-gradient(135deg, #7c3aed 0%, #5b21b6 100%);
+      background: linear-gradient(135deg, #7c3aed 0%, #a78bfa 100%);
       padding: 14px 32px;
       display: flex;
       align-items: center;
-      gap: 12px;
+      justify-content: space-between;
     }
-    .topbar-logo {
+    .topbar-brand {
       font-size: 1.1rem;
       font-weight: 800;
-      color: #ffffff;
-      letter-spacing: -0.02em;
+      color: #fff;
+      letter-spacing: -0.01em;
     }
-    .topbar-logo span {
-      opacity: 0.7;
-      font-weight: 400;
-      margin-left: 6px;
-      font-size: 0.9rem;
-    }
+    .topbar-brand span { opacity: 0.75; font-weight: 400; }
+    .topbar-link { font-size: 0.85rem; color: rgba(255,255,255,0.85); text-decoration: none; }
+    .topbar-link:hover { color: #fff; }
 
-    /* Breadcrumb */
     .breadcrumb {
-      padding: 16px 48px;
+      padding: 16px 32px;
       font-size: 0.82rem;
-      color: #7c6a9a;
-      border-bottom: 1px solid #f0eafa;
-      background: #fdfcff;
+      color: #9b8fba;
+      border-bottom: 1px solid #f0ecfa;
     }
-    .breadcrumb a {
-      color: #7c3aed;
-      text-decoration: none;
-    }
+    .breadcrumb a { color: #7c3aed; text-decoration: none; }
     .breadcrumb a:hover { text-decoration: underline; }
-    .breadcrumb span { margin: 0 6px; color: #c8b8e8; }
+    .breadcrumb-sep { margin: 0 7px; color: #c8c0dc; }
 
-    /* Layout */
     .page-wrap {
       max-width: 820px;
       margin: 0 auto;
-      padding: 52px 32px 80px;
+      padding: 48px 32px 80px;
     }
 
-    /* Article header */
-    .article-tag {
+    .article-badge {
       display: inline-block;
       background: #f3eeff;
       color: #7c3aed;
       font-size: 0.75rem;
       font-weight: 700;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.07em;
       text-transform: uppercase;
       padding: 4px 12px;
       border-radius: 20px;
-      margin-bottom: 18px;
+      margin-bottom: 16px;
     }
 
     h1 {
@@ -192,32 +180,24 @@
       line-height: 1.75;
       margin-bottom: 40px;
       padding-bottom: 32px;
-      border-bottom: 1px solid #f0eafa;
+      border-bottom: 1px solid #f0ecfa;
     }
 
     h2 {
       font-size: 1.35rem;
       font-weight: 800;
       color: #1a0533;
-      margin: 52px 0 20px;
+      margin: 48px 0 16px;
       letter-spacing: -0.01em;
     }
 
-    h3 {
-      font-size: 1.05rem;
-      font-weight: 700;
-      color: #1a0533;
-      margin: 32px 0 12px;
-    }
-
     p {
-      font-size: 0.96rem;
+      font-size: 0.97rem;
       color: #4b4b6b;
       line-height: 1.75;
       margin-bottom: 16px;
     }
 
-    /* Field blocks */
     .field-block { margin: 36px 0 28px; }
     .field-block-header { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
     .field-num {
@@ -237,7 +217,6 @@
     .field-block-title { font-size: 1rem; font-weight: 700; color: #1a0533; }
     .field-block-desc { font-size: 0.93rem; color: #4b4b6b; line-height: 1.7; }
 
-    /* Screenshot slot */
     .screenshot-slot {
       background: #fafafa;
       border: 1px dashed #e0d8f0;
@@ -259,357 +238,342 @@
       color: #c8c0dc;
     }
 
-    /* Info callout */
-    .callout-info {
-      display: flex;
-      gap: 14px;
-      align-items: flex-start;
+    .callout {
       background: #f3eeff;
       border-left: 4px solid #7c3aed;
       border-radius: 0 10px 10px 0;
-      padding: 18px 20px;
+      padding: 18px 22px;
       margin: 32px 0;
-      font-size: 0.92rem;
-      color: #3b1f6e;
+      font-size: 0.93rem;
+      color: #3b1f6b;
       line-height: 1.7;
     }
-    .callout-info-icon {
-      font-size: 1.2rem;
-      flex-shrink: 0;
-      margin-top: 1px;
-    }
 
-    /* Data table */
-    .data-table {
+    .table-demo {
       width: 100%;
       border-collapse: collapse;
-      margin: 24px 0;
-      font-size: 0.88rem;
+      margin: 20px 0;
+      font-size: 0.85rem;
     }
-    .data-table th {
+    .table-demo thead th {
       background: #f3eeff;
       color: #7c3aed;
       font-weight: 700;
       font-size: 0.75rem;
-      letter-spacing: 0.07em;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
       padding: 10px 14px;
       text-align: left;
       border-bottom: 2px solid #e0d8f0;
     }
-    .data-table td {
+    .table-demo tbody td {
       padding: 11px 14px;
-      border-bottom: 1px solid #f0eafa;
-      color: #4b4b6b;
+      color: #1a0533;
+      border-bottom: 1px solid #f0ecfa;
       vertical-align: middle;
     }
-    .data-table tr:last-child td { border-bottom: none; }
-    .data-table tr:hover td { background: #fdfcff; }
+    .table-demo tbody tr:last-child td { border-bottom: none; }
     .pos-up {
       display: inline-flex;
       align-items: center;
       gap: 4px;
-      color: #15803d;
+      color: #16a34a;
       font-weight: 700;
       font-size: 0.82rem;
     }
-    .sparkline {
+    .sparkline-placeholder {
       display: inline-block;
-      width: 56px;
-      height: 20px;
-      background: linear-gradient(90deg, #e9d5ff 0%, #7c3aed 100%);
-      border-radius: 3px;
+      width: 64px;
+      height: 24px;
+      background: linear-gradient(90deg, #e0d8f0 0%, #a78bfa 60%, #7c3aed 100%);
+      border-radius: 4px;
       opacity: 0.5;
-      vertical-align: middle;
-      margin-right: 8px;
     }
 
-    /* FAQ section */
-    .faq-list { margin: 0; padding: 0; list-style: none; }
+    .faq-section { margin-top: 56px; }
     .faq-item {
-      border: 1px solid #e8e0fa;
+      border: 1px solid #f0ecfa;
       border-radius: 10px;
       margin-bottom: 12px;
       overflow: hidden;
     }
     .faq-q {
       width: 100%;
-      background: #fdfcff;
+      background: #fafafa;
       border: none;
-      padding: 16px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
       cursor: pointer;
+      text-align: left;
+      padding: 16px 20px;
       font-size: 0.95rem;
       font-weight: 700;
       color: #1a0533;
-      text-align: left;
-      transition: background 0.15s;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
     }
     .faq-q:hover { background: #f3eeff; }
-    .faq-q-icon {
+    .faq-arrow {
       flex-shrink: 0;
       width: 22px;
       height: 22px;
-      background: #f3eeff;
+      background: #7c3aed;
       border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.8rem;
-      color: #7c3aed;
-      font-weight: 900;
-      transition: transform 0.2s;
-    }
-    .faq-a {
-      padding: 0 20px 16px;
-      font-size: 0.92rem;
-      color: #4b4b6b;
-      line-height: 1.7;
-      display: none;
-    }
-    .faq-item.open .faq-a { display: block; }
-    .faq-item.open .faq-q { background: #f3eeff; }
-    .faq-item.open .faq-q-icon { transform: rotate(45deg); background: #7c3aed; color: #fff; }
-
-    /* Footer */
-    .article-footer {
-      margin-top: 64px;
-      padding-top: 28px;
-      border-top: 1px solid #f0eafa;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-    .footer-brand {
-      font-size: 0.82rem;
-      color: #9a8ab8;
-    }
-    .footer-brand a { color: #7c3aed; text-decoration: none; }
-    .footer-badge {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      background: #f3eeff;
-      border: 1px solid #e0d8f0;
-      border-radius: 20px;
-      padding: 6px 14px;
-      font-size: 0.78rem;
-      font-weight: 700;
-      color: #7c3aed;
+      justify-content: center;
+      color: #fff;
+      font-size: 13px;
+      transition: transform 0.2s;
+      line-height: 1;
+    }
+    .faq-a {
+      padding: 0 20px;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.25s ease, padding 0.2s;
+    }
+    .faq-a p { padding: 14px 0; margin: 0; font-size: 0.93rem; color: #4b4b6b; line-height: 1.7; }
+    .faq-item.open .faq-a { max-height: 400px; }
+    .faq-item.open .faq-arrow { transform: rotate(180deg); }
+
+    .footer {
+      margin-top: 72px;
+      padding-top: 28px;
+      border-top: 1px solid #f0ecfa;
+      font-size: 0.83rem;
+      color: #9b8fba;
+    }
+    .footer a { color: #7c3aed; text-decoration: none; }
+    .footer a:hover { text-decoration: underline; }
+
+    @media (max-width: 600px) {
+      .page-wrap { padding: 32px 20px 60px; }
+      h1 { font-size: 1.5rem; }
+      .topbar { padding: 12px 20px; }
+      .breadcrumb { padding: 14px 20px; }
     }
   </style>
 </head>
 <body>
 
-  <div class="topbar">
-    <div class="topbar-logo">RankFrame <span>by 7 Seers</span></div>
-  </div>
+  <header class="topbar">
+    <div class="topbar-brand">RankFrame <span>by 7 Seers</span></div>
+    <a href="https://rankframe.com/help" class="topbar-link">Help Center</a>
+  </header>
 
   <nav class="breadcrumb" aria-label="Breadcrumb">
     <a href="https://rankframe.com/help">Help Center</a>
-    <span>›</span>
+    <span class="breadcrumb-sep">&#8250;</span>
     <a href="https://rankframe.com/help/keyword-tracker">Keyword Tracker</a>
-    <span>›</span>
+    <span class="breadcrumb-sep">&#8250;</span>
     Keyword Tracker Overview
   </nav>
 
   <main class="page-wrap">
 
-    <div class="article-tag">Keyword Tracker</div>
+    <div class="article-badge">Article 61 &middot; Keyword Tracker</div>
+
     <h1>Keyword Tracker Overview</h1>
 
     <p class="intro">
       The Keyword Tracker in RankFrame lets you monitor how specific search terms are performing for your Framer site over time. Unlike the Analytics tab (which shows aggregate traffic data), the Keyword Tracker is keyword-by-keyword: you choose the terms that matter to your business and watch their position, clicks, and impressions update automatically as Google updates its index. All data comes directly from Google Search Console through the same verified connection you set up for indexing.
     </p>
 
-    <!-- Field Block 1 -->
+    <h2>How the Keyword Tracker Works</h2>
+
     <div class="field-block">
       <div class="field-block-header">
-        <div class="field-num">1</div>
-        <div class="field-block-title">Where to Find the Keyword Tracker</div>
+        <span class="field-num">1</span>
+        <span class="field-block-title">Where to Find the Keyword Tracker</span>
       </div>
-      <div class="field-block-desc">
-        Open Submit Indexing by clicking the lightning bolt icon in the left sidebar, then click the <strong>Keyword Tracker</strong> tab. It is the fourth tab across the top row: Submit URLs | Setup | Analytics | <strong>Keyword Tracker</strong> | Indexing History. The tab is available as long as your Google Search Console connection is active.
-      </div>
-      <div class="screenshot-slot">Keyword Tracker tab highlighted inside the Submit Indexing panel</div>
+      <p class="field-block-desc">
+        Open Submit Indexing by clicking the lightning bolt icon in the left sidebar of RankFrame. Then click the <strong>Keyword Tracker</strong> tab at the top of the panel. It is the fourth tab across: Submit URLs | Setup | Analytics | <strong>Keyword Tracker</strong> | Indexing History.
+      </p>
+      <div class="screenshot-slot">Keyword Tracker tab selected inside the Submit Indexing panel</div>
     </div>
 
-    <!-- Field Block 2 -->
     <div class="field-block">
       <div class="field-block-header">
-        <div class="field-num">2</div>
-        <div class="field-block-title">What the Keyword Tracker Does</div>
+        <span class="field-num">2</span>
+        <span class="field-block-title">What the Keyword Tracker Does</span>
       </div>
-      <div class="field-block-desc">
-        The Keyword Tracker stores a list of keywords you care about and shows their current Google Search Console metrics for your Framer site.
-      </div>
-      <div class="screenshot-slot">Keyword Manager table showing sample keywords with Impressions, Clicks, and Position columns</div>
-      <table class="data-table" style="margin-top:16px;">
+      <p class="field-block-desc">
+        The Keyword Tracker stores a list of keywords you define and shows their current Google Search Console metrics in a structured table. The three core columns are:
+      </p>
+      <p class="field-block-desc">
+        <strong>Impressions:</strong> how many times your pages appeared in Google results for that query. <strong>Clicks:</strong> how many times a searcher clicked through to your site. <strong>Search Position:</strong> your average ranking position for the keyword. A lower number is better. Position 1 means your page appears first in results.
+      </p>
+      <table class="table-demo" aria-label="Example keyword table">
         <thead>
           <tr>
-            <th>Column</th>
-            <th>What it means</th>
+            <th>Keyword</th>
+            <th>Impressions</th>
+            <th>Clicks</th>
+            <th>Search Position</th>
+            <th>Position History</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td><strong>Keyword</strong></td>
-            <td>The search term you added to the tracker.</td>
+            <td>Framer SEO plugin</td>
+            <td>3,210</td>
+            <td>184</td>
+            <td>
+              <span class="pos-up">
+                2.4
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M6 10V2M2 6l4-4 4 4" stroke="#16a34a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                0.3
+              </span>
+            </td>
+            <td><span class="sparkline-placeholder" aria-label="Sparkline chart"></span></td>
           </tr>
           <tr>
-            <td><strong>Impressions</strong></td>
-            <td>How many times your pages appeared in Google results for this query.</td>
+            <td>rank math vs yoast</td>
+            <td>890</td>
+            <td>42</td>
+            <td>5.1</td>
+            <td><span class="sparkline-placeholder" aria-label="Sparkline chart"></span></td>
           </tr>
           <tr>
-            <td><strong>Clicks</strong></td>
-            <td>How many times searchers clicked through to your site.</td>
-          </tr>
-          <tr>
-            <td><strong>Search Position</strong></td>
-            <td>Your average ranking position. A lower number is better: position 1 is first place.</td>
-          </tr>
-          <tr>
-            <td><strong>Position History</strong></td>
-            <td>A sparkline mini chart showing position movement over time.</td>
+            <td>seo on wordpress</td>
+            <td>1,540</td>
+            <td>67</td>
+            <td>
+              <span class="pos-up">
+                3.9
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M6 10V2M2 6l4-4 4 4" stroke="#16a34a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                1.1
+              </span>
+            </td>
+            <td><span class="sparkline-placeholder" aria-label="Sparkline chart"></span></td>
           </tr>
         </tbody>
       </table>
+      <div class="screenshot-slot">Full Keyword Manager table with Impressions, Clicks, Search Position, and Position History columns</div>
     </div>
 
-    <!-- Field Block 3 -->
     <div class="field-block">
       <div class="field-block-header">
-        <div class="field-num">3</div>
-        <div class="field-block-title">Position History Sparkline</div>
+        <span class="field-num">3</span>
+        <span class="field-block-title">Position History Sparkline</span>
       </div>
-      <div class="field-block-desc">
-        The rightmost column of the keyword table shows a small sparkline chart for each keyword. The sparkline visualizes position movement over time. When your position improves, a green up arrow and a numeric delta appear next to the current position (for example: <span class="pos-up"><span class="sparkline"></span>2.4 &#8593; 0.3</span>). This lets you see ranking trends at a glance without opening any external tool or switching to Google Search Console directly.
-      </div>
-      <div class="screenshot-slot">Position History column with sparkline and green up arrow indicator visible</div>
+      <p class="field-block-desc">
+        The rightmost column of the keyword table shows a small sparkline chart for each keyword. The sparkline visualizes position movement over time so you can see at a glance whether a keyword is trending up, down, or holding steady.
+      </p>
+      <p class="field-block-desc">
+        When a position improves, a green up arrow and a numeric delta appear next to the current position number (for example: "2.4" with an up arrow and "0.3"). This lets you confirm ranking movement is real and directional, without leaving the RankFrame panel or opening an external tool.
+      </p>
+      <div class="screenshot-slot">Close-up of Position History sparkline with green up arrow and numeric delta</div>
     </div>
 
-    <!-- Field Block 4 -->
     <div class="field-block">
       <div class="field-block-header">
-        <div class="field-num">4</div>
-        <div class="field-block-title">Where the Data Comes From</div>
+        <span class="field-num">4</span>
+        <span class="field-block-title">Where the Data Comes From</span>
       </div>
-      <div class="field-block-desc">
-        The Keyword Tracker pulls data from Google Search Console via the same OAuth connection you set up in the Submit Indexing Setup tab. If the connection is active and your property is verified, data updates automatically as Search Console refreshes. You do not need a separate Search Console login or a separate SEO tool. RankFrame handles the data pipeline for you inside Framer.
-      </div>
-      <div class="screenshot-slot">Submit Indexing Setup tab showing active Google Search Console connection status</div>
+      <p class="field-block-desc">
+        The Keyword Tracker pulls data from Google Search Console via the same OAuth connection you established in the Submit Indexing Setup tab. If the connection is active and your property is verified, data refreshes automatically as Search Console updates. New data typically appears within 48 to 72 hours. You do not need a separate Search Console login, a separate API key, or a third-party rank-tracking subscription.
+      </p>
+      <div class="screenshot-slot">Submit Indexing Setup tab showing an active Google Search Console connection</div>
     </div>
 
-    <div class="callout-info">
-      <div class="callout-icon">&#9432;</div>
-      <div>The Keyword Tracker shows data Google has reported for your site. Position history reflects past averages, not real-time ranking snapshots. Expect 48 to 72 hours for new keyword data to appear after adding a keyword.</div>
-    </div>
-
-    <!-- Field Block 5 -->
     <div class="field-block">
       <div class="field-block-header">
-        <div class="field-num">5</div>
-        <div class="field-block-title">Keyword Manager Search</div>
+        <span class="field-num">5</span>
+        <span class="field-block-title">Keyword Manager Search</span>
       </div>
-      <div class="field-block-desc">
-        Above the keyword table, the Keyword Manager includes a search field. Type any string to filter the keyword list in real time. Useful when you have tracked dozens of keywords and want to jump to a specific term quickly without scrolling through the full table.
-      </div>
-      <div class="screenshot-slot">Keyword Manager search field with a filtered result set visible in the table below</div>
+      <p class="field-block-desc">
+        Above the keyword table, the Keyword Manager includes a search field. Type any string to filter your tracked keywords in real time. Only rows matching your query remain visible, making it fast to find and review a specific term once your list grows to dozens of entries.
+      </p>
+      <div class="screenshot-slot">Keyword Manager search field actively filtering the keyword table</div>
     </div>
 
-    <!-- FAQ Section -->
-    <h2>Frequently Asked Questions</h2>
-    <ul class="faq-list" aria-label="Frequently Asked Questions">
+    <div class="callout" role="note">
+      <strong>Note:</strong> The Keyword Tracker shows data Google has already reported for your site. Position history reflects past averages, not real-time ranking snapshots. Expect 48 to 72 hours for new keyword data to appear after adding a keyword to the tracker.
+    </div>
 
-      <li class="faq-item">
-        <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+    <section class="faq-section" aria-label="Frequently asked questions">
+      <h2>Frequently Asked Questions</h2>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
           Do I need to set up anything to use the Keyword Tracker?
-          <span class="faq-q-icon" aria-hidden="true">+</span>
+          <span class="faq-arrow" aria-hidden="true">&#8964;</span>
         </button>
-        <div class="faq-a">
-          You need the Google account connected in the Submit Indexing Setup tab and your domain verified in Search Console. If Submit Indexing is already working for you, the Keyword Tracker uses the same connection with no extra setup required.
+        <div class="faq-a" role="region">
+          <p>You need the Google account connected in the Submit Indexing Setup tab and your domain verified in Google Search Console. If Submit Indexing is already working for you, the Keyword Tracker uses the same connection with no extra setup required.</p>
         </div>
-      </li>
-
-      <li class="faq-item">
-        <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
-          How is the Keyword Tracker different from the Analytics tab?
-          <span class="faq-q-icon" aria-hidden="true">+</span>
-        </button>
-        <div class="faq-a">
-          Analytics shows aggregate site-level data: total clicks, total impressions, average CTR, and average position across all queries. The Keyword Tracker is keyword-specific. You define which terms to monitor and the tracker shows per-keyword metrics and trend history for each one individually.
-        </div>
-      </li>
-
-      <li class="faq-item">
-        <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
-          How many keywords can I track?
-          <span class="faq-q-icon" aria-hidden="true">+</span>
-        </button>
-        <div class="faq-a">
-          There is no documented hard limit. Keep the list focused on your core business terms for the clearest picture of SEO progress. A focused list of 20 to 50 keywords is easier to act on than hundreds of loosely related terms.
-        </div>
-      </li>
-
-      <li class="faq-item">
-        <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
-          Why is my position showing a decimal (e.g. 2.4 instead of 2)?
-          <span class="faq-q-icon" aria-hidden="true">+</span>
-        </button>
-        <div class="faq-a">
-          Google Search Console averages position across all impressions for that keyword. If your page appears as position 2 for some searches and position 3 for others in the same period, the average is 2.5. Decimals are normal and expected in all Search Console position reporting.
-        </div>
-      </li>
-
-      <li class="faq-item">
-        <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
-          Can I track keywords for specific pages?
-          <span class="faq-q-icon" aria-hidden="true">+</span>
-        </button>
-        <div class="faq-a">
-          The Keyword Tracker shows sitewide performance for each keyword. To see which specific page is ranking for a term, cross-reference with the Analytics tab's Page drill-down, which breaks down metrics by URL.
-        </div>
-      </li>
-
-    </ul>
-
-    <!-- Article Footer -->
-    <div class="article-footer">
-      <div class="footer-brand">
-        Questions? Contact <a href="mailto:hello@7seersmedia.com">hello@7seersmedia.com</a>
       </div>
-      <div class="footer-badge">RankFrame by 7 Seers</div>
-    </div>
 
-    <!-- SEO Details Panel -->
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          How is the Keyword Tracker different from the Analytics tab?
+          <span class="faq-arrow" aria-hidden="true">&#8964;</span>
+        </button>
+        <div class="faq-a" role="region">
+          <p>Analytics shows aggregate site-level data: total clicks, total impressions, average CTR, and average position across all queries. The Keyword Tracker is keyword-specific: you define which terms to monitor and the tracker shows per-keyword metrics and trend history for each one individually.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          How many keywords can I track?
+          <span class="faq-arrow" aria-hidden="true">&#8964;</span>
+        </button>
+        <div class="faq-a" role="region">
+          <p>There is no documented hard limit. Keep the list focused on your core business terms for the clearest picture of SEO progress. Tracking too many terms at once can make the table harder to review on a regular basis.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Why is my position showing a decimal (e.g. 2.4 instead of 2)?
+          <span class="faq-arrow" aria-hidden="true">&#8964;</span>
+        </button>
+        <div class="faq-a" role="region">
+          <p>Google Search Console averages position across all impressions for that keyword. If your page appears as position 2 for some searches and position 3 for others in the same reporting period, the reported average is 2.5. Decimal positions are normal and expected for any keyword with a meaningful number of impressions.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Can I track keywords for specific pages?
+          <span class="faq-arrow" aria-hidden="true">&#8964;</span>
+        </button>
+        <div class="faq-a" role="region">
+          <p>The Keyword Tracker shows sitewide performance for each keyword across your entire Framer site. To identify which specific page is ranking for a term, cross-reference with the Analytics tab's page drill-down view.</p>
+        </div>
+      </div>
+    </section>
+
     <div id="seo-details" style="margin:60px 0 0;padding:28px 32px;background:#f8f6ff;border:1px solid #e8e0fa;border-radius:14px;">
       <h3 style="font-size:1rem;font-weight:700;color:#1a0533;margin:0 0 20px;">SEO Details</h3>
       <div id="seo-fields"></div>
     </div>
 
+    <footer class="footer">
+      <p>Questions? Contact the RankFrame support team at <a href="mailto:hello@7seersmedia.com">hello@7seersmedia.com</a>. RankFrame is a product by <a href="https://rankframe.com">7 Seers</a>.</p>
+    </footer>
+
   </main>
 
   <script>
-    function toggleFaq(btn) {
+  document.querySelectorAll('.faq-q').forEach(function(btn) {
+    btn.addEventListener('click', function() {
       var item = btn.closest('.faq-item');
       var isOpen = item.classList.contains('open');
-      document.querySelectorAll('.faq-item.open').forEach(function(el) {
-        el.classList.remove('open');
-        el.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+      document.querySelectorAll('.faq-item').forEach(function(i) {
+        i.classList.remove('open');
+        i.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
       });
       if (!isOpen) {
         item.classList.add('open');
         btn.setAttribute('aria-expanded', 'true');
       }
-    }
-  </script>
+    });
+  });
 
-  <script>
   (function(){
     var fields=[
       {label:'Title',value:document.querySelector('title')?document.querySelector('title').textContent:''},
