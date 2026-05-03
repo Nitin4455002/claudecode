@@ -43,7 +43,7 @@
         "name": "What are the most common causes of RankFrame not working?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "The five most frequent causes are: an expired Google OAuth connection, a trial account that has reached its submission limit, AI credits reaching zero, the 404 monitor script toggle being off, and a schema injection master toggle that has not been turned on. Check each of these in order before contacting support."
+          "text": "The most common causes are an expired or incorrect Google OAuth connection, a domain that has not been verified in the Setup tab, AI credits at zero, a disabled 404 monitor toggle, or a Schema Injection master toggle that has never been turned on. Run through the troubleshooting checklist in this article to identify which category applies to your situation."
         }
       },
       {
@@ -51,7 +51,7 @@
         "name": "How do I report a bug in RankFrame?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Email hello@7seersmedia.com with the subject line starting with 'Bug Report'. Include your Framer site URL, the RankFrame plugin version, a description of the steps to reproduce the issue, and any error messages shown in the plugin."
+          "text": "Email hello@7seersmedia.com with the subject line 'RankFrame Bug Report'. Include your Framer project URL, a description of what you expected to happen, a description of what actually happened, and any error messages visible in the plugin or in the browser console (F12 > Console tab)."
         }
       },
       {
@@ -59,7 +59,7 @@
         "name": "What information should I include when contacting RankFrame support?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Include your Framer site URL, the feature that is not working (for example, Submit Indexing or Image SEO), the exact error message or behavior you are seeing, the browser you are using, and whether the issue started after a specific action such as reconnecting Google or publishing a new page."
+          "text": "Include your Framer site URL, the RankFrame plan you are on (Trial, Personal, or Agency), a clear description of the issue, the steps you already tried, any error text shown in the plugin, and a screenshot if possible. The more context you provide, the faster the support team can identify the cause."
         }
       },
       {
@@ -67,15 +67,15 @@
         "name": "How long does RankFrame support take to respond?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "The 7 Seers team typically responds within one business day. You can check whether the team is currently online by looking for the green support dot in the RankFrame sidebar. When the dot is green, responses are often faster."
+          "text": "The 7 Seers team typically responds within one business day. For urgent issues you can check whether the support green dot in the plugin sidebar is lit, which indicates the team is currently online and available for faster help."
         }
       },
       {
         "@type": "Question",
-        "name": "Can I fix most RankFrame issues myself without contacting support?",
+        "name": "Will recrawling the website fix most data display issues in RankFrame?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes. The majority of RankFrame issues resolve by reconnecting Google, recrawling the site with the Recrawl Website button, checking that toggles are enabled, or upgrading from a trial account. The troubleshooting overview covers all eight common issue categories with direct fix instructions."
+          "text": "Yes. If the plugin is showing stale page data, missing images in Image SEO, or outdated meta information, clicking the Recrawl Website button (the red/coral button in the sidebar) forces RankFrame to re-fetch your site content. Most display-related issues resolve immediately after a recrawl."
         }
       }
     ]
@@ -113,14 +113,14 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
       background: #ffffff;
       color: #1a0533;
-      line-height: 1.6;
+      line-height: 1.7;
     }
 
     .page-wrapper {
-      max-width: 820px;
+      max-width: 800px;
       margin: 0 auto;
       padding: 48px 24px 80px;
     }
@@ -128,19 +128,24 @@
     /* Breadcrumb */
     .breadcrumb {
       display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
       align-items: center;
+      gap: 6px;
       font-size: .8rem;
-      color: #9585b8;
-      margin-bottom: 36px;
+      color: #9585b4;
+      margin-bottom: 32px;
+      flex-wrap: wrap;
     }
-    .breadcrumb a { color: #7c3aed; text-decoration: none; }
+    .breadcrumb a {
+      color: #7c3aed;
+      text-decoration: none;
+    }
     .breadcrumb a:hover { text-decoration: underline; }
-    .breadcrumb span { color: #c8c0dc; }
+    .breadcrumb-sep { color: #c4b8d8; }
 
     /* Header */
-    .article-header { margin-bottom: 40px; border-bottom: 1px solid #f0eafa; padding-bottom: 32px; }
+    .article-header {
+      margin-bottom: 40px;
+    }
     .article-tag {
       display: inline-block;
       background: linear-gradient(135deg, #7c3aed, #a78bfa);
@@ -164,7 +169,25 @@
       font-size: 1.05rem;
       color: #4b4b6b;
       line-height: 1.75;
-      max-width: 680px;
+      border-left: 4px solid #a78bfa;
+      padding-left: 16px;
+      margin-bottom: 8px;
+    }
+
+    /* Section headings */
+    h2 {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: #1a0533;
+      margin: 52px 0 6px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #f0eaff;
+    }
+    h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #1a0533;
+      margin: 28px 0 8px;
     }
 
     /* Field blocks */
@@ -182,10 +205,11 @@
       font-size: 14px;
       border-radius: 8px;
       flex-shrink: 0;
-      box-shadow: 0 2px 6px rgba(124, 58, 237, .25);
+      box-shadow: 0 2px 6px rgba(124,58,237,.25);
     }
     .field-block-title { font-size: 1rem; font-weight: 700; color: #1a0533; }
     .field-block-desc { font-size: .93rem; color: #4b4b6b; line-height: 1.7; }
+    .field-block-desc strong { color: #1a0533; }
 
     /* Screenshot slot */
     .screenshot-slot {
@@ -209,115 +233,115 @@
       color: #c8c0dc;
     }
 
-    /* Fix tag */
-    .fix-tag {
-      display: inline-block;
-      background: #f0fdf4;
-      border: 1px solid #bbf7d0;
-      color: #15803d;
-      font-size: .78rem;
-      font-weight: 700;
-      letter-spacing: .05em;
-      text-transform: uppercase;
-      padding: 2px 9px;
-      border-radius: 5px;
-      margin-right: 6px;
-    }
-
-    /* Symptom / Fix lines */
-    .diag-line {
-      display: flex;
-      gap: 8px;
-      align-items: flex-start;
-      margin-bottom: 6px;
-      font-size: .93rem;
-      color: #4b4b6b;
-      line-height: 1.6;
-    }
-    .diag-label {
-      font-weight: 700;
-      color: #7c3aed;
-      flex-shrink: 0;
-      width: 70px;
-    }
-
-    /* Divider */
-    .section-divider {
-      border: none;
-      border-top: 1px solid #f0eafa;
-      margin: 44px 0;
-    }
-
     /* Callout */
     .callout {
-      background: #f5f0ff;
-      border-left: 4px solid #7c3aed;
-      border-radius: 0 10px 10px 0;
+      border-radius: 12px;
       padding: 20px 24px;
-      margin: 40px 0;
+      margin: 36px 0;
+    }
+    .callout-info {
+      background: #f0eaff;
+      border-left: 4px solid #7c3aed;
+    }
+    .callout-support {
+      background: #f0fdf4;
+      border-left: 4px solid #22c55e;
     }
     .callout-title {
-      font-size: .9rem;
+      font-size: .85rem;
       font-weight: 700;
-      color: #7c3aed;
+      letter-spacing: .06em;
+      text-transform: uppercase;
       margin-bottom: 8px;
-      letter-spacing: .03em;
     }
-    .callout p {
-      font-size: .93rem;
-      color: #4b4b6b;
-      line-height: 1.7;
-    }
-    .callout a { color: #7c3aed; font-weight: 600; }
-
-    /* FAQ */
-    .faq-section { margin-top: 56px; }
-    .faq-section h2 {
-      font-size: 1.35rem;
-      font-weight: 800;
-      color: #1a0533;
-      margin-bottom: 28px;
-    }
-    .faq-item {
-      border-bottom: 1px solid #f0eafa;
-      padding: 20px 0;
-    }
-    .faq-item:last-child { border-bottom: none; }
-    .faq-q {
-      font-size: .97rem;
-      font-weight: 700;
-      color: #1a0533;
-      margin-bottom: 10px;
-    }
-    .faq-a {
-      font-size: .93rem;
-      color: #4b4b6b;
-      line-height: 1.7;
-    }
+    .callout-info .callout-title { color: #7c3aed; }
+    .callout-support .callout-title { color: #16a34a; }
+    .callout p { font-size: .93rem; color: #4b4b6b; line-height: 1.7; }
+    .callout a { color: #7c3aed; font-weight: 600; text-decoration: none; }
+    .callout a:hover { text-decoration: underline; }
 
     /* Quick map table */
-    .qmap {
+    .quick-map {
       width: 100%;
       border-collapse: collapse;
-      font-size: .88rem;
-      margin-top: 14px;
+      font-size: .9rem;
+      margin-top: 12px;
     }
-    .qmap th {
-      background: #f5f0ff;
-      color: #7c3aed;
+    .quick-map th {
+      background: #f0eaff;
+      color: #1a0533;
       font-weight: 700;
+      padding: 10px 14px;
       text-align: left;
-      padding: 10px 14px;
-      border-bottom: 2px solid #e8e0fa;
+      font-size: .82rem;
+      letter-spacing: .04em;
     }
-    .qmap td {
+    .quick-map td {
       padding: 10px 14px;
-      border-bottom: 1px solid #f0eafa;
+      border-bottom: 1px solid #f0eaff;
       color: #4b4b6b;
       vertical-align: top;
     }
-    .qmap tr:last-child td { border-bottom: none; }
-    .qmap tr:nth-child(even) td { background: #faf8ff; }
+    .quick-map tr:last-child td { border-bottom: none; }
+    .quick-map tr:nth-child(even) td { background: #fafafa; }
+
+    /* FAQ */
+    .faq-item {
+      border: 1px solid #e8e0fa;
+      border-radius: 10px;
+      margin-bottom: 12px;
+      overflow: hidden;
+    }
+    .faq-question {
+      font-size: .95rem;
+      font-weight: 700;
+      color: #1a0533;
+      padding: 16px 20px;
+      background: #faf8ff;
+      border-bottom: 1px solid #e8e0fa;
+    }
+    .faq-answer {
+      font-size: .9rem;
+      color: #4b4b6b;
+      padding: 14px 20px;
+      line-height: 1.7;
+    }
+
+    /* Footer */
+    .article-footer {
+      margin-top: 64px;
+      padding-top: 24px;
+      border-top: 1px solid #f0eaff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .article-footer-brand {
+      font-size: .82rem;
+      color: #9585b4;
+    }
+    .article-footer-brand a {
+      color: #7c3aed;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .related-links {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .related-link {
+      font-size: .82rem;
+      color: #7c3aed;
+      text-decoration: none;
+      background: #f0eaff;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-weight: 600;
+    }
+    .related-link:hover { background: #e0d8f0; }
   </style>
 </head>
 <body>
@@ -326,203 +350,193 @@
     <!-- Breadcrumb -->
     <nav class="breadcrumb" aria-label="Breadcrumb">
       <a href="https://rankframe.com/help">Help Center</a>
-      <span>&#8250;</span>
+      <span class="breadcrumb-sep">&#8250;</span>
       <a href="https://rankframe.com/help/troubleshooting">Troubleshooting</a>
-      <span>&#8250;</span>
+      <span class="breadcrumb-sep">&#8250;</span>
       <span>Troubleshooting Overview</span>
     </nav>
 
-    <!-- Article Header -->
+    <!-- Header -->
     <header class="article-header">
       <div class="article-tag">Troubleshooting</div>
       <h1>Troubleshooting Overview</h1>
       <p class="article-intro">Most RankFrame issues fall into a small set of categories. This overview maps the most common symptoms to the right fix or article. Before contacting support, run through the checklist below: most issues resolve in under five minutes.</p>
     </header>
 
-    <!-- Field Block 1 -->
-    <div class="field-block">
-      <div class="field-block-header">
-        <span class="field-num">1</span>
-        <span class="field-block-title">Google Connection Not Working</span>
-      </div>
-      <div class="field-block-desc">
-        <div class="diag-line"><span class="diag-label">Cause</span><span>OAuth token expired or you are connected to the wrong Google account.</span></div>
-        <div class="diag-line"><span class="diag-label">Fix</span><span>Open <strong>Submit Indexing</strong>, go to the <strong>Setup</strong> tab, click the red <strong>Disconnect</strong> link, and reconnect with the correct Google account that has access to your Search Console property.</span></div>
-      </div>
-      <div class="screenshot-slot">Submit Indexing &gt; Setup tab showing the Disconnect and Connect buttons</div>
-    </div>
+    <!-- Main content -->
+    <main>
 
-    <!-- Field Block 2 -->
-    <div class="field-block">
-      <div class="field-block-header">
-        <span class="field-num">2</span>
-        <span class="field-block-title">Indexing Not Submitting</span>
-      </div>
-      <div class="field-block-desc">
-        <div class="diag-line"><span class="diag-label">Cause</span><span>URL submission limit reached on a trial account, or your domain has not passed verification.</span></div>
-        <div class="diag-line"><span class="diag-label">Fix</span><span>Open the <strong>Setup</strong> tab in Submit Indexing and check the Domain Verification step status. If you are on trial, upgrade via the <strong>See Billing</strong> button to remove submission limits.</span></div>
-      </div>
-      <div class="screenshot-slot">Submit Indexing &gt; Setup tab showing Domain Verification status and See Billing button</div>
-    </div>
+      <h2>Common Issue Categories</h2>
 
-    <!-- Field Block 3 -->
-    <div class="field-block">
-      <div class="field-block-header">
-        <span class="field-num">3</span>
-        <span class="field-block-title">AI Generation Not Working or Producing Blank Output</span>
+      <!-- Field Block 1 -->
+      <div class="field-block">
+        <div class="field-block-header">
+          <span class="field-num">1</span>
+          <span class="field-block-title">Google Connection Not Working</span>
+        </div>
+        <p class="field-block-desc"><strong>Symptom:</strong> Submit Indexing shows "Not Connected", Analytics data is blank, or the Keyword Tracker fails to load.<br><br><strong>Cause:</strong> Your OAuth token has expired or you connected the wrong Google account.<br><br><strong>Fix:</strong> Open the Submit Indexing panel, go to the <strong>Setup</strong> tab, click the red Disconnect link, then reconnect with the correct Google account. See the full guide: <a href="https://rankframe.com/help/google-connection-issues" style="color:#7c3aed;font-weight:600;">Fixing Google Connection Issues</a>.</p>
+        <div class="screenshot-slot">Submit Indexing panel with Setup tab open and Disconnect option visible</div>
       </div>
-      <div class="field-block-desc">
-        <div class="diag-line"><span class="diag-label">Cause</span><span>AI credits are at zero, or the Personalization tab is empty (no brand context provided).</span></div>
-        <div class="diag-line"><span class="diag-label">Fix</span><span>Check the credits badge in the <strong>Image SEO</strong> header. If credits are zero, purchase more from your billing page. If credits are available, open the <strong>Personalization</strong> tab and fill in your brand name, description, and target keywords.</span></div>
-      </div>
-      <div class="screenshot-slot">Image SEO header showing the AI credits badge and Personalization tab</div>
-    </div>
 
-    <!-- Field Block 4 -->
-    <div class="field-block">
-      <div class="field-block-header">
-        <span class="field-num">4</span>
-        <span class="field-block-title">404 Monitor Not Tracking Errors</span>
+      <!-- Field Block 2 -->
+      <div class="field-block">
+        <div class="field-block-header">
+          <span class="field-num">2</span>
+          <span class="field-block-title">Indexing Not Submitting</span>
+        </div>
+        <p class="field-block-desc"><strong>Symptom:</strong> The Push URLs button is greyed out or submissions appear to fail silently.<br><br><strong>Cause:</strong> Trial accounts are limited to 2 URL submissions. Domain verification may also be incomplete.<br><br><strong>Fix:</strong> Open Submit Indexing and check the <strong>Setup</strong> tab for the Domain Verification step status. If you have reached the trial limit, click <strong>See Billing</strong> to upgrade. See the full guide: <a href="https://rankframe.com/help/indexing-not-working" style="color:#7c3aed;font-weight:600;">Fixing Indexing Issues</a>.</p>
+        <div class="screenshot-slot">Submit Indexing Setup tab showing domain verification status and billing button</div>
       </div>
-      <div class="field-block-desc">
-        <div class="diag-line"><span class="diag-label">Cause</span><span>The monitor script toggle is turned off, or the domain listed in Allowed Domains does not match your live site domain.</span></div>
-        <div class="diag-line"><span class="diag-label">Fix</span><span>Go to the <strong>404 Monitor</strong> tab, enable the script toggle, and verify that your domain is entered correctly in the Allowed Domains field. Changes take effect after your next Framer publish.</span></div>
-      </div>
-      <div class="screenshot-slot">404 Monitor tab showing the script enable toggle and Allowed Domains input</div>
-    </div>
 
-    <!-- Field Block 5 -->
-    <div class="field-block">
-      <div class="field-block-header">
-        <span class="field-num">5</span>
-        <span class="field-block-title">Schema Not Injecting</span>
+      <!-- Field Block 3 -->
+      <div class="field-block">
+        <div class="field-block-header">
+          <span class="field-num">3</span>
+          <span class="field-block-title">AI Generation Not Working or Producing Blank Output</span>
+        </div>
+        <p class="field-block-desc"><strong>Symptom:</strong> Clicking Generate in Image SEO or meta fields produces nothing, a loading spinner that never finishes, or empty results.<br><br><strong>Cause:</strong> Your AI credit balance has reached zero, or the Personalization tab is empty (no brand context for generation).<br><br><strong>Fix:</strong> Check the credits badge in the Image SEO header. If credits are at zero, upgrade or purchase more. Open the <strong>Personalization</strong> tab and confirm your site name, brand description, and tone are filled in.</p>
+        <div class="screenshot-slot">Image SEO header showing credits badge and Personalization tab with brand fields</div>
       </div>
-      <div class="field-block-desc">
-        <div class="diag-line"><span class="diag-label">Cause</span><span>The Schema Injection master toggle is off, or you enabled individual schemas but did not click <strong>Save and Inject</strong> afterward.</span></div>
-        <div class="diag-line"><span class="diag-label">Fix</span><span>Open <strong>Global Settings</strong> and go to the <strong>Advanced</strong> tab. Turn on the Schema Injection master toggle, enable the schema types you need, then click <strong>Save and Inject</strong>. Republish your Framer site.</span></div>
-      </div>
-      <div class="screenshot-slot">Global Settings &gt; Advanced tab showing Schema Injection toggle and Save and Inject button</div>
-    </div>
 
-    <!-- Field Block 6 -->
-    <div class="field-block">
-      <div class="field-block-header">
-        <span class="field-num">6</span>
-        <span class="field-block-title">Images Not Appearing in Image SEO</span>
+      <!-- Field Block 4 -->
+      <div class="field-block">
+        <div class="field-block-header">
+          <span class="field-num">4</span>
+          <span class="field-block-title">404 Monitor Not Tracking Errors</span>
+        </div>
+        <p class="field-block-desc"><strong>Symptom:</strong> The 404 Monitor panel shows no errors even though broken links exist on your site.<br><br><strong>Cause:</strong> The monitoring script toggle is off, or the domain listed in Allowed Domains does not match your live site domain exactly.<br><br><strong>Fix:</strong> Go to the <strong>404 Monitor</strong> tab, enable the tracking toggle, and verify the domain in Allowed Domains matches your published site URL (no trailing slash, correct subdomain).</p>
+        <div class="screenshot-slot">404 Monitor tab with tracking toggle and Allowed Domains field highlighted</div>
       </div>
-      <div class="field-block-desc">
-        <div class="diag-line"><span class="diag-label">Cause</span><span>Your site has not been crawled recently, so RankFrame's image index is out of date.</span></div>
-        <div class="diag-line"><span class="diag-label">Fix</span><span>Click the <strong>Recrawl Website</strong> button (the red or coral button in the sidebar). The crawl typically completes within one to two minutes, after which all site images appear in Image SEO.</span></div>
-      </div>
-      <div class="screenshot-slot">RankFrame sidebar highlighting the Recrawl Website button</div>
-    </div>
 
-    <!-- Field Block 7 -->
-    <div class="field-block">
-      <div class="field-block-header">
-        <span class="field-num">7</span>
-        <span class="field-block-title">Plugin Showing Stale Data</span>
+      <!-- Field Block 5 -->
+      <div class="field-block">
+        <div class="field-block-header">
+          <span class="field-num">5</span>
+          <span class="field-block-title">Schema Not Injecting</span>
+        </div>
+        <p class="field-block-desc"><strong>Symptom:</strong> Structured data does not appear in Google's Rich Results Test or the page source after enabling schema types.<br><br><strong>Cause:</strong> The Schema Injection master toggle in Global Settings is off, or you enabled individual schema types without clicking Save and Inject afterward.<br><br><strong>Fix:</strong> Go to <strong>Global Settings &gt; Advanced</strong> tab, confirm the Schema Injection master toggle is on, enable the schema types you need, then click <strong>Save and Inject</strong>.</p>
+        <div class="screenshot-slot">Global Settings Advanced tab with Schema Injection master toggle and Save and Inject button</div>
       </div>
-      <div class="field-block-desc">
-        <div class="diag-line"><span class="diag-label">Cause</span><span>Data displayed in the plugin (pages list, image inventory, audit results) reflects a previous crawl snapshot.</span></div>
-        <div class="diag-line"><span class="diag-label">Fix</span><span>Click <strong>Recrawl Website</strong> in the sidebar. This refreshes all plugin data including the pages list, image inventory, and SEO Analyzer results in one pass.</span></div>
-      </div>
-      <div class="screenshot-slot">Sidebar showing Recrawl Website button and last crawl timestamp</div>
-    </div>
 
-    <!-- Field Block 8 -->
-    <div class="field-block">
-      <div class="field-block-header">
-        <span class="field-num">8</span>
-        <span class="field-block-title">Can't Find a Feature</span>
+      <!-- Field Block 6 -->
+      <div class="field-block">
+        <div class="field-block-header">
+          <span class="field-num">6</span>
+          <span class="field-block-title">Images Not Appearing in Image SEO</span>
+        </div>
+        <p class="field-block-desc"><strong>Symptom:</strong> The Image SEO panel is empty or shows far fewer images than you have published on the site.<br><br><strong>Cause:</strong> RankFrame's image index is out of date. This happens when new pages were published after the last crawl.<br><br><strong>Fix:</strong> Click the <strong>Recrawl Website</strong> button (the red/coral button in the plugin sidebar). RankFrame will re-fetch all pages and repopulate the image list within a few seconds.</p>
+        <div class="screenshot-slot">Plugin sidebar with Recrawl Website button highlighted</div>
       </div>
-      <div class="field-block-desc">
-        <p style="margin-bottom:12px;">Use the quick map below to find any feature instantly.</p>
-        <table class="qmap">
+
+      <!-- Field Block 7 -->
+      <div class="field-block">
+        <div class="field-block-header">
+          <span class="field-num">7</span>
+          <span class="field-block-title">Plugin Showing Stale Data</span>
+        </div>
+        <p class="field-block-desc"><strong>Symptom:</strong> Meta titles, descriptions, or page lists in RankFrame do not match what is currently published on your Framer site.<br><br><strong>Cause:</strong> RankFrame caches your site data from the last crawl. If you have published changes in Framer since then, the plugin has not yet seen them.<br><br><strong>Fix:</strong> Click <strong>Recrawl Website</strong> in the sidebar. This refreshes all pages, meta data, and image references.</p>
+        <div class="screenshot-slot">Plugin sidebar highlighting Recrawl Website button after publishing changes in Framer</div>
+      </div>
+
+      <!-- Field Block 8 -->
+      <div class="field-block">
+        <div class="field-block-header">
+          <span class="field-num">8</span>
+          <span class="field-block-title">Can't Find a Feature</span>
+        </div>
+        <p class="field-block-desc"><strong>Symptom:</strong> You know RankFrame has a feature but cannot locate it in the interface.<br><br>Use the quick map below to find the right panel for each feature.</p>
+        <table class="quick-map">
           <thead>
             <tr>
               <th>Feature</th>
-              <th>Where to find it</th>
+              <th>Where to Find It</th>
             </tr>
           </thead>
           <tbody>
-            <tr><td>Meta tags (title, description)</td><td>Global Settings &gt; Basic tab</td></tr>
-            <tr><td>Schema markup</td><td>Global Settings &gt; Advanced tab</td></tr>
-            <tr><td>URL submissions to Google</td><td>Submit Indexing &gt; Submit URLs tab</td></tr>
+            <tr><td>Meta titles and descriptions (global defaults)</td><td>Global Settings &gt; Basic tab</td></tr>
+            <tr><td>Schema / structured data</td><td>Global Settings &gt; Advanced tab</td></tr>
+            <tr><td>URL submission / indexing</td><td>Submit Indexing panel</td></tr>
             <tr><td>Keyword rank tracking</td><td>Submit Indexing &gt; Keyword Tracker tab</td></tr>
-            <tr><td>Image alt text generation</td><td>Image SEO</td></tr>
-            <tr><td>Site health audit</td><td>SEO Analyzer</td></tr>
-            <tr><td>Page-level meta overrides</td><td>Pages</td></tr>
+            <tr><td>Image alt text generation</td><td>Image SEO panel</td></tr>
+            <tr><td>Site audit and SEO scoring</td><td>SEO Analyzer panel</td></tr>
+            <tr><td>Page-level meta SEO</td><td>Pages panel</td></tr>
+            <tr><td>Broken link detection</td><td>404 Monitor tab</td></tr>
           </tbody>
         </table>
+        <div class="screenshot-slot">RankFrame plugin sidebar showing all main navigation panels</div>
       </div>
-      <div class="screenshot-slot">RankFrame sidebar showing all top-level navigation sections</div>
-    </div>
 
-    <hr class="section-divider" />
+      <!-- Still stuck callout -->
+      <div class="callout callout-support">
+        <div class="callout-title">Still Stuck?</div>
+        <p>If none of the above resolved your issue, contact the 7 Seers support team at <a href="mailto:hello@7seersmedia.com">hello@7seersmedia.com</a>. When you write in, include your Framer site URL, your current RankFrame plan, a description of what you tried, and any error text from the plugin. The green dot in the plugin sidebar indicates when the team is online for faster responses.</p>
+      </div>
 
-    <!-- Still Stuck Callout -->
-    <div class="callout">
-      <div class="callout-title">Still stuck?</div>
-      <p>If none of the fixes above resolve your issue, contact the 7 Seers support team at <a href="mailto:hello@7seersmedia.com">hello@7seersmedia.com</a>. Look for the green support dot in the RankFrame sidebar: when it is green, the team is online and typically responds within a few hours. When it is grey, expect a response within one business day.</p>
-    </div>
-
-    <!-- FAQ -->
-    <section class="faq-section">
+      <!-- FAQ Section -->
       <h2>Frequently Asked Questions</h2>
 
       <div class="faq-item">
-        <div class="faq-q">What are the most common causes of RankFrame not working?</div>
-        <div class="faq-a">The five most frequent causes are: an expired Google OAuth connection, a trial account that has reached its submission limit, AI credits reaching zero, the 404 monitor script toggle being off, and a schema injection master toggle that has not been turned on. Check each of these in order before contacting support.</div>
+        <div class="faq-question">What are the most common causes of RankFrame not working?</div>
+        <div class="faq-answer">The most common causes are an expired or incorrect Google OAuth connection, a domain that has not been verified in the Setup tab, AI credits at zero, a disabled 404 monitor toggle, or a Schema Injection master toggle that has never been turned on. Run through the checklist above to identify which category applies to your situation.</div>
       </div>
 
       <div class="faq-item">
-        <div class="faq-q">How do I report a bug in RankFrame?</div>
-        <div class="faq-a">Email <a href="mailto:hello@7seersmedia.com" style="color:#7c3aed;font-weight:600;">hello@7seersmedia.com</a> with the subject line starting with "Bug Report". Include your Framer site URL, the RankFrame plugin version, a description of the steps to reproduce the issue, and any error messages shown in the plugin.</div>
+        <div class="faq-question">How do I report a bug in RankFrame?</div>
+        <div class="faq-answer">Email <a href="mailto:hello@7seersmedia.com" style="color:#7c3aed;font-weight:600;">hello@7seersmedia.com</a> with the subject line "RankFrame Bug Report". Include your Framer project URL, a description of what you expected to happen, a description of what actually happened, and any error messages visible in the plugin or in the browser console (press F12 and open the Console tab).</div>
       </div>
 
       <div class="faq-item">
-        <div class="faq-q">What information should I include when contacting RankFrame support?</div>
-        <div class="faq-a">Include your Framer site URL, the feature that is not working (for example, Submit Indexing or Image SEO), the exact error message or behavior you are seeing, the browser you are using, and whether the issue started after a specific action such as reconnecting Google or publishing a new page.</div>
+        <div class="faq-question">What information should I include when contacting RankFrame support?</div>
+        <div class="faq-answer">Include your Framer site URL, the RankFrame plan you are on (Trial, Personal, or Agency), a clear description of the issue, the steps you already tried, any error text shown in the plugin, and a screenshot if possible. The more context you provide, the faster the support team can identify the cause.</div>
       </div>
 
       <div class="faq-item">
-        <div class="faq-q">How long does RankFrame support take to respond?</div>
-        <div class="faq-a">The 7 Seers team typically responds within one business day. You can check whether the team is currently online by looking for the green support dot in the RankFrame sidebar. When the dot is green, responses are often faster.</div>
+        <div class="faq-question">How long does RankFrame support take to respond?</div>
+        <div class="faq-answer">The 7 Seers team typically responds within one business day. For urgent issues, check whether the support green dot in the plugin sidebar is lit, which indicates the team is currently online and available for a faster reply.</div>
       </div>
 
       <div class="faq-item">
-        <div class="faq-q">Can I fix most RankFrame issues myself without contacting support?</div>
-        <div class="faq-a">Yes. The majority of RankFrame issues resolve by reconnecting Google, recrawling the site with the Recrawl Website button, checking that toggles are enabled, or upgrading from a trial account. The eight categories above cover the most common scenarios with direct fix instructions for each.</div>
+        <div class="faq-question">Will recrawling the website fix most data display issues in RankFrame?</div>
+        <div class="faq-answer">Yes. If the plugin is showing stale page data, missing images in Image SEO, or outdated meta information, clicking the Recrawl Website button (the red/coral button in the sidebar) forces RankFrame to re-fetch your site content. Most display-related issues resolve immediately after a recrawl.</div>
       </div>
-    </section>
 
-    <!-- SEO Details Panel -->
+    </main>
+
+    <!-- Related articles -->
+    <footer class="article-footer">
+      <div class="article-footer-brand">RankFrame by <a href="https://rankframe.com">7 Seers</a> &mdash; <a href="mailto:hello@7seersmedia.com">hello@7seersmedia.com</a></div>
+      <div class="related-links">
+        <a class="related-link" href="https://rankframe.com/help/google-connection-issues">Google Connection Issues</a>
+        <a class="related-link" href="https://rankframe.com/help/indexing-not-working">Indexing Not Working</a>
+      </div>
+    </footer>
+
+    <!-- SEO Details panel -->
     <div id="seo-details" style="margin:60px 0 0;padding:28px 32px;background:#f8f6ff;border:1px solid #e8e0fa;border-radius:14px;">
       <h3 style="font-size:1rem;font-weight:700;color:#1a0533;margin:0 0 20px;">SEO Details</h3>
       <div id="seo-fields"></div>
     </div>
 
-  </div><!-- /page-wrapper -->
+  </div><!-- end page-wrapper -->
 
   <script>
-  (function(){
-    var f=[
-      {label:'Title',value:document.querySelector('title')?document.querySelector('title').textContent:''},
-      {label:'Description',value:(document.querySelector('meta[name="description"]')||{}).content||''},
-      {label:'Keywords',value:(document.querySelector('meta[name="keywords"]')||{}).content||''},
-      {label:'Canonical',value:(document.querySelector('link[rel="canonical"]')||{}).href||''}
-    ];
-    var s=Array.from(document.querySelectorAll('script[type="application/ld+json"]')).map(function(x,i){
-      return{label:'Schema '+(i+1),value:x.textContent.trim()};
-    });
-    var all=f.concat(s);
-    var h='';
-    all.forEach(function(x){
-      h+='<div style="margin-bottom:14px"><div style="font-size:.78rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#7c3aed;margin-bottom:4px">'+x.label+'</div><div style="display:flex;align-items:flex-start;gap:8px"><code style="flex:1;background:#fff;border:1px solid #e0d8f0;border-radius:6px;padding:8px 10px;font-size:.82rem;color:#1a0533;white-space:pre-wrap;word-break:break-all">'+x.value.replace(/</g,'&lt;').replace(/>/g,'&gt;')+'</code><button onclick="navigator.clipboard.writeText(this.dataset.v)" data-v="'+x.value.replace(/"/g,'&quot;')+'" style="flex-shrink:0;padding:6px 12px;background:#7c3aed;color:#fff;border:none;border-radius:6px;font-size:.78rem;font-weight:700;cursor:pointer">Copy</button></div></div>';
-    });
-    document.getElementById('seo-fields').innerHTML=h;
-  })();
+    (function(){
+      var f=[
+        {label:'Title',value:document.querySelector('title')?document.querySelector('title').textContent:''},
+        {label:'Description',value:(document.querySelector('meta[name="description"]')||{}).content||''},
+        {label:'Keywords',value:(document.querySelector('meta[name="keywords"]')||{}).content||''},
+        {label:'Canonical',value:(document.querySelector('link[rel="canonical"]')||{}).href||''}
+      ];
+      var s=Array.from(document.querySelectorAll('script[type="application/ld+json"]')).map(function(x,i){
+        return{label:'Schema '+(i+1),value:x.textContent.trim()};
+      });
+      var all=f.concat(s);
+      var h='';
+      all.forEach(function(x){
+        h+='<div style="margin-bottom:14px"><div style="font-size:.78rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#7c3aed;margin-bottom:4px">'+x.label+'</div><div style="display:flex;align-items:flex-start;gap:8px"><code style="flex:1;background:#fff;border:1px solid #e0d8f0;border-radius:6px;padding:8px 10px;font-size:.82rem;color:#1a0533;white-space:pre-wrap;word-break:break-all">'+x.value.replace(/</g,'&lt;').replace(/>/g,'&gt;')+'</code><button onclick="navigator.clipboard.writeText(this.dataset.v)" data-v="'+x.value.replace(/"/g,'&quot;')+'" style="flex-shrink:0;padding:6px 12px;background:#7c3aed;color:#fff;border:none;border-radius:6px;font-size:.78rem;font-weight:700;cursor:pointer">Copy</button></div></div>';
+      });
+      document.getElementById('seo-fields').innerHTML=h;
+    })();
   </script>
 
 </body>

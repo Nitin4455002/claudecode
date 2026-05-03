@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Profile Tab in RankFrame Account Settings</title>
+  <meta name="description" content="Understand every field in the RankFrame Profile tab: avatar, name, plan badge, email, join date, auth status, and how to sign out or update your details." />
+  <meta name="keywords" content="RankFrame profile tab, account profile Framer plugin, sign out RankFrame, update account RankFrame" />
+  <link rel="canonical" href="https://rankframe.com/help/profile-tab" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Profile Tab in RankFrame Account Settings",
+    "description": "Understand every field in the RankFrame Profile tab: avatar, name, plan badge, email, join date, auth status, and how to sign out or update your details.",
+    "author": {
+      "@type": "Organization",
+      "name": "7 Seers",
+      "email": "hello@7seersmedia.com"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "7 Seers",
+      "url": "https://rankframe.com"
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://rankframe.com/help/profile-tab"
+    },
+    "datePublished": "2026-05-03",
+    "dateModified": "2026-05-03"
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Why are all the Profile tab fields read-only inside the RankFrame plugin?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "RankFrame displays your account profile for reference only. All editing of personal details happens at dashboard.rankframe.com so your data is managed securely in one place across all devices and sessions."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I change my password in RankFrame?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Password changes are not available inside the plugin. Visit dashboard.rankframe.com, sign in, and use the password settings in your account dashboard to update your credentials."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What does the plan badge in the Profile tab show?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The plan badge shows your current RankFrame subscription tier: Free Plan, Personal, or Agency. This reflects the plan attached to your account at the time you log in. To change your plan, use the See Billing button in the sidebar."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What happens when I click Sign Out in the Profile tab?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Clicking Sign Out ends your current RankFrame session inside the Framer plugin. You will be returned to the login screen and will need to sign in again to access your RankFrame data and features."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between Google Auth and Email plus Password in the Status field?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Google Auth means you signed up and log in using your Google account via OAuth. Email plus Password means you registered with an email address and set a password manually. The Status field simply reflects which method your account uses; you cannot change it from inside the plugin."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Help Center",
+        "item": "https://rankframe.com/help"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Account",
+        "item": "https://rankframe.com/help/account"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Profile Tab",
+        "item": "https://rankframe.com/help/profile-tab"
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #fff;
+      color: #1a0533;
+      line-height: 1.7;
+    }
+    .page-wrap {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 48px 24px 80px;
+    }
+    .breadcrumb {
+      font-size: .8rem;
+      color: #9b8fb8;
+      margin-bottom: 32px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .breadcrumb a { color: #7c3aed; text-decoration: none; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .breadcrumb-sep { color: #c8c0dc; }
+    .article-label {
+      display: inline-block;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: #7c3aed;
+      background: #f3eeff;
+      border-radius: 20px;
+      padding: 4px 12px;
+      margin-bottom: 14px;
+    }
+    h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #1a0533;
+      line-height: 1.25;
+      margin-bottom: 18px;
+    }
+    .intro {
+      font-size: 1.05rem;
+      color: #4b4b6b;
+      line-height: 1.75;
+      margin-bottom: 40px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid #f0ebfa;
+    }
+    h2 {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: #1a0533;
+      margin: 48px 0 6px;
+    }
+    h3 { font-size: 1rem; font-weight: 700; color: #1a0533; margin: 28px 0 8px; }
+    p { font-size: .95rem; color: #4b4b6b; line-height: 1.75; margin-bottom: 14px; }
+    .field-block { margin: 36px 0 28px; }
+    .field-block-header { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+    .field-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      background: linear-gradient(135deg, #7c3aed, #a78bfa);
+      color: #fff;
+      font-weight: 700;
+      font-size: 14px;
+      border-radius: 8px;
+      flex-shrink: 0;
+      box-shadow: 0 2px 6px rgba(124,58,237,.25);
+    }
+    .field-block-title { font-size: 1rem; font-weight: 700; color: #1a0533; }
+    .field-block-desc { font-size: .93rem; color: #4b4b6b; line-height: 1.7; }
+    .screenshot-slot {
+      background: #fafafa;
+      border: 1px dashed #e0d8f0;
+      border-radius: 10px;
+      padding: 36px 20px;
+      text-align: center;
+      color: #b8b2c8;
+      font-size: .85rem;
+      margin-top: 6px;
+      margin-bottom: 8px;
+    }
+    .screenshot-slot::before {
+      content: "Screenshot";
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: #c8c0dc;
+    }
+    .callout {
+      background: #f3eeff;
+      border-left: 4px solid #7c3aed;
+      border-radius: 0 10px 10px 0;
+      padding: 16px 20px;
+      margin: 28px 0;
+      font-size: .93rem;
+      color: #4b4b6b;
+      line-height: 1.7;
+    }
+    .callout strong { color: #1a0533; }
+    .callout a { color: #7c3aed; text-decoration: none; }
+    .callout a:hover { text-decoration: underline; }
+    .callout-warning {
+      background: #fff5f5;
+      border-left: 4px solid #c0392b;
+      border-radius: 0 10px 10px 0;
+      padding: 16px 20px;
+      margin: 28px 0;
+      font-size: .93rem;
+      color: #4b4b6b;
+      line-height: 1.7;
+    }
+    .callout-warning strong { color: #1a0533; }
+    .faq-section { margin-top: 56px; }
+    .faq-section h2 { margin-top: 0; }
+    .faq-item { border-top: 1px solid #f0ebfa; padding: 20px 0; }
+    .faq-item:last-child { border-bottom: 1px solid #f0ebfa; }
+    .faq-q { font-size: .97rem; font-weight: 700; color: #1a0533; margin-bottom: 8px; }
+    .faq-a { font-size: .93rem; color: #4b4b6b; line-height: 1.7; }
+    .badge-pill {
+      display: inline-block;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      border-radius: 20px;
+      padding: 3px 10px;
+    }
+    .badge-free { background: #f0ebfa; color: #7c3aed; }
+    .badge-personal { background: #e8f4fd; color: #1a6fb3; }
+    .badge-agency { background: #edf9f0; color: #1a7a3c; }
+    .article-footer {
+      margin-top: 56px;
+      padding-top: 28px;
+      border-top: 1px solid #f0ebfa;
+      font-size: .85rem;
+      color: #9b8fb8;
+    }
+    .article-footer a { color: #7c3aed; text-decoration: none; }
+    .article-footer a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+<div class="page-wrap">
+
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="https://rankframe.com/help">Help Center</a>
+    <span class="breadcrumb-sep">›</span>
+    <a href="https://rankframe.com/help/account">Account</a>
+    <span class="breadcrumb-sep">›</span>
+    <span>Profile Tab</span>
+  </nav>
+
+  <div class="article-label">Account</div>
+  <h1>Profile Tab</h1>
+
+  <p class="intro">
+    The Profile tab in Account Settings shows your account identity and plan status at a glance. All fields are read-only inside the plugin. To change your name, email, or password, visit <a href="https://dashboard.rankframe.com" style="color:#7c3aed;">dashboard.rankframe.com</a>. The Sign Out button at the bottom disconnects the current session.
+  </p>
+
+  <h2>Opening the Profile Tab</h2>
+  <p>To reach the Profile tab, click the avatar block at the bottom of the left sidebar to open Account Settings, then make sure the <strong>Profile</strong> tab is selected at the top of the modal. It is the default tab that opens first.</p>
+  <div class="screenshot-slot">Account Settings modal with the Profile tab selected, showing the full profile layout</div>
+
+  <h2>Profile Tab Fields</h2>
+  <p>Every element in the Profile tab is described below. None of these fields can be edited from inside the plugin.</p>
+
+  <div class="field-block">
+    <div class="field-block-header">
+      <span class="field-num">1</span>
+      <span class="field-block-title">Avatar</span>
+    </div>
+    <div class="field-block-desc">
+      A large purple circle at the top of the Profile tab displays your initials derived from your account name. In the bottom-right corner of the avatar circle you will see a small shield badge. This badge indicates your authentication method: a Google "G" icon for Google Auth accounts, or a lock icon for Email and Password accounts. The avatar image cannot be changed from inside the plugin.
+    </div>
+    <div class="screenshot-slot">Large purple avatar circle with initials and small shield/auth badge at the bottom-right corner</div>
+  </div>
+
+  <div class="field-block">
+    <div class="field-block-header">
+      <span class="field-num">2</span>
+      <span class="field-block-title">Name</span>
+    </div>
+    <div class="field-block-desc">
+      Your display name as registered on your RankFrame account. For example: "7seers media". This field is shown for reference only. To update your display name, visit <strong>dashboard.rankframe.com</strong> and edit your profile there.
+    </div>
+    <div class="screenshot-slot">Name field showing the account display name below the avatar</div>
+  </div>
+
+  <div class="field-block">
+    <div class="field-block-header">
+      <span class="field-num">3</span>
+      <span class="field-block-title">Plan Badge</span>
+    </div>
+    <div class="field-block-desc">
+      A colored badge below your name shows your current subscription tier. The three possible values are:
+      <ul style="margin:10px 0 0 18px;line-height:2;">
+        <li><span class="badge-pill badge-free">Free Plan</span> &nbsp;The default tier with limited features and crawl credits.</li>
+        <li><span class="badge-pill badge-personal">Personal</span> &nbsp;A paid tier for individual site owners.</li>
+        <li><span class="badge-pill badge-agency">Agency</span> &nbsp;A paid tier for teams managing multiple sites.</li>
+      </ul>
+      <div style="margin-top:10px;">To upgrade or change your plan, use the <strong>See Billing</strong> button in the sidebar, which opens the Polar.sh billing portal.</div>
+    </div>
+    <div class="screenshot-slot">Plan badge showing the current subscription tier below the account name</div>
+  </div>
+
+  <div class="field-block">
+    <div class="field-block-header">
+      <span class="field-num">4</span>
+      <span class="field-block-title">Read Only View Notice</span>
+    </div>
+    <div class="field-block-desc">
+      A notice appears in the Profile tab that reads: "To update your personal details or change your password, please visit your account dashboard." This is a reminder that the plugin does not offer inline editing for profile data. Click through to <strong>dashboard.rankframe.com</strong> to make any changes.
+    </div>
+    <div class="screenshot-slot">Read Only View notice displayed inside the Profile tab</div>
+  </div>
+
+  <div class="field-block">
+    <div class="field-block-header">
+      <span class="field-num">5</span>
+      <span class="field-block-title">Email Address</span>
+    </div>
+    <div class="field-block-desc">
+      Your registered email address is shown with a mail icon. This is the address associated with your RankFrame account and is used for login and support communications. The field is read-only inside the plugin. To change your email, visit <strong>dashboard.rankframe.com</strong>.
+    </div>
+    <div class="screenshot-slot">Email Address field with mail icon showing the registered account email</div>
+  </div>
+
+  <div class="field-block">
+    <div class="field-block-header">
+      <span class="field-num">6</span>
+      <span class="field-block-title">Joined Date</span>
+    </div>
+    <div class="field-block-desc">
+      A calendar icon precedes the date on which your RankFrame account was created. This field is purely informational and cannot be changed. It is useful for knowing how long you have been on the platform or for verifying account age when contacting support.
+    </div>
+    <div class="screenshot-slot">Joined Date field with calendar icon showing the account creation date</div>
+  </div>
+
+  <div class="field-block">
+    <div class="field-block-header">
+      <span class="field-num">7</span>
+      <span class="field-block-title">Status (Authentication Method)</span>
+    </div>
+    <div class="field-block-desc">
+      A shield icon precedes your authentication method. The value will be either <strong>Google Auth</strong> (you signed up and log in via Google OAuth) or <strong>Email + Password</strong> (you registered with an email and a password you set manually). This field is informational only. You cannot switch between authentication methods from inside the plugin.
+    </div>
+    <div class="screenshot-slot">Status field with shield icon showing either Google Auth or Email + Password</div>
+  </div>
+
+  <div class="field-block">
+    <div class="field-block-header">
+      <span class="field-num">8</span>
+      <span class="field-block-title">Sign Out Button</span>
+    </div>
+    <div class="field-block-desc">
+      A full-width dark red button at the bottom of the Profile tab. Clicking it ends your current RankFrame session and returns you to the login screen. Use this when you need to switch accounts or when closing out on a shared device. You will need to sign in again to access your data.
+    </div>
+    <div class="screenshot-slot">Full-width dark red Sign Out button at the bottom of the Profile tab</div>
+  </div>
+
+  <div class="callout-warning">
+    <strong>Signing out on a shared device:</strong> If you use RankFrame on a computer that other people can access, always use the Sign Out button before closing Framer. This prevents others from accessing your account data and connected sites.
+  </div>
+
+  <h2>How to Update Your Details</h2>
+  <p>Because all Profile tab fields are read-only inside the plugin, any changes to your account must be made through the external dashboard.</p>
+
+  <div class="callout">
+    <strong>To update your name, email, or password:</strong> Open a browser and visit <a href="https://dashboard.rankframe.com">dashboard.rankframe.com</a>. Sign in with your current credentials and navigate to your account or profile settings. Changes you make there will be reflected in the plugin the next time you open Account Settings.
+  </div>
+
+  <div class="faq-section">
+    <h2>Frequently Asked Questions</h2>
+
+    <div class="faq-item">
+      <div class="faq-q">Why are all the Profile tab fields read-only inside the RankFrame plugin?</div>
+      <div class="faq-a">RankFrame displays your account profile for reference only. All editing of personal details happens at dashboard.rankframe.com so your data is managed securely in one place across all devices and sessions.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">How do I change my password in RankFrame?</div>
+      <div class="faq-a">Password changes are not available inside the plugin. Visit dashboard.rankframe.com, sign in, and use the password settings in your account dashboard to update your credentials.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">What does the plan badge in the Profile tab show?</div>
+      <div class="faq-a">The plan badge shows your current RankFrame subscription tier: Free Plan, Personal, or Agency. This reflects the plan attached to your account at the time you log in. To change your plan, use the See Billing button in the sidebar.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">What happens when I click Sign Out in the Profile tab?</div>
+      <div class="faq-a">Clicking Sign Out ends your current RankFrame session inside the Framer plugin. You will be returned to the login screen and will need to sign in again to access your RankFrame data and features.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">What is the difference between Google Auth and Email plus Password in the Status field?</div>
+      <div class="faq-a">Google Auth means you signed up and log in using your Google account via OAuth. Email plus Password means you registered with an email address and set a password manually. The Status field reflects which method your account uses. You cannot change it from inside the plugin.</div>
+    </div>
+  </div>
+
+  <div id="seo-details" style="margin:60px 0 0;padding:28px 32px;background:#f8f6ff;border:1px solid #e8e0fa;border-radius:14px;">
+    <h3 style="font-size:1rem;font-weight:700;color:#1a0533;margin:0 0 20px;">SEO Details</h3>
+    <div id="seo-fields"></div>
+  </div>
+
+  <div class="article-footer">
+    <p>RankFrame is a Framer SEO plugin by <strong>7 Seers</strong>. For account questions, contact <a href="mailto:hello@7seersmedia.com">hello@7seersmedia.com</a>.</p>
+  </div>
+
+</div>
+
+<script>(function(){var f=[{label:'Title',value:document.querySelector('title')?document.querySelector('title').textContent:''},{label:'Description',value:(document.querySelector('meta[name="description"]')||{}).content||''},{label:'Keywords',value:(document.querySelector('meta[name="keywords"]')||{}).content||''},{label:'Canonical',value:(document.querySelector('link[rel="canonical"]')||{}).href||''}];var s=Array.from(document.querySelectorAll('script[type="application/ld+json"]')).map(function(x,i){return{label:'Schema '+(i+1),value:x.textContent.trim()};});var all=f.concat(s);var h='';all.forEach(function(x){h+='<div style="margin-bottom:14px"><div style="font-size:.78rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#7c3aed;margin-bottom:4px">'+x.label+'</div><div style="display:flex;align-items:flex-start;gap:8px"><code style="flex:1;background:#fff;border:1px solid #e0d8f0;border-radius:6px;padding:8px 10px;font-size:.82rem;color:#1a0533;white-space:pre-wrap;word-break:break-all">'+x.value.replace(/</g,'&lt;').replace(/>/g,'&gt;')+'</code><button onclick="navigator.clipboard.writeText(this.dataset.v)" data-v="'+x.value.replace(/"/g,'&quot;')+'" style="flex-shrink:0;padding:6px 12px;background:#7c3aed;color:#fff;border:none;border-radius:6px;font-size:.78rem;font-weight:700;cursor:pointer">Copy</button></div></div>';});document.getElementById('seo-fields').innerHTML=h;})();</script>
+</body>
+</html>
