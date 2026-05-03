@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Framer vs WordPress SEO: Which Platform Wins in 2026?</title>
+  <meta name="description" content="Honest comparison of Framer vs WordPress for SEO. Covering sitemaps, schema, page speed, plugins, content workflows, and which is right for your site." />
+  <meta name="keywords" content="framer vs wordpress seo, framer or wordpress for seo, framer vs webflow seo, framer seo compared to wordpress" />
+  <link rel="canonical" href="https://rankframe.com/blog/framer-vs-wordpress-seo" />
+  <meta property="og:title" content="Framer vs WordPress SEO: Which Platform Wins in 2026?" />
+  <meta property="og:description" content="Honest comparison of Framer vs WordPress for SEO. Covering sitemaps, schema, page speed, plugins, content workflows, and which is right for your site." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://rankframe.com/blog/framer-vs-wordpress-seo" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Framer vs WordPress SEO: Which Platform Wins in 2026?",
+    "description": "Honest comparison of Framer vs WordPress for SEO. Covering sitemaps, schema, page speed, plugins, content workflows, and which is right for your site.",
+    "datePublished": "2026-05-03",
+    "dateModified": "2026-05-03",
+    "author": {
+      "@type": "Organization",
+      "name": "7 Seers",
+      "url": "https://rankframe.com"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "7 Seers",
+      "url": "https://rankframe.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://rankframe.com/logo.png"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://rankframe.com/blog/framer-vs-wordpress-seo"
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://rankframe.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://rankframe.com/blog/" },
+      { "@type": "ListItem", "position": 3, "name": "Framer vs WordPress SEO", "item": "https://rankframe.com/blog/framer-vs-wordpress-seo" }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "7 Seers",
+    "url": "https://rankframe.com",
+    "email": "hello@7seersmedia.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Lucknow",
+      "addressCountry": "IN"
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Is Framer good for SEO?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Framer is good for technical SEO fundamentals. It auto-generates sitemaps, self-references canonical tags, renders as static HTML for fast indexing, and hosts on a global edge CDN for excellent page speed. Where it falls short is advanced SEO tooling: it has no native schema UI, no on-page SEO scoring, no keyword tracking, and no Google Search Console integration. RankFrame adds all of these capabilities natively inside the Framer editor."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does WordPress rank better than Framer in Google?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Neither platform has an inherent ranking advantage over the other. Google's algorithms evaluate content quality, backlinks, Core Web Vitals, and structured data -- not which CMS built the page. Framer has a natural page speed advantage due to static generation. WordPress has a natural content workflow and plugin ecosystem advantage. With RankFrame, Framer sites can match WordPress's SEO feature depth while maintaining the speed advantage."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can Framer use Yoast SEO?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Yoast SEO and RankMath are WordPress-only plugins. They cannot be installed on Framer sites. RankFrame is the Framer-native equivalent, offering schema generation, AI meta titles and descriptions, site audits, keyword tracking, and Google Indexing API integration -- all built specifically for the Framer environment."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does Framer compare to WordPress for page speed?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Framer wins on page speed by default. Framer sites are statically generated and served from an edge CDN globally, which means very fast Time to First Byte and strong Core Web Vitals scores without any configuration. WordPress sites are server-rendered by default and require caching plugins (WP Rocket, LiteSpeed Cache), image optimization, CDN setup, and database tuning to achieve comparable performance."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does Framer automatically generate a sitemap?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Framer automatically generates and maintains a sitemap.xml that includes all pages and CMS collection items. The sitemap updates automatically when you publish. You can find it at yourdomain.com/sitemap.xml and submit it to Google Search Console."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Which platform is better for a blog: Framer or WordPress?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "WordPress is better for high-volume blogging workflows. It has native support for post scheduling, author management, categories, tags, revision history, and editorial workflows. Framer's CMS is capable for publishing and looks excellent, but lacks the editorial management depth of WordPress. If content velocity and team collaboration are critical, WordPress remains the stronger choice for blogging at scale."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I track Google Search Console data inside Framer?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Not natively. Framer's built-in analytics shows visitor counts, pageviews, bounce rates, and traffic sources, but does not include Google Search Console data like search queries, impressions, CTR, or average position. RankFrame integrates Google Search Console data directly inside the Framer editor, giving you clicks, impressions, CTR, and position data without leaving Framer."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do Framer and WordPress handle redirects?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "WordPress has mature redirect management through plugins like Redirection and built-in tools in Yoast and RankMath. Framer introduced a redirect manager on the Pro plan and added 404 tracking in August 2025. RankFrame adds a 404 Monitor with exception routes, helping Framer users identify and act on broken URLs that need redirection."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; color: #1a0533; background: #fff; line-height: 1.7; font-size: 1rem; }
+    a { color: #7c3aed; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .site-header { background: #7c3aed; padding: 14px 24px; display: flex; align-items: center; gap: 12px; }
+    .site-header a { color: #fff; font-weight: 700; font-size: 1.1rem; }
+    .site-header span { color: rgba(255,255,255,0.6); font-size: .9rem; }
+
+    .breadcrumb { background: #f8f6ff; border-bottom: 1px solid #e8e0fa; padding: 10px 24px; font-size: .82rem; color: #6b7280; }
+    .breadcrumb a { color: #7c3aed; }
+    .breadcrumb span { margin: 0 6px; }
+
+    .container { max-width: 820px; margin: 0 auto; padding: 40px 24px 80px; }
+
+    .article-meta { margin-bottom: 32px; }
+    .article-category { display: inline-block; background: #f3eeff; color: #7c3aed; font-size: .78rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; padding: 4px 10px; border-radius: 20px; margin-bottom: 14px; }
+    h1 { font-size: 2.2rem; font-weight: 800; line-height: 1.2; color: #1a0533; margin-bottom: 16px; }
+    .article-byline { font-size: .85rem; color: #6b7280; }
+    .article-byline strong { color: #1a0533; }
+
+    .toc { background: #f8f6ff; border: 1px solid #e8e0fa; border-radius: 12px; padding: 24px 28px; margin: 32px 0; }
+    .toc h2 { font-size: 1rem; font-weight: 700; margin-bottom: 14px; color: #1a0533; }
+    .toc ol { padding-left: 20px; }
+    .toc li { margin-bottom: 6px; font-size: .9rem; }
+
+    h2 { font-size: 1.55rem; font-weight: 800; color: #1a0533; margin: 48px 0 16px; padding-top: 8px; border-top: 2px solid #f3eeff; }
+    h3 { font-size: 1.15rem; font-weight: 700; color: #3b0764; margin: 28px 0 10px; }
+    p { margin-bottom: 18px; }
+    ul, ol { padding-left: 22px; margin-bottom: 18px; }
+    li { margin-bottom: 8px; }
+
+    .intro-box { background: #f3eeff; border-left: 4px solid #7c3aed; border-radius: 0 10px 10px 0; padding: 20px 24px; margin: 24px 0 32px; font-size: 1.05rem; }
+
+    .callout { border-radius: 10px; padding: 18px 22px; margin: 24px 0; font-size: .93rem; }
+    .callout-info { background: #eff6ff; border: 1px solid #bfdbfe; }
+    .callout-warning { background: #fffbeb; border: 1px solid #fcd34d; }
+    .callout-success { background: #f0fdf4; border: 1px solid #86efac; }
+    .callout strong { display: block; margin-bottom: 6px; font-weight: 700; }
+
+    table { width: 100%; border-collapse: collapse; margin: 24px 0; font-size: .9rem; }
+    th { background: #7c3aed; color: #fff; padding: 12px 14px; text-align: left; font-weight: 700; }
+    td { padding: 11px 14px; border-bottom: 1px solid #e8e0fa; vertical-align: top; }
+    tr:nth-child(even) td { background: #faf8ff; }
+    tr:last-child td { border-bottom: none; }
+
+    .winner-framer { color: #7c3aed; font-weight: 700; }
+    .winner-wp { color: #2563eb; font-weight: 700; }
+    .winner-tie { color: #6b7280; font-weight: 700; }
+
+    .vs-badge { display: inline-block; font-size: .75rem; font-weight: 800; padding: 2px 8px; border-radius: 10px; }
+    .vs-f { background: #f3eeff; color: #7c3aed; }
+    .vs-wp { background: #eff6ff; color: #2563eb; }
+    .vs-tie { background: #f3f4f6; color: #6b7280; }
+
+    .screenshot-suggestion { background: #fdf4ff; border: 1px dashed #c084fc; border-radius: 8px; padding: 12px 16px; font-size: .85rem; color: #6b21a8; margin: 20px 0; }
+
+    .cta-block { background: linear-gradient(135deg, #7c3aed 0%, #5b21b6 100%); color: #fff; border-radius: 16px; padding: 36px 40px; margin: 48px 0; text-align: center; }
+    .cta-block h3 { font-size: 1.5rem; font-weight: 800; margin-bottom: 12px; color: #fff; border: none; padding: 0; }
+    .cta-block p { color: rgba(255,255,255,0.9); margin-bottom: 0; font-size: 1rem; }
+    .cta-btn { display: inline-block; background: #fff; color: #7c3aed; font-weight: 800; font-size: 1rem; padding: 14px 28px; border-radius: 8px; margin: 20px 0 10px; text-decoration: none; }
+    .cta-btn:hover { background: #f3eeff; text-decoration: none; }
+    .cta-sub { font-size: .82rem; color: rgba(255,255,255,0.7); margin-top: 0; }
+
+    .faq-item { border-bottom: 1px solid #e8e0fa; padding: 0; }
+    .faq-question { width: 100%; background: none; border: none; text-align: left; padding: 18px 0; font-size: 1rem; font-weight: 700; color: #1a0533; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+    .faq-question:hover { color: #7c3aed; }
+    .faq-icon { flex-shrink: 0; width: 22px; height: 22px; background: #f3eeff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: .85rem; color: #7c3aed; font-weight: 700; transition: transform .2s; }
+    .faq-answer { padding: 0 0 18px; font-size: .95rem; color: #374151; display: none; }
+    .faq-item.open .faq-answer { display: block; }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+
+    .validate-note { background: #f0fdf4; border: 1px solid #86efac; border-radius: 8px; padding: 14px 18px; margin: 20px 0; font-size: .9rem; }
+    .validate-note a { color: #16a34a; }
+
+    .platform-header { display: flex; gap: 12px; align-items: center; margin-bottom: 10px; }
+    .platform-logo { width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: .85rem; color: #fff; }
+    .pl-framer { background: #7c3aed; }
+    .pl-wp { background: #2563eb; }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="https://rankframe.com">RankFrame</a>
+  <span>by 7 Seers</span>
+</header>
+
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <a href="https://rankframe.com">Home</a>
+  <span>&#8250;</span>
+  <a href="https://rankframe.com/blog/">Blog</a>
+  <span>&#8250;</span>
+  <span>Framer vs WordPress SEO</span>
+</nav>
+
+<main class="container">
+
+  <div class="article-meta">
+    <span class="article-category">Platform Comparison</span>
+    <h1>Framer vs WordPress SEO: Full Comparison for 2026</h1>
+    <p class="article-byline">By <strong>7 Seers Team</strong> &nbsp;|&nbsp; May 3, 2026 &nbsp;|&nbsp; 18 min read</p>
+  </div>
+
+  <div class="intro-box">
+    Both Framer and WordPress can rank in Google. The question is never which platform Google prefers -- it is which platform's strengths match your workflow, your content strategy, and your technical requirements. This comparison covers every SEO dimension honestly, including where Framer trails WordPress and where it leads. At the end, you will know exactly which choice is right for your situation.
+  </div>
+
+  <nav class="toc" aria-label="Table of Contents">
+    <h2>Table of Contents</h2>
+    <ol>
+      <li><a href="#quick-verdict">Quick Verdict: 15-Category Summary</a></li>
+      <li><a href="#sitemap">Sitemap Generation</a></li>
+      <li><a href="#canonical">Canonical Tags</a></li>
+      <li><a href="#meta">Meta Titles and Descriptions</a></li>
+      <li><a href="#schema">Schema Markup</a></li>
+      <li><a href="#onpage">On-Page SEO Scoring</a></li>
+      <li><a href="#speed">Page Speed</a></li>
+      <li><a href="#images">Image Alt Text</a></li>
+      <li><a href="#gsc">Google Search Console Integration</a></li>
+      <li><a href="#404">404 Management</a></li>
+      <li><a href="#content-workflow">Content Workflow</a></li>
+      <li><a href="#choose-framer">When to Choose Framer for SEO</a></li>
+      <li><a href="#choose-wordpress">When to Choose WordPress</a></li>
+      <li><a href="#rankframe-gap">Can Framer Compete With WordPress SEO Using RankFrame?</a></li>
+      <li><a href="#faq">Frequently Asked Questions</a></li>
+    </ol>
+  </nav>
+
+  <!-- QUICK VERDICT -->
+  <h2 id="quick-verdict">Quick Verdict: 15-Category Comparison</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>SEO Category</th>
+        <th>Framer</th>
+        <th>WordPress</th>
+        <th>Winner</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Sitemap Generation</td>
+        <td>Auto-generated, includes CMS pages</td>
+        <td>Requires Yoast/RankMath plugin</td>
+        <td><span class="winner-framer">Framer</span></td>
+      </tr>
+      <tr>
+        <td>Canonical Tags</td>
+        <td>Auto self-referencing; customizable on paid plan</td>
+        <td>Full control via plugins, templates</td>
+        <td><span class="winner-tie">Tie</span></td>
+      </tr>
+      <tr>
+        <td>Meta Titles and Descriptions</td>
+        <td>Per-page UI; AI generation via RankFrame</td>
+        <td>Full control via Yoast, RankMath, AIOSEO</td>
+        <td><span class="winner-tie">Tie</span></td>
+      </tr>
+      <tr>
+        <td>Schema Markup</td>
+        <td>Manual JSON-LD only; visual UI via RankFrame</td>
+        <td>Full UI in Yoast and RankMath, many types</td>
+        <td><span class="winner-wp">WordPress (native)</span></td>
+      </tr>
+      <tr>
+        <td>On-Page SEO Scoring</td>
+        <td>No native; full audit via RankFrame</td>
+        <td>Built-in traffic light scoring in Yoast/RankMath</td>
+        <td><span class="winner-wp">WordPress (native)</span></td>
+      </tr>
+      <tr>
+        <td>Page Speed (default)</td>
+        <td>SSG + edge CDN, fast out of the box</td>
+        <td>Server-rendered; requires caching + CDN setup</td>
+        <td><span class="winner-framer">Framer</span></td>
+      </tr>
+      <tr>
+        <td>Core Web Vitals</td>
+        <td>Strong by default; Lighthouse tracking via RankFrame</td>
+        <td>Highly variable; requires optimization</td>
+        <td><span class="winner-framer">Framer</span></td>
+      </tr>
+      <tr>
+        <td>Image Alt Text (bulk)</td>
+        <td>AI bulk alt text via RankFrame</td>
+        <td>Manual; some plugins help</td>
+        <td><span class="winner-tie">Tie with RankFrame</span></td>
+      </tr>
+      <tr>
+        <td>Google Search Console Integration</td>
+        <td>Live GSC data inside Framer via RankFrame</td>
+        <td>GSC data via Site Kit or external plugin</td>
+        <td><span class="winner-tie">Tie</span></td>
+      </tr>
+      <tr>
+        <td>404 Management</td>
+        <td>404 tracking (Aug 2025); redirect manager on Pro plan</td>
+        <td>Mature redirects via Redirection plugin, Yoast</td>
+        <td><span class="winner-wp">WordPress</span></td>
+      </tr>
+      <tr>
+        <td>Content Workflow</td>
+        <td>CMS collections; no native scheduling or authors</td>
+        <td>Post scheduling, authors, categories, tags, revisions</td>
+        <td><span class="winner-wp">WordPress</span></td>
+      </tr>
+      <tr>
+        <td>Keyword Tracking</td>
+        <td>Native keyword tracker with sparklines via RankFrame</td>
+        <td>Requires third-party tool (Ahrefs, SEMrush, etc.)</td>
+        <td><span class="winner-framer">Framer + RankFrame</span></td>
+      </tr>
+      <tr>
+        <td>Indexing API Submission</td>
+        <td>One-click Google Indexing API via RankFrame</td>
+        <td>Available via IndexNow plugin or manual submission</td>
+        <td><span class="winner-framer">Framer + RankFrame</span></td>
+      </tr>
+      <tr>
+        <td>Plugin Ecosystem</td>
+        <td>Limited; Framer marketplace is early-stage</td>
+        <td>60,000+ plugins, decades of maturity</td>
+        <td><span class="winner-wp">WordPress</span></td>
+      </tr>
+      <tr>
+        <td>Design Quality and Speed-to-Launch</td>
+        <td>Professional designs faster, no developer required</td>
+        <td>Requires theme, page builder, or developer</td>
+        <td><span class="winner-framer">Framer</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="callout callout-info">
+    <strong>The honest summary</strong>
+    Framer wins on page speed, design velocity, and out-of-the-box technical SEO. WordPress wins on content workflows, plugin depth, and historically broader schema tooling. With RankFrame, Framer closes the SEO feature gap significantly -- the remaining meaningful WordPress advantage is content management at editorial scale.
+  </div>
+
+  <!-- SITEMAP -->
+  <h2 id="sitemap">Sitemap Generation</h2>
+
+  <h3>Framer</h3>
+  <p>Framer automatically generates and maintains a <code>sitemap.xml</code> file for every published site. The sitemap includes all static pages and all CMS collection item pages. It updates automatically every time you publish. You do not need to configure anything -- just publish and the sitemap is live at <code>yourdomain.com/sitemap.xml</code>.</p>
+  <p>This is a genuine advantage over WordPress, where sitemap generation is not built into core. You need a plugin (Yoast SEO, RankMath, or similar) to produce a structured XML sitemap, and you need to configure which post types, taxonomies, and pages to include.</p>
+
+  <h3>WordPress</h3>
+  <p>WordPress 5.5 introduced a basic sitemap in core, but it is rudimentary. For practical SEO use, you will install Yoast SEO or RankMath, which generate comprehensive, configurable sitemaps with image sitemap support, news sitemaps, video sitemaps, and per-post-type control. The WordPress sitemap ecosystem is more flexible -- but requires setup that Framer makes unnecessary.</p>
+
+  <p><strong>Winner: Framer</strong> for zero-configuration; <strong>WordPress</strong> for advanced sitemap customization and image/video sitemap support.</p>
+
+  <!-- CANONICAL -->
+  <h2 id="canonical">Canonical Tags</h2>
+
+  <h3>Framer</h3>
+  <p>Framer automatically adds self-referencing canonical tags to every page. For most use cases -- where each page has one canonical URL and no duplicates -- this default behavior is exactly correct. On any paid Framer plan, you can override the canonical on a per-page basis via custom code in the page head.</p>
+
+  <h3>WordPress</h3>
+  <p>WordPress core does not add canonical tags. Yoast SEO and RankMath both add self-referencing canonicals automatically and give you per-page, per-post-type, and template-level canonical control. They also handle edge cases like paginated pages, category archives, and tag pages -- situations Framer does not encounter because it does not have the same archive page structure.</p>
+
+  <p><strong>Winner: Tie.</strong> Both platforms handle canonicals correctly for their typical use cases. WordPress has more edge cases by default but also more tools to handle them.</p>
+
+  <!-- META -->
+  <h2 id="meta">Meta Titles and Descriptions</h2>
+
+  <h3>Framer</h3>
+  <p>Framer provides per-page title and description fields in page settings. For CMS collection pages, you can bind meta fields to CMS properties, which is the correct approach for dynamic pages. What Framer lacks is template-based title patterns (like "Post Title | Site Name" applied globally) and AI-assisted generation.</p>
+  <p>RankFrame adds AI meta title and description generation, both globally and per-page. You can generate optimized meta for every page in your sitemap using AI that understands your brand, audience, and goals via the <a href="/kb/12-ai-personalization/65-ai-personalization-overview.html">AI Personalization</a> feature. See the <a href="/kb/08-pages/47-page-title-description.html">Per-Page SEO guide</a> for details.</p>
+
+  <h3>WordPress</h3>
+  <p>Yoast SEO and RankMath offer title templates with dynamic variables (<code>%%title%%</code>, <code>%%sep%%</code>, <code>%%sitename%%</code>), applied globally or by post type. Both tools include readability scoring and SEO character count guidance. RankMath additionally offers AI-powered meta generation in its premium tier.</p>
+
+  <p><strong>Winner: Tie with RankFrame.</strong> WordPress has more native template flexibility; RankFrame brings AI generation and per-page control to Framer that matches WordPress plugin capabilities.</p>
+
+  <!-- SCHEMA -->
+  <h2 id="schema">Schema Markup</h2>
+
+  <p>This is the category where the gap between Framer and WordPress is most significant without a plugin.</p>
+
+  <h3>Framer</h3>
+  <p>Framer has no native schema markup UI at all. Adding structured data requires writing JSON-LD manually and pasting it into the page head custom code field. There is no type selector, no field form, no validation, and no automation. For a developer comfortable with JSON-LD, this is workable for a small site. For a non-developer or a site with many pages, it is a serious gap.</p>
+  <p>With RankFrame, this gap closes. RankFrame's schema builder provides a visual form interface for Organization, Person, Article, BlogPosting, TechArticle, NewsArticle, Service, Restaurant, and Book schema types, plus AI auto-generation across the full sitemap. See the <a href="/kb/03-schema-markup/16-schema-injection-overview.html">Schema Injection Overview</a> for a full walkthrough.</p>
+
+  <div class="validate-note">
+    Always validate your schema before publishing using <a href="https://search.google.com/test/rich-results" target="_blank" rel="noopener">Google's Rich Results Test</a> or the <a href="https://validator.schema.org" target="_blank" rel="noopener">Schema.org Validator</a>. RankFrame currently supports Organization, Person, Article, BlogPosting, TechArticle, NewsArticle, Service, Restaurant, and Book schemas -- with HowTo, FAQPage, Product, LocalBusiness, and BreadcrumbList planned for upcoming releases.
+  </div>
+
+  <h3>WordPress</h3>
+  <p>This is where WordPress has historically had a strong advantage. Yoast SEO generates Article/BlogPosting schema automatically for every post and page, Organization schema from your site settings, BreadcrumbList on every page, and WebSite schema on the homepage -- all with no configuration. RankMath extends this with Product, FAQ, HowTo, Recipe, Event, LocalBusiness, and many more, all through a visual panel in the post editor.</p>
+  <p>For a site where rich results across many schema types are critical (e-commerce, local business, recipe sites), WordPress's native schema depth is genuinely superior to Framer's current state even with RankFrame.</p>
+
+  <p><strong>Winner: WordPress (native) for breadth; Framer + RankFrame for supported types.</strong> If your schema needs are covered by RankFrame's current types, the experience is comparable. If you need Product, Recipe, Event, or JobPosting schema today, WordPress has a clear advantage.</p>
+
+  <!-- ON-PAGE SEO SCORING -->
+  <h2 id="onpage">On-Page SEO Scoring</h2>
+
+  <h3>Framer</h3>
+  <p>Framer has no built-in on-page SEO analysis. There is no readability score, no keyword density analysis, no checklist telling you whether your H1, meta description, and image alt texts are optimized for a target keyword.</p>
+  <p>RankFrame's Site-wide SEO Audit addresses this with a 0-100 site score and page-level analysis covering over 50 SEO factors. The audit is exportable as a PDF, which is useful for agency client reporting. See the <a href="/kb/06-seo-audit/37-seo-audit-overview.html">SEO Audit Overview</a> for detail on what is checked.</p>
+
+  <h3>WordPress</h3>
+  <p>Yoast SEO's traffic light scoring system is one of its most recognizable features: a real-time red/amber/green indicator as you write a post showing keyword density, meta description length, internal links, image alt text, and readability. RankMath offers a 100-point score with granular recommendations. Both tools give content writers immediate actionable feedback in the editor.</p>
+
+  <p><strong>Winner: WordPress (native); Framer + RankFrame closes the gap at the site audit level.</strong> WordPress's per-post scoring is more immediate for content creators who want real-time feedback while writing.</p>
+
+  <!-- PAGE SPEED -->
+  <h2 id="speed">Page Speed</h2>
+
+  <h3>Framer</h3>
+  <p>This is Framer's clearest competitive advantage in SEO. Framer sites are statically generated -- the entire site is compiled to HTML, CSS, and JavaScript at publish time and distributed from an edge CDN with global points of presence. The result is very low Time to First Byte (TTFB), strong Largest Contentful Paint (LCP), and consistently good Core Web Vitals scores without any configuration.</p>
+  <p>RankFrame adds Page Speed monitoring with Lighthouse scores for mobile and desktop, Core Web Vitals tracking, and historical comparisons so you can see the impact of design changes on performance over time. See the <a href="/kb/10-page-speed/56-page-speed-overview.html">Page Speed Overview</a> for details.</p>
+
+  <h3>WordPress</h3>
+  <p>WordPress is server-rendered by default, which means every page request involves a PHP process, database queries, and plugin execution before any HTML is sent to the browser. On unoptimized WordPress hosting, TTFB can be 800ms or more, which directly impacts Core Web Vitals.</p>
+  <p>WordPress can achieve excellent page speeds with the right setup: WP Rocket or LiteSpeed Cache for caching, Cloudflare or Bunny CDN for edge delivery, WebP conversion for images, and a lightweight theme. But this requires expertise, ongoing maintenance, and typically paid tooling. None of it is automatic.</p>
+
+  <p><strong>Winner: Framer</strong> by a significant margin at default configuration. A well-optimized WordPress site can approach Framer's performance, but the effort and expertise required are substantial.</p>
+
+  <!-- IMAGE ALT TEXT -->
+  <h2 id="images">Image Alt Text</h2>
+
+  <h3>Framer</h3>
+  <p>Framer provides an alt text field for each image in the editor. For sites with many images, filling these fields manually is slow work. Framer has no bulk alt text editing feature natively.</p>
+  <p>RankFrame's Image SEO feature adds AI bulk alt text generation: one credit per image, applied in bulk across every image on your site. It also provides CSV export of all image alt text data. See the <a href="/kb/05-image-seo/29-image-seo-overview.html">Image SEO Overview</a> for the full workflow.</p>
+
+  <h3>WordPress</h3>
+  <p>WordPress has an alt text field in the media library for every uploaded image. If the same image is used on multiple pages, the alt text set in the media library applies everywhere. There is no native bulk editor, but plugins like Imagify and Alt Text AI offer bulk generation. The WordPress approach is functional but similarly manual by default.</p>
+
+  <p><strong>Winner: Tie with RankFrame.</strong> RankFrame's AI bulk generation brings Framer's image alt text workflow ahead of WordPress's native capabilities.</p>
+
+  <!-- GSC -->
+  <h2 id="gsc">Google Search Console Integration</h2>
+
+  <h3>Framer</h3>
+  <p>Framer's native analytics shows visitor counts, pageviews, bounce rates, session duration, and traffic sources. It does not include Google Search Console data such as search queries, impressions, click-through rate, or average ranking position. To verify your site in GSC, you add the HTML verification meta tag to your site head in Framer's site settings.</p>
+  <p>RankFrame integrates Google Search Console data directly inside the Framer editor via the Submit Indexing feature. You get live clicks, impressions, CTR, and position data per page without opening another tab. See the <a href="/kb/04-submit-indexing/26-indexing-analytics.html">Indexing Analytics guide</a> for the setup process.</p>
+
+  <div class="screenshot-suggestion">📸 Screenshot: RankFrame's GSC analytics panel inside Framer showing clicks, impressions, CTR, and position data</div>
+
+  <h3>WordPress</h3>
+  <p>Google's Site Kit plugin connects WordPress directly to Google Search Console, Google Analytics, and PageSpeed Insights in the WordPress dashboard. Yoast and RankMath also surface basic GSC metrics. The integration is mature and well-documented.</p>
+
+  <p><strong>Winner: Tie.</strong> Both platforms support GSC data in-editor with the right tooling. RankFrame brings this to Framer natively without requiring a separate Google plugin installation.</p>
+
+  <!-- 404 MANAGEMENT -->
+  <h2 id="404">404 Management and Redirects</h2>
+
+  <h3>Framer</h3>
+  <p>Framer added 404 tracking to its analytics dashboard in August 2025, which allows you to see which URLs are returning 404 errors. A redirect manager is available on the Pro plan, letting you set up 301 redirects from the Framer dashboard. These are welcome additions, but the tooling is relatively new and lacks the depth of mature WordPress solutions.</p>
+  <p>RankFrame adds a dedicated <a href="/kb/07-404-monitor/42-404-monitor-overview.html">404 Monitor</a> with Exception Routes, which lets you exclude specific URL patterns from 404 alerts (for example, URLs that legitimately return 404 as part of your site's design). This gives Framer users a more actionable 404 workflow than the native dashboard view.</p>
+
+  <h3>WordPress</h3>
+  <p>WordPress has a mature redirect management ecosystem. The Redirection plugin has been available since 2007 and offers URL pattern matching, 301/302/307 redirect types, conditional redirects based on login state or user agent, and import/export. Yoast Premium includes redirect management tightly integrated with the post editor. When you change a post's slug in Yoast, it automatically offers to create a 301 redirect from the old URL.</p>
+
+  <p><strong>Winner: WordPress</strong> for redirect management depth. Framer's redirect tools are functional but newer. RankFrame's 404 Monitor improves Framer's monitoring capability but does not yet automate redirect creation.</p>
+
+  <!-- CONTENT WORKFLOW -->
+  <h2 id="content-workflow">Content Workflow</h2>
+
+  <h3>Framer</h3>
+  <p>Framer has a capable CMS for publishing blog posts and dynamic content. The editor experience for content creation is excellent -- clean, fast, and design-first. However, Framer's CMS lacks several features that content teams rely on at scale: post scheduling, multiple author accounts, editorial comments, post revision history, category and tag taxonomy management, and custom post status workflows.</p>
+  <p>For a solo creator or a small design-led team publishing occasional content, Framer's CMS is more than adequate. For a publishing organization with daily content velocity, dedicated editors, and complex approval workflows, it is not the right tool today.</p>
+
+  <h3>WordPress</h3>
+  <p>Content workflow is where WordPress has no peer among web platforms. Post scheduling, multiple author roles (Editor, Author, Contributor, Subscriber), categories and tags, revision history with diff comparison, the Gutenberg block editor, and an enormous library of workflow plugins make WordPress the definitive platform for content-heavy sites. Editorial Calendar plugins, co-authorship tools, and workflow managers like PublishPress extend this further.</p>
+
+  <p><strong>Winner: WordPress</strong> by a large margin for anything beyond simple content publishing.</p>
+
+  <!-- WHEN TO CHOOSE FRAMER -->
+  <h2 id="choose-framer">When to Choose Framer for SEO</h2>
+
+  <p>Framer is the right platform for SEO when several conditions are true:</p>
+
+  <ul>
+    <li><strong>Page speed is a competitive priority.</strong> If you are targeting competitive keywords where Core Web Vitals and TTFB meaningfully influence rankings, Framer's static generation gives you a structural performance advantage that is very difficult to replicate on WordPress without significant investment.</li>
+    <li><strong>Design quality drives conversions.</strong> Framer's design capabilities are unmatched for creating high-fidelity, visually distinctive sites without developer involvement. A site that converts visitors better amplifies the value of every organic visit.</li>
+    <li><strong>You are a solo creator, small team, or agency building client sites.</strong> Framer's speed-to-launch and visual editor are substantial productivity advantages for small teams. With RankFrame covering the SEO feature gaps, you get a complete stack without switching tools.</li>
+    <li><strong>Your content volume is low to medium.</strong> Sites publishing fewer than 20 new pieces per month rarely need WordPress's full editorial infrastructure. Framer's CMS handles this volume comfortably.</li>
+    <li><strong>You want an integrated SEO workflow inside your design tool.</strong> RankFrame's native integration means schema, indexing, audits, and keyword tracking all happen without leaving the Framer editor.</li>
+  </ul>
+
+  <!-- WHEN TO CHOOSE WORDPRESS -->
+  <h2 id="choose-wordpress">When to Choose WordPress</h2>
+
+  <p>WordPress remains the better choice when:</p>
+
+  <ul>
+    <li><strong>Content velocity is high.</strong> Daily publishing, multiple authors, scheduled posts, and complex editorial workflows are WordPress's home territory.</li>
+    <li><strong>You need schema types not yet in RankFrame.</strong> If Product schema for an e-commerce catalog, Recipe schema for a food blog, or Event schema for a venue site are essential today, WordPress plugins provide these immediately.</li>
+    <li><strong>Plugin extensibility is non-negotiable.</strong> The WordPress plugin ecosystem has 60,000+ plugins covering payment gateways, membership systems, learning management, job boards, and hundreds of other use cases that Framer simply cannot address.</li>
+    <li><strong>Your team is content-focused rather than design-focused.</strong> Non-designer content teams find WordPress's writing interface more intuitive for daily work than Framer's canvas-based editor.</li>
+    <li><strong>You need mature WooCommerce integration.</strong> For complex e-commerce with inventory management, variable products, and shipping rules, WooCommerce on WordPress remains the most flexible option.</li>
+  </ul>
+
+  <!-- CTA BLOCK -->
+  <div class="cta-block">
+    <h3>Ready to rank your Framer site?</h3>
+    <p>RankFrame is the only native SEO plugin built for Framer. Schema, indexing, image SEO, site audits, keyword tracking -- all inside the Framer editor. No switching tools. No code required.</p>
+    <a href="https://www.framer.com/marketplace/plugins/rankframe/" class="cta-btn">Install RankFrame Free -- 14-Day Trial</a>
+    <p class="cta-sub">Credit card required. Cancel anytime. Full feature access from day one.</p>
+  </div>
+
+  <!-- CAN FRAMER COMPETE -->
+  <h2 id="rankframe-gap">Can Framer Compete With WordPress SEO Using RankFrame?</h2>
+
+  <p>The honest answer is: yes, for the vast majority of Framer use cases.</p>
+
+  <p>The SEO gap between Framer and WordPress in 2022 was real and wide. Framer sites could rank, but doing so required either accepting significant SEO limitations or manually working around them with custom code. Today, with RankFrame, that gap has narrowed to the point where most Framer site owners will not encounter a meaningful SEO limitation compared to WordPress.</p>
+
+  <p>Here is what the combined Framer + RankFrame stack gives you:</p>
+
+  <table>
+    <thead>
+      <tr><th>SEO Capability</th><th>How It's Covered</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Sitemap</td><td>Framer native (automatic)</td></tr>
+      <tr><td>Canonical Tags</td><td>Framer native (automatic, customizable)</td></tr>
+      <tr><td>Meta Titles and Descriptions</td><td>Framer native + RankFrame AI generation</td></tr>
+      <tr><td>Schema Markup</td><td>RankFrame visual builder + AI auto-generate</td></tr>
+      <tr><td>On-Page SEO Audit</td><td>RankFrame 0-100 site score with 50+ checks</td></tr>
+      <tr><td>Page Speed Monitoring</td><td>RankFrame Lighthouse + Core Web Vitals</td></tr>
+      <tr><td>Image Alt Text (bulk)</td><td>RankFrame AI bulk alt text</td></tr>
+      <tr><td>Google Search Console Data</td><td>RankFrame live GSC integration inside Framer</td></tr>
+      <tr><td>URL Indexing</td><td>RankFrame Google Indexing API (one-click push)</td></tr>
+      <tr><td>Keyword Tracking</td><td>RankFrame keyword tracker with sparklines</td></tr>
+      <tr><td>Keyword Research</td><td>RankFrame (volume, KD, competition, CPC)</td></tr>
+      <tr><td>404 Monitoring</td><td>RankFrame 404 Monitor with exception routes</td></tr>
+    </tbody>
+  </table>
+
+  <p>Where WordPress still has an advantage is in editorial workflow depth and in schema types that RankFrame has not yet released (Product, LocalBusiness, Recipe, Event). If neither of those gaps affects your site today, Framer + RankFrame is a complete, fast, and design-superior SEO stack.</p>
+
+  <p>The RankFrame Personal plan is $15/month (or $108/year). The Agency plan is $40/month (or $288/year). Compared to a full WordPress SEO setup with Yoast Premium ($99/year), WP Rocket ($59/year), a managed WordPress host ($20-50/month), and developer time for optimization, Framer + RankFrame is often the lower total cost option while delivering a faster, more beautiful site.</p>
+
+  <!-- FAQ -->
+  <h2 id="faq">Frequently Asked Questions</h2>
+
+  <div class="faq-item">
+    <button class="faq-question" aria-expanded="false">Is Framer good for SEO?<span class="faq-icon">+</span></button>
+    <div class="faq-answer"><p>Framer is good for technical SEO fundamentals. It auto-generates sitemaps, self-references canonical tags, renders as static HTML for fast indexing, and hosts on a global edge CDN for excellent page speed. Where it falls short is advanced SEO tooling: no native schema UI, no on-page SEO scoring, and no Google Search Console integration. RankFrame adds all of these capabilities natively inside the Framer editor.</p></div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question" aria-expanded="false">Does WordPress rank better than Framer in Google?<span class="faq-icon">+</span></button>
+    <div class="faq-answer"><p>Neither platform has an inherent ranking advantage. Google's algorithms evaluate content quality, backlinks, Core Web Vitals, and structured data -- not which CMS built the page. Framer has a natural page speed advantage via static generation. WordPress has a natural content workflow and plugin ecosystem advantage. With RankFrame, Framer sites can match WordPress's SEO feature depth while maintaining the speed advantage.</p></div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question" aria-expanded="false">Can Framer use Yoast SEO?<span class="faq-icon">+</span></button>
+    <div class="faq-answer"><p>No. Yoast SEO and RankMath are WordPress-only plugins. They cannot be installed on Framer sites. RankFrame is the Framer-native equivalent, offering schema generation, AI meta titles and descriptions, site audits, keyword tracking, and Google Indexing API integration -- all built specifically for the Framer environment.</p></div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question" aria-expanded="false">How does Framer compare to WordPress for page speed?<span class="faq-icon">+</span></button>
+    <div class="faq-answer"><p>Framer wins on page speed by default. Framer sites are statically generated and served from an edge CDN globally, meaning very fast TTFB and strong Core Web Vitals scores without any configuration. WordPress sites are server-rendered by default and require caching plugins, image optimization, CDN setup, and database tuning to achieve comparable performance.</p></div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question" aria-expanded="false">Does Framer automatically generate a sitemap?<span class="faq-icon">+</span></button>
+    <div class="faq-answer"><p>Yes. Framer automatically generates and maintains a sitemap.xml including all pages and CMS collection items. The sitemap updates automatically when you publish. Submit it to Google Search Console from yourdomain.com/sitemap.xml.</p></div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question" aria-expanded="false">Which platform is better for a blog: Framer or WordPress?<span class="faq-icon">+</span></button>
+    <div class="faq-answer"><p>WordPress is better for high-volume blogging workflows. It has native support for post scheduling, author management, categories, tags, and revision history. Framer's CMS is capable for publishing and looks excellent, but lacks the editorial management depth of WordPress for teams publishing frequently at scale.</p></div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question" aria-expanded="false">Can I track Google Search Console data inside Framer?<span class="faq-icon">+</span></button>
+    <div class="faq-answer"><p>Not natively. Framer's built-in analytics shows visitor counts, pageviews, and traffic sources, but not GSC data like search queries, impressions, CTR, or average position. RankFrame integrates Google Search Console data directly inside the Framer editor, giving you clicks, impressions, CTR, and position data without leaving Framer.</p></div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question" aria-expanded="false">How do Framer and WordPress handle redirects?<span class="faq-icon">+</span></button>
+    <div class="faq-answer"><p>WordPress has mature redirect management through plugins like Redirection and through Yoast Premium, which automatically creates 301 redirects when you change a post slug. Framer introduced a redirect manager on the Pro plan and added 404 tracking in August 2025. RankFrame adds a 404 Monitor with exception routes to help Framer users identify broken URLs that need redirects.</p></div>
+  </div>
+
+  <!-- CTA BLOCK 2 -->
+  <div class="cta-block">
+    <h3>Ready to rank your Framer site?</h3>
+    <p>RankFrame is the only native SEO plugin built for Framer. Schema, indexing, image SEO, site audits, keyword tracking -- all inside the Framer editor. No switching tools. No code required.</p>
+    <a href="https://www.framer.com/marketplace/plugins/rankframe/" class="cta-btn">Install RankFrame Free -- 14-Day Trial</a>
+    <p class="cta-sub">Credit card required. Cancel anytime. Full feature access from day one.</p>
+  </div>
+
+  <!-- SEO Details Panel -->
+  <div id="seo-details" style="margin:60px 0 0;padding:28px 32px;background:#f8f6ff;border:1px solid #e8e0fa;border-radius:14px;">
+    <h3 style="font-size:1rem;font-weight:700;color:#1a0533;margin:0 0 20px;">SEO Details</h3>
+    <div id="seo-fields"></div>
+  </div>
+
+</main>
+
+<script>
+  document.querySelectorAll('.faq-question').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var item = this.closest('.faq-item');
+      var isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(function(i) { i.classList.remove('open'); });
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+</script>
+
+<script>
+(function(){
+  var f=[
+    {label:'Title',value:document.querySelector('title')?document.querySelector('title').textContent:''},
+    {label:'Description',value:(document.querySelector('meta[name="description"]')||{}).content||''},
+    {label:'Keywords',value:(document.querySelector('meta[name="keywords"]')||{}).content||''},
+    {label:'Canonical',value:(document.querySelector('link[rel="canonical"]')||{}).href||''}
+  ];
+  var s=Array.from(document.querySelectorAll('script[type="application/ld+json"]')).map(function(x,i){
+    return{label:'Schema '+(i+1),value:x.textContent.trim()};
+  });
+  var all=f.concat(s);
+  var h='';
+  all.forEach(function(x){
+    h+='<div style="margin-bottom:14px"><div style="font-size:.78rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#7c3aed;margin-bottom:4px">'+x.label+'</div><div style="display:flex;align-items:flex-start;gap:8px"><code style="flex:1;background:#fff;border:1px solid #e0d8f0;border-radius:6px;padding:8px 10px;font-size:.82rem;color:#1a0533;white-space:pre-wrap;word-break:break-all">'+x.value.replace(/</g,'&lt;').replace(/>/g,'&gt;')+'</code><button onclick="navigator.clipboard.writeText(this.dataset.v)" data-v="'+x.value.replace(/"/g,'&quot;')+'" style="flex-shrink:0;padding:6px 12px;background:#7c3aed;color:#fff;border:none;border-radius:6px;font-size:.78rem;font-weight:700;cursor:pointer">Copy</button></div></div>';
+  });
+  document.getElementById('seo-fields').innerHTML=h;
+})();
+</script>
+
+</body>
+</html>

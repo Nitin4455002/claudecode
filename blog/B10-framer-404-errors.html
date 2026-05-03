@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How to Find and Fix 404 Errors on Your Framer Site</title>
+  <meta name="description" content="Framer now tracks 404 errors in its analytics (Aug 2025). Here's how to find broken links, fix them with redirects, and monitor 404s with RankFrame's advanced 404 monitor." />
+  <meta name="keywords" content="framer 404 errors, framer 404 page seo, framer broken links, framer 404 monitor, framer 404 fix" />
+  <link rel="canonical" href="https://rankframe.com/blog/framer-404-errors" />
+  <meta property="og:title" content="How to Find and Fix 404 Errors on Your Framer Site" />
+  <meta property="og:description" content="Framer now tracks 404 errors in its analytics (Aug 2025). Here's how to find broken links, fix them with redirects, and monitor 404s with RankFrame's advanced 404 monitor." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://rankframe.com/blog/framer-404-errors" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "How to Find and Fix 404 Errors on Your Framer Site",
+    "description": "Framer now tracks 404 errors in its analytics (Aug 2025). Here's how to find broken links, fix them with redirects, and monitor 404s with RankFrame's advanced 404 monitor.",
+    "url": "https://rankframe.com/blog/framer-404-errors",
+    "datePublished": "2026-05-03",
+    "dateModified": "2026-05-03",
+    "author": {
+      "@type": "Organization",
+      "name": "7 Seers",
+      "url": "https://rankframe.com"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "7 Seers",
+      "url": "https://rankframe.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://rankframe.com/logo.png"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://rankframe.com/blog/framer-404-errors"
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://rankframe.com"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Blog",
+        "item": "https://rankframe.com/blog"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "How to Find and Fix 404 Errors on Your Framer Site",
+        "item": "https://rankframe.com/blog/framer-404-errors"
+      }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "7 Seers",
+    "url": "https://rankframe.com",
+    "email": "hello@7seersmedia.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Lucknow",
+      "addressCountry": "IN"
+    },
+    "sameAs": ["https://www.framer.com/marketplace/plugins/rankframe/"]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How to Fix 404 Errors on a Framer Site",
+    "description": "A step-by-step workflow to identify, prioritize, and resolve 404 errors on Framer sites using RankFrame and Framer's native redirect manager.",
+    "step": [
+      {
+        "@type": "HowToStep",
+        "position": 1,
+        "name": "Run an audit or check your 404 monitor",
+        "text": "Open RankFrame and navigate to the 404 Monitor tab to see all recorded broken URLs, or open Framer Analytics to view 404 data in the dashboard."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 2,
+        "name": "Identify high-hit 404 errors first",
+        "text": "Sort by Hits descending in RankFrame's 404 Monitor. Pages with the most hits are causing the most crawl waste and user frustration."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 3,
+        "name": "Determine whether the page was moved or deleted",
+        "text": "Check your Framer pages list for the old URL. If the content moved to a new path, you need a 301 redirect. If the content is gone permanently, redirect to the closest relevant section."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 4,
+        "name": "Create a redirect in Framer's redirect manager",
+        "text": "Go to Site Settings > Redirects in Framer. Add the old URL as the source and the new URL as the destination. Use wildcard (*) patterns for entire path segments."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 5,
+        "name": "Add intentional paths to Exception Routes",
+        "text": "If a path like /404 or a catch-all is expected to return a non-200 status, add it to RankFrame's Exception Routes so it does not pollute your 404 monitor data."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 6,
+        "name": "Verify the fix with RankFrame's 404 monitor",
+        "text": "After publishing your redirects, monitor whether the previously broken routes stop accumulating new hits. RankFrame's continuous monitoring script will confirm when a route is clean."
+      }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Does Framer automatically return a 404 status code?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Not historically. Framer's 404 page has been known to return an HTTP 202 status code instead of the correct 404. This is a soft 404 problem -- Google sees the response as a success, crawls the empty page, and wastes crawl budget on it. Creating a proper /404 page type in Framer helps, but you should verify the actual HTTP status with a header-checking tool or RankFrame's 404 Monitor to confirm correct behavior."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between a soft 404 and a real 404?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A real 404 returns an HTTP status code of 404 (Not Found), which tells Google the page does not exist and should be removed from the index. A soft 404 returns a 200 or 202 status on a page that has no real content -- the server says everything is fine, but the page is effectively empty. Google treats soft 404s as crawl waste and may eventually penalize or ignore those URLs."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I create a custom 404 page in Framer?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "In Framer, you can create a custom 404 page by adding a new page and naming it /404, or by selecting the 404 page type in the page settings panel. This page will display whenever a visitor navigates to a URL that does not exist on your site. You can design it fully in Framer's visual editor with your brand elements, a helpful message, and a link back to your homepage."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do 404 errors hurt my SEO?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, in multiple ways. First, broken internal links waste Google's crawl budget on URLs that have no content. Second, if a page that had backlinks pointing to it returns a 404, all of that link equity is lost. Third, if users arrive at a 404 page from search results, it signals a poor user experience, which can increase bounce rates and reduce dwell time -- both indirect ranking signals."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is a wildcard redirect in Framer?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Framer's redirect manager supports wildcard patterns using the asterisk (*) character. A wildcard redirect like /old-blog/* mapped to /blog/* will catch any URL that starts with /old-blog/ and redirect it to the equivalent path under /blog/. This is useful when you rename an entire section of your site or migrate a blog from one path structure to another."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How is RankFrame's 404 Monitor different from Framer Analytics?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Framer Analytics surfaces 404 URLs in its dashboard as of August 2025, but it is analytics-level data -- it shows you which pages had errors within the analytics reporting window. RankFrame's 404 Monitor uses a continuous monitoring script installed directly on your site. It records every 404 event with the full URI, the user agent (so you can tell Googlebot from a human visitor), a hit count, and the last-hit timestamp. This gives you persistent, granular data that persists outside of analytics sessions."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What are Exception Routes in RankFrame?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Exception Routes let you whitelist specific URL patterns from appearing in the 404 Monitor. If you have an intentional catch-all route (like /404, /api/*, or a path handled by a third-party integration that naturally returns non-200 responses), you can add it to Exception Routes so it does not pollute your 404 Monitor data with false positives."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How many redirect rules can I add in Framer?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Framer's redirect manager supports up to 2,500 redirect rules on the Pro plan. Rules support drag-and-drop reordering, which matters because redirect rules are evaluated in order -- you want more specific rules above broader wildcard rules to avoid conflicts."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 1.0625rem;
+      line-height: 1.75;
+      color: #1a0533;
+      background: #ffffff;
+    }
+    a { color: #7c3aed; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .site-header {
+      background: #1a0533;
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .site-header a { color: #fff; font-weight: 700; font-size: 1.1rem; }
+    .site-header span { color: #a78bfa; font-size: 0.875rem; }
+
+    .breadcrumb {
+      background: #f8f6ff;
+      border-bottom: 1px solid #e8e0fa;
+      padding: 10px 0;
+    }
+    .breadcrumb ol {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 24px;
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      font-size: 0.85rem;
+      color: #6b7280;
+    }
+    .breadcrumb li + li::before { content: '/'; margin-right: 6px; color: #c4b5fd; }
+    .breadcrumb a { color: #7c3aed; }
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 48px 24px 80px;
+    }
+
+    .article-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 28px;
+    }
+    .badge {
+      display: inline-block;
+      background: #ede9fe;
+      color: #7c3aed;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 20px;
+    }
+    .article-meta time { font-size: 0.875rem; color: #6b7280; }
+    .read-time { font-size: 0.875rem; color: #6b7280; }
+
+    h1 {
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-weight: 800;
+      line-height: 1.2;
+      color: #1a0533;
+      margin-bottom: 20px;
+    }
+    .intro-lead {
+      font-size: 1.15rem;
+      color: #4b5563;
+      border-left: 4px solid #7c3aed;
+      padding-left: 18px;
+      margin-bottom: 36px;
+    }
+
+    .toc {
+      background: #f8f6ff;
+      border: 1px solid #e8e0fa;
+      border-radius: 12px;
+      padding: 24px 28px;
+      margin-bottom: 48px;
+    }
+    .toc h2 {
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: #7c3aed;
+      margin-bottom: 14px;
+      border: none;
+      padding: 0;
+    }
+    .toc ol { padding-left: 20px; }
+    .toc li { margin-bottom: 6px; font-size: 0.925rem; }
+    .toc a { color: #4b3f72; }
+    .toc a:hover { color: #7c3aed; }
+
+    h2 {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: #1a0533;
+      margin: 52px 0 18px;
+      padding-top: 8px;
+      border-top: 2px solid #ede9fe;
+    }
+    h3 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #1a0533;
+      margin: 32px 0 12px;
+    }
+    p { margin-bottom: 18px; }
+    ul, ol { padding-left: 24px; margin-bottom: 18px; }
+    li { margin-bottom: 7px; }
+
+    .callout {
+      border-radius: 10px;
+      padding: 18px 22px;
+      margin: 28px 0;
+      font-size: 0.95rem;
+    }
+    .callout-warning {
+      background: #fff7ed;
+      border-left: 4px solid #f97316;
+      color: #7c2d12;
+    }
+    .callout-info {
+      background: #eff6ff;
+      border-left: 4px solid #3b82f6;
+      color: #1e3a5f;
+    }
+    .callout-tip {
+      background: #f0fdf4;
+      border-left: 4px solid #22c55e;
+      color: #14532d;
+    }
+    .callout strong { display: block; margin-bottom: 6px; font-size: 0.8rem; letter-spacing: .07em; text-transform: uppercase; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 28px 0;
+      font-size: 0.9rem;
+    }
+    thead { background: #7c3aed; color: #fff; }
+    th { padding: 12px 14px; text-align: left; font-weight: 700; }
+    td { padding: 11px 14px; border-bottom: 1px solid #e8e0fa; }
+    tbody tr:nth-child(even) { background: #f8f6ff; }
+    tbody tr:hover { background: #ede9fe; }
+
+    .screenshot-suggestion {
+      background: #f8f6ff;
+      border: 2px dashed #c4b5fd;
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin: 24px 0;
+      font-size: 0.875rem;
+      color: #6b21a8;
+      font-style: italic;
+    }
+
+    .step-list { counter-reset: steps; list-style: none; padding: 0; margin: 28px 0; }
+    .step-list li {
+      counter-increment: steps;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      margin-bottom: 22px;
+      padding: 18px 20px;
+      background: #f8f6ff;
+      border-radius: 10px;
+      border: 1px solid #e8e0fa;
+    }
+    .step-list li::before {
+      content: counter(steps);
+      flex-shrink: 0;
+      width: 32px;
+      height: 32px;
+      background: #7c3aed;
+      color: #fff;
+      font-weight: 800;
+      font-size: 0.95rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .step-content strong { display: block; margin-bottom: 4px; font-size: 1rem; }
+    .step-content { flex: 1; }
+
+    .cta-block {
+      background: linear-gradient(135deg, #1a0533 0%, #4c1d95 100%);
+      border-radius: 16px;
+      padding: 40px 36px;
+      text-align: center;
+      margin: 52px 0;
+      color: #fff;
+    }
+    .cta-block h3 {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #fff;
+      margin: 0 0 14px;
+    }
+    .cta-block p { color: #c4b5fd; margin-bottom: 24px; font-size: 1rem; }
+    .cta-btn {
+      display: inline-block;
+      background: #7c3aed;
+      color: #fff;
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 14px 32px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background .2s;
+    }
+    .cta-btn:hover { background: #6d28d9; text-decoration: none; }
+    .cta-sub { font-size: 0.8rem; color: #a78bfa; margin-top: 14px; margin-bottom: 0; }
+
+    .faq-section { margin-top: 52px; }
+    .faq-item {
+      border: 1px solid #e8e0fa;
+      border-radius: 10px;
+      margin-bottom: 12px;
+      overflow: hidden;
+    }
+    .faq-question {
+      width: 100%;
+      background: #f8f6ff;
+      border: none;
+      padding: 18px 20px;
+      text-align: left;
+      font-size: 1rem;
+      font-weight: 700;
+      color: #1a0533;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+    .faq-question:hover { background: #ede9fe; }
+    .faq-icon { font-size: 1.2rem; color: #7c3aed; flex-shrink: 0; transition: transform .2s; }
+    .faq-answer {
+      display: none;
+      padding: 16px 20px 20px;
+      font-size: 0.95rem;
+      color: #374151;
+      background: #fff;
+      border-top: 1px solid #e8e0fa;
+    }
+    .faq-answer p { margin-bottom: 0; }
+    .faq-item.open .faq-answer { display: block; }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+
+    .comparison-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin: 28px 0;
+    }
+    .comparison-card {
+      border: 1px solid #e8e0fa;
+      border-radius: 12px;
+      padding: 20px;
+    }
+    .comparison-card h4 {
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: #7c3aed;
+      margin-bottom: 12px;
+    }
+    .comparison-card ul { padding-left: 18px; font-size: 0.9rem; }
+
+    code {
+      background: #f3f0ff;
+      color: #6d28d9;
+      border-radius: 4px;
+      padding: 2px 7px;
+      font-size: 0.875rem;
+      font-family: 'Fira Code', 'Consolas', monospace;
+    }
+
+    @media (max-width: 600px) {
+      .comparison-grid { grid-template-columns: 1fr; }
+      h2 { font-size: 1.35rem; }
+      .cta-block { padding: 28px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="https://rankframe.com">RankFrame</a>
+  <span>by 7 Seers</span>
+</header>
+
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="https://rankframe.com">Home</a></li>
+    <li><a href="https://rankframe.com/blog">Blog</a></li>
+    <li>How to Find and Fix 404 Errors on Your Framer Site</li>
+  </ol>
+</nav>
+
+<main class="container">
+
+  <div class="article-meta">
+    <span class="badge">SEO Guide</span>
+    <time datetime="2026-05-03">May 3, 2026</time>
+    <span class="read-time">14 min read</span>
+  </div>
+
+  <h1>How to Find and Fix 404 Errors on Your Framer Site</h1>
+
+  <p class="intro-lead">404 errors are silent SEO killers. Every broken URL wastes Google's crawl budget, destroys link equity, and sends visitors into a dead end. This guide covers everything from Framer's soft 404 problem to native analytics tracking, the redirect manager, and advanced monitoring with RankFrame.</p>
+
+  <nav class="toc" aria-label="Table of contents">
+    <h2>In This Article</h2>
+    <ol>
+      <li><a href="#understanding-404s">Understanding 404 Errors in Framer</a></li>
+      <li><a href="#framer-native-tracking">Framer's Native 404 Tracking (Aug 2025)</a></li>
+      <li><a href="#framer-redirect-manager">Framer's Redirect Manager</a></li>
+      <li><a href="#rankframe-404-monitor">Advanced 404 Monitoring with RankFrame</a></li>
+      <li><a href="#step-by-step-workflow">How to Fix 404 Errors: Step-by-Step Workflow</a></li>
+      <li><a href="#faq">Frequently Asked Questions</a></li>
+    </ol>
+  </nav>
+
+  <!-- SECTION 1 -->
+  <h2 id="understanding-404s">Understanding 404 Errors in Framer</h2>
+
+  <p>A 404 error occurs when a visitor or search engine crawler requests a URL that your server cannot find. The server responds with HTTP status code 404 -- Not Found. This is the technically correct behavior: it tells the requesting client, clearly and unambiguously, that nothing exists at this address.</p>
+
+  <p>404 errors damage SEO through three distinct mechanisms. First, every time Googlebot visits a broken URL, that request consumes crawl budget. Crawl budget is finite -- Google allocates a certain number of requests to your site per day based on your site's authority and server health. Wasting budget on broken URLs means Google visits fewer of your real, valuable pages. For small Framer sites this matters less, but for sites with hundreds of CMS collection items, 404 waste adds up fast.</p>
+
+  <p>Second, backlinks pointing to deleted or moved pages return 404 errors. All of the link equity that third-party sites pass through those links goes nowhere. A 301 redirect captures that equity and passes it to the destination page. A 404 destroys it entirely.</p>
+
+  <p>Third, visitors who land on a broken page from a search result bounce immediately. High bounce rates on 404 pages signal to Google that your site is failing to deliver value -- which is an indirect negative signal over time.</p>
+
+  <h3>The Framer Soft 404 Problem</h3>
+
+  <p>Here is where Framer has a specific, well-documented issue that most tutorials ignore: Framer's 404 page has historically returned an HTTP 202 status code instead of 404.</p>
+
+  <p>HTTP 202 means "Accepted" -- it is a success response. So when Google crawls a missing page on a Framer site, the server says "everything is fine, the request was accepted," and returns what is actually an empty page. Google sees a 202 response with thin content and classifies the URL as a soft 404. The page stays in Google's index but is treated as low-quality content.</p>
+
+  <div class="callout callout-warning">
+    <strong>Critical Issue</strong>
+    Soft 404s are worse than real 404s from an SEO perspective. Real 404s tell Google to remove the URL from the index. Soft 404s leave low-value URLs in the index, diluting your site's overall quality signal. If you have a Framer site that predates this being widely known, check your Google Search Console Coverage report for "Crawled -- currently not indexed" and "Excluded" entries -- these often include soft 404s.
+  </div>
+
+  <p>To verify your Framer site's 404 behavior, navigate to a non-existent URL on your live site (something like <code>yourdomain.com/this-page-does-not-exist</code>) and use a header-checking tool like <a href="https://httpstatus.io" rel="noopener noreferrer">httpstatus.io</a> to inspect the actual HTTP response code. If it returns anything other than 404, your site has the soft 404 problem.</p>
+
+  <h3>How to Create a Proper 404 Page in Framer</h3>
+
+  <p>Framer provides two methods for creating a 404 page. The first is to create a new page and name it exactly <code>/404</code> in the URL path field. The second is to use the dedicated 404 page type available in the page settings panel, which Framer introduced to give designers a more intentional way to designate the error page.</p>
+
+  <p>Your custom 404 page should accomplish several things: clearly communicate that the page was not found, preserve your brand design, offer useful navigation options (a search bar, links to popular content, a link to the homepage), and set the right tone -- helpful rather than apologetic.</p>
+
+  <div class="screenshot-suggestion">📸 Screenshot: Framer pages panel showing the /404 page type selected in page settings, with a designed 404 page visible in the canvas</div>
+
+  <p>Even with a beautifully designed 404 page, you should verify that Framer is returning the correct HTTP 404 status code after publishing. This is a technical detail that sits at the server level, not the design level, and it is worth confirming with a header inspector.</p>
+
+
+  <!-- SECTION 2 -->
+  <h2 id="framer-native-tracking">Framer's Native 404 Tracking (August 2025 Update)</h2>
+
+  <p>On August 20, 2025, Framer shipped a meaningful update to its analytics dashboard: native 404 tracking. For the first time, Framer site owners could see which URLs were returning 404 errors directly inside the Framer analytics interface -- without needing to export data from Google Search Console or set up external monitoring.</p>
+
+  <p>The feature surfaces broken URLs as a dedicated report section within the Framer Analytics dashboard. When a visitor hits a 404 on your site, the URL gets logged and aggregated. Over time, you build up a list of broken paths sorted by frequency.</p>
+
+  <h3>The Redirect Pre-Fill Workflow</h3>
+
+  <p>The most practically useful part of Framer's native 404 tracking is the redirect pre-fill workflow. When you click on a broken URL in the analytics 404 report, Framer pre-populates the redirect manager form with that URL as the source. You then only need to specify the destination URL and publish. This removes a significant amount of manual copying and pasting when working through a backlog of broken links.</p>
+
+  <p>For Framer sites that are actively maintained and where the team is already inside Framer Analytics regularly, this is a genuinely useful addition to the native toolkit.</p>
+
+  <h3>Limitations of Framer's Native 404 Tracking</h3>
+
+  <p>However, Framer's native 404 tracking has meaningful gaps that matter for serious SEO management:</p>
+
+  <ul>
+    <li><strong>No user agent data.</strong> You cannot tell whether the broken URL was hit by a human visitor, Googlebot, Bingbot, or a scraper. This distinction is critical -- a 404 that Googlebot is hitting repeatedly is far more urgent than one hit by a random crawler.</li>
+    <li><strong>No per-URL hit count.</strong> The analytics view shows you which URLs are broken, but does not provide the granular hit counts needed to prioritize which URLs to fix first.</li>
+    <li><strong>No last-hit timestamp per URL.</strong> You cannot see whether a broken URL is being actively crawled right now or was last hit six months ago.</li>
+    <li><strong>No full URI capture.</strong> Query strings and fragment identifiers may not be fully preserved in the analytics view, which matters for sites with complex URL structures.</li>
+    <li><strong>Tied to the analytics reporting window.</strong> Data is scoped to the period your analytics window covers. There is no persistent, always-on monitoring outside of what the analytics session captures.</li>
+    <li><strong>No continuous monitoring script.</strong> Framer Analytics processes traffic after the fact. There is no dedicated monitoring script that watches for 404 events independently of the main analytics pipeline.</li>
+  </ul>
+
+  <div class="screenshot-suggestion">📸 Screenshot: Framer Analytics dashboard showing the 404 tracking section with broken URL list and the redirect pre-fill button</div>
+
+  <p>For sites where SEO is mission-critical -- agencies, SaaS marketing sites, content-heavy blogs -- these gaps make Framer's native 404 tracking a starting point rather than a complete solution.</p>
+
+
+  <!-- SECTION 3 -->
+  <h2 id="framer-redirect-manager">Framer's Redirect Manager</h2>
+
+  <p>Framer's redirect manager lives inside Site Settings under the Redirects tab. It is available on the Framer Pro plan and allows you to manage URL redirects directly from the Framer interface without writing any server configuration code.</p>
+
+  <h3>Adding Redirects</h3>
+
+  <p>Each redirect rule consists of an Old URL (the source path that will return a redirect response) and a New URL (the destination path). You can use either relative paths (starting with <code>/</code>) or full absolute URLs for the destination. Framer applies redirects before the request reaches the page renderer, so they are server-side redirects -- exactly the kind that Google respects and uses to transfer link equity.</p>
+
+  <p>Redirects in Framer are 301 redirects by default. A 301 (Moved Permanently) tells Google that the original URL has moved to the new destination and that the destination should inherit the original URL's ranking signals. This is the correct redirect type for SEO purposes in nearly all cases. Use 302 (Moved Temporarily) only when a redirect is genuinely short-term -- for instance, during a site relaunch preview period.</p>
+
+  <h3>Wildcard Redirects</h3>
+
+  <p>Framer supports wildcard patterns using the asterisk (<code>*</code>) character. Wildcards match any characters in the URL path at the position where they appear. This is especially powerful for two common scenarios:</p>
+
+  <ul>
+    <li><strong>Section renames:</strong> If you rename <code>/blog</code> to <code>/articles</code>, a single rule like <code>/blog/*</code> to <code>/articles/*</code> handles every post under the old path automatically.</li>
+    <li><strong>Legacy subdirectory redirects:</strong> When migrating a site that had a path prefix (like <code>/v1/*</code> or <code>/old-site/*</code>), a single wildcard rule avoids the need to create individual rules for every page.</li>
+  </ul>
+
+  <div class="screenshot-suggestion">📸 Screenshot: Framer Site Settings Redirects panel showing an active redirect list with a wildcard rule and drag-and-drop reordering handles</div>
+
+  <h3>Redirect Rule Order and Drag-and-Drop Reordering</h3>
+
+  <p>Framer evaluates redirect rules in order from top to bottom. When a URL matches multiple rules, the first matching rule wins. This means rule order matters significantly when you have both specific and wildcard rules.</p>
+
+  <p>Always put your most specific rules above your wildcard rules. If you have a specific redirect for <code>/blog/getting-started</code> and a wildcard rule for <code>/blog/*</code>, place the specific rule first. Otherwise the wildcard catches the URL before the specific rule gets a chance to evaluate.</p>
+
+  <p>Framer supports drag-and-drop reordering of redirect rules, which makes this ordering maintenance straightforward. As your redirect list grows, periodic review of rule order is good maintenance hygiene.</p>
+
+  <h3>The 2,500-Rule Limit</h3>
+
+  <p>Framer supports a maximum of 2,500 redirect rules. For most Framer sites, this is more than enough. However, for larger sites that have undergone multiple domain migrations, major navigation restructuring, or content audits that resulted in hundreds of deletions, it is possible to approach this limit. If you find yourself near the limit, wildcards are your best tool for consolidation -- a single well-designed wildcard rule can replace dozens of individual rules.</p>
+
+  <div class="callout callout-tip">
+    <strong>Pro Tip</strong>
+    Before adding redirects for deleted CMS collection items, check whether those items were linked from other pages on your site. If they were, update the internal links to point to the correct existing pages first. This reduces the total number of redirects you need to maintain long-term.
+  </div>
+
+
+  <!-- SECTION 4 -->
+  <h2 id="rankframe-404-monitor">Advanced 404 Monitoring with RankFrame</h2>
+
+  <p>RankFrame's <a href="/kb/07-404-monitor/42-404-monitor-overview.html">404 Monitor</a> addresses the gaps in Framer's native 404 tracking with a purpose-built monitoring system that runs as a continuous script installed directly on your site. This script captures 404 events independently of Framer's analytics pipeline, logging every broken URL request with the full detail needed to prioritize and act.</p>
+
+  <h3>What the 404 Monitor Captures</h3>
+
+  <p>Every 404 event logged by RankFrame includes four pieces of data that Framer's native tracking does not provide together:</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Field</th>
+        <th>What It Shows</th>
+        <th>Why It Matters</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Page URI</strong></td>
+        <td>Full URL path including query strings</td>
+        <td>Exact broken URL to fix or redirect</td>
+      </tr>
+      <tr>
+        <td><strong>User Agent</strong></td>
+        <td>Googlebot, Bingbot, Chrome, etc.</td>
+        <td>Prioritize crawler hits over human hits</td>
+      </tr>
+      <tr>
+        <td><strong>Last Hit</strong></td>
+        <td>Timestamp of most recent 404 event</td>
+        <td>Identify recently active vs. stale errors</td>
+      </tr>
+      <tr>
+        <td><strong>Hits</strong></td>
+        <td>Total count of 404 events for this URL</td>
+        <td>Sort by impact to fix highest-volume issues first</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>The dashboard also surfaces two summary statistics: <strong>Total 404 Errors</strong> (cumulative event count across all broken URLs) and <strong>Unique Routes</strong> (number of distinct broken URL paths). The ratio between these two numbers tells you a lot -- a high total with few unique routes usually means a small number of broken URLs are being hammered repeatedly, which is a strong signal that those URLs need immediate redirects.</p>
+
+  <div class="screenshot-suggestion">📸 Screenshot: RankFrame 404 Monitor dashboard showing the table with Page URI, User Agent, Last Hit, and Hits columns, plus Total 404 Errors and Unique Routes stats at the top</div>
+
+  <h3>The Continuous Monitoring Advantage</h3>
+
+  <p>Because RankFrame's 404 Monitor uses a script installed on your live site rather than relying on analytics session data, it captures errors continuously -- even from users or bots that might not be counted in analytics (for instance, visitors who have ad blockers or analytics blockers enabled, or headless crawlers that do not run JavaScript). This persistent monitoring means your 404 data is always current and always accumulating, regardless of your analytics reporting window.</p>
+
+  <h3>Exception Routes: Whitelisting Intentional Paths</h3>
+
+  <p>Not every 404 in your monitor needs fixing. Some paths are intentionally expected to return error responses -- for example, <code>/404</code> itself (the 404 page), catch-all API routes, or third-party integration endpoints. If these paths appear in your 404 Monitor, they create noise that makes it harder to spot the real problems.</p>
+
+  <p>RankFrame's <a href="/kb/07-404-monitor/44-exception-routes.html">Exception Routes</a> feature lets you define URL patterns that should be excluded from the monitor. Add a pattern once, and matching URLs will stop appearing in the monitor going forward. This keeps your 404 Monitor focused on actionable errors rather than expected non-200 responses.</p>
+
+  <div class="screenshot-suggestion">📸 Screenshot: RankFrame Exception Routes panel showing a list of whitelisted path patterns like /404 and /api/*</div>
+
+  <h3>How RankFrame 404 Monitor Compares to Framer Analytics</h3>
+
+  <div class="comparison-grid">
+    <div class="comparison-card">
+      <h4>Framer Analytics (Aug 2025)</h4>
+      <ul>
+        <li>404 URLs surfaced in dashboard</li>
+        <li>Redirect pre-fill workflow</li>
+        <li>Tied to analytics reporting window</li>
+        <li>No user agent data</li>
+        <li>No per-URL hit counts</li>
+        <li>No last-hit timestamp per URL</li>
+        <li>No continuous monitoring script</li>
+      </ul>
+    </div>
+    <div class="comparison-card">
+      <h4>RankFrame 404 Monitor</h4>
+      <ul>
+        <li>Continuous monitoring script on site</li>
+        <li>Full URI including query strings</li>
+        <li>User agent per event</li>
+        <li>Hit count per unique route</li>
+        <li>Last-hit timestamp per route</li>
+        <li>Total Errors + Unique Routes stats</li>
+        <li>Exception Routes whitelist</li>
+      </ul>
+    </div>
+  </div>
+
+
+  <!-- SECTION 5 -->
+  <h2 id="step-by-step-workflow">How to Fix 404 Errors: A Step-by-Step Workflow</h2>
+
+  <p>A systematic approach to 404 remediation ensures you fix the most impactful errors first without missing anything. Here is the workflow we recommend for Framer sites using RankFrame.</p>
+
+  <ol class="step-list">
+    <li>
+      <div class="step-content">
+        <strong>Run an audit and check your 404 monitor</strong>
+        Open RankFrame's 404 Monitor tab to see all recorded broken URLs. If you have not yet installed the monitoring script, do that first and allow at least 24 hours for data to accumulate. Also check Google Search Console's Coverage report for "Not found (404)" entries -- GSC data catches errors that Googlebot found during its crawls, which may differ from what your visitors are hitting.
+      </div>
+    </li>
+    <li>
+      <div class="step-content">
+        <strong>Identify high-hit 404s first</strong>
+        Sort RankFrame's 404 Monitor by Hits (descending). The URLs at the top of the list are causing the most crawl waste and user friction. Cross-reference the User Agent column -- a URL that Googlebot is hitting hundreds of times is your highest priority regardless of the total visitor count.
+      </div>
+    </li>
+    <li>
+      <div class="step-content">
+        <strong>Determine whether the page was moved or deleted</strong>
+        For each high-priority broken URL, investigate the cause. Check your Framer pages list for the old path. Look at your CMS collections for deleted or renamed items. Check your Git history or Framer version history if available. Understanding why the 404 exists determines the right fix: a moved page gets a 301 redirect to its new location; a genuinely deleted page gets a redirect to the closest relevant section or the homepage.
+      </div>
+    </li>
+    <li>
+      <div class="step-content">
+        <strong>Create redirects in Framer's redirect manager</strong>
+        Go to Site Settings > Redirects in Framer. Add the broken URL as the source and the correct destination as the target. Use wildcard rules where multiple broken URLs share a common path prefix -- one wildcard rule is more maintainable than twenty individual rules. Remember to place specific rules above wildcard rules in the list order.
+      </div>
+    </li>
+    <li>
+      <div class="step-content">
+        <strong>Add intentional paths to Exception Routes</strong>
+        After working through your redirect list, review what remains in the 404 Monitor. For any URL that is expected to return a non-200 status (the 404 page itself, catch-all API routes, third-party integration paths), add it to RankFrame's Exception Routes. This keeps your monitor clean for ongoing use.
+      </div>
+    </li>
+    <li>
+      <div class="step-content">
+        <strong>Verify fixes with the 404 monitor</strong>
+        After publishing your redirects, monitor the previously broken routes over the next few days. A properly implemented redirect will cause Googlebot to stop revisiting the old URL. In RankFrame's monitor, you will see the hit count for those URLs plateau and eventually receive no new entries. If a URL continues accumulating hits after a redirect, the redirect rule may have a syntax error or ordering conflict -- investigate the redirect manager for issues.
+      </div>
+    </li>
+  </ol>
+
+  <div class="callout callout-info">
+    <strong>After Fixing</strong>
+    Once you have resolved your major 404 errors, submit the affected URLs to Google Search Console's URL Inspection tool and request re-indexing. This prompts Google to re-crawl those URLs sooner than the standard crawl schedule, which speeds up the recovery of any lost link equity.
+  </div>
+
+  <h3>Prioritization Framework</h3>
+
+  <p>When you have a long list of 404 errors, use this prioritization framework to sequence your work:</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Priority</th>
+        <th>Criteria</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>P1 -- Critical</strong></td>
+        <td>Googlebot hits, high frequency, page had backlinks</td>
+        <td>Fix immediately with 301 redirect</td>
+      </tr>
+      <tr>
+        <td><strong>P2 -- High</strong></td>
+        <td>Human visitor hits, landing page URLs, high hit count</td>
+        <td>Fix within 48 hours</td>
+      </tr>
+      <tr>
+        <td><strong>P3 -- Medium</strong></td>
+        <td>Low hit count, internal links only, no external backlinks</td>
+        <td>Batch fix in next maintenance pass</td>
+      </tr>
+      <tr>
+        <td><strong>P4 -- Low / Exception</strong></td>
+        <td>Expected catch-all paths, intentional error routes</td>
+        <td>Add to Exception Routes in RankFrame</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="cta-block">
+    <h3>Ready to rank your Framer site?</h3>
+    <p>RankFrame is the only native SEO plugin built for Framer. Schema, indexing, image SEO, site audits, keyword tracking -- all inside the Framer editor. No switching tools. No code required.</p>
+    <a href="https://www.framer.com/marketplace/plugins/rankframe/" class="cta-btn">Install RankFrame Free -- 14-Day Trial</a>
+    <p class="cta-sub">Credit card required. Cancel anytime. Full feature access from day one.</p>
+  </div>
+
+
+  <!-- FAQ -->
+  <div class="faq-section" id="faq">
+    <h2>Frequently Asked Questions</h2>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+        Does Framer automatically return a 404 status code?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>Not historically. Framer's 404 page has been known to return an HTTP 202 status code instead of the correct 404. This is a soft 404 problem -- Google sees the response as a success, crawls the empty page, and wastes crawl budget on it. Creating a proper /404 page type in Framer helps, but you should verify the actual HTTP status with a header-checking tool to confirm correct behavior after publishing.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+        What is the difference between a soft 404 and a real 404?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>A real 404 returns an HTTP status code of 404 (Not Found), which tells Google the page does not exist and should be removed from the index. A soft 404 returns a 200 or 202 status on a page that has no real content -- the server says everything is fine, but the page is effectively empty. Google treats soft 404s as crawl waste and may eventually penalize or ignore those URLs while keeping them in the index.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+        How do I create a custom 404 page in Framer?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>In Framer, create a new page and name it <code>/404</code> in the URL path field, or select the 404 page type in the page settings panel. You can design this page fully in Framer's visual editor. Include a clear error message, your brand elements, helpful navigation links, and a link back to your homepage. After publishing, verify the HTTP response status with a header-checking tool to confirm it returns 404 and not 202.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+        Do 404 errors hurt my SEO?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>Yes, in multiple ways. Broken internal links waste Google's crawl budget on URLs that have no content. If a page that had backlinks pointing to it returns a 404, all of that link equity is lost. Users who arrive at a 404 page from search results bounce immediately, signaling poor user experience. And if Framer returns soft 404s (HTTP 202), Google may keep low-quality empty pages in its index, diluting your overall site quality score.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+        What is a wildcard redirect in Framer?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>Framer's redirect manager supports wildcard patterns using the asterisk (*) character. A wildcard redirect like <code>/old-blog/*</code> mapped to <code>/blog/*</code> will catch any URL that starts with /old-blog/ and redirect it to the equivalent path under /blog/. This is useful when you rename an entire section of your site or migrate a blog from one path structure to another, avoiding the need to create individual redirect rules for every single page.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+        How is RankFrame's 404 Monitor different from Framer Analytics?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>Framer Analytics surfaces 404 URLs in its dashboard as of August 2025, which is useful for a quick overview. RankFrame's 404 Monitor uses a continuous monitoring script installed directly on your site. It records every 404 event with the full URI, the user agent (so you can tell Googlebot from a human visitor), a cumulative hit count per unique route, and the last-hit timestamp. This gives you persistent, granular data for prioritizing fixes -- data that exists outside the analytics reporting window and survives across analytics resets.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+        What are Exception Routes in RankFrame?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>Exception Routes let you whitelist specific URL patterns from appearing in the 404 Monitor. If you have an intentional catch-all route -- like <code>/404</code> itself, <code>/api/*</code>, or a path handled by a third-party integration that naturally returns non-200 responses -- you can add it to Exception Routes. This prevents those paths from polluting your 404 Monitor with false positives, keeping the monitor focused on actionable errors that genuinely need fixing.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+        How many redirect rules can I add in Framer?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>Framer's redirect manager supports up to 2,500 redirect rules on the Pro plan. Rules support drag-and-drop reordering, which matters because redirect rules are evaluated top-to-bottom -- more specific rules should sit above broader wildcard rules to avoid conflicts. For sites approaching the limit, consolidate multiple specific rules into well-designed wildcard rules to reduce the total rule count while maintaining the same coverage.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="cta-block">
+    <h3>Ready to rank your Framer site?</h3>
+    <p>RankFrame is the only native SEO plugin built for Framer. Schema, indexing, image SEO, site audits, keyword tracking -- all inside the Framer editor. No switching tools. No code required.</p>
+    <a href="https://www.framer.com/marketplace/plugins/rankframe/" class="cta-btn">Install RankFrame Free -- 14-Day Trial</a>
+    <p class="cta-sub">Credit card required. Cancel anytime. Full feature access from day one.</p>
+  </div>
+
+  <!-- SEO Details Panel -->
+  <div id="seo-details" style="margin:60px 0 0;padding:28px 32px;background:#f8f6ff;border:1px solid #e8e0fa;border-radius:14px;">
+    <h3 style="font-size:1rem;font-weight:700;color:#1a0533;margin:0 0 20px;">SEO Details</h3>
+    <div id="seo-fields"></div>
+  </div>
+
+</main>
+
+<script>
+(function(){
+  var f=[
+    {label:'Title',value:document.querySelector('title')?document.querySelector('title').textContent:''},
+    {label:'Description',value:(document.querySelector('meta[name="description"]')||{}).content||''},
+    {label:'Keywords',value:(document.querySelector('meta[name="keywords"]')||{}).content||''},
+    {label:'Canonical',value:(document.querySelector('link[rel="canonical"]')||{}).href||''}
+  ];
+  var s=Array.from(document.querySelectorAll('script[type="application/ld+json"]')).map(function(x,i){
+    return{label:'Schema '+(i+1),value:x.textContent.trim()};
+  });
+  var all=f.concat(s);
+  var h='';
+  all.forEach(function(x){
+    h+='<div style="margin-bottom:14px"><div style="font-size:.78rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#7c3aed;margin-bottom:4px">'+x.label+'</div><div style="display:flex;align-items:flex-start;gap:8px"><code style="flex:1;background:#fff;border:1px solid #e0d8f0;border-radius:6px;padding:8px 10px;font-size:.82rem;color:#1a0533;white-space:pre-wrap;word-break:break-all">'+x.value.replace(/</g,'&lt;').replace(/>/g,'&gt;')+'</code><button onclick="navigator.clipboard.writeText(this.dataset.v)" data-v="'+x.value.replace(/"/g,'&quot;')+'" style="flex-shrink:0;padding:6px 12px;background:#7c3aed;color:#fff;border:none;border-radius:6px;font-size:.78rem;font-weight:700;cursor:pointer">Copy</button></div></div>';
+  });
+  document.getElementById('seo-fields').innerHTML=h;
+})();
+</script>
+
+</body>
+</html>

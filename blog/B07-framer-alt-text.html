@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How to Add Alt Text to Framer Images at Scale (Complete Guide)</title>
+  <meta name="description" content="Framer's native alt text editor is image-by-image. Learn how to add, audit, and bulk-generate alt text for all images on your Framer site — including CMS collections." />
+  <meta name="keywords" content="framer alt text, framer image alt text, framer alt text generator, image seo framer, framer image optimization seo, alt text framer bulk" />
+  <link rel="canonical" href="https://rankframe.com/blog/framer-alt-text" />
+  <meta property="og:title" content="How to Add Alt Text to Framer Images at Scale (Complete Guide)" />
+  <meta property="og:description" content="Framer's native alt text editor is image-by-image. Learn how to add, audit, and bulk-generate alt text for all images on your Framer site — including CMS collections." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://rankframe.com/blog/framer-alt-text" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "How to Add Alt Text to Framer Images at Scale (Complete Guide)",
+    "description": "Framer's native alt text editor is image-by-image. Learn how to add, audit, and bulk-generate alt text for all images on your Framer site — including CMS collections.",
+    "url": "https://rankframe.com/blog/framer-alt-text",
+    "datePublished": "2026-05-03",
+    "dateModified": "2026-05-03",
+    "author": {
+      "@type": "Organization",
+      "name": "7 Seers",
+      "url": "https://rankframe.com"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "7 Seers",
+      "url": "https://rankframe.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://rankframe.com/logo.png"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://rankframe.com/blog/framer-alt-text"
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://rankframe.com"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Blog",
+        "item": "https://rankframe.com/blog"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "How to Add Alt Text to Framer Images at Scale",
+        "item": "https://rankframe.com/blog/framer-alt-text"
+      }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "7 Seers",
+    "url": "https://rankframe.com",
+    "email": "hello@7seersmedia.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Lucknow",
+      "addressCountry": "IN"
+    },
+    "sameAs": [
+      "https://www.framer.com/marketplace/plugins/rankframe/"
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How do I add alt text to an image in Framer?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Select the image on the Framer canvas, then find the Alt Text field in the properties panel on the right side. Type your descriptive text there. You must do this individually for every image, as Framer has no native bulk alt text tool."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does Framer have a bulk alt text generator?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Framer does not have a native bulk alt text generator. The Asset Manager (Cmd+K) lets you view images across your project in one place and add alt text, but it does not generate descriptions automatically. RankFrame's Image SEO feature provides AI-powered bulk alt text generation with one credit per image."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does missing alt text hurt SEO on Framer sites?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Images without alt text are invisible to search engines. On design-heavy Framer portfolios and SaaS landing pages where images carry significant meaning, missing alt text removes important keyword context from pages that may already have limited body text."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I add alt text to Framer CMS images?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. In Framer CMS, you can bind an image component's alt text to a text field in your collection, so each CMS item can have unique alt text. RankFrame's Image SEO feature covers both canvas images and CMS images, generating alt text across both sources."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How long should alt text be?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Keep alt text under 125 characters. Screen readers often truncate at that point. Focus on describing the image content accurately and concisely. Include a target keyword only when it describes the image naturally — keyword stuffing in alt text is a spam signal."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Should decorative images have alt text?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Decorative images (backgrounds, dividers, purely aesthetic elements) should use empty alt text (alt='') so screen readers skip them. This is correct WCAG practice. RankFrame lets you leave alt text blank intentionally for decorative images while flagging images that have no alt text set at all."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is RankFrame's credit system for alt text generation?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "RankFrame uses one credit per AI-generated alt text. Credits are consumed when you use the single wand icon for one image or when you run bulk generation across a selection. Credits can be purchased inside the plugin. A 14-day free trial includes full feature access."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I export alt text from RankFrame for review?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. RankFrame's Image SEO panel includes a CSV export option that gives you a full list of every image on your site alongside its current alt text. This is useful for auditing, client review, and maintaining an alt text changelog over time."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How to Bulk-Generate Alt Text for Framer Images Using RankFrame",
+    "description": "Step-by-step guide to auditing and generating alt text for all images on a Framer site using RankFrame's AI-powered Image SEO feature.",
+    "step": [
+      {
+        "@type": "HowToStep",
+        "position": 1,
+        "name": "Install RankFrame from the Framer Plugin Marketplace",
+        "text": "Open Framer, navigate to the Plugin Marketplace, search for RankFrame, and install it. Start your 14-day free trial."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 2,
+        "name": "Open the Image SEO panel",
+        "text": "Launch RankFrame from your Framer plugins panel. Navigate to the Image SEO section. You will see a list of all images on your site with red dot indicators on any image missing alt text."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 3,
+        "name": "Review which images are missing alt text",
+        "text": "Scan the list for red dot indicators. These mark images with no alt text set. Note the count of missing alt texts so you know how many credits bulk generation will consume."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 4,
+        "name": "Select all images and run bulk alt text generation",
+        "text": "Click Select All to highlight every image in the panel, then click the Generate Alt Text button. RankFrame's AI will analyze each image and write a descriptive alt text. One credit is used per image."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 5,
+        "name": "Review and edit generated alt text as needed",
+        "text": "Scan the AI-generated descriptions. Edit any that need brand-specific language, keyword inclusion, or more precise descriptions. Add your global suffix (e.g. 'by Studio Name') in Global Settings if desired."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 6,
+        "name": "Export a CSV and republish your Framer site",
+        "text": "Use the CSV export to keep a record of all alt texts. Republish your Framer project to push the updated alt text to your live site."
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 1.05rem;
+      line-height: 1.75;
+      color: #1a0533;
+      background: #fff;
+    }
+    a { color: #7c3aed; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .site-header {
+      background: #fff;
+      border-bottom: 1px solid #e8e0fa;
+      padding: 0 24px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .site-header-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      height: 60px;
+      gap: 32px;
+    }
+    .logo { font-weight: 800; font-size: 1.1rem; color: #7c3aed; letter-spacing: -0.02em; }
+    .logo span { color: #1a0533; }
+    .nav-links { display: flex; gap: 24px; font-size: .9rem; }
+    .nav-links a { color: #4b2d7a; font-weight: 500; }
+
+    .breadcrumb {
+      max-width: 860px;
+      margin: 24px auto 0;
+      padding: 0 24px;
+      font-size: .83rem;
+      color: #6b5c8a;
+    }
+    .breadcrumb a { color: #7c3aed; }
+    .breadcrumb span { margin: 0 6px; }
+
+    .article-header {
+      max-width: 860px;
+      margin: 20px auto 0;
+      padding: 0 24px;
+    }
+    .article-category {
+      display: inline-block;
+      background: #f3eeff;
+      color: #7c3aed;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 16px;
+    }
+    .article-header h1 {
+      font-size: clamp(1.7rem, 4vw, 2.5rem);
+      font-weight: 800;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      color: #1a0533;
+      margin-bottom: 16px;
+    }
+    .article-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      font-size: .85rem;
+      color: #6b5c8a;
+      margin-bottom: 32px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid #e8e0fa;
+    }
+    .article-meta strong { color: #1a0533; }
+
+    .toc {
+      background: #f8f6ff;
+      border: 1px solid #e8e0fa;
+      border-radius: 12px;
+      padding: 24px 28px;
+      margin: 0 24px 40px;
+      max-width: 860px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .toc h2 {
+      font-size: .9rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      color: #7c3aed;
+      margin-bottom: 12px;
+    }
+    .toc ol { padding-left: 20px; display: flex; flex-direction: column; gap: 6px; }
+    .toc ol li { font-size: .92rem; }
+    .toc ol a { color: #4b2d7a; }
+
+    .article-body {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 24px 60px;
+    }
+    .article-body h2 {
+      font-size: 1.55rem;
+      font-weight: 800;
+      color: #1a0533;
+      margin: 52px 0 18px;
+      padding-top: 16px;
+      border-top: 2px solid #f3eeff;
+      letter-spacing: -0.01em;
+    }
+    .article-body h3 {
+      font-size: 1.18rem;
+      font-weight: 700;
+      color: #2d1060;
+      margin: 32px 0 12px;
+    }
+    .article-body h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #3d1a7a;
+      margin: 24px 0 8px;
+    }
+    .article-body p { margin-bottom: 18px; }
+    .article-body ul, .article-body ol { padding-left: 22px; margin-bottom: 18px; }
+    .article-body li { margin-bottom: 6px; }
+    .article-body strong { color: #1a0533; }
+
+    .code-block {
+      background: #1a0533;
+      color: #e8e0fa;
+      padding: 20px 24px;
+      border-radius: 10px;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: .85rem;
+      line-height: 1.6;
+      margin: 20px 0;
+      overflow-x: auto;
+      white-space: pre;
+    }
+
+    .table-wrap { overflow-x: auto; margin: 24px 0; }
+    table { width: 100%; border-collapse: collapse; font-size: .9rem; }
+    thead th {
+      background: #7c3aed;
+      color: #fff;
+      padding: 10px 14px;
+      text-align: left;
+      font-weight: 700;
+    }
+    tbody tr:nth-child(even) { background: #f8f6ff; }
+    tbody td {
+      padding: 10px 14px;
+      border-bottom: 1px solid #e8e0fa;
+      vertical-align: top;
+    }
+
+    .callout {
+      border-radius: 10px;
+      padding: 18px 22px;
+      margin: 24px 0;
+      font-size: .93rem;
+    }
+    .callout-info { background: #f0ebff; border-left: 4px solid #7c3aed; }
+    .callout-warning { background: #fff8e6; border-left: 4px solid #f59e0b; }
+    .callout-success { background: #edfff4; border-left: 4px solid #10b981; }
+    .callout strong { display: block; margin-bottom: 6px; }
+
+    .screenshot-suggestion {
+      background: #f8f6ff;
+      border: 2px dashed #c4b0f0;
+      border-radius: 10px;
+      padding: 16px 20px;
+      font-size: .88rem;
+      color: #5a3f9a;
+      margin: 20px 0;
+    }
+
+    .cta-block {
+      background: linear-gradient(135deg, #7c3aed 0%, #5b21b6 100%);
+      color: #fff;
+      border-radius: 16px;
+      padding: 40px 44px;
+      text-align: center;
+      margin: 48px 0;
+    }
+    .cta-block h3 { font-size: 1.5rem; font-weight: 800; margin-bottom: 14px; color: #fff; }
+    .cta-block p { font-size: 1rem; margin-bottom: 24px; opacity: .92; max-width: 540px; margin-left: auto; margin-right: auto; }
+    .cta-btn {
+      display: inline-block;
+      background: #fff;
+      color: #7c3aed;
+      font-weight: 800;
+      font-size: .95rem;
+      padding: 14px 32px;
+      border-radius: 50px;
+      text-decoration: none;
+      box-shadow: 0 4px 20px rgba(0,0,0,.2);
+    }
+    .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,.25); text-decoration: none; }
+    .cta-sub { font-size: .82rem; opacity: .75; margin-top: 14px; }
+
+    .steps { counter-reset: step; }
+    .step { display: flex; gap: 18px; margin-bottom: 28px; align-items: flex-start; }
+    .step-num {
+      flex-shrink: 0;
+      width: 36px;
+      height: 36px;
+      background: #7c3aed;
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: .9rem;
+      margin-top: 2px;
+    }
+    .step-content h4 { margin-top: 0; }
+
+    .dos-donts {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin: 24px 0;
+    }
+    @media (max-width: 600px) { .dos-donts { grid-template-columns: 1fr; } }
+    .dos, .donts {
+      border-radius: 10px;
+      padding: 18px 20px;
+    }
+    .dos { background: #edfff4; border: 1px solid #6ee7b7; }
+    .donts { background: #fff1f1; border: 1px solid #fca5a5; }
+    .dos h4 { color: #065f46; margin-bottom: 10px; }
+    .donts h4 { color: #991b1b; margin-bottom: 10px; }
+    .dos ul, .donts ul { padding-left: 18px; margin: 0; font-size: .92rem; }
+
+    .faq-list { margin: 24px 0; }
+    .faq-item { border: 1px solid #e8e0fa; border-radius: 10px; margin-bottom: 10px; overflow: hidden; }
+    .faq-question {
+      width: 100%;
+      background: #f8f6ff;
+      border: none;
+      padding: 16px 20px;
+      text-align: left;
+      font-weight: 700;
+      font-size: .95rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #1a0533;
+      font-family: inherit;
+    }
+    .faq-question:hover { background: #f0ebff; }
+    .faq-icon { font-size: 1.2rem; color: #7c3aed; font-weight: 400; transition: transform .2s; }
+    .faq-answer { display: none; padding: 16px 20px; font-size: .93rem; border-top: 1px solid #e8e0fa; line-height: 1.7; }
+    .faq-item.open .faq-answer { display: block; }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin: 24px 0;
+    }
+    .feature-card {
+      background: #f8f6ff;
+      border: 1px solid #e8e0fa;
+      border-radius: 10px;
+      padding: 18px 20px;
+    }
+    .feature-card h4 { color: #7c3aed; margin-bottom: 6px; font-size: .95rem; }
+    .feature-card p { font-size: .88rem; margin: 0; color: #3d1a7a; }
+
+    footer {
+      background: #1a0533;
+      color: #c4b0f0;
+      text-align: center;
+      padding: 32px 24px;
+      font-size: .85rem;
+    }
+    footer a { color: #c4b0f0; }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <div class="logo">Rank<span>Frame</span></div>
+    <nav class="nav-links">
+      <a href="https://rankframe.com">Home</a>
+      <a href="https://rankframe.com/blog">Blog</a>
+      <a href="https://www.framer.com/marketplace/plugins/rankframe/">Install Plugin</a>
+    </nav>
+  </div>
+</header>
+
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <a href="https://rankframe.com">Home</a>
+  <span>&rsaquo;</span>
+  <a href="https://rankframe.com/blog">Blog</a>
+  <span>&rsaquo;</span>
+  <span>How to Add Alt Text to Framer Images at Scale</span>
+</nav>
+
+<header class="article-header">
+  <div class="article-category">Image SEO</div>
+  <h1>How to Add Alt Text to Framer Images at Scale</h1>
+  <div class="article-meta">
+    <span>By <strong>7 Seers</strong></span>
+    <span>Published <strong>May 3, 2026</strong></span>
+    <span>Updated <strong>May 3, 2026</strong></span>
+    <span>15 min read</span>
+  </div>
+</header>
+
+<nav class="toc" aria-label="Table of contents">
+  <h2>In This Guide</h2>
+  <ol>
+    <li><a href="#what-is-alt-text">What Is Alt Text and Why It Matters</a></li>
+    <li><a href="#framer-native">How Framer Handles Image Alt Text Natively</a></li>
+    <li><a href="#why-missing">Why Missing Alt Text Hurts Framer Sites</a></li>
+    <li><a href="#rankframe-image-seo">How RankFrame's Image SEO Works</a></li>
+    <li><a href="#writing-good-alt-text">Writing Good Alt Text: Guidelines and Examples</a></li>
+    <li><a href="#alt-text-by-site-type">Alt Text Strategy for Different Framer Site Types</a></li>
+    <li><a href="#faq">Frequently Asked Questions</a></li>
+  </ol>
+</nav>
+
+<main class="article-body">
+
+  <p>Alt text is one of the most overlooked ranking signals on Framer sites. Framer is a design-first platform. Its users build visually rich websites packed with hero images, screenshots, portfolio photography, icons, and infographics. Those images often carry more meaning than the surrounding copy. Yet every image that ships without descriptive alt text is invisible to search engines and inaccessible to screen reader users.</p>
+
+  <p>The problem is compounded by how Framer handles alt text natively: one image at a time, in the canvas editor properties panel. There is no audit view to see which images are missing alt text, no bulk editing workflow, and no AI assistance. For a site with 80 or 100 images, adding alt text manually to each one is hours of repetitive work that most Framer designers skip entirely.</p>
+
+  <p>This guide covers what alt text is, why it matters for both SEO and accessibility, exactly how Framer handles alt text today, where the native tooling falls short, and how to use RankFrame to audit and bulk-generate alt text across your entire Framer site, including CMS collection images, in minutes.</p>
+
+  <h2 id="what-is-alt-text">What Is Alt Text and Why It Matters</h2>
+
+  <p>Alt text (alternative text) is an HTML attribute added to image elements that provides a text description of the image content. Here is what it looks like in the rendered HTML of a Framer page:</p>
+
+  <div class="code-block">&lt;img src="hero-dashboard.jpg" alt="RankFrame SEO audit dashboard showing a site score of 87 out of 100" /&gt;</div>
+
+  <p>That single attribute serves three distinct purposes that all have measurable impact on your site's performance.</p>
+
+  <h3>1. Search Engine Understanding</h3>
+  <p>Search engines cannot see images. They read alt text to understand what an image depicts, which informs how they index the page and whether the image appears in Google Image Search results. Images are a significant discovery channel: Google Images generates billions of searches per month, and a well-optimized image can drive traffic that text-only content never would. For Framer sites where a hero image or product screenshot is the primary visual statement on a page, alt text is the only way that image contributes to keyword relevance.</p>
+
+  <h3>2. Accessibility Compliance</h3>
+  <p>Screen readers used by blind and low-vision users read alt text aloud when they encounter an image. Without alt text, users relying on assistive technology hear "image" or the raw filename, such as "IMG_4821.jpg." This is a failure of both usability and legal compliance. WCAG 2.1 Success Criterion 1.1.1 (Non-text Content) requires that all meaningful images have a text alternative. Many jurisdictions, including the European Union under the European Accessibility Act and the United States under the ADA, hold websites to accessibility standards. An alt text audit is therefore both an SEO practice and a compliance exercise.</p>
+
+  <h3>3. Fallback Content</h3>
+  <p>When images fail to load, browsers display the alt text in place of the image. This matters in low-bandwidth environments and for users on slow connections. Displaying a meaningful description rather than a broken image icon keeps the page functional and informative.</p>
+
+  <div class="callout callout-info">
+    <strong>Quick Definition</strong>
+    Alt text is not the same as an image title, caption, or filename. It is the <code>alt</code> attribute specifically. Each of these serves a different purpose. Alt text is the one that directly affects screen reader output, search engine image indexing, and broken-image fallback display.
+  </div>
+
+  <h2 id="framer-native">How Framer Handles Image Alt Text Natively</h2>
+
+  <p>Framer gives you two ways to set alt text natively, neither of which scales well for large sites.</p>
+
+  <h3>Per-Image in the Canvas Editor</h3>
+  <p>The primary method is selecting an image element in the Framer canvas and typing alt text directly into the Alt Text field in the right-side properties panel. This is intuitive for adding alt text to a single hero image or logo, but it requires you to click on every image in your project individually, remember to do it for every page, and repeat the process when new images are added.</p>
+
+  <p>For a typical Framer marketing site with 5 to 7 pages, a conservative image count might look like this: hero image, 3 feature screenshots, 2 team photos, 8 logos, 4 blog thumbnail images, 6 testimonial author photos, a footer illustration. That is already around 25 images, and many Framer sites have far more.</p>
+
+  <div class="screenshot-suggestion">Screenshot: Framer canvas editor with an image selected and the Alt Text field visible in the right properties panel</div>
+
+  <h3>Asset Manager (Cmd+K)</h3>
+  <p>The Framer Asset Manager, opened with Cmd+K (Mac) or via the Assets panel, lists all images in your project in one place. This is the closest Framer comes to a bulk alt text view. You can click on an image in the Asset Manager and edit its alt text without having to find the element in the canvas. However, the Asset Manager does not show you which images are missing alt text, does not flag gaps, and does not provide any automation or AI assistance. It is a viewing tool, not an audit or generation tool.</p>
+
+  <div class="screenshot-suggestion">Screenshot: Framer Asset Manager panel showing a list of project images</div>
+
+  <h3>CMS Image Alt Text via Field Variables</h3>
+  <p>For sites using Framer CMS, images inside CMS collection items can have alt text bound to a CMS text field. You add a text field to your collection (for example, "Image Alt Text"), type the alt text for each collection item, and then bind the image component's alt attribute to that field variable. This works correctly, but it requires manually writing alt text for every CMS item and setting up the binding correctly in the collection template. There is no automation or bulk writing assistance.</p>
+
+  <h3>The Core Limitation</h3>
+  <p>Framer's native alt text tooling has no audit view to show missing alt text across the site, no AI generation, no bulk operation beyond what the Asset Manager provides one-by-one, and no CSV export for review or client sign-off. For any site with more than a handful of images, this means alt text is almost always incomplete.</p>
+
+  <div class="callout callout-warning">
+    <strong>Common Scenario</strong>
+    A Framer design studio launches a new portfolio site with 60 canvas images and 40 CMS project images. All 100 images ship with no alt text because the designer focused on visual quality, not alt attribute fields. That site is indexed by Google with 100 invisible images. Every one of those images is a missed keyword and missed image search opportunity.
+  </div>
+
+  <p>For a deeper understanding of how Framer handles image alt text and what the fields mean, see the <a href="/kb/05-image-seo/31-understanding-alt-text.html">Understanding Alt Text guide</a> in the RankFrame knowledge base.</p>
+
+  <h2 id="why-missing">Why Missing Alt Text Hurts Framer Sites</h2>
+
+  <p>The impact of missing alt text is not theoretical. It manifests in measurable SEO and accessibility outcomes, and design-heavy Framer sites are disproportionately affected compared to text-heavy sites like blogs or news outlets.</p>
+
+  <h3>72+ Missing Alt Texts Is Common on Design-Heavy Portfolios</h3>
+  <p>A typical Framer portfolio or SaaS landing page built by a designer prioritizes visual impact. These sites often have more pixel area covered by images than by text. It is common to find portfolios with 50 project images, 20 UI screenshots, 10 icon images, and a scattering of logos and texture photos. Running an image SEO audit on such a site routinely surfaces 70 to 100 images without alt text.</p>
+
+  <p>Each missing alt text is a missed opportunity for Google to understand the page's visual content. On a portfolio page for a "brand identity design agency in New York," a project image without alt text is invisible. With alt text reading "Brand identity design for Brooklyn coffee roaster including logo, packaging, and signage," that image contributes to the page's relevance for related searches.</p>
+
+  <h3>Accessibility Compliance (WCAG)</h3>
+  <p>WCAG 2.1 Level A requires that all non-decorative images have meaningful alt text. This is not optional for any site aspiring to professional quality. Government sites, educational institutions, and increasingly commercial sites in regulated industries face legal exposure for WCAG non-compliance. Even outside those industries, accessibility failures damage brand reputation when discovered. A creative agency with an inaccessible portfolio site sends a poor signal about its attention to quality.</p>
+
+  <h3>Image Search Ranking</h3>
+  <p>Google Image Search is a meaningful traffic source for visual industries. Photographers, architects, interior designers, UI designers, and product companies all benefit from image search traffic. Google explicitly states that alt text is a primary signal it uses to understand image content and determine relevance for image search queries. Without alt text, your images do not appear for any search query regardless of visual quality.</p>
+
+  <h3>Crawl Context for Text-Light Pages</h3>
+  <p>Many Framer landing pages are intentionally copy-light. A single headline, a subheadline, a short feature list, and several large images may be the entire content of a page. When images carry this much of the page's communication, their alt text becomes critical context for Google's understanding of the page's topic. A page with two sentences of body text and 10 images, all missing alt text, gives Google almost nothing to work with for keyword relevance assessment.</p>
+
+  <div class="callout callout-success">
+    <strong>The Compound Effect</strong>
+    Adding alt text to 80 previously unoptimized images does more than improve image search performance. It enriches the textual context of every page those images appear on, which improves the page's relevance signals for its target keywords across all search results, not just image search.
+  </div>
+
+  <h2 id="rankframe-image-seo">How RankFrame's Image SEO Works</h2>
+
+  <p>RankFrame's Image SEO feature is built specifically to close the gap between what Framer provides natively and what a serious image SEO workflow requires. It covers every image on your site, generates alt text using AI, lets you manage everything in one panel, and exports an audit trail. You access it directly inside the Framer editor, with no need to switch to an external tool.</p>
+
+  <p>For a full overview of the Image SEO panel, see the <a href="/kb/05-image-seo/29-image-seo-overview.html">Image SEO Overview</a> in the knowledge base.</p>
+
+  <div class="screenshot-suggestion">Screenshot: RankFrame Image SEO panel open in Framer, showing a list of images with red dot indicators on those missing alt text</div>
+
+  <h3>Canvas and CMS Image Coverage</h3>
+  <p>RankFrame scans both canvas images (images placed directly in your Framer project) and CMS images (images stored in Framer CMS collection items). This matters because many sites split their content between static canvas pages and CMS-powered blog posts or portfolio entries. A tool that only covers canvas images leaves CMS image alt text unmanaged.</p>
+
+  <h3>Red Dot Indicator for Missing Alt</h3>
+  <p>In the RankFrame Image SEO panel, every image that is missing alt text displays a red dot indicator. This gives you an instant visual audit of your image SEO gap without needing to click through each image individually. You can see at a glance that you have 43 images missing alt text before running a single generation.</p>
+
+  <h3>Single Wand: Generate for One Image</h3>
+  <p>Each image in the panel has a wand icon. Clicking it generates AI alt text for that specific image. This is useful when you want to write alt text for a newly uploaded image or when you want to regenerate the description for one image without affecting others. One credit is consumed per generation.</p>
+
+  <h3>Bulk Generation: Select All and Generate</h3>
+  <p>For a full-site alt text pass, click Select All in the Image SEO panel, then click the Generate Alt Text button. RankFrame will process every selected image sequentially, generating a descriptive alt text for each one. The button displays the count of images to be processed so you know the credit cost before confirming.</p>
+
+  <p>For step-by-step instructions on bulk generation, see the <a href="/kb/05-image-seo/33-bulk-alt-text-generation.html">Bulk Alt Text Generation guide</a>. For information on purchasing additional credits, see <a href="/kb/05-image-seo/36-buy-credits.html">Buy Credits</a>.</p>
+
+  <div class="screenshot-suggestion">Screenshot: RankFrame Image SEO panel with all images selected and the "Generate Alt Text (47)" button highlighted</div>
+
+  <h3>Credit Cost: 1 Credit Per Image</h3>
+  <p>AI alt text generation uses one credit per image. Credits are consumed when you use the single wand or bulk generation. You can purchase additional credits inside the plugin. The 14-day free trial includes full feature access, so you can run your first full-site alt text pass during the trial period.</p>
+
+  <h3>CSV Export for Audit Trail</h3>
+  <p>After generating alt text, you can export a CSV that lists every image on your site with its current alt text. This is valuable for client review and sign-off, for maintaining a changelog of alt text updates, and for identifying any images where the AI-generated description may need manual refinement. The CSV export is available directly from the Image SEO panel.</p>
+
+  <h3>Global Suffix Option</h3>
+  <p>The Global Settings panel in RankFrame includes a suffix field for alt text. Any text you enter here is automatically appended to every generated alt text. For example, a design studio might set the suffix to "by Studio Meridian" so that generated alt texts read "Brand identity logo design for a fintech startup by Studio Meridian." This is useful for brand attribution and for adding consistent keyword context without editing every alt text individually.</p>
+
+  <h3>Minimized Mode for Large Bulk Operations</h3>
+  <p>When generating alt text for 50 or more images, the Image SEO panel can be collapsed into Minimized Mode. This runs generation in the background while you continue working in Framer. You receive a notification when the batch is complete. This is especially useful for large Framer sites where bulk generation might take several minutes to process.</p>
+
+  <div class="feature-grid">
+    <div class="feature-card">
+      <h4>Red Dot Audit</h4>
+      <p>Instantly see which images are missing alt text without clicking through the canvas.</p>
+    </div>
+    <div class="feature-card">
+      <h4>AI Bulk Generation</h4>
+      <p>Generate descriptive alt text for all images at once. One credit per image.</p>
+    </div>
+    <div class="feature-card">
+      <h4>CMS Coverage</h4>
+      <p>Covers both canvas images and CMS collection images in a single panel.</p>
+    </div>
+    <div class="feature-card">
+      <h4>CSV Export</h4>
+      <p>Export all alt texts for review, client approval, or audit records.</p>
+    </div>
+    <div class="feature-card">
+      <h4>Global Suffix</h4>
+      <p>Append brand attribution or keyword context to every generated alt text automatically.</p>
+    </div>
+    <div class="feature-card">
+      <h4>Minimized Mode</h4>
+      <p>Run large bulk operations in the background while you continue editing.</p>
+    </div>
+  </div>
+
+  <div class="cta-block">
+    <h3>Ready to rank your Framer site?</h3>
+    <p>RankFrame is the only native SEO plugin built for Framer. Schema, indexing, image SEO, site audits, keyword tracking — all inside the Framer editor. No switching tools. No code required.</p>
+    <a href="https://www.framer.com/marketplace/plugins/rankframe/" class="cta-btn">Install RankFrame Free — 14-Day Trial</a>
+    <p class="cta-sub">Credit card required. Cancel anytime. Full feature access from day one.</p>
+  </div>
+
+  <h2 id="writing-good-alt-text">Writing Good Alt Text: Guidelines and Examples</h2>
+
+  <p>Even with AI generation, understanding what makes alt text effective helps you evaluate and refine the output. Here are the principles that separate high-quality alt text from filler descriptions.</p>
+
+  <h3>Be Specific and Descriptive</h3>
+  <p>Alt text should describe what is actually in the image with enough specificity to convey meaning. Vague descriptions like "photo of a person" or "screenshot of a tool" communicate nothing useful to search engines or screen readers. Specific descriptions like "Product manager reviewing a sprint board in a Framer-built project management dashboard" provide genuine context.</p>
+
+  <h3>Keep It Under 125 Characters</h3>
+  <p>Screen readers typically truncate alt text at around 125 characters. Aim to communicate the most important information within that limit. If an image is complex (such as an infographic), consider also providing a longer description in the surrounding page copy or a linked text alternative.</p>
+
+  <h3>Include Keywords Naturally, Not Forcefully</h3>
+  <p>Good alt text describes the image. If your target keyword naturally fits the description, include it. If it does not fit naturally, do not force it. "Framer SEO dashboard showing keyword position history and impressions" is natural. "Framer SEO keyword rank track optimize Google" is keyword stuffing and will be treated as spam. Google is explicit that keyword stuffing in alt text can result in a manual penalty.</p>
+
+  <h3>Do Not Start with "Image of" or "Photo of"</h3>
+  <p>Screen readers already announce that the element is an image. Beginning with "image of" wastes characters and creates redundancy. Go straight to describing the content: not "Image of a woman using a laptop" but "Designer reviewing color palette options in Framer on a MacBook."</p>
+
+  <h3>Use Empty Alt for Decorative Images</h3>
+  <p>Images that are purely decorative, such as background textures, abstract shapes, gradient overlays, or decorative dividers, should have an empty alt attribute: <code>alt=""</code>. This tells screen readers to skip the image entirely, which keeps the listening experience clean. Do not leave the attribute out entirely, as some screen readers will then read the filename. Set <code>alt=""</code> explicitly.</p>
+
+  <div class="dos-donts">
+    <div class="dos">
+      <h4>Do: Effective Alt Text</h4>
+      <ul>
+        <li>"Brand identity design for a New York coffee roaster including logo, packaging, and signage"</li>
+        <li>"RankFrame SEO audit showing a site score of 82 with three red zone issues flagged"</li>
+        <li>"Architect's exterior render of a modernist family home with floor-to-ceiling windows"</li>
+        <li>"Team of four designers collaborating over wireframes in a bright Shoreditch studio"</li>
+        <li>"Google Search Console keyword impressions chart showing upward trend over 28 days"</li>
+      </ul>
+    </div>
+    <div class="donts">
+      <h4>Don't: Poor Alt Text</h4>
+      <ul>
+        <li>"image"</li>
+        <li>"photo.jpg"</li>
+        <li>"Our work"</li>
+        <li>"SEO Framer SEO plugin SEO optimization"</li>
+        <li>"Image of a screenshot showing our product"</li>
+        <li>Leaving alt text empty on a meaningful image</li>
+        <li>Using the same alt text for multiple different images</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>Match Alt Text to Page Context</h3>
+  <p>The same product photo might appear on different pages with different contexts. On a product page for a specific camera lens, the alt text might focus on the product model and its key feature. On a photography blog post about low-light techniques, the alt text for the same lens image should reflect its role in that context. Alt text is not universal metadata attached to an image; it is page-level description that should reflect where and why the image appears.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Scenario</th>
+          <th>Poor Alt Text</th>
+          <th>Good Alt Text</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Hero image for a UX agency</td>
+          <td>hero image</td>
+          <td>UX designers collaborating on a wireframe for a mobile banking application</td>
+        </tr>
+        <tr>
+          <td>Product screenshot for a SaaS tool</td>
+          <td>screenshot</td>
+          <td>RankFrame keyword tracker dashboard displaying position history sparklines for five keywords</td>
+        </tr>
+        <tr>
+          <td>Testimonial author photo</td>
+          <td>customer</td>
+          <td>Portrait of Sarah Chen, Head of Growth at Vercel</td>
+        </tr>
+        <tr>
+          <td>Blog article diagram</td>
+          <td>diagram</td>
+          <td>Flowchart showing the RankFrame keyword research to ranking monitoring workflow in five steps</td>
+        </tr>
+        <tr>
+          <td>Portfolio project image</td>
+          <td>project</td>
+          <td>Full-page redesign of a fintech mobile app with dark mode UI and biometric login screen</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 id="alt-text-by-site-type">Alt Text Strategy for Different Framer Site Types</h2>
+
+  <p>The approach to writing and generating alt text should vary by site type because the images on different types of Framer sites serve different purposes and carry different SEO weight.</p>
+
+  <h3>Portfolio and Design Studio Sites</h3>
+  <p>For a design portfolio, images are the primary content. The alt text should describe the work shown: the type of project, the brand or client if publicly attributable, the design elements visible, and the deliverable type. A brand identity project image might read: "Brand identity system for a Copenhagen sustainable furniture brand including logo, wordmark, and business card design." This alt text targets both image search queries from potential clients looking for similar work and text search queries for related design services.</p>
+
+  <p>When using RankFrame's AI generation on portfolio images, review the output carefully. AI can describe a logo as "logo design on white background" where a human writer would recognize it as "minimalist geometric wordmark for a Nordic architecture firm." Supplement AI output with industry-specific details where the AI does not have enough context.</p>
+
+  <div class="screenshot-suggestion">Screenshot: RankFrame Image SEO panel showing a portfolio site with CMS project images listed, several with red dot indicators</div>
+
+  <h3>SaaS Landing Pages</h3>
+  <p>SaaS Framer sites rely heavily on product screenshots, interface mockups, and feature illustration graphics. Alt text for these images should describe the UI functionally: what the screen shows, what action is being taken, what the feature illustrates. "Framer drag-and-drop CMS editor with a blog post open and the SEO settings panel visible" describes the screenshot in a way that is useful both for accessibility and for capturing informational search queries from users researching Framer CMS capabilities.</p>
+
+  <p>Avoid generic SaaS alt text like "dashboard screenshot" or "product interface." These contribute nothing. The goal is to make each screenshot legible as a text description to someone who cannot see the image.</p>
+
+  <h3>Blog and Content Sites</h3>
+  <p>Framer blogs typically include featured images, inline diagrams, chart screenshots, and author photos. For diagrams and charts, the alt text should communicate the main conclusion or data point the visualization shows. "Bar chart comparing organic search traffic growth for three Framer sites over 6 months, with sites using schema markup growing 40% faster" is far more useful than "bar chart."</p>
+
+  <p>For featured images that are illustrative rather than informative (abstract backgrounds, decorative headers), use empty alt text rather than forcing a description of decorative content.</p>
+
+  <h3>E-Commerce and Product Sites</h3>
+  <p>Product images require alt text that identifies the product specifically: model name, color, key differentiating feature, and any relevant context. "Handmade leather messenger bag in dark cognac with brass hardware and adjustable strap" serves both image search and the accessibility need to communicate what is being shown. For product images in multiple colors or configurations, each variant should have alt text that reflects the specific variation shown.</p>
+
+  <h3>Agency and Freelancer Sites</h3>
+  <p>Agency sites typically mix portrait photos (team, clients), office photos, project work images, and decorative brand elements. Team portrait alt text should follow a consistent format: "First Name Last Name, Role at Company Name." Client logos should read "Client Company Name logo." Office photos can describe the environment: "7 Seers creative studio workspace in Lucknow with team members at standing desks." Decorative texture or background images should use empty alt text.</p>
+
+  <div class="callout callout-info">
+    <strong>RankFrame AI Personalization</strong>
+    RankFrame's AI Personalization settings (Brand Name, Industry, Audience, Goals) inform how the AI generates content across the plugin, including alt text. Setting your brand name and industry before running bulk alt text generation improves the specificity and relevance of AI-generated descriptions. This is especially useful for agency and portfolio sites where brand attribution matters.
+  </div>
+
+  <div class="cta-block">
+    <h3>Ready to rank your Framer site?</h3>
+    <p>RankFrame is the only native SEO plugin built for Framer. Schema, indexing, image SEO, site audits, keyword tracking — all inside the Framer editor. No switching tools. No code required.</p>
+    <a href="https://www.framer.com/marketplace/plugins/rankframe/" class="cta-btn">Install RankFrame Free — 14-Day Trial</a>
+    <p class="cta-sub">Credit card required. Cancel anytime. Full feature access from day one.</p>
+  </div>
+
+  <h2 id="faq">Frequently Asked Questions</h2>
+
+  <div class="faq-list">
+    <div class="faq-item">
+      <button class="faq-question" aria-expanded="false">How do I add alt text to an image in Framer? <span class="faq-icon">+</span></button>
+      <div class="faq-answer">Select the image on the Framer canvas, then find the Alt Text field in the properties panel on the right side. Type your descriptive text there. You must do this individually for every image, as Framer has no native bulk alt text tool.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" aria-expanded="false">Does Framer have a bulk alt text generator? <span class="faq-icon">+</span></button>
+      <div class="faq-answer">Framer does not have a native bulk alt text generator. The Asset Manager (Cmd+K) lets you view images in one place and add alt text individually, but it does not generate descriptions automatically. RankFrame's Image SEO feature provides AI-powered bulk alt text generation with one credit per image.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" aria-expanded="false">Does missing alt text hurt SEO on Framer sites? <span class="faq-icon">+</span></button>
+      <div class="faq-answer">Yes. Images without alt text are invisible to search engines. On design-heavy Framer portfolios and SaaS landing pages where images carry significant meaning, missing alt text removes important keyword context from pages that may already have limited body text. It also excludes those images from Google Image Search results entirely.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" aria-expanded="false">Can I add alt text to Framer CMS images? <span class="faq-icon">+</span></button>
+      <div class="faq-answer">Yes. In Framer CMS, you can bind an image component's alt text to a text field in your collection, so each CMS item can have unique alt text. RankFrame's Image SEO feature covers both canvas images and CMS images, generating alt text across both sources in a single panel.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" aria-expanded="false">How long should alt text be? <span class="faq-icon">+</span></button>
+      <div class="faq-answer">Keep alt text under 125 characters. Screen readers often truncate at that point. Focus on describing the image content accurately and concisely. Include a target keyword only when it describes the image naturally. Keyword stuffing in alt text is a spam signal that can trigger a Google manual penalty.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" aria-expanded="false">Should decorative images have alt text? <span class="faq-icon">+</span></button>
+      <div class="faq-answer">Decorative images (backgrounds, dividers, purely aesthetic elements) should use empty alt text (alt="") so screen readers skip them. This is correct WCAG practice. Do not leave the alt attribute out entirely — set it explicitly to an empty string for decorative images, and use descriptive text for meaningful images.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" aria-expanded="false">What is RankFrame's credit system for alt text generation? <span class="faq-icon">+</span></button>
+      <div class="faq-answer">RankFrame uses one credit per AI-generated alt text. Credits are consumed when you use the single wand icon for one image or when you run bulk generation across a selection. Credits can be purchased inside the plugin. A 14-day free trial includes full feature access for your first full-site alt text pass.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" aria-expanded="false">Can I export alt text from RankFrame for review? <span class="faq-icon">+</span></button>
+      <div class="faq-answer">Yes. RankFrame's Image SEO panel includes a CSV export option that gives you a full list of every image on your site alongside its current alt text. This is useful for auditing, client review, maintaining a changelog, and identifying images where AI-generated descriptions need manual refinement.</div>
+    </div>
+  </div>
+
+  <div class="callout callout-info">
+    <strong>Schema Validator Note</strong>
+    Always validate your schema before publishing using <a href="https://search.google.com/test/rich-results">Google's Rich Results Test</a> or the <a href="https://validator.schema.org">Schema.org Validator</a>. RankFrame currently supports Organization, Person, Article, BlogPosting, TechArticle, NewsArticle, Service, Restaurant, and Book schemas — with HowTo, FAQPage, Product, LocalBusiness, and BreadcrumbList planned for upcoming releases.
+  </div>
+
+  <div id="seo-details" style="margin:60px 0 0;padding:28px 32px;background:#f8f6ff;border:1px solid #e8e0fa;border-radius:14px;">
+    <h3 style="font-size:1rem;font-weight:700;color:#1a0533;margin:0 0 20px;">SEO Details</h3>
+    <div id="seo-fields"></div>
+  </div>
+  <script>(function(){var f=[{label:'Title',value:document.querySelector('title')?document.querySelector('title').textContent:''},{label:'Description',value:(document.querySelector('meta[name="description"]')||{}).content||''},{label:'Keywords',value:(document.querySelector('meta[name="keywords"]')||{}).content||''},{label:'Canonical',value:(document.querySelector('link[rel="canonical"]')||{}).href||''}];var s=Array.from(document.querySelectorAll('script[type="application/ld+json"]')).map(function(x,i){return{label:'Schema '+(i+1),value:x.textContent.trim()};});var all=f.concat(s);var h='';all.forEach(function(x){h+='<div style="margin-bottom:14px"><div style="font-size:.78rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#7c3aed;margin-bottom:4px">'+x.label+'</div><div style="display:flex;align-items:flex-start;gap:8px"><code style="flex:1;background:#fff;border:1px solid #e0d8f0;border-radius:6px;padding:8px 10px;font-size:.82rem;color:#1a0533;white-space:pre-wrap;word-break:break-all">'+x.value.replace(/</g,'&lt;').replace(/>/g,'&gt;')+'</code><button onclick="navigator.clipboard.writeText(this.dataset.v)" data-v="'+x.value.replace(/"/g,'&quot;')+'" style="flex-shrink:0;padding:6px 12px;background:#7c3aed;color:#fff;border:none;border-radius:6px;font-size:.78rem;font-weight:700;cursor:pointer">Copy</button></div></div>';});document.getElementById('seo-fields').innerHTML=h;})();</script>
+
+</main>
+
+<footer>
+  <p>&copy; 2026 7 Seers &mdash; <a href="https://rankframe.com">rankframe.com</a> &mdash; <a href="mailto:hello@7seersmedia.com">hello@7seersmedia.com</a> &mdash; Lucknow, India</p>
+  <p style="margin-top:8px"><a href="https://www.framer.com/marketplace/plugins/rankframe/">Install RankFrame on Framer Marketplace</a></p>
+</footer>
+
+<script>
+  document.querySelectorAll('.faq-question').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var item = this.closest('.faq-item');
+      var isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(function(el) { el.classList.remove('open'); });
+      if (!isOpen) item.classList.add('open');
+      this.setAttribute('aria-expanded', !isOpen);
+    });
+  });
+</script>
+
+</body>
+</html>

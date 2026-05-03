@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How to Run a Framer SEO Audit: Score, Fix, and Download Reports</title>
+  <meta name="description" content="Framer has no native SEO audit. Learn how to run a full site-wide and per-page SEO audit on your Framer site using RankFrame — with a downloadable PDF report." />
+  <meta name="keywords" content="framer seo audit, framer seo score, framer seo analysis, framer seo checker, framer seo report" />
+  <link rel="canonical" href="https://rankframe.com/blog/framer-seo-audit" />
+  <meta property="og:title" content="How to Run a Framer SEO Audit: Score, Fix, and Download Reports" />
+  <meta property="og:description" content="Framer has no native SEO audit. Learn how to run a full site-wide and per-page SEO audit on your Framer site using RankFrame — with a downloadable PDF report." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://rankframe.com/blog/framer-seo-audit" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "How to Run a Framer SEO Audit: Score, Fix, and Download Reports",
+    "description": "Framer has no native SEO audit. Learn how to run a full site-wide and per-page SEO audit on your Framer site using RankFrame — with a downloadable PDF report.",
+    "url": "https://rankframe.com/blog/framer-seo-audit",
+    "datePublished": "2026-05-03",
+    "dateModified": "2026-05-03",
+    "author": {
+      "@type": "Organization",
+      "name": "7 Seers",
+      "url": "https://rankframe.com"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "7 Seers",
+      "url": "https://rankframe.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://rankframe.com/logo.png"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://rankframe.com/blog/framer-seo-audit"
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://rankframe.com"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Blog",
+        "item": "https://rankframe.com/blog"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "How to Run a Framer SEO Audit: Score, Fix, and Download Reports",
+        "item": "https://rankframe.com/blog/framer-seo-audit"
+      }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "7 Seers",
+    "url": "https://rankframe.com",
+    "email": "hello@7seersmedia.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Lucknow",
+      "addressCountry": "IN"
+    },
+    "sameAs": [
+      "https://www.framer.com/marketplace/plugins/rankframe/"
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Does Framer have a native SEO audit tool?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Framer has no native SEO audit, scoring, or analysis feature. Framer Analytics shows visitor counts, pageviews, and bounce rate, but provides no on-page SEO analysis, readability scoring, keyword density checking, or performance auditing. RankFrame adds a full site-wide and per-page SEO audit directly inside the Framer editor."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What does the RankFrame SEO audit score mean?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The RankFrame SEO audit produces a score from 0 to 100 based on checks across Basic SEO, Advanced SEO, Performance, and Security categories. Scores in the Green Zone (roughly 85 and above) indicate few or no critical issues. The Warning zone covers moderate issues. The Red Zone flags critical failures that are actively harming crawlability, indexability, or on-page optimization."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I download a Framer SEO audit as a PDF?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. RankFrame's SEO Audit panel includes a Download Audit button that generates a PDF report of your site's current audit results. This PDF is useful for client reporting, documenting your SEO baseline, and presenting findings to stakeholders."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How often should I run a Framer SEO audit?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Run a full site-wide audit after every significant content update, design change, or publish. For active sites, a weekly audit is reasonable. Use the Re-analyze button in RankFrame to refresh the audit after making fixes, so you can confirm that issues have been resolved before your next publish."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between the site-wide audit and per-page audit in RankFrame?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The site-wide audit gives you an aggregate score and a breakdown of all issues across your entire site, organized into All, Green Zone, Red Zone, Warnings, and Speed tabs. The per-page audit lets you drill into a specific page, showing a live preview alongside the SEO controls, with five collapsible audit sections covering Basic SEO, Advanced SEO, Performance, and Security checks for that page specifically."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What does the Speed tab in the RankFrame SEO audit show?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The Speed tab displays Lighthouse-powered performance gauges for both mobile and desktop, Core Web Vitals metrics, and specific improvement suggestions. This helps you identify whether page speed issues are contributing to poor SEO performance and exactly what to fix."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is included in the Basic SEO audit for a Framer page?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The Basic SEO audit checks title tag presence and length, H1 tag presence, H2 tag usage, internal and external links, meta description presence and length, image alt text coverage, canonical tag, Open Graph tags, and schema markup."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can RankFrame audit Framer CMS collection pages?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. RankFrame can audit both static Framer pages and CMS collection pages. The per-page audit panel covers all published pages on your site, including dynamically generated CMS collection items. This is particularly important for Framer blogs and portfolio sites where CMS pages often have varying levels of SEO completeness."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How to Run a Framer SEO Audit with RankFrame",
+    "description": "Step-by-step workflow for running a complete site-wide and per-page SEO audit on a Framer site, fixing issues, and downloading a PDF report.",
+    "step": [
+      {
+        "@type": "HowToStep",
+        "position": 1,
+        "name": "Install RankFrame and open the SEO Audit panel",
+        "text": "Install RankFrame from the Framer Plugin Marketplace. Launch the plugin and navigate to the SEO Audit section. Click Analyze Site to run the initial audit."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 2,
+        "name": "Review the site-wide score and Red Zone items",
+        "text": "Read your aggregate 0-100 score. Switch to the Red Zone tab to see all critical failures. These are the issues causing the most damage to your SEO performance and should be fixed first."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 3,
+        "name": "Fix Red Zone issues in Framer",
+        "text": "For each Red Zone issue, follow the guidance in the audit panel. Common Red Zone items include missing title tags, missing meta descriptions, missing H1, broken canonical tags, and missing image alt text. Fix each in the Framer editor."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 4,
+        "name": "Run per-page audits on your top pages",
+        "text": "Navigate to the Pages section in RankFrame. Select your highest-traffic pages and run individual audits. Review all five collapsible sections: Basic SEO, Advanced SEO, Performance, and Security."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 5,
+        "name": "Address Warnings after Red Zone items",
+        "text": "Switch to the Warnings tab and work through moderate issues. These may not be causing immediate ranking damage but represent optimization opportunities."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 6,
+        "name": "Review the Speed tab and address performance issues",
+        "text": "Open the Speed tab to review Lighthouse scores and Core Web Vitals. Use the improvement suggestions to reduce page weight, improve image caching, or address response time issues."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 7,
+        "name": "Re-analyze and download the PDF report",
+        "text": "Click Re-analyze to refresh the audit with your fixes applied. Once your score improves, click Download Audit to generate a PDF report for your records or client presentation."
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 1.05rem;
+      line-height: 1.75;
+      color: #1a0533;
+      background: #fff;
+    }
+    a { color: #7c3aed; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .site-header {
+      background: #fff;
+      border-bottom: 1px solid #e8e0fa;
+      padding: 0 24px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .site-header-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      height: 60px;
+      gap: 32px;
+    }
+    .logo { font-weight: 800; font-size: 1.1rem; color: #7c3aed; letter-spacing: -0.02em; }
+    .logo span { color: #1a0533; }
+    .nav-links { display: flex; gap: 24px; font-size: .9rem; }
+    .nav-links a { color: #4b2d7a; font-weight: 500; }
+
+    .breadcrumb {
+      max-width: 860px;
+      margin: 24px auto 0;
+      padding: 0 24px;
+      font-size: .83rem;
+      color: #6b5c8a;
+    }
+    .breadcrumb a { color: #7c3aed; }
+    .breadcrumb span { margin: 0 6px; }
+
+    .article-header {
+      max-width: 860px;
+      margin: 20px auto 0;
+      padding: 0 24px;
+    }
+    .article-category {
+      display: inline-block;
+      background: #f3eeff;
+      color: #7c3aed;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 16px;
+    }
+    .article-header h1 {
+      font-size: clamp(1.7rem, 4vw, 2.5rem);
+      font-weight: 800;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      color: #1a0533;
+      margin-bottom: 16px;
+    }
+    .article-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      font-size: .85rem;
+      color: #6b5c8a;
+      margin-bottom: 32px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid #e8e0fa;
+    }
+    .article-meta strong { color: #1a0533; }
+
+    .toc {
+      background: #f8f6ff;
+      border: 1px solid #e8e0fa;
+      border-radius: 12px;
+      padding: 24px 28px;
+      margin: 0 24px 40px;
+      max-width: 860px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .toc h2 {
+      font-size: .9rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      color: #7c3aed;
+      margin-bottom: 12px;
+    }
+    .toc ol { padding-left: 20px; display: flex; flex-direction: column; gap: 6px; }
+    .toc ol li { font-size: .92rem; }
+    .toc ol a { color: #4b2d7a; }
+
+    .article-body {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 24px 60px;
+    }
+    .article-body h2 {
+      font-size: 1.55rem;
+      font-weight: 800;
+      color: #1a0533;
+      margin: 52px 0 18px;
+      padding-top: 16px;
+      border-top: 2px solid #f3eeff;
+      letter-spacing: -0.01em;
+    }
+    .article-body h3 {
+      font-size: 1.18rem;
+      font-weight: 700;
+      color: #2d1060;
+      margin: 32px 0 12px;
+    }
+    .article-body h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #3d1a7a;
+      margin: 24px 0 8px;
+    }
+    .article-body p { margin-bottom: 18px; }
+    .article-body ul, .article-body ol { padding-left: 22px; margin-bottom: 18px; }
+    .article-body li { margin-bottom: 6px; }
+    .article-body strong { color: #1a0533; }
+
+    .table-wrap { overflow-x: auto; margin: 24px 0; }
+    table { width: 100%; border-collapse: collapse; font-size: .9rem; }
+    thead th {
+      background: #7c3aed;
+      color: #fff;
+      padding: 10px 14px;
+      text-align: left;
+      font-weight: 700;
+    }
+    tbody tr:nth-child(even) { background: #f8f6ff; }
+    tbody td {
+      padding: 10px 14px;
+      border-bottom: 1px solid #e8e0fa;
+      vertical-align: top;
+    }
+
+    .callout {
+      border-radius: 10px;
+      padding: 18px 22px;
+      margin: 24px 0;
+      font-size: .93rem;
+    }
+    .callout-info { background: #f0ebff; border-left: 4px solid #7c3aed; }
+    .callout-warning { background: #fff8e6; border-left: 4px solid #f59e0b; }
+    .callout-success { background: #edfff4; border-left: 4px solid #10b981; }
+    .callout strong { display: block; margin-bottom: 6px; }
+
+    .screenshot-suggestion {
+      background: #f8f6ff;
+      border: 2px dashed #c4b0f0;
+      border-radius: 10px;
+      padding: 16px 20px;
+      font-size: .88rem;
+      color: #5a3f9a;
+      margin: 20px 0;
+    }
+
+    .cta-block {
+      background: linear-gradient(135deg, #7c3aed 0%, #5b21b6 100%);
+      color: #fff;
+      border-radius: 16px;
+      padding: 40px 44px;
+      text-align: center;
+      margin: 48px 0;
+    }
+    .cta-block h3 { font-size: 1.5rem; font-weight: 800; margin-bottom: 14px; color: #fff; }
+    .cta-block p { font-size: 1rem; margin-bottom: 24px; opacity: .92; max-width: 540px; margin-left: auto; margin-right: auto; }
+    .cta-btn {
+      display: inline-block;
+      background: #fff;
+      color: #7c3aed;
+      font-weight: 800;
+      font-size: .95rem;
+      padding: 14px 32px;
+      border-radius: 50px;
+      text-decoration: none;
+      box-shadow: 0 4px 20px rgba(0,0,0,.2);
+    }
+    .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,.25); text-decoration: none; }
+    .cta-sub { font-size: .82rem; opacity: .75; margin-top: 14px; }
+
+    .steps { margin: 24px 0; }
+    .step { display: flex; gap: 18px; margin-bottom: 28px; align-items: flex-start; }
+    .step-num {
+      flex-shrink: 0;
+      width: 36px;
+      height: 36px;
+      background: #7c3aed;
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: .9rem;
+      margin-top: 2px;
+    }
+    .step-content h4 { margin-top: 0; margin-bottom: 6px; }
+    .step-content p { margin: 0; font-size: .95rem; }
+
+    .audit-zone {
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin: 12px 0;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+    .audit-zone-dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: 5px;
+    }
+    .zone-green { background: #edfff4; border: 1px solid #6ee7b7; }
+    .zone-green .audit-zone-dot { background: #10b981; }
+    .zone-warning { background: #fff8e6; border: 1px solid #fcd34d; }
+    .zone-warning .audit-zone-dot { background: #f59e0b; }
+    .zone-red { background: #fff1f1; border: 1px solid #fca5a5; }
+    .zone-red .audit-zone-dot { background: #ef4444; }
+    .audit-zone-content h4 { margin: 0 0 4px; font-size: .95rem; }
+    .audit-zone-content p { margin: 0; font-size: .88rem; }
+
+    .check-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 12px;
+      margin: 20px 0;
+    }
+    .check-card {
+      background: #f8f6ff;
+      border: 1px solid #e8e0fa;
+      border-radius: 8px;
+      padding: 14px 16px;
+      font-size: .88rem;
+    }
+    .check-card strong { display: block; color: #7c3aed; margin-bottom: 4px; font-size: .82rem; text-transform: uppercase; letter-spacing: .04em; }
+
+    .faq-list { margin: 24px 0; }
+    .faq-item { border: 1px solid #e8e0fa; border-radius: 10px; margin-bottom: 10px; overflow: hidden; }
+    .faq-question {
+      width: 100%;
+      background: #f8f6ff;
+      border: none;
+      padding: 16px 20px;
+      text-align: left;
+      font-weight: 700;
+      font-size: .95rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #1a0533;
+      font-family: inherit;
+    }
+    .faq-question:hover { background: #f0ebff; }
+    .faq-icon { font-size: 1.2rem; color: #7c3aed; font-weight: 400; transition: transform .2s; }
+    .faq-answer { display: none; padding: 16px 20px; font-size: .93rem; border-top: 1px solid #e8e0fa; line-height: 1.7; }
+    .faq-item.open .faq-answer { display: block; }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+
+    footer {
+      background: #1a0533;
+      color: #c4b0f0;
+      text-align: center;
+      padding: 32px 24px;
+      font-size: .85rem;
+    }
+    footer a { color: #c4b0f0; }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <div class="logo">Rank<span>Frame</span></div>
+    <nav class="nav-links">
+      <a href="https://rankframe.com">Home</a>
+      <a href="https://rankframe.com/blog">Blog</a>
+      <a href="https://www.framer.com/marketplace/plugins/rankframe/">Install Plugin</a>
+    </nav>
+  </div>
+</header>
+
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <a href="https://rankframe.com">Home</a>
+  <span>&rsaquo;</span>
+  <a href="https://rankframe.com/blog">Blog</a>
+  <span>&rsaquo;</span>
+  <span>How to Run a Complete Framer SEO Audit</span>
+</nav>
+
+<header class="article-header">
+  <div class="article-category">SEO Audit</div>
+  <h1>How to Run a Complete Framer SEO Audit</h1>
+  <div class="article-meta">
+    <span>By <strong>7 Seers</strong></span>
+    <span>Published <strong>May 3, 2026</strong></span>
+    <span>Updated <strong>May 3, 2026</strong></span>
+    <span>16 min read</span>
+  </div>
+</header>
+
+<nav class="toc" aria-label="Table of contents">
+  <h2>In This Guide</h2>
+  <ol>
+    <li><a href="#why-no-native-audit">Why Framer Has No Native Audit and Why That Matters</a></li>
+    <li><a href="#what-audit-covers">What a Framer SEO Audit Covers</a></li>
+    <li><a href="#sitewide-audit">Site-Wide SEO Audit with RankFrame</a></li>
+    <li><a href="#per-page-audit">Per-Page SEO Audit with RankFrame</a></li>
+    <li><a href="#pdf-report">Downloading a PDF Audit Report</a></li>
+    <li><a href="#audit-workflow">A Step-by-Step Framer SEO Audit Workflow</a></li>
+    <li><a href="#faq">Frequently Asked Questions</a></li>
+  </ol>
+</nav>
+
+<main class="article-body">
+
+  <p>Every serious SEO workflow starts with an audit. You cannot prioritize fixes you cannot see, and you cannot measure progress without a baseline score. For Framer site owners, this presents a problem that is easy to overlook until rankings fail to improve: Framer has no native SEO audit.</p>
+
+  <p>Framer gives you a beautiful editor, a fast hosting infrastructure, auto-generated sitemaps, canonical tags, and robots.txt. These are genuine technical SEO advantages. What Framer does not give you is any way to check whether your pages have title tags, whether your H1s are set correctly, whether your images have alt text, whether your canonical tags are pointing to the right URLs, or whether your page speed is actively hurting your rankings. The editor does not warn you when SEO fundamentals are missing, and there is no analysis panel, scoring system, or report generator anywhere in the native Framer interface.</p>
+
+  <p>The result is that many Framer sites are published with correctable SEO problems that persist for months because the site owner simply does not know they exist. This guide explains exactly what a Framer SEO audit should cover, how to run one using RankFrame, how to prioritize the results, and how to produce a PDF report for clients or internal stakeholders.</p>
+
+  <h2 id="why-no-native-audit">Why Framer Has No Native Audit and Why That Matters</h2>
+
+  <p>Framer is a design and development platform. Its core value proposition is visual — a canvas that turns design into production-ready websites. SEO is a secondary concern in Framer's product roadmap. The platform provides the technical infrastructure (sitemap, robots.txt, canonical tags) but leaves on-page SEO analysis entirely to the site owner.</p>
+
+  <p>Framer Analytics, which is built into the platform, shows you visitor counts, pageviews, and bounce rate. This is traffic data, not search performance data. It tells you how many people arrived and whether they stayed, but not what keywords they searched, what position you rank for those queries, or why certain pages receive no organic traffic at all.</p>
+
+  <p>For keyword and ranking data, Framer users need to connect Google Search Console separately, and even then, GSC shows you aggregate query performance after the fact. It does not tell you what is wrong with your page's SEO setup or what to fix.</p>
+
+  <p>The gap this creates is practical and consequential. A designer launches a Framer site for a client. The site looks excellent. It loads quickly. But six weeks later, organic traffic is flat. The designer checks Framer Analytics: traffic exists, mostly from direct and referral sources, very little from organic search. The designer opens the Framer editor and sees no warnings, no flags, no suggestions. Without a dedicated audit tool, there is no immediate way to know that six pages are missing meta descriptions, that the homepage has two H1 tags, that none of the 80 images have alt text, or that the blog pages are all canonicalized to the homepage by mistake.</p>
+
+  <p>An audit surfaces all of these issues at once, scores them by severity, and gives you a clear action list. RankFrame's SEO Audit does this inside the Framer editor, requiring no external tools, no copying URLs into third-party audit platforms, and no manual spreadsheet tracking.</p>
+
+  <div class="callout callout-warning">
+    <strong>The Cost of Skipping an Audit</strong>
+    Technical SEO errors are invisible until you look for them. Missing title tags, duplicate H1s, broken canonical tags, and missing alt text do not break a website visually. They only damage rankings. Without an audit, these problems can persist for the entire lifecycle of a site.
+  </div>
+
+  <h2 id="what-audit-covers">What a Framer SEO Audit Covers</h2>
+
+  <p>A comprehensive Framer SEO audit should examine four categories of factors: Basic SEO fundamentals, Advanced SEO technical signals, Performance metrics, and Security checks. Here is what each category contains and why it matters for Framer sites specifically.</p>
+
+  <h3>Basic SEO</h3>
+  <p>Basic SEO checks are the foundational on-page elements that search engines use to understand and rank your pages. These are the first things Google reads when crawling a page.</p>
+
+  <div class="check-grid">
+    <div class="check-card"><strong>Title Tag</strong>Presence and length check. Titles should be 50-60 characters. Missing or too-long titles hurt click-through rates and keyword relevance.</div>
+    <div class="check-card"><strong>H1 Tag</strong>Every page should have exactly one H1. Multiple H1s confuse page topic signals. Missing H1 means a key ranking signal is absent.</div>
+    <div class="check-card"><strong>H2 Tags</strong>Subheadings help Google understand page structure and support secondary keyword relevance.</div>
+    <div class="check-card"><strong>Meta Description</strong>Not a ranking factor but directly affects click-through rate. Missing descriptions get auto-generated by Google with unpredictable results.</div>
+    <div class="check-card"><strong>Image Alt Text</strong>All meaningful images should have descriptive alt text. Missing alt text hurts image search visibility and accessibility compliance.</div>
+    <div class="check-card"><strong>Internal Links</strong>Pages without internal links receive less PageRank flow from the rest of the site.</div>
+    <div class="check-card"><strong>Canonical Tag</strong>Presence of a self-referential canonical tag prevents duplicate content issues.</div>
+    <div class="check-card"><strong>Open Graph Tags</strong>OG title, description, and image control how your pages appear when shared on social platforms.</div>
+    <div class="check-card"><strong>Schema Markup</strong>Structured data presence enables rich results in search and provides machine-readable page context.</div>
+  </div>
+
+  <h3>Advanced SEO</h3>
+  <p>Advanced SEO checks cover technical signals that affect crawlability, indexability, and how Google categorizes and trusts your site.</p>
+
+  <div class="check-grid">
+    <div class="check-card"><strong>Sitemap</strong>Presence and accessibility of your sitemap.xml for crawler discovery.</div>
+    <div class="check-card"><strong>Robots.txt</strong>Correct configuration that allows Google to crawl your important pages.</div>
+    <div class="check-card"><strong>Broken Links</strong>404 errors from internal or external links waste crawl budget and damage user experience.</div>
+    <div class="check-card"><strong>Noindex Tags</strong>Checks for pages accidentally set to noindex that should be indexed.</div>
+    <div class="check-card"><strong>Canonical Accuracy</strong>Verifies canonical tags point to the correct canonical URLs.</div>
+    <div class="check-card"><strong>WWW Canonicalization</strong>Confirms consistent www/non-www redirects to prevent duplicate domain indexing.</div>
+  </div>
+
+  <h3>Performance</h3>
+  <p>Page speed is a confirmed Google ranking factor. Framer's hosting is generally fast, but page-level choices (large unoptimized images, heavy animations, excessive JavaScript) can create performance problems that hurt rankings.</p>
+
+  <div class="check-grid">
+    <div class="check-card"><strong>Page Size</strong>Total page weight check. Large pages load slowly, especially on mobile.</div>
+    <div class="check-card"><strong>Mobile Speed</strong>Lighthouse mobile performance score. Mobile speed is the primary ranking signal for mobile-first indexing.</div>
+    <div class="check-card"><strong>Desktop Speed</strong>Lighthouse desktop performance score for reference and comparison.</div>
+    <div class="check-card"><strong>Response Time</strong>Server response time (TTFB). High TTFB delays every subsequent page load step.</div>
+    <div class="check-card"><strong>Image Caching</strong>Checks that images are served with appropriate cache headers for browser caching.</div>
+    <div class="check-card"><strong>Object Count</strong>Number of requests a page makes. High request counts slow load times.</div>
+  </div>
+
+  <h3>Security</h3>
+  <p>Security checks confirm that your site follows basic security standards that both users and search engines expect.</p>
+
+  <div class="check-grid">
+    <div class="check-card"><strong>HTTPS</strong>All pages should be served over HTTPS. HTTP pages receive a "Not Secure" browser warning and a ranking penalty.</div>
+    <div class="check-card"><strong>Theme Visibility</strong>Checks that your Framer site is not displaying in a way that exposes the editor or preview mode publicly.</div>
+  </div>
+
+  <p>For a full reference of every check RankFrame runs, see the <a href="/kb/06-seo-audit/39-audit-checks.html">Audit Checks documentation</a>.</p>
+
+  <h2 id="sitewide-audit">Site-Wide SEO Audit with RankFrame</h2>
+
+  <p>The site-wide audit in RankFrame gives you a single aggregate score across your entire Framer site, along with a filterable breakdown of every issue found. This is your starting point for any SEO work.</p>
+
+  <div class="screenshot-suggestion">Screenshot: RankFrame SEO Audit panel showing the main score panel with a score of 74 out of 100, with filter tabs for All, Green Zone, Red Zone, Warnings, and Speed visible</div>
+
+  <h3>The Score Panel (0-100)</h3>
+  <p>Your site-wide SEO score is a 0-to-100 number that aggregates the results of all checks across all pages. A higher score means fewer and less severe issues. The score is not a prediction of rankings — it is an index of SEO health. A site with a score of 40 has many unresolved critical issues. A site scoring 90 has minor optimization gaps at most.</p>
+
+  <p>The score is divided into three zones. Understanding which zone your score falls in helps you calibrate urgency. For detailed guidance on reading the score, see the <a href="/kb/06-seo-audit/38-audit-score-panel.html">Audit Score Panel documentation</a>.</p>
+
+  <div class="audit-zone zone-green">
+    <div class="audit-zone-dot"></div>
+    <div class="audit-zone-content">
+      <h4>Green Zone</h4>
+      <p>Approximately 85 and above. Few or no critical issues. Your site's SEO fundamentals are in good shape. Focus on optimization rather than remediation.</p>
+    </div>
+  </div>
+  <div class="audit-zone zone-warning">
+    <div class="audit-zone-dot"></div>
+    <div class="audit-zone-content">
+      <h4>Warning Zone</h4>
+      <p>Roughly 70 to 84. Moderate issues present that are not causing immediate ranking damage but represent real optimization gaps. Address these after Red Zone items.</p>
+    </div>
+  </div>
+  <div class="audit-zone zone-red">
+    <div class="audit-zone-dot"></div>
+    <div class="audit-zone-content">
+      <h4>Red Zone</h4>
+      <p>Below 70. Critical failures present that are actively limiting crawlability, indexability, or on-page relevance. Fix these immediately.</p>
+    </div>
+  </div>
+
+  <h3>Filter Tabs: All, Green Zone, Red Zone, Warnings, Speed</h3>
+  <p>The audit panel is filterable by zone. Switching to the Red Zone tab shows only critical failures. This is where your immediate work should be. Every item in the Red Zone is a confirmed SEO problem: a page with no title tag, images across the site with no alt text, a canonical tag pointing to the wrong URL, a page blocked by noindex that should be indexed.</p>
+
+  <p>The Warnings tab shows moderate issues: title tags that are technically present but too short or too long, meta descriptions that exist but do not meet length recommendations, pages with few internal links. These matter, but they should be addressed after the Red Zone is clear.</p>
+
+  <p>The Green Zone tab shows what your site is doing correctly. Reviewing this reminds you where your SEO foundation is solid and helps you focus effort on what actually needs improvement.</p>
+
+  <div class="screenshot-suggestion">Screenshot: RankFrame SEO Audit with the Red Zone tab active, showing a list of critical issues with page names and issue descriptions</div>
+
+  <h3>Speed Tab: Lighthouse Scores and Core Web Vitals</h3>
+  <p>The Speed tab inside the site-wide audit surfaces Lighthouse performance data for both mobile and desktop. You see gauge-style scores alongside specific Core Web Vitals metrics: Largest Contentful Paint (LCP), Cumulative Layout Shift (CLS), and Total Blocking Time (TBT).</p>
+
+  <p>Mobile speed receives special weight because Google uses mobile-first indexing. A site scoring 90 on desktop but 45 on mobile is still being evaluated primarily on its 45-point mobile performance. The Speed tab surfaces this discrepancy clearly so you can investigate and address it.</p>
+
+  <p>Below the scores, RankFrame displays specific improvement suggestions sourced from the Lighthouse audit: "Serve images in next-gen formats," "Eliminate render-blocking resources," "Reduce unused JavaScript." Each suggestion includes an estimated impact in seconds of load time saved. For detailed guidance on reading the Speed tab, see the <a href="/kb/06-seo-audit/40-speed-insights.html">Speed Insights documentation</a>.</p>
+
+  <div class="callout callout-info">
+    <strong>Why Mobile Speed Matters More Than You Think</strong>
+    Google's mobile-first indexing means the mobile version of your page is the primary version Google uses for ranking. Even if most of your site's visitors come from desktop, your mobile performance score is what Google is weighting. A beautiful Framer site with large hero videos and heavy animation may look stunning but score poorly on mobile performance, suppressing organic rankings for all device types.
+  </div>
+
+  <h3>Re-Analyze Button</h3>
+  <p>After making fixes in Framer and republishing, click the Re-analyze button in the audit panel to refresh all checks and recalculate your score. This confirms that your changes had the intended effect and gives you an updated baseline for tracking ongoing progress.</p>
+
+  <h2 id="per-page-audit">Per-Page SEO Audit with RankFrame</h2>
+
+  <p>The site-wide audit identifies issues across all pages. The per-page audit lets you drill into a specific page to see every issue and optimization opportunity for that URL in detail, with a live preview alongside the audit results.</p>
+
+  <div class="screenshot-suggestion">Screenshot: RankFrame per-page audit showing a split view with the live page preview on the left and the SEO audit panel on the right with collapsible sections</div>
+
+  <h3>Pages Section: Color-Coded Scores</h3>
+  <p>In the Pages section of RankFrame, each page in your Framer project displays a color-coded dot score that communicates its SEO health at a glance:</p>
+
+  <ul>
+    <li><strong>Purple dot (85+):</strong> Strong SEO health. Few or no issues on this page.</li>
+    <li><strong>Orange dot (70-84):</strong> Moderate issues. Attention recommended but not urgent.</li>
+    <li><strong>Red dot (below 70):</strong> Critical issues present. This page needs immediate audit and remediation.</li>
+  </ul>
+
+  <p>For a site with 20 pages, you can see at a glance which pages need work without running a full per-page audit on every one. Start with red-dotted pages, then orange.</p>
+
+  <h3>Split View: Live Preview and SEO Controls</h3>
+  <p>When you open a per-page audit in RankFrame, the panel shows your live page rendered in a preview on the left and the SEO audit controls on the right. This split view means you can read an issue on the right and immediately see the corresponding element on the live page on the left. You do not need to switch between windows or browsers to cross-reference audit findings against the actual page.</p>
+
+  <p>The per-page view also includes the AI-powered title and meta description generator. If RankFrame flags a missing or weak meta description, you can generate an AI-written replacement directly in the audit panel, review it, edit if needed, and save it to your page without leaving the plugin.</p>
+
+  <h3>Five Collapsible Audit Sections</h3>
+  <p>The per-page audit is organized into five collapsible sections. Each section shows a pass/fail status and lists individual check results with explanations. This structure makes it easy to focus on one category at a time and work through fixes systematically.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Audit Section</th>
+          <th>What It Checks</th>
+          <th>Common Issues Found</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Basic SEO</strong></td>
+          <td>Title, H1, H2, description, links, image alt, canonical, OG tags, schema</td>
+          <td>Missing meta description, duplicate H1, no schema markup, images without alt text</td>
+        </tr>
+        <tr>
+          <td><strong>Advanced SEO</strong></td>
+          <td>Sitemap inclusion, robots, noindex, canonical accuracy, broken links</td>
+          <td>Page accidentally noindexed, canonical pointing to wrong URL, broken outbound links</td>
+        </tr>
+        <tr>
+          <td><strong>Performance</strong></td>
+          <td>Page weight, mobile/desktop Lighthouse score, image caching, response time</td>
+          <td>Unoptimized images, high TTFB, render-blocking resources, no browser caching</td>
+        </tr>
+        <tr>
+          <td><strong>Security</strong></td>
+          <td>HTTPS enforcement, theme visibility</td>
+          <td>Mixed content warnings, editor exposed in public URL</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>For a complete reference of every individual check across all sections, see the <a href="/kb/06-seo-audit/39-audit-checks.html">Audit Checks guide</a>. For an overview of how the score panel works, see the <a href="/kb/06-seo-audit/37-seo-audit-overview.html">SEO Audit Overview</a>.</p>
+
+  <div class="cta-block">
+    <h3>Ready to rank your Framer site?</h3>
+    <p>RankFrame is the only native SEO plugin built for Framer. Schema, indexing, image SEO, site audits, keyword tracking — all inside the Framer editor. No switching tools. No code required.</p>
+    <a href="https://www.framer.com/marketplace/plugins/rankframe/" class="cta-btn">Install RankFrame Free — 14-Day Trial</a>
+    <p class="cta-sub">Credit card required. Cancel anytime. Full feature access from day one.</p>
+  </div>
+
+  <h2 id="pdf-report">Downloading a PDF Audit Report</h2>
+
+  <p>RankFrame's Download Audit button generates a PDF report of your site's current audit results. This is available from the site-wide audit panel and exports at any time, including mid-remediation when you want to document progress.</p>
+
+  <div class="screenshot-suggestion">Screenshot: RankFrame SEO Audit panel with the "Download Audit PDF" button highlighted and a preview of the generated PDF report</div>
+
+  <h3>What the PDF Includes</h3>
+  <p>The exported PDF contains your overall site score, a breakdown of all issues by category and zone (Red, Warning, Green), the complete list of check results with pass/fail status, per-page scores, and the Speed tab data including Lighthouse scores and Core Web Vitals. The report is date-stamped so it serves as a point-in-time record of your site's SEO health. For detailed guidance on the PDF, see the <a href="/kb/06-seo-audit/41-download-audit-pdf.html">Download Audit PDF documentation</a>.</p>
+
+  <h3>Using the PDF for Client Reporting</h3>
+  <p>For freelancers and agencies building Framer sites for clients, the PDF audit report is a professional deliverable that communicates SEO work in an accessible format. You can present the initial audit as part of a site launch review, showing the baseline score and the issues you have identified. After completing SEO improvements, run a second audit, download a new PDF, and present the before-and-after comparison as evidence of the value you delivered.</p>
+
+  <p>Common use cases for the PDF include monthly SEO progress reports, site handover documentation showing the state of the site at launch, SEO proposal support showing what an audit reveals before work begins, and internal stakeholder briefings for teams that do not have direct access to the Framer editor.</p>
+
+  <h3>White-Label Roadmap</h3>
+  <p>Agency-branded PDF reports are on the RankFrame product roadmap. The current PDF uses RankFrame branding. Check the changelog at rankframe.com for updates as this feature develops.</p>
+
+  <h2 id="audit-workflow">A Step-by-Step Framer SEO Audit Workflow</h2>
+
+  <p>Here is a complete audit workflow you can run on any Framer site, whether you are doing an initial launch audit, a maintenance audit on an existing site, or an investigation into unexpectedly flat organic traffic.</p>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <h4>Run the site-wide audit and record your baseline score</h4>
+        <p>Open RankFrame in Framer, navigate to the SEO Audit section, and click Analyze Site. Note your overall score and the breakdown of Red Zone, Warning, and Green Zone items. This is your baseline. Download the initial PDF before making any changes.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <h4>Fix Red Zone items first</h4>
+        <p>Switch to the Red Zone tab and work through every critical issue. Each issue includes a description of the problem and what to fix. Common Red Zone items on new Framer sites include missing meta descriptions across multiple pages, missing image alt text site-wide, pages inadvertently set to noindex, and canonical tags pointing to preview URLs rather than live URLs. Fix each one in the Framer editor before moving on.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <h4>Run per-page audits on your top 10 pages</h4>
+        <p>Identify your highest-value pages (homepage, service pages, key landing pages, top blog posts) and run individual per-page audits. Review all five sections. Pay particular attention to Basic SEO on pages that target your most competitive keywords. Use the AI-generated title and description suggestions where improvements are needed. See the <a href="/kb/08-pages/47-page-title-description.html">Page Title and Description guide</a> for best practices.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-content">
+        <h4>Address Warning-level issues on priority pages</h4>
+        <p>Once Red Zone items are cleared, work through Warnings on your most important pages. These typically include title tag length optimization, meta description improvements, and internal linking enhancements.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">5</div>
+      <div class="step-content">
+        <h4>Review the Speed tab and address performance issues</h4>
+        <p>Open the Speed tab to review Lighthouse scores. If mobile performance is below 70, investigate the specific suggestions provided. Common Framer-specific performance improvements include compressing hero images, removing unnecessary Framer component animations, and reducing the use of video backgrounds.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">6</div>
+      <div class="step-content">
+        <h4>Re-analyze to confirm fixes</h4>
+        <p>After publishing your changes, return to the RankFrame SEO Audit panel and click Re-analyze. Verify that Red Zone items have moved to Green. Check your updated overall score. If items persist in the Red Zone, revisit those specific checks and confirm the fix was applied and published correctly.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">7</div>
+      <div class="step-content">
+        <h4>Download the updated PDF and document progress</h4>
+        <p>With improvements applied and confirmed, download a new PDF audit. Archive both the before and after PDFs as documentation of your SEO work. For client sites, present the comparison as a deliverable.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout callout-success">
+    <strong>Ongoing Audit Cadence</strong>
+    An SEO audit is not a one-time event. Set a calendar reminder to run a full site-wide audit at least once per month on active sites, and always run an audit after any significant update to site structure, navigation, or content. Framer site changes (adding pages, restructuring navigation, updating CMS templates) can introduce new issues that a fresh audit will catch immediately.
+  </div>
+
+  <h2 id="faq">Frequently Asked Questions</h2>
+
+  <div class="faq-list">
+    <div class="faq-item">
+      <button class="faq-question" aria-expanded="false">Does Framer have a native SEO audit tool? <span class="faq-icon">+</span></button>
+      <div class="faq-answer">No. Framer has no native SEO audit, scoring, or analysis feature. Framer Analytics shows visitor counts, pageviews, and bounce rate, but provides no on-page SEO analysis, readability scoring, keyword density checking, or performance auditing. RankFrame adds a full site-wide and per-page SEO audit directly inside the Framer editor.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" aria-expanded="false">What does the RankFrame SEO audit score mean? <span class="faq-icon">+</span></button>
+      <div class="faq-answer">The RankFrame SEO audit produces a score from 0 to 100 based on checks across Basic SEO, Advanced SEO, Performance, and Security categories. Scores in the Green Zone (roughly 85 and above) indicate few or no critical issues. The Warning zone covers moderate issues. The Red Zone flags critical failures that are actively harming crawlability, indexability, or on-page optimization.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" aria-expanded="false">Can I download a Framer SEO audit as a PDF? <span class="faq-icon">+</span></button>
+      <div class="faq-answer">Yes. RankFrame's SEO Audit panel includes a Download Audit button that generates a PDF report of your site's current audit results. This PDF is useful for client reporting, documenting your SEO baseline, and presenting findings to stakeholders who do not have direct access to the Framer editor.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" aria-expanded="false">How often should I run a Framer SEO audit? <span class="faq-icon">+</span></button>
+      <div class="faq-answer">Run a full site-wide audit after every significant content update, design change, or publish. For active sites, a monthly audit is a good minimum. Use the Re-analyze button in RankFrame to refresh the audit after making fixes, so you can confirm issues are resolved before your next publish.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" aria-expanded="false">What is the difference between the site-wide and per-page audit? <span class="faq-icon">+</span></button>
+      <div class="faq-answer">The site-wide audit gives you an aggregate score and a breakdown of all issues across your entire site, organized into All, Green Zone, Red Zone, Warnings, and Speed tabs. The per-page audit lets you drill into a specific page, showing a live preview alongside the SEO controls, with five collapsible audit sections covering Basic SEO, Advanced SEO, Performance, and Security for that page specifically.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" aria-expanded="false">What does the Speed tab show in the RankFrame SEO audit? <span class="faq-icon">+</span></button>
+      <div class="faq-answer">The Speed tab displays Lighthouse-powered performance gauges for both mobile and desktop, Core Web Vitals metrics (LCP, CLS, TBT), and specific improvement suggestions with estimated time savings. This helps you identify whether page speed issues are contributing to poor SEO performance and exactly what to fix.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" aria-expanded="false">What is included in the Basic SEO audit for a Framer page? <span class="faq-icon">+</span></button>
+      <div class="faq-answer">The Basic SEO audit checks title tag presence and length, H1 tag presence, H2 tag usage, internal and external links, meta description presence and length, image alt text coverage, canonical tag, Open Graph tags, and schema markup.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" aria-expanded="false">Can RankFrame audit Framer CMS collection pages? <span class="faq-icon">+</span></button>
+      <div class="faq-answer">Yes. RankFrame can audit both static Framer pages and CMS collection pages. The per-page audit covers all published pages on your site, including dynamically generated CMS collection items. This is particularly important for Framer blogs and portfolio sites where CMS pages often have varying levels of SEO completeness.</div>
+    </div>
+  </div>
+
+  <div class="callout callout-info">
+    <strong>Schema Validator Note</strong>
+    Always validate your schema before publishing using <a href="https://search.google.com/test/rich-results">Google's Rich Results Test</a> or the <a href="https://validator.schema.org">Schema.org Validator</a>. RankFrame currently supports Organization, Person, Article, BlogPosting, TechArticle, NewsArticle, Service, Restaurant, and Book schemas — with HowTo, FAQPage, Product, LocalBusiness, and BreadcrumbList planned for upcoming releases.
+  </div>
+
+  <div class="cta-block">
+    <h3>Ready to rank your Framer site?</h3>
+    <p>RankFrame is the only native SEO plugin built for Framer. Schema, indexing, image SEO, site audits, keyword tracking — all inside the Framer editor. No switching tools. No code required.</p>
+    <a href="https://www.framer.com/marketplace/plugins/rankframe/" class="cta-btn">Install RankFrame Free — 14-Day Trial</a>
+    <p class="cta-sub">Credit card required. Cancel anytime. Full feature access from day one.</p>
+  </div>
+
+  <div id="seo-details" style="margin:60px 0 0;padding:28px 32px;background:#f8f6ff;border:1px solid #e8e0fa;border-radius:14px;">
+    <h3 style="font-size:1rem;font-weight:700;color:#1a0533;margin:0 0 20px;">SEO Details</h3>
+    <div id="seo-fields"></div>
+  </div>
+  <script>(function(){var f=[{label:'Title',value:document.querySelector('title')?document.querySelector('title').textContent:''},{label:'Description',value:(document.querySelector('meta[name="description"]')||{}).content||''},{label:'Keywords',value:(document.querySelector('meta[name="keywords"]')||{}).content||''},{label:'Canonical',value:(document.querySelector('link[rel="canonical"]')||{}).href||''}];var s=Array.from(document.querySelectorAll('script[type="application/ld+json"]')).map(function(x,i){return{label:'Schema '+(i+1),value:x.textContent.trim()};});var all=f.concat(s);var h='';all.forEach(function(x){h+='<div style="margin-bottom:14px"><div style="font-size:.78rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#7c3aed;margin-bottom:4px">'+x.label+'</div><div style="display:flex;align-items:flex-start;gap:8px"><code style="flex:1;background:#fff;border:1px solid #e0d8f0;border-radius:6px;padding:8px 10px;font-size:.82rem;color:#1a0533;white-space:pre-wrap;word-break:break-all">'+x.value.replace(/</g,'&lt;').replace(/>/g,'&gt;')+'</code><button onclick="navigator.clipboard.writeText(this.dataset.v)" data-v="'+x.value.replace(/"/g,'&quot;')+'" style="flex-shrink:0;padding:6px 12px;background:#7c3aed;color:#fff;border:none;border-radius:6px;font-size:.78rem;font-weight:700;cursor:pointer">Copy</button></div></div>';});document.getElementById('seo-fields').innerHTML=h;})();</script>
+
+</main>
+
+<footer>
+  <p>&copy; 2026 7 Seers &mdash; <a href="https://rankframe.com">rankframe.com</a> &mdash; <a href="mailto:hello@7seersmedia.com">hello@7seersmedia.com</a> &mdash; Lucknow, India</p>
+  <p style="margin-top:8px"><a href="https://www.framer.com/marketplace/plugins/rankframe/">Install RankFrame on Framer Marketplace</a></p>
+</footer>
+
+<script>
+  document.querySelectorAll('.faq-question').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var item = this.closest('.faq-item');
+      var isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(function(el) { el.classList.remove('open'); });
+      if (!isOpen) item.classList.add('open');
+      this.setAttribute('aria-expanded', !isOpen);
+    });
+  });
+</script>
+
+</body>
+</html>

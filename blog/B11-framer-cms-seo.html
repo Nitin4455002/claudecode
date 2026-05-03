@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Framer CMS SEO: How to Optimize Every Collection Page</title>
+  <meta name="description" content="Framer CMS auto-generates meta tags using variable syntax. Learn how to optimize every blog post, case study, and portfolio page for search -- including schema and image alt text." />
+  <meta name="keywords" content="framer cms seo, framer collection seo, framer blog seo, framer cms metadata, framer cms collection pages" />
+  <link rel="canonical" href="https://rankframe.com/blog/framer-cms-seo" />
+  <meta property="og:title" content="Framer CMS SEO: How to Optimize Every Collection Page" />
+  <meta property="og:description" content="Framer CMS auto-generates meta tags using variable syntax. Learn how to optimize every blog post, case study, and portfolio page for search -- including schema and image alt text." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://rankframe.com/blog/framer-cms-seo" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Framer CMS SEO: How to Optimize Every Collection Page",
+    "description": "Framer CMS auto-generates meta tags using variable syntax. Learn how to optimize every blog post, case study, and portfolio page for search -- including schema and image alt text.",
+    "url": "https://rankframe.com/blog/framer-cms-seo",
+    "datePublished": "2026-05-03",
+    "dateModified": "2026-05-03",
+    "author": {
+      "@type": "Organization",
+      "name": "7 Seers",
+      "url": "https://rankframe.com"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "7 Seers",
+      "url": "https://rankframe.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://rankframe.com/logo.png"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://rankframe.com/blog/framer-cms-seo"
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://rankframe.com"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Blog",
+        "item": "https://rankframe.com/blog"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Framer CMS SEO: How to Optimize Every Collection Page",
+        "item": "https://rankframe.com/blog/framer-cms-seo"
+      }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "7 Seers",
+    "url": "https://rankframe.com",
+    "email": "hello@7seersmedia.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Lucknow",
+      "addressCountry": "IN"
+    },
+    "sameAs": ["https://www.framer.com/marketplace/plugins/rankframe/"]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Does Framer CMS automatically generate unique meta tags for each collection item?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Framer CMS supports variable syntax -- like {{Title}} and {{Description}} -- in the page SEO settings for collection templates. When you set a title template of '{{Title}} | Your Brand', each CMS item gets a unique meta title derived from its own Title field. This applies to meta descriptions, OG titles, OG descriptions, and OG images as well. Each item gets distinct metadata automatically without any manual per-item editing."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Are Framer CMS collection pages included in the sitemap?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, Framer automatically includes CMS collection pages in your sitemap.xml. Each published CMS item gets its own sitemap entry. You can control sitemap inclusion at the collection template level in Framer's page SEO settings. If you want to exclude draft or low-value items, you can manage that through a visibility toggle in the CMS editor or by controlling which items are published."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does Framer CMS support categories and tags for blog posts?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Framer CMS has no native taxonomy system. There are no built-in categories, tags, or any other classification fields. You can simulate taxonomy by creating a separate collection for categories and using a reference field to connect posts to categories, but this requires manual linking and does not create proper taxonomy archive pages the way WordPress does. This is a known limitation that affects topical authority building for content-heavy sites."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I add Article schema to Framer CMS blog posts?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Framer has no native UI for adding schema markup to CMS collection pages. The manual approach is to use Framer's custom code embed feature to insert a JSON-LD script block inside the CMS template page. You can interpolate CMS field values using Framer's variable syntax inside the script to make each item's schema unique. RankFrame automates this by generating Article and BlogPosting schema for every CMS page in your sitemap without any manual code insertion."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I add alt text to images in Framer CMS?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "For CMS images, the correct approach is to create a dedicated text field in your CMS collection for alt text (for example, 'Image Alt Text'), then bind that field to the alt text property of your image component in the collection template. This way each CMS item can have a unique, descriptive alt text. RankFrame's Image SEO feature provides bulk AI alt text generation for CMS images, allowing you to generate descriptive alt text for an entire collection at once."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I schedule content publishing in Framer CMS?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Framer CMS has no native content scheduling feature. Items are either published or unpublished. There is no 'schedule for' date field that triggers automatic publishing. If you need scheduled publishing, the common workaround is to use Framer's API or a third-party automation tool like Make or Zapier to trigger a publish action at a set time, but this is a custom integration that requires technical setup."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the best title template structure for Framer CMS pages?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The most effective structure is '{{Title}} | Brand Name' for blog posts and collection pages. This puts the unique, keyword-rich page title first (the part Google shows in search results) and appends brand context. Keep the resulting title under 60 characters where possible. For categories or tag-like pages, a structure like '{{Category Name}} Posts | Brand Name' works well. Avoid putting the brand name first -- it wastes the most visible part of the title tag on non-keyword text."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does RankFrame work with Framer CMS collection pages?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. RankFrame's Pages section surfaces all CMS collection items with individual SEO scores. You can run a per-page audit on any CMS item, view its title, description, and on-page signals, and use RankFrame's AI title and description generation to improve metadata at the collection item level. The Image SEO feature supports bulk alt text generation for CMS images across entire collections."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 1.0625rem;
+      line-height: 1.75;
+      color: #1a0533;
+      background: #ffffff;
+    }
+    a { color: #7c3aed; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .site-header {
+      background: #1a0533;
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .site-header a { color: #fff; font-weight: 700; font-size: 1.1rem; }
+    .site-header span { color: #a78bfa; font-size: 0.875rem; }
+
+    .breadcrumb {
+      background: #f8f6ff;
+      border-bottom: 1px solid #e8e0fa;
+      padding: 10px 0;
+    }
+    .breadcrumb ol {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 24px;
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      font-size: 0.85rem;
+      color: #6b7280;
+    }
+    .breadcrumb li + li::before { content: '/'; margin-right: 6px; color: #c4b5fd; }
+    .breadcrumb a { color: #7c3aed; }
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 48px 24px 80px;
+    }
+
+    .article-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 28px;
+    }
+    .badge {
+      display: inline-block;
+      background: #ede9fe;
+      color: #7c3aed;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 20px;
+    }
+    .article-meta time { font-size: 0.875rem; color: #6b7280; }
+    .read-time { font-size: 0.875rem; color: #6b7280; }
+
+    h1 {
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-weight: 800;
+      line-height: 1.2;
+      color: #1a0533;
+      margin-bottom: 20px;
+    }
+    .intro-lead {
+      font-size: 1.15rem;
+      color: #4b5563;
+      border-left: 4px solid #7c3aed;
+      padding-left: 18px;
+      margin-bottom: 36px;
+    }
+
+    .toc {
+      background: #f8f6ff;
+      border: 1px solid #e8e0fa;
+      border-radius: 12px;
+      padding: 24px 28px;
+      margin-bottom: 48px;
+    }
+    .toc h2 {
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: #7c3aed;
+      margin-bottom: 14px;
+      border: none;
+      padding: 0;
+    }
+    .toc ol { padding-left: 20px; }
+    .toc li { margin-bottom: 6px; font-size: 0.925rem; }
+    .toc a { color: #4b3f72; }
+    .toc a:hover { color: #7c3aed; }
+
+    h2 {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: #1a0533;
+      margin: 52px 0 18px;
+      padding-top: 8px;
+      border-top: 2px solid #ede9fe;
+    }
+    h3 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #1a0533;
+      margin: 32px 0 12px;
+    }
+    p { margin-bottom: 18px; }
+    ul, ol { padding-left: 24px; margin-bottom: 18px; }
+    li { margin-bottom: 7px; }
+
+    .callout {
+      border-radius: 10px;
+      padding: 18px 22px;
+      margin: 28px 0;
+      font-size: 0.95rem;
+    }
+    .callout-warning {
+      background: #fff7ed;
+      border-left: 4px solid #f97316;
+      color: #7c2d12;
+    }
+    .callout-info {
+      background: #eff6ff;
+      border-left: 4px solid #3b82f6;
+      color: #1e3a5f;
+    }
+    .callout-tip {
+      background: #f0fdf4;
+      border-left: 4px solid #22c55e;
+      color: #14532d;
+    }
+    .callout strong { display: block; margin-bottom: 6px; font-size: 0.8rem; letter-spacing: .07em; text-transform: uppercase; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 28px 0;
+      font-size: 0.9rem;
+    }
+    thead { background: #7c3aed; color: #fff; }
+    th { padding: 12px 14px; text-align: left; font-weight: 700; }
+    td { padding: 11px 14px; border-bottom: 1px solid #e8e0fa; }
+    tbody tr:nth-child(even) { background: #f8f6ff; }
+    tbody tr:hover { background: #ede9fe; }
+
+    .screenshot-suggestion {
+      background: #f8f6ff;
+      border: 2px dashed #c4b5fd;
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin: 24px 0;
+      font-size: 0.875rem;
+      color: #6b21a8;
+      font-style: italic;
+    }
+
+    code {
+      background: #f3f0ff;
+      color: #6d28d9;
+      border-radius: 4px;
+      padding: 2px 7px;
+      font-size: 0.875rem;
+      font-family: 'Fira Code', 'Consolas', monospace;
+    }
+
+    pre {
+      background: #1a0533;
+      color: #e2d9f3;
+      border-radius: 10px;
+      padding: 20px 24px;
+      overflow-x: auto;
+      font-size: 0.875rem;
+      margin: 24px 0;
+      line-height: 1.6;
+    }
+    pre code {
+      background: transparent;
+      color: inherit;
+      padding: 0;
+      font-size: inherit;
+    }
+
+    .cta-block {
+      background: linear-gradient(135deg, #1a0533 0%, #4c1d95 100%);
+      border-radius: 16px;
+      padding: 40px 36px;
+      text-align: center;
+      margin: 52px 0;
+      color: #fff;
+    }
+    .cta-block h3 {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #fff;
+      margin: 0 0 14px;
+    }
+    .cta-block p { color: #c4b5fd; margin-bottom: 24px; font-size: 1rem; }
+    .cta-btn {
+      display: inline-block;
+      background: #7c3aed;
+      color: #fff;
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 14px 32px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background .2s;
+    }
+    .cta-btn:hover { background: #6d28d9; text-decoration: none; }
+    .cta-sub { font-size: 0.8rem; color: #a78bfa; margin-top: 14px; margin-bottom: 0; }
+
+    .faq-section { margin-top: 52px; }
+    .faq-item {
+      border: 1px solid #e8e0fa;
+      border-radius: 10px;
+      margin-bottom: 12px;
+      overflow: hidden;
+    }
+    .faq-question {
+      width: 100%;
+      background: #f8f6ff;
+      border: none;
+      padding: 18px 20px;
+      text-align: left;
+      font-size: 1rem;
+      font-weight: 700;
+      color: #1a0533;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+    .faq-question:hover { background: #ede9fe; }
+    .faq-icon { font-size: 1.2rem; color: #7c3aed; flex-shrink: 0; transition: transform .2s; }
+    .faq-answer {
+      display: none;
+      padding: 16px 20px 20px;
+      font-size: 0.95rem;
+      color: #374151;
+      background: #fff;
+      border-top: 1px solid #e8e0fa;
+    }
+    .faq-answer p { margin-bottom: 0; }
+    .faq-item.open .faq-answer { display: block; }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin: 28px 0;
+    }
+    .feature-card {
+      background: #f8f6ff;
+      border: 1px solid #e8e0fa;
+      border-radius: 12px;
+      padding: 18px 20px;
+    }
+    .feature-card h4 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #1a0533;
+      margin-bottom: 8px;
+    }
+    .feature-card p { font-size: 0.875rem; color: #4b5563; margin: 0; }
+
+    .check-list { list-style: none; padding: 0; }
+    .check-list li { padding-left: 28px; position: relative; margin-bottom: 10px; }
+    .check-list li::before { content: '✓'; position: absolute; left: 0; color: #22c55e; font-weight: 700; }
+    .check-list.cross li::before { content: '✗'; color: #ef4444; }
+
+    @media (max-width: 600px) {
+      .feature-grid { grid-template-columns: 1fr; }
+      h2 { font-size: 1.35rem; }
+      .cta-block { padding: 28px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="https://rankframe.com">RankFrame</a>
+  <span>by 7 Seers</span>
+</header>
+
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="https://rankframe.com">Home</a></li>
+    <li><a href="https://rankframe.com/blog">Blog</a></li>
+    <li>Framer CMS SEO: Optimize Every Collection Page</li>
+  </ol>
+</nav>
+
+<main class="container">
+
+  <div class="article-meta">
+    <span class="badge">CMS &amp; Content SEO</span>
+    <time datetime="2026-05-03">May 3, 2026</time>
+    <span class="read-time">17 min read</span>
+  </div>
+
+  <h1>Framer CMS SEO: Optimize Every Collection Page for Search</h1>
+
+  <p class="intro-lead">Framer CMS is one of the most visually flexible content management systems available to designers. But ranking every blog post, case study, and portfolio page requires more than a beautiful layout. Dynamic meta tags, schema markup, image alt text, and topical authority all need intentional setup. This guide covers everything you need to know.</p>
+
+  <nav class="toc" aria-label="Table of contents">
+    <h2>In This Article</h2>
+    <ol>
+      <li><a href="#framer-cms-native-seo">How Framer CMS Handles SEO Natively</a></li>
+      <li><a href="#cms-seo-limitations">CMS SEO Limitations in Framer</a></li>
+      <li><a href="#setting-up-meta-tags">Setting Up Meta Tags for Framer CMS</a></li>
+      <li><a href="#schema-markup">Adding Schema Markup to Framer CMS Pages</a></li>
+      <li><a href="#image-alt-text">Image Alt Text for CMS Collections</a></li>
+      <li><a href="#per-item-audit">Per-CMS-Item SEO Audit with RankFrame</a></li>
+      <li><a href="#content-strategy">CMS SEO Content Strategy</a></li>
+      <li><a href="#faq">Frequently Asked Questions</a></li>
+    </ol>
+  </nav>
+
+  <!-- SECTION 1 -->
+  <h2 id="framer-cms-native-seo">How Framer CMS Handles SEO Natively</h2>
+
+  <p>Framer's CMS was built with SEO as a first-class concern for the fundamentals. For each collection, you define a template page -- the layout that every item in that collection uses. Inside that template's SEO settings, you can configure meta tags using CMS field variables. This variable system is what makes dynamic, per-item metadata possible without any code.</p>
+
+  <h3>Variable Syntax: Dynamic Meta Tags Per Item</h3>
+
+  <p>Framer uses a double-curly-brace syntax to reference CMS field values in SEO settings. When Framer renders a collection item page, it replaces the variable placeholders with the actual field values for that specific item. The most common variables you will use are:</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Variable</th>
+        <th>Maps To</th>
+        <th>Common Use</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>{{Title}}</code></td>
+        <td>The Title field of each CMS item</td>
+        <td>Meta title, OG title</td>
+      </tr>
+      <tr>
+        <td><code>{{Description}}</code></td>
+        <td>A text field named Description</td>
+        <td>Meta description, OG description</td>
+      </tr>
+      <tr>
+        <td><code>{{Slug}}</code></td>
+        <td>The URL slug for the item</td>
+        <td>Canonical URL construction</td>
+      </tr>
+      <tr>
+        <td><code>{{Excerpt}}</code></td>
+        <td>A short text field named Excerpt</td>
+        <td>Meta description fallback</td>
+      </tr>
+      <tr>
+        <td><code>{{Cover Image}}</code></td>
+        <td>An image field in the CMS</td>
+        <td>OG image</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>The field names in the variable syntax must match the field names in your CMS collection exactly, including capitalization. If your field is named "Post Title" rather than "Title," the variable syntax would be <code>{{Post Title}}</code>.</p>
+
+  <div class="screenshot-suggestion">📸 Screenshot: Framer CMS template page SEO settings panel showing the Title field with {{Title}} | Brand Name and Description field with {{Description}} variable syntax</div>
+
+  <h3>Sitemap Inclusion for CMS Items</h3>
+
+  <p>Framer automatically includes all published CMS collection items in your sitemap.xml. Each item gets its own sitemap entry with its canonical URL. You do not need to manually add CMS pages to the sitemap -- Framer handles this dynamically as you add, update, and remove items from your collections.</p>
+
+  <p>Sitemap inclusion can be controlled at the collection template level. If you want to exclude certain items (drafts, internal-only pages, or low-value entries), manage this through Framer's publish/unpublish toggle for individual CMS items or by using a conditional visibility field.</p>
+
+  <h3>OG Image Binding</h3>
+
+  <p>Open Graph images are the preview thumbnails that appear when your content is shared on social platforms and in rich search previews. For CMS collections, the most effective approach is to bind the OG image to a dedicated image field in your CMS -- typically a "Cover Image" or "Featured Image" field. This way, every blog post or case study automatically has a unique, relevant OG image drawn from its own content rather than falling back to a generic site-wide OG image.</p>
+
+  <p>In Framer's CMS template SEO settings, you bind the OG image to a CMS image field using the same variable syntax: set the OG Image field to <code>{{Cover Image}}</code> (or whatever your image field is named).</p>
+
+
+  <!-- SECTION 2 -->
+  <h2 id="cms-seo-limitations">CMS SEO Limitations in Framer</h2>
+
+  <p>Framer CMS is excellent for the fundamentals, but it has significant gaps that affect sites trying to compete seriously in search. Understanding these limitations helps you plan your workarounds and tool stack before you have a large content library that is hard to migrate.</p>
+
+  <h3>No Schema Generation for CMS Pages</h3>
+
+  <p>Framer has no native UI for adding schema markup to CMS collection page templates. There is no Article schema, no BlogPosting schema, no BreadcrumbList automatically generated for CMS items. This is a meaningful gap because Article and BlogPosting schema are exactly what blog posts need to be eligible for Google's rich results -- authorship attribution, publication dates, and structured content signals.</p>
+
+  <p>Without schema on your CMS blog posts, you are competing in search without the structured data signals that many competing sites include. Google does not require schema to rank a page, but it can influence click-through rates through rich snippet eligibility and can help Google understand content relationships more clearly.</p>
+
+  <h3>No On-Page SEO Scoring Per CMS Item</h3>
+
+  <p>Framer does not provide any on-page SEO scoring for individual CMS collection items. You can set your meta title and description templates, but there is no native tool that evaluates whether a given blog post's content is well-optimized for its target keyword, whether the title is within the recommended character count, or whether the page has sufficient heading structure.</p>
+
+  <h3>No Native Taxonomy System</h3>
+
+  <p>Perhaps the most significant SEO limitation of Framer CMS is the complete absence of a native taxonomy system. There are no categories, no tags, no topic clusters, no hierarchical content organization. In WordPress or other CMS platforms, taxonomy archive pages (the page listing all posts in the "SEO" category, for example) are powerful vehicles for topical authority. They concentrate topically related content, attract backlinks, and rank for broad category-level queries.</p>
+
+  <p>In Framer, you can simulate taxonomy using reference fields and filtered collection lists, but this requires custom design work and does not generate proper archive URLs the way a native taxonomy system would. The lack of taxonomy is the single biggest obstacle for Framer sites trying to build topical authority in competitive niches.</p>
+
+  <h3>No Content Scheduling or Editorial Workflow</h3>
+
+  <p>Framer CMS has no built-in content scheduling. Items are published or unpublished -- there is no "publish at 9am on Tuesday" option. There is also no editorial workflow (draft, review, approve, publish stages), no multi-author content attribution, and no revision history at the field level. For solo designers maintaining a blog, these limitations are manageable. For agencies managing client content or teams running editorial operations, they create friction.</p>
+
+  <h3>Image Alt Text Requires Manual Setup</h3>
+
+  <p>Images in CMS collection items do not get alt text automatically. To add alt text to CMS images, you need to create a dedicated alt text field in the CMS collection and bind it to the image component's alt text property in the template layout. Every collection with images requires this manual binding to have accessible, SEO-friendly alt text.</p>
+
+  <div class="callout callout-warning">
+    <strong>Scale Impact</strong>
+    If you have 50 blog posts with cover images that were published without alt text, all 50 image URLs are missing alt text signals. Google cannot understand what those images depict. This affects both image search ranking and the overall on-page relevance score for each post.
+  </div>
+
+
+  <!-- SECTION 3 -->
+  <h2 id="setting-up-meta-tags">Setting Up Meta Tags for Framer CMS (Step by Step)</h2>
+
+  <p>The meta tag configuration for a Framer CMS collection takes about five minutes to set up correctly, and it pays dividends across every item in the collection. Here is the recommended setup process for a blog collection.</p>
+
+  <h3>Step 1: Audit Your CMS Fields</h3>
+
+  <p>Before configuring meta tags, make sure your CMS collection has the fields you need. For a blog collection optimized for SEO, you want at minimum:</p>
+
+  <ul>
+    <li><strong>Title</strong> (plain text) -- the post title, also used in the meta title</li>
+    <li><strong>Slug</strong> (slug) -- auto-generated from Title in most cases, but review for all items</li>
+    <li><strong>Excerpt</strong> (plain text, 150-160 characters) -- the meta description source</li>
+    <li><strong>Cover Image</strong> (image) -- the OG image source</li>
+    <li><strong>Cover Image Alt</strong> (plain text) -- the alt text for the cover image</li>
+    <li><strong>Published Date</strong> (date) -- used in schema datePublished</li>
+  </ul>
+
+  <p>If you are missing any of these fields, add them to your collection before proceeding. Existing items will have blank values for new fields, so plan a content update pass after adding fields.</p>
+
+  <h3>Step 2: Configure the Title Template</h3>
+
+  <p>Open the CMS collection template page in Framer. Navigate to the SEO settings panel (the gear icon or SEO tab in the right panel). In the Title field, set the template to:</p>
+
+  <pre><code>{{Title}} | Your Brand Name</code></pre>
+
+  <p>Keep the title template under 60 characters for the longest expected title, including the brand suffix. If your post titles tend to run long, consider a shorter brand abbreviation or just omit the brand name from the title template and rely on the URL for brand association.</p>
+
+  <p>For case study or portfolio collections, a pattern like <code>{{Title}} -- Case Study | Brand</code> works well to signal the content type. For category-like filtered pages, use a descriptive prefix.</p>
+
+  <h3>Step 3: Configure the Meta Description Template</h3>
+
+  <p>In the Description field of the SEO settings, set the template to:</p>
+
+  <pre><code>{{Excerpt}}</code></pre>
+
+  <p>Your Excerpt field should be written specifically for the meta description -- a one to two sentence summary of the post that includes the target keyword and compels a search user to click. If you do not have an Excerpt field, you can use the first 155 characters of your main content field, but a dedicated Excerpt field gives you more control over the exact messaging.</p>
+
+  <h3>Step 4: Bind the OG Image</h3>
+
+  <p>Set the OG Image field in SEO settings to reference your cover image field:</p>
+
+  <pre><code>{{Cover Image}}</code></pre>
+
+  <p>Framer will automatically use the image URL from each item's Cover Image field as the OG image for that page. The recommended OG image size is 1200x630 pixels. Framer's image optimization will handle compression, but ensure your source images are at least 1200px wide for quality.</p>
+
+  <h3>Step 5: Verify with a Live Item</h3>
+
+  <p>After configuring the templates, publish a test item and inspect the live page source code. Look for the <code>&lt;title&gt;</code> tag, <code>&lt;meta name="description"&gt;</code>, and <code>&lt;meta property="og:image"&gt;</code> tags. Confirm that the variable placeholders have been replaced with the actual item values and that the title and description are within target character lengths.</p>
+
+  <div class="screenshot-suggestion">📸 Screenshot: Framer CMS template SEO settings panel with all fields filled in using variable syntax, alongside a live rendered CMS item showing the substituted values</div>
+
+
+  <!-- SECTION 4 -->
+  <h2 id="schema-markup">Adding Schema Markup to Framer CMS Pages</h2>
+
+  <p>Schema markup tells search engines exactly what type of content a page contains and provides structured data about that content's properties. For blog posts, <code>Article</code> and <code>BlogPosting</code> schema are the two most relevant types. For case studies, <code>Article</code> or a custom <code>TechArticle</code> type may be appropriate. For portfolio work, <code>CreativeWork</code> is available.</p>
+
+  <h3>Why Article Schema Matters for CMS Blog Posts</h3>
+
+  <p>Article schema is not just metadata decoration. It directly affects:</p>
+
+  <ul>
+    <li><strong>Rich results eligibility.</strong> Google can show article rich results with author, date, and thumbnail information in search results pages for articles with proper schema.</li>
+    <li><strong>Content type disambiguation.</strong> Without schema, Google infers content type from context signals. With schema, you explicitly declare that this is an article with a specific author, publication date, and publisher -- reducing ambiguity.</li>
+    <li><strong>E-E-A-T signals.</strong> Article schema that includes author information (even at an organization level) contributes to the Experience, Expertise, Authoritativeness, and Trustworthiness signals Google uses to assess content quality.</li>
+    <li><strong>Sitelinks search box and knowledge panel eligibility.</strong> For sites that build enough authority, schema helps Google construct accurate knowledge panels and sitelinks.</li>
+  </ul>
+
+  <h3>Manual JSON-LD with CMS Variable Interpolation</h3>
+
+  <p>Framer allows you to insert custom code into page headers through the embed code feature. For CMS collection templates, you can use Framer's variable syntax inside custom code embeds to inject JSON-LD schema that populates with each item's data. A basic Article schema for a blog post template looks like this:</p>
+
+  <pre><code>&lt;script type="application/ld+json"&gt;
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "{{Title}}",
+  "description": "{{Excerpt}}",
+  "datePublished": "{{Published Date}}",
+  "author": {
+    "@type": "Organization",
+    "name": "Your Brand",
+    "url": "https://yourdomain.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Your Brand",
+    "url": "https://yourdomain.com"
+  },
+  "image": "{{Cover Image}}",
+  "url": "https://yourdomain.com/blog/{{Slug}}"
+}
+&lt;/script&gt;</code></pre>
+
+  <div class="callout callout-warning">
+    <strong>Validation Note</strong>
+    Always validate your schema before publishing using <a href="https://search.google.com/test/rich-results" rel="noopener noreferrer">Google's Rich Results Test</a> or the <a href="https://validator.schema.org" rel="noopener noreferrer">Schema.org Validator</a>. RankFrame currently supports Organization, Person, Article, BlogPosting, TechArticle, NewsArticle, Service, Restaurant, and Book schemas -- with HowTo, FAQPage, Product, LocalBusiness, and BreadcrumbList planned for upcoming releases.
+  </div>
+
+  <p>The manual approach works, but it has a significant drawback: you need to manually maintain and update the schema template any time you rename a CMS field or change your URL structure. For sites with multiple collections (blog, case studies, portfolio, documentation), each collection template needs its own schema configuration.</p>
+
+  <h3>RankFrame Auto-Generated Schema for CMS Pages</h3>
+
+  <p>RankFrame automates CMS schema generation. When you configure schema settings in RankFrame, it generates Article or BlogPosting schema for every CMS page included in your sitemap -- without you needing to manually write or maintain JSON-LD in code embeds. The schema is kept current as your content changes, and RankFrame's per-page audit flags any schema issues that arise.</p>
+
+  <div class="screenshot-suggestion">📸 Screenshot: RankFrame schema settings panel showing a CMS blog collection configured for BlogPosting schema with field mappings</div>
+
+  <p>For teams that manage multiple Framer sites or clients with active CMS content pipelines, this automation removes a persistent maintenance burden that the manual approach creates.</p>
+
+
+  <!-- SECTION 5 -->
+  <h2 id="image-alt-text">Image Alt Text for CMS Collections</h2>
+
+  <p>Alt text serves two purposes: accessibility (screen readers read alt text to visually impaired users) and SEO (search engines use alt text to understand image content and index images in Google Images). For CMS collections, every image field that renders visually on the page should have descriptive alt text.</p>
+
+  <h3>The Native Approach: Bind a CMS Alt Text Field</h3>
+
+  <p>The recommended native approach in Framer is to add a plain text field to your CMS collection specifically for alt text (name it something like "Cover Image Alt" or "Alt Text"), then bind that field to the alt text property of your image component in the collection template. This gives each CMS item its own unique, hand-crafted alt text.</p>
+
+  <p>The binding happens in the Framer design canvas: select the image component, click the alt text property in the right panel, and set it to reference the CMS alt text field rather than typing static text. After this binding is established, the alt text value flows from the CMS for every item.</p>
+
+  <div class="callout callout-info">
+    <strong>Writing Effective Alt Text</strong>
+    Good alt text is specific and descriptive without keyword-stuffing. For a blog post cover image: "A developer reviewing SEO audit results in the RankFrame plugin inside Framer" is better than "SEO audit" or "screenshot." Describe what is actually depicted in the image as if you were explaining it to someone who cannot see it.
+  </div>
+
+  <h3>RankFrame Bulk AI Alt Text for CMS Collections</h3>
+
+  <p>If you have an existing CMS collection with dozens or hundreds of items that were published without alt text, manually writing alt text for each image is time-consuming. RankFrame's <a href="/kb/05-image-seo/29-image-seo-overview.html">Image SEO</a> feature provides bulk AI alt text generation for CMS images, organized by collection.</p>
+
+  <p>RankFrame scans your CMS collections (named collections like "Our Cases," "Thoughts," "Work," or whatever your collections are called), identifies images without alt text, and uses AI to generate descriptive alt text based on image analysis. You can review the generated alt text before applying it, edit individual entries, and apply changes in bulk across an entire collection.</p>
+
+  <div class="screenshot-suggestion">📸 Screenshot: RankFrame Image SEO panel showing a CMS collection with images listed, AI-generated alt text suggestions, and bulk apply controls</div>
+
+  <p>For sites with active content pipelines, this feature is best used as a cleanup tool for the initial alt text gap, after which the native binding approach (CMS alt text field bound to the image component) handles new content going forward.</p>
+
+
+  <!-- SECTION 6 -->
+  <h2 id="per-item-audit">Per-CMS-Item SEO Audit with RankFrame</h2>
+
+  <p>One of the most practical differences between managing CMS SEO with and without RankFrame is the ability to run per-item audits. Framer's native interface gives you no visibility into whether a specific blog post is well-optimized beyond confirming that the meta tag templates are configured.</p>
+
+  <h3>Pages List View for CMS Items</h3>
+
+  <p>RankFrame's <a href="/kb/08-pages/45-pages-list-view.html">Pages list view</a> surfaces all of your site's pages including CMS collection items. Each entry shows an SEO score from 0 to 100 based on a combination of on-page signals: title quality, description quality, heading structure, internal links, image alt text coverage, and more. This gives you a bird's-eye view of your entire content library ranked by SEO health.</p>
+
+  <p>Common patterns you will see in CMS collections:</p>
+
+  <ul>
+    <li>High scores on recent posts (where you were more intentional about SEO)</li>
+    <li>Low scores on older posts (published before meta templates were configured correctly)</li>
+    <li>Consistent issues across an entire collection (missing alt text, thin meta descriptions)</li>
+  </ul>
+
+  <div class="screenshot-suggestion">📸 Screenshot: RankFrame Pages list view showing CMS blog items with their individual SEO scores, some in green and some in yellow/red</div>
+
+  <h3>Per-Page Audit for Individual CMS Items</h3>
+
+  <p>Clicking into any CMS item from the pages list opens the <a href="/kb/08-pages/50-per-page-audit.html">per-page audit view</a>. This provides:</p>
+
+  <ul>
+    <li>A detailed audit score with pass/fail checks for each SEO signal</li>
+    <li>A split view showing the live page alongside the audit findings</li>
+    <li>AI-generated title and description suggestions specific to that page's content</li>
+    <li>Direct links to the issues identified so you can fix them</li>
+  </ul>
+
+  <p>For a CMS blog post, a per-page audit might surface issues like: "Meta description is 12 characters, target is 150-160 characters" (indicating the Excerpt field is empty for this item) or "H1 is missing" (indicating a heading structure issue in the template that affects all items).</p>
+
+  <div class="screenshot-suggestion">📸 Screenshot: RankFrame per-page audit view for a single CMS blog post showing the split view with live preview and audit findings list</div>
+
+
+  <!-- SECTION 7 -->
+  <h2 id="content-strategy">CMS SEO Content Strategy for Framer Sites</h2>
+
+  <p>Technical SEO configuration is necessary but not sufficient. To rank Framer CMS pages competitively, you need a content strategy that compensates for Framer's structural limitations -- particularly the absence of native taxonomy -- and builds the topical authority that search engines reward.</p>
+
+  <h3>Building Topical Authority Without Native Taxonomy</h3>
+
+  <p>Topical authority means having comprehensive, authoritative content coverage on a topic cluster. A site that covers 30 aspects of "Framer SEO" in depth will rank better for Framer SEO queries than a site with one or two articles on the topic, even if those articles are individually excellent.</p>
+
+  <p>Without native taxonomy in Framer, you build topical clusters manually:</p>
+
+  <ul>
+    <li><strong>Create a "hub" page</strong> for each major topic (not in CMS -- a regular Framer page) that links out to all related CMS posts in that cluster. This hub page serves the role a category archive page would play in WordPress.</li>
+    <li><strong>Internal link related posts</strong> within the body of each CMS item. Use Framer's rich text component to embed links to related posts. This builds the topical cluster signal that Google uses to understand content relationships.</li>
+    <li><strong>Use consistent naming conventions</strong> in your CMS Titles and Excerpts for related topics. When Google crawls a cluster of posts with consistent topical terminology, it builds a stronger association between your site and that topic.</li>
+  </ul>
+
+  <h3>Internal Linking Best Practices for CMS Collections</h3>
+
+  <p>Internal links within CMS pages require deliberate effort in Framer because the CMS rich text field does not automatically suggest related posts. Establish a process where every new post includes at least two to three internal links to other relevant posts in your collection. Use descriptive anchor text that reflects the topic of the linked page.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Anchor Text</th>
+        <th>Quality</th>
+        <th>Why</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>"click here"</td>
+        <td>Poor</td>
+        <td>No topical signal in anchor text</td>
+      </tr>
+      <tr>
+        <td>"this article"</td>
+        <td>Poor</td>
+        <td>No topical signal in anchor text</td>
+      </tr>
+      <tr>
+        <td>"Framer CMS meta tags guide"</td>
+        <td>Good</td>
+        <td>Describes the linked page's topic specifically</td>
+      </tr>
+      <tr>
+        <td>"how to fix 404 errors in Framer"</td>
+        <td>Good</td>
+        <td>Includes target keyword of the linked page</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Content Depth and Word Count for CMS Posts</h3>
+
+  <p>Framer CMS supports long-form rich text content. For competitive search terms, thin CMS posts (under 600 words) rarely rank. Research the top-ranking pages for your target keywords and aim to match or exceed their depth while being more specific and accurate. Word count is a proxy for depth -- what Google actually measures is comprehensiveness and relevance, which longer content tends to reflect.</p>
+
+  <p>Structure each CMS post with a clear heading hierarchy: one H1 (the post title, usually auto-populated from the CMS Title field), H2s for major sections, and H3s for subsections. Framer's rich text component supports this heading hierarchy natively.</p>
+
+  <h3>Refresh Strategy for Existing CMS Content</h3>
+
+  <p>Search rankings decay over time for content that is not updated. For CMS-driven sites, establish a quarterly review process: use RankFrame's pages list to identify posts with declining scores (which can happen when competitors publish better content, when your target keyword's intent shifts, or when your content becomes outdated). Update the content, update the Published Date field in the CMS, and use RankFrame's <a href="/kb/04-submit-indexing/23-instant-indexing-overview.html">Submit Indexing</a> feature to push the updated URL to Google's indexing API for faster re-crawl.</p>
+
+  <div class="cta-block">
+    <h3>Ready to rank your Framer site?</h3>
+    <p>RankFrame is the only native SEO plugin built for Framer. Schema, indexing, image SEO, site audits, keyword tracking -- all inside the Framer editor. No switching tools. No code required.</p>
+    <a href="https://www.framer.com/marketplace/plugins/rankframe/" class="cta-btn">Install RankFrame Free -- 14-Day Trial</a>
+    <p class="cta-sub">Credit card required. Cancel anytime. Full feature access from day one.</p>
+  </div>
+
+
+  <!-- FAQ -->
+  <div class="faq-section" id="faq">
+    <h2>Frequently Asked Questions</h2>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+        Does Framer CMS automatically generate unique meta tags for each collection item?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>Yes. Framer CMS supports variable syntax -- like <code>{{Title}}</code> and <code>{{Description}}</code> -- in the page SEO settings for collection templates. When you set a title template of "{{Title}} | Your Brand," each CMS item gets a unique meta title derived from its own Title field. This applies to meta descriptions, OG titles, OG descriptions, and OG images as well. Each item gets distinct metadata automatically without any manual per-item editing.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+        Are Framer CMS collection pages included in the sitemap?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>Yes, Framer automatically includes all published CMS collection pages in your sitemap.xml. Each published CMS item gets its own sitemap entry. You can control sitemap inclusion at the collection template level in Framer's page SEO settings. If you want to exclude specific items, manage this through Framer's publish/unpublish toggle for individual CMS items.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+        Does Framer CMS support categories and tags for blog posts?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>No. Framer CMS has no native taxonomy system. There are no built-in categories, tags, or hierarchical content organization. You can simulate taxonomy by creating a separate collection for categories and using a reference field to connect posts to categories, but this does not generate proper taxonomy archive pages the way WordPress does. This is a known limitation that affects topical authority building for content-heavy sites.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+        How do I add Article schema to Framer CMS blog posts?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>Framer has no native UI for schema markup on CMS collection pages. The manual approach is to use Framer's custom code embed to insert a JSON-LD script block in the CMS template, using Framer's variable syntax to populate each item's fields into the schema. RankFrame automates this by generating Article and BlogPosting schema for every CMS page in your sitemap without any manual code required.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+        How do I add alt text to images in Framer CMS?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>Create a dedicated plain text field in your CMS collection for alt text, then bind that field to the alt text property of the image component in the collection template. This way each CMS item can have unique, descriptive alt text. RankFrame's Image SEO feature provides bulk AI alt text generation for CMS images, allowing you to generate descriptive alt text for an entire collection at once for existing content that lacks it.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+        Can I schedule content publishing in Framer CMS?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>No. Framer CMS has no native content scheduling feature. Items are either published or unpublished. There is no "schedule for" date field that triggers automatic publishing. Workarounds include using Framer's API with a third-party automation tool like Make or Zapier to trigger a publish action at a set time, but this requires custom integration setup.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+        What is the best title template structure for Framer CMS pages?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>The most effective structure is "{{Title}} | Brand Name" for blog posts and collection pages. This puts the unique, keyword-rich page title first -- the part Google shows most prominently in search results -- and appends brand context. Keep the resulting title under 60 characters where possible. Avoid putting the brand name first; it wastes the most visible portion of the title on non-keyword text.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+        Does RankFrame work with Framer CMS collection pages?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>Yes. RankFrame's Pages section surfaces all CMS collection items with individual SEO scores. You can run a per-page audit on any CMS item, view its title, description, and on-page signals, and use RankFrame's AI title and description generation to improve metadata at the collection item level. The Image SEO feature supports bulk alt text generation for CMS images across entire collections. RankFrame also handles schema generation for CMS pages automatically.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="cta-block">
+    <h3>Ready to rank your Framer site?</h3>
+    <p>RankFrame is the only native SEO plugin built for Framer. Schema, indexing, image SEO, site audits, keyword tracking -- all inside the Framer editor. No switching tools. No code required.</p>
+    <a href="https://www.framer.com/marketplace/plugins/rankframe/" class="cta-btn">Install RankFrame Free -- 14-Day Trial</a>
+    <p class="cta-sub">Credit card required. Cancel anytime. Full feature access from day one.</p>
+  </div>
+
+  <!-- SEO Details Panel -->
+  <div id="seo-details" style="margin:60px 0 0;padding:28px 32px;background:#f8f6ff;border:1px solid #e8e0fa;border-radius:14px;">
+    <h3 style="font-size:1rem;font-weight:700;color:#1a0533;margin:0 0 20px;">SEO Details</h3>
+    <div id="seo-fields"></div>
+  </div>
+
+</main>
+
+<script>
+(function(){
+  var f=[
+    {label:'Title',value:document.querySelector('title')?document.querySelector('title').textContent:''},
+    {label:'Description',value:(document.querySelector('meta[name="description"]')||{}).content||''},
+    {label:'Keywords',value:(document.querySelector('meta[name="keywords"]')||{}).content||''},
+    {label:'Canonical',value:(document.querySelector('link[rel="canonical"]')||{}).href||''}
+  ];
+  var s=Array.from(document.querySelectorAll('script[type="application/ld+json"]')).map(function(x,i){
+    return{label:'Schema '+(i+1),value:x.textContent.trim()};
+  });
+  var all=f.concat(s);
+  var h='';
+  all.forEach(function(x){
+    h+='<div style="margin-bottom:14px"><div style="font-size:.78rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#7c3aed;margin-bottom:4px">'+x.label+'</div><div style="display:flex;align-items:flex-start;gap:8px"><code style="flex:1;background:#fff;border:1px solid #e0d8f0;border-radius:6px;padding:8px 10px;font-size:.82rem;color:#1a0533;white-space:pre-wrap;word-break:break-all">'+x.value.replace(/</g,'&lt;').replace(/>/g,'&gt;')+'</code><button onclick="navigator.clipboard.writeText(this.dataset.v)" data-v="'+x.value.replace(/"/g,'&quot;')+'" style="flex-shrink:0;padding:6px 12px;background:#7c3aed;color:#fff;border:none;border-radius:6px;font-size:.78rem;font-weight:700;cursor:pointer">Copy</button></div></div>';
+  });
+  document.getElementById('seo-fields').innerHTML=h;
+})();
+</script>
+
+</body>
+</html>
