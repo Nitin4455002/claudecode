@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fixing Indexing Issues in RankFrame</title>
+  <meta name="description" content="Troubleshoot URL submission failures in RankFrame Submit Indexing. Fix trial limits, domain verification errors, and Google API quota issues preventing your Framer pages from being indexed." />
+  <meta name="keywords" content="RankFrame indexing not working, URL submission failed, Google Indexing API Framer, submit URL Framer not working" />
+  <link rel="canonical" href="https://rankframe.com/help/indexing-not-working" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Fixing Indexing Issues in RankFrame",
+    "description": "Troubleshoot URL submission failures in RankFrame Submit Indexing. Fix trial limits, domain verification errors, and Google API quota issues preventing your Framer pages from being indexed.",
+    "author": {
+      "@type": "Organization",
+      "name": "7 Seers",
+      "email": "hello@7seersmedia.com"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "7 Seers",
+      "url": "https://rankframe.com"
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://rankframe.com/help/indexing-not-working"
+    },
+    "datePublished": "2026-05-03",
+    "dateModified": "2026-05-03"
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How long does it take for Google to index a submitted URL?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "After you submit a URL through RankFrame's Submit Indexing feature, Google typically processes it within a few hours to a few days. The Indexing API signals Google to crawl and index the URL, but Google makes the final decision about timing based on its own crawl scheduling and quality assessments. You can check whether a URL has been indexed using the Check Live button in the Indexing History tab, or by running a site: search in Google."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does the Google Indexing API guarantee that my page will be indexed?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. The Indexing API signals Google to crawl and consider the URL for indexing, but Google still applies its own quality and relevance criteria. Pages with thin content, canonical conflicts, noindex tags, or other technical SEO issues may not be indexed even after a successful API submission. Use RankFrame's SEO Analyzer to check for issues that might prevent indexing."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What does 'Submitted and Indexed' mean in Indexing History?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "'Submitted and Indexed' means RankFrame successfully sent the URL to the Google Indexing API and Google has confirmed the page is in its index. This is the best possible status. If you see 'Submitted' without 'Indexed', the API call succeeded but Google has not yet processed the page. Check back in 24 to 72 hours."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the daily URL submission quota for RankFrame?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "RankFrame uses Google's Indexing API, which has a standard quota of 200 requests per day per project. Trial accounts are additionally limited to 2 total URL submissions. Personal and Agency plan users can submit up to 200 URLs per day before the quota resets. To stay within quota, submit new and updated pages in batches rather than your entire sitemap at once."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How should I handle indexing for a large site with hundreds of pages?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "For large sites, prioritize the pages that matter most: new posts, updated landing pages, and high-value content. Submit these first using the Push URLs feature. Use Push Sitemap to ensure Google has the full URL list. Then submit remaining pages in daily batches of up to 200 to stay within Google's quota. Avoid submitting every page at once, as this exhausts your daily quota and delays the most important pages."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Help Center",
+        "item": "https://rankframe.com/help"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Troubleshooting",
+        "item": "https://rankframe.com/help/troubleshooting"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Indexing Not Working",
+        "item": "https://rankframe.com/help/indexing-not-working"
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background: #ffffff;
+      color: #1a0533;
+      line-height: 1.7;
+    }
+
+    .page-wrapper {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 48px 24px 80px;
+    }
+
+    /* Breadcrumb */
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: .8rem;
+      color: #9585b4;
+      margin-bottom: 32px;
+      flex-wrap: wrap;
+    }
+    .breadcrumb a { color: #7c3aed; text-decoration: none; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .breadcrumb-sep { color: #c4b8d8; }
+
+    /* Header */
+    .article-header { margin-bottom: 40px; }
+    .article-tag {
+      display: inline-block;
+      background: linear-gradient(135deg, #7c3aed, #a78bfa);
+      color: #fff;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 16px;
+    }
+    h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #1a0533;
+      line-height: 1.25;
+      margin-bottom: 16px;
+    }
+    .article-intro {
+      font-size: 1.05rem;
+      color: #4b4b6b;
+      line-height: 1.75;
+      border-left: 4px solid #a78bfa;
+      padding-left: 16px;
+    }
+
+    /* Section headings */
+    h2 {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: #1a0533;
+      margin: 52px 0 6px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #f0eaff;
+    }
+    h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #1a0533;
+      margin: 28px 0 8px;
+    }
+
+    /* Field blocks */
+    .field-block { margin: 36px 0 28px; }
+    .field-block-header { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+    .field-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      background: linear-gradient(135deg, #7c3aed, #a78bfa);
+      color: #fff;
+      font-weight: 700;
+      font-size: 14px;
+      border-radius: 8px;
+      flex-shrink: 0;
+      box-shadow: 0 2px 6px rgba(124,58,237,.25);
+    }
+    .field-block-title { font-size: 1rem; font-weight: 700; color: #1a0533; }
+    .field-block-desc { font-size: .93rem; color: #4b4b6b; line-height: 1.7; }
+    .field-block-desc strong { color: #1a0533; }
+
+    /* Screenshot slot */
+    .screenshot-slot {
+      background: #fafafa;
+      border: 1px dashed #e0d8f0;
+      border-radius: 10px;
+      padding: 36px 20px;
+      text-align: center;
+      color: #b8b2c8;
+      font-size: .85rem;
+      margin-top: 6px;
+      margin-bottom: 8px;
+    }
+    .screenshot-slot::before {
+      content: "Screenshot";
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: #c8c0dc;
+    }
+
+    /* Symptom/Cause/Fix rows */
+    .scf-row {
+      display: grid;
+      grid-template-columns: 90px 1fr;
+      gap: 4px 12px;
+      margin-bottom: 6px;
+      font-size: .93rem;
+    }
+    .scf-label {
+      font-weight: 700;
+      color: #7c3aed;
+      font-size: .82rem;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      padding-top: 2px;
+    }
+    .scf-value { color: #4b4b6b; line-height: 1.65; }
+    .scf-value strong { color: #1a0533; }
+    .scf-value a { color: #7c3aed; font-weight: 600; text-decoration: none; }
+    .scf-value a:hover { text-decoration: underline; }
+
+    /* Status badge */
+    .status-badge {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-size: .8rem;
+      font-weight: 700;
+    }
+    .status-success { background: #dcfce7; color: #16a34a; }
+    .status-pending { background: #fef9c3; color: #a16207; }
+    .status-error { background: #fee2e2; color: #dc2626; }
+
+    /* Index check panel */
+    .check-panel {
+      background: #f8f6ff;
+      border: 1px solid #e8e0fa;
+      border-radius: 12px;
+      padding: 24px 28px;
+      margin: 28px 0;
+    }
+    .check-panel-title {
+      font-size: .95rem;
+      font-weight: 700;
+      color: #1a0533;
+      margin-bottom: 12px;
+    }
+    .check-panel p { font-size: .9rem; color: #4b4b6b; line-height: 1.7; margin-bottom: 10px; }
+    .check-panel p:last-child { margin-bottom: 0; }
+
+    /* Status table */
+    .status-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .88rem;
+      margin-top: 16px;
+    }
+    .status-table th {
+      background: #f0eaff;
+      color: #1a0533;
+      font-weight: 700;
+      padding: 10px 14px;
+      text-align: left;
+      font-size: .82rem;
+      letter-spacing: .04em;
+    }
+    .status-table td {
+      padding: 10px 14px;
+      border-bottom: 1px solid #f0eaff;
+      color: #4b4b6b;
+      vertical-align: top;
+    }
+    .status-table tr:last-child td { border-bottom: none; }
+    .status-table tr:nth-child(even) td { background: #fafafa; }
+
+    /* Callout */
+    .callout {
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin: 36px 0;
+    }
+    .callout-warning { background: #fffbeb; border-left: 4px solid #f59e0b; }
+    .callout-info { background: #f0eaff; border-left: 4px solid #7c3aed; }
+    .callout-support { background: #f0fdf4; border-left: 4px solid #22c55e; }
+    .callout-title {
+      font-size: .85rem;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .callout-warning .callout-title { color: #b45309; }
+    .callout-info .callout-title { color: #7c3aed; }
+    .callout-support .callout-title { color: #16a34a; }
+    .callout p { font-size: .93rem; color: #4b4b6b; line-height: 1.7; }
+    .callout a { color: #7c3aed; font-weight: 600; text-decoration: none; }
+    .callout a:hover { text-decoration: underline; }
+
+    /* Step list */
+    .step-list { list-style: none; margin: 20px 0; padding: 0; }
+    .step-list li { display: flex; gap: 14px; align-items: flex-start; margin-bottom: 14px; }
+    .step-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      min-width: 28px;
+      background: linear-gradient(135deg, #7c3aed, #a78bfa);
+      color: #fff;
+      font-weight: 700;
+      font-size: 13px;
+      border-radius: 50%;
+      box-shadow: 0 2px 6px rgba(124,58,237,.2);
+      margin-top: 2px;
+    }
+    .step-text { font-size: .93rem; color: #4b4b6b; line-height: 1.7; }
+    .step-text strong { color: #1a0533; }
+
+    /* FAQ */
+    .faq-item {
+      border: 1px solid #e8e0fa;
+      border-radius: 10px;
+      margin-bottom: 12px;
+      overflow: hidden;
+    }
+    .faq-question {
+      font-size: .95rem;
+      font-weight: 700;
+      color: #1a0533;
+      padding: 16px 20px;
+      background: #faf8ff;
+      border-bottom: 1px solid #e8e0fa;
+    }
+    .faq-answer {
+      font-size: .9rem;
+      color: #4b4b6b;
+      padding: 14px 20px;
+      line-height: 1.7;
+    }
+
+    /* Footer */
+    .article-footer {
+      margin-top: 64px;
+      padding-top: 24px;
+      border-top: 1px solid #f0eaff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .article-footer-brand { font-size: .82rem; color: #9585b4; }
+    .article-footer-brand a { color: #7c3aed; text-decoration: none; font-weight: 600; }
+    .related-links { display: flex; gap: 12px; flex-wrap: wrap; }
+    .related-link {
+      font-size: .82rem;
+      color: #7c3aed;
+      text-decoration: none;
+      background: #f0eaff;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-weight: 600;
+    }
+    .related-link:hover { background: #e0d8f0; }
+  </style>
+</head>
+<body>
+  <div class="page-wrapper">
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="https://rankframe.com/help">Help Center</a>
+      <span class="breadcrumb-sep">&#8250;</span>
+      <a href="https://rankframe.com/help/troubleshooting">Troubleshooting</a>
+      <span class="breadcrumb-sep">&#8250;</span>
+      <span>Indexing Not Working</span>
+    </nav>
+
+    <!-- Header -->
+    <header class="article-header">
+      <div class="article-tag">Troubleshooting</div>
+      <h1>Fixing Indexing Issues</h1>
+      <p class="article-intro">RankFrame's Submit Indexing feature uses the official Google Indexing API to push URLs directly to Google. When a submission appears to fail or nothing happens, the cause usually falls into one of five categories. This article covers each one and how to resolve it.</p>
+    </header>
+
+    <main>
+
+      <h2>Five Causes of Indexing Failures</h2>
+
+      <!-- Field Block 1 -->
+      <div class="field-block">
+        <div class="field-block-header">
+          <span class="field-num">1</span>
+          <span class="field-block-title">Trial Limit Reached</span>
+        </div>
+        <div class="field-block-desc">
+          <div class="scf-row"><span class="scf-label">Symptom</span><span class="scf-value">The <strong>Push URLs</strong> button is greyed out or disabled. You cannot select any URLs to submit.</span></div>
+          <div class="scf-row"><span class="scf-label">Cause</span><span class="scf-value">Trial accounts are limited to 2 total URL submissions. Once you have submitted 2 URLs, the Push URLs feature is locked until you upgrade.</span></div>
+          <div class="scf-row"><span class="scf-label">Fix</span><span class="scf-value">Click the <strong>See Billing</strong> button in the Submit Indexing panel to view upgrade options. The Personal plan and Agency plan both remove the trial submission limit and provide full daily quota access.</span></div>
+        </div>
+        <div class="screenshot-slot">Submit Indexing panel showing greyed-out Push URLs button and the See Billing upgrade prompt</div>
+      </div>
+
+      <!-- Field Block 2 -->
+      <div class="field-block">
+        <div class="field-block-header">
+          <span class="field-num">2</span>
+          <span class="field-block-title">Domain Not Verified</span>
+        </div>
+        <div class="field-block-desc">
+          <div class="scf-row"><span class="scf-label">Symptom</span><span class="scf-value">Submissions appear to go through but URLs do not appear in Indexing History, or the Setup tab shows an error on the Domain Verification step.</span></div>
+          <div class="scf-row"><span class="scf-label">Cause</span><span class="scf-value">RankFrame verifies your domain automatically during Google account connection. If the connected account does not have Owner or Full User access in Search Console, verification fails and submissions are rejected before they reach Google.</span></div>
+          <div class="scf-row"><span class="scf-label">Fix</span><span class="scf-value">Open <strong>Submit Indexing &gt; Setup</strong> tab. Check the Domain Verification step for an error indicator. If verification failed, disconnect your Google account, confirm the account has <strong>Owner</strong> or <strong>Full User</strong> access in <a href="https://search.google.com/search-console">Google Search Console</a>, then reconnect. See: <a href="https://rankframe.com/help/google-connection-issues">Fixing Google Connection Issues</a>.</span></div>
+        </div>
+        <div class="screenshot-slot">Submit Indexing Setup tab showing Domain Verification step with error state and Disconnect button</div>
+      </div>
+
+      <!-- Field Block 3 -->
+      <div class="field-block">
+        <div class="field-block-header">
+          <span class="field-num">3</span>
+          <span class="field-block-title">Google Indexing API Quota Exceeded</span>
+        </div>
+        <div class="field-block-desc">
+          <div class="scf-row"><span class="scf-label">Symptom</span><span class="scf-value">Some submissions succeed but then new submissions begin returning errors, often in the middle of a batch submission.</span></div>
+          <div class="scf-row"><span class="scf-label">Cause</span><span class="scf-value">Google's Indexing API allows a maximum of 200 requests per day under standard access. Submitting a large sitemap at once can exhaust this quota in seconds.</span></div>
+          <div class="scf-row"><span class="scf-label">Fix</span><span class="scf-value">Wait 24 hours for the daily quota to reset. When you resubmit, prioritize your most important pages. Submit in small daily batches of 20 to 50 URLs rather than your entire sitemap at once.</span></div>
+        </div>
+        <div class="screenshot-slot">Indexing History tab showing a mix of successful and quota-error submissions mid-batch</div>
+      </div>
+
+      <div class="callout callout-warning">
+        <div class="callout-title">Quota Strategy</div>
+        <p>Google's 200-request daily quota resets at midnight Pacific Time. If you manage a large Framer site, build a habit of submitting new and updated pages only, not your full URL list, each time you publish changes.</p>
+      </div>
+
+      <!-- Field Block 4 -->
+      <div class="field-block">
+        <div class="field-block-header">
+          <span class="field-num">4</span>
+          <span class="field-block-title">URL Not in Sitemap</span>
+        </div>
+        <div class="field-block-desc">
+          <div class="scf-row"><span class="scf-label">Symptom</span><span class="scf-value">A URL was submitted through the Indexing API but remains unindexed after several days, even though the page is live.</span></div>
+          <div class="scf-row"><span class="scf-label">Cause</span><span class="scf-value">Google's Indexing API works best with URLs that are already discoverable via your sitemap. If a page was recently added and the sitemap has not been updated, Google may not be able to fully validate the URL.</span></div>
+          <div class="scf-row"><span class="scf-label">Fix</span><span class="scf-value">In the Submit Indexing panel, click <strong>Push Sitemap</strong> first to notify Google of your updated sitemap. Then resubmit the specific URL using <strong>Push URLs</strong>. Pushing the sitemap first helps Google connect the URL to your site's crawl graph.</span></div>
+        </div>
+        <div class="screenshot-slot">Submit Indexing Submit URLs tab with Push Sitemap and Push URLs buttons highlighted</div>
+      </div>
+
+      <!-- Field Block 5 -->
+      <div class="field-block">
+        <div class="field-block-header">
+          <span class="field-num">5</span>
+          <span class="field-block-title">Wrong URL Format</span>
+        </div>
+        <div class="field-block-desc">
+          <div class="scf-row"><span class="scf-label">Symptom</span><span class="scf-value">Manually entered URLs show errors or are not found, even though the page is live and accessible in a browser.</span></div>
+          <div class="scf-row"><span class="scf-label">Cause</span><span class="scf-value">The Google Indexing API requires fully qualified absolute URLs. Relative paths such as <code style="background:#f0eaff;padding:1px 5px;border-radius:3px;font-size:.85rem;">/about</code> are not accepted. Typos in the domain or missing <code style="background:#f0eaff;padding:1px 5px;border-radius:3px;font-size:.85rem;">https://</code> also cause silent failures.</span></div>
+          <div class="scf-row"><span class="scf-label">Fix</span><span class="scf-value">Verify every manually entered URL starts with <strong>https://</strong> and includes the full domain. For example, use <code style="background:#f0eaff;padding:1px 5px;border-radius:3px;font-size:.85rem;">https://yourdomain.com/about</code> instead of <code style="background:#f0eaff;padding:1px 5px;border-radius:3px;font-size:.85rem;">/about</code>. URLs pulled from the sitemap inside RankFrame are auto-formatted correctly.</span></div>
+        </div>
+        <div class="screenshot-slot">Submit URLs input field showing the correct absolute URL format required by the Indexing API</div>
+      </div>
+
+      <!-- Check if indexed section -->
+      <h2>How to Check If a URL Was Successfully Indexed</h2>
+
+      <p style="font-size:.93rem;color:#4b4b6b;margin-bottom:24px;">After submitting a URL, use these methods to confirm whether Google has indexed it.</p>
+
+      <div class="check-panel">
+        <div class="check-panel-title">Using the Check Live Button in Indexing History</div>
+        <p>Open <strong>Submit Indexing &gt; Indexing History</strong>. Find the URL you submitted in the history list. Click the <strong>Check Live</strong> button next to that URL. RankFrame queries Google's URL Inspection API and returns the current index status directly in the panel.</p>
+        <p>The status will update to one of the following:</p>
+        <table class="status-table">
+          <thead>
+            <tr>
+              <th>Status</th>
+              <th>What It Means</th>
+              <th>What to Do</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="status-badge status-success">Submitted and Indexed</span></td>
+              <td>Google has the page in its index.</td>
+              <td>No action needed.</td>
+            </tr>
+            <tr>
+              <td><span class="status-badge status-pending">Submitted</span></td>
+              <td>API call was accepted. Google has not yet processed the page.</td>
+              <td>Wait 24 to 72 hours, then check again.</td>
+            </tr>
+            <tr>
+              <td><span class="status-badge status-error">Not Indexed</span></td>
+              <td>Google is aware of the URL but has chosen not to index it.</td>
+              <td>Review the page for noindex tags, thin content, or canonical issues using SEO Analyzer.</td>
+            </tr>
+            <tr>
+              <td><span class="status-badge status-error">Error</span></td>
+              <td>The API call failed. Common causes: quota exceeded, domain not verified, or malformed URL.</td>
+              <td>Review and resolve the applicable issue from the five categories above.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="screenshot-slot">Indexing History tab with Check Live button highlighted and a status result showing "Submitted and Indexed"</div>
+
+      <h3>Using Google Search to Verify Indexing</h3>
+      <ol class="step-list">
+        <li>
+          <span class="step-num">1</span>
+          <span class="step-text">Open a browser and go to <a href="https://google.com" style="color:#7c3aed;font-weight:600;">google.com</a>.</span>
+        </li>
+        <li>
+          <span class="step-num">2</span>
+          <span class="step-text">In the search bar, type <code style="background:#f0eaff;padding:2px 7px;border-radius:3px;font-size:.88rem;">site:yourdomain.com/your-page-slug</code> replacing the URL with your actual page URL.</span>
+        </li>
+        <li>
+          <span class="step-num">3</span>
+          <span class="step-text">If Google returns a result showing that exact URL, the page is indexed. If Google returns zero results, the page is not yet in the index.</span>
+        </li>
+      </ol>
+
+      <div class="callout callout-info">
+        <div class="callout-title">Note on Indexing Guarantees</div>
+        <p>The Google Indexing API increases the speed at which Google discovers your pages, but it does not guarantee indexing. Google still applies its own quality and relevance criteria. If a page has a noindex directive, a canonical tag pointing elsewhere, or very thin content, it may not be indexed even after a successful API submission. Use RankFrame's SEO Analyzer to check for on-page issues that could block indexing.</p>
+      </div>
+
+      <!-- FAQ -->
+      <h2>Frequently Asked Questions</h2>
+
+      <div class="faq-item">
+        <div class="faq-question">How long does it take for Google to index a submitted URL?</div>
+        <div class="faq-answer">After you submit a URL through RankFrame's Submit Indexing feature, Google typically processes it within a few hours to a few days. The Indexing API signals Google to crawl and index the URL, but Google makes the final decision about timing based on its own crawl scheduling and quality assessments. You can check whether a URL has been indexed using the Check Live button in the Indexing History tab, or by running a site: search in Google.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">Does the Google Indexing API guarantee that my page will be indexed?</div>
+        <div class="faq-answer">No. The Indexing API signals Google to crawl and consider the URL for indexing, but Google still applies its own quality and relevance criteria. Pages with thin content, canonical conflicts, noindex tags, or other technical SEO issues may not be indexed even after a successful API submission. Use RankFrame's SEO Analyzer to check for issues that might prevent indexing.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">What does "Submitted and Indexed" mean in Indexing History?</div>
+        <div class="faq-answer">"Submitted and Indexed" means RankFrame successfully sent the URL to the Google Indexing API and Google has confirmed the page is in its index. This is the best possible status. If you see "Submitted" without "Indexed", the API call succeeded but Google has not yet processed the page. Check back in 24 to 72 hours.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">What is the daily URL submission quota for RankFrame?</div>
+        <div class="faq-answer">RankFrame uses Google's Indexing API, which has a standard quota of 200 requests per day per project. Trial accounts are additionally limited to 2 total URL submissions. Personal and Agency plan users can submit up to 200 URLs per day before the quota resets. To stay within quota, submit new and updated pages in batches rather than your entire sitemap at once.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">How should I handle indexing for a large site with hundreds of pages?</div>
+        <div class="faq-answer">For large sites, prioritize the pages that matter most: new posts, updated landing pages, and high-value content. Submit these first using the Push URLs feature. Use Push Sitemap to ensure Google has the full URL list. Then submit remaining pages in daily batches of up to 200 to stay within Google's quota. Avoid submitting every page at once, as this exhausts your daily quota and delays the most important pages.</div>
+      </div>
+
+      <div class="callout callout-support">
+        <div class="callout-title">Still Stuck?</div>
+        <p>If you have worked through all five categories and indexing still is not working, contact the 7 Seers team at <a href="mailto:hello@7seersmedia.com">hello@7seersmedia.com</a>. Include your Framer site URL, your RankFrame plan, the error status shown in Indexing History, and the connected Google account domain (not your full email, just the domain part).</p>
+      </div>
+
+    </main>
+
+    <!-- Related articles -->
+    <footer class="article-footer">
+      <div class="article-footer-brand">RankFrame by <a href="https://rankframe.com">7 Seers</a> &mdash; <a href="mailto:hello@7seersmedia.com">hello@7seersmedia.com</a></div>
+      <div class="related-links">
+        <a class="related-link" href="https://rankframe.com/help/troubleshooting-overview">Troubleshooting Overview</a>
+        <a class="related-link" href="https://rankframe.com/help/google-connection-issues">Google Connection Issues</a>
+      </div>
+    </footer>
+
+    <!-- SEO Details panel -->
+    <div id="seo-details" style="margin:60px 0 0;padding:28px 32px;background:#f8f6ff;border:1px solid #e8e0fa;border-radius:14px;">
+      <h3 style="font-size:1rem;font-weight:700;color:#1a0533;margin:0 0 20px;">SEO Details</h3>
+      <div id="seo-fields"></div>
+    </div>
+
+  </div><!-- end page-wrapper -->
+
+  <script>
+    (function(){
+      var f=[
+        {label:'Title',value:document.querySelector('title')?document.querySelector('title').textContent:''},
+        {label:'Description',value:(document.querySelector('meta[name="description"]')||{}).content||''},
+        {label:'Keywords',value:(document.querySelector('meta[name="keywords"]')||{}).content||''},
+        {label:'Canonical',value:(document.querySelector('link[rel="canonical"]')||{}).href||''}
+      ];
+      var s=Array.from(document.querySelectorAll('script[type="application/ld+json"]')).map(function(x,i){
+        return{label:'Schema '+(i+1),value:x.textContent.trim()};
+      });
+      var all=f.concat(s);
+      var h='';
+      all.forEach(function(x){
+        h+='<div style="margin-bottom:14px"><div style="font-size:.78rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#7c3aed;margin-bottom:4px">'+x.label+'</div><div style="display:flex;align-items:flex-start;gap:8px"><code style="flex:1;background:#fff;border:1px solid #e0d8f0;border-radius:6px;padding:8px 10px;font-size:.82rem;color:#1a0533;white-space:pre-wrap;word-break:break-all">'+x.value.replace(/</g,'&lt;').replace(/>/g,'&gt;')+'</code><button onclick="navigator.clipboard.writeText(this.dataset.v)" data-v="'+x.value.replace(/"/g,'&quot;')+'" style="flex-shrink:0;padding:6px 12px;background:#7c3aed;color:#fff;border:none;border-radius:6px;font-size:.78rem;font-weight:700;cursor:pointer">Copy</button></div></div>';
+      });
+      document.getElementById('seo-fields').innerHTML=h;
+    })();
+  </script>
+
+</body>
+</html>
