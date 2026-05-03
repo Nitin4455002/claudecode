@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How to Add Open Graph Tags in Framer (Social Sharing SEO Guide)</title>
+  <meta name="description" content="How to set Open Graph tags in Framer so your site looks great when shared on LinkedIn, X, Facebook, and Slack. Covers og:title, og:description, og:image, Twitter Card, and per-page overrides." />
+  <meta name="keywords" content="how to add open graph tags in framer, framer open graph, framer og tags, framer social sharing image, framer meta og, framer facebook open graph, framer twitter card" />
+  <link rel="canonical" href="https://rankframe.com/blog/add-open-graph-framer" />
+  <meta property="og:title" content="How to Add Open Graph Tags in Framer (Social Sharing SEO Guide)" />
+  <meta property="og:description" content="How to set Open Graph tags in Framer so your site looks great when shared on LinkedIn, X, Facebook, and Slack. Covers og:title, og:description, og:image, Twitter Card, and per-page overrides." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://rankframe.com/blog/add-open-graph-framer" />
+  <meta property="og:site_name" content="RankFrame" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="How to Add Open Graph Tags in Framer (Social Sharing SEO Guide)" />
+  <meta name="twitter:description" content="How to set Open Graph tags in Framer so your site looks great when shared on LinkedIn, X, Facebook, and Slack. Covers og:title, og:description, og:image, Twitter Card, and per-page overrides." />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "How to Add Open Graph Tags in Framer (Social Sharing SEO Guide)",
+    "description": "How to set Open Graph tags in Framer so your site looks great when shared on LinkedIn, X, Facebook, and Slack. Covers og:title, og:description, og:image, Twitter Card, and per-page overrides.",
+    "url": "https://rankframe.com/blog/add-open-graph-framer",
+    "datePublished": "2026-05-03",
+    "dateModified": "2026-05-03",
+    "author": {
+      "@type": "Organization",
+      "name": "7 Seers",
+      "url": "https://rankframe.com"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "7 Seers",
+      "url": "https://rankframe.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://framerusercontent.com/images/XE1sqaQyYF9jXODewkOIlcQ3KKo.png"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://rankframe.com/blog/add-open-graph-framer"
+    },
+    "keywords": "how to add open graph tags in framer, framer open graph, framer og tags, framer social sharing image, framer twitter card"
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://rankframe.com"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Blog",
+        "item": "https://rankframe.com/blog"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "How to Add Open Graph Tags in Framer (Social Sharing SEO Guide)",
+        "item": "https://rankframe.com/blog/add-open-graph-framer"
+      }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "7 Seers",
+    "url": "https://rankframe.com",
+    "email": "hello@7seersmedia.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Lucknow",
+      "addressCountry": "IN"
+    },
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://framerusercontent.com/images/XE1sqaQyYF9jXODewkOIlcQ3KKo.png"
+    },
+    "sameAs": ["https://www.framer.com/marketplace/plugins/rankframe/"]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How to Add Open Graph Tags in Framer",
+    "description": "Step-by-step guide to setting Open Graph and Twitter Card tags in Framer for correct social sharing previews on LinkedIn, X, Facebook, Slack, and WhatsApp.",
+    "step": [
+      {
+        "@type": "HowToStep",
+        "position": 1,
+        "name": "Set a global OG image in Framer Site Settings",
+        "text": "Open Framer Site Settings, navigate to the SEO tab, scroll to the Social Image section, and upload a 1200x630px image. This becomes the default og:image for all pages that do not have a page-specific override."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 2,
+        "name": "Override OG tags per page",
+        "text": "Select a page in the Framer canvas layers panel. Open the Page Settings panel on the right side. Scroll to the SEO section and enable the social image override toggle. Upload or link a page-specific OG image and fill in the custom title and description fields."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 3,
+        "name": "Set OG tags for CMS collection pages",
+        "text": "Open your Framer CMS collection settings. In the SEO tab for the collection template, bind the og:title, og:description, and og:image fields to dynamic CMS fields using the variable picker. Each collection item will then generate unique social preview data from its own CMS content."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 4,
+        "name": "Add Twitter Card tags via Custom Code (optional advanced override)",
+        "text": "In Framer Site Settings, navigate to Custom Code and paste Twitter Card meta tags in the head section for global Twitter Card settings. For per-page overrides not supported by Framer's native UI, use a Custom Code component on the specific page."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 5,
+        "name": "Prepare your OG image correctly",
+        "text": "Create the OG image at 1200x630 pixels. Use JPEG or PNG format, keep the file under 5MB (ideally under 1MB for fast previews), and ensure any important text or logos are inside the central 800x400px safe zone to avoid cropping on platforms that display in different aspect ratios."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 6,
+        "name": "Test your OG tags",
+        "text": "Use the Facebook Sharing Debugger (developers.facebook.com/tools/debug), LinkedIn Post Inspector (linkedin.com/post-inspector), Twitter Card Validator (developer.twitter.com/en/docs/twitter-for-websites/cards/guides/troubleshooting-cards), or opengraph.xyz to verify that all platforms read the correct OG data for each URL."
+      }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Does Framer support Open Graph tags?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Framer natively supports Open Graph tags through Site Settings and individual page settings. You can set a global og:image, og:title, and og:description in Site Settings under the SEO tab, and override these on a per-page basis in each page's settings panel. For CMS collection pages, Framer supports binding OG fields to dynamic CMS variables so each collection item generates its own unique social preview data automatically."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I add a social sharing image in Framer?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Go to Site Settings in Framer, click the SEO tab, and scroll to the Social Image section. Upload your 1200x630px image there. This image becomes the default og:image for your entire site. To set a different image for a specific page, open that page's settings panel in the Framer canvas, scroll to the SEO section, and upload a page-specific social image. The page-level setting always overrides the site-level default."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What size should the Framer OG image be?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The standard Open Graph image size is 1200x630 pixels at a 1.91:1 aspect ratio. This is the recommended size for Facebook, LinkedIn, and X (Twitter). The minimum accepted size is 600x315 pixels, but smaller images may appear blurry or may not render as the primary share image on some platforms. Use JPEG or PNG format, keep the file under 5MB (ideally under 1MB for fast preview loading), and keep important content away from the outer edges of the image as some platforms crop to square thumbnails."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I test Open Graph tags for my Framer site?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Use any of these free tools: Facebook Sharing Debugger at developers.facebook.com/tools/debug (also clears Facebook's cache of your old OG data), LinkedIn Post Inspector at linkedin.com/post-inspector, the Twitter Card Validator in Twitter's developer documentation, or opengraph.xyz which previews how your URL will appear across multiple platforms simultaneously. Always test with your live published Framer URL, not the preview URL, as crawlers cannot access Framer's preview environment."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can you set different OG images per page in Framer?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Framer supports per-page OG image overrides natively. In the Framer canvas, select any page from the layers panel, open the Page Settings panel on the right, and scroll to the SEO section. You will find a social image upload field and custom title and description fields. Any values entered here override the global site defaults for that specific page. For CMS collection pages, you can bind the OG image to a dynamic CMS field so each collection item uses its own image automatically."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do Twitter Cards work on Framer sites?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Framer outputs twitter:card and twitter:image meta tags alongside the standard Open Graph tags when you set a social image in Site Settings or page settings. X (formerly Twitter) reads both OG tags and Twitter Card tags, and uses Twitter Card tags preferentially when both are present. If you need to set specific twitter:site or twitter:creator tags, add them manually in Framer's Custom Code head section. The summary_large_image card type is the recommended format for Framer sites as it displays the image prominently in the X feed."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; color: #1a0533; background: #fff; line-height: 1.7; font-size: 1rem; }
+    a { color: #7c3aed; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .site-header { background: #7c3aed; padding: 14px 24px; display: flex; align-items: center; gap: 12px; }
+    .site-header a { color: #fff; font-weight: 700; font-size: 1.1rem; }
+    .site-header span { color: rgba(255,255,255,0.6); font-size: .9rem; }
+    .breadcrumb { background: #f8f6ff; border-bottom: 1px solid #e8e0fa; padding: 10px 24px; font-size: .82rem; color: #6b7280; }
+    .breadcrumb a { color: #7c3aed; }
+    .breadcrumb span { margin: 0 6px; }
+    .container { max-width: 820px; margin: 0 auto; padding: 40px 24px 80px; }
+    .article-meta { margin-bottom: 32px; }
+    .article-category { display: inline-block; background: #f3eeff; color: #7c3aed; font-size: .78rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; padding: 4px 10px; border-radius: 20px; margin-bottom: 14px; }
+    h1 { font-size: 2.2rem; font-weight: 800; line-height: 1.2; color: #1a0533; margin-bottom: 16px; }
+    .article-byline { font-size: .85rem; color: #6b7280; }
+    .article-byline strong { color: #1a0533; }
+    .toc { background: #f8f6ff; border: 1px solid #e8e0fa; border-radius: 12px; padding: 24px 28px; margin: 32px 0; }
+    .toc h2 { font-size: 1rem; font-weight: 700; margin-bottom: 14px; color: #1a0533; border: none; padding: 0; margin-top: 0; }
+    .toc ol { padding-left: 20px; }
+    .toc li { margin-bottom: 6px; font-size: .9rem; }
+    h2 { font-size: 1.55rem; font-weight: 800; color: #1a0533; margin: 48px 0 16px; padding-top: 8px; border-top: 2px solid #f3eeff; }
+    h3 { font-size: 1.15rem; font-weight: 700; color: #3b0764; margin: 28px 0 10px; }
+    p { margin-bottom: 18px; }
+    ul, ol { padding-left: 22px; margin-bottom: 18px; }
+    li { margin-bottom: 8px; }
+    .intro-box { background: #f3eeff; border-left: 4px solid #7c3aed; border-radius: 0 10px 10px 0; padding: 20px 24px; margin: 24px 0 32px; font-size: 1.05rem; }
+    .callout { border-radius: 10px; padding: 18px 22px; margin: 24px 0; font-size: .93rem; }
+    .callout-info { background: #eff6ff; border: 1px solid #bfdbfe; }
+    .callout-warning { background: #fffbeb; border: 1px solid #fcd34d; }
+    .callout-success { background: #f0fdf4; border: 1px solid #86efac; }
+    .callout strong { display: block; margin-bottom: 6px; font-weight: 700; }
+    .code-block { background: #1e1b4b; color: #e0e7ff; font-family: 'Courier New', monospace; font-size: .82rem; padding: 20px 22px; border-radius: 10px; overflow-x: auto; margin: 20px 0; line-height: 1.6; white-space: pre; }
+    table { width: 100%; border-collapse: collapse; margin: 24px 0; font-size: .9rem; }
+    th { background: #7c3aed; color: #fff; padding: 12px 14px; text-align: left; font-weight: 700; }
+    td { padding: 11px 14px; border-bottom: 1px solid #e8e0fa; vertical-align: top; }
+    tr:nth-child(even) td { background: #faf8ff; }
+    tr:last-child td { border-bottom: none; }
+    .step-section { background: #faf8ff; border: 1px solid #e8e0fa; border-radius: 14px; padding: 28px 30px; margin: 32px 0; }
+    .step-section-header { display: flex; align-items: center; gap: 16px; margin-bottom: 20px; }
+    .step-section-num { width: 48px; height: 48px; background: #7c3aed; color: #fff; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.3rem; flex-shrink: 0; }
+    .step-section h2 { border: none; padding: 0; margin: 0; font-size: 1.35rem; }
+    .screenshot-suggestion { background: #fdf4ff; border: 1px dashed #c084fc; border-radius: 8px; padding: 12px 16px; font-size: .85rem; color: #6b21a8; margin: 20px 0; }
+    .cta-block { background: linear-gradient(135deg, #7c3aed 0%, #5b21b6 100%); color: #fff; border-radius: 16px; padding: 36px 40px; margin: 48px 0; text-align: center; }
+    .cta-block h3 { font-size: 1.5rem; font-weight: 800; margin-bottom: 12px; color: #fff; border: none; padding: 0; }
+    .cta-block p { color: rgba(255,255,255,0.9); margin-bottom: 0; font-size: 1rem; }
+    .cta-btn { display: inline-block; background: #fff; color: #7c3aed; font-weight: 800; font-size: 1rem; padding: 14px 28px; border-radius: 8px; margin: 20px 0 10px; text-decoration: none; }
+    .cta-btn:hover { background: #f3eeff; text-decoration: none; }
+    .cta-sub { font-size: .82rem; color: rgba(255,255,255,0.7); margin-top: 0; }
+    .faq-item { border-bottom: 1px solid #e8e0fa; padding: 0; }
+    .faq-question { width: 100%; background: none; border: none; text-align: left; padding: 18px 0; font-size: 1rem; font-weight: 700; color: #1a0533; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+    .faq-question:hover { color: #7c3aed; }
+    .faq-icon { flex-shrink: 0; width: 22px; height: 22px; background: #f3eeff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: .85rem; color: #7c3aed; font-weight: 700; transition: transform .2s; }
+    .faq-answer { padding: 0 0 18px; font-size: .95rem; color: #374151; display: none; }
+    .faq-item.open .faq-answer { display: block; }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+    .platform-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 24px 0; }
+    .platform-card { background: #faf8ff; border: 1px solid #e8e0fa; border-radius: 10px; padding: 16px 14px; }
+    .platform-card .platform-name { font-size: .88rem; font-weight: 700; color: #1a0533; margin-bottom: 6px; }
+    .platform-card .platform-detail { font-size: .8rem; color: #6b7280; line-height: 1.5; }
+    .tag-table-wrap { overflow-x: auto; }
+    @media (max-width: 600px) { .platform-grid { grid-template-columns: 1fr 1fr; } h1 { font-size: 1.7rem; } .step-section { padding: 20px 18px; } }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="https://rankframe.com">RankFrame</a>
+  <span>|</span>
+  <a href="https://rankframe.com/blog" style="color:rgba(255,255,255,0.8);font-weight:400">Blog</a>
+</header>
+
+<nav class="breadcrumb">
+  <a href="https://rankframe.com">Home</a><span>›</span>
+  <a href="https://rankframe.com/blog">Blog</a><span>›</span>
+  How to Add Open Graph Tags in Framer
+</nav>
+
+<main class="container">
+
+  <div class="article-meta">
+    <span class="article-category">SEO</span>
+    <h1>How to Add Open Graph Tags in Framer (Social Sharing SEO Guide)</h1>
+    <p class="article-byline">By <strong>RankFrame Team</strong> &nbsp;·&nbsp; May 3, 2026 &nbsp;·&nbsp; 12 min read</p>
+  </div>
+
+  <div class="intro-box">
+    When someone shares your Framer site on LinkedIn, X, Slack, or WhatsApp, the platform reads Open Graph meta tags from your page to generate a preview card. Without correct OG tags, shares show a blank image, the wrong title, or a scraped snippet of body text. This guide covers how to set OG tags in Framer natively, how to override them per page and for CMS collections, how to add Twitter Card tags, and how to test everything before your next share.
+  </div>
+
+  <nav class="toc">
+    <h2>Table of Contents</h2>
+    <ol>
+      <li><a href="#what-are-og-tags">What are Open Graph tags?</a></li>
+      <li><a href="#which-platforms">Which platforms use Open Graph tags?</a></li>
+      <li><a href="#essential-og-tags">The 4 essential OG tags</a></li>
+      <li><a href="#twitter-card-tags">Twitter Card tags</a></li>
+      <li><a href="#full-og-code">Full OG and Twitter Card code example</a></li>
+      <li><a href="#og-image-requirements">OG image requirements</a></li>
+      <li><a href="#global-og-framer">Set a global OG image in Framer</a></li>
+      <li><a href="#per-page-og">Override OG tags per page in Framer</a></li>
+      <li><a href="#cms-og">Set OG tags for Framer CMS collection pages</a></li>
+      <li><a href="#custom-code-og">Advanced: OG tags via Custom Code</a></li>
+      <li><a href="#testing-og">How to test your OG tags</a></li>
+      <li><a href="#common-mistakes">Common OG mistakes on Framer sites</a></li>
+      <li><a href="#faq">Frequently asked questions</a></li>
+    </ol>
+  </nav>
+
+  <h2 id="what-are-og-tags">What Are Open Graph Tags?</h2>
+
+  <p>Open Graph is a protocol originally developed by Facebook in 2010 that defines a set of HTML meta tags which describe a web page's content for social platforms and messaging apps. When a platform receives a URL to preview, it fetches the page HTML and reads the Open Graph meta tags in the head section to construct the preview card.</p>
+
+  <p>Open Graph tags are placed in the <code>&lt;head&gt;</code> section of your HTML document and use the <code>property</code> attribute rather than the <code>name</code> attribute used by standard meta tags. They are identified by the <code>og:</code> prefix:</p>
+
+  <div class="code-block">&lt;meta property="og:title" content="Your Page Title" /&gt;
+&lt;meta property="og:description" content="A brief description of your page." /&gt;
+&lt;meta property="og:image" content="https://yourdomain.com/og-image.jpg" /&gt;
+&lt;meta property="og:url" content="https://yourdomain.com/your-page" /&gt;</div>
+
+  <p>These four tags are the minimum required for a correct social preview. Without them, platforms either refuse to show a card or use their own best guess, which is typically the page title from the HTML title element, a random excerpt from the page text, and no image.</p>
+
+  <h2 id="which-platforms">Which Platforms Use Open Graph Tags?</h2>
+
+  <p>Open Graph is now the universal standard for social sharing previews. Every major social platform and messaging app reads OG tags:</p>
+
+  <div class="platform-grid">
+    <div class="platform-card">
+      <div class="platform-name">Facebook</div>
+      <div class="platform-detail">Created the OG protocol. Reads all standard og: tags. Uses the Facebook Sharing Debugger for testing.</div>
+    </div>
+    <div class="platform-card">
+      <div class="platform-name">LinkedIn</div>
+      <div class="platform-detail">Reads og:title, og:description, og:image. Has its own Post Inspector tool. Caches aggressively.</div>
+    </div>
+    <div class="platform-card">
+      <div class="platform-name">X (Twitter)</div>
+      <div class="platform-detail">Reads Twitter Card tags preferentially. Falls back to OG tags. Requires twitter:card to activate cards.</div>
+    </div>
+    <div class="platform-card">
+      <div class="platform-name">Slack</div>
+      <div class="platform-detail">Reads og:title, og:description, og:image to generate link unfurls in channels and DMs.</div>
+    </div>
+    <div class="platform-card">
+      <div class="platform-name">WhatsApp</div>
+      <div class="platform-detail">Reads og:title, og:description, og:image for link preview cards. Square-crops the image for display.</div>
+    </div>
+    <div class="platform-card">
+      <div class="platform-name">iMessage</div>
+      <div class="platform-detail">Uses og:title, og:description, og:image for rich link previews on iOS and macOS.</div>
+    </div>
+  </div>
+
+  <p>Discord, Telegram, and most other messaging platforms also read Open Graph tags for link preview generation. Setting OG tags correctly in Framer improves the appearance of your site every time anyone shares a link anywhere.</p>
+
+  <h2 id="essential-og-tags">The 4 Essential OG Tags</h2>
+
+  <table class="tag-table-wrap">
+    <thead>
+      <tr>
+        <th>Tag</th>
+        <th>What It Controls</th>
+        <th>Recommended Value</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>og:title</code></td>
+        <td>The bold headline shown in the share card. Should match or be close to your page's H1 or title tag.</td>
+        <td>Under 60 characters to avoid truncation on most platforms.</td>
+      </tr>
+      <tr>
+        <td><code>og:description</code></td>
+        <td>The descriptive text shown below the title in the share card.</td>
+        <td>100 to 200 characters. Write it as a compelling one-sentence summary that makes people want to click.</td>
+      </tr>
+      <tr>
+        <td><code>og:image</code></td>
+        <td>The preview image shown in the share card. This is the most impactful tag for click-through rate.</td>
+        <td>1200x630px, JPEG or PNG, under 5MB. Use an absolute URL including the https:// prefix.</td>
+      </tr>
+      <tr>
+        <td><code>og:url</code></td>
+        <td>The canonical URL of the page. Used by platforms to deduplicate shares and count social engagement correctly.</td>
+        <td>The full canonical URL of the page, matching your canonical link tag.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>Beyond the four essential tags, there are useful supplementary OG tags. <code>og:type</code> defaults to "website" but should be set to "article" for blog posts and news content. <code>og:site_name</code> displays your brand name separately from the page title in the share card preview on some platforms.</p>
+
+  <h2 id="twitter-card-tags">Twitter Card Tags</h2>
+
+  <p>X (Twitter) introduced its own meta tag format called Twitter Cards before OG became fully universal. While X now falls back to reading OG tags, Twitter Card tags take precedence when both are present. Setting explicit Twitter Card tags gives you control over how your Framer site appears specifically on X.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Tag</th>
+        <th>Purpose</th>
+        <th>Recommended Value</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>twitter:card</code></td>
+        <td>Defines the card type. Required for X to show any card at all.</td>
+        <td><code>summary_large_image</code> for most pages. Shows a full-width image above the text.</td>
+      </tr>
+      <tr>
+        <td><code>twitter:title</code></td>
+        <td>The headline shown in the X card. Can differ from og:title for X-specific copywriting.</td>
+        <td>Under 70 characters to avoid truncation in X's feed layout.</td>
+      </tr>
+      <tr>
+        <td><code>twitter:description</code></td>
+        <td>The description text in the X card.</td>
+        <td>Under 200 characters. X may truncate longer descriptions.</td>
+      </tr>
+      <tr>
+        <td><code>twitter:image</code></td>
+        <td>The image displayed in the X card. Can be different from og:image.</td>
+        <td>Same 1200x630px specification as og:image. Must be an absolute URL.</td>
+      </tr>
+      <tr>
+        <td><code>twitter:site</code></td>
+        <td>Your X account handle, displayed in the card as attribution.</td>
+        <td><code>@yourhandle</code> (optional, but adds credibility and branding)</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="callout callout-info">
+    <strong>summary vs summary_large_image</strong>
+    The <code>summary</code> card type shows a small square thumbnail on the left with text on the right. The <code>summary_large_image</code> card shows a full-width image above the title and description. For most Framer marketing sites and blog posts, <code>summary_large_image</code> is the right choice as it is significantly more eye-catching in the X feed.
+  </div>
+
+  <h2 id="full-og-code">Full OG and Twitter Card Code Example</h2>
+
+  <p>The complete set of Open Graph and Twitter Card tags for a Framer blog post or landing page:</p>
+
+  <div class="code-block">&lt;!-- Open Graph (Facebook, LinkedIn, Slack, WhatsApp, iMessage) --&gt;
+&lt;meta property="og:type" content="website" /&gt;
+&lt;meta property="og:url" content="https://yourdomain.com/your-page" /&gt;
+&lt;meta property="og:title" content="Your Page Title Here" /&gt;
+&lt;meta property="og:description" content="A compelling description of what this page offers, under 200 characters." /&gt;
+&lt;meta property="og:image" content="https://yourdomain.com/assets/og-image.jpg" /&gt;
+&lt;meta property="og:image:width" content="1200" /&gt;
+&lt;meta property="og:image:height" content="630" /&gt;
+&lt;meta property="og:image:alt" content="Description of the image for accessibility" /&gt;
+&lt;meta property="og:site_name" content="Your Brand Name" /&gt;
+&lt;meta property="og:locale" content="en_US" /&gt;
+
+&lt;!-- Twitter Card --&gt;
+&lt;meta name="twitter:card" content="summary_large_image" /&gt;
+&lt;meta name="twitter:site" content="@yourtwitterhandle" /&gt;
+&lt;meta name="twitter:title" content="Your Page Title Here" /&gt;
+&lt;meta name="twitter:description" content="A compelling description of what this page offers, under 200 characters." /&gt;
+&lt;meta name="twitter:image" content="https://yourdomain.com/assets/og-image.jpg" /&gt;
+&lt;meta name="twitter:image:alt" content="Description of the image for accessibility" /></div>
+
+  <p>Notice that <code>og:image:width</code>, <code>og:image:height</code>, and <code>og:image:alt</code> are included alongside the main <code>og:image</code> tag. The width and height hints help some platforms render the preview faster without fetching the image first. The alt text supports accessibility and is used by screen readers when OG cards are displayed in accessible contexts.</p>
+
+  <!-- CTA MID -->
+  <div class="cta-block">
+    <h3>Full SEO Control for Your Framer Site</h3>
+    <p>RankFrame manages meta tags, OG tags, schema markup, sitemap, redirects, and Core Web Vitals all inside the Framer editor. No code switching required.</p>
+    <a class="cta-btn" href="https://www.framer.com/marketplace/plugins/rankframe/" target="_blank">Try RankFrame Free</a>
+    <p class="cta-sub">14-day free trial. Credit card required. Cancel anytime.</p>
+  </div>
+
+  <h2 id="og-image-requirements">OG Image Requirements</h2>
+
+  <p>The OG image is the most visible element in a social share card. Getting the specifications right ensures your image renders correctly across all platforms and is not cropped, distorted, or refused.</p>
+
+  <h3>Size and dimensions</h3>
+  <ul>
+    <li><strong>Recommended size:</strong> 1200x630 pixels (1.91:1 aspect ratio). This is the optimal size for Facebook, LinkedIn, and most other platforms.</li>
+    <li><strong>Minimum size:</strong> 600x315 pixels. Below this, Facebook may not display the image as a large card.</li>
+    <li><strong>Square (1:1) images:</strong> 1200x1200px if you need a single image that works for both OG cards and WhatsApp/iMessage which often crop to square. Not recommended for pages where a landscape image is important.</li>
+  </ul>
+
+  <h3>Format and file size</h3>
+  <ul>
+    <li><strong>Format:</strong> JPEG or PNG. Facebook and LinkedIn explicitly support these. Avoid WebP for OG images as some older crawlers and platform image renderers do not support WebP.</li>
+    <li><strong>File size:</strong> Under 5MB is the Facebook maximum. Under 1MB is strongly recommended for fast preview loading. A 1200x630 JPEG at 80% quality is typically 80 to 150KB.</li>
+  </ul>
+
+  <h3>Content and safe zones</h3>
+  <ul>
+    <li>Keep all important content (logos, headlines, faces) within the central 800x420px safe zone. Platforms that display square or tall crops (WhatsApp, iMessage) will show only the center of your image.</li>
+    <li>Ensure text in the OG image is large enough to read at the dimensions shown in social feeds, where the card may display at 500px wide or less on mobile.</li>
+    <li>Include your brand logo or domain name somewhere visible in the OG image so shares are clearly attributable to your site even when the URL is not prominent.</li>
+  </ul>
+
+  <div class="screenshot-suggestion">Screenshot suggestion: 1200x630px OG image template showing the safe zone outlined in the center (800x420px), with a branded header, headline text, and subtle gradient background. Annotations showing where crops occur for WhatsApp and Twitter.</div>
+
+  <h2 id="global-og-framer">How to Set a Global OG Image in Framer</h2>
+
+  <p>Framer lets you set a site-wide default OG image, title pattern, and description from Site Settings. This global setting applies to every page on your site that does not have a page-specific override.</p>
+
+  <div class="step-section">
+    <div class="step-section-header">
+      <div class="step-section-num">1</div>
+      <h2>Open Framer Site Settings</h2>
+    </div>
+    <p>In the Framer editor, click the site name in the top-left corner or navigate to the settings icon. This opens the Site Settings panel. You can also reach it via the Framer logo menu at the top of the editor.</p>
+    <div class="screenshot-suggestion">Screenshot suggestion: Framer editor with Site Settings panel open, showing the SEO tab selected in the left sidebar of the settings panel.</div>
+  </div>
+
+  <div class="step-section">
+    <div class="step-section-header">
+      <div class="step-section-num">2</div>
+      <h2>Navigate to the SEO Tab</h2>
+    </div>
+    <p>Inside Site Settings, click the SEO tab. This section contains fields for your site's global meta title template, meta description, and social sharing settings.</p>
+    <p>The SEO tab also contains your sitemap settings and robots.txt controls, which are separate from OG tags but worth reviewing while you are here.</p>
+  </div>
+
+  <div class="step-section">
+    <div class="step-section-header">
+      <div class="step-section-num">3</div>
+      <h2>Upload Your Social Image</h2>
+    </div>
+    <p>Scroll down within the SEO tab to find the Social Image section. Click the upload area to choose your prepared 1200x630px OG image. Framer hosts this image on its CDN and generates the absolute URL automatically.</p>
+    <p>Once uploaded, Framer outputs this image as the <code>og:image</code> value for all pages. It also outputs the same URL as <code>twitter:image</code> for Twitter Card previews.</p>
+    <div class="callout callout-success">
+      <strong>Framer auto-handles the og:url tag</strong>
+      Framer automatically sets the <code>og:url</code> meta tag to the current page's canonical URL. You do not need to manually configure this for each page.
+    </div>
+  </div>
+
+  <h2 id="per-page-og">How to Override OG Tags Per Page in Framer</h2>
+
+  <p>The global OG image works as a fallback. For important pages where the content differs significantly (product pages, a pricing page, a key blog post), you should set a custom OG image that reflects the specific page content. A custom image increases click-through rates on social shares by making the preview more relevant and specific.</p>
+
+  <div class="step-section">
+    <div class="step-section-header">
+      <div class="step-section-num">1</div>
+      <h2>Select the Page in the Layers Panel</h2>
+    </div>
+    <p>In the Framer editor canvas, use the layers panel on the left to select the page you want to configure. Clicking the page name at the top level of the layers panel selects the page itself rather than any element on it.</p>
+  </div>
+
+  <div class="step-section">
+    <div class="step-section-header">
+      <div class="step-section-num">2</div>
+      <h2>Open Page Settings</h2>
+    </div>
+    <p>With the page selected, the right panel switches to Page Settings. Scroll down within this panel to find the SEO section. If you do not see an SEO section, ensure the page itself is selected (not a frame or component on the page).</p>
+    <div class="screenshot-suggestion">Screenshot suggestion: Framer right-side panel showing Page Settings with the SEO section expanded, displaying the Social Image upload field and custom title/description override fields.</div>
+  </div>
+
+  <div class="step-section">
+    <div class="step-section-header">
+      <div class="step-section-num">3</div>
+      <h2>Enable the Social Image Override</h2>
+    </div>
+    <p>In the SEO section of Page Settings, toggle on the social image override (labeled something like "Custom Social Image" depending on your Framer version). Once enabled, you will see an image upload field and text fields for a custom OG title and OG description.</p>
+    <p>Upload your page-specific OG image and fill in the title and description. These values override the global settings only for this page. All other pages continue to use the site-level defaults.</p>
+  </div>
+
+  <h2 id="cms-og">How to Set OG Tags for Framer CMS Collection Pages</h2>
+
+  <p>CMS collection pages present a unique challenge: each item in the collection (each blog post, each case study, each product) should have its own unique OG title, description, and image. Manually overriding each item is impractical for collections with more than a handful of items.</p>
+
+  <p>Framer handles this by letting you bind the OG fields for a CMS collection template to dynamic CMS variables. Here is how to set it up:</p>
+
+  <h3>Step 1: Add OG fields to your CMS collection</h3>
+  <p>In the Framer CMS collection editor, add the following fields if they do not already exist:</p>
+  <ul>
+    <li>A text field named "OG Title" or "Social Title" (can default to the same value as your main title field).</li>
+    <li>A text field named "OG Description" or "Meta Description" (a short summary for use in both meta description and og:description).</li>
+    <li>An image field named "OG Image" or "Social Image" (separate from your article's featured image if you want different cropping).</li>
+  </ul>
+
+  <h3>Step 2: Bind the collection template SEO fields</h3>
+  <p>Open the CMS collection template page in the Framer editor (the template that defines how individual collection items render). Select the page/template at the top of the layers panel. In Page Settings on the right, scroll to the SEO section.</p>
+  <p>In the social image field, click the variable binding icon (a small database or chain link icon next to the input). Select the OG Image field from your CMS collection. Repeat this for the OG title and description fields, binding them to the appropriate CMS text fields.</p>
+
+  <h3>Step 3: Publish and populate your CMS items</h3>
+  <p>With the bindings set, any CMS item that has an OG Image uploaded will use that specific image in its social preview. Items without an OG Image uploaded will fall back to the global site OG image from Site Settings. Fill in OG image, title, and description for your most important CMS items, particularly the blog posts and case studies you actively promote on social media.</p>
+
+  <div class="callout callout-info">
+    <strong>CMS OG images and Framer bandwidth</strong>
+    OG images are loaded by social platform crawlers when someone shares a link, not by regular page visitors. They contribute to bandwidth consumption but typically at much lower volume than page asset delivery. Keep OG images under 1MB as a best practice.
+  </div>
+
+  <h2 id="custom-code-og">Advanced: Adding OG Tags via Framer Custom Code</h2>
+
+  <p>Framer's native SEO settings handle the most common OG scenarios. However, there are situations where you need more control than the UI provides. The Framer Custom Code head section lets you add any OG meta tag directly as HTML.</p>
+
+  <p>Use cases for the custom code approach:</p>
+  <ul>
+    <li>Setting <code>twitter:site</code> or <code>twitter:creator</code> globally (your X account handle, not supported in Framer's native SEO UI).</li>
+    <li>Adding <code>og:type</code> as "article" with <code>article:published_time</code> and <code>article:author</code> for blog post pages.</li>
+    <li>Adding <code>og:locale</code> for multi-language sites.</li>
+    <li>Setting an <code>og:image:secure_url</code> alongside <code>og:image</code> for platforms that require explicit HTTPS image URLs.</li>
+  </ul>
+
+  <p>To add custom OG tags in Framer:</p>
+  <ol>
+    <li>Open Site Settings (for site-wide tags) or Page Settings (for page-specific tags).</li>
+    <li>Navigate to the Custom Code section.</li>
+    <li>In the Head section, paste your additional meta tags.</li>
+    <li>Publish the site for the changes to take effect.</li>
+  </ol>
+
+  <div class="code-block">&lt;!-- Add to Framer Custom Code head for global Twitter Card attribution --&gt;
+&lt;meta name="twitter:site" content="@yourtwitterhandle" /&gt;
+&lt;meta name="twitter:creator" content="@yourtwitterhandle" /&gt;
+
+&lt;!-- Add to Framer Custom Code head for article OG type on blog pages --&gt;
+&lt;meta property="og:type" content="article" /&gt;
+&lt;meta property="og:locale" content="en_US" /&gt;
+&lt;meta property="og:site_name" content="Your Brand Name" /&gt;</div>
+
+  <div class="callout callout-warning">
+    <strong>Custom code overrides and duplicates</strong>
+    If Framer's native SEO settings already output an <code>og:title</code> tag and you also add one in Custom Code, the page will have two <code>og:title</code> tags. Most platforms read the first occurrence. If you are using Custom Code to override a tag that Framer outputs natively, be aware of the ordering: Framer's generated tags appear in the head before Custom Code head content in most Framer versions. Test with the Facebook Debugger to confirm which value is being read.
+  </div>
+
+  <h2 id="testing-og">How to Test Your Framer OG Tags</h2>
+
+  <p>Always test OG tags using your live published Framer URL. Social platform crawlers cannot access Framer's preview environment or password-protected staging sites. The page must be publicly accessible.</p>
+
+  <h3>Facebook Sharing Debugger</h3>
+  <p>The <a href="https://developers.facebook.com/tools/debug/" target="_blank" rel="noopener">Facebook Sharing Debugger</a> at developers.facebook.com/tools/debug is the most comprehensive OG testing tool available. Enter your URL and it shows exactly which OG tags Facebook read from your page, any warnings or errors, and a preview of how the share card will appear. It also has a "Scrape Again" button that forces Facebook to clear its cache and re-fetch your OG tags. Use this whenever you update OG tags on a page that was previously shared, as Facebook caches OG data aggressively.</p>
+
+  <h3>LinkedIn Post Inspector</h3>
+  <p>Visit <a href="https://www.linkedin.com/post-inspector/" target="_blank" rel="noopener">linkedin.com/post-inspector</a> and enter your URL to preview exactly how LinkedIn will display your page when shared as a post. LinkedIn has its own OG cache, so changes to OG tags may not appear immediately without using the Inspector to force a re-fetch.</p>
+
+  <h3>Twitter Card Validator</h3>
+  <p>X no longer maintains a public card validator tool as an open interface, but you can test Twitter Card rendering by posting a URL in a tweet preview within the X app or web interface. The card should render inline. For debugging, the <a href="https://opengraph.xyz" target="_blank" rel="noopener">opengraph.xyz</a> tool provides Twitter Card previews alongside OG previews for multiple platforms simultaneously.</p>
+
+  <h3>opengraph.xyz</h3>
+  <p><a href="https://opengraph.xyz" target="_blank" rel="noopener">opengraph.xyz</a> is a free multi-platform OG preview tool. Enter your URL and it shows how your link will appear on Facebook, Twitter, LinkedIn, Slack, and WhatsApp in a single view. It is the fastest way to spot problems across all platforms at once without using each platform's individual debugging tool.</p>
+
+  <div class="screenshot-suggestion">Screenshot suggestion: opengraph.xyz interface showing a Framer site URL with previews displayed for Facebook, Twitter, LinkedIn, and Slack side by side, with all OG data correctly populated.</div>
+
+  <h2 id="common-mistakes">Common OG Mistakes on Framer Sites</h2>
+
+  <p>These are the most frequently seen OG configuration errors on Framer sites:</p>
+
+  <h3>1. Using a relative URL for og:image</h3>
+  <p>The <code>og:image</code> value must be an absolute URL including the protocol. <code>/assets/og-image.jpg</code> will not work. The correct format is <code>https://yourdomain.com/assets/og-image.jpg</code>. Framer's native OG image upload generates absolute URLs automatically, but if you add OG tags manually via Custom Code, ensure you use full absolute URLs.</p>
+
+  <h3>2. Not updating the cache after changing OG tags</h3>
+  <p>Facebook, LinkedIn, and other platforms cache OG data. If you update your OG image or title in Framer and republish, the old preview still appears when someone shares the link because platforms serve their cached version. Use the Facebook Sharing Debugger's "Scrape Again" feature and LinkedIn's Post Inspector to force a cache refresh for specific URLs.</p>
+
+  <h3>3. Using an OG image that is too small</h3>
+  <p>Images smaller than 600x315 pixels may not display as the primary share image on Facebook. Images smaller than 300x157 pixels will typically be ignored entirely. Create OG images at 1200x630px and upload them at full resolution.</p>
+
+  <h3>4. Setting the same OG image for every page</h3>
+  <p>Using a generic branded OG image for every page on your site is better than no image, but it is a missed opportunity. Shares of specific blog posts, product pages, or case studies are far more compelling when the preview image reflects the specific content being shared. Invest in page-specific OG images for your highest-value pages.</p>
+
+  <h3>5. Including text in the OG image that is too small to read</h3>
+  <p>OG images often display at 500px wide or less in social feeds on mobile. Text that appears readable when designing at 1200px may be completely illegible at display size. Use large, bold typography (minimum 40px equivalent at the 1200px canvas size) for any text included in OG images.</p>
+
+  <h3>6. Not setting og:image for CMS collection items</h3>
+  <p>Framer CMS blog posts and collection items without a bound OG image field fall back to the global site OG image. This means shares of individual blog posts show your generic site image rather than the post's featured image. Set up CMS OG image binding as described above and populate images for your most important posts.</p>
+
+  <h3>7. Missing og:type on article pages</h3>
+  <p>The default <code>og:type</code> value is "website," which is correct for the homepage and product pages. Blog posts and news articles should use "article" as the type, which unlocks additional properties like <code>article:published_time</code> and <code>article:author</code> that platforms use to display publication dates and author attribution in rich shares.</p>
+
+  <h2 id="faq">Frequently Asked Questions</h2>
+
+  <div class="faq-item">
+    <button class="faq-question">Does Framer support Open Graph tags? <span class="faq-icon">+</span></button>
+    <div class="faq-answer">Yes. Framer natively supports Open Graph tags through Site Settings and individual page settings. You can set a global og:image, og:title, and og:description in Site Settings under the SEO tab, and override these on a per-page basis in each page's settings panel. For CMS collection pages, Framer supports binding OG fields to dynamic CMS variables so each collection item generates its own unique social preview data automatically.</div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question">How do I add a social sharing image in Framer? <span class="faq-icon">+</span></button>
+    <div class="faq-answer">Go to Site Settings in Framer, click the SEO tab, and scroll to the Social Image section. Upload your 1200x630px image there. This becomes the default og:image for your entire site. To set a different image for a specific page, open that page's settings panel in the Framer canvas, scroll to the SEO section, and upload a page-specific social image. The page-level setting always overrides the site-level default.</div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question">What size should the Framer OG image be? <span class="faq-icon">+</span></button>
+    <div class="faq-answer">The standard Open Graph image size is 1200x630 pixels at a 1.91:1 aspect ratio. This is the optimal size for Facebook, LinkedIn, and X (Twitter). The minimum accepted size is 600x315 pixels, but smaller images may appear blurry or may not render as the primary share image on some platforms. Use JPEG or PNG format, keep the file under 5MB (ideally under 1MB for fast preview loading), and keep important content away from the outer edges as some platforms crop to square thumbnails.</div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question">How do I test Open Graph tags for my Framer site? <span class="faq-icon">+</span></button>
+    <div class="faq-answer">Use any of these free tools: Facebook Sharing Debugger at developers.facebook.com/tools/debug (also clears Facebook's cache of your old OG data), LinkedIn Post Inspector at linkedin.com/post-inspector, or opengraph.xyz which previews how your URL will appear across multiple platforms simultaneously. Always test with your live published Framer URL, not the preview URL, as crawlers cannot access Framer's preview environment.</div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question">Can you set different OG images per page in Framer? <span class="faq-icon">+</span></button>
+    <div class="faq-answer">Yes. Framer supports per-page OG image overrides natively. In the Framer canvas, select any page from the layers panel, open the Page Settings panel on the right, and scroll to the SEO section. You will find a social image upload field and custom title and description fields. Any values entered here override the global site defaults for that specific page. For CMS collection pages, you can bind the OG image to a dynamic CMS field so each collection item uses its own image automatically.</div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question">Do Twitter Cards work on Framer sites? <span class="faq-icon">+</span></button>
+    <div class="faq-answer">Yes. Framer outputs twitter:card and twitter:image meta tags alongside the standard Open Graph tags when you set a social image in Site Settings or page settings. X (formerly Twitter) reads both OG tags and Twitter Card tags, and uses Twitter Card tags preferentially when both are present. If you need to set specific twitter:site or twitter:creator tags, add them manually in Framer's Custom Code head section. The summary_large_image card type is the recommended format for Framer sites as it displays the image prominently in the X feed.</div>
+  </div>
+
+  <!-- CTA END -->
+  <div class="cta-block">
+    <h3>Complete SEO for Your Framer Site</h3>
+    <p>RankFrame manages meta tags, Open Graph, schema markup, Core Web Vitals, sitemaps, and more, all from inside Framer. One plugin for your entire Framer SEO workflow.</p>
+    <a class="cta-btn" href="https://www.framer.com/marketplace/plugins/rankframe/" target="_blank">Install RankFrame</a>
+    <p class="cta-sub">14-day free trial. Credit card required. Cancel anytime.</p>
+  </div>
+
+  <p style="font-size:.8rem;color:#9ca3af;margin-top:32px">Always validate schemas using <a href="https://search.google.com/test/rich-results" target="_blank">Google's Rich Results Test</a> or the <a href="https://validator.schema.org/" target="_blank">Schema.org Validator</a>.</p>
+
+  <!-- SEO Details Panel -->
+  <div id="seo-details" style="margin:60px 0 0;padding:28px 32px;background:#f8f6ff;border:1px solid #e8e0fa;border-radius:14px;">
+    <h3 style="font-size:1rem;font-weight:700;color:#1a0533;margin:0 0 20px;">SEO Details</h3>
+    <div id="seo-fields"></div>
+  </div>
+
+</main>
+
+<script>
+  document.querySelectorAll('.faq-question').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var item = this.closest('.faq-item');
+      var isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(function(i) { i.classList.remove('open'); });
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+</script>
+
+<script>
+(function(){
+  var f=[
+    {label:'Title',value:document.querySelector('title')?document.querySelector('title').textContent:''},
+    {label:'Description',value:(document.querySelector('meta[name="description"]')||{}).content||''},
+    {label:'Keywords',value:(document.querySelector('meta[name="keywords"]')||{}).content||''},
+    {label:'Canonical',value:(document.querySelector('link[rel="canonical"]')||{}).href||''}
+  ];
+  var schemas=[];var _si=0;Array.from(document.querySelectorAll('script[type="application/ld+json"]')).forEach(function(x){try{var j=JSON.parse(x.textContent);if(j['@graph']&&Array.isArray(j['@graph'])){j['@graph'].forEach(function(item){var t=item['@type']||'Schema';schemas.push({label:'Schema: '+t,value:JSON.stringify(item,null,2)});});}else{var t=j['@type']||('Schema '+(++_si));schemas.push({label:'Schema: '+t,value:x.textContent.trim()});}}catch(e){schemas.push({label:'Schema '+(++_si),value:x.textContent.trim()});}});
+  var all=f.concat(schemas);
+  var h='';
+  all.forEach(function(x){
+    h+='<div style="margin-bottom:14px"><div style="font-size:.78rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#7c3aed;margin-bottom:4px">'+x.label+'</div><div style="display:flex;align-items:flex-start;gap:8px"><code style="flex:1;background:#fff;border:1px solid #e0d8f0;border-radius:6px;padding:8px 10px;font-size:.82rem;color:#1a0533;white-space:pre-wrap;word-break:break-all">'+x.value.replace(/</g,'&lt;').replace(/>/g,'&gt;')+'</code><button onclick="navigator.clipboard.writeText(this.dataset.v)" data-v="'+x.value.replace(/"/g,'&quot;')+'" style="flex-shrink:0;padding:6px 12px;background:#7c3aed;color:#fff;border:none;border-radius:6px;font-size:.78rem;font-weight:700;cursor:pointer">Copy</button></div></div>';
+  });
+  document.getElementById('seo-fields').innerHTML=h;
+})();
+</script>
+
+</body>
+</html>
