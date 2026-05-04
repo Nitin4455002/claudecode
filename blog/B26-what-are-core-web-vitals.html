@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>What Are Core Web Vitals? LCP, CLS, INP Explained (2026 Guide)</title>
+  <meta name="description" content="Core Web Vitals are Google's three metrics for measuring user experience: LCP (loading), CLS (visual stability), and INP (interactivity). Learn what each means and how to optimize them." />
+  <meta name="keywords" content="what are core web vitals, core web vitals explained, lcp cls inp, page speed seo, core web vitals 2026" />
+  <link rel="canonical" href="https://rankframe.com/blog/what-are-core-web-vitals" />
+  <meta property="og:title" content="What Are Core Web Vitals? LCP, CLS, INP Explained (2026 Guide)" />
+  <meta property="og:description" content="Core Web Vitals are Google's three metrics for measuring user experience: LCP (loading), CLS (visual stability), and INP (interactivity). Learn what each means and how to optimize them." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://rankframe.com/blog/what-are-core-web-vitals" />
+  <meta property="og:site_name" content="RankFrame" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="What Are Core Web Vitals? LCP, CLS, INP Explained (2026 Guide)" />
+  <meta name="twitter:description" content="Core Web Vitals are Google's three metrics for measuring user experience: LCP (loading), CLS (visual stability), and INP (interactivity). Learn what each means and how to optimize them." />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "What Are Core Web Vitals? LCP, CLS, INP Explained (2026 Guide)",
+    "description": "Core Web Vitals are Google's three metrics for measuring user experience: LCP (loading), CLS (visual stability), and INP (interactivity). Learn what each means and how to optimize them.",
+    "author": {
+      "@type": "Organization",
+      "name": "RankFrame",
+      "url": "https://rankframe.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://framerusercontent.com/images/XE1sqaQyYF9jXODewkOIlcQ3KKo.png"
+      }
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "RankFrame",
+      "url": "https://rankframe.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://framerusercontent.com/images/XE1sqaQyYF9jXODewkOIlcQ3KKo.png"
+      }
+    },
+    "datePublished": "2026-05-04",
+    "dateModified": "2026-05-04",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://rankframe.com/blog/what-are-core-web-vitals"
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://rankframe.com" },
+      { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://rankframe.com/blog" },
+      { "@type": "ListItem", "position": 3, "name": "What Are Core Web Vitals?", "item": "https://rankframe.com/blog/what-are-core-web-vitals" }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "RankFrame",
+    "url": "https://rankframe.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://framerusercontent.com/images/XE1sqaQyYF9jXODewkOIlcQ3KKo.png"
+    },
+    "sameAs": [
+      "https://www.framer.com/marketplace/plugins/rankframe/"
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is a good Core Web Vitals score?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A page passes Core Web Vitals when at least 75% of real user visits hit 'Good' on all three metrics: LCP under 2.5 seconds, CLS under 0.1, and INP under 200 milliseconds. The 75th percentile threshold is measured separately on mobile and desktop."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do Core Web Vitals affect ranking?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Core Web Vitals have been a confirmed Google ranking signal since the Page Experience update in 2021. The impact is modest compared to relevance and content quality, but CWV can act as a tiebreaker between similarly relevant pages and they affect user behavior signals."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What replaced FID in Core Web Vitals?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "INP (Interaction to Next Paint) replaced FID (First Input Delay) as a Core Web Vital on March 12, 2024. INP is a more comprehensive metric because it measures the responsiveness of all interactions on a page, not just the first one."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I check Core Web Vitals?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Use PageSpeed Insights at pagespeed.web.dev for individual URLs. For site-wide field data, open the Core Web Vitals report in Google Search Console. Lighthouse in Chrome DevTools provides lab data for debugging, and the CrUX dataset gives you raw real-user data."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What causes poor LCP?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Slow LCP is most often caused by slow server response times, render-blocking JavaScript and CSS, large unoptimized hero images, and resources loaded too late in the page. Lazy-loading the LCP image, missing image dimensions, and slow third-party scripts also contribute."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between lab data and field data?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Lab data is collected in a controlled environment by tools like Lighthouse, simulating one device on one network. Field data (also called RUM, Real User Monitoring) is collected from actual visitors loading your site on real devices and connections. Google uses field data from the CrUX dataset for ranking, not lab data."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; color: #1a0533; background: #fff; line-height: 1.7; font-size: 1rem; }
+    a { color: #7c3aed; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .site-header { background: #7c3aed; padding: 14px 24px; display: flex; align-items: center; gap: 12px; }
+    .site-header a { color: #fff; font-weight: 700; font-size: 1.1rem; }
+    .site-header span { color: rgba(255,255,255,0.6); font-size: .9rem; }
+    .breadcrumb { background: #f8f6ff; border-bottom: 1px solid #e8e0fa; padding: 10px 24px; font-size: .82rem; color: #6b7280; }
+    .breadcrumb a { color: #7c3aed; }
+    .breadcrumb span { margin: 0 6px; }
+    .container { max-width: 820px; margin: 0 auto; padding: 40px 24px 80px; }
+    .article-meta { margin-bottom: 32px; }
+    .article-category { display: inline-block; background: #f3eeff; color: #7c3aed; font-size: .78rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; padding: 4px 10px; border-radius: 20px; margin-bottom: 14px; }
+    h1 { font-size: 2.2rem; font-weight: 800; line-height: 1.2; color: #1a0533; margin-bottom: 16px; }
+    .article-byline { font-size: .85rem; color: #6b7280; }
+    .article-byline strong { color: #1a0533; }
+    .toc { background: #f8f6ff; border: 1px solid #e8e0fa; border-radius: 12px; padding: 24px 28px; margin: 32px 0; }
+    .toc h2 { font-size: 1rem; font-weight: 700; margin-bottom: 14px; color: #1a0533; }
+    .toc ol { padding-left: 20px; }
+    .toc li { margin-bottom: 6px; font-size: .9rem; }
+    h2 { font-size: 1.55rem; font-weight: 800; color: #1a0533; margin: 48px 0 16px; padding-top: 8px; border-top: 2px solid #f3eeff; }
+    h3 { font-size: 1.15rem; font-weight: 700; color: #3b0764; margin: 28px 0 10px; }
+    p { margin-bottom: 18px; }
+    ul, ol { padding-left: 22px; margin-bottom: 18px; }
+    li { margin-bottom: 8px; }
+    .intro-box { background: #f3eeff; border-left: 4px solid #7c3aed; border-radius: 0 10px 10px 0; padding: 20px 24px; margin: 24px 0 32px; font-size: 1.05rem; }
+    .callout { border-radius: 10px; padding: 18px 22px; margin: 24px 0; font-size: .93rem; }
+    .callout-info { background: #eff6ff; border: 1px solid #bfdbfe; }
+    .callout-warning { background: #fffbeb; border: 1px solid #fcd34d; }
+    .callout-success { background: #f0fdf4; border: 1px solid #86efac; }
+    .callout strong { display: block; margin-bottom: 6px; font-weight: 700; }
+    .code-block { background: #1e1b4b; color: #e0e7ff; font-family: 'Courier New', monospace; font-size: .82rem; padding: 20px 22px; border-radius: 10px; overflow-x: auto; margin: 20px 0; line-height: 1.6; white-space: pre; }
+    table { width: 100%; border-collapse: collapse; margin: 24px 0; font-size: .9rem; }
+    th { background: #7c3aed; color: #fff; padding: 12px 14px; text-align: left; font-weight: 700; }
+    td { padding: 11px 14px; border-bottom: 1px solid #e8e0fa; vertical-align: top; }
+    tr:nth-child(even) td { background: #faf8ff; }
+    tr:last-child td { border-bottom: none; }
+    .step-section { background: #faf8ff; border: 1px solid #e8e0fa; border-radius: 14px; padding: 28px 30px; margin: 32px 0; }
+    .step-section-header { display: flex; align-items: center; gap: 16px; margin-bottom: 20px; }
+    .step-section-num { width: 48px; height: 48px; background: #7c3aed; color: #fff; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.3rem; flex-shrink: 0; }
+    .step-section h2 { border: none; padding: 0; margin: 0; font-size: 1.35rem; }
+    .screenshot-suggestion { background: #fdf4ff; border: 1px dashed #c084fc; border-radius: 8px; padding: 12px 16px; font-size: .85rem; color: #6b21a8; margin: 20px 0; }
+    .cta-block { background: linear-gradient(135deg, #7c3aed 0%, #5b21b6 100%); color: #fff; border-radius: 16px; padding: 36px 40px; margin: 48px 0; text-align: center; }
+    .cta-block h3 { font-size: 1.5rem; font-weight: 800; margin-bottom: 12px; color: #fff; border: none; padding: 0; }
+    .cta-block p { color: rgba(255,255,255,0.9); margin-bottom: 0; font-size: 1rem; }
+    .cta-btn { display: inline-block; background: #fff; color: #7c3aed; font-weight: 800; font-size: 1rem; padding: 14px 28px; border-radius: 8px; margin: 20px 0 10px; text-decoration: none; }
+    .cta-btn:hover { background: #f3eeff; text-decoration: none; }
+    .cta-sub { font-size: .82rem; color: rgba(255,255,255,0.7); margin-top: 0; }
+    .faq-item { border-bottom: 1px solid #e8e0fa; padding: 0; }
+    .faq-question { width: 100%; background: none; border: none; text-align: left; padding: 18px 0; font-size: 1rem; font-weight: 700; color: #1a0533; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+    .faq-question:hover { color: #7c3aed; }
+    .faq-icon { flex-shrink: 0; width: 22px; height: 22px; background: #f3eeff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: .85rem; color: #7c3aed; font-weight: 700; transition: transform .2s; }
+    .faq-answer { padding: 0 0 18px; font-size: .95rem; color: #374151; display: none; }
+    .faq-item.open .faq-answer { display: block; }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="https://rankframe.com">RankFrame</a>
+  <span>|</span>
+  <a href="https://rankframe.com/blog" style="color:rgba(255,255,255,0.8);font-weight:400">Blog</a>
+</header>
+
+<nav class="breadcrumb">
+  <a href="https://rankframe.com">Home</a><span>›</span>
+  <a href="https://rankframe.com/blog">Blog</a><span>›</span>
+  What Are Core Web Vitals?
+</nav>
+
+<main class="container">
+  <div class="article-meta">
+    <span class="article-category">SEO Fundamentals</span>
+    <h1>What Are Core Web Vitals? LCP, CLS, INP Explained (2026)</h1>
+    <p class="article-byline">By <strong>RankFrame Team</strong> · Updated May 2026 · 17 min read</p>
+  </div>
+
+  <div class="intro-box">
+    Core Web Vitals are three metrics Google uses to measure how users experience the loading speed, visual stability, and responsiveness of a web page. The three metrics are LCP (Largest Contentful Paint), CLS (Cumulative Layout Shift), and INP (Interaction to Next Paint). Together they form a confirmed Google ranking signal and one of the most important technical SEO benchmarks for any modern website.
+  </div>
+
+  <nav class="toc">
+    <h2>In this guide</h2>
+    <ol>
+      <li><a href="#what">What are Core Web Vitals?</a></li>
+      <li><a href="#why">Why Core Web Vitals matter for SEO</a></li>
+      <li><a href="#summary">The three metrics at a glance</a></li>
+      <li><a href="#lcp">LCP: Largest Contentful Paint</a></li>
+      <li><a href="#cls">CLS: Cumulative Layout Shift</a></li>
+      <li><a href="#inp">INP: Interaction to Next Paint</a></li>
+      <li><a href="#other">Other Web Vitals (TTFB, FCP)</a></li>
+      <li><a href="#measure">How to measure Core Web Vitals</a></li>
+      <li><a href="#field-vs-lab">Field data vs lab data</a></li>
+      <li><a href="#framer">If you have a Framer site</a></li>
+      <li><a href="#faq">Frequently asked questions</a></li>
+    </ol>
+  </nav>
+
+  <h2 id="what">What are Core Web Vitals?</h2>
+  <p>Core Web Vitals are a subset of Web Vitals, an initiative Google launched in 2020 to give site owners a common, simplified set of performance metrics that map directly to user experience. The "Core" Web Vitals are the three metrics Google considers most important for every page on the web, and they are the ones used as ranking signals.</p>
+  <p>The current three Core Web Vitals are:</p>
+  <ul>
+    <li><strong>Largest Contentful Paint (LCP)</strong>: how fast the main content loads</li>
+    <li><strong>Cumulative Layout Shift (CLS)</strong>: how stable the layout is during loading</li>
+    <li><strong>Interaction to Next Paint (INP)</strong>: how quickly the page responds to user input</li>
+  </ul>
+  <p>Each one targets a specific dimension of user experience. LCP is about loading. CLS is about visual stability. INP is about interactivity. A page that does well on all three feels fast, stable, and responsive to real users, which is exactly what Google wants to surface in search results.</p>
+
+  <h2 id="why">Why Core Web Vitals matter for SEO</h2>
+  <p>Google rolled Core Web Vitals into its ranking algorithm as part of the <strong>Page Experience update</strong> in mid-2021. They have been a confirmed ranking signal ever since. In March 2024, Google replaced the original responsiveness metric (FID, First Input Delay) with the more comprehensive INP, which is the version that has applied throughout 2024, 2025, and into 2026.</p>
+
+  <p>Three things to understand about CWV as a ranking factor:</p>
+  <ol>
+    <li><strong>The impact is real but modest.</strong> Google has consistently described CWV as a tiebreaker, not a primary ranker. If two pages have similar relevance and content quality, the one with better CWV wins.</li>
+    <li><strong>Field data is what counts, not lab data.</strong> Google measures CWV from real Chrome users via the Chrome User Experience Report (CrUX) dataset. A page only gets the boost when at least 75% of real visits pass the threshold.</li>
+    <li><strong>The indirect effects are bigger than the direct ones.</strong> Faster pages get more conversions, lower bounce rates, more shares, and more backlinks. Those second-order effects often outweigh the direct ranking signal.</li>
+  </ol>
+
+  <div class="callout callout-info">
+    <strong>What "passing" means</strong>
+    A page passes Core Web Vitals when the 75th percentile of real user visits hits "Good" on all three metrics, measured separately for mobile and desktop over a rolling 28-day window.
+  </div>
+
+  <h2 id="summary">The three metrics at a glance</h2>
+  <p>Before going deep on each one, here is the cheat sheet you can refer back to.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Metric</th>
+        <th>Measures</th>
+        <th>Good</th>
+        <th>Needs improvement</th>
+        <th>Poor</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>LCP</strong></td>
+        <td>Loading speed of main content</td>
+        <td>≤ 2.5s</td>
+        <td>2.5s to 4.0s</td>
+        <td>&gt; 4.0s</td>
+      </tr>
+      <tr>
+        <td><strong>CLS</strong></td>
+        <td>Visual stability during load</td>
+        <td>≤ 0.1</td>
+        <td>0.1 to 0.25</td>
+        <td>&gt; 0.25</td>
+      </tr>
+      <tr>
+        <td><strong>INP</strong></td>
+        <td>Responsiveness to user input</td>
+        <td>≤ 200ms</td>
+        <td>200ms to 500ms</td>
+        <td>&gt; 500ms</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2 id="lcp">LCP: Largest Contentful Paint</h2>
+  <p>LCP measures how long it takes for the largest content element visible in the user's viewport to render. That element is usually a hero image, a featured product photo, a large block of headline text, or a video poster. The clock starts when the page begins loading and stops when that largest element is fully painted on screen.</p>
+
+  <h3>LCP thresholds</h3>
+  <ul>
+    <li><strong>Good:</strong> 2.5 seconds or less</li>
+    <li><strong>Needs improvement:</strong> 2.5 to 4.0 seconds</li>
+    <li><strong>Poor:</strong> over 4.0 seconds</li>
+  </ul>
+
+  <h3>What causes slow LCP</h3>
+  <ul>
+    <li><strong>Slow server response time (TTFB).</strong> If your server takes 1.5 seconds to send the first byte, you have already burned over half your LCP budget before any rendering begins.</li>
+    <li><strong>Render-blocking resources.</strong> Large CSS files or synchronous JavaScript in the &lt;head&gt; delay the browser from painting anything until they finish loading.</li>
+    <li><strong>Large unoptimized images.</strong> A 4 MB hero image on a mobile connection is the single most common LCP killer.</li>
+    <li><strong>Lazy-loading the LCP image.</strong> Loading="lazy" on the hero image is a frequent mistake. Lazy-loaded LCP images can take 1 to 2 extra seconds to start downloading.</li>
+    <li><strong>Slow third-party scripts.</strong> Tag managers, chat widgets, and analytics that run on the main thread block paint events.</li>
+    <li><strong>Slow CDN or no CDN at all.</strong> Geographic distance to your origin server adds latency to every request.</li>
+  </ul>
+
+  <h3>How to fix LCP</h3>
+  <ol>
+    <li><strong>Optimize your hero image.</strong> Convert to WebP or AVIF, serve responsive sizes via srcset, and compress aggressively. Aim for under 200 KB on mobile.</li>
+    <li><strong>Preload the LCP image.</strong> Add &lt;link rel="preload" as="image" href="hero.webp" fetchpriority="high"&gt; in your &lt;head&gt; so the browser starts the download immediately.</li>
+    <li><strong>Use fetchpriority="high"</strong> on the LCP &lt;img&gt; tag itself.</li>
+    <li><strong>Never lazy-load above-the-fold images.</strong> Reserve loading="lazy" for images below the fold.</li>
+    <li><strong>Defer non-critical JS</strong> using async or defer attributes, or load it after the main content paints.</li>
+    <li><strong>Inline critical CSS</strong> for above-the-fold content, defer the rest.</li>
+    <li><strong>Use a CDN</strong> to serve assets from a server geographically close to each visitor.</li>
+    <li><strong>Improve TTFB.</strong> Use server-side caching, reduce database query times, and consider edge rendering.</li>
+  </ol>
+
+  <div class="callout callout-success">
+    <strong>The 70/30 rule of LCP</strong>
+    For most sites, around 70% of LCP issues come from the image itself (size, format, lazy-loading, late discovery) and 30% from server and render-blocking factors. Start with your hero image.
+  </div>
+
+  <h2 id="cls">CLS: Cumulative Layout Shift</h2>
+  <p>CLS measures how much the visible page content moves around unexpectedly during loading. Every time an element shifts position because something new loaded above or beside it, that counts as a layout shift. CLS scores the total impact of all unexpected shifts across the entire page lifecycle.</p>
+
+  <p>The score is unitless. A score of 0 means nothing shifted. A score of 0.5 means a substantial chunk of the viewport jumped around. CLS is the metric most directly tied to the frustrating experience of trying to tap a button and accidentally tapping an ad that just loaded into the same spot.</p>
+
+  <h3>CLS thresholds</h3>
+  <ul>
+    <li><strong>Good:</strong> 0.1 or less</li>
+    <li><strong>Needs improvement:</strong> 0.1 to 0.25</li>
+    <li><strong>Poor:</strong> over 0.25</li>
+  </ul>
+
+  <h3>What causes layout shifts</h3>
+  <ul>
+    <li><strong>Images without width and height attributes.</strong> The browser does not know how much vertical space to reserve, so when the image arrives it pushes everything else down.</li>
+    <li><strong>Ads, embeds, and iframes loading late.</strong> Ad slots that have no reserved height jolt the page when filled.</li>
+    <li><strong>Web fonts swapping in.</strong> When a custom font loads after a fallback, character widths often change, causing text to reflow.</li>
+    <li><strong>Dynamically injected content.</strong> Banners, cookie notices, or "subscribe" popups inserted at the top of the DOM push everything below them down.</li>
+    <li><strong>Animations that affect layout.</strong> Animating width, height, top, or margin triggers reflow. Animating transform and opacity does not.</li>
+    <li><strong>Async resources changing dimensions.</strong> A YouTube embed that sizes itself after loading.</li>
+  </ul>
+
+  <h3>How to fix CLS</h3>
+  <ol>
+    <li><strong>Always set width and height</strong> on every &lt;img&gt; and &lt;video&gt;. The browser uses these to compute the aspect-ratio and reserve space before the asset loads.</li>
+    <li><strong>Reserve space for ads and embeds.</strong> Use min-height or fixed-aspect-ratio containers so slots do not collapse when empty.</li>
+    <li><strong>Preload web fonts</strong> with &lt;link rel="preload" as="font" crossorigin&gt; and use font-display: optional or swap with carefully matched fallback metrics.</li>
+    <li><strong>Use the size-adjust, ascent-override, and descent-override</strong> font descriptors to make fallback fonts match the dimensions of your custom fonts.</li>
+    <li><strong>Avoid inserting content above existing content</strong> unless triggered by a user interaction (interactions within 500ms are excluded from CLS).</li>
+    <li><strong>Use CSS transforms for animations</strong> instead of top/left/width/height.</li>
+    <li><strong>Test with throttled network conditions</strong> in DevTools to surface shifts that only appear on slow connections.</li>
+  </ol>
+
+  <h2 id="inp">INP: Interaction to Next Paint</h2>
+  <p>INP measures how quickly your page responds to user interactions, meaning clicks, taps, and key presses. Specifically, it measures the latency from the moment a user interacts with the page to the moment the next visual update appears on screen. INP looks at all interactions across a page session and reports a value representing the worst (or near-worst) interaction.</p>
+
+  <p>INP became a Core Web Vital on <strong>March 12, 2024</strong>, replacing the older First Input Delay (FID) metric. The reason for the swap: FID only measured the input delay of the very first interaction, ignoring everything that came after. INP measures the full interaction-to-paint latency of all interactions, which is much closer to how users actually perceive responsiveness.</p>
+
+  <h3>INP thresholds</h3>
+  <ul>
+    <li><strong>Good:</strong> 200 milliseconds or less</li>
+    <li><strong>Needs improvement:</strong> 200 to 500 milliseconds</li>
+    <li><strong>Poor:</strong> over 500 milliseconds</li>
+  </ul>
+
+  <h3>What causes high INP</h3>
+  <ul>
+    <li><strong>Heavy JavaScript on the main thread.</strong> Long tasks (over 50ms) block the browser from responding to input.</li>
+    <li><strong>Large event handlers.</strong> A click handler that runs 300ms of JavaScript before yielding will produce a 300ms INP score on every click.</li>
+    <li><strong>Third-party scripts.</strong> Heavy tag managers, A/B testing tools, and analytics often run synchronous work during interactions.</li>
+    <li><strong>Excessive DOM size.</strong> Pages with thousands of DOM nodes are slower to update because the browser has more layout and paint work to do.</li>
+    <li><strong>Heavy framework hydration.</strong> Single-page-app frameworks doing hydration or re-rendering on interaction can produce long tasks.</li>
+    <li><strong>Synchronous storage access.</strong> Reading large amounts of data from localStorage or IndexedDB on the main thread during input handling.</li>
+  </ul>
+
+  <h3>How to fix INP</h3>
+  <ol>
+    <li><strong>Break up long tasks.</strong> Split work into chunks under 50ms, yielding to the main thread between chunks using setTimeout, scheduler.yield(), or requestIdleCallback.</li>
+    <li><strong>Use the new scheduler.postTask API</strong> to prioritize input handling over background work.</li>
+    <li><strong>Defer non-essential work to after the next paint</strong> using requestAnimationFrame followed by setTimeout, so the visual response happens before the heavy logic.</li>
+    <li><strong>Move heavy computation to Web Workers.</strong> Workers run on a separate thread and never block input handling.</li>
+    <li><strong>Audit third-party scripts.</strong> Replace or remove ones that contribute to INP. Use Chrome DevTools Performance panel to identify culprits.</li>
+    <li><strong>Reduce DOM size.</strong> Aim for under 1,500 nodes per page. Use virtualization for long lists.</li>
+    <li><strong>Debounce and throttle</strong> expensive event handlers like scroll, resize, and input.</li>
+    <li><strong>Use CSS for visual feedback,</strong> not JavaScript, where possible. CSS-driven hover and active states do not add to INP.</li>
+  </ol>
+
+  <div class="callout callout-warning">
+    <strong>INP is the hardest CWV to fix</strong>
+    Most sites that fail Core Web Vitals fail on INP, not LCP or CLS. Heavy JavaScript frameworks and accumulated third-party scripts make INP a persistent challenge. Plan for it deliberately.
+  </div>
+
+  <div class="cta-block">
+    <h3>Ready to rank your Framer site?</h3>
+    <p>RankFrame is the only native SEO plugin built for Framer. Schema, indexing, image SEO, site audits, keyword tracking, all inside the Framer editor. No switching tools. No code required.</p>
+    <a href="https://www.framer.com/marketplace/plugins/rankframe/" class="cta-btn">Install RankFrame Free, 14-Day Trial</a>
+    <p class="cta-sub">Credit card required. Cancel anytime. Full feature access from day one.</p>
+  </div>
+
+  <h2 id="other">Other Web Vitals you should know</h2>
+  <p>Beyond the three Core Web Vitals, Google publishes additional Web Vitals that are useful for diagnosis even though they are not direct ranking factors. Two stand out.</p>
+
+  <h3>TTFB (Time to First Byte)</h3>
+  <p>TTFB measures the time between the browser requesting a page and receiving the first byte back from the server. It captures DNS lookup, TLS handshake, server processing time, and network latency. TTFB is the foundation of LCP: a slow TTFB makes a fast LCP almost impossible.</p>
+  <ul>
+    <li><strong>Good:</strong> 800ms or less</li>
+    <li><strong>Needs improvement:</strong> 800ms to 1800ms</li>
+    <li><strong>Poor:</strong> over 1800ms</li>
+  </ul>
+  <p>How to improve TTFB: use a CDN, enable caching, optimize backend code and database queries, and choose hosting close to your audience.</p>
+
+  <h3>FCP (First Contentful Paint)</h3>
+  <p>FCP measures when the first piece of content (text, image, SVG, canvas) is painted to the screen. It marks the moment the user knows the page is loading, even if the main content is not ready yet. FCP is a useful diagnostic for LCP: if FCP is slow, LCP will almost always be slow too.</p>
+  <ul>
+    <li><strong>Good:</strong> 1.8 seconds or less</li>
+    <li><strong>Needs improvement:</strong> 1.8 to 3.0 seconds</li>
+    <li><strong>Poor:</strong> over 3.0 seconds</li>
+  </ul>
+
+  <h2 id="measure">How to measure Core Web Vitals</h2>
+  <p>You have several free tools, each with different strengths. Use a combination, do not rely on just one.</p>
+
+  <h3>1. PageSpeed Insights</h3>
+  <p>The fastest way to test a single URL. Visit <strong>pagespeed.web.dev</strong>, paste a URL, and get both lab data (Lighthouse) and field data (CrUX) in one report. Field data is shown at the top, broken into mobile and desktop. This is the closest you will get to seeing what Google sees.</p>
+
+  <h3>2. Google Search Console: Core Web Vitals report</h3>
+  <p>For site-wide field data, open Search Console and go to <strong>Experience &gt; Core Web Vitals</strong>. The report groups your pages into Good, Needs Improvement, and Poor for both mobile and desktop, and lets you drill into specific URL groups. This is what Google uses for ranking purposes, so it is the most important report to monitor.</p>
+
+  <h3>3. Lighthouse (Chrome DevTools)</h3>
+  <p>For lab-based debugging, open Chrome DevTools (F12), go to the Lighthouse tab, choose Mobile and Performance, and run an audit. Lighthouse simulates a mid-range device on a slow 4G connection and gives you actionable optimization recommendations. Great for development, less useful for measuring actual user experience.</p>
+
+  <h3>4. Chrome DevTools Performance panel</h3>
+  <p>For deep diagnosis of INP and CLS, the Performance panel records every frame and layout shift in real time. You can see exactly which scripts are blocking the main thread and which elements are shifting. This is the tool engineers use to fix specific problems after Lighthouse identifies them.</p>
+
+  <h3>5. CrUX (Chrome User Experience Report)</h3>
+  <p>The raw, public dataset that powers PageSpeed Insights and Search Console. You can query it directly via the CrUX API, the CrUX BigQuery dataset, or the CrUX Dashboard in Looker Studio. Useful for tracking trends over time across multiple URLs at once.</p>
+
+  <h3>6. web-vitals JavaScript library</h3>
+  <p>For real user monitoring on your own site, the open-source web-vitals library from Google lets you collect LCP, CLS, and INP directly from your visitors and send the data to your analytics. Many analytics platforms (Google Analytics 4, Cloudflare, Vercel Analytics, SpeedCurve) integrate this automatically.</p>
+
+  <h2 id="field-vs-lab">Field data vs lab data: why they disagree</h2>
+  <p>One of the most confusing things about Core Web Vitals is when PageSpeed Insights shows green field data but red lab data, or the reverse. Understanding the difference is essential.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th></th>
+        <th>Lab data</th>
+        <th>Field data</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Source</td>
+        <td>Lighthouse simulation</td>
+        <td>Real Chrome users (CrUX)</td>
+      </tr>
+      <tr>
+        <td>Device</td>
+        <td>Single emulated mid-range phone</td>
+        <td>Every device that visits your site</td>
+      </tr>
+      <tr>
+        <td>Network</td>
+        <td>Throttled simulated 4G</td>
+        <td>Whatever the user is actually on</td>
+      </tr>
+      <tr>
+        <td>Sample size</td>
+        <td>One run per audit</td>
+        <td>Aggregated over 28 days</td>
+      </tr>
+      <tr>
+        <td>Includes INP</td>
+        <td>No (lab cannot simulate user input well)</td>
+        <td>Yes</td>
+      </tr>
+      <tr>
+        <td>Used for ranking</td>
+        <td>No</td>
+        <td>Yes</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>The takeaway: <strong>field data is the truth.</strong> Lab data is a useful debugging tool, but it does not affect rankings. If your field data is green, you are passing CWV regardless of what Lighthouse says. If your field data is red, fixing it requires understanding what real users on real devices are experiencing, not just what Lighthouse simulates.</p>
+
+  <div class="callout callout-info">
+    <strong>New site? You may not have field data yet</strong>
+    CrUX requires a minimum amount of traffic before it reports data for your URLs. New or low-traffic sites often see "Insufficient data" in PageSpeed Insights field data section. In that case, lab data is your only option until traffic grows.
+  </div>
+
+  <h2 id="framer">If You Have a Framer Site</h2>
+  <p>Framer was built with performance as a first-class concern, and many of the Core Web Vitals best practices are handled for you out of the box. Images uploaded to Framer are automatically converted to WebP, served from Framer's global CDN, and resized into responsive variants for each viewport. Below-the-fold images are lazy-loaded by default. Width and height attributes are set automatically, which protects your CLS score. Framer's runtime is also lightweight compared to most page builders, which helps INP.</p>
+
+  <p>That said, Framer alone does not guarantee green Core Web Vitals. The most common culprits on Framer sites are:</p>
+  <ul>
+    <li><strong>Heavy hero videos or 4K images</strong> placed above the fold, which inflate LCP and increase data usage.</li>
+    <li><strong>Complex on-load animations</strong> that delay paint and visual stability.</li>
+    <li><strong>Embedded third-party widgets</strong> (chat tools, calendars, marketing scripts) that block the main thread and damage INP.</li>
+    <li><strong>Custom code components</strong> that ship more JavaScript than they need to.</li>
+    <li><strong>Custom fonts</strong> loaded without preloading or proper font-display settings, causing layout shifts when they swap in.</li>
+  </ul>
+
+  <p>This is exactly where RankFrame helps. RankFrame includes a <strong>Page Speed tab</strong> built into the Framer editor that pulls live Lighthouse data and Core Web Vitals metrics for every page on your site, so you can see LCP, CLS, and INP scores without leaving Framer. You get specific, actionable recommendations for the pages that are failing, and you can re-test after each publish to confirm your fixes worked. Combined with RankFrame's site audit (which catches issues like missing image dimensions, oversized images, and render-blocking scripts), it becomes much easier to keep your Framer site in the green on Core Web Vitals over time. Start your 14-day free trial to see your scores inside the Framer editor today.</p>
+
+  <section id="faq">
+    <h2>Frequently Asked Questions</h2>
+
+    <div class="faq-item">
+      <button class="faq-question">What is a good Core Web Vitals score?<span class="faq-icon">+</span></button>
+      <div class="faq-answer">
+        <p>A page passes Core Web Vitals when at least 75% of real user visits hit "Good" on all three metrics: LCP under 2.5 seconds, CLS under 0.1, and INP under 200 milliseconds. The 75th percentile threshold is measured separately on mobile and desktop, and Google uses field data from the CrUX dataset over a rolling 28-day window.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">Do Core Web Vitals affect ranking?<span class="faq-icon">+</span></button>
+      <div class="faq-answer">
+        <p>Yes. Core Web Vitals have been a confirmed Google ranking signal since the Page Experience update rolled out in 2021. The direct impact is modest compared to relevance and content quality, but CWV can act as a tiebreaker between similarly relevant pages, and the indirect effects on conversions, bounce rate, and engagement compound over time.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">What replaced FID in Core Web Vitals?<span class="faq-icon">+</span></button>
+      <div class="faq-answer">
+        <p>INP (Interaction to Next Paint) replaced FID (First Input Delay) as a Core Web Vital on March 12, 2024. INP is more comprehensive because it measures the responsiveness of all interactions on a page, not just the first one. It also captures the full latency from input to paint, not just input delay.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">How do I check Core Web Vitals?<span class="faq-icon">+</span></button>
+      <div class="faq-answer">
+        <p>Use PageSpeed Insights at pagespeed.web.dev for individual URLs. For site-wide field data, open the Core Web Vitals report in Google Search Console under Experience. Lighthouse in Chrome DevTools provides lab data for development and debugging, and the CrUX dataset (queryable via API or BigQuery) gives you raw real-user data over time.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">What causes poor LCP?<span class="faq-icon">+</span></button>
+      <div class="faq-answer">
+        <p>Slow LCP is most often caused by slow server response times (TTFB), render-blocking JavaScript and CSS, large unoptimized hero images, and resources loaded too late in the page. Lazy-loading the LCP image, missing image dimensions, and slow third-party scripts also contribute. The hero image is the single most common culprit on most sites.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">What is the difference between lab data and field data?<span class="faq-icon">+</span></button>
+      <div class="faq-answer">
+        <p>Lab data is collected in a controlled environment by tools like Lighthouse, simulating one device on one network. Field data (also called RUM, Real User Monitoring) is collected from actual visitors loading your site on real devices and connections. Google uses field data from the CrUX dataset for ranking, not lab data. Lab data is for debugging.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">How long does it take to improve Core Web Vitals?</button>
+      <div class="faq-answer">
+        <p>Code changes can fix lab data immediately, but field data updates more slowly because Search Console uses a rolling 28-day window of real-user data. After deploying a fix, expect to wait 28 days before the new data fully replaces the old. You can usually see a directional improvement within 7 to 10 days.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">Are Core Web Vitals only measured on mobile?</button>
+      <div class="faq-answer">
+        <p>No. Google measures CWV separately for mobile and desktop, and a page can pass on one and fail on the other. Because Google uses mobile-first indexing, mobile scores carry more weight for ranking, but desktop scores still matter and should be monitored.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="cta-block">
+    <h3>See your Core Web Vitals inside Framer</h3>
+    <p>RankFrame's Page Speed tab pulls live Lighthouse data and Core Web Vitals scores for every page on your Framer site. Find slow LCP, layout shifts, and INP issues without leaving the Framer editor.</p>
+    <a href="https://www.framer.com/marketplace/plugins/rankframe/" class="cta-btn">Start Your 14-Day Free Trial</a>
+    <p class="cta-sub">Credit card required. Cancel anytime. Full feature access from day one.</p>
+  </div>
+
+  <p style="font-size:.8rem;color:#9ca3af;margin-top:32px">Always validate schemas using <a href="https://search.google.com/test/rich-results" target="_blank">Google's Rich Results Test</a> or the <a href="https://validator.schema.org/" target="_blank">Schema.org Validator</a>.</p>
+
+  <!-- SEO Details Panel -->
+  <div id="seo-details" style="margin:60px 0 0;padding:28px 32px;background:#f8f6ff;border:1px solid #e8e0fa;border-radius:14px;">
+    <h3 style="font-size:1rem;font-weight:700;color:#1a0533;margin:0 0 20px;">SEO Details</h3>
+    <div id="seo-fields"></div>
+  </div>
+</main>
+
+<script>
+  document.querySelectorAll('.faq-question').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var item = this.closest('.faq-item');
+      var isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(function(i) { i.classList.remove('open'); });
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+</script>
+
+<script>
+(function(){
+  var f=[
+    {label:'Title',value:document.querySelector('title')?document.querySelector('title').textContent:''},
+    {label:'Description',value:(document.querySelector('meta[name="description"]')||{}).content||''},
+    {label:'Keywords',value:(document.querySelector('meta[name="keywords"]')||{}).content||''},
+    {label:'Canonical',value:(document.querySelector('link[rel="canonical"]')||{}).href||''}
+  ];
+  var schemas=[];var _si=0;Array.from(document.querySelectorAll('script[type="application/ld+json"]')).forEach(function(x){try{var j=JSON.parse(x.textContent);if(j['@graph']&&Array.isArray(j['@graph'])){j['@graph'].forEach(function(item){var t=item['@type']||'Schema';schemas.push({label:'Schema: '+t,value:JSON.stringify(item,null,2)});});}else{var t=j['@type']||('Schema '+(++_si));schemas.push({label:'Schema: '+t,value:x.textContent.trim()});}}catch(e){schemas.push({label:'Schema '+(++_si),value:x.textContent.trim()});}});
+  var all=f.concat(schemas);
+  var h='';
+  all.forEach(function(x){
+    h+='<div style="margin-bottom:14px"><div style="font-size:.78rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#7c3aed;margin-bottom:4px">'+x.label+'</div><div style="display:flex;align-items:flex-start;gap:8px"><code style="flex:1;background:#fff;border:1px solid #e0d8f0;border-radius:6px;padding:8px 10px;font-size:.82rem;color:#1a0533;white-space:pre-wrap;word-break:break-all">'+x.value.replace(/</g,'&lt;').replace(/>/g,'&gt;')+'</code><button onclick="navigator.clipboard.writeText(this.dataset.v)" data-v="'+x.value.replace(/"/g,'&quot;')+'" style="flex-shrink:0;padding:6px 12px;background:#7c3aed;color:#fff;border:none;border-radius:6px;font-size:.78rem;font-weight:700;cursor:pointer">Copy</button></div></div>';
+  });
+  document.getElementById('seo-fields').innerHTML=h;
+})();
+</script>
+</body>
+</html>

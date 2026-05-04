@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>What is JSON-LD? Definition, Examples, and SEO Benefits (2026)</title>
+  <meta name="description" content="JSON-LD is the format Google recommends for adding structured data to your website. Learn what it is, see real examples, and understand how to add JSON-LD to any site." />
+  <meta name="keywords" content="what is json-ld, json-ld example, json-ld structured data, json-ld schema, json-ld vs microdata, json-ld seo, json-ld tutorial" />
+  <link rel="canonical" href="https://rankframe.com/blog/what-is-json-ld" />
+  <meta property="og:title" content="What is JSON-LD? Definition, Examples, and SEO Benefits (2026)" />
+  <meta property="og:description" content="JSON-LD is the format Google recommends for adding structured data to your website. Learn what it is, see real examples, and understand how to add JSON-LD to any site." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://rankframe.com/blog/what-is-json-ld" />
+  <meta property="og:site_name" content="RankFrame" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="What is JSON-LD? Definition, Examples, and SEO Benefits (2026)" />
+  <meta name="twitter:description" content="JSON-LD is the format Google recommends for adding structured data to your website. Learn what it is, see real examples, and understand how to add JSON-LD to any site." />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "What is JSON-LD? Definition, Examples, and SEO Benefits (2026)",
+    "description": "JSON-LD is the format Google recommends for adding structured data to your website. Learn what it is, see real examples, and understand how to add JSON-LD to any site.",
+    "url": "https://rankframe.com/blog/what-is-json-ld",
+    "datePublished": "2026-05-04",
+    "dateModified": "2026-05-04",
+    "author": {
+      "@type": "Organization",
+      "name": "RankFrame Team",
+      "url": "https://rankframe.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://framerusercontent.com/images/XE1sqaQyYF9jXODewkOIlcQ3KKo.png"
+      }
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "RankFrame",
+      "url": "https://rankframe.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://framerusercontent.com/images/XE1sqaQyYF9jXODewkOIlcQ3KKo.png"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://rankframe.com/blog/what-is-json-ld"
+    },
+    "keywords": "what is json-ld, json-ld example, json-ld structured data, json-ld schema, json-ld vs microdata"
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://rankframe.com" },
+      { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://rankframe.com/blog" },
+      { "@type": "ListItem", "position": 3, "name": "What is JSON-LD?", "item": "https://rankframe.com/blog/what-is-json-ld" }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "RankFrame",
+    "url": "https://rankframe.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://framerusercontent.com/images/XE1sqaQyYF9jXODewkOIlcQ3KKo.png"
+    },
+    "sameAs": ["https://www.framer.com/marketplace/plugins/rankframe/"]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What does JSON-LD stand for?",
+        "acceptedAnswer": { "@type": "Answer", "text": "JSON-LD stands for JavaScript Object Notation for Linked Data. It is a lightweight format for encoding linked data using the familiar JSON syntax, designed to be easy for both humans to write and machines to parse." }
+      },
+      {
+        "@type": "Question",
+        "name": "Is JSON-LD the same as schema?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No, but they are usually used together. JSON-LD is a format (a way of writing data). Schema.org is a vocabulary (the actual types and properties). When people say 'schema markup' they almost always mean schema.org vocabulary written in JSON-LD format." }
+      },
+      {
+        "@type": "Question",
+        "name": "Where do I put JSON-LD on my website?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Inside a <script type=\"application/ld+json\"> block placed in either the <head> or <body> of the page. Google supports both. Most developers prefer the head for site-wide schemas (Organization) and either location for page-specific schemas (Article, Product). Position does not affect ranking." }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I test JSON-LD?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Use Google's Rich Results Test (search.google.com/test/rich-results) to check if your JSON-LD is eligible for rich results. Use the Schema.org Validator (validator.schema.org) for broader vocabulary checks. Both are free and accept either a live URL or pasted code." }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I have multiple JSON-LD blocks on one page?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. Google explicitly supports multiple JSON-LD scripts on a single page. It is common to have separate blocks for Organization, BreadcrumbList, Article, and FAQPage on the same article page. Each block is parsed independently." }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the @context in JSON-LD?",
+        "acceptedAnswer": { "@type": "Answer", "text": "@context tells the parser which vocabulary to use to interpret the keys in the document. For SEO, it is almost always set to https://schema.org, which means every property name (name, url, author, etc.) is defined by the schema.org vocabulary." }
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; color: #1a0533; background: #fff; line-height: 1.7; font-size: 1rem; }
+    a { color: #7c3aed; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .site-header { background: #7c3aed; padding: 14px 24px; display: flex; align-items: center; gap: 12px; }
+    .site-header a { color: #fff; font-weight: 700; font-size: 1.1rem; }
+    .site-header span { color: rgba(255,255,255,0.6); font-size: .9rem; }
+    .breadcrumb { background: #f8f6ff; border-bottom: 1px solid #e8e0fa; padding: 10px 24px; font-size: .82rem; color: #6b7280; }
+    .breadcrumb a { color: #7c3aed; }
+    .breadcrumb span { margin: 0 6px; }
+    .container { max-width: 820px; margin: 0 auto; padding: 40px 24px 80px; }
+    .article-meta { margin-bottom: 32px; }
+    .article-category { display: inline-block; background: #f3eeff; color: #7c3aed; font-size: .78rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; padding: 4px 10px; border-radius: 20px; margin-bottom: 14px; }
+    h1 { font-size: 2.2rem; font-weight: 800; line-height: 1.2; color: #1a0533; margin-bottom: 16px; }
+    .article-byline { font-size: .85rem; color: #6b7280; }
+    .article-byline strong { color: #1a0533; }
+    .toc { background: #f8f6ff; border: 1px solid #e8e0fa; border-radius: 12px; padding: 24px 28px; margin: 32px 0; }
+    .toc h2 { font-size: 1rem; font-weight: 700; margin-bottom: 14px; color: #1a0533; }
+    .toc ol { padding-left: 20px; }
+    .toc li { margin-bottom: 6px; font-size: .9rem; }
+    h2 { font-size: 1.55rem; font-weight: 800; color: #1a0533; margin: 48px 0 16px; padding-top: 8px; border-top: 2px solid #f3eeff; }
+    h3 { font-size: 1.15rem; font-weight: 700; color: #3b0764; margin: 28px 0 10px; }
+    p { margin-bottom: 18px; }
+    ul, ol { padding-left: 22px; margin-bottom: 18px; }
+    li { margin-bottom: 8px; }
+    .intro-box { background: #f3eeff; border-left: 4px solid #7c3aed; border-radius: 0 10px 10px 0; padding: 20px 24px; margin: 24px 0 32px; font-size: 1.05rem; }
+    .callout { border-radius: 10px; padding: 18px 22px; margin: 24px 0; font-size: .93rem; }
+    .callout-info { background: #eff6ff; border: 1px solid #bfdbfe; }
+    .callout-warning { background: #fffbeb; border: 1px solid #fcd34d; }
+    .callout-success { background: #f0fdf4; border: 1px solid #86efac; }
+    .callout strong { display: block; margin-bottom: 6px; font-weight: 700; }
+    .code-block { background: #1e1b4b; color: #e0e7ff; font-family: 'Courier New', monospace; font-size: .82rem; padding: 20px 22px; border-radius: 10px; overflow-x: auto; margin: 20px 0; line-height: 1.6; white-space: pre; }
+    table { width: 100%; border-collapse: collapse; margin: 24px 0; font-size: .9rem; }
+    th { background: #7c3aed; color: #fff; padding: 12px 14px; text-align: left; font-weight: 700; }
+    td { padding: 11px 14px; border-bottom: 1px solid #e8e0fa; vertical-align: top; }
+    tr:nth-child(even) td { background: #faf8ff; }
+    tr:last-child td { border-bottom: none; }
+    .step-section { background: #faf8ff; border: 1px solid #e8e0fa; border-radius: 14px; padding: 28px 30px; margin: 32px 0; }
+    .step-section-header { display: flex; align-items: center; gap: 16px; margin-bottom: 20px; }
+    .step-section-num { width: 48px; height: 48px; background: #7c3aed; color: #fff; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.3rem; flex-shrink: 0; }
+    .step-section h2 { border: none; padding: 0; margin: 0; font-size: 1.35rem; }
+    .screenshot-suggestion { background: #fdf4ff; border: 1px dashed #c084fc; border-radius: 8px; padding: 12px 16px; font-size: .85rem; color: #6b21a8; margin: 20px 0; }
+    .cta-block { background: linear-gradient(135deg, #7c3aed 0%, #5b21b6 100%); color: #fff; border-radius: 16px; padding: 36px 40px; margin: 48px 0; text-align: center; }
+    .cta-block h3 { font-size: 1.5rem; font-weight: 800; margin-bottom: 12px; color: #fff; border: none; padding: 0; }
+    .cta-block p { color: rgba(255,255,255,0.9); margin-bottom: 0; font-size: 1rem; }
+    .cta-btn { display: inline-block; background: #fff; color: #7c3aed; font-weight: 800; font-size: 1rem; padding: 14px 28px; border-radius: 8px; margin: 20px 0 10px; text-decoration: none; }
+    .cta-btn:hover { background: #f3eeff; text-decoration: none; }
+    .cta-sub { font-size: .82rem; color: rgba(255,255,255,0.7); margin-top: 0; }
+    .faq-item { border-bottom: 1px solid #e8e0fa; padding: 0; }
+    .faq-question { width: 100%; background: none; border: none; text-align: left; padding: 18px 0; font-size: 1rem; font-weight: 700; color: #1a0533; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+    .faq-question:hover { color: #7c3aed; }
+    .faq-icon { flex-shrink: 0; width: 22px; height: 22px; background: #f3eeff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: .85rem; color: #7c3aed; font-weight: 700; transition: transform .2s; }
+    .faq-answer { padding: 0 0 18px; font-size: .95rem; color: #374151; display: none; }
+    .faq-item.open .faq-answer { display: block; }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="https://rankframe.com">RankFrame</a>
+  <span>|</span>
+  <a href="https://rankframe.com/blog" style="color:rgba(255,255,255,0.8);font-weight:400">Blog</a>
+</header>
+
+<nav class="breadcrumb">
+  <a href="https://rankframe.com">Home</a><span>›</span>
+  <a href="https://rankframe.com/blog">Blog</a><span>›</span>
+  What is JSON-LD?
+</nav>
+
+<main class="container">
+  <div class="article-meta">
+    <span class="article-category">SEO Fundamentals</span>
+    <h1>What is JSON-LD? Definition, Examples, and How to Use It</h1>
+    <p class="article-byline">By <strong>RankFrame Team</strong> · Updated May 2026 · 12 min read</p>
+  </div>
+
+  <div class="intro-box">
+    <strong>JSON-LD (JavaScript Object Notation for Linked Data) is a lightweight, standardized format for embedding structured data inside a webpage.</strong> It uses ordinary JSON syntax wrapped in a <code>&lt;script type="application/ld+json"&gt;</code> tag, and it is the format Google officially recommends for adding schema markup to any website. JSON-LD is what powers rich results, AI Overview citations, and Knowledge Graph entries on the modern web.
+  </div>
+
+  <nav class="toc">
+    <h2>In this guide</h2>
+    <ol>
+      <li><a href="#definition">What JSON-LD actually is</a></li>
+      <li><a href="#why-google">Why Google recommends JSON-LD</a></li>
+      <li><a href="#anatomy">Anatomy of a JSON-LD block</a></li>
+      <li><a href="#examples">6 real JSON-LD examples you can copy</a></li>
+      <li><a href="#placement">Where to place JSON-LD in HTML</a></li>
+      <li><a href="#validate">How to validate JSON-LD</a></li>
+      <li><a href="#vs">JSON-LD vs Microdata vs RDFa</a></li>
+      <li><a href="#errors">Common JSON-LD errors</a></li>
+      <li><a href="#framer">If you have a Framer site</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ol>
+  </nav>
+
+  <h2 id="definition">What JSON-LD actually is</h2>
+  <p>JSON-LD is a W3C standard published in 2014 that combines two things: the readability of JSON (the format every web developer already uses) and the semantic power of Linked Data (a way of describing things and the relationships between them so machines can understand them).</p>
+  <p>In practice, JSON-LD looks like this on a webpage:</p>
+
+  <div class="code-block">&lt;script type="application/ld+json"&gt;
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Hello world",
+  "author": { "@type": "Person", "name": "Jane Doe" }
+}
+&lt;/script&gt;</div>
+
+  <p>That single block tells a search engine: "this page contains an Article, its headline is 'Hello world', and it was written by a Person named Jane Doe." The visitor sees nothing different. The search engine sees a clean fact pattern it can store in its index.</p>
+  <p>JSON-LD is format-agnostic about vocabulary. You can use it with any Linked Data vocabulary, but in SEO it is almost always paired with <a href="https://schema.org" target="_blank">schema.org</a>, the shared vocabulary maintained by Google, Bing, Yahoo, and Yandex.</p>
+
+  <h2 id="why-google">Why Google recommends JSON-LD</h2>
+  <p>Google supports three structured data formats: JSON-LD, Microdata, and RDFa. Since 2015, official Google documentation has explicitly preferred JSON-LD. Here is why.</p>
+
+  <h3>It is decoupled from your HTML</h3>
+  <p>Microdata wraps your visible content in extra attributes (<code>itemscope</code>, <code>itemtype</code>, <code>itemprop</code>). If your designer changes the page layout, your structured data breaks. JSON-LD lives in a separate script tag, so you can redesign the visible page without touching the markup.</p>
+
+  <h3>It is easier to generate at scale</h3>
+  <p>Server-side templates, CMS plugins, and JavaScript frameworks can output a single JSON-LD block per page far more reliably than they can sprinkle Microdata attributes across deeply nested HTML.</p>
+
+  <h3>It is easier to read and debug</h3>
+  <p>JSON-LD reads like a clean JSON object. Microdata reads like obfuscated HTML. When something breaks, JSON-LD is faster to diagnose.</p>
+
+  <h3>It supports nested and linked entities cleanly</h3>
+  <p>You can describe a Product that has a Brand that has an Organization, all nested in one JSON object, with no awkward HTML wrapping.</p>
+
+  <div class="callout callout-success">
+    <strong>Google's official position</strong>
+    From Google Search Central: "Although we recommend using JSON-LD, you can also use microdata or RDFa." JSON-LD is the only format Google highlights in its rich result examples and developer guides.
+  </div>
+
+  <h2 id="anatomy">Anatomy of a JSON-LD block</h2>
+  <p>Every JSON-LD block for SEO has the same basic shape. Understanding the four core pieces makes the rest trivial.</p>
+
+  <h3>1. The script tag</h3>
+  <p>The wrapping <code>&lt;script type="application/ld+json"&gt;</code> tells the browser not to execute the contents as JavaScript. It is data, not code. The closing <code>&lt;/script&gt;</code> ends the block.</p>
+
+  <h3>2. @context</h3>
+  <p><code>"@context": "https://schema.org"</code> tells the parser which vocabulary to use. With this line, every property name in the document (like <code>name</code>, <code>url</code>, <code>author</code>) is interpreted using schema.org's definitions. Without it, the parser does not know what those names mean.</p>
+
+  <h3>3. @type</h3>
+  <p><code>"@type": "Article"</code> tells the parser what kind of thing this is. The type determines which properties are valid and which rich results the page can earn. Common types: Article, Product, Organization, LocalBusiness, FAQPage, Recipe, BreadcrumbList, VideoObject, Event, Person.</p>
+
+  <h3>4. Properties</h3>
+  <p>Everything else is a property of the @type. Properties can be simple strings (<code>"name": "Jane Doe"</code>), arrays (<code>"sameAs": ["url1", "url2"]</code>), or nested objects with their own @type (<code>"author": { "@type": "Person", "name": "Jane" }</code>).</p>
+
+  <h2 id="examples">6 real JSON-LD examples you can copy</h2>
+  <p>Below are six production-ready blocks. Replace the placeholder values and paste them into your site.</p>
+
+  <h3>1. Organization</h3>
+  <div class="code-block">&lt;script type="application/ld+json"&gt;
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Acme Inc",
+  "url": "https://acme.com",
+  "logo": "https://acme.com/logo.png",
+  "description": "B2B software for small teams.",
+  "sameAs": [
+    "https://twitter.com/acme",
+    "https://www.linkedin.com/company/acme"
+  ],
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+1-415-555-0100",
+    "contactType": "customer support",
+    "email": "support@acme.com"
+  }
+}
+&lt;/script&gt;</div>
+
+  <h3>2. Article</h3>
+  <div class="code-block">&lt;script type="application/ld+json"&gt;
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "How to Bake Sourdough at Home",
+  "image": "https://example.com/sourdough.jpg",
+  "author": {
+    "@type": "Person",
+    "name": "Maria Lopez",
+    "url": "https://example.com/authors/maria"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Example Magazine",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://example.com/logo.png"
+    }
+  },
+  "datePublished": "2026-05-04",
+  "dateModified": "2026-05-04",
+  "mainEntityOfPage": "https://example.com/sourdough"
+}
+&lt;/script&gt;</div>
+
+  <h3>3. Product</h3>
+  <div class="code-block">&lt;script type="application/ld+json"&gt;
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Cast Iron Skillet 12-inch",
+  "image": "https://example.com/skillet.jpg",
+  "description": "Pre-seasoned cast iron skillet, made in the USA.",
+  "sku": "CIS-12-001",
+  "brand": { "@type": "Brand", "name": "Ironcraft" },
+  "offers": {
+    "@type": "Offer",
+    "url": "https://example.com/skillet",
+    "priceCurrency": "USD",
+    "price": "49.00",
+    "availability": "https://schema.org/InStock"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.7",
+    "reviewCount": "284"
+  }
+}
+&lt;/script&gt;</div>
+
+  <h3>4. FAQPage</h3>
+  <div class="code-block">&lt;script type="application/ld+json"&gt;
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How long does shipping take?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Standard shipping takes 3 to 5 business days within the US."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you ship internationally?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, we ship to over 40 countries via DHL Express."
+      }
+    }
+  ]
+}
+&lt;/script&gt;</div>
+
+  <h3>5. BreadcrumbList</h3>
+  <div class="code-block">&lt;script type="application/ld+json"&gt;
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://example.com" },
+    { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://example.com/blog" },
+    { "@type": "ListItem", "position": 3, "name": "Sourdough Guide", "item": "https://example.com/blog/sourdough" }
+  ]
+}
+&lt;/script&gt;</div>
+
+  <h3>6. LocalBusiness</h3>
+  <div class="code-block">&lt;script type="application/ld+json"&gt;
+{
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  "name": "Bella Trattoria",
+  "image": "https://example.com/bella.jpg",
+  "telephone": "+1-212-555-0188",
+  "priceRange": "$$",
+  "servesCuisine": "Italian",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "212 Mulberry St",
+    "addressLocality": "New York",
+    "addressRegion": "NY",
+    "postalCode": "10012",
+    "addressCountry": "US"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 40.7223,
+    "longitude": -73.9967
+  },
+  "openingHoursSpecification": [{
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Tuesday","Wednesday","Thursday","Friday","Saturday"],
+    "opens": "17:00",
+    "closes": "23:00"
+  }]
+}
+&lt;/script&gt;</div>
+
+  <div class="cta-block">
+    <h3>Ready to rank your Framer site?</h3>
+    <p>RankFrame is the only native SEO plugin built for Framer. JSON-LD schema, indexing, image SEO, site audits, keyword tracking, all inside the Framer editor. No switching tools. No code required.</p>
+    <a href="https://www.framer.com/marketplace/plugins/rankframe/" class="cta-btn">Install RankFrame Free, 14-Day Trial</a>
+    <p class="cta-sub">Credit card required. Cancel anytime. Full feature access from day one.</p>
+  </div>
+
+  <h2 id="placement">Where to place JSON-LD in HTML</h2>
+  <p>Google supports JSON-LD in either the <code>&lt;head&gt;</code> or the <code>&lt;body&gt;</code>. There is no ranking difference between the two. In practice:</p>
+  <ul>
+    <li><strong>Site-wide schemas</strong> (Organization, WebSite) typically go in the <code>&lt;head&gt;</code> via a global template or custom code field.</li>
+    <li><strong>Page-specific schemas</strong> (Article, Product, FAQPage) can go in either, but the <code>&lt;head&gt;</code> is conventional.</li>
+    <li><strong>Dynamic JavaScript-injected schemas</strong> often end up in the <code>&lt;body&gt;</code> because they are appended after page render. Google's renderer will still pick them up, as long as it can execute the JS.</li>
+  </ul>
+  <p>You can have multiple JSON-LD blocks on the same page. Most well-optimized article pages have at least three: Organization, BreadcrumbList, and Article.</p>
+
+  <h2 id="validate">How to validate JSON-LD</h2>
+
+  <h3>Google's Rich Results Test</h3>
+  <p>Go to <a href="https://search.google.com/test/rich-results" target="_blank">search.google.com/test/rich-results</a>. Enter a URL or paste your code. The tool fetches and renders the page exactly as Googlebot would, lists every detected schema, and flags errors and warnings. This is the only validator that reflects what Google itself accepts.</p>
+
+  <h3>Schema.org Validator</h3>
+  <p>Go to <a href="https://validator.schema.org" target="_blank">validator.schema.org</a>. This tool is stricter on vocabulary correctness and supports schema types Google does not yet display rich results for. Useful for Person, Service, Book, and other types that AI engines still consume.</p>
+
+  <h3>Google Search Console</h3>
+  <p>After publishing, monitor "Enhancements" in Search Console. Google reports rich result eligibility, errors, impressions, and clicks per schema type. This is the only way to confirm your JSON-LD is working in production at scale.</p>
+
+  <h2 id="vs">JSON-LD vs Microdata vs RDFa</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Feature</th>
+        <th>JSON-LD</th>
+        <th>Microdata</th>
+        <th>RDFa</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Location</td>
+        <td>Separate script block</td>
+        <td>Inline HTML attributes</td>
+        <td>Inline HTML attributes</td>
+      </tr>
+      <tr>
+        <td>Couples to design?</td>
+        <td>No</td>
+        <td>Yes</td>
+        <td>Yes</td>
+      </tr>
+      <tr>
+        <td>Readability</td>
+        <td>High (clean JSON)</td>
+        <td>Low (verbose attributes)</td>
+        <td>Low (verbose attributes)</td>
+      </tr>
+      <tr>
+        <td>Google preference</td>
+        <td>Recommended</td>
+        <td>Supported</td>
+        <td>Supported</td>
+      </tr>
+      <tr>
+        <td>Common usage in 2026</td>
+        <td>~95% of new sites</td>
+        <td>Legacy ecommerce</td>
+        <td>Government, academia</td>
+      </tr>
+      <tr>
+        <td>Easy to generate dynamically</td>
+        <td>Yes</td>
+        <td>Painful</td>
+        <td>Painful</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2 id="errors">Common JSON-LD errors</h2>
+
+  <h3>Invalid JSON syntax</h3>
+  <p>A trailing comma, a missing quote, or an unescaped special character will silently break the entire block. Always paste your JSON into a validator (or jsonlint.com) before publishing.</p>
+
+  <h3>Missing required properties</h3>
+  <p>Each schema type has required properties for rich results. An Article without <code>headline</code>, <code>image</code>, <code>datePublished</code>, and <code>author</code> will validate but earn no rich result.</p>
+
+  <h3>Wrong @context URL</h3>
+  <p>Use <code>https://schema.org</code>, not <code>http://</code>, not <code>schema.org</code> alone, not a typo. Wrong context means zero properties resolve.</p>
+
+  <h3>Mismatched content</h3>
+  <p>If your JSON-LD says the price is $49 but the visible page shows $79, Google can issue a manual action for misleading structured data. The schema must reflect the page.</p>
+
+  <h3>Duplicated blocks</h3>
+  <p>Two Organization blocks with conflicting properties confuse Google's entity resolution. Audit periodically, especially after switching plugins or themes.</p>
+
+  <h3>Stale dates</h3>
+  <p>Hard-coded <code>datePublished</code> or <code>dateModified</code> values that never change can suppress freshness signals and disqualify Top Stories eligibility.</p>
+
+  <h3>Escaping HTML inside JSON</h3>
+  <p>If your answer text contains quotes or <code>&lt;</code> characters, escape them properly (<code>\"</code>) or the block will break parsing.</p>
+
+  <h2 id="history">A short history of JSON-LD</h2>
+  <p>Understanding why JSON-LD became dominant helps explain why Google now treats it as the default. The format was first proposed in 2010 by Manu Sporny as a way to make linked data approachable for everyday web developers, who were intimidated by the verbose RDF/XML and Turtle syntaxes used in the academic Semantic Web community. The W3C ratified JSON-LD as a recommendation in January 2014. Schema.org added official JSON-LD support shortly after.</p>
+  <p>In 2015, Google quietly began preferring JSON-LD in its developer documentation and rich result examples. By 2017, every new schema type Google launched (Job Posting, Course, Dataset, FAQ) was documented in JSON-LD only. By 2020, the ecosystem had decisively shifted: virtually every major SEO plugin, headless CMS, and ecommerce platform now generates JSON-LD by default. Microdata is still supported for backward compatibility, but it is effectively legacy.</p>
+
+  <h2 id="ai-engines">JSON-LD and AI engines in 2026</h2>
+  <p>JSON-LD has taken on a second life beyond traditional SEO. Generative AI engines (ChatGPT Search, Perplexity, Claude's web tools, Bing Copilot, Google AI Overviews) all crawl the open web and extract facts to cite in their answers. When these engines encounter a page, they look for high-confidence signals about what the page is about. JSON-LD provides exactly that.</p>
+  <ul>
+    <li>An Article block with a clear <code>author</code> and <code>datePublished</code> is more likely to be cited than a page where the AI must infer those values from prose.</li>
+    <li>An Organization block with <code>sameAs</code> links to LinkedIn and Wikipedia gives an AI strong identity confirmation, raising the likelihood it will treat your brand as the canonical source.</li>
+    <li>A Product block with explicit <code>price</code>, <code>availability</code>, and <code>aggregateRating</code> gives shopping-focused AI agents a clean fact pattern to surface.</li>
+  </ul>
+  <p>In short: in 2026, JSON-LD is no longer just for Google's blue links. It is the data layer that determines whether your brand shows up in AI conversations.</p>
+
+  <h2 id="advanced">Advanced JSON-LD techniques</h2>
+
+  <h3>Using @id to link entities across blocks</h3>
+  <p>If you have multiple JSON-LD blocks on a page (Organization, Article, BreadcrumbList), you can link them by giving each entity a unique <code>@id</code> and referencing it elsewhere. For example, your Article's <code>publisher</code> property can point to the same <code>@id</code> as your Organization block, telling Google these are the same entity, not two duplicates.</p>
+
+  <div class="code-block">{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "publisher": { "@id": "https://example.com/#organization" }
+}</div>
+
+  <h3>Using @graph to combine multiple entities</h3>
+  <p>Instead of multiple <code>&lt;script&gt;</code> tags, you can declare one block with an <code>@graph</code> array containing every entity on the page. This is a popular pattern in WordPress SEO plugins because it is easier to manage programmatically.</p>
+
+  <div class="code-block">{
+  "@context": "https://schema.org",
+  "@graph": [
+    { "@type": "Organization", "@id": "https://example.com/#org", "name": "Example" },
+    { "@type": "WebSite", "@id": "https://example.com/#site", "url": "https://example.com" },
+    { "@type": "Article", "headline": "Hello", "publisher": { "@id": "https://example.com/#org" } }
+  ]
+}</div>
+
+  <h3>Conditional injection for dynamic CMSes</h3>
+  <p>If you build templates in React, Next.js, or any modern framework, render JSON-LD server-side using the page's data. Avoid generating it client-side only, since some crawlers (especially older ones and certain AI agents) do not execute JavaScript reliably.</p>
+
+  <h2 id="patterns">JSON-LD patterns by site type</h2>
+  <p>Different kinds of websites benefit from different schema combinations. Below is a quick reference for the JSON-LD setup that experienced SEOs deploy on each common site archetype.</p>
+
+  <h3>SaaS marketing site</h3>
+  <p>Use Organization on every page (via global head injection), WebSite with sitelinks search box on the homepage, BreadcrumbList on every inner page, SoftwareApplication on the product page (with <code>applicationCategory</code>, <code>operatingSystem</code>, and <code>offers</code>), and Article schema on every blog post. Add Person schema to author bios. This combination consistently improves brand SERP appearance and AI Overview citations for "what is X" and "best X for Y" queries.</p>
+
+  <h3>Ecommerce store</h3>
+  <p>Organization plus WebSite site-wide, Product on every product detail page (with <code>offers</code>, <code>aggregateRating</code>, and <code>review</code>), BreadcrumbList on category and product pages, and ItemList on collection pages. If you are large enough, add Sitelinks Search Box markup so users can search your catalog directly from Google.</p>
+
+  <h3>Local service business</h3>
+  <p>The most specific applicable LocalBusiness subtype (Restaurant, Plumber, Dentist, etc.) on the homepage and contact page, with full <code>address</code>, <code>geo</code>, <code>telephone</code>, <code>openingHoursSpecification</code>, and <code>priceRange</code>. Add Service schema for each individual service you offer. This is the single biggest lever for local pack visibility.</p>
+
+  <h3>Content publisher or blog</h3>
+  <p>Organization plus WebSite site-wide, NewsArticle or BlogPosting on every article (with full <code>author</code>, <code>publisher</code>, <code>datePublished</code>, <code>dateModified</code>, and <code>image</code>), BreadcrumbList on every page, and Person schema on author profile pages. Pages aiming for Top Stories must use NewsArticle, not generic Article.</p>
+
+  <h3>Personal portfolio or freelancer</h3>
+  <p>Person schema on the homepage (with <code>jobTitle</code>, <code>knowsAbout</code>, <code>sameAs</code> linking to LinkedIn, GitHub, Twitter), Service schema for each offering, and Article on any blog posts. This setup helps Google understand you as a real entity and is the foundation of a personal Knowledge Panel.</p>
+
+  <h2 id="best-practices">JSON-LD best practices checklist</h2>
+  <ul>
+    <li>Always use <code>"@context": "https://schema.org"</code> with the https prefix.</li>
+    <li>Pick the most specific applicable @type. Use Restaurant, not LocalBusiness, if you run a restaurant.</li>
+    <li>Make sure every required property for your chosen rich result is present.</li>
+    <li>Schema must match visible page content. Never mark up data the user cannot see.</li>
+    <li>Use <code>@id</code> to deduplicate entities across multiple blocks on the same page.</li>
+    <li>Validate every new schema in the Rich Results Test before publishing.</li>
+    <li>Monitor Search Console Enhancements weekly for errors and warnings.</li>
+    <li>Keep <code>dateModified</code> current when you genuinely update content.</li>
+    <li>For ecommerce, sync Product schema with your Merchant Center feed.</li>
+    <li>Avoid third-party generators that produce bloated or invalid JSON. Stick with audited tools.</li>
+  </ul>
+
+  <h2 id="framer">If You Have a Framer Site</h2>
+  <p>Framer does not generate any JSON-LD natively. The platform handles meta titles, descriptions, Open Graph, and sitemaps automatically, but if you publish a fresh Framer site and view source, you will not find a single <code>application/ld+json</code> block. That means no Organization schema, no Article schema on blog posts, no Product schema on shop pages, and no rich result eligibility out of the box.</p>
+  <p>You have two clean ways to fix this on Framer.</p>
+  <p><strong>Option 1: Custom code, head injection.</strong> Open Site Settings &gt; General &gt; Custom Code, paste a JSON-LD block into the "Start of head" field, and republish. This works perfectly for site-wide schemas like Organization or WebSite, because the same code runs on every page. The trade-off: you cannot easily inject different Article schema on each blog post this way (the snippet is global), and editing means hand-editing JSON inside a small text field.</p>
+  <p><strong>Option 2: RankFrame.</strong> RankFrame is the only Framer plugin that handles JSON-LD natively from inside the editor. You pick a schema type (Organization, Person, Article, Service, Restaurant, Book), fill out a guided form, and the plugin injects valid JSON-LD on publish. It is duplicate-safe, so if you accidentally add the same schema twice it will not double-print. It updates automatically on every republish, which means dates and content stay current. And it has an AI auto-generate option that drafts a complete schema from your existing site copy if you do not want to fill the form by hand.</p>
+  <p>For a single, static Organization schema, custom code is fine. For per-page Article schema, multi-page Service schemas, or any site you expect to grow, RankFrame removes the manual JSON juggling and keeps everything valid as your site evolves.</p>
+
+  <section id="faq">
+    <h2>Frequently Asked Questions</h2>
+
+    <div class="faq-item">
+      <button class="faq-question">What does JSON-LD stand for? <span class="faq-icon">+</span></button>
+      <div class="faq-answer"><p>JSON-LD stands for JavaScript Object Notation for Linked Data. It is a lightweight format for encoding linked data using the familiar JSON syntax, designed to be easy for both humans to write and machines to parse.</p></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">Is JSON-LD the same as schema? <span class="faq-icon">+</span></button>
+      <div class="faq-answer"><p>No, but they are usually used together. JSON-LD is a format (a way of writing data). Schema.org is a vocabulary (the actual types and properties). When people say "schema markup" they almost always mean schema.org vocabulary written in JSON-LD format.</p></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">Where do I put JSON-LD on my website? <span class="faq-icon">+</span></button>
+      <div class="faq-answer"><p>Inside a &lt;script type="application/ld+json"&gt; block placed in either the &lt;head&gt; or &lt;body&gt; of the page. Google supports both. Most developers prefer the head for site-wide schemas (Organization) and either location for page-specific schemas (Article, Product). Position does not affect ranking.</p></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">How do I test JSON-LD? <span class="faq-icon">+</span></button>
+      <div class="faq-answer"><p>Use Google's Rich Results Test (search.google.com/test/rich-results) to check if your JSON-LD is eligible for rich results. Use the Schema.org Validator (validator.schema.org) for broader vocabulary checks. Both are free and accept either a live URL or pasted code.</p></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">Can I have multiple JSON-LD blocks on one page? <span class="faq-icon">+</span></button>
+      <div class="faq-answer"><p>Yes. Google explicitly supports multiple JSON-LD scripts on a single page. It is common to have separate blocks for Organization, BreadcrumbList, Article, and FAQPage on the same article page. Each block is parsed independently.</p></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">What is the @context in JSON-LD? <span class="faq-icon">+</span></button>
+      <div class="faq-answer"><p>@context tells the parser which vocabulary to use to interpret the keys in the document. For SEO, it is almost always set to https://schema.org, which means every property name (name, url, author, etc.) is defined by the schema.org vocabulary.</p></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">Does JSON-LD slow down my website? <span class="faq-icon">+</span></button>
+      <div class="faq-answer"><p>No. JSON-LD is plain text inside a script tag and is not executed as JavaScript. A typical schema block is 1 to 3 KB and has zero impact on page rendering, Core Web Vitals, or load time.</p></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">Can JSON-LD be added with JavaScript after page load? <span class="faq-icon">+</span></button>
+      <div class="faq-answer"><p>Yes. Google's renderer executes JavaScript and will pick up JSON-LD that is injected dynamically. However, server-side or build-time injection is more reliable, especially for pages where rendering may be deferred or where third-party crawlers (Bing, AI engines) handle JS less consistently than Google.</p></div>
+    </div>
+  </section>
+
+  <div class="cta-block">
+    <h3>Add JSON-LD to your Framer site without writing code</h3>
+    <p>RankFrame injects valid JSON-LD for Organization, Person, Article, Service, Restaurant, and Book schemas directly from inside the Framer editor. AI auto-generate fills the fields. Duplicate-safe. Updates on every republish.</p>
+    <a href="https://www.framer.com/marketplace/plugins/rankframe/" class="cta-btn">Install RankFrame Free, 14-Day Trial</a>
+    <p class="cta-sub">Credit card required. Cancel anytime. Full feature access from day one.</p>
+  </div>
+
+  <p style="font-size:.8rem;color:#9ca3af;margin-top:32px">Always validate schemas using <a href="https://search.google.com/test/rich-results" target="_blank">Google's Rich Results Test</a> or the <a href="https://validator.schema.org/" target="_blank">Schema.org Validator</a>.</p>
+
+  <div id="seo-details" style="margin:60px 0 0;padding:28px 32px;background:#f8f6ff;border:1px solid #e8e0fa;border-radius:14px;">
+    <h3 style="font-size:1rem;font-weight:700;color:#1a0533;margin:0 0 20px;">SEO Details</h3>
+    <div id="seo-fields"></div>
+  </div>
+</main>
+
+<script>
+  document.querySelectorAll('.faq-question').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var item = this.closest('.faq-item');
+      var isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(function(i) { i.classList.remove('open'); });
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+</script>
+
+<script>
+(function(){
+  var f=[
+    {label:'Title',value:document.querySelector('title')?document.querySelector('title').textContent:''},
+    {label:'Description',value:(document.querySelector('meta[name="description"]')||{}).content||''},
+    {label:'Keywords',value:(document.querySelector('meta[name="keywords"]')||{}).content||''},
+    {label:'Canonical',value:(document.querySelector('link[rel="canonical"]')||{}).href||''}
+  ];
+  var schemas=[];var _si=0;Array.from(document.querySelectorAll('script[type="application/ld+json"]')).forEach(function(x){try{var j=JSON.parse(x.textContent);if(j['@graph']&&Array.isArray(j['@graph'])){j['@graph'].forEach(function(item){var t=item['@type']||'Schema';schemas.push({label:'Schema: '+t,value:JSON.stringify(item,null,2)});});}else{var t=j['@type']||('Schema '+(++_si));schemas.push({label:'Schema: '+t,value:x.textContent.trim()});}}catch(e){schemas.push({label:'Schema '+(++_si),value:x.textContent.trim()});}});
+  var all=f.concat(schemas);
+  var h='';
+  all.forEach(function(x){
+    h+='<div style="margin-bottom:14px"><div style="font-size:.78rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#7c3aed;margin-bottom:4px">'+x.label+'</div><div style="display:flex;align-items:flex-start;gap:8px"><code style="flex:1;background:#fff;border:1px solid #e0d8f0;border-radius:6px;padding:8px 10px;font-size:.82rem;color:#1a0533;white-space:pre-wrap;word-break:break-all">'+x.value.replace(/</g,'&lt;').replace(/>/g,'&gt;')+'</code><button onclick="navigator.clipboard.writeText(this.dataset.v)" data-v="'+x.value.replace(/"/g,'&quot;')+'" style="flex-shrink:0;padding:6px 12px;background:#7c3aed;color:#fff;border:none;border-radius:6px;font-size:.78rem;font-weight:700;cursor:pointer">Copy</button></div></div>';
+  });
+  document.getElementById('seo-fields').innerHTML=h;
+})();
+</script>
+</body>
+</html>

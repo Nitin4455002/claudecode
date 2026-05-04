@@ -420,6 +420,45 @@
   <h3>Spammy review schema</h3>
   <p>Self-serving reviews on your own homepage, fake aggregate ratings, and reviews of the company on a product page all violate the guidelines and are aggressively penalized.</p>
 
+  <h2 id="more-types">A deeper look at high-value schema types</h2>
+  <p>The list earlier covered the basics. Below are extended notes on the schema types that deliver outsized SEO and AI-citation value in 2026, with specific guidance on properties that are easy to overlook.</p>
+
+  <h3>Organization in depth</h3>
+  <p>The Organization schema is the entry ticket to Google's Knowledge Graph. The properties that consistently move the needle are <code>sameAs</code> (always include LinkedIn, Crunchbase, Wikipedia if you have one, and your primary social profiles), <code>founder</code> (a nested Person schema that links your brand to a real human, which AI engines love), <code>foundingDate</code> (helps disambiguate from other companies with similar names), and <code>knowsAbout</code> (an array of topics your company is an authority on). Adding all of these to a single Organization block on your homepage compounds over time as Google builds a richer entity profile.</p>
+
+  <h3>Article variants and when to use which</h3>
+  <p>Schema offers three article subtypes: <code>Article</code> (generic), <code>NewsArticle</code> (time-sensitive news), and <code>BlogPosting</code> (informal blog content). They behave almost identically for rich results, but Google does pay attention to the distinction. NewsArticle is required for Top Stories eligibility and the Google News surface. BlogPosting is the safer choice for evergreen tutorials and opinion pieces. Use the generic Article type only when neither of the others clearly fits.</p>
+
+  <h3>Product and the Merchant Center connection</h3>
+  <p>Product schema is now tightly integrated with Google Merchant Center. If your structured data exactly matches the data feed you upload to Merchant Center (price, GTIN, availability, condition), you can show free product listings on Google's Shopping tab without paid ads. Misalignment between the schema and the feed leads to disapprovals. The properties Google weighs most heavily today are <code>gtin</code> or <code>mpn</code> (product identifiers), <code>shippingDetails</code>, and <code>hasMerchantReturnPolicy</code>.</p>
+
+  <h3>Service schema for non-product businesses</h3>
+  <p>If you are a consultancy, agency, law firm, or freelancer, you do not sell a Product. You offer a Service. Service schema lets you describe what you do (<code>name</code>, <code>description</code>, <code>serviceType</code>), where you do it (<code>areaServed</code>), and who provides it (<code>provider</code>, linked to your Organization). It is one of the most under-used schemas in B2B and a quick win if you are not using it yet.</p>
+
+  <h3>Person schema and E-E-A-T</h3>
+  <p>Google's emphasis on Experience, Expertise, Authoritativeness, and Trustworthiness has pushed Person schema from optional to important. Author bios should include <code>name</code>, <code>jobTitle</code>, <code>worksFor</code> (linked Organization), <code>sameAs</code> (LinkedIn, Twitter, ORCID for academics), and <code>knowsAbout</code>. When Google sees a real human entity behind your content, both ranking and AI citation rates improve.</p>
+
+  <h2 id="rich-results-beyond-google">Rich results beyond Google</h2>
+  <p>Schema markup is no longer just a Google strategy. The wider answer-engine ecosystem now consumes structured data aggressively.</p>
+  <ul>
+    <li><strong>Bing Copilot</strong> uses schema to populate its sidebar cards and source citations. Bing has historically respected schema even more strictly than Google.</li>
+    <li><strong>Perplexity</strong> cites pages with clear structured data more frequently than pages without, based on multiple 2025 studies from SEO research firms.</li>
+    <li><strong>ChatGPT Search</strong> (rolled out widely in 2025) prefers pages with Organization, Article, and Person schema when evaluating source authority.</li>
+    <li><strong>Pinterest</strong> uses Product and Recipe schema to enrich Rich Pins, which drive higher save and click rates.</li>
+    <li><strong>Yandex and DuckDuckGo</strong> both consume schema.org markup for their rich answer features.</li>
+  </ul>
+  <p>The takeaway: every hour you invest in clean schema pays off across the entire search and AI surface area, not just in Google's blue links.</p>
+
+  <h2 id="strategy">A practical schema rollout strategy</h2>
+  <p>If you are starting from zero, do not try to add every schema type on day one. Use this priority order, which mirrors what most experienced SEO teams follow.</p>
+  <ol>
+    <li><strong>Week 1:</strong> Add Organization schema to your homepage. This single block gives every page on your site an entity anchor.</li>
+    <li><strong>Week 2:</strong> Add WebSite schema with a sitelinks search box (if applicable). Add BreadcrumbList to every category and inner page.</li>
+    <li><strong>Week 3:</strong> Add the page-type schema that matches your content: Article on blog posts, Product on shop pages, LocalBusiness on contact pages, Service on service pages.</li>
+    <li><strong>Week 4:</strong> Add Person schema to author bios and team pages. Validate everything in Search Console.</li>
+    <li><strong>Ongoing:</strong> Monitor the Enhancements tab in Search Console weekly. Fix any error before it spreads. Re-validate after major content updates.</li>
+  </ol>
+
   <h2 id="framer">If You Have a Framer Site</h2>
   <p>Framer ships with strong fundamentals (fast pages, automatic sitemaps, clean meta tags) but it does not generate schema markup natively. There is no Organization schema, no Article schema on blog posts, no LocalBusiness schema for service sites. If you publish a Framer site today and check the source, you will find zero <code>application/ld+json</code> blocks.</p>
   <p>You have two paths to fix this.</p>

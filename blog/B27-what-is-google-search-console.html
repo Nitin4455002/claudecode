@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>What is Google Search Console? Complete Beginner's Guide (2026)</title>
+  <meta name="description" content="Google Search Console is a free tool that shows how your website performs in Google Search. Learn what it does, how to set it up, and the most useful reports for SEO." />
+  <meta name="keywords" content="what is google search console, google search console explained, gsc tutorial, google webmaster tools, search console for beginners" />
+  <link rel="canonical" href="https://rankframe.com/blog/what-is-google-search-console" />
+  <meta property="og:title" content="What is Google Search Console? Complete Beginner's Guide (2026)" />
+  <meta property="og:description" content="Google Search Console is a free tool that shows how your website performs in Google Search. Learn what it does, how to set it up, and the most useful reports for SEO." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://rankframe.com/blog/what-is-google-search-console" />
+  <meta property="og:site_name" content="RankFrame" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="What is Google Search Console? Complete Beginner's Guide (2026)" />
+  <meta name="twitter:description" content="Google Search Console is a free tool that shows how your website performs in Google Search. Learn what it does, how to set it up, and the most useful reports for SEO." />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "What is Google Search Console? Complete Beginner's Guide (2026)",
+    "description": "Google Search Console is a free tool that shows how your website performs in Google Search. Learn what it does, how to set it up, and the most useful reports for SEO.",
+    "url": "https://rankframe.com/blog/what-is-google-search-console",
+    "datePublished": "2026-05-04",
+    "dateModified": "2026-05-04",
+    "author": {
+      "@type": "Organization",
+      "name": "RankFrame",
+      "url": "https://rankframe.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://framerusercontent.com/images/XE1sqaQyYF9jXODewkOIlcQ3KKo.png"
+      }
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "RankFrame",
+      "url": "https://rankframe.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://framerusercontent.com/images/XE1sqaQyYF9jXODewkOIlcQ3KKo.png"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://rankframe.com/blog/what-is-google-search-console"
+    },
+    "keywords": "what is google search console, google search console explained, gsc tutorial, google webmaster tools, search console for beginners"
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "RankFrame",
+    "url": "https://rankframe.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://framerusercontent.com/images/XE1sqaQyYF9jXODewkOIlcQ3KKo.png"
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://rankframe.com" },
+      { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://rankframe.com/blog" },
+      { "@type": "ListItem", "position": 3, "name": "What is Google Search Console? Complete Beginner's Guide (2026)", "item": "https://rankframe.com/blog/what-is-google-search-console" }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Is Google Search Console free?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. Google Search Console is completely free for any website owner. There is no paid tier, no usage limit on reports, and no credit card required to sign up. All you need is a Google account and the ability to verify ownership of your domain." }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between Google Search Console and Google Analytics?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Google Search Console shows how your site performs in Google Search before users click, including impressions, clicks, average position, and the queries that triggered your pages. Google Analytics shows what users do after they arrive on your site, including sessions, pageviews, conversions, and traffic sources from every channel. Both tools are free and most SEOs use them together." }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I add my website to Google Search Console?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Sign in at search.google.com/search-console with a Google account, click Add property, choose either Domain or URL prefix, then verify ownership using one of the available methods: HTML meta tag, HTML file upload, DNS TXT record, Google Analytics, or Google Tag Manager. Verification usually takes a few minutes, and data starts appearing within 24 to 48 hours." }
+      },
+      {
+        "@type": "Question",
+        "name": "How often does Google Search Console update?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Performance data in Google Search Console updates roughly every 24 to 48 hours, with a typical lag of 1 to 2 days behind real time. Indexing reports update as Google recrawls and processes pages, which can take days or weeks depending on your site. Core Web Vitals data is based on rolling 28-day windows from the Chrome User Experience Report." }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I see all keywords in Google Search Console?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No. Google Search Console hides a portion of queries to protect user privacy and limits the Performance report to roughly the top 1,000 rows per dimension per day. Long-tail and rare queries are often grouped into an anonymized bucket. To see more, you can filter by page, country, or date range, or export data via the Search Console API." }
+      },
+      {
+        "@type": "Question",
+        "name": "What does an impression mean in GSC?",
+        "acceptedAnswer": { "@type": "Answer", "text": "An impression is counted any time a link to your site appears in a Google Search results page that a user views. The user does not have to scroll to your result for the impression to count, as long as your result was on the page that was rendered. Each unique URL in the results is one impression, even if the same user sees it multiple times in a session." }
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; color: #1a0533; background: #fff; line-height: 1.7; font-size: 1rem; }
+    a { color: #7c3aed; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .site-header { background: #7c3aed; padding: 14px 24px; display: flex; align-items: center; gap: 12px; }
+    .site-header a { color: #fff; font-weight: 700; font-size: 1.1rem; }
+    .site-header span { color: rgba(255,255,255,0.6); font-size: .9rem; }
+    .breadcrumb { background: #f8f6ff; border-bottom: 1px solid #e8e0fa; padding: 10px 24px; font-size: .82rem; color: #6b7280; }
+    .breadcrumb a { color: #7c3aed; }
+    .breadcrumb span { margin: 0 6px; }
+    .container { max-width: 820px; margin: 0 auto; padding: 40px 24px 80px; }
+    .article-meta { margin-bottom: 32px; }
+    .article-category { display: inline-block; background: #f3eeff; color: #7c3aed; font-size: .78rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; padding: 4px 10px; border-radius: 20px; margin-bottom: 14px; }
+    h1 { font-size: 2.2rem; font-weight: 800; line-height: 1.2; color: #1a0533; margin-bottom: 16px; }
+    .article-byline { font-size: .85rem; color: #6b7280; }
+    .article-byline strong { color: #1a0533; }
+    .toc { background: #f8f6ff; border: 1px solid #e8e0fa; border-radius: 12px; padding: 24px 28px; margin: 32px 0; }
+    .toc h2 { font-size: 1rem; font-weight: 700; margin-bottom: 14px; color: #1a0533; }
+    .toc ol { padding-left: 20px; }
+    .toc li { margin-bottom: 6px; font-size: .9rem; }
+    h2 { font-size: 1.55rem; font-weight: 800; color: #1a0533; margin: 48px 0 16px; padding-top: 8px; border-top: 2px solid #f3eeff; }
+    h3 { font-size: 1.15rem; font-weight: 700; color: #3b0764; margin: 28px 0 10px; }
+    p { margin-bottom: 18px; }
+    ul, ol { padding-left: 22px; margin-bottom: 18px; }
+    li { margin-bottom: 8px; }
+    .intro-box { background: #f3eeff; border-left: 4px solid #7c3aed; border-radius: 0 10px 10px 0; padding: 20px 24px; margin: 24px 0 32px; font-size: 1.05rem; }
+    .callout { border-radius: 10px; padding: 18px 22px; margin: 24px 0; font-size: .93rem; }
+    .callout-info { background: #eff6ff; border: 1px solid #bfdbfe; }
+    .callout-warning { background: #fffbeb; border: 1px solid #fcd34d; }
+    .callout-success { background: #f0fdf4; border: 1px solid #86efac; }
+    .callout strong { display: block; margin-bottom: 6px; font-weight: 700; }
+    .code-block { background: #1e1b4b; color: #e0e7ff; font-family: 'Courier New', monospace; font-size: .82rem; padding: 20px 22px; border-radius: 10px; overflow-x: auto; margin: 20px 0; line-height: 1.6; white-space: pre; }
+    table { width: 100%; border-collapse: collapse; margin: 24px 0; font-size: .9rem; }
+    th { background: #7c3aed; color: #fff; padding: 12px 14px; text-align: left; font-weight: 700; }
+    td { padding: 11px 14px; border-bottom: 1px solid #e8e0fa; vertical-align: top; }
+    tr:nth-child(even) td { background: #faf8ff; }
+    tr:last-child td { border-bottom: none; }
+    .step-section { background: #faf8ff; border: 1px solid #e8e0fa; border-radius: 14px; padding: 28px 30px; margin: 32px 0; }
+    .step-section-header { display: flex; align-items: center; gap: 16px; margin-bottom: 20px; }
+    .step-section-num { width: 48px; height: 48px; background: #7c3aed; color: #fff; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.3rem; flex-shrink: 0; }
+    .step-section h2 { border: none; padding: 0; margin: 0; font-size: 1.35rem; }
+    .screenshot-suggestion { background: #fdf4ff; border: 1px dashed #c084fc; border-radius: 8px; padding: 12px 16px; font-size: .85rem; color: #6b21a8; margin: 20px 0; }
+    .cta-block { background: linear-gradient(135deg, #7c3aed 0%, #5b21b6 100%); color: #fff; border-radius: 16px; padding: 36px 40px; margin: 48px 0; text-align: center; }
+    .cta-block h3 { font-size: 1.5rem; font-weight: 800; margin-bottom: 12px; color: #fff; border: none; padding: 0; }
+    .cta-block p { color: rgba(255,255,255,0.9); margin-bottom: 0; font-size: 1rem; }
+    .cta-btn { display: inline-block; background: #fff; color: #7c3aed; font-weight: 800; font-size: 1rem; padding: 14px 28px; border-radius: 8px; margin: 20px 0 10px; text-decoration: none; }
+    .cta-btn:hover { background: #f3eeff; text-decoration: none; }
+    .cta-sub { font-size: .82rem; color: rgba(255,255,255,0.7); margin-top: 0; }
+    .faq-item { border-bottom: 1px solid #e8e0fa; padding: 0; }
+    .faq-question { width: 100%; background: none; border: none; text-align: left; padding: 18px 0; font-size: 1rem; font-weight: 700; color: #1a0533; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+    .faq-question:hover { color: #7c3aed; }
+    .faq-icon { flex-shrink: 0; width: 22px; height: 22px; background: #f3eeff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: .85rem; color: #7c3aed; font-weight: 700; transition: transform .2s; }
+    .faq-answer { padding: 0 0 18px; font-size: .95rem; color: #374151; display: none; }
+    .faq-item.open .faq-answer { display: block; }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="https://rankframe.com">RankFrame</a>
+  <span>|</span>
+  <a href="https://rankframe.com/blog" style="color:rgba(255,255,255,0.8);font-weight:400">Blog</a>
+</header>
+
+<nav class="breadcrumb">
+  <a href="https://rankframe.com">Home</a><span>&rsaquo;</span>
+  <a href="https://rankframe.com/blog">Blog</a><span>&rsaquo;</span>
+  What is Google Search Console?
+</nav>
+
+<main class="container">
+  <div class="article-meta">
+    <span class="article-category">SEO Fundamentals</span>
+    <h1>What is Google Search Console? Complete Beginner's Guide (2026)</h1>
+    <p class="article-byline">By <strong>RankFrame Team</strong> &middot; Updated May 2026 &middot; 16 min read</p>
+  </div>
+
+  <div class="intro-box">
+    <strong>Google Search Console (GSC)</strong> is a free tool from Google that shows how your website performs in Google Search. It reports the queries people use to find you, the pages they see, your average position, click-through rate, and any technical issues that prevent Google from indexing your content. It was previously called <em>Google Webmaster Tools</em> and is the single most important free SEO tool any website owner can use.
+  </div>
+
+  <nav class="toc">
+    <h2>In this guide</h2>
+    <ol>
+      <li><a href="#what-is">What is Google Search Console?</a></li>
+      <li><a href="#why">Why every site owner needs it</a></li>
+      <li><a href="#data">What data does GSC show you?</a></li>
+      <li><a href="#setup">How to set up Google Search Console</a></li>
+      <li><a href="#verify">Verifying ownership: 5 methods compared</a></li>
+      <li><a href="#reports">The key reports and how to read them</a></li>
+      <li><a href="#vs-analytics">GSC vs Google Analytics</a></li>
+      <li><a href="#limits">What GSC does NOT do</a></li>
+      <li><a href="#framer">If you have a Framer site</a></li>
+      <li><a href="#faq">Frequently asked questions</a></li>
+    </ol>
+  </nav>
+
+  <h2 id="what-is">What is Google Search Console?</h2>
+  <p>Google Search Console is a free web service from Google that lets you monitor, maintain, and troubleshoot how your site appears in Google Search results. Think of it as the official channel of communication between Google and your website. When Google encounters a problem crawling, indexing, or ranking a page, GSC is where Google tells you about it. When you want to ask Google to recrawl a page, submit a sitemap, or check if a URL is indexed, GSC is where you do it.</p>
+
+  <p>The tool was first launched in 2006 as <strong>Google Webmaster Tools</strong>. In 2015 Google rebranded it to Google Search Console to reflect that the audience is no longer just webmasters, but marketers, SEOs, designers, and small business owners. The product was rebuilt from the ground up in 2018 with a faster interface, 16 months of historical data, and clearer reports. The 2018 version is the one you use today.</p>
+
+  <p>You access it at <a href="https://search.google.com/search-console" target="_blank">search.google.com/search-console</a> with any Google account. There is no paid tier and no usage cap on the standard reports. Once verified, GSC will collect data about your site continuously, even if you never log in.</p>
+
+  <h2 id="why">Why every site owner needs it</h2>
+  <p>If your site is not in Google Search Console, you are flying blind. You will not know which keywords actually bring users to your site, which pages Google has indexed, whether Google has issued a manual penalty against your domain, or whether your site has been hit with a security warning that is scaring users away. None of that information is available anywhere else for free.</p>
+
+  <p>Some specific reasons GSC is non-negotiable:</p>
+  <ul>
+    <li><strong>It is the only source of real query data.</strong> Google Analytics will tell you a user came from organic search, but it will not tell you which keyword they searched. GSC is the only free tool that reveals the actual search terms.</li>
+    <li><strong>It tells you when Google cannot index your pages.</strong> If your robots.txt is blocking crawlers, if a page is marked noindex by mistake, or if a server error is preventing indexing, GSC will surface the problem in the Pages report.</li>
+    <li><strong>It alerts you to manual actions and security issues.</strong> If a human reviewer at Google decides your site is violating spam guidelines, you will only find out through Search Console. Same for hacked content warnings.</li>
+    <li><strong>It is required for many other tools.</strong> Most third-party SEO platforms, including RankFrame, integrate with GSC to pull live performance data. Without verification, those integrations cannot work.</li>
+    <li><strong>It is free, forever.</strong> Unlike most SEO tools, there is no trial, no upgrade, no per-domain pricing. You can verify hundreds of properties on one account.</li>
+  </ul>
+
+  <h2 id="data">What data does Google Search Console show you?</h2>
+  <p>Search Console captures data across four broad categories: search performance, indexing status, user experience, and security. Here is what each category gives you.</p>
+
+  <h3>Search performance data</h3>
+  <ul>
+    <li><strong>Impressions:</strong> how many times a link to your site appeared on a Google search results page that was viewed.</li>
+    <li><strong>Clicks:</strong> how many times users clicked one of those links.</li>
+    <li><strong>Click-through rate (CTR):</strong> clicks divided by impressions, expressed as a percentage.</li>
+    <li><strong>Average position:</strong> the average ranking of your URLs across all impressions, weighted by query.</li>
+    <li><strong>Queries:</strong> the actual search terms users typed. You can filter and segment by query, page, country, device, search appearance, and date.</li>
+  </ul>
+
+  <h3>Indexing data</h3>
+  <ul>
+    <li><strong>Indexed pages:</strong> how many of your URLs Google has accepted into its main index.</li>
+    <li><strong>Not indexed pages:</strong> URLs Google knows about but has decided not to index, with a reason for each (Crawled, currently not indexed; Discovered, currently not indexed; Excluded by noindex tag; etc.).</li>
+    <li><strong>Sitemaps:</strong> which sitemaps you have submitted, when they were last fetched, and how many URLs were discovered.</li>
+    <li><strong>URL Inspection tool:</strong> live status of any single URL, with details on the last crawl, the rendered HTML, mobile usability, and any structured data Google detected.</li>
+  </ul>
+
+  <h3>User experience data</h3>
+  <ul>
+    <li><strong>Core Web Vitals:</strong> field data from real Chrome users measuring Largest Contentful Paint (LCP), Interaction to Next Paint (INP), and Cumulative Layout Shift (CLS).</li>
+    <li><strong>Mobile Usability:</strong> historically reported issues like text too small or clickable elements too close. This report was retired in late 2023 but the data still informs ranking.</li>
+    <li><strong>HTTPS:</strong> whether your site is fully served over HTTPS and whether any HTTP URLs are leaking into the index.</li>
+  </ul>
+
+  <h3>Security and manual action data</h3>
+  <ul>
+    <li><strong>Manual actions:</strong> human-issued penalties for spam, unnatural links, thin content, sneaky redirects, or other guideline violations.</li>
+    <li><strong>Security issues:</strong> alerts when Google detects malware, phishing, hacked content, or social engineering on your site.</li>
+  </ul>
+
+  <h2 id="setup">How to set up Google Search Console</h2>
+  <p>Setup takes about 5 to 10 minutes. You need a Google account and access to either your domain registrar, your CMS, or your DNS provider. Here is the full process.</p>
+
+  <div class="step-section">
+    <div class="step-section-header">
+      <div class="step-section-num">1</div>
+      <h2>Sign in and add a property</h2>
+    </div>
+    <p>Go to <a href="https://search.google.com/search-console" target="_blank">search.google.com/search-console</a> and sign in with the Google account you want to use. If you run a business, use a shared Google Workspace account so the property does not get locked to one individual.</p>
+    <p>Click <strong>Add property</strong> in the top-left dropdown. You will see two options: <strong>Domain</strong> and <strong>URL prefix</strong>.</p>
+  </div>
+
+  <div class="step-section">
+    <div class="step-section-header">
+      <div class="step-section-num">2</div>
+      <h2>Choose Domain or URL prefix</h2>
+    </div>
+    <p><strong>Domain property</strong> covers every subdomain (www, blog, shop) and every protocol (http, https) under a single property. It can only be verified by DNS record. This is the recommended option for most sites because it gives the most complete picture.</p>
+    <p><strong>URL prefix property</strong> only covers exact URLs that match the prefix you enter, including the protocol and subdomain. It supports more verification methods, including HTML tag, HTML file, Google Analytics, and Google Tag Manager. This is the right choice if you cannot edit DNS or if you only want to track one specific subdomain.</p>
+    <p>If you are unsure, add both: a Domain property for full coverage and a URL prefix property for the exact site you care about.</p>
+  </div>
+
+  <div class="step-section">
+    <div class="step-section-header">
+      <div class="step-section-num">3</div>
+      <h2>Verify ownership</h2>
+    </div>
+    <p>Choose one of the verification methods (covered in detail below) and complete the steps Google shows you. Once verified, do not remove the verification record or tag, because Google periodically rechecks it. If verification fails, your property will be marked unverified and data collection will pause.</p>
+  </div>
+
+  <div class="step-section">
+    <div class="step-section-header">
+      <div class="step-section-num">4</div>
+      <h2>Submit your sitemap</h2>
+    </div>
+    <p>Once verified, go to <strong>Indexing &gt; Sitemaps</strong> and submit your sitemap URL (usually <code>/sitemap.xml</code>). Google will fetch it within a few hours and start using it to discover pages. You can submit more than one sitemap if your site has separate ones for blog posts, products, or images.</p>
+  </div>
+
+  <div class="step-section">
+    <div class="step-section-header">
+      <div class="step-section-num">5</div>
+      <h2>Wait for data</h2>
+    </div>
+    <p>Performance data takes 1 to 2 days to appear after verification. Indexing reports populate as Google crawls your URLs, which can take days for new sites and longer for very large sites. Core Web Vitals data requires enough real-user traffic to populate the Chrome User Experience Report and may take weeks on low-traffic sites.</p>
+  </div>
+
+  <h2 id="verify">Verifying ownership: 5 methods compared</h2>
+  <p>Google offers five ways to prove you own a property. The right one depends on what you have access to.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Method</th>
+        <th>Where it goes</th>
+        <th>Best for</th>
+        <th>Property type</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>HTML meta tag</strong></td>
+        <td>A single <code>&lt;meta&gt;</code> tag in the <code>&lt;head&gt;</code> of your homepage</td>
+        <td>Most CMS users, Framer, Webflow, WordPress</td>
+        <td>URL prefix only</td>
+      </tr>
+      <tr>
+        <td><strong>HTML file upload</strong></td>
+        <td>A small file uploaded to the root of your domain</td>
+        <td>Sites where you have FTP or root file access</td>
+        <td>URL prefix only</td>
+      </tr>
+      <tr>
+        <td><strong>DNS TXT record</strong></td>
+        <td>A TXT record added at your DNS provider</td>
+        <td>Domain properties (the only option), and anyone who controls DNS</td>
+        <td>Domain or URL prefix</td>
+      </tr>
+      <tr>
+        <td><strong>Google Analytics</strong></td>
+        <td>Existing GA4 tracking code on your site</td>
+        <td>Sites already running Google Analytics with edit permission</td>
+        <td>URL prefix only</td>
+      </tr>
+      <tr>
+        <td><strong>Google Tag Manager</strong></td>
+        <td>Existing GTM container snippet on your site</td>
+        <td>Sites already using Tag Manager with publish permission</td>
+        <td>URL prefix only</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>For most CMS-based sites, the HTML meta tag method is the fastest. You paste a snippet that looks like this into your site's head:</p>
+
+  <div class="code-block">&lt;meta name="google-site-verification" content="abc123longverificationstringxyz" /&gt;</div>
+
+  <p>Then you click <strong>Verify</strong> in Search Console. Google fetches your homepage, reads the tag, and confirms ownership. The whole process typically takes under 30 seconds.</p>
+
+  <div class="callout callout-info">
+    <strong>Tip: verify multiple ways</strong>
+    Google recommends keeping more than one verification method active. If your CMS strips your meta tag during a redesign, the DNS or GA fallback keeps your property verified. Add backups under <strong>Settings &gt; Ownership verification</strong>.
+  </div>
+
+  <h2 id="reports">The key reports and how to read them</h2>
+  <p>Search Console has a lot of menu items, but five reports do most of the work. Master these and you have covered 90 percent of what GSC is useful for.</p>
+
+  <h3>1. Performance &gt; Search results</h3>
+  <p>This is the report you will open most often. It shows total impressions, clicks, average CTR, and average position over a date range you choose (up to 16 months). You can group results by:</p>
+  <ul>
+    <li><strong>Queries:</strong> the actual search terms users typed</li>
+    <li><strong>Pages:</strong> which URLs on your site are getting impressions</li>
+    <li><strong>Countries:</strong> where in the world your impressions come from</li>
+    <li><strong>Devices:</strong> desktop, mobile, or tablet</li>
+    <li><strong>Search appearance:</strong> rich result types like FAQ, sitelinks, or video</li>
+    <li><strong>Dates:</strong> day-by-day trend over your selected window</li>
+  </ul>
+  <p>You can stack filters. For example, filter to <em>Pages contains /blog/</em> and <em>Country = United States</em> and <em>Device = Mobile</em> to isolate exactly the segment you want to analyze.</p>
+
+  <h3>2. URL Inspection</h3>
+  <p>The URL Inspection tool is a single search bar at the top of the Search Console interface. Paste any URL on your verified property and Google will show you:</p>
+  <ul>
+    <li>Whether the URL is indexed and eligible for Search</li>
+    <li>The last crawl date and the user-agent that crawled it</li>
+    <li>The canonical URL Google selected (which may differ from your declared canonical)</li>
+    <li>Indexing allowed status, including any robots.txt or noindex blocks</li>
+    <li>Mobile usability and Core Web Vitals (when available)</li>
+    <li>Detected structured data with validation errors</li>
+  </ul>
+  <p>You can also click <strong>Test live URL</strong> to fetch the current version of the page in real time, which is useful when you have just shipped a fix and want to confirm it.</p>
+
+  <h3>3. Indexing &gt; Pages</h3>
+  <p>This report tells you how many of your pages are indexed and, just as importantly, why some are not. Google groups not-indexed URLs by reason. Common reasons include:</p>
+  <ul>
+    <li><strong>Crawled, currently not indexed:</strong> Google fetched the page but decided not to index it, often because content quality is borderline or duplicate.</li>
+    <li><strong>Discovered, currently not indexed:</strong> Google knows the URL exists (usually from a sitemap or link) but has not crawled it yet.</li>
+    <li><strong>Duplicate without user-selected canonical:</strong> Google found multiple very similar pages and picked a different one as canonical.</li>
+    <li><strong>Excluded by noindex tag:</strong> the page has a noindex directive (intentional or not).</li>
+    <li><strong>Page with redirect:</strong> the URL redirects somewhere else, so it does not get indexed itself.</li>
+    <li><strong>Soft 404:</strong> Google thinks the page returns successful HTTP status but shows a not-found message.</li>
+  </ul>
+
+  <h3>4. Sitemaps</h3>
+  <p>Submit your XML sitemap here. Google will report when it was last fetched, the success status, and how many URLs were discovered. If the count is much lower than your real page count, your sitemap may have a generation bug. If the status is Couldn't fetch, your sitemap URL is broken or blocked.</p>
+
+  <h3>5. Core Web Vitals</h3>
+  <p>This report uses real-user data from the Chrome User Experience Report (CrUX) to grade your URLs as Good, Needs improvement, or Poor for each Core Web Vital metric. URLs are grouped into similar templates, so you do not have to fix every page individually. If the report says <em>0 URLs</em>, your site does not have enough Chrome traffic to populate the field data, and you should rely on lab data from PageSpeed Insights instead.</p>
+
+  <div class="cta-block">
+    <h3>Ready to rank your Framer site?</h3>
+    <p>RankFrame is the only native SEO plugin built for Framer. Schema, indexing, image SEO, site audits, keyword tracking, all inside the Framer editor. No switching tools. No code required.</p>
+    <a href="https://www.framer.com/marketplace/plugins/rankframe/" class="cta-btn">Install RankFrame Free, 14-Day Trial</a>
+    <p class="cta-sub">Credit card required. Cancel anytime. Full feature access from day one.</p>
+  </div>
+
+  <h3>Bonus: Links</h3>
+  <p>The Links report shows which external sites are linking to you (top linking sites and top linked pages) and your internal linking patterns. It is not as detailed as paid backlink tools like Ahrefs or Majestic, but it is the only first-party source for what Google itself considers your link profile to look like. Use it to spot toxic referral spam and to identify which pages are well linked internally.</p>
+
+  <h3>Bonus: Security &amp; Manual Actions</h3>
+  <p>If everything is fine, both reports will simply say <em>No issues detected</em>. That is the goal. If anything appears here, treat it as a top priority. Manual actions can drop your traffic to zero overnight, and security warnings will trigger browser-level interstitials that turn users away.</p>
+
+  <h2 id="vs-analytics">GSC vs Google Analytics: what is the difference?</h2>
+  <p>The single most common confusion among new site owners is the difference between Google Search Console and Google Analytics. Both are free Google products. Both deal with website data. But they answer fundamentally different questions.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Aspect</th>
+        <th>Google Search Console</th>
+        <th>Google Analytics 4</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Primary question</strong></td>
+        <td>How does my site appear in Google Search?</td>
+        <td>What do users do once they reach my site?</td>
+      </tr>
+      <tr>
+        <td><strong>When data is captured</strong></td>
+        <td>Before the click (in the search results)</td>
+        <td>After the click (on your pages)</td>
+      </tr>
+      <tr>
+        <td><strong>Data source</strong></td>
+        <td>Google's own search logs</td>
+        <td>JavaScript tag firing on your site</td>
+      </tr>
+      <tr>
+        <td><strong>Channels covered</strong></td>
+        <td>Google organic search only</td>
+        <td>All channels (organic, paid, social, direct, referral, email)</td>
+      </tr>
+      <tr>
+        <td><strong>Shows search keywords</strong></td>
+        <td>Yes (limited to top queries)</td>
+        <td>No (organic keywords are hidden)</td>
+      </tr>
+      <tr>
+        <td><strong>Shows conversions</strong></td>
+        <td>No</td>
+        <td>Yes (with event tracking)</td>
+      </tr>
+      <tr>
+        <td><strong>Shows page indexing</strong></td>
+        <td>Yes</td>
+        <td>No</td>
+      </tr>
+      <tr>
+        <td><strong>Shows sessions and pageviews</strong></td>
+        <td>No</td>
+        <td>Yes</td>
+      </tr>
+      <tr>
+        <td><strong>Sends alerts about technical issues</strong></td>
+        <td>Yes</td>
+        <td>No</td>
+      </tr>
+      <tr>
+        <td><strong>Cost</strong></td>
+        <td>Free</td>
+        <td>Free (paid GA360 for enterprise)</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>You should use both. GSC tells you how to get more clicks from Google. Analytics tells you whether those clicks turn into business. They complement each other and you can even link the two so GSC data appears inside the Analytics interface under <em>Acquisition &gt; Search Console</em>.</p>
+
+  <h2 id="limits">What Google Search Console does NOT do</h2>
+  <p>GSC is incredibly useful, but it is not a complete SEO platform. Knowing the limits will save you time looking for features that do not exist.</p>
+
+  <ul>
+    <li><strong>It does not show traffic data the way Analytics does.</strong> No sessions, no pageviews, no bounce rate, no time on page. Clicks are not the same as sessions because one user can click the same result twice in two sessions.</li>
+    <li><strong>It does not show competitor data.</strong> You cannot see your competitors' rankings, traffic, or backlinks in GSC. For that you need a tool like Ahrefs, Semrush, or RankFrame.</li>
+    <li><strong>It does not give you live ranking scores.</strong> Average position is averaged across many impressions and locations. It is not a real-time rank tracker. If you want to see your rank for a specific keyword in a specific city today, you need a dedicated rank tracker.</li>
+    <li><strong>It does not show every keyword.</strong> A significant share of long-tail queries are anonymized to protect user privacy. You will see your top queries but never the full picture.</li>
+    <li><strong>It does not crawl your site for technical issues on demand.</strong> The Pages report only shows what Google has tried to index. For a comprehensive technical audit (broken links, redirect chains, missing alt text), you need a dedicated crawler.</li>
+    <li><strong>It does not write or fix anything for you.</strong> GSC tells you what is wrong. Implementing the fix is up to you and your CMS.</li>
+    <li><strong>It does not show data for non-Google search engines.</strong> Bing has its own equivalent called Bing Webmaster Tools.</li>
+  </ul>
+
+  <div class="callout callout-warning">
+    <strong>Common misconception</strong>
+    Many new SEOs check Search Console daily and panic when impressions drop. Daily fluctuation is normal. Look at 28-day or 3-month trends, not day-over-day movement, before drawing conclusions.
+  </div>
+
+  <h2 id="framer">If you have a Framer site</h2>
+  <p>Framer fully supports Google Search Console verification, but a few specifics are worth knowing. The simplest verification path for a Framer site is the <strong>HTML meta tag method</strong> against a URL prefix property. Here is the workflow:</p>
+
+  <ol>
+    <li>In Google Search Console, click <strong>Add property &gt; URL prefix</strong> and enter your full Framer site URL (for example <code>https://yoursite.com</code>, including https and the correct subdomain).</li>
+    <li>Choose the <strong>HTML tag</strong> verification method. Copy the meta tag Google generates.</li>
+    <li>In Framer, open your project and go to <strong>Site Settings &gt; General &gt; Custom Code</strong>. Paste the meta tag into the <strong>Start of &lt;head&gt; tag</strong> field.</li>
+    <li>Publish your site so the change goes live.</li>
+    <li>Return to Search Console and click <strong>Verify</strong>.</li>
+  </ol>
+
+  <p>Once verified, submit your Framer sitemap. Framer auto-generates a sitemap at <code>/sitemap.xml</code> for every published site. Go to <strong>Indexing &gt; Sitemaps</strong> in GSC, paste <code>sitemap.xml</code> into the field, and click Submit.</p>
+
+  <p>Where things get interesting is what you do with that GSC data day-to-day. Logging into Search Console, switching properties, applying filters, and exporting CSVs is fine but slow when you live inside the Framer editor. RankFrame integrates directly with Google Search Console and pulls live performance data into Framer itself. You can see top queries, top pages, indexing status, and average position right next to the page you are editing. When you spot a page with high impressions but low CTR, you can rewrite the meta title in the same panel and republish without leaving Framer.</p>
+
+  <p>For Framer-specific verification walkthroughs, see our guides on <a href="https://rankframe.com/blog/verify-framer-site-google-search-console">verifying a Framer site in Google Search Console</a> and <a href="https://rankframe.com/blog/framer-sitemap">submitting a Framer sitemap</a>.</p>
+
+  <h2 id="faq">Frequently asked questions</h2>
+
+  <div class="faq-item">
+    <button class="faq-question">Is Google Search Console free? <span class="faq-icon">+</span></button>
+    <div class="faq-answer">Yes. Google Search Console is completely free for any website owner. There is no paid tier, no usage limit on reports, and no credit card required to sign up. All you need is a Google account and the ability to verify ownership of your domain.</div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question">What is the difference between Google Search Console and Google Analytics? <span class="faq-icon">+</span></button>
+    <div class="faq-answer">Google Search Console shows how your site performs in Google Search before users click, including impressions, clicks, average position, and the queries that triggered your pages. Google Analytics shows what users do after they arrive on your site, including sessions, pageviews, conversions, and traffic sources from every channel. Both tools are free and most SEOs use them together.</div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question">How do I add my website to Google Search Console? <span class="faq-icon">+</span></button>
+    <div class="faq-answer">Sign in at search.google.com/search-console with a Google account, click Add property, choose either Domain or URL prefix, then verify ownership using one of the available methods: HTML meta tag, HTML file upload, DNS TXT record, Google Analytics, or Google Tag Manager. Verification usually takes a few minutes, and data starts appearing within 24 to 48 hours.</div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question">How often does Google Search Console update? <span class="faq-icon">+</span></button>
+    <div class="faq-answer">Performance data in Google Search Console updates roughly every 24 to 48 hours, with a typical lag of 1 to 2 days behind real time. Indexing reports update as Google recrawls and processes pages, which can take days or weeks depending on your site. Core Web Vitals data is based on rolling 28-day windows from the Chrome User Experience Report.</div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question">Can I see all keywords in Google Search Console? <span class="faq-icon">+</span></button>
+    <div class="faq-answer">No. Google Search Console hides a portion of queries to protect user privacy and limits the Performance report to roughly the top 1,000 rows per dimension per day. Long-tail and rare queries are often grouped into an anonymized bucket. To see more, you can filter by page, country, or date range, or export data via the Search Console API.</div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question">What does an impression mean in GSC? <span class="faq-icon">+</span></button>
+    <div class="faq-answer">An impression is counted any time a link to your site appears in a Google Search results page that a user views. The user does not have to scroll to your result for the impression to count, as long as your result was on the page that was rendered. Each unique URL in the results is one impression, even if the same user sees it multiple times in a session.</div>
+  </div>
+
+  <div class="cta-block">
+    <h3>Ready to rank your Framer site?</h3>
+    <p>RankFrame is the only native SEO plugin built for Framer. Schema, indexing, image SEO, site audits, keyword tracking, all inside the Framer editor. No switching tools. No code required.</p>
+    <a href="https://www.framer.com/marketplace/plugins/rankframe/" class="cta-btn">Install RankFrame Free, 14-Day Trial</a>
+    <p class="cta-sub">Credit card required. Cancel anytime. Full feature access from day one.</p>
+  </div>
+
+  <p style="font-size:.8rem;color:#9ca3af;margin-top:32px">Always validate schemas using <a href="https://search.google.com/test/rich-results" target="_blank">Google's Rich Results Test</a> or the <a href="https://validator.schema.org/" target="_blank">Schema.org Validator</a>.</p>
+
+  <!-- SEO Details Panel -->
+  <div id="seo-details" style="margin:60px 0 0;padding:28px 32px;background:#f8f6ff;border:1px solid #e8e0fa;border-radius:14px;">
+    <h3 style="font-size:1rem;font-weight:700;color:#1a0533;margin:0 0 20px;">SEO Details</h3>
+    <div id="seo-fields"></div>
+  </div>
+</main>
+
+<script>
+  document.querySelectorAll('.faq-question').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var item = this.closest('.faq-item');
+      var isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(function(i) { i.classList.remove('open'); });
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+</script>
+
+<script>
+(function(){
+  var f=[
+    {label:'Title',value:document.querySelector('title')?document.querySelector('title').textContent:''},
+    {label:'Description',value:(document.querySelector('meta[name="description"]')||{}).content||''},
+    {label:'Keywords',value:(document.querySelector('meta[name="keywords"]')||{}).content||''},
+    {label:'Canonical',value:(document.querySelector('link[rel="canonical"]')||{}).href||''}
+  ];
+  var schemas=[];var _si=0;Array.from(document.querySelectorAll('script[type="application/ld+json"]')).forEach(function(x){try{var j=JSON.parse(x.textContent);if(j['@graph']&&Array.isArray(j['@graph'])){j['@graph'].forEach(function(item){var t=item['@type']||'Schema';schemas.push({label:'Schema: '+t,value:JSON.stringify(item,null,2)});});}else{var t=j['@type']||('Schema '+(++_si));schemas.push({label:'Schema: '+t,value:x.textContent.trim()});}}catch(e){schemas.push({label:'Schema '+(++_si),value:x.textContent.trim()});}});
+  var all=f.concat(schemas);
+  var h='';
+  all.forEach(function(x){
+    h+='<div style="margin-bottom:14px"><div style="font-size:.78rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#7c3aed;margin-bottom:4px">'+x.label+'</div><div style="display:flex;align-items:flex-start;gap:8px"><code style="flex:1;background:#fff;border:1px solid #e0d8f0;border-radius:6px;padding:8px 10px;font-size:.82rem;color:#1a0533;white-space:pre-wrap;word-break:break-all">'+x.value.replace(/</g,'&lt;').replace(/>/g,'&gt;')+'</code><button onclick="navigator.clipboard.writeText(this.dataset.v)" data-v="'+x.value.replace(/"/g,'&quot;')+'" style="flex-shrink:0;padding:6px 12px;background:#7c3aed;color:#fff;border:none;border-radius:6px;font-size:.78rem;font-weight:700;cursor:pointer">Copy</button></div></div>';
+  });
+  document.getElementById('seo-fields').innerHTML=h;
+})();
+</script>
+
+</body>
+</html>
