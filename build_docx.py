@@ -8,8 +8,11 @@ from docx.oxml.ns import qn
 from docx.oxml import OxmlElement
 
 
-SRC = "/home/user/claudecode/email-sequence-rankframe.md"
-OUT = "/home/user/claudecode/RankFrame-Email-Sequence.docx"
+import sys
+SRC = sys.argv[1] if len(sys.argv) > 1 else "/home/user/claudecode/email-sequence-rankframe.md"
+OUT = sys.argv[2] if len(sys.argv) > 2 else "/home/user/claudecode/RankFrame-Email-Sequence.docx"
+COVER_TITLE = sys.argv[3] if len(sys.argv) > 3 else "RankFrame Email Sequence"
+COVER_SUBTITLE = sys.argv[4] if len(sys.argv) > 4 else "Trial to Paid · Zapier + MailerLite Integration Spec"
 
 PURPLE = RGBColor(0x6B, 0x46, 0xC1)
 DARK = RGBColor(0x1F, 0x1F, 0x1F)
@@ -148,13 +151,13 @@ def build():
     # Cover block
     title = doc.add_paragraph()
     title.alignment = WD_ALIGN_PARAGRAPH.LEFT
-    r = title.add_run('RankFrame Email Sequence')
+    r = title.add_run(COVER_TITLE)
     r.font.size = Pt(28)
     r.font.bold = True
     r.font.color.rgb = PURPLE
 
     subtitle = doc.add_paragraph()
-    r = subtitle.add_run('Trial to Paid · Zapier + MailerLite Integration Spec')
+    r = subtitle.add_run(COVER_SUBTITLE)
     r.font.size = Pt(14)
     r.font.color.rgb = GRAY
 
