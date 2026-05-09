@@ -1,0 +1,52 @@
+
+This can potentially break JSON or introduce security issues. Be careful.
+View Problem (⌥F8)
+No quick fixes available
+
+API Error
+API Error: 400 messages: text content blocks must be non-empty
+This can potentially break JSON or introduce security issues. Be careful.
+View Problem (⌥F8)
+No quick fixes available
+
+API Error
+API Error: 400 messages: text content blocks must be non-empty
+This can potentially break JSON or introduce security issues. Be careful.
+View Problem (⌥F8)
+No quick fixes available
+
+API Error
+API Error: 400 messages: text content blocks must be non-empty
+This can potentially break JSON or introduce security issues. Be careful.
+View Problem (⌥F8)
+No quick fixes available
+
+API Error
+API Error: 400 messages: text content blocks must be non-empty
+This can potentially break JSON or introduce security issues. Be careful.
+View Problem (⌥F8)
+No quick fixes available
+
+API Error
+API Error: 400 messages: text content blocks must be non-empty
+Ran 3 commands
+Got it. The full picture is clear now.
+The document I built says exactly what you should paste. There are two scenarios on the docs template page, and they're both in the same document:
+Primary (what you paste, since you have the CMS fields):
+
+<script type="application/ld+json">{{Schema Article | unsafeRaw}}</script>
+<script type="application/ld+json">{{Schema: FAQ | unsafeRaw}}</script>
+<script type="application/ld+json">{{Schema: Breadcrumb | unsafeRaw}}</script>
+The Schema Article field already contains the complete TechArticle — including author, publisher, url, datePublished, mainEntityOfPage, isPartOf — because I built all of that into each CMS item. That's the whole TechArticle, not a partial one. The inline block I showed you earlier is just the fallback labelled "if the CMS schema fields are empty" — it's not a separate "general" layer you need to add on top.
+So the answer to your original question: those 3 unsafeRaw lines ARE the complete schema. The general fields live inside the Schema Article JSON that's stored per doc item in the CMS — not in a second script block on the page template.
+Paste only the 3 lines. Don't combine them with the inline fallback.
+
+API Error
+API Error: 400 messages: text content blocks must be non-empty
+API Error: 400 messages.31.content.1.text: cache_control cannot be set for empty text blocks
+
+API Error
+API Error: 400 messages: text content blocks must be non-empty
+
+
+
