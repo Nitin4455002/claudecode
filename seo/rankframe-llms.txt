@@ -1,0 +1,47 @@
+# RankFrame
+
+> RankFrame is the first comprehensive SEO plugin built natively inside Framer. It unifies schema markup, Google indexing, image SEO (bulk AI alt text), keyword tracking, page speed audits, and 404 monitoring inside the Framer editor — no external dashboard, no embed codes.
+
+RankFrame is a Framer-marketplace plugin made by 7 Seers. It runs entirely inside the Framer editor and ships SEO features that previously required stitching together multiple tools (Yoast, Screaming Frog, Search Console, Schema.dev, etc.). Plans: Personal $15/mo or $108/year (1 website, all features) and Agency $40/mo or $288/year (unlimited Framer sites, every Personal feature included). Yearly billing saves 40% on both. A 7-day free trial is available — every limitation is lifted the moment you subscribe.
+
+## Product
+
+- [Home](https://rankframe.com): Product overview, pricing, FAQs, and dashboard signup
+- [Image SEO feature](https://rankframe.com/features/image-seo): Automatically optimises alt text, image structure, and image relevance — with global brand suffix and CSV export
+- [Get the plugin on Framer Marketplace](https://www.framer.com/marketplace/plugins/rankframe/): Install RankFrame inside Framer
+- [Dashboard / Sign in](https://dashboard.rankframe.com/auth/signin): Account, billing, and connected Framer sites
+
+## Documentation
+
+- [Docs index](https://rankframe.com/docs): Complete documentation for every RankFrame feature
+- Setup, meta tags, schema generation & injection, unlimited Google Indexing API submissions, sitemap push, 404 monitor, SEO audit with downloadable reports, image SEO, keyword tracker, page speed intelligence, deep page-level SEO — each documented as a step-by-step guide under `/docs/:slug`
+
+## Blog
+
+- [Blog index](https://rankframe.com/blogs): Framer SEO tutorials, audits, and ranking strategy
+- Topics covered: schema markup for Framer, Google indexing for Framer sites, Core Web Vitals on Framer, image SEO, keyword research workflow, technical SEO audits, on-page optimization, and case studies
+
+## Support
+
+- [Support & contact](https://rankframe.com/support): Customer support, feature requests, bug reports
+- Available language: English
+- Contact channel: web form on the support page
+
+## Policies
+
+- [Policies](https://rankframe.com/policies): Privacy policy, terms of service, refund policy
+
+## About
+
+- Made by 7 Seers
+- Founded 2025
+- Category: SEO software / Framer plugin
+- Operating system: Web (runs inside the Framer editor)
+- Pricing — Personal: $15/mo or $108/year (1 Framer website, all features) · Agency: $40/mo or $288/year (unlimited Framer websites, every feature) · 40% off when billed yearly · 7-day free trial (all limits lifted on subscription)
+- Social: [X / Twitter](https://x.com/Rank_Frame)
+
+## Optional
+
+- [Sitemap](https://rankframe.com/sitemap.xml): Full URL list for crawlers
+- Brand entity ID (JSON-LD `@id`): `https://rankframe.com/#organization`
+- Software entity ID (JSON-LD `@id`): `https://rankframe.com/#software`
