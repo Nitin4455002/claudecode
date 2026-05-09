@@ -2,7 +2,7 @@
 
 > RankFrame is the first comprehensive SEO plugin built natively inside Framer. It unifies schema markup, Google indexing, image SEO (bulk AI alt text), keyword tracking, page speed audits, and 404 monitoring inside the Framer editor — no external dashboard, no embed codes.
 
-RankFrame is a Framer-marketplace plugin made by 7 Seers. It runs entirely inside the Framer editor and ships SEO features that previously required stitching together multiple tools (Yoast, Screaming Frog, Search Console, Schema.dev, etc.). Plans: Personal $12/mo, Agency $40/mo (unlimited Framer sites). Both include a 7-day free trial.
+RankFrame is a Framer-marketplace plugin made by 7 Seers. It runs entirely inside the Framer editor and ships SEO features that previously required stitching together multiple tools (Yoast, Screaming Frog, Search Console, Schema.dev, etc.). Plans: Personal $9/mo (1 website), Agency $24/mo (unlimited Framer sites). Both include a 7-day free trial and save 40% with annual billing.
 
 ## Product
 
@@ -37,7 +37,7 @@ RankFrame is a Framer-marketplace plugin made by 7 Seers. It runs entirely insid
 - Founded 2024
 - Category: SEO software / Framer plugin
 - Operating system: Web (runs inside the Framer editor)
-- Pricing: $12/mo (Personal) · $40/mo (Agency, unlimited sites) · 7-day free trial on both
+- Pricing: $9/mo (Personal, 1 site) · $24/mo (Agency, unlimited sites) · 40% off annual · 7-day free trial
 - Social: [Twitter/X](https://twitter.com/rankframe) · [LinkedIn](https://www.linkedin.com/company/rankframe)
 
 ## Optional

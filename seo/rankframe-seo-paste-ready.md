@@ -133,7 +133,7 @@ Paste this **once**. It applies to every page. Contains the entity anchors that 
     {
       "@type": "Offer",
       "name": "Personal",
-      "price": "12",
+      "price": "9",
       "priceCurrency": "USD",
       "priceSpecification": { "@type": "UnitPriceSpecification", "billingDuration": "P1M" },
       "url": "https://dashboard.rankframe.com/auth/signin"
@@ -141,7 +141,7 @@ Paste this **once**. It applies to every page. Contains the entity anchors that 
     {
       "@type": "Offer",
       "name": "Agency",
-      "price": "40",
+      "price": "24",
       "priceCurrency": "USD",
       "priceSpecification": { "@type": "UnitPriceSpecification", "billingDuration": "P1M" },
       "url": "https://dashboard.rankframe.com/auth/signin"
@@ -202,7 +202,7 @@ Paste this **once**. It applies to every page. Contains the entity anchors that 
       "name": "Does RankFrame work for Framer agencies managing multiple sites?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. The Agency plan covers unlimited Framer websites under a single $40/month subscription."
+        "text": "Yes. The Agency plan covers unlimited Framer websites under a single $24/month subscription, with 40% off when billed annually."
       }
     },
     {
@@ -210,7 +210,7 @@ Paste this **once**. It applies to every page. Contains the entity anchors that 
       "name": "Is there a free trial?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. Both the Personal ($12/mo) and Agency ($40/mo) plans include a 7-day free trial with no credit card required."
+        "text": "Yes. Both the Personal ($9/mo) and Agency ($24/mo) plans include a 7-day free trial. Annual billing saves 40%."
       }
     }
   ]
