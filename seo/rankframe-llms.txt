@@ -1,0 +1,47 @@
+# RankFrame
+
+> RankFrame is the first comprehensive SEO plugin built natively inside Framer. It unifies schema markup, Google indexing, image SEO (bulk AI alt text), keyword tracking, page speed audits, and 404 monitoring inside the Framer editor — no external dashboard, no embed codes.
+
+RankFrame is a Framer-marketplace plugin made by 7 Seers. It runs entirely inside the Framer editor and ships SEO features that previously required stitching together multiple tools (Yoast, Screaming Frog, Search Console, Schema.dev, etc.). Plans: Personal $12/mo, Agency $40/mo (unlimited Framer sites). Both include a 7-day free trial.
+
+## Product
+
+- [Home](https://rankframe.com): Product overview, pricing, FAQs, and dashboard signup
+- [Image SEO feature](https://rankframe.com/features/image-seo): Bulk AI alt text, missing-alt audit, global brand suffix, CSV export
+- [Get the plugin on Framer Marketplace](https://www.framer.com/marketplace/plugins/rankframe/): Install RankFrame inside Framer
+- [Dashboard / Sign in](https://dashboard.rankframe.com/auth/signin): Account, billing, and connected Framer sites
+
+## Documentation
+
+- [Docs index](https://rankframe.com/docs): Complete documentation for every RankFrame feature
+- Setup, schema generator, Google Indexing API, image SEO, keyword tracking, page-speed audit, 404 monitor, per-page SEO audit — each documented as a step-by-step guide under `/docs/:slug`
+
+## Blog
+
+- [Blog index](https://rankframe.com/blogs): Framer SEO tutorials, audits, and ranking strategy
+- Topics covered: schema markup for Framer, Google indexing for Framer sites, Core Web Vitals on Framer, image SEO, keyword research workflow, technical SEO audits, on-page optimization, and case studies
+
+## Support
+
+- [Support & contact](https://rankframe.com/support): Customer support, feature requests, bug reports
+- Available language: English
+- Contact channel: web form on the support page
+
+## Policies
+
+- [Policies](https://rankframe.com/policies): Privacy policy, terms of service, refund policy
+
+## About
+
+- Made by 7 Seers
+- Founded 2024
+- Category: SEO software / Framer plugin
+- Operating system: Web (runs inside the Framer editor)
+- Pricing: $12/mo (Personal) · $40/mo (Agency, unlimited sites) · 7-day free trial on both
+- Social: [Twitter/X](https://twitter.com/rankframe) · [LinkedIn](https://www.linkedin.com/company/rankframe)
+
+## Optional
+
+- [Sitemap](https://rankframe.com/sitemap.xml): Full URL list for crawlers
+- Brand entity ID (JSON-LD `@id`): `https://rankframe.com/#organization`
+- Software entity ID (JSON-LD `@id`): `https://rankframe.com/#software`
