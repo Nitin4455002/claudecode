@@ -31,7 +31,6 @@ Paste this **once**. It applies to every page. Contains the entity anchors that 
   "@type": "Organization",
   "@id": "https://rankframe.com/#organization",
   "name": "RankFrame",
-  "alternateName": "RankFrame SEO Plugin for Framer",
   "url": "https://rankframe.com",
   "logo": {
     "@type": "ImageObject",
@@ -40,7 +39,7 @@ Paste this **once**. It applies to every page. Contains the entity anchors that 
     "height": 512
   },
   "description": "RankFrame is the only comprehensive SEO plugin built natively inside Framer. Manage meta tags, schema markup, Google indexing, image alt text, and keyword tracking without leaving the Framer editor.",
-  "foundingDate": "2024",
+  "foundingDate": "2025",
   "knowsAbout": [
     "Framer SEO",
     "Schema markup",
@@ -119,17 +118,18 @@ Paste this **once**. It applies to every page. Contains the entity anchors that 
   "url": "https://rankframe.com",
   "description": "Native Framer SEO plugin: schema generator, Google Indexing API, image SEO, keyword tracker, page speed, 404 monitor and SEO audit — inside the Framer editor.",
   "featureList": [
-    "Meta tags manager (title, description, canonical, OG)",
-    "Automatic JSON-LD schema generation and injection",
+    "Meta tags manager (title and description)",
+    "Automatic Schema Generator with 6+ structured data types",
     "Unlimited Google Indexing API submissions",
     "Sitemap push to Google",
-    "404 monitor",
-    "SEO audit with downloadable reports",
-    "Bulk AI image SEO (alt text)",
-    "Keyword tracker (Google Search Console)",
-    "Page speed intelligence (Core Web Vitals)",
+    "24/7 404 Monitor",
+    "Intelligent AI Audit with downloadable reports",
+    "Image SEO — alt text, structure, image relevance, global brand suffix, CSV export",
+    "Keyword Tracker (Google Search Console)",
+    "Page Speed Intelligence (Core Web Vitals)",
     "Deep page-level SEO (4 on-page benchmarks)",
-    "Centralised SEO dashboard with PDF reports"
+    "Two-level SEO controls (global and per-page)",
+    "Centralised SEO dashboard"
   ],
   "offers": [
     {
@@ -169,13 +169,6 @@ Paste this **once**. It applies to every page. Contains the entity anchors that 
       "url": "https://dashboard.rankframe.com/auth/signin"
     }
   ],
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "4.9",
-    "reviewCount": "47",
-    "bestRating": "5",
-    "worstRating": "1"
-  },
   "author": { "@id": "https://rankframe.com/#organization" },
   "publisher": { "@id": "https://rankframe.com/#organization" }
 }
@@ -200,7 +193,7 @@ Paste this **once**. It applies to every page. Contains the entity anchors that 
       "name": "Can RankFrame add schema markup to my Framer site?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. RankFrame generates JSON-LD structured data automatically across six schema types and injects it into your Framer site with one click."
+        "text": "Yes. RankFrame's Automatic Schema Generator supports 6+ structured data types and injects them into your Framer site with one click."
       }
     },
     {
@@ -216,7 +209,7 @@ Paste this **once**. It applies to every page. Contains the entity anchors that 
       "name": "How does the image SEO feature work?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "RankFrame scans every image on your Framer site, flags missing alt text, and generates AI-powered alt text in bulk. You can also apply a global brand suffix that auto-appends to every image description."
+        "text": "RankFrame's Image SEO automatically optimises alt text, image structure, and image relevance across every image on your Framer site. You can apply a global brand suffix that auto-appends to descriptions, and export the full image SEO report as a CSV."
       }
     },
     {
@@ -553,7 +546,7 @@ Paste this **once**. It applies to every page. Contains the entity anchors that 
 ### Page Settings → SEO
 
 - **SEO Title:** `Framer Image SEO — Bulk AI Alt Text & Audit | RankFrame`
-- **SEO Description:** `Optimize every image on your Framer site. Bulk AI alt text, missing-alt audit, global brand suffix, and CSV export — all inside the Framer editor with RankFrame.`
+- **SEO Description:** `Optimize every image on your Framer site. Bulk AI alt text, image structure & relevance scoring, global brand suffix, and CSV export — all inside the Framer editor with RankFrame.`
 
 ### Page Settings → Custom Code → Start of `<head>`
 
@@ -567,7 +560,7 @@ Paste this **once**. It applies to every page. Contains the entity anchors that 
   "serviceType": "Image SEO Optimization",
   "provider": { "@id": "https://rankframe.com/#organization" },
   "url": "https://rankframe.com/features/image-seo",
-  "description": "Bulk AI alt text generation, missing-alt audit, global brand suffix, and CSV export for every image on your Framer site.",
+  "description": "Automatically optimises alt text, image structure, and image relevance across your Framer site. Includes global brand suffix and CSV export.",
   "areaServed": "Worldwide",
   "audience": {
     "@type": "Audience",
@@ -578,9 +571,10 @@ Paste this **once**. It applies to every page. Contains the entity anchors that 
     "name": "Image SEO features",
     "itemListElement": [
       { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Bulk AI alt text generation" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Missing alt text audit" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Image structure optimization" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Image relevance scoring" } },
       { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Global brand suffix for alt text" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Image SEO CSV export" } }
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "CSV export of image SEO data" } }
     ]
   }
 }

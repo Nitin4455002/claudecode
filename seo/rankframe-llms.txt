@@ -7,7 +7,7 @@ RankFrame is a Framer-marketplace plugin made by 7 Seers. It runs entirely insid
 ## Product
 
 - [Home](https://rankframe.com): Product overview, pricing, FAQs, and dashboard signup
-- [Image SEO feature](https://rankframe.com/features/image-seo): Bulk AI alt text, missing-alt audit, global brand suffix, CSV export
+- [Image SEO feature](https://rankframe.com/features/image-seo): Automatically optimises alt text, image structure, and image relevance — with global brand suffix and CSV export
 - [Get the plugin on Framer Marketplace](https://www.framer.com/marketplace/plugins/rankframe/): Install RankFrame inside Framer
 - [Dashboard / Sign in](https://dashboard.rankframe.com/auth/signin): Account, billing, and connected Framer sites
 
@@ -34,7 +34,7 @@ RankFrame is a Framer-marketplace plugin made by 7 Seers. It runs entirely insid
 ## About
 
 - Made by 7 Seers
-- Founded 2024
+- Founded 2025
 - Category: SEO software / Framer plugin
 - Operating system: Web (runs inside the Framer editor)
 - Pricing — Personal: $15/mo or $108/year (1 Framer website, all features) · Agency: $40/mo or $288/year (unlimited Framer websites, every feature) · 40% off when billed yearly · 7-day free trial (all limits lifted on subscription)
