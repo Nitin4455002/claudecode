@@ -35,7 +35,7 @@ Paste this **once**. It applies to every page. Contains the entity anchors that 
   "url": "https://rankframe.com",
   "logo": {
     "@type": "ImageObject",
-    "url": "https://rankframe.com/favicon.ico",
+    "url": "https://framerusercontent.com/images/XE1sqaQyYF9jXODewkOIlcQ3KKo.png",
     "width": 512,
     "height": 512
   },
