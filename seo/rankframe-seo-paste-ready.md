@@ -120,30 +120,53 @@ Paste this **once**. It applies to every page. Contains the entity anchors that 
   "url": "https://rankframe.com",
   "description": "Native Framer SEO plugin: schema generator, Google Indexing API, image SEO, keyword tracker, page speed, 404 monitor and SEO audit — inside the Framer editor.",
   "featureList": [
-    "Automatic JSON-LD Schema Generator",
-    "Google Indexing API submission",
-    "Bulk AI image alt text",
-    "Keyword tracker with Google Search Console integration",
-    "Page speed audit (Lighthouse)",
+    "Meta tags manager (title, description, canonical, OG)",
+    "Automatic JSON-LD schema generation and injection",
+    "Unlimited Google Indexing API submissions",
+    "Sitemap push to Google",
     "404 monitor",
-    "Per-page SEO audit",
-    "Centralised SEO dashboard"
+    "SEO audit with downloadable reports",
+    "Bulk AI image SEO (alt text)",
+    "Keyword tracker (Google Search Console)",
+    "Page speed intelligence (Core Web Vitals)",
+    "Deep page-level SEO (4 on-page benchmarks)",
+    "Centralised SEO dashboard with PDF reports"
   ],
   "offers": [
     {
       "@type": "Offer",
-      "name": "Personal",
-      "price": "9",
+      "name": "Personal (monthly)",
+      "price": "15",
       "priceCurrency": "USD",
       "priceSpecification": { "@type": "UnitPriceSpecification", "billingDuration": "P1M" },
+      "description": "1 Framer website. All features included.",
       "url": "https://dashboard.rankframe.com/auth/signin"
     },
     {
       "@type": "Offer",
-      "name": "Agency",
-      "price": "24",
+      "name": "Personal (yearly)",
+      "price": "108",
+      "priceCurrency": "USD",
+      "priceSpecification": { "@type": "UnitPriceSpecification", "billingDuration": "P1Y" },
+      "description": "1 Framer website. 40% off vs monthly.",
+      "url": "https://dashboard.rankframe.com/auth/signin"
+    },
+    {
+      "@type": "Offer",
+      "name": "Agency (monthly)",
+      "price": "40",
       "priceCurrency": "USD",
       "priceSpecification": { "@type": "UnitPriceSpecification", "billingDuration": "P1M" },
+      "description": "Unlimited Framer websites. All features included.",
+      "url": "https://dashboard.rankframe.com/auth/signin"
+    },
+    {
+      "@type": "Offer",
+      "name": "Agency (yearly)",
+      "price": "288",
+      "priceCurrency": "USD",
+      "priceSpecification": { "@type": "UnitPriceSpecification", "billingDuration": "P1Y" },
+      "description": "Unlimited Framer websites. 40% off vs monthly.",
       "url": "https://dashboard.rankframe.com/auth/signin"
     }
   ],
@@ -202,7 +225,7 @@ Paste this **once**. It applies to every page. Contains the entity anchors that 
       "name": "Does RankFrame work for Framer agencies managing multiple sites?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. The Agency plan covers unlimited Framer websites under a single $24/month subscription, with 40% off when billed annually."
+        "text": "Yes. The Agency plan covers unlimited Framer client websites under a single $40/month subscription ($288/year — 40% off). Every Personal feature is included."
       }
     },
     {
@@ -210,7 +233,7 @@ Paste this **once**. It applies to every page. Contains the entity anchors that 
       "name": "Is there a free trial?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. Both the Personal ($9/mo) and Agency ($24/mo) plans include a 7-day free trial. Annual billing saves 40%."
+        "text": "Yes. Both the Personal ($15/mo or $108/year) and Agency ($40/mo or $288/year) plans include a 7-day free trial. Annual billing saves 40%, and all trial limitations are lifted the moment you subscribe."
       }
     }
   ]
