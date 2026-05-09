@@ -85,7 +85,11 @@ Paste this **once**. It applies to every page. Contains the entity anchors that 
 }
 </script>
 
-<!-- ===== Global Twitter Card defaults ===== -->
+<!-- ===== Twitter Card defaults (site-wide) =====
+     Framer auto-generates og:title, og:description, og:image from each page's
+     SEO settings — Twitter falls back to those, so we only declare the card
+     type and our handle here. -->
+<meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:site" content="@Rank_Frame" />
 <meta name="twitter:creator" content="@Rank_Frame" />
 ```
