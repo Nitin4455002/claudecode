@@ -52,9 +52,8 @@ Paste this **once**. It applies to every page. Contains the entity anchors that 
     "Framer plugins"
   ],
   "sameAs": [
-    "https://www.framer.com/marketplace/plugins/rankframe/",
-    "https://twitter.com/rankframe",
-    "https://www.linkedin.com/company/rankframe"
+    "https://x.com/Rank_Frame",
+    "https://www.framer.com/marketplace/plugins/rankframe/"
   ],
   "contactPoint": {
     "@type": "ContactPoint",
@@ -88,8 +87,8 @@ Paste this **once**. It applies to every page. Contains the entity anchors that 
 </script>
 
 <!-- ===== Global Twitter Card defaults ===== -->
-<meta name="twitter:site" content="@rankframe" />
-<meta name="twitter:creator" content="@rankframe" />
+<meta name="twitter:site" content="@Rank_Frame" />
+<meta name="twitter:creator" content="@Rank_Frame" />
 ```
 
 ---

@@ -38,7 +38,7 @@ RankFrame is a Framer-marketplace plugin made by 7 Seers. It runs entirely insid
 - Category: SEO software / Framer plugin
 - Operating system: Web (runs inside the Framer editor)
 - Pricing — Personal: $15/mo or $108/year (1 Framer website, all features) · Agency: $40/mo or $288/year (unlimited Framer websites, every feature) · 40% off when billed yearly · 7-day free trial (all limits lifted on subscription)
-- Social: [Twitter/X](https://twitter.com/rankframe) · [LinkedIn](https://www.linkedin.com/company/rankframe)
+- Social: [X / Twitter](https://x.com/Rank_Frame)
 
 ## Optional
 
