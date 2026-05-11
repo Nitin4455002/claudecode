@@ -456,6 +456,7 @@ On most Framer sites, that's 70–80% of all images.
 
 Click Select All, then click Generate Alt Text.
 RankFrame writes alt text for every selected image using your brand context.
+Cost: 1 credit per image. A 100-image site uses 100 credits.
 
 Do this once, export to CSV if you want a record, done.
 
@@ -881,8 +882,6 @@ Note: This requires users to submit a second form after signing up. Use only as 
 
 ## Quick Reference: All 16 Emails at a Glance
 
-Use this as your build checklist. Check off each email as you create it in MailerLite.
-
 | # | Sequence | Send Timing | Subject Line | ✓ |
 |---|---|---|---|---|
 | E1 | Free Trial | Day 0 — Immediate | Your RankFrame trial is live — do this first | ☐ |
@@ -906,8 +905,6 @@ Use this as your build checklist. Check off each email as you create it in Maile
 ---
 
 ## What to Measure Weekly
-
-Check these in MailerLite → Automations → click any automation → click any email → Reports tab.
 
 | Metric | Good Benchmark | Warning Level | What to Do |
 |---|---|---|---|
@@ -933,16 +930,15 @@ Changes made from original DOCX (for reference):
 |---|---|---|---|
 | Email 3 body | "60–70 characters" | "50–60 characters" | Google truncates at ~600px ≈ 60 chars; 70 gets cut off |
 | Email 3 survey hook | "so we can send you more relevant emails" | "so your next email is actually useful" | Stronger motivation to click |
-| Email 5 preview | "29 checks. Downloadable. Shareable." | "Full breakdown. Downloadable. Shareable." | Specific check count not in any RankFrame documentation |
-| Email 5 body — check counts | "Basic SEO: 10 checks / Advanced: 12 / Performance: 5 / Security: 2" | Category names only, no counts | Numbers not documented; potentially wrong |
+| Email 5 preview | "29 checks. Downloadable. Shareable." | "Full breakdown. Downloadable. Shareable." | Specific check count not verified in documentation |
+| Email 5 body — check counts | "Basic SEO: 10 checks / Advanced: 12 / Performance: 5 / Security: 2" | Category names only, no counts | Specific numbers not verified |
 | Email 5 body + CTAs | "SEO Analyzer" | "SEO Audit" | Correct feature name per RankFrame docs |
 | Email A-1 CTA | "SEO Analyzer" | "SEO Audit" | Same |
 | Email A-2 CTA | "SEO Analyzer section" | "SEO Audit section" | Same |
 | Email 4B workflow step 2 | "Run Recrawl — gives RankFrame a full picture of their site" | Removed (steps renumbered 1–5) | "Recrawl" not in any RankFrame documentation |
 | Email A-1 workflow step 3 | "Run Recrawl" | Removed (steps renumbered 1–8) | Same |
 | Email A-1 client deliverable note | "at step 4" | "at step 3" | Renumbered after Recrawl removal |
-| Email P-1 body | "Cost: 1 credit per image. A 100-image site uses 100 credits." | Removed | No credit system in any RankFrame documentation |
-| Email 2 body | "click 'Check Live' next to your homepage" | "check the status of your homepage" | Button label not in documentation |
-| Email 4A path | "Global Settings → Advanced tab" | "Global Settings → Schema" | Specific tab name unverified; kept concept, removed unverified sub-path |
+| Email 2 body | "click 'Check Live' next to your homepage" | "check the status of your homepage" | Button label not confirmed in documentation |
+| Email 4A path | "Global Settings → Advanced tab" | "Global Settings → Schema" | Specific tab name unverified |
 | Email P-2 | "Submit Indexing → Keyword Tracker tab" | "Keyword Tracker" direct navigation | Location under Submit Indexing unconfirmed |
-| Email P-3 + A-3 | "Polar.sh portal" | "billing portal" | Billing provider name may change; generic reference is safer in email copy |
+| Email P-3 + A-3 | "Polar.sh portal" | "billing portal" | Billing provider name may change; generic reference safer in email copy |
