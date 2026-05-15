@@ -229,7 +229,7 @@ Paste this **once**. It applies to every page. Contains the entity anchors that 
       "name": "Is there a free trial?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. Both the Personal ($15/mo or $108/year) and Agency ($40/mo or $288/year) plans include a 7-day free trial. Annual billing saves 40%, and all trial limitations are lifted the moment you subscribe."
+        "text": "Yes. Both the Personal ($15/mo or $108/year) and Agency ($40/mo or $288/year) plans include a 14-day free trial. Annual billing saves 40%, and all features are fully accessible from day one."
       }
     }
   ]
@@ -437,9 +437,13 @@ Paste this **once**. It applies to every page. Contains the entity anchors that 
 
 <!-- BreadcrumbList (pre-built JSON, one per post) -->
 <script type="application/ld+json">{{Schema: Breadcrumb | unsafeRaw}}</script>
+```
 
-<!-- HowTo (pre-built JSON; only non-empty for how-to posts) -->
-<script type="application/ld+json">{{Schema: How To Schema | unsafeRaw}}</script>
+### Page Settings → Custom Code → End of `<body>`
+
+```html
+<!-- HowTo: outputs nothing for non-how-to posts; MUST go in End of <body>, not <head> -->
+{{Schema: How To Schema | unsafeRaw}}
 ```
 
 > **Fallback inline template** (if you ever need to rebuild from raw fields instead of the stored schema):
@@ -488,7 +492,7 @@ Paste this **once**. It applies to every page. Contains the entity anchors that 
 > - `{{Schema: Article}}` — stores BlogPosting JSON (note colon)
 > - `{{Schema: FAQ}}` — stores FAQPage JSON
 > - `{{Schema: Breadcrumb}}` — stores BreadcrumbList JSON
-> - `{{Schema: How To Schema}}` — stores HowTo JSON
+> - `{{Schema: How To Schema}}` — stores HowTo JSON (paste in End of `<body>`)
 > - `{{Headline}}`, `{{Sub headline}}`, `{{Image}}`, `{{Slug}}`, `{{SEO Title}}`, `{{SEO Description}}`
 
 ---
@@ -710,6 +714,7 @@ After each publish:
 | Organization + WebSite entities | Site Settings → General → Custom Code → Start of `<head>` |
 | Per-page SEO title & description | Page Settings (gear icon) → SEO tab |
 | Per-page schema (Article, FAQ, etc.) | Page Settings → Custom Code → Start of `<head>` |
+| HowTo schema (blog posts) | Page Settings → Custom Code → End of `<body>` |
 | OG / Social image | Page Settings → SEO → Social Image |
 | Noindex | Page Settings → SEO → "Hide from search engines" toggle |
 | CMS variable in SEO title | Click the `{ }` icon next to the SEO Title field → pick CMS field |
