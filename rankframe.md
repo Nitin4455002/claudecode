@@ -898,4 +898,159 @@ This document should be updated whenever:
 - A new policy document goes live
 - The white-label / automated report features ship
 
-Last meaningful update: 2026-05-02 (added full UI walkthrough, audit PDF format, Image SEO details, Personalization onboarding, Submit Indexing tab structure, Account Settings detail, future roadmap)
+Last meaningful update: 2026-05-24 (added CMS SEO implementation log, Framer CMS field IDs, session scripts, case study copy, LinkedIn profile work)
+
+---
+
+## CMS Technical Reference
+
+### Framer CMS Collection IDs
+| Collection | ID |
+|---|---|
+| Docs | IKNAcLsmG |
+| Blogs | snViqNO8w |
+| Authors | Z4qtKv8SE |
+
+### Framer CMS Field IDs
+| Collection | Field | ID |
+|---|---|---|
+| Docs | Body (formattedText) | sHhGfW04g |
+| Docs | Category (enum) | fVuwbLmH7 |
+| Docs | Related Articles (multiCollectionReference) | U4WVQW5L4 |
+| Blogs | Body (formattedText) | T9YGixXzB |
+| Blogs | Tag (enum) | XVw2ca3RE |
+| Blogs | Author (collectionReference) | XxMGFR5_2 |
+| Blogs | Related Posts (multiCollectionReference) | cBGVH1_aT |
+
+### Doc Category Enum IDs
+| Category | Enum ID |
+|---|---|
+| Getting Started | GfikN8Pjd |
+| Global SEO Settings | S1WQAvZsE |
+| Schema Markup | BdEaQqGmh |
+| Submit & Indexing | DzZlUTufZ |
+| Image SEO | xpOJ9obDp |
+| SEO Audit | i6OLNgwML |
+| 404 Monitor | WAjesYucg |
+| Pages | rcEEptKk8 |
+| Keyword Research | Z9ma3ynZa |
+| Page Speed | eyUNwuO14 |
+| Keyword Tracker | JYShCFtEh |
+| AI Personalization | abAFvWlLe |
+| Billing | XqXD1SZ_5 |
+| Account | mfmGKCB07 |
+| Troubleshooting | IHtUfD_jZ |
+
+### Blog Tag Enum IDs
+| Tag | Enum ID |
+|---|---|
+| Framer SEO | HmR6NZi2u |
+| Plugin Review | feE2B6mo5 |
+| SEO Checklist | piH7frp3e |
+| Schema Markup | FcPPhm_Qn |
+| SEO Fundamentals | NKjXYXQKE |
+| How-To Guide | lQb4jcPX8 |
+
+### Blog Listing Page Node IDs (Framer canvas)
+| Node | ID |
+|---|---|
+| Page | fajtLTGc7 |
+| TitleDescription container | DVa8DCnAl |
+| Section label "Blogs" | NJAhJW2sS |
+| Heading (H1) | PJvcuWk5U |
+| Body/subtitle | S5jiKUF5w |
+
+Blog listing page heading was changed to: "The Framer SEO playbook"
+Blog listing page subtitle was changed to: "Guides, deep dives, and how-tos on indexing, schema, keywords, and everything that makes Framer sites rank."
+
+### Critical upsert rules
+- Every doc upsert MUST include the Category enum field (fVuwbLmH7) or Framer returns a validation error.
+- Related Articles/Posts fields expect item IDs, not slugs. Build a slug-to-ID map from getCMSItems before upserting.
+- Strip npm notice lines from unframer output before YAML parsing: `"\n".join(l for l in r.stdout.splitlines() if not l.startswith("npm"))`
+
+### Reusable link injector pattern
+```python
+def add_internal_links(html, link_map, self_slug, max_links=8):
+    stash_dict = {}
+    def stash(p):
+        def fn(m):
+            k = f'\x00{p}{len(stash_dict)}\x00'
+            stash_dict[k] = m.group(0)
+            return k
+        return fn
+    html = re.sub(r'<a\b[^>]*>.*?</a>', stash('A'), html, flags=re.DOTALL|re.IGNORECASE)
+    html = re.sub(r'<h\d[^>]*>.*?</h\d>', stash('H'), html, flags=re.DOTALL|re.IGNORECASE)
+    html = re.sub(r'<(?:code|pre)[^>]*>.*?</(?:code|pre)>', stash('C'), html, flags=re.DOTALL|re.IGNORECASE)
+    added = []
+    for keyword in sorted(link_map.keys(), key=len, reverse=True):
+        if len(added) >= max_links: break
+        target = link_map[keyword]
+        if self_slug and self_slug in target: continue
+        pat = re.compile(r'\b' + re.escape(keyword) + r'\b', re.IGNORECASE)
+        m = pat.search(html)
+        if not m: continue
+        before = html[:m.start()]
+        if before.rfind('<') > before.rfind('>'): continue
+        matched = m.group(0)
+        html = html[:m.start()] + f'<a href="{target}">{matched}</a>' + html[m.end():]
+        added.append(keyword)
+    for k, v in stash_dict.items(): html = html.replace(k, v)
+    return html, added
+```
+
+### External link targets
+- "Framer" text links to: `https://framer.link/7seersmedia` (affiliate)
+- "7 Seers" / "7Seers" text links to: `https://7seersmedia.com`
+- Internal blog links use: `/blogs/[slug]`
+- Internal doc links use: `/docs/[slug]`
+
+### Scripts stored in /tmp
+| Script | Purpose |
+|---|---|
+| /tmp/clean_dashes_blogs.py | Remove em dashes and double dashes from all blog content |
+| /tmp/clean_dashes_docs.py | Same for docs |
+| /tmp/heavy_link_sweep.py | Double sweep: external links + expanded internal link map across all content |
+| /tmp/fix_leading_spaces.py | Strip leading whitespace/nbsp from inside p tags |
+| /tmp/audit_links.py | Audit link density across all content (internal, framer.com, 7seers counts) |
+| /tmp/add_framer_strategic.py | Add Framer mentions to articles with zero occurrences |
+| /tmp/fix_links_and_add_internal.py | Fix broken /blog/ links and Phase 1-3 internal links |
+| /tmp/expand_blog_doc_links.py | Schema blog-to-doc cross-links and schema doc internal links |
+
+---
+
+## Session Log
+
+### Session: 2026-05-24
+
+**CMS work completed on rankframe.com:**
+
+1. Fixed 25 broken internal links from `/blog/` to `/blogs/` across all content.
+2. Added strategic "Framer" mentions to 14 docs and 2 blogs that had zero occurrences of the word.
+3. Phase 1-3 internal linking sweep: connected related blogs, docs, and feature pages into a dense content graph.
+4. Schema-specific cross-linking: every schema blog links to relevant schema docs, schema docs cross-link each other.
+5. Heavy double sweep for internal and external links: affiliate links to framer.link/7seersmedia for "Framer" mentions, links to 7seersmedia.com for "7 Seers" mentions, expanded keyword-to-URL map across all 83 docs and 34 blogs.
+6. Removed all em dashes (both `--` and `—`) from every blog and doc body. Smart replacement: colon after `</strong>` and `</a>` for label-style text, comma elsewhere. Code blocks and HTML comments protected.
+7. Fixed blog listing page title and subtitle (was finance template placeholder copy).
+8. Fixed weird leading whitespace/indentation inside paragraph tags: 2 docs (buy-credits, minimized-mode) and 21 blogs updated.
+
+**LinkedIn profile work for Harsh Upadhyay:**
+
+- Reviewed headline (Co Founder & VP of Design at 7Seers).
+- Rewrote About section for UK job market, MBA positioning, Dieter Rams quote, no em dashes.
+- Recommended top 5 skills: Product Design, User Experience (UX), Web Design, Figma, SEO.
+- Reviewed Experience section: advised removing "No-Code Developer" from titles, rewriting descriptions with outcomes and numbers, noting overlapping Contra role, deprioritizing 2022 internship.
+
+**Contra case study: RankFrame**
+
+Full case study copy written for Harsh's Contra portfolio covering:
+- Role and scope (founding designer and no-code engineer, full-stack build solo)
+- Visual language and design system decisions
+- Full page/IA inventory
+- Homepage structure and conversion logic
+- Responsiveness approach
+- CMS architecture for blog and docs (field design, schema, references)
+- SEO infrastructure: internal linking graph, external links, keyword-led content, JSON-LD on every template, image SEO across every article
+- Documentation as product strategy (shipped day one, self-serve path, organic authority from launch)
+- Outcomes section (to be filled with real numbers)
+
+---
