@@ -1,20 +1,80 @@
 # RankFrame
 
-> RankFrame is the first comprehensive SEO plugin built natively inside Framer. It unifies schema markup, Google indexing, image SEO (bulk AI alt text), keyword tracking, page speed audits, and 404 monitoring inside the Framer editor — no external dashboard, no embed codes.
+> RankFrame is the first comprehensive SEO plugin built natively inside Framer. It unifies schema markup, Google indexing, image SEO (bulk AI alt text), keyword tracking, page speed audits, and 404 monitoring inside the Framer editor — no separate SEO tool, no embed codes.
 
 RankFrame is a Framer-marketplace plugin made by 7 Seers. It runs entirely inside the Framer editor and ships SEO features that previously required stitching together multiple tools (Yoast, Screaming Frog, Search Console, Schema.dev, etc.). Plans: Personal $15/mo or $108/year (1 website, all features) and Agency $40/mo or $288/year (unlimited Framer sites, every Personal feature included). Yearly billing saves 40% on both. A 7-day free trial is available — every limitation is lifted the moment you subscribe.
 
 ## Product
 
-- [Home](https://rankframe.com): Product overview, pricing, FAQs, and dashboard signup
-- [Image SEO feature](https://rankframe.com/features/image-seo): Automatically optimises alt text, image structure, and image relevance — with global brand suffix and CSV export
+- [Home](https://rankframe.com): Product overview, pricing, FAQs, and signup
 - [Get the plugin on Framer Marketplace](https://www.framer.com/marketplace/plugins/rankframe/): Install RankFrame inside Framer
-- [Dashboard / Sign in](https://dashboard.rankframe.com/auth/signin): Account, billing, and connected Framer sites
+- [Account dashboard / Sign in](https://dashboard.rankframe.com/auth/signin): Account, billing, and connected Framer sites (account management only — all SEO work happens inside the Framer editor)
 
 ## Documentation
 
 - [Docs index](https://rankframe.com/docs): Complete documentation for every RankFrame feature
-- Setup, meta tags, schema generation & injection, unlimited Google Indexing API submissions, sitemap push, 404 monitor, SEO audit with downloadable reports, image SEO, keyword tracker, page speed intelligence, deep page-level SEO — each documented as a step-by-step guide under `/docs/:slug`
+
+### Getting Started
+- [What is RankFrame?](https://rankframe.com/docs/what-is-rankframe)
+- [How to Install RankFrame in Framer](https://rankframe.com/docs/install-rankframe)
+- [How to Connect Your Website in RankFrame](https://rankframe.com/docs/connect-your-website)
+- [Understanding the RankFrame Dashboard](https://rankframe.com/docs/understanding-the-dashboard)
+- [RankFrame Plans and Pricing](https://rankframe.com/docs/plans-and-pricing)
+- [How to Upgrade or Change Your Plan](https://rankframe.com/docs/upgrade-or-change-plan)
+
+### Global SEO & Meta Tags
+- [Global SEO Settings Overview](https://rankframe.com/docs/global-seo-settings-overview)
+- [How to Set Site-wide Meta Title and Description](https://rankframe.com/docs/site-wide-meta-title-description)
+- [Using AI to Generate Meta Tags in RankFrame](https://rankframe.com/docs/ai-meta-tag-generation)
+
+### Keyword Tracking
+- [Managing Focus Keywords for Your Framer Site](https://rankframe.com/docs/manage-focus-keywords)
+- [Understanding Keyword Metrics in RankFrame](https://rankframe.com/docs/keyword-metrics-overview)
+- [Reading the Keyword Analysis Dashboard](https://rankframe.com/docs/keyword-analysis-dashboard)
+- [Keyword Tracker: Monitor Rankings in RankFrame](https://rankframe.com/docs/keyword-tracker)
+
+### Schema Markup
+- [Schema Injection Overview](https://rankframe.com/docs/schema-injection-overview)
+- [Person and Organization Schema](https://rankframe.com/docs/person-organization-schema)
+- [Article Schema](https://rankframe.com/docs/article-schema)
+- [Book Schema](https://rankframe.com/docs/book-schema)
+- [Restaurant Schema](https://rankframe.com/docs/restaurant-schema)
+- [Service Schema](https://rankframe.com/docs/service-schema)
+
+### Google Indexing
+- [Instant Indexing Overview](https://rankframe.com/docs/instant-indexing-overview)
+- [Submit URLs for Indexing](https://rankframe.com/docs/submit-urls)
+- [Google Account Setup](https://rankframe.com/docs/google-account-setup)
+- [Indexing Analytics: Performance Dashboard](https://rankframe.com/docs/indexing-analytics)
+- [Indexing History: Review and Verify Submitted URLs](https://rankframe.com/docs/indexing-history)
+
+### Image SEO
+- [Image SEO Overview](https://rankframe.com/docs/image-seo-overview)
+- [Image SEO Explorer and Filters](https://rankframe.com/docs/explorer-and-filters)
+- [Single Image Alt Text: Cards, Wand Icon, and the Alt Text Field](https://rankframe.com/docs/single-image-alt-text)
+- [Bulk Alt Text Generation](https://rankframe.com/docs/bulk-alt-text)
+- [Global Alt Text Suffix](https://rankframe.com/docs/global-suffix)
+- [Export Image Data as CSV](https://rankframe.com/docs/export-csv)
+
+### SEO Audit & Page Speed
+- [SEO Audit Overview](https://rankframe.com/docs/seo-audit-overview)
+- [Understanding the Audit Score Panel](https://rankframe.com/docs/audit-score-panel)
+- [Audit Checks Explained: Green Zone, Red Zone, and Warnings](https://rankframe.com/docs/audit-checks)
+- [Speed Insights](https://rankframe.com/docs/speed-insights)
+- [Download Audit PDF Report](https://rankframe.com/docs/download-audit-pdf)
+
+### 404 Monitor
+- [404 Monitor Overview](https://rankframe.com/docs/404-monitor-overview)
+- [Reading the 404 Errors Table](https://rankframe.com/docs/404-errors-table)
+- [Managing Exception Routes](https://rankframe.com/docs/exception-routes)
+
+### Per-Page SEO
+- [Pages List View](https://rankframe.com/docs/pages-list-view)
+- [Per-Page Split View](https://rankframe.com/docs/per-page-split-view)
+- [Setting Page Title and Description](https://rankframe.com/docs/page-title-description)
+- [Google Snippet Preview](https://rankframe.com/docs/google-snippet-preview)
+- [Per-Page Keyword Analysis](https://rankframe.com/docs/per-page-keyword-analysis)
+- [Per-Page SEO Audit](https://rankframe.com/docs/per-page-audit)
 
 ## Blog
 
@@ -29,7 +89,9 @@ RankFrame is a Framer-marketplace plugin made by 7 Seers. It runs entirely insid
 
 ## Policies
 
-- [Policies](https://rankframe.com/policies): Privacy policy, terms of service, refund policy
+- [Privacy policy](https://rankframe.com/policies/privacy)
+- [Terms & conditions](https://rankframe.com/policies/terms-conditions)
+- [Refund policy](https://rankframe.com/policies/refund-policy)
 
 ## About
 
