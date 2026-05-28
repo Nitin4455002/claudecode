@@ -1902,15 +1902,38 @@ Content group (new, labeled "CONTENT" with pink indicator):
 | Action | Credits | Base price | Max price |
 |---|---|---|---|
 | Image alt text | 1 cr | $0.01 | $0.003 |
-| Keyword research | 50 cr | $0.50 | $0.17 |
-| Full article draft (~2k words) | 100 cr | $1.00 | $0.33 |
+| Site audit (existing content scan) | 10 cr | $0.10 | $0.033 |
+| Competitor analysis | 40 cr | $0.40 | $0.13 |
+| Full research bundle (site audit + competitor) | 50 cr | $0.50 | $0.17 |
+| Full article draft (~2k words, text only) | 100 cr | $1.00 | $0.33 |
 | Article rewrite (full) | 50 cr | $0.50 | $0.17 |
 | AI section regenerate | 5 cr | $0.05 | $0.017 |
 | AI expand paragraph | 3 cr | $0.03 | $0.010 |
 | AI rewrite intro/outro | 5 cr | $0.05 | $0.017 |
 | Internal link scan | 10 cr | $0.10 | $0.033 |
-| Schema JSON-LD | 0 cr | free | free |
+| Hero image generation (Flux Pro 1.1) | 50 cr | $0.50 | $0.17 |
+| Inline article image (Nano Banana) | 30 cr | $0.30 | $0.10 |
+| Image regenerate variation | 30 cr | $0.30 | $0.10 |
+| Auto-illustrate article (1 hero + 2 inline bundle) | 100 cr | $1.00 | $0.33 |
+| Multi-schema JSON-LD bundle | 0 cr | free | free |
 | Sync to Framer CMS | 0 cr | free | free |
+
+**Multi-schema bundle (auto, every article):**
+- Always: `Article`, `BlogPosting`, `BreadcrumbList`, `Organization`
+- Conditional (detected from content): `FAQPage` (Q&A pattern in H2s), `HowTo` (numbered steps), `Review` (review article type), `Product` (product comparison), `NewsArticle` (news article type)
+- Shown in editor sidebar with green pills for always-on and pink pills for auto-detected. User can toggle off.
+
+**Research flow (3-phase, redesigned):**
+1. **Site Audit (10 cr):** Plugin enumerates Framer pages via `framer.getNodesWithType("WebPageNode")` + `collection.getItems()`. Server embeds via Voyage AI, clusters via HDBSCAN. Outputs: pages scanned count, CMS articles, topic clusters owned, stale pages (90+ days).
+2. **Competitor Analysis (40 cr):** DataForSEO SERP API + Firecrawl on competitor URLs. Computes gap = competitor_kws minus your_kws. Outputs: competitors scanned, gap keywords with monthly volume.
+3. **Opportunities Dashboard (0 cr, derived):** Ranks all candidates by impact score = `volume * (1 + cluster_match) * recency_weight / difficulty`. Categories: "Refresh existing" (your stale pages), "Gap topics" (competitors rank, you don't), "Cluster expansion" (extends existing topical authority), "Trending" (surging search volume). One-click "Start Draft" pre-fills editor with research context.
+
+Cache phase 1 + 2 outputs for 7 days. Full re-run = 50 cr total, or each phase independently.
+
+**Image generation:**
+- Hero: Flux Pro 1.1 via Replicate or fal.ai ($0.04/image). 1024x576 cover.
+- Inline: Nano Banana / Gemini 2.5 Flash Image ($0.039/image). ~2s generation.
+- Alt text auto-written for AI-generated images (bundled, free).
 
 **Pack lineup (final):**
 
