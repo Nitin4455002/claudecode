@@ -1801,3 +1801,191 @@ The full site, the marketing system, the blog, the docs, the CMS schemas, the SE
 - Indexed within days, ranking for target Framer SEO keywords inside the first month
 - Documentation measurably reduced inbound support load
 - The site itself is now the strongest sales asset for the product
+
+---
+
+## 38. Session Memory: Multi-User and Content Engine (May 2026)
+
+This section captures all decisions, specs, and context from the product design session of May 28, 2026. Two major features were fully designed and specced.
+
+---
+
+### A. Multi-User (Team) Feature
+
+**Status:** Dev-ready HTML spec at `/tmp/rankframe-multiuser-spec.html` (13 screens, 26 views).
+
+**Product decisions:**
+- Seat-based billing via Polar.sh native seat API (beta, v3.10.2+)
+- $15/month per extra seat, prorated on add/remove
+- Credit model: per-member, NOT shared pool. Each paid seat receives 500 AI credits on `customer_seat.claimed` webhook
+- Admin sees all member balances and usage. Admin can top up any member.
+- Members can buy their own credits with their own card (separate from admin's card)
+- Credits stay with the member. On revoke, unused credits return to admin pool.
+
+**Plugin Account Settings modal tab bar (unified, final):**
+`Profile | Team | Credits | Activity | Personalization` (5 tabs, same order on every plugin screen)
+
+**Dashboard sidebar (updated):**
+Websites, Subscription, Image Credits (renamed AI Credits), Team (new), Account Details
+
+**Member permissions (dashboard):**
+- Members do NOT see Subscription or billing pages
+- Members see a "My Credits" page (own balance only, no team allocation)
+- Members see a "Team" page (read-only roster, no invite/remove/top-up controls)
+- Members see their own Activity Log events only (scoped to self)
+
+**Polar.sh API surface:**
+- `PATCH /v1/subscriptions/{id}` with `{seats: N, proration_behavior: "prorate"}`
+- `POST /v1/customer-seats/assign`
+- Webhooks: `customer_seat.assigned`, `customer_seat.claimed`, `customer_seat.revoked`, `subscription.updated`, `order.paid`
+
+**DB tables (new):**
+- `teams`: id, owner_user_id, polar_subscription_id, created_at
+- `team_seats`: id, team_id, user_id (nullable), email, role, status (pending/active/revoked), polar_seat_id, joined_at, revoked_at
+- `credit_ledger`: id, team_id, member_id, delta, type (granted/spent/allocated/purchased/refunded), source_id, created_at
+- `activity_log`: id, team_id, actor_id, target_id, event, payload_json, created_at (append-only)
+
+**API endpoints (new):**
+- `GET /api/team` (list members, stats, pending)
+- `POST /api/team/invite`
+- `POST /api/team/invite/:id/resend`
+- `DELETE /api/team/invite/:id`
+- `DELETE /api/team/members/:id`
+- `POST /api/team/topup` (body: { member_id, pack_id, payer: "admin"|"self" })
+- `POST /api/team/notify-admin` (member requests top-up)
+- `GET /api/team/activity` (filters: member, type, range, scope=self|all)
+- `GET /api/team/activity.csv`
+
+**Estimated build time:** 1.5-2 weeks using Polar's native seat API.
+
+---
+
+### B. Content Engine Feature
+
+**Status:** Dev-ready HTML spec at `/tmp/rankframe-content-engine-spec.html` (12 screens, all roles).
+
+**Summary:** Framer's first and only native AI blog writer. Research + draft + edit in dashboard. Sync to Framer CMS via plugin. Full schema, internal links, external links, content calendar, approval workflow.
+
+**Article status flow:**
+`Idea` → `Researching` → `Draft` → `In Review` → `Approved` → `Synced` → `Published`
+
+**Writing model:** AI drafts (Claude Sonnet 4.5), human edits. Not fully autonomous.
+
+**Multi-site:** Per-site isolated. Each connected Framer site has its own calendar, drafts, link graph.
+
+**Member roles (new sub-roles for content):**
+- `Admin`: full access, approve/reject, sync, manage team
+- `Publisher`: research, draft, sync directly (no approval required)
+- `Writer`: research, draft, submit for review (cannot sync)
+- `Viewer`: read-only calendar, drafts, link opportunities
+
+**Plugin nav update (final):**
+
+SEO group (existing items):
+- Global Settings
+- Pages
+- Submit Indexing
+- SEO Analyzer
+- Image SEO
+- 404 Monitor
+
+Content group (new, labeled "CONTENT" with pink indicator):
+- Research Hub
+- Draft Queue
+- Link Opportunities
+- Sync Status (hidden for Writer role)
+
+**Credits: renamed "Image Credits" to "AI Credits" everywhere (display strings only, no DB migration).**
+
+**Credit cost table (final, locked):**
+
+| Action | Credits | Base price | Max price |
+|---|---|---|---|
+| Image alt text | 1 cr | $0.01 | $0.003 |
+| Keyword research | 50 cr | $0.50 | $0.17 |
+| Full article draft (~2k words) | 100 cr | $1.00 | $0.33 |
+| Article rewrite (full) | 50 cr | $0.50 | $0.17 |
+| AI section regenerate | 5 cr | $0.05 | $0.017 |
+| AI expand paragraph | 3 cr | $0.03 | $0.010 |
+| AI rewrite intro/outro | 5 cr | $0.05 | $0.017 |
+| Internal link scan | 10 cr | $0.10 | $0.033 |
+| Schema JSON-LD | 0 cr | free | free |
+| Sync to Framer CMS | 0 cr | free | free |
+
+**Pack lineup (final):**
+
+| Pack | Price | Credits | Articles | Alt texts |
+|---|---|---|---|---|
+| Starter (new) | $3 | 250 | 2 | 250 |
+| Base Refill | $10 | 1,000 | 10 | 1,000 |
+| Max Refill | $100 | 30,000 | 300 | 30,000 |
+| Agency Yearly (included) | $288/yr | 60,000 | 600/yr | 60,000 |
+| Free seat (on join) | $0 | 500 | 5 | 500 |
+
+**Margin floor:** 28% (Max-pack keyword research). Mitigation: cache DataForSEO responses 30 days per keyword. All other actions stay 45%+ on Max, 76%+ on Base.
+
+**Tech stack:**
+
+| Job | Provider |
+|---|---|
+| Article drafting, rewrites, AI editor | Claude Sonnet 4.5 with prompt caching |
+| Alt text generation | Claude Haiku 4.5 with vision |
+| Keyword volume + SERP data | DataForSEO (Keywords Data API + SERP API) |
+| Competitor page extraction | Firecrawl (or Jina Reader) |
+| Internal link matching | Voyage AI embeddings (voyage-3) |
+| Framer CMS write/sync | Framer Plugin API: `collection.addItems()`, `framer.uploadImage()` |
+| Scheduled publish | Internal cron, flips `draft: false` via Framer API |
+
+**Framer Plugin API constraints (researched):**
+- `collection.addItems()` upserts items. Rich text via `formattedText` field as HTML or Markdown.
+- `framer.uploadImage({ image, altText })` uploads to Framer CDN, returns URL.
+- No per-page meta/`<head>` setter in the API. Workaround: user configures `{{schemaJson}}` variable in their CMS detail page template once; plugin writes JSON-LD into a `schemaJson` string field.
+- No native scheduled publish. Framer items have `draft: boolean` only.
+- Plugin UI is a floating window (no docked side panel). Max width configurable.
+- `framer.getNodesWithType("WebPageNode")` + `collection.getItems()` allows reading existing pages for internal link opportunities.
+- `framer.createManagedCollection()` (v3.10.2+) for first-run blog setup.
+
+**DB tables (new):**
+- `content_drafts`: id, site_id, team_id, author_user_id, title, body_html, meta_title, meta_description, slug, cover_image_url, schema_type, schema_json, status, published_at, scheduled_at, framer_cms_item_id, framer_collection_id, word_count, seo_score, created_at, updated_at
+- `content_research`: id, draft_id (nullable), team_id, site_id, keywords, competitor_urls, target_audience, article_type, serp_data_json, suggested_keywords_json, suggested_titles_json, created_at
+- `content_link_opportunities`: id, site_id, source_page_url, source_cms_item_id (nullable), target_draft_id, anchor_text, mention_count, resolved_at, created_at
+- `framer_collection_mappings`: id, site_id, framer_collection_id, field_mappings_json, created_at, updated_at
+
+**Key API endpoints (new):**
+- `POST /api/content/research` (50 cr)
+- `GET /api/content/research/{id}` (poll)
+- `POST /api/content/drafts` (100 cr, triggers AI generation)
+- `GET/PATCH/DELETE /api/content/drafts/{id}`
+- `GET /api/content/drafts` (filterable)
+- `POST /api/content/drafts/{id}/submit-review`
+- `POST /api/content/drafts/{id}/approve`
+- `POST /api/content/drafts/{id}/request-changes`
+- `POST /api/content/drafts/{id}/sync` (0 cr)
+- `POST /api/content/drafts/{id}/ai` (3-50 cr, body: { action: regenerate|rewrite-intro|expand|suggest-links|full-rewrite })
+- `GET /api/content/link-opportunities?site_id=` (10 cr)
+- `GET /api/content/calendar?site_id=&month=`
+
+**String rename required:**
+Everywhere "Image Credits" appears in the codebase (display strings only, NOT DB columns):
+- Dashboard sidebar nav label
+- Dashboard page H1 at /credits
+- Browser tab title for /credits
+- Plugin Account Settings Credits tab label
+- Plugin pl-credits component label
+- Team member table column header
+- Invite member modal field label
+- Top-up modal title
+- Activity log event descriptions
+- Email notification templates
+- Onboarding copy and welcome email
+
+---
+
+### C. Spec files on disk
+
+| File | Contents |
+|---|---|
+| `/tmp/rankframe-multiuser-spec.html` | 13 screens, 26 admin+member views, multi-user team feature |
+| `/tmp/rankframe-content-engine-spec.html` | 12 screens, content engine, credits ROI calc, tech stack appendix |
+
+Both files are self-contained HTML, no external dependencies, open in any browser.
