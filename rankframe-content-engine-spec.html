@@ -4071,5 +4071,467 @@
 })();
 </script>
 
-</body>
+<!-- ============================================================
+     APPENDIX: FULL COST AND BUSINESS MODEL
+     ============================================================ -->
+<div class="section-header" style="margin-top:80px;">Appendix: Full Cost and Business Model</div>
+<p class="screen-note">Every number in one place. Our cost per action, revenue per credit, and margin at each pack tier. Use this to sanity-check pricing decisions.</p>
+
+<!-- CREDIT PACK ECONOMICS -->
+<div class="screen-title" style="margin-top:40px;">Credit Pack Economics</div>
+<div class="table-wrap" style="margin-bottom:28px;">
+  <table>
+    <thead><tr><th>Pack</th><th>Price</th><th>Credits</th><th>$/credit (user pays)</th><th>Use case</th></tr></thead>
+    <tbody>
+      <tr>
+        <td style="font-weight:700;">Starter</td>
+        <td><strong style="color:var(--pink-2);">$3</strong></td>
+        <td>250 cr</td>
+        <td><span class="credit-cost">$0.012 / cr</span></td>
+        <td style="font-size:12px; color:var(--muted);">Trial. ~2 full articles. Good for evaluating the engine.</td>
+      </tr>
+      <tr>
+        <td style="font-weight:700;">Base Refill</td>
+        <td><strong style="color:var(--pink-2);">$10</strong></td>
+        <td>1,000 cr</td>
+        <td><span class="credit-cost">$0.010 / cr</span></td>
+        <td style="font-size:12px; color:var(--muted);">Most users. ~10 articles + images + scans per month.</td>
+      </tr>
+      <tr>
+        <td style="font-weight:700;">Max Refill</td>
+        <td><strong style="color:var(--pink-2);">$100</strong></td>
+        <td>30,000 cr</td>
+        <td><span class="credit-cost">$0.0033 / cr</span></td>
+        <td style="font-size:12px; color:var(--muted);">Agencies. ~300 articles. 3x cheaper per credit than Base.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- FULL ACTION COST TABLE -->
+<div class="screen-title" style="margin-top:40px;">Full Action Cost Table (our cost vs user revenue vs margin)</div>
+<div class="table-wrap" style="margin-bottom:28px;">
+  <table>
+    <thead>
+      <tr>
+        <th>Action</th>
+        <th>Credits</th>
+        <th>Our cost</th>
+        <th>Provider</th>
+        <th>Revenue (Starter $0.012)</th>
+        <th>Revenue (Base $0.010)</th>
+        <th>Revenue (Max $0.0033)</th>
+        <th>Margin (Base)</th>
+        <th>Margin (Max)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- CONTENT GENERATION -->
+      <tr style="background:var(--row);">
+        <td colspan="9" style="font-size:10px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted-2); padding:10px 18px;">Content Generation</td>
+      </tr>
+      <tr>
+        <td style="font-weight:600;">Full article draft (~2,000 words)</td>
+        <td><span class="credit-cost">&#9889; 100</span></td>
+        <td style="color:var(--muted); font-size:12px;">~$0.055<br><span style="font-size:11px; color:var(--muted-2);">~2.5K in tokens, ~2.5K out tokens. Cached system prompt saves ~70% on input.</span></td>
+        <td style="font-size:11px; color:var(--muted);">Claude Sonnet 4.5</td>
+        <td style="color:var(--green); font-weight:600;">$1.20</td>
+        <td style="color:var(--green); font-weight:600;">$1.00</td>
+        <td style="color:var(--amber); font-weight:600;">$0.33</td>
+        <td><span class="pill green" style="font-size:11px;">~94%</span></td>
+        <td><span class="pill amber" style="font-size:11px;">~83%</span></td>
+      </tr>
+      <tr>
+        <td style="font-weight:600;">Full article rewrite</td>
+        <td><span class="credit-cost">&#9889; 50</span></td>
+        <td style="color:var(--muted); font-size:12px;">~$0.050<br><span style="font-size:11px; color:var(--muted-2);">Reads existing draft (~2K tokens input) + rewrites it.</span></td>
+        <td style="font-size:11px; color:var(--muted);">Claude Sonnet 4.5</td>
+        <td style="color:var(--green); font-weight:600;">$0.60</td>
+        <td style="color:var(--green); font-weight:600;">$0.50</td>
+        <td style="color:var(--amber); font-weight:600;">$0.165</td>
+        <td><span class="pill green" style="font-size:11px;">~90%</span></td>
+        <td><span class="pill amber" style="font-size:11px;">~70%</span></td>
+      </tr>
+      <tr>
+        <td style="font-weight:600;">Regenerate section</td>
+        <td><span class="credit-cost">&#9889; 5</span></td>
+        <td style="color:var(--muted); font-size:12px;">~$0.005</td>
+        <td style="font-size:11px; color:var(--muted);">Claude Sonnet 4.5</td>
+        <td style="color:var(--green); font-weight:600;">$0.060</td>
+        <td style="color:var(--green); font-weight:600;">$0.050</td>
+        <td style="color:var(--amber); font-weight:600;">$0.0165</td>
+        <td><span class="pill green" style="font-size:11px;">~90%</span></td>
+        <td><span class="pill amber" style="font-size:11px;">~70%</span></td>
+      </tr>
+      <tr>
+        <td style="font-weight:600;">Rewrite intro / outro</td>
+        <td><span class="credit-cost">&#9889; 5</span></td>
+        <td style="color:var(--muted); font-size:12px;">~$0.004</td>
+        <td style="font-size:11px; color:var(--muted);">Claude Sonnet 4.5</td>
+        <td style="color:var(--green); font-weight:600;">$0.060</td>
+        <td style="color:var(--green); font-weight:600;">$0.050</td>
+        <td style="color:var(--amber); font-weight:600;">$0.0165</td>
+        <td><span class="pill green" style="font-size:11px;">~92%</span></td>
+        <td><span class="pill amber" style="font-size:11px;">~75%</span></td>
+      </tr>
+      <tr>
+        <td style="font-weight:600;">Add FAQ section</td>
+        <td><span class="credit-cost">&#9889; 5</span></td>
+        <td style="color:var(--muted); font-size:12px;">~$0.004</td>
+        <td style="font-size:11px; color:var(--muted);">Claude Sonnet 4.5</td>
+        <td style="color:var(--green); font-weight:600;">$0.060</td>
+        <td style="color:var(--green); font-weight:600;">$0.050</td>
+        <td style="color:var(--amber); font-weight:600;">$0.0165</td>
+        <td><span class="pill green" style="font-size:11px;">~92%</span></td>
+        <td><span class="pill amber" style="font-size:11px;">~75%</span></td>
+      </tr>
+      <tr>
+        <td style="font-weight:600;">Add How-To steps</td>
+        <td><span class="credit-cost">&#9889; 5</span></td>
+        <td style="color:var(--muted); font-size:12px;">~$0.004</td>
+        <td style="font-size:11px; color:var(--muted);">Claude Sonnet 4.5</td>
+        <td style="color:var(--green); font-weight:600;">$0.060</td>
+        <td style="color:var(--green); font-weight:600;">$0.050</td>
+        <td style="color:var(--amber); font-weight:600;">$0.0165</td>
+        <td><span class="pill green" style="font-size:11px;">~92%</span></td>
+        <td><span class="pill amber" style="font-size:11px;">~75%</span></td>
+      </tr>
+      <tr>
+        <td style="font-weight:600;">Expand paragraph</td>
+        <td><span class="credit-cost">&#9889; 3</span></td>
+        <td style="color:var(--muted); font-size:12px;">~$0.002</td>
+        <td style="font-size:11px; color:var(--muted);">Claude Sonnet 4.5</td>
+        <td style="color:var(--green); font-weight:600;">$0.036</td>
+        <td style="color:var(--green); font-weight:600;">$0.030</td>
+        <td style="color:var(--amber); font-weight:600;">$0.010</td>
+        <td><span class="pill green" style="font-size:11px;">~93%</span></td>
+        <td><span class="pill amber" style="font-size:11px;">~80%</span></td>
+      </tr>
+      <tr>
+        <td style="font-weight:600;">Shorten paragraph</td>
+        <td><span class="credit-cost">&#9889; 3</span></td>
+        <td style="color:var(--muted); font-size:12px;">~$0.002</td>
+        <td style="font-size:11px; color:var(--muted);">Claude Sonnet 4.5</td>
+        <td style="color:var(--green); font-weight:600;">$0.036</td>
+        <td style="color:var(--green); font-weight:600;">$0.030</td>
+        <td style="color:var(--amber); font-weight:600;">$0.010</td>
+        <td><span class="pill green" style="font-size:11px;">~93%</span></td>
+        <td><span class="pill amber" style="font-size:11px;">~80%</span></td>
+      </tr>
+      <tr>
+        <td style="font-weight:600;">Suggest internal links</td>
+        <td><span class="credit-cost">&#9889; 5</span></td>
+        <td style="color:var(--muted); font-size:12px;">~$0.003<br><span style="font-size:11px; color:var(--muted-2);">Voyage AI embedding comparison</span></td>
+        <td style="font-size:11px; color:var(--muted);">Claude Sonnet 4.5 + Voyage AI</td>
+        <td style="color:var(--green); font-weight:600;">$0.060</td>
+        <td style="color:var(--green); font-weight:600;">$0.050</td>
+        <td style="color:var(--amber); font-weight:600;">$0.0165</td>
+        <td><span class="pill green" style="font-size:11px;">~94%</span></td>
+        <td><span class="pill amber" style="font-size:11px;">~82%</span></td>
+      </tr>
+
+      <!-- RESEARCH -->
+      <tr style="background:var(--row);">
+        <td colspan="9" style="font-size:10px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted-2); padding:10px 18px;">Research</td>
+      </tr>
+      <tr>
+        <td style="font-weight:600;">Site audit (phase 1)</td>
+        <td><span class="credit-cost">&#9889; 10</span></td>
+        <td style="color:var(--muted); font-size:12px;">~$0.001<br><span style="font-size:11px; color:var(--muted-2);">Voyage AI: ~21K tokens for 42 pages @ $0.00006/token</span></td>
+        <td style="font-size:11px; color:var(--muted);">Voyage AI (voyage-3) + HDBSCAN</td>
+        <td style="color:var(--green); font-weight:600;">$0.120</td>
+        <td style="color:var(--green); font-weight:600;">$0.100</td>
+        <td style="color:var(--amber); font-weight:600;">$0.033</td>
+        <td><span class="pill green" style="font-size:11px;">~99%</span></td>
+        <td><span class="pill green" style="font-size:11px;">~97%</span></td>
+      </tr>
+      <tr>
+        <td style="font-weight:600;">Competitor analysis (phase 2)</td>
+        <td><span class="credit-cost">&#9889; 40</span></td>
+        <td style="color:var(--muted); font-size:12px;">~$0.10<br><span style="font-size:11px; color:var(--muted-2);">DataForSEO SERP: ~$0.06. Firecrawl 3 URLs: ~$0.04.</span></td>
+        <td style="font-size:11px; color:var(--muted);">DataForSEO + Firecrawl</td>
+        <td style="color:var(--green); font-weight:600;">$0.480</td>
+        <td style="color:var(--green); font-weight:600;">$0.400</td>
+        <td style="color:var(--amber); font-weight:600;">$0.132</td>
+        <td><span class="pill green" style="font-size:11px;">~75%</span></td>
+        <td><span class="pill amber" style="font-size:11px;">~24%</span></td>
+      </tr>
+      <tr>
+        <td style="font-weight:600;">Full re-run (phase 1 + 2)</td>
+        <td><span class="credit-cost">&#9889; 50</span></td>
+        <td style="color:var(--muted); font-size:12px;">~$0.101</td>
+        <td style="font-size:11px; color:var(--muted);">Combined above</td>
+        <td style="color:var(--green); font-weight:600;">$0.600</td>
+        <td style="color:var(--green); font-weight:600;">$0.500</td>
+        <td style="color:var(--amber); font-weight:600;">$0.165</td>
+        <td><span class="pill green" style="font-size:11px;">~80%</span></td>
+        <td><span class="pill amber" style="font-size:11px;">~39%</span></td>
+      </tr>
+
+      <!-- IMAGES -->
+      <tr style="background:var(--row);">
+        <td colspan="9" style="font-size:10px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted-2); padding:10px 18px;">Image Generation</td>
+      </tr>
+      <tr>
+        <td style="font-weight:600;">Image alt text generation</td>
+        <td><span class="credit-cost">&#9889; 1</span></td>
+        <td style="color:var(--muted); font-size:12px;">~$0.0003<br><span style="font-size:11px; color:var(--muted-2);">Claude Haiku 4.5 vision, ~300 tokens</span></td>
+        <td style="font-size:11px; color:var(--muted);">Claude Haiku 4.5</td>
+        <td style="color:var(--green); font-weight:600;">$0.012</td>
+        <td style="color:var(--green); font-weight:600;">$0.010</td>
+        <td style="color:var(--amber); font-weight:600;">$0.0033</td>
+        <td><span class="pill green" style="font-size:11px;">~97%</span></td>
+        <td><span class="pill green" style="font-size:11px;">~91%</span></td>
+      </tr>
+      <tr>
+        <td style="font-weight:600;">Hero image generation</td>
+        <td><span class="credit-cost">&#9889; 50</span></td>
+        <td style="color:var(--muted); font-size:12px;">$0.040<br><span style="font-size:11px; color:var(--muted-2);">Flux Pro 1.1 via Replicate/fal.ai, 1024x576</span></td>
+        <td style="font-size:11px; color:var(--muted);">Flux Pro 1.1</td>
+        <td style="color:var(--green); font-weight:600;">$0.600</td>
+        <td style="color:var(--green); font-weight:600;">$0.500</td>
+        <td style="color:var(--amber); font-weight:600;">$0.165</td>
+        <td><span class="pill green" style="font-size:11px;">~92%</span></td>
+        <td><span class="pill amber" style="font-size:11px;">~76%</span></td>
+      </tr>
+      <tr>
+        <td style="font-weight:600;">Inline article image</td>
+        <td><span class="credit-cost">&#9889; 30</span></td>
+        <td style="color:var(--muted); font-size:12px;">$0.039<br><span style="font-size:11px; color:var(--muted-2);">Nano Banana / Gemini 2.5 Flash Image</span></td>
+        <td style="font-size:11px; color:var(--muted);">Nano Banana</td>
+        <td style="color:var(--green); font-weight:600;">$0.360</td>
+        <td style="color:var(--green); font-weight:600;">$0.300</td>
+        <td style="color:var(--amber); font-weight:600;">$0.099</td>
+        <td><span class="pill green" style="font-size:11px;">~87%</span></td>
+        <td><span class="pill amber" style="font-size:11px;">~61%</span></td>
+      </tr>
+      <tr>
+        <td style="font-weight:600;">Image regenerate variation</td>
+        <td><span class="credit-cost">&#9889; 30</span></td>
+        <td style="color:var(--muted); font-size:12px;">$0.039</td>
+        <td style="font-size:11px; color:var(--muted);">Nano Banana</td>
+        <td style="color:var(--green); font-weight:600;">$0.360</td>
+        <td style="color:var(--green); font-weight:600;">$0.300</td>
+        <td style="color:var(--amber); font-weight:600;">$0.099</td>
+        <td><span class="pill green" style="font-size:11px;">~87%</span></td>
+        <td><span class="pill amber" style="font-size:11px;">~61%</span></td>
+      </tr>
+      <tr>
+        <td style="font-weight:600;">Auto-illustrate bundle (1 hero + 2 inline + alt x3)</td>
+        <td><span class="credit-cost">&#9889; 100</span></td>
+        <td style="color:var(--muted); font-size:12px;">~$0.119<br><span style="font-size:11px; color:var(--muted-2);">$0.04 hero + $0.039 x2 inline + $0.0009 alt x3</span></td>
+        <td style="font-size:11px; color:var(--muted);">Flux Pro 1.1 + Nano Banana</td>
+        <td style="color:var(--green); font-weight:600;">$1.20</td>
+        <td style="color:var(--green); font-weight:600;">$1.00</td>
+        <td style="color:var(--amber); font-weight:600;">$0.33</td>
+        <td><span class="pill green" style="font-size:11px;">~88%</span></td>
+        <td><span class="pill amber" style="font-size:11px;">~64%</span></td>
+      </tr>
+
+      <!-- SCANNING -->
+      <tr style="background:var(--row);">
+        <td colspan="9" style="font-size:10px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted-2); padding:10px 18px;">Scanning and Link Health</td>
+      </tr>
+      <tr>
+        <td style="font-weight:600;">Internal link scan (whole site)</td>
+        <td><span class="credit-cost">&#9889; 10</span></td>
+        <td style="color:var(--muted); font-size:12px;">~$0.001<br><span style="font-size:11px; color:var(--muted-2);">Voyage AI embedding comparison across pages</span></td>
+        <td style="font-size:11px; color:var(--muted);">Voyage AI</td>
+        <td style="color:var(--green); font-weight:600;">$0.120</td>
+        <td style="color:var(--green); font-weight:600;">$0.100</td>
+        <td style="color:var(--amber); font-weight:600;">$0.033</td>
+        <td><span class="pill green" style="font-size:11px;">~99%</span></td>
+        <td><span class="pill green" style="font-size:11px;">~97%</span></td>
+      </tr>
+      <tr>
+        <td style="font-weight:600;">External link health check</td>
+        <td><span class="credit-cost">&#9889; 5</span></td>
+        <td style="color:var(--muted); font-size:12px;">~$0.000<br><span style="font-size:11px; color:var(--muted-2);">Server-side HEAD requests only, no third-party cost</span></td>
+        <td style="font-size:11px; color:var(--muted);">Internal (server HEAD)</td>
+        <td style="color:var(--green); font-weight:600;">$0.060</td>
+        <td style="color:var(--green); font-weight:600;">$0.050</td>
+        <td style="color:var(--amber); font-weight:600;">$0.0165</td>
+        <td><span class="pill green" style="font-size:11px;">~100%</span></td>
+        <td><span class="pill green" style="font-size:11px;">~100%</span></td>
+      </tr>
+
+      <!-- FREE -->
+      <tr style="background:var(--row);">
+        <td colspan="9" style="font-size:10px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted-2); padding:10px 18px;">Always Free (no credit deduction)</td>
+      </tr>
+      <tr>
+        <td style="font-weight:600;">Multi-schema JSON-LD bundle</td>
+        <td><span class="credit-cost" style="background:var(--green-soft); border-color:var(--green-border); color:var(--green);">0 cr</span></td>
+        <td style="color:var(--muted); font-size:12px;">~$0.000<br><span style="font-size:11px; color:var(--muted-2);">Server-side template rendering, no LLM call</span></td>
+        <td style="font-size:11px; color:var(--muted);">Internal</td>
+        <td colspan="4" style="font-size:12px; color:var(--green);">Free for all users, pure infra cost absorbed</td>
+      </tr>
+      <tr>
+        <td style="font-weight:600;">Sync to Framer CMS</td>
+        <td><span class="credit-cost" style="background:var(--green-soft); border-color:var(--green-border); color:var(--green);">0 cr</span></td>
+        <td style="color:var(--muted); font-size:12px;">~$0.000<br><span style="font-size:11px; color:var(--muted-2);">Framer Plugin API calls, no third-party cost</span></td>
+        <td style="font-size:11px; color:var(--muted);">Framer Plugin API</td>
+        <td colspan="4" style="font-size:12px; color:var(--green);">Free for all users</td>
+      </tr>
+      <tr>
+        <td style="font-weight:600;">Schema setup verification</td>
+        <td><span class="credit-cost" style="background:var(--green-soft); border-color:var(--green-border); color:var(--green);">0 cr</span></td>
+        <td style="color:var(--muted); font-size:12px;">~$0.000</td>
+        <td style="font-size:11px; color:var(--muted);">Internal (HEAD + parse)</td>
+        <td colspan="4" style="font-size:12px; color:var(--green);">Free, one-time per site</td>
+      </tr>
+      <tr>
+        <td style="font-weight:600;">Outline tab (parse article structure)</td>
+        <td><span class="credit-cost" style="background:var(--green-soft); border-color:var(--green-border); color:var(--green);">0 cr</span></td>
+        <td style="color:var(--muted); font-size:12px;">~$0.000</td>
+        <td style="font-size:11px; color:var(--muted);">Client-side DOM parse</td>
+        <td colspan="4" style="font-size:12px; color:var(--green);">Free, client-side only</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- TECH STACK AND PROVIDER COSTS -->
+<div class="screen-title" style="margin-top:40px;">Provider Costs (what we pay)</div>
+<div class="table-wrap" style="margin-bottom:28px;">
+  <table>
+    <thead><tr><th>Provider</th><th>Used for</th><th>Unit cost</th><th>Pricing model</th></tr></thead>
+    <tbody>
+      <tr>
+        <td style="font-weight:600;">Claude Sonnet 4.5</td>
+        <td style="font-size:12px; color:var(--muted);">Article drafts, rewrites, all in-editor AI actions</td>
+        <td style="font-size:12px;">$3/MTok input, $15/MTok output<br><span style="color:var(--green); font-size:11px;">With prompt caching: $0.30/MTok cached input (90% cheaper)</span></td>
+        <td style="font-size:12px; color:var(--muted);">Per token, pay as you go</td>
+      </tr>
+      <tr>
+        <td style="font-weight:600;">Claude Haiku 4.5</td>
+        <td style="font-size:12px; color:var(--muted);">Image alt text generation (vision)</td>
+        <td style="font-size:12px;">$0.80/MTok input, $4/MTok output</td>
+        <td style="font-size:12px; color:var(--muted);">Per token, pay as you go</td>
+      </tr>
+      <tr>
+        <td style="font-weight:600;">DataForSEO</td>
+        <td style="font-size:12px; color:var(--muted);">Keyword volume, SERP data, competitor rankings</td>
+        <td style="font-size:12px;">~$0.02-0.06 per query (Keywords Data API + SERP API)</td>
+        <td style="font-size:12px; color:var(--muted);">Per API call</td>
+      </tr>
+      <tr>
+        <td style="font-weight:600;">Firecrawl</td>
+        <td style="font-size:12px; color:var(--muted);">Competitor URL scraping for content analysis</td>
+        <td style="font-size:12px;">~$0.01-0.015 per page crawled</td>
+        <td style="font-size:12px; color:var(--muted);">Per page crawled</td>
+      </tr>
+      <tr>
+        <td style="font-weight:600;">Voyage AI (voyage-3)</td>
+        <td style="font-size:12px; color:var(--muted);">Site audit embeddings, topic clustering, internal link matching</td>
+        <td style="font-size:12px;">$0.00006 / 1K tokens (~$0.06/MTok)</td>
+        <td style="font-size:12px; color:var(--muted);">Per token</td>
+      </tr>
+      <tr>
+        <td style="font-weight:600;">Flux Pro 1.1</td>
+        <td style="font-size:12px; color:var(--muted);">Hero image generation (cover images)</td>
+        <td style="font-size:12px;">$0.04 per image (1024x576)</td>
+        <td style="font-size:12px; color:var(--muted);">Per image via Replicate or fal.ai</td>
+      </tr>
+      <tr>
+        <td style="font-weight:600;">Nano Banana / Gemini 2.5 Flash Image</td>
+        <td style="font-size:12px; color:var(--muted);">Inline article images, section illustrations, diagrams</td>
+        <td style="font-size:12px;">$0.039 per image</td>
+        <td style="font-size:12px; color:var(--muted);">Per image</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- BLENDED MARGIN SCENARIOS -->
+<div class="screen-title" style="margin-top:40px;">Blended Monthly Margin Scenarios</div>
+<p class="screen-note">What a typical user spending one full pack actually costs us vs what they pay.</p>
+<div class="three-col" style="margin-bottom:28px;">
+  <!-- Starter user -->
+  <div class="card">
+    <div class="card-h"><div><div class="card-title">Starter user, $3/mo</div><div class="card-sub">250 credits, light usage</div></div></div>
+    <div style="font-size:13px; line-height:2; color:var(--muted);">
+      2 articles <span style="float:right;">200 cr</span><br>
+      2 hero images <span style="float:right;">100 cr</span><br>
+      <span style="color:var(--red);">Over limit by 50 cr</span>
+    </div>
+    <div style="margin-top:14px; padding-top:14px; border-top:1px solid var(--border);">
+      <div style="display:flex; justify-content:space-between; font-size:13px; margin-bottom:6px;"><span>User pays</span><strong style="color:var(--pink-2);">$3.00</strong></div>
+      <div style="display:flex; justify-content:space-between; font-size:13px; margin-bottom:6px;"><span>Our cost (2 drafts + 2 images)</span><span style="color:var(--muted);">~$0.19</span></div>
+      <div style="display:flex; justify-content:space-between; font-size:13px; font-weight:700;"><span>Gross margin</span><span style="color:var(--green);">~94%</span></div>
+    </div>
+  </div>
+
+  <!-- Base user -->
+  <div class="card" style="border-color:var(--pink-border);">
+    <div class="card-h"><div><div class="card-title" style="color:var(--pink-2);">Base user, $10/mo</div><div class="card-sub">1,000 credits, typical usage</div></div></div>
+    <div style="font-size:13px; line-height:2; color:var(--muted);">
+      6 articles <span style="float:right;">600 cr</span><br>
+      6 hero images <span style="float:right;">300 cr</span><br>
+      1 research run <span style="float:right;">50 cr</span><br>
+      50 alt texts <span style="float:right;">50 cr</span><br>
+      <strong style="color:var(--text);">Total: 1,000 cr used</strong>
+    </div>
+    <div style="margin-top:14px; padding-top:14px; border-top:1px solid var(--border);">
+      <div style="display:flex; justify-content:space-between; font-size:13px; margin-bottom:6px;"><span>User pays</span><strong style="color:var(--pink-2);">$10.00</strong></div>
+      <div style="display:flex; justify-content:space-between; font-size:13px; margin-bottom:6px;"><span>Our cost (6 drafts + 6 hero + research + alts)</span><span style="color:var(--muted);">~$0.62</span></div>
+      <div style="display:flex; justify-content:space-between; font-size:13px; font-weight:700;"><span>Gross margin</span><span style="color:var(--green);">~94%</span></div>
+    </div>
+  </div>
+
+  <!-- Max user -->
+  <div class="card">
+    <div class="card-h"><div><div class="card-title">Max user, $100/mo</div><div class="card-sub">30,000 credits, agency usage</div></div></div>
+    <div style="font-size:13px; line-height:2; color:var(--muted);">
+      120 articles <span style="float:right;">12,000 cr</span><br>
+      120 hero images <span style="float:right;">6,000 cr</span><br>
+      120 inline images <span style="float:right;">3,600 cr</span><br>
+      12 research runs <span style="float:right;">600 cr</span><br>
+      500 alt texts <span style="float:right;">500 cr</span><br>
+      misc AI edits <span style="float:right;">~1,300 cr</span><br>
+      <strong style="color:var(--text);">Total: ~24,000 cr used</strong>
+    </div>
+    <div style="margin-top:14px; padding-top:14px; border-top:1px solid var(--border);">
+      <div style="display:flex; justify-content:space-between; font-size:13px; margin-bottom:6px;"><span>User pays</span><strong style="color:var(--pink-2);">$100.00</strong></div>
+      <div style="display:flex; justify-content:space-between; font-size:13px; margin-bottom:6px;"><span>Our cost (120 drafts + images + research)</span><span style="color:var(--muted);">~$18.50</span></div>
+      <div style="display:flex; justify-content:space-between; font-size:13px; font-weight:700;"><span>Gross margin</span><span style="color:var(--green);">~82%</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- KEY DECISIONS -->
+<div class="screen-title" style="margin-top:40px;">Key Pricing Decisions and Rationale</div>
+<div class="card" style="margin-bottom:28px;">
+  <div style="display:flex; flex-direction:column; gap:14px;">
+    <div style="padding-bottom:14px; border-bottom:1px solid var(--border);">
+      <div style="font-weight:700; margin-bottom:4px;">Why not charge per article subscription?</div>
+      <div style="font-size:13px; color:var(--muted); line-height:1.7;">Credit packs let users pay for exactly what they use. A blogger writing 1 article/month and an agency writing 100 use the same system at the right price. Subscriptions would require tiering by volume which is complex to design and creates upgrade friction.</div>
+    </div>
+    <div style="padding-bottom:14px; border-bottom:1px solid var(--border);">
+      <div style="font-weight:700; margin-bottom:4px;">Why is competitor analysis (40 cr) priced so close to cost?</div>
+      <div style="font-size:13px; color:var(--muted); line-height:1.7;">DataForSEO + Firecrawl is our highest variable cost ($0.10 per run). At Base pricing that gives us 75% margin, which is fine. At Max (24% margin) it is tight but acceptable because Max users generate volume. If DataForSEO costs rise, this is the first lever to adjust: increase to 50 cr.</div>
+    </div>
+    <div style="padding-bottom:14px; border-bottom:1px solid var(--border);">
+      <div style="font-weight:700; margin-bottom:4px;">Why are inline images the lowest-margin image action?</div>
+      <div style="font-size:13px; color:var(--muted); line-height:1.7;">Nano Banana ($0.039/image) costs nearly as much as our 30 cr revenue at Max pricing ($0.099). If we see heavy inline image usage on Max plans we may need to raise inline images to 40 cr or negotiate better rates with the provider. Hero images (Flux Pro at $0.04) are slightly cheaper and carry better margin.</div>
+    </div>
+    <div style="padding-bottom:14px; border-bottom:1px solid var(--border);">
+      <div style="font-weight:700; margin-bottom:4px;">Why is the Max pack so cheap per credit ($0.0033)?</div>
+      <div style="font-size:13px; color:var(--muted); line-height:1.7;">Agencies are price-sensitive and have alternatives (Jasper, Copy.ai). Offering 3x value at the Max tier locks in high-volume users who would otherwise churn. The volume means more absolute gross profit even at lower margins. Max users at 82% blended margin generate ~$82 of gross profit vs $9.40 for a Base user.</div>
+    </div>
+    <div>
+      <div style="font-weight:700; margin-bottom:4px;">Why is sync free and schema free?</div>
+      <div style="font-size:13px; color:var(--muted); line-height:1.7;">These are zero marginal cost (pure API calls, no LLM or third-party inference). Charging for them would feel punitive and create a bad experience at the moment of publishing. They are also the most tangible value delivery moments. Making them free encourages users to sync and publish more, which validates the product and drives referrals.</div>
+    </div>
+  </div>
+</div>
+
+<!-- PROMPT CACHING NOTE -->
+<div class="info-box blue" style="margin-bottom:28px;">
+  <div class="ic">i</div>
+  <div>
+    <b>Prompt caching is critical for margins on content generation.</b> Every AI action injects a large system prompt (brand voice, instructions, schema rules, site context). With Claude Sonnet 4.5 prompt caching, the cached portion costs $0.30/MTok instead of $3/MTok, a 90% reduction. For a 2,000-word article with a 4,000-token system prompt cached, caching saves approximately $0.012 per article. Across 1,000 articles/month that is $12 saved purely from caching. Always structure prompts to put the static system content first so it caches effectively.
+  </div>
+</div>
+
 </html>
