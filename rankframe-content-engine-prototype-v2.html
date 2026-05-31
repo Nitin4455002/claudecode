@@ -57,7 +57,7 @@
     --dash-side-w: 232px;
   }
   *,*::before,*::after{ box-sizing:border-box; }
-  html,body{ margin:0; padding:0; }
+  html,body{ margin:0; padding:0; overflow-x:hidden; }
   body{
     font-family:'Inter', -apple-system, system-ui, sans-serif;
     background:#08090B;
@@ -155,7 +155,7 @@
     width:6px; height:6px; border-radius:50%; background:var(--rf-purple);
     margin-left:auto; box-shadow:0 0 6px rgba(186,36,213,0.6);
   }
-  .proto-main{ padding:32px 44px 100px; overflow:hidden; min-width:0; }
+  .proto-main{ padding:32px 44px 100px; overflow-x:hidden; min-width:0; }
 
   /* ========== SECTION HEADER ========== */
   .proto-screen-head{ margin-bottom:22px; }
@@ -226,7 +226,7 @@
 
   /* ========== PLUGIN WINDOW ========== */
   .plugin-window{
-    width:var(--plugin-w); height:var(--plugin-h);
+    width:min(var(--plugin-w), 100%); height:var(--plugin-h);
     background:var(--rf-bg);
     border-radius:14px;
     overflow:hidden;
@@ -376,7 +376,7 @@
 
   /* ========== DASHBOARD WINDOW ========== */
   .dash-window{
-    width:var(--dash-w); height:var(--dash-h);
+    width:min(var(--dash-w), 100%); height:var(--dash-h);
     background:var(--rf-bg);
     border-radius:14px;
     overflow:hidden;
