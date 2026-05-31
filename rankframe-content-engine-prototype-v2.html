@@ -1407,7 +1407,7 @@ function calGrid(events){
    ============================================================ */
 const screens = [];
 
-/* 00 — Overview */
+/* 00 · Overview */
 screens.push({
   id:'s0', tag:'Overview', title:'00 · All screens at a glance',
   desc:'Every state in this Content Engine prototype. Click any tile to jump to the full screen with developer notes.',
@@ -1954,8 +1954,1652 @@ screens.push({
   ]
 });
 
-`;
-window.__SCREENS_BATCH_1_DONE = true;
+/* ================== D · DRAFT EDITOR ================== */
+screens.push({
+  id:'s19', tag:'D · Editor',
+  title:'19 · Empty new draft',
+  desc:'Just-created draft. Empty title placeholder, big Generate-with-AI CTA. Editor toolbar visible but disabled. Sidebar collapsed to outline tab (empty).',
+  body:dashShell('content', `
+    <div style="display:flex; gap:10px; align-items:center; margin-bottom:14px;">
+      <button class="ghost-btn sm">${ICONS.chevL}<span>Back to Drafts</span></button>
+      <div style="margin-left:auto; display:flex; gap:8px;">
+        ${statusPill('idea','Idea')}
+        <button class="ghost-btn sm">Save</button>
+      </div>
+    </div>
+    <div class="ed-frame">
+      <div class="ed-main">
+        <div class="ed-toolbar">
+          <span class="ed-tb-btn">H1</span><span class="ed-tb-btn">H2</span><span class="ed-tb-btn">H3</span>
+          <span class="ed-tb-btn divider"></span>
+          <span class="ed-tb-btn">B</span><span class="ed-tb-btn">I</span><span class="ed-tb-btn">Link</span>
+          <span class="ed-tb-btn divider"></span>
+          <span class="ed-tb-btn">${ICONS.image} Image</span>
+        </div>
+        <input class="ed-title" value="" placeholder="Untitled article...">
+        <div style="margin-top:32px; text-align:center; padding:50px 20px; border:1px dashed var(--rf-border-2); border-radius:12px; background:radial-gradient(circle at 50% 0%, rgba(186,36,213,0.05), transparent 60%);">
+          <div style="width:48px; height:48px; margin:0 auto 14px; border-radius:12px; background:var(--rf-purple-soft); color:var(--rf-purple); display:flex; align-items:center; justify-content:center; border:1px solid var(--rf-purple-line);">${ICONS.spark}</div>
+          <h3 style="margin:0 0 6px; font-size:15px;">Start with AI or write from scratch</h3>
+          <p style="margin:0 0 18px; font-size:12px; color:var(--rf-text-muted); max-width:380px; margin-left:auto; margin-right:auto;">Claude Sonnet 4.5 will write a ~2,000-word first draft using your research context, target keyword, and brand voice. Takes about 25 seconds.</p>
+          <button class="btn-primary">${ICONS.spark}<span>Generate with AI · 100 cr</span></button>
+          <div style="margin-top:10px; font-size:11px; color:var(--rf-text-dim);">Or <span style="color:var(--rf-purple); cursor:pointer;">start writing manually</span></div>
+        </div>
+        <div class="ed-footer"><span>0 words</span><span>0 min read</span><span style="margin-left:auto;">Auto-saved</span></div>
+      </div>
+      <div class="ed-side">
+        ${editorTabs('outline')}
+        <div class="ed-side-body">
+          <div style="font-size:11px; color:var(--rf-text-dim); text-align:center; padding:30px 10px;">Outline will appear here after the draft is written.</div>
+        </div>
+      </div>
+    </div>
+  `),
+  anno:[
+    ['Where the change lives','<span class="change-tag dash">DASHBOARD UI</span> <span class="change-tag db">DB</span> Draft row exists in <code>content_drafts</code> with status <code>idea</code>.'],
+    ['Generate cost','100 credits charged on click, not on draft creation. Lets users abandon without burning credits.'],
+    ['Brand voice','Pulled from <code>sites.brand_voice_json</code> if configured. Otherwise default voice. Editable from Screen 30.'],
+    ['Role','Writer, Publisher, Admin. Viewer denied.'],
+  ]
+});
+
+screens.push({
+  id:'s20', tag:'D · Editor',
+  title:'20 · AI generating draft',
+  desc:'User clicked Generate. Claude streams tokens into the editor. Live token stream visualization shows progress. Cancel button visible.',
+  body:dashShell('content', `
+    <div style="display:flex; gap:10px; align-items:center; margin-bottom:14px;">
+      <button class="ghost-btn sm" disabled>${ICONS.chevL}<span>Back</span></button>
+      <div style="margin-left:auto; display:flex; gap:8px;">
+        ${statusPill('draft','Draft · generating')}
+        <button class="ghost-btn sm">Cancel</button>
+      </div>
+    </div>
+    <div class="ed-frame">
+      <div class="ed-main">
+        <input class="ed-title" value="Headless CMS vs Framer CMS, which to pick" readonly>
+        <div class="banner info" style="margin-top:14px;">
+          <div class="b-ico">${ICONS.spark}</div>
+          <div><b>Claude Sonnet 4.5 is writing your article</b>Streaming about 2,000 words. Roughly 25 seconds. You can navigate away, the generation continues server-side.</div>
+        </div>
+        <div class="token-stream">
+A blog stack decision often comes down to one question: how much<br>
+control do you actually need? Both Framer CMS and a headless<br>
+CMS like Sanity, Contentful, or Strapi can ship a working blog,<br>
+but they sit at different ends of the trade-off curve...<br>
+<br>
+<b style="color:var(--rf-purple);">## What "headless" really means</b><br>
+A headless CMS separates the content database from the front<br>
+end. You author in one place and consume content via an API<br>
+from any framework. Framer CMS, by contrast, ships a UI and<br>
+a rendered page from the same workspace<span class="cur"></span>
+        </div>
+        <div class="ed-footer"><span style="color:var(--rf-purple);">312 words · streaming</span><span style="margin-left:auto;">${ICONS.spark} 100 cr deducted</span></div>
+      </div>
+      <div class="ed-side">
+        ${editorTabs('outline')}
+        <div class="ed-side-body">
+          <div style="font-size:11.5px; color:var(--rf-text-muted); line-height:1.7;">
+            <div style="font-weight:600; color:var(--rf-text); margin-bottom:6px;">Outline so far</div>
+            <div>H1 · Headless CMS vs Framer CMS</div>
+            <div style="padding-left:14px;">H2 · What "headless" really means</div>
+            <div style="padding-left:14px; color:var(--rf-text-dim);">H2 · ...</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  `),
+  anno:[
+    ['Streaming','<span class="change-tag api">API</span> SSE stream from <code>POST /api/content/drafts/{id}/generate</code>. Claude Sonnet 4.5 with prompt caching.'],
+    ['Cost','100 cr charged at start, refunded on cancel-before-50%-tokens.'],
+    ['Cancel','Aborts the SSE stream and reverts draft body. Partial credits refunded.'],
+    ['Background','If user navigates away, server continues; result appears in Drafts list when done.'],
+    ['Where the change lives','<span class="change-tag dash">DASHBOARD UI</span> <span class="change-tag api">API</span>'],
+  ]
+});
+
+screens.push({
+  id:'s21', tag:'D · Editor',
+  title:'21 · Populated editor, full layout',
+  desc:'Final populated state. 70/30 editor + sidebar layout. Toolbar active, status chip top right, word count bottom left.',
+  body:dashShell('content', `
+    <div style="display:flex; gap:10px; align-items:center; margin-bottom:14px;">
+      <button class="ghost-btn sm">${ICONS.chevL}<span>Back</span></button>
+      <div style="font-size:12.5px; color:var(--rf-text-muted);">Assigned to <b style="color:var(--rf-text);">Aanya S</b></div>
+      <div style="margin-left:auto; display:flex; gap:8px; align-items:center;">
+        ${statusPill('draft','Draft')}
+        <button class="ghost-btn sm">${ICONS.spark}<span>Submit for Review</span></button>
+        <button class="btn-primary sm">${ICONS.sync}<span>Sync to Framer</span></button>
+      </div>
+    </div>
+    <div class="ed-frame">
+      <div class="ed-main">
+        <div class="ed-toolbar">
+          <span class="ed-tb-btn">H1</span><span class="ed-tb-btn">H2</span><span class="ed-tb-btn">H3</span>
+          <span class="ed-tb-btn divider"></span>
+          <span class="ed-tb-btn">B</span><span class="ed-tb-btn">I</span><span class="ed-tb-btn">Link</span>
+          <span class="ed-tb-btn divider"></span>
+          <span class="ed-tb-btn">${ICONS.image} Image</span><span class="ed-tb-btn">Quote</span><span class="ed-tb-btn">Code</span>
+          <span style="margin-left:auto; font-size:10.5px; color:var(--rf-text-dim);">SEO score <b style="color:var(--rf-green);">82</b></span>
+        </div>
+        <input class="ed-title" value="Headless CMS vs Framer CMS, which to pick in 2026">
+        <div class="ed-img-block">Hero image · Flux Pro 1.1 · 1024×576</div>
+        <div class="ed-p">A blog stack decision often comes down to one question: how much control do you actually need? Both Framer CMS and a headless CMS like Sanity can ship a working blog, but they sit at different ends of the trade-off curve.</div>
+        <div class="ed-h2">What "headless" really means</div>
+        <div class="ed-p">A headless CMS separates the content database from the front end. You author in one place and consume content via an API from any framework. Framer CMS, by contrast, ships a UI and a rendered page from the same workspace.</div>
+        <div class="ed-h2">When Framer CMS is the right call</div>
+        <div class="ed-p">If your blog is one of several pages on a marketing site, the same designer is editing both, and you need fewer than 200 posts, Framer CMS wins on speed-to-launch and total cost.</div>
+        <div class="ed-footer"><span>1,840 words</span><span>8 min read</span><span>Auto-saved 12s ago</span><span style="margin-left:auto;">Last edit: Aanya · 2m ago</span></div>
+      </div>
+      <div class="ed-side">
+        ${editorTabs('seo')}
+        <div class="ed-side-body">
+          <div class="ed-field"><label>Target keyword</label><div class="val">headless cms framer</div></div>
+          <div class="ed-field"><label>Keyword density</label><div class="kw-bar"><div class="kw-fill"></div></div><div style="font-size:10.5px; color:var(--rf-text-muted); margin-top:4px;">1.6% · good (target 1-2%)</div></div>
+          <div class="ed-field"><label>Meta title</label><div class="val">Headless CMS vs Framer CMS, which to pick in 2026</div></div>
+          <div class="ed-field"><label>Meta description</label><div class="val">Compare Framer CMS and headless options for blogs. Side-by-side on pricing, schema, build time, and SEO. With recommendations by use case.</div></div>
+        </div>
+      </div>
+    </div>
+  `),
+  anno:[
+    ['Layout','Editor 70% / sidebar 30%. Sidebar tabs: SEO, AI, Outline, Links (Screens 22-25).'],
+    ['Autosave','Every 12s on dirty change. PATCH <code>/api/content/drafts/{id}</code> with diff payload.'],
+    ['SEO score top-right','Live composite of keyword density, headings, meta length, internal links.'],
+    ['Where the change lives','<span class="change-tag dash">DASHBOARD UI</span> <span class="change-tag db">DB</span> <code>content_drafts.body_html</code>.'],
+    ['Role','Writer can edit + Submit. Publisher and Admin also see "Sync to Framer". Viewer read-only.'],
+  ]
+});
+
+screens.push({
+  id:'s22', tag:'D · Editor',
+  title:'22 · SEO sidebar populated',
+  desc:'SEO tab. All fields populated with the current draft state. Keyword density bar, meta title, meta description, canonical URL, headings count.',
+  body:dashShell('content', `
+    <div style="display:flex; gap:10px; margin-bottom:14px;">
+      <div style="font-size:13px; color:var(--rf-text-muted);">Editing: Headless CMS vs Framer CMS</div>
+      <div style="margin-left:auto;">${statusPill('draft','Draft')}</div>
+    </div>
+    <div class="ed-frame">
+      <div class="ed-main">
+        <div class="ed-h2">When Framer CMS is the right call</div>
+        <div class="ed-p">If your blog is one of several pages on a marketing site...</div>
+        <div class="ed-h2">When you should choose a headless CMS</div>
+        <div class="ed-p">Pick headless when your content team is separate from design, when you publish across multiple channels, or when you expect 500+ posts.</div>
+        <div class="ed-footer"><span>1,840 words</span><span>SEO 82</span></div>
+      </div>
+      <div class="ed-side">
+        ${editorTabs('seo')}
+        <div class="ed-side-body">
+          <div class="ed-field"><label>Target keyword</label><div class="val">headless cms framer</div></div>
+          <div class="ed-field"><label>Keyword density · 1.6%</label><div class="kw-bar"><div class="kw-fill" style="width:55%;"></div></div><div style="font-size:10.5px; color:var(--rf-green); margin-top:4px;">✓ Good · target range 1-2%</div></div>
+          <div class="ed-field"><label>Meta title · 52 / 60</label><div class="val">Headless CMS vs Framer CMS, which to pick in 2026</div></div>
+          <div class="ed-field"><label>Meta description · 142 / 160</label><div class="val">Compare Framer CMS and headless options for blogs. Side-by-side on pricing, schema, build time, and SEO. With recommendations by use case.</div></div>
+          <div class="ed-field"><label>Slug</label><div class="val">/blog/headless-cms-vs-framer-cms</div></div>
+          <div class="ed-field"><label>Canonical URL</label><div class="val">7seersmedia.com/blog/headless-cms-vs-framer-cms</div></div>
+          <div class="ed-field"><label>Headings</label><div style="font-size:11px; color:var(--rf-text-muted); padding:4px 0;">1 H1 · 6 H2 · 4 H3</div></div>
+          <div class="ed-field"><label>Internal links</label><div style="font-size:11px; color:var(--rf-text-muted); padding:4px 0;">3 placed · 2 suggestions in Links tab</div></div>
+        </div>
+      </div>
+    </div>
+  `),
+  anno:[
+    ['Density math','Token count of target keyword + variants / total tokens. Recompute on change with 800ms debounce.'],
+    ['Meta limits','Title 60 chars (Google snippet), desc 160. Over-limit text turns amber.'],
+    ['Slug','Pre-filled from title, slug-cased, lowercased.'],
+    ['Canonical','Built from site domain + slug. Editable but warns if changed.'],
+    ['Where the change lives','<span class="change-tag dash">DASHBOARD UI</span> <span class="change-tag db">DB</span> Stored in <code>content_drafts</code> meta columns.'],
+  ]
+});
+
+screens.push({
+  id:'s23', tag:'D · Editor',
+  title:'23 · AI sidebar with all 9 actions',
+  desc:'AI tab. Four text actions, three image actions, plus a Brand Voice accordion at the bottom. Each row shows credit cost.',
+  body:dashShell('content', `
+    <div style="display:flex; gap:10px; margin-bottom:14px;"><div style="font-size:13px; color:var(--rf-text-muted);">Editing draft</div><div style="margin-left:auto;">${statusPill('draft','Draft')}</div></div>
+    <div class="ed-frame">
+      <div class="ed-main"><div class="ed-h2">When Framer CMS is the right call</div><div class="ed-p">If your blog is one of several pages...</div><div class="ed-footer"><span>1,840 words</span></div></div>
+      <div class="ed-side">
+        ${editorTabs('ai')}
+        <div class="ed-side-body">
+          <div style="font-size:9.5px; letter-spacing:0.08em; text-transform:uppercase; color:var(--rf-text-dim); font-weight:600; margin-bottom:8px;">Text actions</div>
+          <div class="ai-action"><span class="ico">${ICONS.spark}</span><span class="label">Regenerate selected section</span>${creditChip(5)}</div>
+          <div class="ai-action"><span class="ico">${ICONS.spark}</span><span class="label">Rewrite intro</span>${creditChip(5)}</div>
+          <div class="ai-action"><span class="ico">${ICONS.spark}</span><span class="label">Expand selected paragraph</span>${creditChip(3)}</div>
+          <div class="ai-action"><span class="ico">${ICONS.refresh}</span><span class="label">Rewrite full article</span>${creditChip(50)}</div>
+          <div style="font-size:9.5px; letter-spacing:0.08em; text-transform:uppercase; color:var(--rf-text-dim); font-weight:600; margin:14px 0 8px;">Images</div>
+          <div class="ai-action"><span class="ico">${ICONS.image}</span><span class="label">Generate hero (Flux Pro 1.1)</span>${creditChip(50)}</div>
+          <div class="ai-action"><span class="ico">${ICONS.image}</span><span class="label">Insert inline image (Nano Banana)</span>${creditChip(30)}</div>
+          <div class="ai-action"><span class="ico">${ICONS.spark}</span><span class="label">Auto-illustrate (hero + 2 inline)</span>${creditChip(100)}</div>
+          <div style="font-size:9.5px; letter-spacing:0.08em; text-transform:uppercase; color:var(--rf-text-dim); font-weight:600; margin:14px 0 8px;">Other</div>
+          <div class="ai-action"><span class="ico">${ICONS.spark}</span><span class="label">Auto alt text for all images</span>${creditChip(1)}</div>
+          <div style="margin-top:14px; padding:10px 12px; background:var(--rf-bg-elev); border:1px solid var(--rf-border); border-radius:8px; cursor:pointer;">
+            <div style="display:flex; align-items:center; gap:6px; font-size:11.5px;"><span style="color:var(--rf-purple);">${ICONS.cog}</span><b>Brand voice</b><span style="margin-left:auto; color:var(--rf-text-dim);">${ICONS.chevR}</span></div>
+            <div style="font-size:10.5px; color:var(--rf-text-muted); margin-top:4px;">Confident, conversational · 8th grade · 3 do's, 4 don'ts</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  `),
+  anno:[
+    ['All endpoints','<span class="change-tag api">API</span> <code>POST /api/content/drafts/{id}/ai</code> body <code>{action, selection?}</code>. Charges from credit table.'],
+    ['Selection-aware','Regenerate/Expand use the user&apos;s text selection. If no selection, prompts to select first.'],
+    ['Brand voice','Modal opens (Screen 30). Drives system prompt for every AI call on this draft.'],
+    ['Image actions','Flux Pro 1.1 via Replicate. Nano Banana via Gemini 2.5 Flash Image. Bundled alt text free.'],
+    ['Out of credits','If insufficient, action grays out and shows the out-of-credits banner.'],
+  ]
+});
+
+screens.push({
+  id:'s24', tag:'D · Editor',
+  title:'24 · Outline sidebar, drag-and-drop tree',
+  desc:'Outline tab. H1 / H2 / H3 tree with word counts and drag handles. Click any heading jumps the editor caret to it.',
+  body:dashShell('content', `
+    <div style="display:flex; gap:10px; margin-bottom:14px;"><div style="font-size:13px; color:var(--rf-text-muted);">Editing draft</div><div style="margin-left:auto;">${statusPill('draft','Draft')}</div></div>
+    <div class="ed-frame">
+      <div class="ed-main"><div class="ed-h2">What "headless" really means</div><div class="ed-p">A headless CMS separates the content database from the front end...</div></div>
+      <div class="ed-side">
+        ${editorTabs('outline')}
+        <div class="ed-side-body">
+          <div style="font-size:11px; color:var(--rf-text-dim); margin-bottom:8px;">Drag to reorder. Click to jump.</div>
+          <div style="display:flex; flex-direction:column; gap:3px; font-size:11.5px;">
+            <div style="display:flex; gap:6px; padding:6px 8px; background:var(--rf-bg-elev); border:1px solid var(--rf-border); border-radius:6px;"><span style="color:var(--rf-text-dim);">::</span><b style="color:var(--rf-text);">H1</b><span style="flex:1;">Headless CMS vs Framer CMS</span><span style="color:var(--rf-text-dim); font-family:'JetBrains Mono', monospace; font-size:10.5px;">0w</span></div>
+            <div style="display:flex; gap:6px; padding:6px 8px; padding-left:18px; background:var(--rf-bg-elev); border:1px solid var(--rf-border); border-radius:6px;"><span style="color:var(--rf-text-dim);">::</span><span>H2</span><span style="flex:1;">What "headless" really means</span><span style="color:var(--rf-text-dim); font-family:'JetBrains Mono', monospace; font-size:10.5px;">240w</span></div>
+            <div style="display:flex; gap:6px; padding:6px 8px; padding-left:18px; background:var(--rf-bg-elev); border:1px solid var(--rf-border); border-radius:6px;"><span style="color:var(--rf-text-dim);">::</span><span>H2</span><span style="flex:1;">When Framer CMS wins</span><span style="color:var(--rf-text-dim); font-family:'JetBrains Mono', monospace; font-size:10.5px;">320w</span></div>
+            <div style="display:flex; gap:6px; padding:6px 8px; padding-left:28px; background:var(--rf-bg-elev); border:1px solid var(--rf-border); border-radius:6px;"><span style="color:var(--rf-text-dim);">::</span><span style="color:var(--rf-text-muted);">H3</span><span style="flex:1;">Pricing</span><span style="color:var(--rf-text-dim); font-family:'JetBrains Mono', monospace; font-size:10.5px;">120w</span></div>
+            <div style="display:flex; gap:6px; padding:6px 8px; padding-left:28px; background:var(--rf-bg-elev); border:1px solid var(--rf-border); border-radius:6px;"><span style="color:var(--rf-text-dim);">::</span><span style="color:var(--rf-text-muted);">H3</span><span style="flex:1;">Speed to launch</span><span style="color:var(--rf-text-dim); font-family:'JetBrains Mono', monospace; font-size:10.5px;">95w</span></div>
+            <div style="display:flex; gap:6px; padding:6px 8px; padding-left:18px; background:var(--rf-purple-soft); border:1px solid var(--rf-purple-line); border-radius:6px;"><span style="color:var(--rf-purple);">::</span><b style="color:var(--rf-purple);">H2</b><span style="flex:1; color:var(--rf-purple);">When headless wins</span><span style="color:var(--rf-purple); font-family:'JetBrains Mono', monospace; font-size:10.5px;">410w</span></div>
+            <div style="display:flex; gap:6px; padding:6px 8px; padding-left:18px; background:var(--rf-bg-elev); border:1px solid var(--rf-border); border-radius:6px;"><span style="color:var(--rf-text-dim);">::</span><span>H2</span><span style="flex:1;">Recommendation</span><span style="color:var(--rf-text-dim); font-family:'JetBrains Mono', monospace; font-size:10.5px;">180w</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  `),
+  anno:[
+    ['Drag','Reordering H2s moves their entire subtree of H3s and paragraphs. Drag preview shows highlighted slot.'],
+    ['Active heading','Purple-tinted row indicates where the editor caret currently sits.'],
+    ['Where the change lives','<span class="change-tag dash">DASHBOARD UI</span> Built from DOM parse of <code>body_html</code>.'],
+    ['Click','Smooth-scrolls the main editor to the heading and places caret.'],
+  ]
+});
+
+screens.push({
+  id:'s25', tag:'D · Editor',
+  title:'25 · Links sidebar with outgoing and incoming',
+  desc:'Links tab. Two sub-tabs: Outgoing (links in this article) and Incoming (other articles linking here). Health badges per link.',
+  body:dashShell('content', `
+    <div style="display:flex; gap:10px; margin-bottom:14px;"><div style="font-size:13px; color:var(--rf-text-muted);">Editing draft</div><div style="margin-left:auto;">${statusPill('draft','Draft')}</div></div>
+    <div class="ed-frame">
+      <div class="ed-main"><div class="ed-h2">When headless wins</div><div class="ed-p">Pick headless when your content team is separate from design...</div></div>
+      <div class="ed-side">
+        ${editorTabs('links')}
+        <div class="ed-side-body">
+          <div style="display:flex; gap:10px; padding:4px 0 10px; border-bottom:1px solid var(--rf-border); margin-bottom:10px; font-size:11px;">
+            <span style="color:var(--rf-purple); font-weight:600;">Outgoing · 5</span>
+            <span style="color:var(--rf-text-muted);">Incoming · 3</span>
+            <button class="ghost-btn sm" style="margin-left:auto; padding:3px 8px; font-size:10px;">${ICONS.search}<span>Scan · 10 cr</span></button>
+          </div>
+          <div style="font-size:10.5px; color:var(--rf-text-dim); margin-bottom:6px;">INTERNAL · 3</div>
+          <div style="background:var(--rf-bg-elev); border:1px solid var(--rf-border); border-radius:6px; padding:8px; margin-bottom:5px; font-size:11px;">
+            <div style="font-weight:500;">Framer SEO guide</div>
+            <div style="color:var(--rf-text-dim); margin-top:2px; font-family:'JetBrains Mono', monospace; font-size:10px;">/blog/framer-seo-guide ✓ 200</div>
+          </div>
+          <div style="background:var(--rf-bg-elev); border:1px solid var(--rf-border); border-radius:6px; padding:8px; margin-bottom:5px; font-size:11px;">
+            <div style="font-weight:500;">Schema markup for Framer</div>
+            <div style="color:var(--rf-text-dim); margin-top:2px; font-family:'JetBrains Mono', monospace; font-size:10px;">/blog/schema-markup ✓ 200</div>
+          </div>
+          <div style="font-size:10.5px; color:var(--rf-text-dim); margin:10px 0 6px;">EXTERNAL · 2</div>
+          <div style="background:var(--rf-bg-elev); border:1px solid var(--rf-border); border-radius:6px; padding:8px; margin-bottom:5px; font-size:11px;">
+            <div style="font-weight:500;">framer.com/docs/cms</div>
+            <div style="color:var(--rf-green); margin-top:2px; font-family:'JetBrains Mono', monospace; font-size:10px;">✓ 200 · DA 78</div>
+          </div>
+          <div style="background:var(--rf-bg-elev); border:1px solid rgba(245,185,25,0.30); border-radius:6px; padding:8px; font-size:11px;">
+            <div style="font-weight:500;">old-strapi.io/docs</div>
+            <div style="color:var(--rf-amber); margin-top:2px; font-family:'JetBrains Mono', monospace; font-size:10px;">⚠ 301 to strapi.io · update?</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  `),
+  anno:[
+    ['Outgoing list','Parsed live from <code>body_html</code>. Each link health-checked in background (HEAD request, cached 24h).'],
+    ['Incoming','<span class="change-tag api">API</span> <code>GET /api/content/link-opportunities?target=this_draft</code> finds other articles linking here.'],
+    ['Health badges','Green 200, amber 301 (suggest update), red 404 (highlight in editor).'],
+    ['Scan button','<span class="change-tag api">API</span> Rescans all links, 10 cr. Default cached free results.'],
+  ]
+});
+
+screens.push({
+  id:'s26', tag:'D · Editor',
+  title:'26 · Schema sidebar, multi-schema bundle',
+  desc:'Click a Schema button in the toolbar to open the schema panel. Always-on pills, auto-detected pills, manual-add pills, plus a JSON-LD preview.',
+  body:dashShell('content', `
+    <div style="display:flex; gap:10px; margin-bottom:14px;"><div style="font-size:13px; color:var(--rf-text-muted);">Editing draft</div><div style="margin-left:auto;">${statusPill('draft','Draft')}</div></div>
+    <div class="ed-frame">
+      <div class="ed-main"><div class="ed-h2">Frequently asked questions</div><div class="ed-p">Below is the FAQ Claude detected and auto-marked-up as FAQPage schema.</div></div>
+      <div class="ed-side">
+        <div class="ed-side-tabs"><div class="ed-side-tab">SEO</div><div class="ed-side-tab">AI</div><div class="ed-side-tab">Outline</div><div class="ed-side-tab">Links</div><div class="ed-side-tab active" style="border-bottom-color:var(--rf-purple); color:var(--rf-purple);">Schema</div></div>
+        <div class="ed-side-body">
+          <div style="font-size:10.5px; color:var(--rf-text-dim); margin-bottom:6px;">ALWAYS ON</div>
+          <div class="schema-pills" style="margin-bottom:12px;">
+            <span class="schema-pill always">Article</span>
+            <span class="schema-pill always">BlogPosting</span>
+            <span class="schema-pill always">BreadcrumbList</span>
+            <span class="schema-pill always">Organization</span>
+          </div>
+          <div style="font-size:10.5px; color:var(--rf-text-dim); margin-bottom:6px;">AUTO-DETECTED</div>
+          <div class="schema-pills" style="margin-bottom:12px;">
+            <span class="schema-pill detected">FAQPage</span>
+            <span class="schema-pill detected">HowTo</span>
+          </div>
+          <div style="font-size:10.5px; color:var(--rf-text-dim); margin-bottom:6px;">ADD MANUALLY</div>
+          <div class="schema-pills" style="margin-bottom:14px;">
+            <span class="schema-pill add">+ Review</span>
+            <span class="schema-pill add">+ Product</span>
+            <span class="schema-pill add">+ NewsArticle</span>
+          </div>
+          <div style="font-size:10.5px; color:var(--rf-text-dim); margin-bottom:6px;">JSON-LD PREVIEW</div>
+          <div style="background:#0A0B0D; border:1px solid var(--rf-border); border-radius:6px; padding:9px; font-family:'JetBrains Mono', monospace; font-size:10px; line-height:1.6; color:var(--rf-text-2); max-height:140px; overflow-y:auto;">
+{<br>
+&nbsp;"@context":"<span style="color:#86EFAC;">https://schema.org</span>",<br>
+&nbsp;"@graph":[<br>
+&nbsp;&nbsp;{"@type":"<span style="color:#86EFAC;">BlogPosting</span>",<br>
+&nbsp;&nbsp;&nbsp;"headline":"Headless..."},<br>
+&nbsp;&nbsp;{"@type":"<span style="color:#86EFAC;">FAQPage</span>",...}<br>
+&nbsp;]<br>
+}
+          </div>
+          <button class="ghost-btn sm" style="margin-top:8px; width:100%; justify-content:center;">${ICONS.copy}<span>Copy JSON-LD</span></button>
+        </div>
+      </div>
+    </div>
+  `),
+  anno:[
+    ['Always on','Article, BlogPosting, BreadcrumbList, Organization, BlogPosting included on every article.'],
+    ['Auto-detected','Pattern matchers run on body_html. FAQPage = Q/A pair in H2/H3 + paragraph. HowTo = numbered steps. Review = review article type.'],
+    ['JSON-LD generation','<span class="change-tag api">API</span> Built server-side on sync, written to <code>content_drafts.schema_json</code>.'],
+    ['Cost','Free. Always bundled.'],
+    ['Framer plumbing','Schema JSON written to Framer CMS field <code>schemaJson</code> on sync. User has pasted <code>&lt;script&gt;{{schemaJson}}&lt;/script&gt;</code> into blog detail page Custom Code (one-time setup, Screens 47-49).'],
+  ]
+});
+
+screens.push({
+  id:'s27', tag:'D · Editor',
+  title:'27 · Regenerate section in progress',
+  desc:'User selected an H2 section, clicked Regenerate. The section dims and shows an inline shimmer while Claude rewrites just that portion.',
+  body:dashShell('content', `
+    <div style="display:flex; gap:10px; margin-bottom:14px;"><div style="font-size:13px; color:var(--rf-text-muted);">Editing</div><div style="margin-left:auto;">${statusPill('draft','Draft · regenerating section')}</div></div>
+    <div class="ed-frame">
+      <div class="ed-main">
+        <div class="ed-h2">What "headless" really means</div>
+        <div class="ed-p">A headless CMS separates the content database from the front end...</div>
+        <div style="position:relative; padding:14px; border:1px dashed var(--rf-purple-line); border-radius:10px; background:rgba(186,36,213,0.04); margin:12px 0;">
+          <div style="position:absolute; top:-9px; left:14px; background:#0F1116; padding:1px 7px; border-radius:4px; font-size:9.5px; letter-spacing:0.08em; color:var(--rf-purple); font-weight:700; border:1px solid var(--rf-purple-line);">REGENERATING · 5 CR</div>
+          <div class="ed-h2" style="margin-top:6px;">When Framer CMS is the right call</div>
+          <div style="display:flex; gap:6px; align-items:center; font-size:11.5px; color:var(--rf-text-muted); padding:8px 0;"><div class="loading-spinner" style="width:14px; height:14px; margin:0; border-width:1.5px;"></div>Streaming new content...</div>
+          <div style="height:10px; background:linear-gradient(90deg, var(--rf-bg-card-2) 30%, var(--rf-purple-soft) 50%, var(--rf-bg-card-2) 70%); background-size:200% 100%; border-radius:3px; margin-bottom:6px; animation:shimmer 1.4s linear infinite;"></div>
+          <div style="height:10px; background:linear-gradient(90deg, var(--rf-bg-card-2) 30%, var(--rf-purple-soft) 50%, var(--rf-bg-card-2) 70%); background-size:200% 100%; border-radius:3px; width:80%; animation:shimmer 1.4s linear infinite;"></div>
+        </div>
+        <div class="ed-h2">When headless wins</div>
+        <div class="ed-p">Pick headless when your content team is separate from design...</div>
+      </div>
+      <div class="ed-side">
+        ${editorTabs('ai')}
+        <div class="ed-side-body">
+          <div style="padding:10px; background:var(--rf-purple-soft); border:1px solid var(--rf-purple-line); border-radius:8px; font-size:11.5px; color:var(--rf-purple);">
+            ${ICONS.spark} Regenerating "When Framer CMS is the right call"<br>
+            <span style="color:var(--rf-text-muted); font-size:10.5px;">about 6s · 5 cr deducted</span>
+          </div>
+          <button class="ghost-btn sm" style="margin-top:8px; width:100%; justify-content:center;">Cancel</button>
+        </div>
+      </div>
+    </div>
+    <style>@keyframes shimmer{ to{ background-position:-200% 0; } }</style>
+  `),
+  anno:[
+    ['Where the change lives','<span class="change-tag api">API</span> <code>POST /api/content/drafts/{id}/ai</code> body <code>{action:"regenerate", section_id}</code>.'],
+    ['Cost','5 cr deducted on stream start. Cancel refunds if before 50% tokens.'],
+    ['Scope','Replaces selected H2 + its body. Surrounding sections untouched.'],
+    ['Idempotency','New content overwrites; not appended. Undo (Cmd+Z) restores previous.'],
+  ]
+});
+
+screens.push({
+  id:'s28', tag:'D · Editor',
+  title:'28 · Hero image generated',
+  desc:'After clicking Generate hero. The image block at the top of the article swaps to the Flux Pro output with a 200ms cross-fade.',
+  body:dashShell('content', `
+    <div style="display:flex; gap:10px; margin-bottom:14px;"><div style="font-size:13px; color:var(--rf-text-muted);">Editing</div><div style="margin-left:auto;">${statusPill('draft','Draft')}</div></div>
+    <div class="ed-frame">
+      <div class="ed-main">
+        <input class="ed-title" value="Headless CMS vs Framer CMS, which to pick in 2026">
+        <div style="position:relative; height:170px; border-radius:10px; background:linear-gradient(135deg,#2D1B3A 0%,#5A2580 50%, #16121E 100%); margin:8px 0; padding:14px; display:flex; flex-direction:column; justify-content:space-between; border:1px solid var(--rf-purple-line); overflow:hidden;">
+          <div style="font-size:10px; letter-spacing:0.10em; text-transform:uppercase; color:#fff; font-weight:700; background:rgba(0,0,0,0.4); padding:3px 8px; border-radius:4px; align-self:flex-start;">FLUX PRO 1.1 · 1024×576 · ${ICONS.check} just generated</div>
+          <div style="font-size:14px; color:#fff; font-weight:600;">A split-image of a headless mannequin paired with the Framer wordmark, isometric, deep purple gradient.</div>
+        </div>
+        <div style="margin-top:6px; padding:8px 10px; background:var(--rf-green-soft); border:1px solid rgba(74,222,128,0.30); border-radius:8px; font-size:11.5px; color:var(--rf-green); display:flex; align-items:center; gap:8px;">
+          ${ICONS.check} Hero image generated. 50 cr deducted. Alt text auto-written.
+          <button class="ghost-btn sm" style="margin-left:auto; padding:3px 8px; font-size:10.5px;">${ICONS.refresh}<span>Regenerate variation · 30 cr</span></button>
+        </div>
+        <div class="ed-h2" style="margin-top:14px;">What "headless" really means</div>
+        <div class="ed-p">A headless CMS separates the content database from the front end...</div>
+      </div>
+      <div class="ed-side">
+        ${editorTabs('ai')}
+        <div class="ed-side-body">
+          <div style="font-size:11px; color:var(--rf-text-muted);">Recent</div>
+          <div style="background:var(--rf-bg-elev); border:1px solid var(--rf-border); border-radius:8px; padding:9px; margin-top:6px; font-size:11.5px;">
+            <div style="font-weight:600;">Hero · Flux Pro 1.1</div>
+            <div style="color:var(--rf-text-muted); font-size:10.5px; margin-top:2px;">just now · 50 cr</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  `),
+  anno:[
+    ['Provider','<span class="change-tag api">API</span> Replicate or fal.ai endpoint, model <code>flux-pro-1.1</code>. 1024×576. Returns CDN URL.'],
+    ['Cost','50 cr. Alt text bundled free via Claude Haiku 4.5 vision.'],
+    ['Where the change lives','<span class="change-tag db">DB</span> <code>content_drafts.cover_image_url</code> + <code>cover_image_alt</code>.'],
+    ['Regenerate variation','30 cr. Same prompt with seed shift.'],
+    ['Framer write','Not yet. Image uploaded to Framer CDN only on sync via <code>framer.uploadImage()</code>.'],
+  ]
+});
+
+screens.push({
+  id:'s29', tag:'D · Editor',
+  title:'29 · Inline image inserted',
+  desc:'User clicked Insert inline image. A new image block appears at the caret position with the freshly-generated Nano Banana image.',
+  body:dashShell('content', `
+    <div style="display:flex; gap:10px; margin-bottom:14px;"><div style="font-size:13px; color:var(--rf-text-muted);">Editing</div><div style="margin-left:auto;">${statusPill('draft','Draft')}</div></div>
+    <div class="ed-frame">
+      <div class="ed-main">
+        <div class="ed-h2">When Framer CMS wins</div>
+        <div class="ed-p">If your blog is one of several pages on a marketing site, Framer CMS wins on speed-to-launch and total cost.</div>
+        <div style="position:relative; height:140px; border-radius:10px; background:linear-gradient(135deg,#1E3A8A 0%,#3B82F6 50%, #1E40AF 100%); margin:8px 0; padding:12px; display:flex; flex-direction:column; justify-content:flex-end; border:1px solid rgba(59,130,246,0.30); overflow:hidden;">
+          <div style="position:absolute; top:10px; right:10px; background:rgba(0,0,0,0.5); padding:2.5px 7px; border-radius:4px; font-size:9.5px; color:#fff;">${ICONS.check} Inserted · 30 cr</div>
+          <div style="font-size:13px; color:#fff; font-weight:600;">Comparison diagram: Framer CMS UI on left, headless GraphQL response on right.</div>
+        </div>
+        <div style="font-size:10.5px; color:var(--rf-text-dim); padding:4px 0;">Alt: Side-by-side of Framer&apos;s visual CMS editor and a Sanity headless GraphQL response.</div>
+        <div class="ed-p">Picking Framer here saved roughly 40 hours of integration work.</div>
+      </div>
+      <div class="ed-side">
+        ${editorTabs('ai')}
+        <div class="ed-side-body">
+          <div style="font-size:11px; color:var(--rf-text-muted); margin-bottom:6px;">Image just inserted</div>
+          <div style="background:var(--rf-bg-elev); border:1px solid var(--rf-green-soft); border-radius:8px; padding:9px; font-size:11px; line-height:1.5;">
+            <b style="color:var(--rf-text);">Nano Banana · inline</b><br>
+            <span style="color:var(--rf-text-muted);">512×384 · 2.1s gen · 30 cr · alt auto-written (1 cr included)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  `),
+  anno:[
+    ['Provider','<span class="change-tag api">API</span> Gemini 2.5 Flash Image (Nano Banana). 2s typical. 512×384.'],
+    ['Cost','30 cr. Alt text 1 cr bundled.'],
+    ['Insertion point','At current caret position. New block created inline.'],
+    ['Where the change lives','<span class="change-tag db">DB</span> Image URL inserted into <code>body_html</code> as an <code>&lt;img&gt;</code> with data attributes for sync mapping.'],
+  ]
+});
+
+screens.push({
+  id:'s30', tag:'D · Editor',
+  title:'30 · Brand voice settings panel',
+  desc:'Clicked the Brand voice accordion. Opens a panel with tone, reading level, length preference, and custom instructions.',
+  body:dashShell('content', `
+    <div style="display:flex; gap:10px; margin-bottom:14px;"><div style="font-size:13px; color:var(--rf-text-muted);">Editing</div><div style="margin-left:auto;">${statusPill('draft','Draft')}</div></div>
+    <div class="ed-frame">
+      <div class="ed-main"><div class="ed-h2">When headless wins</div><div class="ed-p">Pick headless when your content team is separate from design...</div></div>
+      <div class="ed-side">
+        ${editorTabs('ai')}
+        <div class="ed-side-body">
+          <div style="background:var(--rf-purple-soft); border:1px solid var(--rf-purple-line); border-radius:8px; padding:12px;">
+            <div style="font-size:10.5px; color:var(--rf-purple); letter-spacing:0.08em; text-transform:uppercase; font-weight:700; margin-bottom:10px;">Brand voice · this site</div>
+            <div class="ed-field"><label>Tone</label><div class="val">Confident, conversational</div></div>
+            <div class="ed-field"><label>Reading level</label><div class="val">8th grade · plain English</div></div>
+            <div class="ed-field"><label>Length preference</label><div class="val">1,800-2,400 words for pillars · 600-900 for posts</div></div>
+            <div class="ed-field"><label>Always do</label>
+              <div style="font-size:11.5px; color:var(--rf-text-2); line-height:1.7;">
+                · Open with a specific scenario, not generalities<br>
+                · Use second person ("you")<br>
+                · Pair every claim with a concrete example
+              </div>
+            </div>
+            <div class="ed-field"><label>Never do</label>
+              <div style="font-size:11.5px; color:var(--rf-text-2); line-height:1.7;">
+                · "In today&apos;s fast-paced world"<br>
+                · "Whether you&apos;re a beginner or pro"<br>
+                · Em dash characters<br>
+                · Hype adjectives ("revolutionary", "game-changing")
+              </div>
+            </div>
+            <div class="ed-field"><label>Brand examples</label><div class="val" style="font-size:11px;">2 sample articles attached, used as voice anchors for prompt cache.</div></div>
+            <button class="btn-primary sm" style="width:100%; justify-content:center;">${ICONS.check}<span>Save voice</span></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  `),
+  anno:[
+    ['Where the change lives','<span class="change-tag db">DB</span> <code>sites.brand_voice_json</code>. Applied to all AI calls for this site.'],
+    ['Prompt cache','Voice + brand examples are cached at the start of the system prompt to save tokens.'],
+    ['Per-draft override','User can override voice for a single draft via "Use different voice" toggle (not shown).'],
+    ['Role','Admin and Publisher can edit voice. Writer can read.'],
+  ]
+});
+
+/* ================== E · APPROVAL WORKFLOW ================== */
+screens.push({
+  id:'s31', tag:'E · Approval',
+  title:'31 · Writer view, Submit for Review button',
+  desc:'Writer is editing a draft. The top-right action set differs from Admin: shows Submit for Review (not Sync). Sync is locked.',
+  body:dashShell('content', `
+    <div style="display:flex; gap:10px; align-items:center; margin-bottom:14px;">
+      <button class="ghost-btn sm">${ICONS.chevL}<span>Back</span></button>
+      <div style="font-size:12.5px; color:var(--rf-text-muted);">Assigned to <b style="color:var(--rf-text);">Aanya · Writer</b></div>
+      <div style="margin-left:auto; display:flex; gap:8px;">
+        ${statusPill('draft','Draft')}
+        <button class="ghost-btn sm" disabled style="opacity:0.5; cursor:not-allowed;">${ICONS.lock} Sync to Framer</button>
+        <button class="btn-primary sm">${ICONS.spark}<span>Submit for Review</span></button>
+      </div>
+    </div>
+    <div class="ed-frame">
+      <div class="ed-main"><input class="ed-title" value="Headless CMS vs Framer CMS"><div class="ed-h2">What "headless" really means</div><div class="ed-p">A headless CMS separates the content database...</div><div class="ed-footer"><span>1,840 words</span></div></div>
+      <div class="ed-side">${editorTabs('seo')}<div class="ed-side-body"><div class="ed-field"><label>Target keyword</label><div class="val">headless cms framer</div></div></div></div>
+    </div>
+  `),
+  anno:[
+    ['Role','Writer. Sync button locked (lock icon + disabled).'],
+    ['Submit for Review','<span class="change-tag api">API</span> <code>POST /api/content/drafts/{id}/submit-review</code>. Status moves <code>draft</code> → <code>in_review</code>.'],
+    ['Notifies','Admin gets email + dashboard notification + Slack if configured.'],
+    ['Where the change lives','<span class="change-tag dash">DASHBOARD UI</span> Conditional render. Same component reads <code>currentUser.role</code>.'],
+  ]
+});
+
+screens.push({
+  id:'s32', tag:'E · Approval',
+  title:'32 · Submit for Review modal',
+  desc:'Writer clicked Submit. Modal asks for an optional note to the reviewer plus confirmation.',
+  body:dashShell('content', `
+    <div style="display:flex; gap:10px; margin-bottom:14px;"><div style="font-size:13px; color:var(--rf-text-muted);">Editing</div><div style="margin-left:auto;">${statusPill('draft','Draft')}</div></div>
+    <div class="ed-frame" style="opacity:0.4;"><div class="ed-main"><div class="ed-h2">When Framer wins</div><div class="ed-p">If your blog is one of several pages...</div></div><div class="ed-side">${editorTabs('seo')}<div class="ed-side-body"></div></div></div>
+    <div class="modal-overlay" style="position:absolute;">
+      <div class="modal">
+        <h3>Submit for review</h3>
+        <p>Your article will move to In Review. The admin will be notified to approve or request changes.</p>
+        <label style="font-size:10.5px; color:var(--rf-text-dim); letter-spacing:0.06em; text-transform:uppercase; font-weight:600;">Note to reviewer (optional)</label>
+        <textarea placeholder="What should the reviewer pay attention to?">First pass at the headless comparison. I avoided the religious-war framing and tried to lead with use cases. Open to a different intro.</textarea>
+        <div style="display:flex; gap:8px;">
+          <button class="ghost-btn" style="flex:1; justify-content:center;">Cancel</button>
+          <button class="btn-primary" style="flex:2; justify-content:center;">${ICONS.check}<span>Submit for review</span></button>
+        </div>
+      </div>
+    </div>
+  `),
+  anno:[
+    ['Where the change lives','<span class="change-tag api">API</span> <code>POST /api/content/drafts/{id}/submit-review</code> body <code>{note}</code>.'],
+    ['Note storage','<span class="change-tag db">DB</span> <code>content_drafts.review_note</code>. Shown to admin in approval queue.'],
+    ['Notify','Admin gets email + push. Slack webhook if site has one configured.'],
+    ['Status transition','draft → in_review. Logged to <code>activity_log</code>.'],
+  ]
+});
+
+screens.push({
+  id:'s33', tag:'E · Approval',
+  title:'33 · Admin view, Approve & Schedule button',
+  desc:'Admin opens the same draft. Action set is different: shows Approve, Request changes, plus Sync to Framer.',
+  body:dashShell('content', `
+    <div style="display:flex; gap:10px; align-items:center; margin-bottom:14px;">
+      <button class="ghost-btn sm">${ICONS.chevL}<span>Back</span></button>
+      <div style="font-size:12.5px; color:var(--rf-text-muted);">Submitted by <b style="color:var(--rf-text);">Aanya</b> · 2 hours ago</div>
+      <div style="margin-left:auto; display:flex; gap:8px;">
+        ${statusPill('review','In Review')}
+        <button class="ghost-btn sm">Request changes</button>
+        <button class="btn-primary sm">${ICONS.check}<span>Approve &amp; Schedule</span></button>
+      </div>
+    </div>
+    <div class="banner info" style="margin-bottom:14px;"><div class="b-ico">${ICONS.spark}</div><div><b>Writer note</b>First pass at the headless comparison. I avoided the religious-war framing and tried to lead with use cases. Open to a different intro.</div></div>
+    <div class="ed-frame">
+      <div class="ed-main"><input class="ed-title" value="Headless CMS vs Framer CMS, which to pick in 2026"><div class="ed-h2">What "headless" really means</div><div class="ed-p">A headless CMS separates the content database from the front end...</div><div class="ed-footer"><span>1,840 words</span><span>SEO 82</span></div></div>
+      <div class="ed-side">${editorTabs('seo')}<div class="ed-side-body"><div class="ed-field"><label>Target keyword</label><div class="val">headless cms framer</div></div><div class="ed-field"><label>SEO score</label><div style="font-size:18px; font-weight:600; color:var(--rf-green);">82 / 100</div></div></div></div>
+    </div>
+  `),
+  anno:[
+    ['Role','Admin (or Publisher with approve permission).'],
+    ['Writer note callout','Pinned at top so reviewer sees context before scrolling.'],
+    ['Where the change lives','<span class="change-tag dash">DASHBOARD UI</span> Conditional render. <span class="change-tag api">API</span> Approve endpoint.'],
+    ['Approve & Schedule','Opens approval modal (Screen 34) for date/sync choice.'],
+  ]
+});
+
+screens.push({
+  id:'s34', tag:'E · Approval',
+  title:'34 · Approve modal, with radio choice',
+  desc:'Admin clicked Approve & Schedule. Modal asks: approve only (keep in approved), or approve and immediately sync.',
+  body:dashShell('content', `
+    <div style="opacity:0.4;">
+      <div style="display:flex; gap:10px; margin-bottom:14px;"><div style="font-size:13px;">Approving article</div><div style="margin-left:auto;">${statusPill('review','In Review')}</div></div>
+      <div class="ed-frame"><div class="ed-main"><div class="ed-h2">Section</div></div><div class="ed-side">${editorTabs('seo')}<div class="ed-side-body"></div></div></div>
+    </div>
+    <div class="modal-overlay" style="position:absolute;">
+      <div class="modal" style="width:480px;">
+        <h3>Approve article</h3>
+        <p>Choose what happens next. You can request changes instead by clicking Cancel.</p>
+        <div class="radio-row selected"><div class="rd"></div><div><b>Approve and sync to Framer now</b><span>Status → Synced. Writes to Framer CMS as draft entry. Sync wizard (Screens 38-40) opens next.</span></div></div>
+        <div class="radio-row"><div class="rd"></div><div><b>Approve only, sync later</b><span>Status → Approved. Article stays in calendar. Sync manually from the Drafts list.</span></div></div>
+        <div class="radio-row" style="margin-bottom:14px;"><div class="rd"></div><div><b>Request changes instead</b><span>Sends back to Writer with feedback. Status → Draft. Writer notified.</span></div></div>
+        <div style="display:flex; gap:8px;">
+          <button class="ghost-btn" style="flex:1; justify-content:center;">Cancel</button>
+          <button class="btn-primary" style="flex:2; justify-content:center;">${ICONS.check}<span>Approve and sync</span></button>
+        </div>
+      </div>
+    </div>
+  `),
+  anno:[
+    ['Where the change lives','<span class="change-tag api">API</span> <code>POST /api/content/drafts/{id}/approve</code> body <code>{action:"approve_sync"|"approve_only"|"request_changes"}</code>.'],
+    ['Default','First option pre-selected. Most common admin choice.'],
+    ['Notify','Writer notified by email/Slack on any of the three outcomes.'],
+    ['Status','approve_sync → approved → synced. approve_only → approved. request_changes → draft.'],
+  ]
+});
+
+screens.push({
+  id:'s35', tag:'E · Approval',
+  title:'35 · Approval Queue, Admin table view',
+  desc:'Dedicated tab for the admin. Lists all drafts In Review with author, submitted date, target keyword. Inline Preview, Approve, Request changes actions.',
+  body:dashShell('content', `
+    ${ceHeader()}
+    ${contentTabs('queue')}
+    <div style="display:flex; gap:10px; margin-bottom:14px;">
+      <div style="font-size:13px; color:var(--rf-text-muted);">3 articles awaiting your review</div>
+      <div style="margin-left:auto; display:flex; gap:8px;">
+        <button class="ghost-btn sm">${ICONS.filter}<span>All members</span></button>
+        <button class="ghost-btn sm">${ICONS.filter}<span>Sort: oldest first</span></button>
+      </div>
+    </div>
+    <table class="rf-table">
+      <thead><tr><th>Article</th><th>Author</th><th>Submitted</th><th>Words</th><th>SEO</th><th>Actions</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><b>Headless CMS vs Framer CMS</b><br><span style="font-size:11px; color:var(--rf-text-dim);">/blog/headless-cms-vs-framer-cms</span></td>
+          <td>Aanya S</td>
+          <td>2h ago</td>
+          <td>1,840</td>
+          <td><span style="color:var(--rf-green); font-weight:600; font-family:'JetBrains Mono', monospace;">82</span></td>
+          <td><button class="ghost-btn sm">Preview</button> <button class="btn-primary sm">${ICONS.check}<span>Approve</span></button></td>
+        </tr>
+        <tr>
+          <td><b>Form builders compared, May 2026</b><br><span style="font-size:11px; color:var(--rf-text-dim);">/blog/form-builders-compared</span></td>
+          <td>Priya R</td>
+          <td>5h ago</td>
+          <td>2,120</td>
+          <td><span style="color:var(--rf-amber); font-weight:600; font-family:'JetBrains Mono', monospace;">68</span></td>
+          <td><button class="ghost-btn sm">Preview</button> <button class="btn-primary sm">${ICONS.check}<span>Approve</span></button></td>
+        </tr>
+        <tr>
+          <td><b>Why Framer ships faster than Webflow</b><br><span style="font-size:11px; color:var(--rf-text-dim);">/blog/framer-vs-webflow-speed</span></td>
+          <td>Aanya S</td>
+          <td>1d ago</td>
+          <td>1,640</td>
+          <td><span style="color:var(--rf-green); font-weight:600; font-family:'JetBrains Mono', monospace;">79</span></td>
+          <td><button class="ghost-btn sm">Preview</button> <button class="btn-primary sm">${ICONS.check}<span>Approve</span></button></td>
+        </tr>
+      </tbody>
+    </table>
+  `),
+  anno:[
+    ['Where the change lives','<span class="change-tag dash">DASHBOARD UI</span> <span class="change-tag api">API</span> <code>GET /api/content/drafts?status=in_review&amp;site_id=</code>'],
+    ['Role','Admin and Publisher. Hidden for Writer (they get the member view, Screen 36).'],
+    ['Preview','Opens read-only modal with the rendered article.'],
+    ['Inline Approve','Opens the same approval modal (Screen 34).'],
+  ]
+});
+
+screens.push({
+  id:'s36', tag:'E · Approval', newScreen:true,
+  title:'36 · Approval Queue, Member view',
+  desc:'Same tab, member role. Sees only their own submissions, read-only. Status badge per row. No bulk actions.',
+  body:dashShell('content', `
+    ${ceHeader()}
+    ${contentTabs('queue')}
+    <div style="display:flex; gap:10px; margin-bottom:14px;">
+      <div style="font-size:13px; color:var(--rf-text-muted);">Your submissions, awaiting review</div>
+      <div style="margin-left:auto; font-size:11px; color:var(--rf-text-dim);">${ICONS.lock} Read-only · only your articles shown</div>
+    </div>
+    <table class="rf-table">
+      <thead><tr><th>Article</th><th>Submitted</th><th>Words</th><th>Status</th><th></th></tr></thead>
+      <tbody>
+        <tr><td><b>Headless CMS vs Framer CMS</b></td><td>2h ago</td><td>1,840</td><td>${statusPill('review','In Review')}</td><td><button class="ghost-btn sm">View</button></td></tr>
+        <tr><td><b>Why Framer ships faster than Webflow</b></td><td>1d ago</td><td>1,640</td><td>${statusPill('review','In Review')}</td><td><button class="ghost-btn sm">View</button></td></tr>
+        <tr><td><b>Framer plugin best practices</b></td><td>3d ago</td><td>1,420</td><td>${statusPill('draft','Changes requested')}</td><td><button class="btn-primary sm">${ICONS.edit}<span>Open in editor</span></button></td></tr>
+        <tr><td><b>404 monitoring on Framer sites</b></td><td>5d ago</td><td>1,210</td><td>${statusPill('published','Published')}</td><td><button class="ghost-btn sm">${ICONS.ext}<span>View on site</span></button></td></tr>
+      </tbody>
+    </table>
+    <div style="margin-top:12px; font-size:11px; color:var(--rf-text-dim); text-align:center;">You can&apos;t approve, sync, or see other team members&apos; drafts. Reach out to your admin for changes to permissions.</div>
+  `),
+  anno:[
+    ['Where the change lives','<span class="change-tag dash">DASHBOARD UI</span> <span class="change-tag api">API</span> Same endpoint, filtered server-side to <code>author_user_id = currentUser.id</code>.'],
+    ['Read-only','No Approve/Request actions. View opens preview. Editor open only on Changes Requested rows.'],
+    ['Status surfacing','Member sees "Changes requested" badge and can immediately open editor to apply.'],
+    ['Footer copy','Sets expectations early to prevent confused support tickets.'],
+  ]
+});
+
+screens.push({
+  id:'s37', tag:'E · Approval',
+  title:'37 · Returned to draft with feedback',
+  desc:'Admin chose Request changes. The writer opens the draft and sees an inline feedback banner at the top quoting the admin&apos;s note.',
+  body:dashShell('content', `
+    <div style="display:flex; gap:10px; align-items:center; margin-bottom:14px;">
+      <button class="ghost-btn sm">${ICONS.chevL}<span>Back</span></button>
+      <div style="margin-left:auto; display:flex; gap:8px;">
+        ${statusPill('draft','Draft · changes requested')}
+        <button class="btn-primary sm">${ICONS.spark}<span>Re-submit for Review</span></button>
+      </div>
+    </div>
+    <div class="banner warn" style="margin-bottom:14px;">
+      <div class="b-ico">${ICONS.flag}</div>
+      <div>
+        <b>Changes requested by Nitin (Admin) · 14 min ago</b>
+        Intro is too theoretical. Lead with the specific scenario from your note ("the same designer is editing both"). Also: H3 "Pricing" is missing actual numbers; pull them from framer.com/pricing.
+      </div>
+    </div>
+    <div class="ed-frame">
+      <div class="ed-main"><input class="ed-title" value="Headless CMS vs Framer CMS"><div class="ed-h2">What "headless" really means</div><div class="ed-p">A headless CMS separates the content database...</div></div>
+      <div class="ed-side">${editorTabs('seo')}<div class="ed-side-body"><div class="ed-field"><label>Target keyword</label><div class="val">headless cms framer</div></div></div></div>
+    </div>
+  `),
+  anno:[
+    ['Where the change lives','<span class="change-tag db">DB</span> <code>content_drafts.review_feedback</code>.'],
+    ['Persistent banner','Stays until Re-submit. Dismissable via X (kept in DB for history).'],
+    ['Activity log','Feedback round-trip recorded in <code>activity_log</code> for audit.'],
+    ['Re-submit','Status moves draft → in_review again. Admin re-notified.'],
+  ]
+});
+
+/* ================== F · SYNC TO FRAMER ================== */
+screens.push({
+  id:'s38', tag:'F · Sync',
+  title:'38 · Sync wizard, step 1, select collection',
+  desc:'After approval. Wizard shows existing Framer CMS collections with compatibility status. Compatible, warning, or create-new.',
+  body:dashShell('content', `
+    <div style="display:flex; gap:10px; align-items:center; margin-bottom:14px;"><h2 style="font-size:18px; margin:0;">Sync to Framer CMS</h2><div style="margin-left:auto; font-size:11px; color:var(--rf-text-dim);">Article: Headless CMS vs Framer CMS</div></div>
+    <div class="stepper"><div class="step active"><div class="num">1</div>Pick collection</div><div class="step-sep"></div><div class="step"><div class="num">2</div>Map fields</div><div class="step-sep"></div><div class="step"><div class="num">3</div>Preview &amp; sync</div></div>
+    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:14px;">
+      <div class="card" style="border-color:var(--rf-green-soft); cursor:pointer;"><div class="card-head"><span style="width:24px; height:24px; border-radius:6px; background:var(--rf-green-soft); color:var(--rf-green); display:flex; align-items:center; justify-content:center;">${ICONS.check}</span><h3>Blog posts</h3></div><p style="margin:0 0 8px; font-size:12px; color:var(--rf-text-2);">14 fields including formattedText, schemaJson, coverImage</p><div style="font-size:11px; color:var(--rf-green);">${ICONS.check} Fully compatible · 18 items in collection</div></div>
+      <div class="card" style="border-color:rgba(245,185,25,0.30); cursor:pointer;"><div class="card-head"><span style="width:24px; height:24px; border-radius:6px; background:var(--rf-amber-soft-2); color:var(--rf-amber); display:flex; align-items:center; justify-content:center;">${ICONS.warn}</span><h3>Old blog</h3></div><p style="margin:0 0 8px; font-size:12px; color:var(--rf-text-2);">Missing schemaJson field. Sync will work but no JSON-LD.</p><div style="font-size:11px; color:var(--rf-amber);">⚠ Partial · add field or pick another</div></div>
+      <div class="card" style="border-style:dashed; cursor:pointer;"><div class="card-head"><span style="width:24px; height:24px; border-radius:6px; background:var(--rf-purple-soft); color:var(--rf-purple); display:flex; align-items:center; justify-content:center;">${ICONS.plus}</span><h3>Create new collection</h3></div><p style="margin:0 0 8px; font-size:12px; color:var(--rf-text-2);">RankFrame creates a fully-configured CMS collection with all 14 fields.</p><div style="font-size:11px; color:var(--rf-purple);">Recommended for fresh setups</div></div>
+    </div>
+    <div style="margin-top:18px; display:flex; gap:8px; justify-content:flex-end;"><button class="ghost-btn">Cancel</button><button class="btn-primary">Continue${ICONS.arrowRight}</button></div>
+  `),
+  anno:[
+    ['Where the change lives','<span class="change-tag plugin">PLUGIN UI</span><span class="change-tag api">API</span> Plugin context calls <code>framer.getCollections()</code>; server compares field set against RankFrame schema requirements.'],
+    ['Compatibility check','Required fields: <code>title, slug, formattedText, metaTitle, metaDescription, coverImage, schemaJson, publishedAt, draft</code>.'],
+    ['Create new','<code>framer.createManagedCollection()</code> (Plugin API v3.10.2+).'],
+    ['Where this opens','Sync wizard is a plugin modal triggered from the dashboard editor; it briefly hands off to the plugin to talk to Framer.'],
+  ]
+});
+
+screens.push({
+  id:'s39', tag:'F · Sync',
+  title:'39 · Sync wizard, step 2, field mapping',
+  desc:'Mapping table. Each draft field maps to a Framer CMS field. Required mappings flagged. Auto-detected on first pass.',
+  body:dashShell('content', `
+    <div style="display:flex; gap:10px; align-items:center; margin-bottom:14px;"><h2 style="font-size:18px; margin:0;">Sync to Framer CMS</h2></div>
+    <div class="stepper"><div class="step done"><div class="num">${ICONS.check}</div>Pick collection</div><div class="step-sep"></div><div class="step active"><div class="num">2</div>Map fields</div><div class="step-sep"></div><div class="step"><div class="num">3</div>Preview &amp; sync</div></div>
+    <div style="font-size:12px; color:var(--rf-text-muted); margin-bottom:10px;">Mapping into <b style="color:var(--rf-text);">Blog posts</b>. Auto-detected; click any row to remap.</div>
+    <table class="rf-table">
+      <thead><tr><th>RankFrame field</th><th>Framer CMS field</th><th>Type</th><th></th></tr></thead>
+      <tbody>
+        <tr><td>Title</td><td>title</td><td>String</td><td style="color:var(--rf-green);">${ICONS.check}</td></tr>
+        <tr><td>Slug</td><td>slug</td><td>String (slug)</td><td style="color:var(--rf-green);">${ICONS.check}</td></tr>
+        <tr><td>Body HTML</td><td>formattedText</td><td>Rich text</td><td style="color:var(--rf-green);">${ICONS.check}</td></tr>
+        <tr><td>Meta title</td><td>metaTitle</td><td>String</td><td style="color:var(--rf-green);">${ICONS.check}</td></tr>
+        <tr><td>Meta description</td><td>metaDescription</td><td>String</td><td style="color:var(--rf-green);">${ICONS.check}</td></tr>
+        <tr><td>Cover image</td><td>coverImage</td><td>Image</td><td style="color:var(--rf-green);">${ICONS.check} will upload to Framer CDN</td></tr>
+        <tr><td>Schema JSON-LD</td><td>schemaJson</td><td>String (long)</td><td style="color:var(--rf-green);">${ICONS.check}</td></tr>
+        <tr><td>Published at</td><td>publishedAt</td><td>Date</td><td style="color:var(--rf-green);">${ICONS.check}</td></tr>
+        <tr><td>Draft toggle</td><td>draft</td><td>Boolean</td><td style="color:var(--rf-green);">${ICONS.check}</td></tr>
+      </tbody>
+    </table>
+    <div style="margin-top:18px; display:flex; gap:8px; justify-content:space-between;"><button class="ghost-btn">${ICONS.chevL}<span>Back</span></button><button class="btn-primary">Continue${ICONS.arrowRight}</button></div>
+  `),
+  anno:[
+    ['Mapping storage','<span class="change-tag db">DB</span> <code>framer_collection_mappings.field_mappings_json</code>. Reused on next sync.'],
+    ['Auto-detect','Maps by canonical name (title, slug...). Falls back to type-match.'],
+    ['Cover image','On sync, fetched from RankFrame CDN, uploaded to Framer CDN via <code>framer.uploadImage({image, altText})</code>.'],
+    ['Editable','Click any row to switch the Framer field target. Mappings persist per collection.'],
+  ]
+});
+
+screens.push({
+  id:'s40', tag:'F · Sync',
+  title:'40 · Sync wizard, step 3, preview and schedule',
+  desc:'Final review with rendered preview, draft/published toggle, scheduled date picker.',
+  body:dashShell('content', `
+    <div style="display:flex; gap:10px; align-items:center; margin-bottom:14px;"><h2 style="font-size:18px; margin:0;">Sync to Framer CMS</h2></div>
+    <div class="stepper"><div class="step done"><div class="num">${ICONS.check}</div>Pick collection</div><div class="step-sep"></div><div class="step done"><div class="num">${ICONS.check}</div>Map fields</div><div class="step-sep"></div><div class="step active"><div class="num">3</div>Preview &amp; sync</div></div>
+    <div style="display:grid; grid-template-columns:1fr 320px; gap:14px;">
+      <div class="card">
+        <div style="font-size:10.5px; color:var(--rf-text-dim); letter-spacing:0.08em; text-transform:uppercase; font-weight:600; margin-bottom:10px;">Preview · how this will look in Framer CMS</div>
+        <div style="background:#fff; color:#000; padding:18px; border-radius:8px;">
+          <div style="font-size:11px; color:#6B7280; margin-bottom:4px;">/blog/headless-cms-vs-framer-cms</div>
+          <h2 style="margin:0 0 8px; font-size:18px; color:#111;">Headless CMS vs Framer CMS, which to pick in 2026</h2>
+          <div style="height:80px; background:linear-gradient(135deg,#5A2580,#16121E); border-radius:6px; margin-bottom:10px;"></div>
+          <div style="font-size:12px; line-height:1.6; color:#374151;">A blog stack decision often comes down to one question: how much control do you actually need? Both Framer CMS and a headless CMS like Sanity can ship a working blog, but they sit at different ends of the trade-off curve...</div>
+        </div>
+      </div>
+      <div>
+        <div class="ed-field"><label>Publish state</label>
+          <div style="display:flex; gap:6px;">
+            <div class="radio-row selected" style="flex:1; margin-bottom:0;"><div class="rd"></div><div><b style="font-size:11.5px;">Draft</b><span style="font-size:10.5px;">Sync but keep hidden</span></div></div>
+            <div class="radio-row" style="flex:1; margin-bottom:0;"><div class="rd"></div><div><b style="font-size:11.5px;">Published</b><span style="font-size:10.5px;">Live immediately</span></div></div>
+          </div>
+        </div>
+        <div class="ed-field"><label>Schedule for</label><div class="val">May 22, 2026 · 09:00 IST</div></div>
+        <div class="ed-field"><label>Schema JSON-LD</label><div class="val" style="font-family:'JetBrains Mono', monospace; font-size:10.5px;">5 schema types · 4.2 KB</div></div>
+        <div class="ed-field"><label>Cover image</label><div class="val">Flux Pro 1.1 · will upload 384 KB</div></div>
+        <button class="btn-primary full" style="margin-top:10px;">${ICONS.sync}<span>Sync to Framer · 0 cr</span></button>
+      </div>
+    </div>
+  `),
+  anno:[
+    ['Sync cost','Free. Always 0 credits.'],
+    ['Schedule','Sync now or set <code>scheduled_at</code>. Internal cron flips <code>draft: false</code> via Framer API on the scheduled date.'],
+    ['Where the change lives','<span class="change-tag api">API</span> <code>POST /api/content/drafts/{id}/sync</code> body <code>{collection_id, mappings, publish_state, scheduled_at}</code>.'],
+    ['Framer write','<code>collection.addItems([{...}])</code>. Hero uploaded via <code>framer.uploadImage()</code>.'],
+    ['Idempotency','If a sync exists, updates the existing CMS item (matched by <code>framer_cms_item_id</code>).'],
+  ]
+});
+
+screens.push({
+  id:'s41', tag:'F · Sync',
+  title:'41 · Sync success state',
+  desc:'Big check, "View in Framer" link, summary of what was written.',
+  body:dashShell('content', `
+    <h2 style="font-size:18px; margin:0 0 12px;">Sync to Framer CMS</h2>
+    <div style="background:radial-gradient(circle at 50% 0%, rgba(74,222,128,0.10), transparent 60%), rgba(74,222,128,0.03); border:1px solid rgba(74,222,128,0.30); border-radius:14px; padding:32px; text-align:center;">
+      <div style="width:60px; height:60px; margin:0 auto 14px; border-radius:14px; background:var(--rf-green-soft); color:var(--rf-green); display:flex; align-items:center; justify-content:center; font-size:28px; border:1px solid rgba(74,222,128,0.35); box-shadow:0 0 28px rgba(74,222,128,0.25);">${ICONS.check}</div>
+      <h3 style="margin:0 0 6px; font-size:18px;">Synced to Framer</h3>
+      <p style="margin:0 0 18px; font-size:13px; color:var(--rf-text-muted); max-width:440px; margin-left:auto; margin-right:auto;">Headless CMS vs Framer CMS is now in your Blog posts collection as a draft. Scheduled to publish May 22 at 09:00 IST.</p>
+      <div style="display:flex; gap:8px; justify-content:center;">
+        <button class="btn-primary">${ICONS.ext}<span>View in Framer CMS</span></button>
+        <button class="ghost-btn">Back to drafts</button>
+      </div>
+    </div>
+    <div style="margin-top:16px; display:grid; grid-template-columns:repeat(4,1fr); gap:10px;">
+      <div class="card" style="margin:0; padding:11px; text-align:center;"><div style="font-size:10px; color:var(--rf-text-dim); letter-spacing:0.06em; text-transform:uppercase; font-weight:600;">Body</div><div style="font-size:14px; font-weight:600; margin-top:3px;">1,840 words</div></div>
+      <div class="card" style="margin:0; padding:11px; text-align:center;"><div style="font-size:10px; color:var(--rf-text-dim); letter-spacing:0.06em; text-transform:uppercase; font-weight:600;">Schema</div><div style="font-size:14px; font-weight:600; margin-top:3px;">5 types · 4.2 KB</div></div>
+      <div class="card" style="margin:0; padding:11px; text-align:center;"><div style="font-size:10px; color:var(--rf-text-dim); letter-spacing:0.06em; text-transform:uppercase; font-weight:600;">Cover image</div><div style="font-size:14px; font-weight:600; margin-top:3px;">uploaded</div></div>
+      <div class="card" style="margin:0; padding:11px; text-align:center;"><div style="font-size:10px; color:var(--rf-text-dim); letter-spacing:0.06em; text-transform:uppercase; font-weight:600;">Status</div><div style="font-size:14px; font-weight:600; margin-top:3px; color:var(--rf-green);">Synced</div></div>
+    </div>
+  `),
+  anno:[
+    ['Where the change lives','<span class="change-tag db">DB</span> <code>content_drafts.status = "synced"</code>, <code>framer_cms_item_id</code> set.'],
+    ['View in Framer','Deep-links to <code>https://framer.com/projects/{projectId}/cms/{collectionId}/{itemId}</code>.'],
+    ['Activity log','Sync logged. Visible in Sync Status plugin view (Screen 46).'],
+    ['Publishing','Internal cron at <code>scheduled_at</code> flips <code>draft: false</code> and status becomes <code>published</code>.'],
+  ]
+});
+
+screens.push({
+  id:'s42', tag:'F · Sync', newScreen:true,
+  title:'42 · Writer locked variant of sync wizard',
+  desc:'When a Writer reaches the sync wizard (e.g. via a deep link from a stale tab), the entire flow is replaced with a lock screen explaining who can sync.',
+  body:dashShell('content', `
+    <h2 style="font-size:18px; margin:0 0 12px;">Sync to Framer CMS</h2>
+    <div style="background:radial-gradient(circle at 50% 0%, rgba(245,185,25,0.08), transparent 60%); border:1px solid rgba(245,185,25,0.30); border-radius:14px; padding:40px; text-align:center;">
+      <div style="width:56px; height:56px; margin:0 auto 14px; border-radius:14px; background:rgba(245,185,25,0.18); color:var(--rf-amber); display:flex; align-items:center; justify-content:center;">${ICONS.lock}</div>
+      <h3 style="margin:0 0 6px; font-size:17px;">Sync requires Publisher or Admin</h3>
+      <p style="margin:0 0 18px; font-size:12.5px; color:var(--rf-text-muted); max-width:440px; margin-left:auto; margin-right:auto; line-height:1.55;">As a Writer, you can submit articles for review. Once approved, a Publisher or Admin can sync the article to Framer CMS. Your draft remains in the Approval Queue.</p>
+      <div style="display:flex; gap:8px; justify-content:center;">
+        <button class="btn-primary">${ICONS.spark}<span>Submit for Review instead</span></button>
+        <button class="ghost-btn">${ICONS.team}<span>Ask admin</span></button>
+      </div>
+    </div>
+  `),
+  anno:[
+    ['Where the change lives','<span class="change-tag dash">DASHBOARD UI</span> Role check at route guard. <span class="change-tag api">API</span> POST sync rejects with 403 if role missing.'],
+    ['Trigger conditions','Writer navigates to sync URL via bookmark, browser back, or shared link.'],
+    ['Ask admin','Opens lightweight modal pre-filled to email the team admin requesting sync.'],
+    ['Submit for Review','Inline CTA returns the user to the expected flow.'],
+  ]
+});
+
+/* ================== G · PLUGIN VIEWS ================== */
+screens.push({
+  id:'s43', tag:'G · Plugin',
+  title:'43 · Plugin Draft Queue, Admin view',
+  desc:'Inside the Framer plugin. Cards for every draft. Status pills, author chip, quick actions (Approve, Sync, Open).',
+  body:pluginShell('draftQueue', `
+    <h2 class="pg-title">Draft Queue</h2>
+    <p class="pg-sub">7 drafts across all statuses. Switch to the dashboard for the full editor.</p>
+    <div style="display:flex; gap:8px; margin-bottom:12px; flex-wrap:wrap;">
+      <div class="cal-filter active">All · 7</div>
+      <div class="cal-filter">In Review · 3</div>
+      <div class="cal-filter">Approved · 2</div>
+      <div class="cal-filter">Draft · 2</div>
+    </div>
+    ${articleRow({title:'Headless CMS vs Framer CMS', meta:'In Review · 1,840 words · Aanya', status:'review', statusLabel:'Review', author:'Aanya', authorInitials:'AS', date:'2h'})}
+    ${articleRow({title:'Form builders compared, May 2026', meta:'In Review · 2,120 words · Priya', status:'review', statusLabel:'Review', author:'Priya', authorInitials:'PR', date:'5h'})}
+    ${articleRow({title:'Why Framer ships faster than Webflow', meta:'In Review · 1,640 words · Aanya', status:'review', statusLabel:'Review', author:'Aanya', authorInitials:'AS', date:'1d'})}
+    ${articleRow({title:'AI blog automation guide', meta:'Approved · scheduled May 11', status:'approved', statusLabel:'Approved', author:'Nitin', authorInitials:'NH', date:'May 11'})}
+    ${articleRow({title:'Image SEO checklist', meta:'Approved · scheduled May 27', status:'approved', statusLabel:'Approved', author:'Priya', authorInitials:'PR', date:'May 27'})}
+    <div style="margin-top:12px; text-align:center;"><button class="ghost-btn sm">${ICONS.ext}<span>Open Draft Queue in dashboard</span></button></div>
+  `),
+  anno:[
+    ['Where the change lives','<span class="change-tag plugin">PLUGIN UI</span> <span class="change-tag api">API</span> <code>GET /api/content/drafts?site_id=</code> filtered to this Framer project.'],
+    ['Role','Admin and Publisher. Writer sees only own drafts (Screen 44).'],
+    ['Card click','Opens lightweight read/approve view in plugin. Full edit opens dashboard in browser.'],
+    ['Why plugin','Plugin width caps at 880px, fine for a queue list but not the full editor.'],
+  ]
+});
+
+screens.push({
+  id:'s44', tag:'G · Plugin',
+  title:'44 · Plugin Draft Queue, Writer view',
+  desc:'Member Writer sees only own drafts. Status pills include their workflow position.',
+  body:pluginShell('draftQueue', `
+    <h2 class="pg-title">My drafts</h2>
+    <p class="pg-sub">Only articles you authored or are assigned to. 4 active.</p>
+    <div style="display:flex; gap:8px; margin-bottom:12px;">
+      <div class="cal-filter active">All · 4</div>
+      <div class="cal-filter">Awaiting review · 2</div>
+      <div class="cal-filter">Changes requested · 1</div>
+      <div class="cal-filter">Draft · 1</div>
+    </div>
+    ${articleRow({title:'Headless CMS vs Framer CMS', meta:'Awaiting review · 1,840 words', status:'review', statusLabel:'In Review', author:'You', authorInitials:'AS', date:'2h'})}
+    ${articleRow({title:'Why Framer ships faster than Webflow', meta:'Awaiting review · 1,640 words', status:'review', statusLabel:'In Review', author:'You', authorInitials:'AS', date:'1d'})}
+    ${articleRow({title:'Framer plugin best practices', meta:'Changes requested · 1,420 words', status:'draft', statusLabel:'Returned', author:'You', authorInitials:'AS', date:'3d'})}
+    ${articleRow({title:'Schema markup for blog detail', meta:'Draft · 640 words', status:'draft', statusLabel:'Draft', author:'You', authorInitials:'AS', date:'just now'})}
+    <button class="btn-primary full" style="margin-top:12px;">${ICONS.plus}<span>New draft</span></button>
+  `),
+  anno:[
+    ['Where the change lives','<span class="change-tag plugin">PLUGIN UI</span> Filtered server-side to <code>author_user_id = currentUser.id</code>.'],
+    ['No Approve action','Writers cannot approve. Card actions limited to Open and Submit.'],
+    ['Workflow guidance','Status labels swap to writer-relevant copy ("Awaiting review", "Returned").'],
+  ]
+});
+
+screens.push({
+  id:'s45', tag:'G · Plugin',
+  title:'45 · Plugin Link Opportunities',
+  desc:'Plugin scans your existing pages and suggests internal links to add. 8 opportunities shown with anchor text and target page.',
+  body:pluginShell('linkOpps', `
+    <h2 class="pg-title">Link opportunities</h2>
+    <p class="pg-sub">Pages on your site that mention topics this article covers. Add internal links to boost both pages.</p>
+    <div style="display:flex; gap:10px; margin-bottom:14px; align-items:center;">
+      <div style="font-size:12px; color:var(--rf-text-muted);">From <b style="color:var(--rf-text);">Headless CMS vs Framer CMS</b></div>
+      <button class="ghost-btn sm" style="margin-left:auto;">${ICONS.refresh}<span>Rescan · 10 cr</span></button>
+    </div>
+    ${[
+      ['Framer SEO complete guide','/blog/framer-seo-guide','headless cms','Strong'],
+      ['Best Framer templates 2026','/blog/best-framer-templates','cms options','Strong'],
+      ['Schema markup for blogs','/blog/schema-markup','json-ld','Medium'],
+      ['Image SEO checklist','/blog/image-seo-checklist','image cms','Medium'],
+      ['404 monitoring guide','/blog/404-monitoring','site health','Medium'],
+      ['Framer plugin overview','/blog/framer-plugin','plugin integration','Weak'],
+      ['Pricing comparison post','/pricing-cms-comparison','cms pricing','Weak'],
+      ['Old static site post','/blog/static-sites','static vs dynamic','Weak'],
+    ].map(([t,p,a,s])=>`
+      <div class="article-row" style="grid-template-columns:1fr auto auto auto;">
+        <div><div class="ar-title">${t}</div><div class="ar-meta">${p}</div></div>
+        <div style="font-size:11px; color:var(--rf-text-muted);">anchor: <b style="color:var(--rf-text);">${a}</b></div>
+        <span class="status-pill ${s==='Strong'?'status-published':(s==='Medium'?'status-draft':'status-idea')}"><span class="dot"></span>${s} match</span>
+        <button class="btn-primary sm">${ICONS.link}<span>Add link</span></button>
+      </div>
+    `).join('')}
+  `),
+  anno:[
+    ['Where the change lives','<span class="change-tag plugin">PLUGIN UI</span> <span class="change-tag api">API</span> <code>GET /api/content/link-opportunities?target=draft_id</code>. Voyage AI <code>voyage-3</code> embed match.'],
+    ['Cost','First scan free per site/week. Rescan 10 cr.'],
+    ['Add link','Inserts an anchor tag in the source page (your blog post). Updates <code>content_drafts.body_html</code> for that draft, also queued for next sync.'],
+    ['Strength','Cosine similarity score thresholded: ≥0.85 Strong, 0.70-0.84 Medium, 0.55-0.69 Weak.'],
+  ]
+});
+
+screens.push({
+  id:'s46', tag:'G · Plugin',
+  title:'46 · Plugin Sync Status with one failure',
+  desc:'Last 5 sync attempts. One failed with retry button. Each row shows time, article, target collection, result.',
+  body:pluginShell('syncStatus', `
+    <h2 class="pg-title">Sync Status</h2>
+    <p class="pg-sub">Recent sync attempts to Framer CMS. Failures show retry.</p>
+    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-bottom:14px;">
+      <div class="card" style="margin:0; padding:11px;"><div style="font-size:10px; color:var(--rf-text-dim); letter-spacing:0.06em; text-transform:uppercase;">Last 30 days</div><div style="font-size:18px; font-weight:600; margin-top:3px;">142 syncs</div></div>
+      <div class="card" style="margin:0; padding:11px;"><div style="font-size:10px; color:var(--rf-text-dim); letter-spacing:0.06em; text-transform:uppercase;">Success rate</div><div style="font-size:18px; font-weight:600; color:var(--rf-green); margin-top:3px;">98.6%</div></div>
+      <div class="card" style="margin:0; padding:11px;"><div style="font-size:10px; color:var(--rf-text-dim); letter-spacing:0.06em; text-transform:uppercase;">Failures</div><div style="font-size:18px; font-weight:600; color:var(--rf-red); margin-top:3px;">2</div></div>
+    </div>
+    <table class="rf-table">
+      <thead><tr><th>When</th><th>Article</th><th>Collection</th><th>Result</th><th></th></tr></thead>
+      <tbody>
+        <tr><td>2m ago</td><td>Headless CMS vs Framer CMS</td><td>Blog posts</td><td>${statusPill('synced','Synced')}</td><td>${ICONS.check}</td></tr>
+        <tr><td>3h ago</td><td>AI blog automation guide</td><td>Blog posts</td><td>${statusPill('synced','Synced')}</td><td>${ICONS.check}</td></tr>
+        <tr><td>14h ago</td><td>Image SEO checklist</td><td>Blog posts</td><td>${statusPill('failed','Failed')}</td><td><button class="btn-primary sm">${ICONS.refresh}<span>Retry</span></button></td></tr>
+        <tr><td>1d ago</td><td>Framer SEO guide</td><td>Blog posts</td><td>${statusPill('synced','Synced')}</td><td>${ICONS.check}</td></tr>
+        <tr><td>2d ago</td><td>Best Framer templates</td><td>Blog posts</td><td>${statusPill('synced','Synced')}</td><td>${ICONS.check}</td></tr>
+      </tbody>
+    </table>
+    <div style="margin-top:12px; padding:11px; background:rgba(221,82,76,0.05); border:1px solid rgba(221,82,76,0.20); border-radius:8px; font-size:11.5px; color:var(--rf-text-2);">
+      <b style="color:var(--rf-red);">Failure detail · Image SEO checklist</b><br>
+      <span style="color:var(--rf-text-muted); font-family:'JetBrains Mono', monospace; font-size:10.5px;">framer.uploadImage rejected: cover image exceeds 5 MB. Compress and retry.</span>
+    </div>
+  `),
+  anno:[
+    ['Where the change lives','<span class="change-tag plugin">PLUGIN UI</span> <span class="change-tag api">API</span> <code>GET /api/content/sync-log?site_id=</code>.'],
+    ['Retry','Re-runs sync with same mapping. If failure was transient, succeeds.'],
+    ['Visibility','Hidden for Writer role (consistent with sidebar nav rule).'],
+    ['Failure UX','Inline error detail with actionable guidance, not raw API stack.'],
+  ]
+});
+
+/* ================== H · FIRST-RUN BLOG SETUP ================== */
+screens.push({
+  id:'s47', tag:'H · Setup',
+  title:'47 · Plugin Set Up My Blog, step 1',
+  desc:'First-run wizard when no compatible CMS collection exists. Step 1: detect and propose a collection.',
+  body:pluginShell('researchHub', `
+    <h2 class="pg-title">Set up your blog</h2>
+    <p class="pg-sub">RankFrame couldn&apos;t find a compatible CMS collection on this Framer project. Let&apos;s create one in three steps.</p>
+    <div class="stepper"><div class="step active"><div class="num">1</div>Detect</div><div class="step-sep"></div><div class="step"><div class="num">2</div>Create</div><div class="step-sep"></div><div class="step"><div class="num">3</div>Connect</div></div>
+    <div class="banner warn"><div class="b-ico">${ICONS.warn}</div><div><b>No compatible collection found</b>We scanned 3 collections (Pages, Team, Testimonials). None have the fields needed for a blog. We&apos;ll create a new one for you.</div></div>
+    <div class="card">
+      <div class="card-head"><h3>What we&apos;ll create</h3></div>
+      <div style="font-size:11.5px; color:var(--rf-text-2); line-height:1.8;">
+        Collection name: <b style="color:var(--rf-text);">Blog posts</b><br>
+        Fields: title, slug, formattedText, metaTitle, metaDescription, coverImage, coverAlt, schemaJson, publishedAt, draft (boolean), author, readingTime, tags, excerpt<br>
+        Permissions: editable by your team. RankFrame writes via Plugin API.
+      </div>
+    </div>
+    <button class="btn-primary full" style="margin-top:12px;">${ICONS.arrowRight}<span>Continue</span></button>
+  `),
+  anno:[
+    ['Trigger','First open of Research Hub or Draft Queue when <code>framer_collection_mappings</code> is empty for this site.'],
+    ['Where the change lives','<span class="change-tag plugin">PLUGIN UI</span> Calls <code>framer.getCollections()</code> to detect.'],
+    ['Role','Admin and Publisher. Writer sees Screen 50 instead.'],
+  ]
+});
+
+screens.push({
+  id:'s48', tag:'H · Setup',
+  title:'48 · Set Up My Blog, step 2, collection created',
+  desc:'Created via plugin API. Field checklist confirms what was set up. Continue to connect step.',
+  body:pluginShell('researchHub', `
+    <h2 class="pg-title">Set up your blog</h2>
+    <div class="stepper"><div class="step done"><div class="num">${ICONS.check}</div>Detect</div><div class="step-sep"></div><div class="step active"><div class="num">2</div>Create</div><div class="step-sep"></div><div class="step"><div class="num">3</div>Connect</div></div>
+    <div style="background:radial-gradient(circle at 50% 0%, rgba(74,222,128,0.10), transparent 60%); border:1px solid rgba(74,222,128,0.30); border-radius:14px; padding:20px; text-align:center; margin-bottom:14px;">
+      <div style="width:46px; height:46px; margin:0 auto 12px; border-radius:12px; background:var(--rf-green-soft); color:var(--rf-green); display:flex; align-items:center; justify-content:center; font-size:22px;">${ICONS.check}</div>
+      <h3 style="margin:0 0 4px; font-size:15px;">Blog posts collection created</h3>
+      <p style="margin:0; font-size:12px; color:var(--rf-text-muted);">14 fields added. Visible in your Framer CMS sidebar.</p>
+    </div>
+    <div class="card">
+      <div class="card-head"><h3>Fields configured</h3></div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px 12px; font-size:11.5px;">
+        ${['title','slug','formattedText','metaTitle','metaDescription','coverImage','coverAlt','schemaJson','publishedAt','draft','author','readingTime','tags','excerpt'].map(f=>`<div style="display:flex; gap:6px;"><span style="color:var(--rf-green);">${ICONS.check}</span><code style="font-family:'JetBrains Mono', monospace;">${f}</code></div>`).join('')}
+      </div>
+    </div>
+    <button class="btn-primary full" style="margin-top:12px;">${ICONS.arrowRight}<span>Continue to connect</span></button>
+  `),
+  anno:[
+    ['Where the change lives','<span class="change-tag api">API</span> <code>framer.createManagedCollection(name, fields)</code> (Plugin API v3.10.2+).'],
+    ['Persistence','<span class="change-tag db">DB</span> Row in <code>framer_collection_mappings</code> with <code>field_mappings_json</code> pre-populated.'],
+    ['Field types','strings, rich text, image, date, boolean, multi-tag. All required.'],
+  ]
+});
+
+screens.push({
+  id:'s49', tag:'H · Setup',
+  title:'49 · Set Up My Blog, step 3, custom code snippet',
+  desc:'Final step. User must paste a one-line snippet into their Framer blog detail page Custom Code section to enable JSON-LD on published articles.',
+  body:pluginShell('researchHub', `
+    <h2 class="pg-title">Set up your blog</h2>
+    <div class="stepper"><div class="step done"><div class="num">${ICONS.check}</div>Detect</div><div class="step-sep"></div><div class="step done"><div class="num">${ICONS.check}</div>Create</div><div class="step-sep"></div><div class="step active"><div class="num">3</div>Connect</div></div>
+    <p style="font-size:12.5px; color:var(--rf-text-2); margin-bottom:14px; line-height:1.6;">Paste this one-liner into your Framer blog detail page&apos;s Custom Code (Site Settings → General → Custom Code → End of body). It tells Framer to render the JSON-LD schema RankFrame writes to each article.</p>
+    <div style="background:#0A0B0D; border:1px solid var(--rf-border); border-radius:10px; padding:14px; font-family:'JetBrains Mono', monospace; font-size:11.5px; color:var(--rf-text-2); line-height:1.7; position:relative; margin-bottom:14px;">
+      <button class="ghost-btn sm" style="position:absolute; top:8px; right:8px; padding:3px 8px; font-size:10.5px;">${ICONS.copy}<span>Copy</span></button>
+      &lt;script type=<span style="color:#86EFAC;">"application/ld+json"</span>&gt;{{schemaJson}}&lt;/script&gt;
+    </div>
+    <div class="banner info"><div class="b-ico">${ICONS.info}</div><div><b>Why this is needed</b>Framer doesn&apos;t expose a per-page meta API to plugins. This template variable approach lets us inject schema once on the detail page; every article reuses it. One-time setup, lifetime benefit.</div></div>
+    <div style="display:flex; gap:8px; margin-top:12px;">
+      <button class="ghost-btn" style="flex:1; justify-content:center;">${ICONS.book}<span>How to find Custom Code</span></button>
+      <button class="btn-primary" style="flex:2; justify-content:center;">${ICONS.check}<span>I&apos;ve pasted it, finish setup</span></button>
+    </div>
+  `),
+  anno:[
+    ['Where the change lives','<span class="change-tag framer">FRAMER</span> User edits a Site Settings field manually. RankFrame can&apos;t do this via API.'],
+    ['Variable','<code>{{schemaJson}}</code> resolves at render time to the per-article schemaJson field.'],
+    ['Verification','Screens 53/54 show the awaiting and verified states after user clicks "I&apos;ve pasted it".'],
+    ['Why one-time','Framer Plugin API has no per-page meta setter. This is the documented workaround.'],
+  ]
+});
+
+screens.push({
+  id:'s50', tag:'H · Setup',
+  title:'50 · Member waiting state',
+  desc:'Writer opens Content Engine before admin has finished blog setup. They see a friendly waiting state with admin contact.',
+  body:pluginShell('researchHub', `
+    <h2 class="pg-title">Content Engine</h2>
+    <div style="background:radial-gradient(circle at 50% 0%, rgba(245,185,25,0.08), transparent 60%); border:1px solid rgba(245,185,25,0.30); border-radius:14px; padding:40px 24px; text-align:center; margin-top:14px;">
+      <div style="width:54px; height:54px; margin:0 auto 14px; border-radius:14px; background:rgba(245,185,25,0.18); color:var(--rf-amber); display:flex; align-items:center; justify-content:center;">${ICONS.lock}</div>
+      <h3 style="margin:0 0 6px; font-size:15px;">Waiting for setup</h3>
+      <p style="margin:0 0 16px; font-size:12px; color:var(--rf-text-muted); max-width:380px; margin-left:auto; margin-right:auto; line-height:1.55;">Your admin (Nitin) hasn&apos;t finished the one-time blog setup yet. Once that&apos;s done you&apos;ll be able to start drafting articles.</p>
+      <button class="btn-primary sm">${ICONS.team}<span>Ping admin</span></button>
+    </div>
+  `),
+  anno:[
+    ['Where the change lives','<span class="change-tag plugin">PLUGIN UI</span> Role check + setup-complete check.'],
+    ['Ping admin','Sends an in-product notification + email asking admin to complete setup.'],
+    ['Why this matters','Without it, writers see broken empty states and file support tickets.'],
+  ]
+});
+
+/* ================== I · SCHEMA MANAGER ================== */
+screens.push({
+  id:'s51', tag:'I · Schema',
+  title:'51 · Schema Manager dashboard',
+  desc:'Lists every published article on the site with its schema bundle. Right pane previews the JSON-LD for the selected row.',
+  body:dashShell('content', `
+    ${ceHeader()}
+    ${contentTabs('schema')}
+    <div style="display:grid; grid-template-columns:1.4fr 1fr; gap:14px;">
+      <div>
+        <table class="rf-table" style="margin-bottom:0;">
+          <thead><tr><th>Article</th><th>Schema types</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr style="background:rgba(186,36,213,0.05);"><td><b>Framer SEO guide</b><br><span style="font-size:10.5px; color:var(--rf-text-dim);">/blog/framer-seo-guide</span></td><td>BlogPosting, FAQPage, HowTo, BreadcrumbList, Organization</td><td>${statusPill('published','Live')}</td></tr>
+            <tr><td><b>Best Framer templates</b></td><td>BlogPosting, BreadcrumbList, Organization</td><td>${statusPill('published','Live')}</td></tr>
+            <tr><td><b>AI blog automation</b></td><td>BlogPosting, HowTo, Organization</td><td>${statusPill('synced','Synced')}</td></tr>
+            <tr><td><b>Image SEO checklist</b></td><td>BlogPosting, HowTo, FAQPage</td><td>${statusPill('approved','Approved')}</td></tr>
+            <tr><td><b>404 monitoring guide</b></td><td>BlogPosting, Organization</td><td>${statusPill('draft','Draft')}</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card" style="margin:0;">
+        <div class="card-head"><h3>JSON-LD preview</h3><span class="meta">Framer SEO guide</span></div>
+        <div style="background:#0A0B0D; border:1px solid var(--rf-border); border-radius:6px; padding:11px; font-family:'JetBrains Mono', monospace; font-size:10.5px; line-height:1.65; color:var(--rf-text-2); max-height:340px; overflow-y:auto;">
+{<br>
+&nbsp;"@context":"<span style="color:#86EFAC;">https://schema.org</span>",<br>
+&nbsp;"@graph":[<br>
+&nbsp;&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;"@type":"<span style="color:#86EFAC;">BlogPosting</span>",<br>
+&nbsp;&nbsp;&nbsp;"headline":"Framer SEO guide",<br>
+&nbsp;&nbsp;&nbsp;"author":{"@type":"Person","name":"Nitin"},<br>
+&nbsp;&nbsp;&nbsp;"datePublished":"2026-05-04"<br>
+&nbsp;&nbsp;},<br>
+&nbsp;&nbsp;{"@type":"<span style="color:#86EFAC;">FAQPage</span>",...},<br>
+&nbsp;&nbsp;{"@type":"<span style="color:#86EFAC;">HowTo</span>",...},<br>
+&nbsp;&nbsp;{"@type":"<span style="color:#86EFAC;">BreadcrumbList</span>",...},<br>
+&nbsp;&nbsp;{"@type":"<span style="color:#86EFAC;">Organization</span>",...}<br>
+&nbsp;]<br>
+}
+        </div>
+        <div style="display:flex; gap:8px; margin-top:10px;"><button class="ghost-btn sm" style="flex:1; justify-content:center;">${ICONS.copy}<span>Copy</span></button><button class="ghost-btn sm" style="flex:1; justify-content:center;">${ICONS.ext}<span>Test in Schema.org</span></button></div>
+      </div>
+    </div>
+  `),
+  anno:[
+    ['Where the change lives','<span class="change-tag dash">DASHBOARD UI</span> <span class="change-tag api">API</span> <code>GET /api/content/schemas?site_id=</code>.'],
+    ['Row click','Updates the JSON-LD preview pane.'],
+    ['Test link','Opens validator.schema.org with the JSON pre-pasted via querystring.'],
+    ['Read-only','Schema cannot be edited here directly. Edit in the draft editor schema sidebar.'],
+  ]
+});
+
+screens.push({
+  id:'s52', tag:'I · Schema',
+  title:'52 · One-time Schema Setup page',
+  desc:'Same pattern as Image SEO setup page. Walks user through pasting the {{schemaJson}} script tag in Framer.',
+  body:dashShell('content', `
+    <h1 style="font-size:22px; margin:0 0 4px;">Schema setup</h1>
+    <p style="font-size:13px; color:var(--rf-text-muted); margin:0 0 20px;">One-time setup. Paste a small script tag into your Framer blog detail page. RankFrame writes JSON-LD to each article automatically after that.</p>
+    <div class="stepper"><div class="step active"><div class="num">1</div>Copy snippet</div><div class="step-sep"></div><div class="step"><div class="num">2</div>Paste in Framer</div><div class="step-sep"></div><div class="step"><div class="num">3</div>Verify</div></div>
+    <div class="card">
+      <div class="card-head"><h3>Step 1 · Copy this snippet</h3></div>
+      <div style="background:#0A0B0D; border:1px solid var(--rf-border); border-radius:8px; padding:13px; font-family:'JetBrains Mono', monospace; font-size:11.5px; line-height:1.7; position:relative;">
+        <button class="ghost-btn sm" style="position:absolute; top:8px; right:8px;">${ICONS.copy}<span>Copy</span></button>
+        &lt;script type=<span style="color:#86EFAC;">"application/ld+json"</span>&gt;{{schemaJson}}&lt;/script&gt;
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-head"><h3>Step 2 · Paste in Framer</h3></div>
+      <ol style="margin:0; padding-left:20px; font-size:12.5px; line-height:1.7; color:var(--rf-text-2);">
+        <li>Open your Framer project.</li>
+        <li>Click <b>Site Settings</b> in the top bar.</li>
+        <li>Go to <b>General → Custom Code</b>.</li>
+        <li>Scroll to <b>End of &lt;body&gt; tag</b> and paste the snippet.</li>
+        <li>Click <b>Save</b>, then <b>Publish</b>.</li>
+      </ol>
+    </div>
+    <div class="card">
+      <div class="card-head"><h3>Step 3 · Verify</h3></div>
+      <p style="font-size:12.5px; color:var(--rf-text-2); margin:0 0 10px;">Once published, click below. We&apos;ll fetch one of your blog pages and confirm the script is firing.</p>
+      <button class="btn-primary">${ICONS.check}<span>Verify setup</span></button>
+    </div>
+  `),
+  anno:[
+    ['Where the change lives','<span class="change-tag dash">DASHBOARD UI</span> Verify button fetches a published article URL.'],
+    ['Why a setup page','Framer Plugin API does not expose per-page meta. Documented workaround makes this clear and one-time.'],
+    ['Mirror of Image SEO','Same UX pattern users already know.'],
+    ['Re-run','Setup status persists per site. Re-running re-verifies.'],
+  ]
+});
+
+screens.push({
+  id:'s53', tag:'I · Schema',
+  title:'53 · Schema setup awaiting verification',
+  desc:'User clicked Verify. Spinner while we fetch and parse.',
+  body:dashShell('content', `
+    <h1 style="font-size:22px; margin:0 0 4px;">Schema setup</h1>
+    <div class="stepper"><div class="step done"><div class="num">${ICONS.check}</div>Copy</div><div class="step-sep"></div><div class="step done"><div class="num">${ICONS.check}</div>Paste</div><div class="step-sep"></div><div class="step active"><div class="num">3</div>Verify</div></div>
+    ${loadingBlock('Checking your published blog page', 'Fetching the latest blog detail page and looking for the JSON-LD script. About 6 seconds.')}
+    <div style="margin-top:14px; text-align:center; font-size:11px; color:var(--rf-text-dim); font-family:'JetBrains Mono', monospace;">GET https://7seersmedia.com/blog/framer-seo-guide</div>
+  `),
+  anno:[
+    ['Where the change lives','<span class="change-tag api">API</span> Server fetches the page, parses HTML, looks for <code>script[type="application/ld+json"]</code>.'],
+    ['Timeout','15 seconds. Falls to error state with retry.'],
+    ['What we check','Script tag exists, JSON parses, contains BlogPosting or Article type.'],
+  ]
+});
+
+screens.push({
+  id:'s54', tag:'I · Schema',
+  title:'54 · Schema setup verified',
+  desc:'Success state. Big check, summary, link to Schema Manager.',
+  body:dashShell('content', `
+    <h1 style="font-size:22px; margin:0 0 4px;">Schema setup</h1>
+    <div style="background:radial-gradient(circle at 50% 0%, rgba(74,222,128,0.10), transparent 60%); border:1px solid rgba(74,222,128,0.30); border-radius:14px; padding:32px; text-align:center; margin-top:14px;">
+      <div style="width:60px; height:60px; margin:0 auto 14px; border-radius:14px; background:var(--rf-green-soft); color:var(--rf-green); display:flex; align-items:center; justify-content:center; font-size:28px;">${ICONS.check}</div>
+      <h3 style="margin:0 0 6px; font-size:18px;">Schema setup verified</h3>
+      <p style="margin:0 0 18px; font-size:13px; color:var(--rf-text-muted); max-width:480px; margin-left:auto; margin-right:auto; line-height:1.55;">Detected BlogPosting, FAQPage, BreadcrumbList, and Organization on /blog/framer-seo-guide. Every article you sync from now on will ship with multi-schema JSON-LD automatically.</p>
+      <div style="display:flex; gap:8px; justify-content:center;">
+        <button class="btn-primary">${ICONS.schema}<span>Open Schema Manager</span></button>
+        <button class="ghost-btn">${ICONS.refresh}<span>Re-verify</span></button>
+      </div>
+    </div>
+    <div style="margin-top:14px; padding:12px; background:var(--rf-bg-card); border:1px solid var(--rf-border); border-radius:10px; font-size:11.5px; color:var(--rf-text-muted);">
+      <b style="color:var(--rf-text);">Heads up:</b> if you change Framer custom code in the future, re-verify here.
+    </div>
+  `),
+  anno:[
+    ['Where the change lives','<span class="change-tag db">DB</span> <code>sites.schema_setup_verified_at = now()</code>.'],
+    ['Effect','Unlocks JSON-LD writing on every sync. Until this step, articles sync but schema lives only in the DB.'],
+    ['Re-verify','One click. Cheap. No cost.'],
+  ]
+});
+
+/* ================== J · AI CREDITS & ROI ================== */
+screens.push({
+  id:'s55', tag:'J · Credits',
+  title:'55 · AI Credits page, shared team pool',
+  desc:'Renamed from Image Credits. Shows team balance, per-member usage, recent activity.',
+  body:dashShell('credits', `
+    <h1 style="font-size:22px; margin:0 0 4px;">AI Credits</h1>
+    <p style="font-size:13px; color:var(--rf-text-muted); margin:0 0 18px;">Shared across drafts, images, research, and link scans.</p>
+    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:14px; margin-bottom:16px;">
+      <div class="card" style="margin:0;"><div style="font-size:10.5px; color:var(--rf-text-dim); letter-spacing:0.08em; text-transform:uppercase; font-weight:600;">Team balance</div><div style="font-size:30px; font-weight:600; margin-top:4px;">1,240</div><div style="font-size:11px; color:var(--rf-text-muted);">credits</div></div>
+      <div class="card" style="margin:0;"><div style="font-size:10.5px; color:var(--rf-text-dim); letter-spacing:0.08em; text-transform:uppercase; font-weight:600;">This month</div><div style="font-size:30px; font-weight:600; margin-top:4px;">3,180</div><div style="font-size:11px; color:var(--rf-text-muted);">used · 14 articles · 28 images</div></div>
+      <div class="card" style="margin:0;"><div style="font-size:10.5px; color:var(--rf-text-dim); letter-spacing:0.08em; text-transform:uppercase; font-weight:600;">Plan grant</div><div style="font-size:30px; font-weight:600; margin-top:4px;">60,000<span style="font-size:14px; color:var(--rf-text-dim);">/yr</span></div><div style="font-size:11px; color:var(--rf-text-muted);">Agency yearly</div></div>
+    </div>
+    <button class="btn-primary" style="margin-bottom:18px;">${ICONS.plus}<span>Top up credits</span></button>
+    <h3 style="font-size:13px; margin:0 0 10px;">Per-member usage, May 2026</h3>
+    <table class="rf-table" style="margin-bottom:18px;">
+      <thead><tr><th>Member</th><th>Articles</th><th>Images</th><th>Credits used</th></tr></thead>
+      <tbody>
+        <tr><td>Nitin H · Admin</td><td>4</td><td>9</td><td>820</td></tr>
+        <tr><td>Aanya S · Writer</td><td>5</td><td>11</td><td>1,180</td></tr>
+        <tr><td>Priya R · Writer</td><td>5</td><td>8</td><td>1,180</td></tr>
+      </tbody>
+    </table>
+  `),
+  anno:[
+    ['Where the change lives','<span class="change-tag dash">DASHBOARD UI</span> Renamed from "Image Credits" everywhere (display only, no DB migration).'],
+    ['Shared pool','Decision honors Section 38 multi-user model when Content Engine is enabled (team_pool).'],
+    ['Top up','Opens pack purchase modal (Screen 58).'],
+    ['Per-member','From <code>credit_ledger</code> grouped by <code>member_id</code> and month.'],
+  ]
+});
+
+screens.push({
+  id:'s56', tag:'J · Credits',
+  title:'56 · Credit cost table with margin',
+  desc:'Internal-facing or admin-power-user table showing every action, credit cost, our cost, customer price, margin per pack.',
+  body:dashShell('credits', `
+    <h1 style="font-size:22px; margin:0 0 4px;">Credit cost table</h1>
+    <p style="font-size:13px; color:var(--rf-text-muted); margin:0 0 18px;">Full action list. Internal reference for cost and margin transparency.</p>
+    <table class="rf-table">
+      <thead><tr><th>Action</th><th>Credits</th><th>Our cost</th><th>Base ($/cr 0.01)</th><th>Max ($/cr 0.0033)</th></tr></thead>
+      <tbody>
+        <tr><td>Image alt text</td><td>1</td><td>$0.002</td><td>$0.01</td><td>$0.003</td></tr>
+        <tr><td>Site audit</td><td>10</td><td>$0.02</td><td>$0.10</td><td>$0.033</td></tr>
+        <tr><td>Competitor analysis</td><td>40</td><td>$0.18</td><td>$0.40</td><td>$0.13</td></tr>
+        <tr><td>Full research bundle</td><td>50</td><td>$0.20</td><td>$0.50</td><td>$0.17</td></tr>
+        <tr><td>Full article draft, 2k words</td><td>100</td><td>$0.22</td><td>$1.00</td><td>$0.33</td></tr>
+        <tr><td>Article rewrite, full</td><td>50</td><td>$0.11</td><td>$0.50</td><td>$0.17</td></tr>
+        <tr><td>AI section regenerate</td><td>5</td><td>$0.012</td><td>$0.05</td><td>$0.017</td></tr>
+        <tr><td>AI expand paragraph</td><td>3</td><td>$0.007</td><td>$0.03</td><td>$0.010</td></tr>
+        <tr><td>AI rewrite intro/outro</td><td>5</td><td>$0.012</td><td>$0.05</td><td>$0.017</td></tr>
+        <tr><td>Internal link scan</td><td>10</td><td>$0.015</td><td>$0.10</td><td>$0.033</td></tr>
+        <tr><td>Hero image, Flux Pro 1.1</td><td>50</td><td>$0.040</td><td>$0.50</td><td>$0.17</td></tr>
+        <tr><td>Inline image, Nano Banana</td><td>30</td><td>$0.039</td><td>$0.30</td><td>$0.10</td></tr>
+        <tr><td>Image variation</td><td>30</td><td>$0.039</td><td>$0.30</td><td>$0.10</td></tr>
+        <tr><td>Auto-illustrate, hero + 2 inline</td><td>100</td><td>$0.118</td><td>$1.00</td><td>$0.33</td></tr>
+        <tr style="background:rgba(74,222,128,0.03);"><td>Multi-schema bundle</td><td style="color:var(--rf-green);">FREE</td><td>$0</td><td>$0</td><td>$0</td></tr>
+        <tr style="background:rgba(74,222,128,0.03);"><td>Sync to Framer CMS</td><td style="color:var(--rf-green);">FREE</td><td>$0</td><td>$0</td><td>$0</td></tr>
+      </tbody>
+    </table>
+    <div style="margin-top:12px; font-size:11.5px; color:var(--rf-text-muted);">Margin floor 28% on Max pack keyword research, mitigated by 30-day DataForSEO cache. All other actions stay 45%+ on Max.</div>
+  `),
+  anno:[
+    ['Where the change lives','<span class="change-tag dash">DASHBOARD UI</span> Static reference. Source: rankframe.md Section 38.B credit table.'],
+    ['Audience','Admin / power user. Useful for budgeting estimates.'],
+    ['Margin','Computed from our supplier costs (Claude, Replicate, DataForSEO, Voyage AI).'],
+    ['Free actions','Sync and schema bundle. Strategic, because they prevent churn.'],
+  ]
+});
+
+screens.push({
+  id:'s57', tag:'J · Credits',
+  title:'57 · ROI calculator, interactive',
+  desc:'Live calculator. User picks articles per month, image style, research frequency; calculator returns total credits and best pack.',
+  body:dashShell('credits', `
+    <h1 style="font-size:22px; margin:0 0 4px;">ROI calculator</h1>
+    <p style="font-size:13px; color:var(--rf-text-muted); margin:0 0 18px;">Estimate monthly credit usage and the cheapest pack to cover it.</p>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px;">
+      <div class="card" style="margin:0;">
+        <div class="card-head"><h3>Your usage</h3></div>
+        <div class="ed-field"><label>Articles per month · <b style="color:var(--rf-purple);">12</b></label><div style="height:6px; background:#15181E; border-radius:3px;"><div style="height:100%; width:48%; background:var(--rf-purple); border-radius:3px; box-shadow:0 0 6px var(--rf-purple);"></div></div></div>
+        <div class="ed-field"><label>Hero images · <b style="color:var(--rf-purple);">12</b></label><div style="height:6px; background:#15181E; border-radius:3px;"><div style="height:100%; width:48%; background:var(--rf-purple); border-radius:3px;"></div></div></div>
+        <div class="ed-field"><label>Inline images per article · <b style="color:var(--rf-purple);">2</b></label><div style="height:6px; background:#15181E; border-radius:3px;"><div style="height:100%; width:40%; background:var(--rf-purple); border-radius:3px;"></div></div></div>
+        <div class="ed-field"><label>Research bundles per month · <b style="color:var(--rf-purple);">2</b></label><div style="height:6px; background:#15181E; border-radius:3px;"><div style="height:100%; width:25%; background:var(--rf-purple); border-radius:3px;"></div></div></div>
+        <div class="ed-field"><label>AI editor tweaks per article · <b style="color:var(--rf-purple);">8</b></label><div style="height:6px; background:#15181E; border-radius:3px;"><div style="height:100%; width:40%; background:var(--rf-purple); border-radius:3px;"></div></div></div>
+        <button class="ghost-btn sm">${ICONS.refresh}<span>Reset to defaults</span></button>
+      </div>
+      <div class="card" style="margin:0;">
+        <div class="card-head"><h3>Result</h3></div>
+        <div style="font-size:11px; color:var(--rf-text-dim); letter-spacing:0.08em; text-transform:uppercase; font-weight:600;">Monthly credit usage</div>
+        <div style="font-size:34px; font-weight:600; margin:4px 0 14px;">3,560 cr</div>
+        <table class="rf-table" style="margin:0;">
+          <tbody>
+            <tr><td>12 articles × 100</td><td style="text-align:right;">1,200</td></tr>
+            <tr><td>12 hero × 50</td><td style="text-align:right;">600</td></tr>
+            <tr><td>24 inline × 30</td><td style="text-align:right;">720</td></tr>
+            <tr><td>2 research × 50</td><td style="text-align:right;">100</td></tr>
+            <tr><td>96 tweaks × 5 avg</td><td style="text-align:right;">480</td></tr>
+            <tr><td>96 alts × 1</td><td style="text-align:right;">96</td></tr>
+            <tr><td>buffer 10%</td><td style="text-align:right;">364</td></tr>
+          </tbody>
+        </table>
+        <div style="margin-top:14px; padding:12px; background:var(--rf-purple-soft); border:1px solid var(--rf-purple-line); border-radius:8px;">
+          <div style="font-size:10.5px; letter-spacing:0.08em; color:var(--rf-purple); font-weight:700; text-transform:uppercase;">Recommended</div>
+          <div style="font-size:15px; font-weight:600; margin-top:3px;">Agency Yearly · 60,000 cr/yr</div>
+          <div style="font-size:11.5px; color:var(--rf-text-muted); margin-top:3px;">Covers 14 months of your usage. $288/yr ($24/mo equivalent).</div>
+        </div>
+      </div>
+    </div>
+  `),
+  anno:[
+    ['Where the change lives','<span class="change-tag dash">DASHBOARD UI</span> Pure client-side math. No API call.'],
+    ['Result','Updates live as sliders move.'],
+    ['Pack recommendation','Smallest pack that covers monthly use × 12 with 10% buffer.'],
+    ['Marketing use','Same calculator embedded on the marketing site landing page.'],
+  ]
+});
+
+screens.push({
+  id:'s58', tag:'J · Credits',
+  title:'58 · Pack purchase modal',
+  desc:'Three packs side by side. Selected one highlighted. Pay with team card.',
+  body:dashShell('credits', `
+    <div style="opacity:0.4;"><h1 style="font-size:22px; margin:0 0 4px;">AI Credits</h1></div>
+    <div class="modal-overlay" style="position:absolute;">
+      <div class="modal" style="width:560px;">
+        <h3>Top up AI credits</h3>
+        <p>Pick a pack. Credits never expire and roll over.</p>
+        <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:8px;">
+          <div class="radio-row" style="flex-direction:column; align-items:flex-start; margin-bottom:0;"><b>Starter</b><span style="font-size:18px; font-weight:600; color:var(--rf-text); margin:4px 0;">$3</span><span>250 cr · 2 articles</span></div>
+          <div class="radio-row selected" style="flex-direction:column; align-items:flex-start; margin-bottom:0;"><b>Base</b><span style="font-size:18px; font-weight:600; color:var(--rf-text); margin:4px 0;">$10</span><span>1,000 cr · 10 articles</span></div>
+          <div class="radio-row" style="flex-direction:column; align-items:flex-start; margin-bottom:0;"><b>Max</b><span style="font-size:18px; font-weight:600; color:var(--rf-text); margin:4px 0;">$100</span><span>30,000 cr · 300 articles</span></div>
+        </div>
+        <div style="margin-top:14px; padding:11px; background:var(--rf-bg-elev); border:1px solid var(--rf-border); border-radius:8px; font-size:11.5px; display:flex; align-items:center; gap:10px;">
+          ${ICONS.card}<div><b style="font-size:12px;">Visa ending 4242</b><br><span style="color:var(--rf-text-muted);">Team card · Nitin H</span></div>
+          <button class="ghost-btn sm" style="margin-left:auto;">Change</button>
+        </div>
+        <div style="display:flex; gap:8px; margin-top:14px;"><button class="ghost-btn" style="flex:1; justify-content:center;">Cancel</button><button class="btn-primary" style="flex:2; justify-content:center;">${ICONS.bolt}<span>Purchase 1,000 credits · $10</span></button></div>
+      </div>
+    </div>
+  `),
+  anno:[
+    ['Where the change lives','<span class="change-tag api">API</span> <code>POST /api/credits/purchase</code> body <code>{pack_id, payer:"admin"}</code>. Polar.sh handles payment.'],
+    ['Pack data','Starter $3, Base $10, Max $100. Plus Agency Yearly bundled in subscription.'],
+    ['Credits land','Webhook <code>order.paid</code> credits the team pool.'],
+    ['Role','Admin can purchase on team card. Member can purchase on own card with <code>payer:"self"</code>.'],
+  ]
+});
+
+/* ================== K · CROSS-CUTTING ================== */
+screens.push({
+  id:'s59', tag:'K · States',
+  title:'59 · Out of credits banner, Admin view',
+  desc:'Persistent banner at top of editor. Admin sees Top up CTA.',
+  body:dashShell('content', `
+    <div class="banner warn"><div class="b-ico">${ICONS.bolt}</div><div><b>Out of AI credits</b>You have 12 cr left. Generating a new article needs 100 cr. Top up to continue.</div><button class="btn-primary sm b-cta">${ICONS.plus}<span>Top up</span></button></div>
+    <div style="display:flex; gap:10px; margin-bottom:14px;"><div style="font-size:13px; color:var(--rf-text-muted);">Editing draft</div><div style="margin-left:auto;">${statusPill('draft','Draft')}</div></div>
+    <div class="ed-frame"><div class="ed-main"><input class="ed-title" value="New article" placeholder=""><div style="margin-top:24px; padding:32px; border:1px dashed var(--rf-border-2); border-radius:12px; text-align:center; opacity:0.6;"><div style="width:42px; height:42px; margin:0 auto 12px; border-radius:11px; background:var(--rf-amber-soft-2); color:var(--rf-amber); display:flex; align-items:center; justify-content:center;">${ICONS.lock}</div><h3 style="margin:0 0 6px; font-size:14px;">Generate is locked</h3><p style="margin:0; font-size:12px; color:var(--rf-text-muted);">Top up to 100+ credits to unlock.</p></div></div><div class="ed-side">${editorTabs('ai')}<div class="ed-side-body"><div class="ai-action" style="opacity:0.5;"><span class="ico">${ICONS.spark}</span><span class="label">Regenerate section</span>${creditChip(5)}</div><div class="ai-action" style="opacity:0.5;"><span class="ico">${ICONS.image}</span><span class="label">Hero image</span>${creditChip(50)}</div></div></div></div>
+  `),
+  anno:[
+    ['Trigger','Team balance below cheapest available action.'],
+    ['Where the change lives','<span class="change-tag dash">DASHBOARD UI</span> Conditional render from credit ledger.'],
+    ['CTA','Top up opens pack purchase modal (Screen 58).'],
+    ['AI actions','Disabled visually + functionally. Clicking shows tooltip "Need 5 cr".'],
+  ]
+});
+
+screens.push({
+  id:'s60', tag:'K · States',
+  title:'60 · Out of credits, Member view',
+  desc:'Same situation, member role. CTA changed to Ask admin (cannot top up team pool directly).',
+  body:dashShell('content', `
+    <div class="banner warn"><div class="b-ico">${ICONS.bolt}</div><div><b>Team is out of AI credits</b>Your team has 12 cr left. Reach out to your admin (Nitin) to top up, or purchase credits with your own card.</div><div class="b-cta" style="display:flex; gap:6px;"><button class="ghost-btn sm">${ICONS.team}<span>Ask admin</span></button><button class="btn-primary sm">${ICONS.card}<span>Buy with own card</span></button></div></div>
+    <div style="display:flex; gap:10px; margin-bottom:14px;"><div style="font-size:13px; color:var(--rf-text-muted);">Editing draft</div><div style="margin-left:auto;">${statusPill('draft','Draft')}</div></div>
+    <div class="ed-frame"><div class="ed-main"><div style="padding:40px; text-align:center; opacity:0.6;"><h3 style="margin:0 0 6px; font-size:14px;">Editing is paused until credits are topped up</h3></div></div><div class="ed-side">${editorTabs('ai')}<div class="ed-side-body"></div></div></div>
+  `),
+  anno:[
+    ['Where the change lives','<span class="change-tag dash">DASHBOARD UI</span> Same conditional + role check.'],
+    ['Ask admin','Sends in-product notification + email to all admins.'],
+    ['Buy with own card','Honors Section 38 decision: members can buy own credits with own card, credits go to self.'],
+  ]
+});
+
+screens.push({
+  id:'s61', tag:'K · States',
+  title:'61 · Permission denied, Viewer tries to start draft',
+  desc:'Viewer role clicked Start Draft on an opportunity. Inline denial with explanation.',
+  body:dashShell('content', `
+    ${ceHeader()}
+    ${contentTabs('research')}
+    <div class="opp" style="opacity:0.5;"><div><span class="opp-type gap">Gap</span><div class="opp-title">Headless CMS vs Framer CMS</div></div><div class="impact"><b>94</b><span>Impact</span></div><button class="btn-primary sm" disabled>${ICONS.lock} Start Draft</button></div>
+    <div style="position:relative;">
+      <div style="position:absolute; top:-50px; right:20px; width:300px; padding:13px; background:#0F1116; border:1px solid var(--rf-red-soft); border-radius:10px; font-size:12px; line-height:1.5;">
+        <div style="display:flex; gap:8px; align-items:center; color:var(--rf-red); font-weight:600; margin-bottom:6px;">${ICONS.lock}<span>Permission denied</span></div>
+        <div style="color:var(--rf-text-2);">As a Viewer you can browse opportunities and read drafts but cannot create or edit. Ask your admin for the Writer role.</div>
+        <div style="margin-top:8px;"><button class="ghost-btn sm" style="width:100%; justify-content:center;">${ICONS.team}<span>Ask admin</span></button></div>
+      </div>
+    </div>
+  `),
+  anno:[
+    ['Where the change lives','<span class="change-tag dash">DASHBOARD UI</span> Role check at click. <span class="change-tag api">API</span> POST drafts rejects with 403.'],
+    ['Why a Viewer role','Common in agency client setups: client wants visibility without edit rights.'],
+    ['Inline, not redirect','Lets user keep browsing without losing context.'],
+  ]
+});
+
+screens.push({
+  id:'s62', tag:'K · States',
+  title:'62 · Sync failure with inline retry',
+  desc:'Sync attempt failed mid-flight. Inline error in editor with reason and retry button.',
+  body:dashShell('content', `
+    <div class="banner err"><div class="b-ico">${ICONS.warn}</div><div><b>Sync failed</b>Framer rejected the cover image: file size 6.1 MB exceeds 5 MB CDN limit. Replace or compress, then retry.</div><button class="btn-primary sm b-cta">${ICONS.refresh}<span>Retry</span></button></div>
+    <div style="display:flex; gap:10px; margin-bottom:14px;"><div style="font-size:13px; color:var(--rf-text-muted);">Editing</div><div style="margin-left:auto;">${statusPill('failed','Sync failed')}</div></div>
+    <div class="ed-frame"><div class="ed-main"><input class="ed-title" value="Image SEO checklist"><div style="height:120px; border-radius:8px; background:linear-gradient(135deg,#5A2580,#16121E); margin:6px 0; display:flex; align-items:center; justify-content:center; color:#fff; font-size:11px;">Cover image · 6.1 MB · too large</div><button class="ghost-btn sm">${ICONS.image}<span>Replace image</span></button></div><div class="ed-side">${editorTabs('seo')}<div class="ed-side-body"></div></div></div>
+    <div style="margin-top:12px; padding:11px 13px; background:#0A0B0D; border:1px solid var(--rf-border); border-radius:8px; font-family:'JetBrains Mono', monospace; font-size:11px; color:var(--rf-text-dim);">
+      Error: framer.uploadImage 413 Payload Too Large<br>
+      RequestID: rfsync_b8e2a1 · 2026-05-27 14:08:22 IST<br>
+      Endpoint: framer.uploadImage · article: rfd_8a3e1f
+    </div>
+  `),
+  anno:[
+    ['Where the change lives','<span class="change-tag plugin">PLUGIN UI</span> <span class="change-tag api">API</span> Failure surfaced from plugin runtime.'],
+    ['Retry','Re-runs the same sync. If retried with no change, will fail identically.'],
+    ['Common causes','Image too large, Framer rate limit, mapping mismatch, missing schemaJson field.'],
+    ['Logged','Failure recorded in Sync Status (Screen 46) with debug payload.'],
+  ]
+});
+
+screens.push({
+  id:'s63', tag:'K · States',
+  title:'63 · Generic API error with retry',
+  desc:'AI generation failed. Recoverable error state. Same pattern as the reference v2 error state.',
+  body:dashShell('content', `
+    <div style="display:flex; gap:10px; margin-bottom:14px;"><div style="font-size:13px; color:var(--rf-text-muted);">Editing</div><div style="margin-left:auto;">${statusPill('draft','Draft')}</div></div>
+    <div style="background:radial-gradient(circle at 50% 0%, rgba(221,82,76,0.08), transparent 60%); border:1px solid rgba(221,82,76,0.30); border-radius:14px; padding:48px 24px; text-align:center;">
+      <div style="width:52px; height:52px; margin:0 auto 14px; border-radius:14px; background:var(--rf-red-soft); color:var(--rf-red); display:flex; align-items:center; justify-content:center;">${ICONS.warn}</div>
+      <h3 style="margin:0 0 6px; font-size:15px;">Generation failed</h3>
+      <p style="margin:0 0 18px; font-size:12.5px; color:var(--rf-text-muted); max-width:420px; margin-left:auto; margin-right:auto;">Claude returned an error twice in a row. Often a transient capacity issue. Credits not deducted.</p>
+      <div style="display:flex; gap:8px; justify-content:center;">
+        <button class="btn-primary">${ICONS.refresh}<span>Retry</span></button>
+        <button class="ghost-btn">${ICONS.help}<span>Open support</span></button>
+      </div>
+    </div>
+    <div style="margin-top:14px; padding:10px 12px; background:#0A0B0D; border:1px solid var(--rf-border); border-radius:8px; font-family:'JetBrains Mono', monospace; font-size:11px; color:var(--rf-text-dim);">
+      Error: Anthropic 529 overloaded after 1 retry<br>
+      RequestID: rfgen_c1a9e7 · 2026-05-27 14:12:08 IST · draft: rfd_8a3e1f
+    </div>
+  `),
+  anno:[
+    ['Where the change lives','<span class="change-tag dash">DASHBOARD UI</span> <span class="change-tag api">API</span> Surfaces server-side error category.'],
+    ['Trigger','5xx from upstream provider after 1 retry, or JSON parse failure twice.'],
+    ['Credit policy','No deduction if generation aborts before tokens stream. Refund pro-rata if partial.'],
+    ['Open support','Pre-fills email with RequestID, reduces support resolution time.'],
+  ]
+});
+
+screens.push({
+  id:'s64', tag:'K · States',
+  title:'64 · Schema validation error in Manager',
+  desc:'One article&apos;s JSON-LD failed validation. Schema Manager shows row in error state with detail.',
+  body:dashShell('content', `
+    ${ceHeader()}
+    ${contentTabs('schema')}
+    <div class="banner err" style="margin-bottom:14px;"><div class="b-ico">${ICONS.warn}</div><div><b>1 article has invalid schema</b>BlogPosting on /blog/old-template-roundup is missing required <code>author</code> property. Fix in editor.</div></div>
+    <table class="rf-table">
+      <thead><tr><th>Article</th><th>Schema types</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td><b>Framer SEO guide</b></td><td>BlogPosting, FAQPage, BreadcrumbList, Organization</td><td>${statusPill('published','Live · valid')}</td></tr>
+        <tr style="background:rgba(221,82,76,0.05);"><td><b>Old template roundup</b><br><span style="font-size:10.5px; color:var(--rf-red);">⚠ Validation error</span></td><td>BlogPosting (missing <code>author</code>)</td><td>${statusPill('failed','Invalid')}</td></tr>
+        <tr><td><b>AI blog automation</b></td><td>BlogPosting, HowTo, Organization</td><td>${statusPill('synced','Synced')}</td></tr>
+      </tbody>
+    </table>
+    <div style="margin-top:14px; padding:13px; background:var(--rf-bg-card); border:1px solid var(--rf-red-soft); border-radius:10px;">
+      <div style="font-size:10.5px; letter-spacing:0.08em; text-transform:uppercase; color:var(--rf-red); font-weight:700; margin-bottom:8px;">Validation detail</div>
+      <div style="font-family:'JetBrains Mono', monospace; font-size:11px; color:var(--rf-text-2); line-height:1.7;">
+        BlogPosting: missing required property "author".<br>
+        Suggested fix: open article → SEO sidebar → Author field is empty. Default to site owner?<br>
+        <button class="btn-primary sm" style="margin-top:10px;">${ICONS.edit}<span>Open article</span></button>
+      </div>
+    </div>
+  `),
+  anno:[
+    ['Where the change lives','<span class="change-tag dash">DASHBOARD UI</span> <span class="change-tag api">API</span> Schema validation runs on sync; results stored.'],
+    ['Validator','Server-side Schema.org validator + Google Rich Results test (when feasible).'],
+    ['Auto-fix','Where possible we propose a sensible default and let the user accept with one click.'],
+    ['Why surface','Invalid schema silently degrades AI / search visibility. Surfacing it prevents that.'],
+  ]
+});
+
+/* ============================================================
+   CONTACT SHEET RENDERER
+   ============================================================ */
+function buildContactSheet(){
+  const groups = [
+    { title:'A · Navigation & Entry', screenIds:['s1','s2','s3','s4'] },
+    { title:'B · Calendar', screenIds:['s5','s6','s7','s8','s9','s10'] },
+    { title:'C · Research Hub', screenIds:['s11','s12','s13','s14','s15','s16','s17','s18'] },
+    { title:'D · Draft Editor', screenIds:['s19','s20','s21','s22','s23','s24','s25','s26','s27','s28','s29','s30'] },
+    { title:'E · Approval Workflow', screenIds:['s31','s32','s33','s34','s35','s36','s37'] },
+    { title:'F · Sync to Framer', screenIds:['s38','s39','s40','s41','s42'] },
+    { title:'G · Plugin Views', screenIds:['s43','s44','s45','s46'] },
+    { title:'H · First-run Setup', screenIds:['s47','s48','s49','s50'] },
+    { title:'I · Schema Manager', screenIds:['s51','s52','s53','s54'] },
+    { title:'J · AI Credits & ROI', screenIds:['s55','s56','s57','s58'] },
+    { title:'K · Cross-cutting', screenIds:['s59','s60','s61','s62','s63','s64'] },
+  ];
+  return `
+    <div class="contact-sheet-wrap">
+      ${groups.map(g => {
+        const tiles = g.screenIds.map(sid => {
+          const s = screens.find(x => x.id === sid);
+          if (!s) return '';
+          const num = s.id.replace('s','').padStart(2, '0');
+          const newCls = s.newScreen ? 'new-screen' : '';
+          return `
+            <a class="cs-tile ${newCls}" href="#${s.id}">
+              <div class="cs-tile-thumb"><div class="cs-mini">${s.body}</div></div>
+              <div class="cs-tile-info">
+                <div class="cs-tile-num">SCREEN ${num}</div>
+                <div class="cs-tile-title">${s.title.replace(/^\d+ · /, '')}</div>
+                <div class="cs-tile-tag">${s.tag}</div>
+              </div>
+            </a>
+          `;
+        }).join('');
+        return `
+          <div class="cs-section-title">${g.title}</div>
+          <div class="contact-sheet">${tiles}</div>
+        `;
+      }).join('')}
+    </div>
+  `;
+}
+
+/* ============================================================
+   RENDER ALL SCREENS
+   ============================================================ */
+const root = document.getElementById('screens-root');
+
+root.innerHTML = screens.map(s => {
+  let body = s.body;
+  if (body === '__CONTACT_SHEET__') body = buildContactSheet();
+  return `
+    <section class="state-section" id="${s.id}">
+      <div class="proto-screen-head">
+        <span class="proto-tag ${s.newScreen?'new':''}">${s.newScreen?'NEW · ':''}${s.tag}</span>
+        <h1>${s.title}</h1>
+        ${s.desc ? `<p>${s.desc}</p>` : ''}
+      </div>
+      ${body}
+      ${s.anno ? `
+        <div class="proto-anno">
+          <h3>Developer notes</h3>
+          <div class="proto-anno-grid">
+            ${s.anno.map(([k,v])=>`<div class="proto-anno-item"><dt>${k}</dt><dd>${v}</dd></div>`).join('')}
+          </div>
+        </div>
+      ` : ''}
+    </section>
+  `;
+}).join('');
+
+/* sidebar active highlighting on scroll */
+const sideLinks = [...document.querySelectorAll('.proto-side .proto-nav-item')];
+const sections = [...document.querySelectorAll('.state-section')];
+const obs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      sideLinks.forEach(a=>a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id));
+    }
+  });
+}, {rootMargin:'-30% 0px -60% 0px'});
+sections.forEach(s=>obs.observe(s));
 </script>
 </body>
 </html>
