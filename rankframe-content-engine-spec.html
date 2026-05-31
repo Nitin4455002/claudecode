@@ -690,14 +690,18 @@
 
 <!-- INDEX -->
 <div class="card" style="margin-bottom:28px;">
-  <div class="card-h"><div><div class="card-title">Screen index</div><div class="card-sub">11 screens across plugin and dashboard, with role variants</div></div></div>
+  <div class="card-h"><div><div class="card-title">Screen index</div><div class="card-sub">17 screens across plugin and dashboard, with role variants</div></div></div>
   <table style="margin:0;">
     <thead><tr><th>#</th><th>Surface</th><th>Screen</th><th>Route / location</th></tr></thead>
     <tbody>
       <tr><td>0</td><td>Plugin</td><td>Updated plugin sidebar nav (before / after)</td><td>Plugin sidebar</td></tr>
       <tr><td>1</td><td>Dashboard</td><td>Content Engine home, calendar view</td><td>/content</td></tr>
+      <tr><td>1B</td><td>Dashboard</td><td>Content Engine, list view</td><td>/content?view=list</td></tr>
       <tr><td>2</td><td>Dashboard</td><td>Research Workspace</td><td>/content/research</td></tr>
-      <tr><td>3</td><td>Dashboard</td><td>Draft Editor</td><td>/content/drafts/{id}</td></tr>
+      <tr><td>3</td><td>Dashboard</td><td>Draft Editor (SEO tab)</td><td>/content/drafts/{id}</td></tr>
+      <tr><td>3B</td><td>Dashboard</td><td>Draft Editor, AI tab</td><td>modal/sidebar</td></tr>
+      <tr><td>3C</td><td>Dashboard</td><td>Draft Editor, Outline tab</td><td>modal/sidebar</td></tr>
+      <tr><td>3D</td><td>Dashboard</td><td>Draft Editor, Links tab</td><td>modal/sidebar</td></tr>
       <tr><td>4</td><td>Dashboard</td><td>Submit for Review modal + Approve modal</td><td>modal overlay</td></tr>
       <tr><td>5</td><td>Dashboard</td><td>Approval Queue</td><td>/content/queue</td></tr>
       <tr><td>6</td><td>Dashboard</td><td>Sync to Framer Wizard</td><td>modal overlay</td></tr>
@@ -706,6 +710,8 @@
       <tr><td>9</td><td>Plugin</td><td>Set Up My Blog wizard (first-run)</td><td>Content &gt; Draft Queue (first run)</td></tr>
       <tr><td>10</td><td>Plugin</td><td>Sync Status</td><td>Content &gt; Sync Status</td></tr>
       <tr><td>11</td><td>Dashboard</td><td>AI Credits page (renamed from Image Credits)</td><td>/credits</td></tr>
+      <tr><td>12</td><td>Dashboard</td><td>Schema Manager</td><td>/content/schema</td></tr>
+      <tr><td>13</td><td>Dashboard</td><td>One-time Schema Setup, Framer custom code</td><td>/content/setup-schema</td></tr>
     </tbody>
   </table>
 </div>
@@ -924,7 +930,7 @@
             <button class="btn outline xs" style="border:0; background:var(--card-2); color:var(--text);">&#128197; Calendar</button>
             <div class="ann"><span class="a-api">GET /api/content/calendar?site_id=&amp;month=</span> &nbsp;|&nbsp; <span class="a-role">Role: all</span> &nbsp;|&nbsp; <span class="a-cr">Cost: 0 cr</span> &nbsp;|&nbsp; <span class="a-state">Switches view mode; no state change</span></div>
             <button class="btn ghost xs" style="color:var(--muted);">&#9776; List</button>
-            <div class="ann"><span class="a-api">GET /api/content/drafts?site_id=&amp;view=list</span> &nbsp;|&nbsp; <span class="a-role">Role: all</span> &nbsp;|&nbsp; <span class="a-cr">Cost: 0 cr</span> &nbsp;|&nbsp; <span class="a-state">Switches to list/table view</span></div>
+            <div class="ann"><span class="a-api">GET /api/content/drafts?site_id=&amp;view=list&amp;sort=updated_desc</span> &nbsp;|&nbsp; <span class="a-role">Role: all</span> &nbsp;|&nbsp; <span class="a-cr">Cost: 0 cr</span> &nbsp;|&nbsp; <span class="a-state">Toggle covers BOTH modes: Calendar mode fetches GET /api/content/calendar?month= (rendered as cal-grid, see Screen 1); List mode fetches GET /api/content/drafts (rendered as sortable table, see Screen 1B). Selection persisted in ?view= URL param and localStorage; no refetch if cached within 30s.</span></div>
           </div>
           <div style="display:flex; gap:8px;">
             <select class="select" style="width:130px; padding:7px 10px; font-size:12px;"><option>All Members</option><option>Louisa (you)</option><option>Lingfei</option></select>
@@ -1025,6 +1031,226 @@
 <div class="view-label member" style="margin-top:20px;"><span class="dot-r"></span>Member (Writer) view, scoped to own articles, others shown dimmed, no filter by member</div>
 <div class="ro-banner" style="max-width:700px;"><div class="ic">i</div><div>You are viewing as <b>Writer</b>. You can only edit your own articles. Other members' articles appear as muted markers. You cannot approve or assign articles.</div></div>
 <div class="dev-note"><b>Dev note:</b> For Writer role, <code>GET /api/content/calendar</code> returns all articles (for visual markers) but article cards belonging to other members are rendered as non-interactive muted pills. The member filter dropdown is hidden. The "+ New Article" button is still shown for Writers.</div>
+
+<!-- ============================================================
+     SCREEN 1B: LIST VIEW
+     ============================================================ -->
+<div class="screen-title" style="margin-top:60px;">Screen 1B - Content Engine, List view</div>
+<p class="screen-note">Route: <code style="color:var(--pink-2)">dashboard.rankframe.com/content?view=list</code>. Same data as the calendar (Screen 1) rendered as a sortable table. Toggle via the Calendar/List pill in the page header.</p>
+
+<div class="view-label"><span class="dot-r"></span>Admin view, sees every member's article rows, can Approve and Sync</div>
+<div class="web-page" style="margin-bottom:10px;">
+  <div class="web-top">
+    <div class="web-logo"><div class="mark"></div><div class="name">Rank<span>Frame</span></div></div>
+    <div class="web-avatar">LS</div>
+  </div>
+  <div class="web-card tall">
+    <aside class="ws-side">
+      <nav class="ws-nav">
+        <div class="ws-item"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M2 8h12M8 2a9 9 0 0 1 0 12M8 2a9 9 0 0 0 0 12"/></svg> Websites</div>
+        <div class="ws-item"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="12" height="9" rx="1.5"/><line x1="2" y1="7" x2="14" y2="7"/></svg> Subscription</div>
+        <div class="ws-item"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="6" cy="8" r="4"/><circle cx="10" cy="8" r="4"/></svg> AI Credits <span class="count">4,210</span></div>
+        <div class="ws-item"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="6" cy="5.5" r="2.5"/><path d="M1 13c0-2.5 2.2-4 5-4"/><circle cx="11.5" cy="8" r="2"/><path d="M8.5 14c0-1.7 1.3-3 3-3s3 1.3 3 3"/></svg> Team <span class="count">4</span></div>
+        <div class="ws-item active"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 4h10M3 8h8M3 12h6"/><rect x="10" y="9" width="4" height="4" rx="1"/></svg> Content <span class="new-badge">NEW</span></div>
+        <div class="ws-item"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="5" r="3"/><path d="M2 14c0-3.3 2.7-5 6-5s6 1.7 6 5"/></svg> Account Details</div>
+      </nav>
+      <div class="ws-logout">
+        <div class="ws-logout-btn"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 14H3a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1h3M11 11l3-3-3-3M14 8H6"/></svg> Logout</div>
+      </div>
+    </aside>
+    <div class="ws-main">
+      <div class="ws-page-head">
+        <div>
+          <h1 class="ws-page-title">Content Engine</h1>
+          <p class="ws-page-sub">anytimeai.ai, sorted by last updated</p>
+        </div>
+        <div style="display:flex; gap:10px; align-items:center;">
+          <div style="display:flex; gap:4px; background:var(--row); border:1px solid var(--border); border-radius:9px; padding:3px;">
+            <button class="btn ghost xs" style="color:var(--muted);">&#128197; Calendar</button>
+            <button class="btn outline xs" style="border:0; background:var(--card-2); color:var(--text);">&#9776; List</button>
+          </div>
+          <div class="ann"><span class="a-api">GET /api/content/drafts?site_id=&amp;view=list&amp;sort=updated_desc</span> &nbsp;|&nbsp; <span class="a-role">Role: all</span> &nbsp;|&nbsp; <span class="a-cr">Cost: 0 cr</span> &nbsp;|&nbsp; <span class="a-state">Calendar mode renders cal-grid from GET /api/content/calendar; List mode renders this table from GET /api/content/drafts. Toggle persists in URL query (?view=list) and localStorage. No data refetch when switching if cached within 30s.</span></div>
+          <div style="display:flex; gap:8px;">
+            <select class="select" style="width:130px; padding:7px 10px; font-size:12px;"><option>All Members</option><option>Louisa (you)</option><option>Lingfei</option></select>
+            <div class="ann"><span class="a-role">Role: Admin only</span> &nbsp;|&nbsp; <span class="a-note">Filters list by author_user_id. Hidden for Writer/Publisher roles; server-side scoped.</span></div>
+            <select class="select" style="width:120px; padding:7px 10px; font-size:12px;"><option>All Statuses</option><option>Draft</option><option>In Review</option><option>Approved</option><option>Synced</option></select>
+            <div class="ann"><span class="a-role">Role: all</span> &nbsp;|&nbsp; <span class="a-note">Appends ?status= to drafts API call.</span></div>
+          </div>
+          <button class="btn sm">+ New Article</button>
+          <div class="ann"><span class="a-api">POST /api/content/drafts</span> &nbsp;|&nbsp; <span class="a-role">Role: Admin, Writer, Publisher</span> &nbsp;|&nbsp; <span class="a-cr">Cost: 0 cr</span> &nbsp;|&nbsp; <span class="a-state">Creates status: idea, opens editor</span></div>
+        </div>
+      </div>
+
+      <!-- Stats row, same as Screen 1 -->
+      <div class="stats-grid" style="grid-template-columns:repeat(4,1fr); margin-bottom:18px;">
+        <div class="stat"><div class="v">14</div><div class="l">Total Drafts</div><div class="s">this site</div></div>
+        <div class="stat"><div class="v pink">3</div><div class="l">Synced This Month</div><div class="s">May 2026</div></div>
+        <div class="stat"><div class="v warn">5</div><div class="l">Pending Review</div><div class="s">awaiting approval</div></div>
+        <div class="stat"><div class="v">2</div><div class="l">Upcoming Scheduled</div><div class="s">next 7 days</div></div>
+      </div>
+
+      <!-- List table -->
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Status</th>
+              <th>Author</th>
+              <th style="text-align:right;">Words</th>
+              <th style="text-align:right;">SEO</th>
+              <th>Schema</th>
+              <th>Last updated</th>
+              <th style="text-align:right;">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="font-weight:600;">7 Best SEO Tools for Framer Sites (2026 Guide)</td>
+              <td><span class="pill s-review">In Review</span></td>
+              <td><div class="uc"><div class="av sm">LW</div><div class="u-name">Lingfei</div></div></td>
+              <td style="text-align:right; color:var(--muted);">1,240</td>
+              <td style="text-align:right; color:var(--amber); font-weight:600;">76</td>
+              <td><span class="pill" style="font-size:10px;">6 types</span></td>
+              <td style="color:var(--muted); font-size:12px;">2h ago</td>
+              <td>
+                <div class="row-actions">
+                  <button class="btn outline xs">Edit</button>
+                  <div class="ann"><span class="a-api">GET /content/drafts/{id}</span> (client route) &nbsp;|&nbsp; <span class="a-role">Role: all (read-only for non-authors when status &gt; draft)</span> &nbsp;|&nbsp; <span class="a-cr">Cost: 0 cr</span> &nbsp;|&nbsp; <span class="a-state">Opens Screen 3 Draft Editor for this article id</span></div>
+                  <button class="btn green xs">Approve</button>
+                  <div class="ann"><span class="a-api">POST /api/content/drafts/{id}/approve</span> &nbsp;|&nbsp; <span class="a-role">Role: Admin only (button hidden for others)</span> &nbsp;|&nbsp; <span class="a-cr">Cost: 0 cr</span> &nbsp;|&nbsp; <span class="a-state">status: in_review to approved; emails author; opens Schedule modal</span></div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td style="font-weight:600;">Framer CMS deep dive: collections, slugs, schema</td>
+              <td><span class="pill s-synced">Synced</span></td>
+              <td><div class="uc"><div class="av g1 sm">LS</div><div class="u-name">Louisa</div></div></td>
+              <td style="text-align:right; color:var(--muted);">2,820</td>
+              <td style="text-align:right; color:var(--green); font-weight:600;">92</td>
+              <td><span class="pill green" style="font-size:10px;">7 types</span></td>
+              <td style="color:var(--muted); font-size:12px;">May 23</td>
+              <td>
+                <div class="row-actions">
+                  <button class="btn outline xs">Edit</button>
+                  <button class="btn outline xs disabled">Sync</button>
+                  <div class="ann"><span class="a-note">Sync disabled when already synced. Re-sync requires opening editor and choosing "Resync to Framer" from overflow menu.</span></div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td style="font-weight:600;">Keyword research playbook for Framer agencies</td>
+              <td><span class="pill s-approved">Approved</span></td>
+              <td><div class="uc"><div class="av g1 sm">LS</div><div class="u-name">Louisa</div></div></td>
+              <td style="text-align:right; color:var(--muted);">2,150</td>
+              <td style="text-align:right; color:var(--green); font-weight:600;">88</td>
+              <td><span class="pill" style="font-size:10px;">5 types</span></td>
+              <td style="color:var(--muted); font-size:12px;">May 21</td>
+              <td>
+                <div class="row-actions">
+                  <button class="btn outline xs">Edit</button>
+                  <button class="btn green xs">Sync</button>
+                  <div class="ann"><span class="a-api">POST /api/content/drafts/{id}/sync</span> &nbsp;|&nbsp; <span class="a-role">Role: Admin, Publisher (hidden for Writer)</span> &nbsp;|&nbsp; <span class="a-cr">Cost: 0 cr (sync is always free)</span> &nbsp;|&nbsp; <span class="a-state">status: approved to synced; writes to Framer CMS via plugin API; opens sync wizard if first time on this site</span></div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td style="font-weight:600;">Schema markup for blog posts, complete tutorial</td>
+              <td><span class="pill s-review">In Review</span></td>
+              <td><div class="uc"><div class="av g3 sm">SK</div><div class="u-name">Sarah</div></div></td>
+              <td style="text-align:right; color:var(--muted);">1,890</td>
+              <td style="text-align:right; color:var(--amber); font-weight:600;">71</td>
+              <td><span class="pill" style="font-size:10px;">6 types</span></td>
+              <td style="color:var(--muted); font-size:12px;">May 20</td>
+              <td>
+                <div class="row-actions">
+                  <button class="btn outline xs">Edit</button>
+                  <button class="btn green xs">Approve</button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td style="font-weight:600;">Link building 101 for Framer SaaS sites</td>
+              <td><span class="pill s-draft">Draft</span></td>
+              <td><div class="uc"><div class="av g2 sm">LW</div><div class="u-name">Lingfei</div></div></td>
+              <td style="text-align:right; color:var(--muted);">680</td>
+              <td style="text-align:right; color:var(--red); font-weight:600;">42</td>
+              <td><span class="pill" style="font-size:10px;">4 types</span></td>
+              <td style="color:var(--muted); font-size:12px;">May 19</td>
+              <td>
+                <div class="row-actions">
+                  <button class="btn outline xs">Edit</button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td style="font-weight:600;">Best CMS tools for Framer in 2026</td>
+              <td><span class="pill s-draft">Draft</span></td>
+              <td><div class="uc"><div class="av g4 sm">SK</div><div class="u-name">Sarah</div></div></td>
+              <td style="text-align:right; color:var(--muted);">1,420</td>
+              <td style="text-align:right; color:var(--amber); font-weight:600;">68</td>
+              <td><span class="pill" style="font-size:10px;">4 types</span></td>
+              <td style="color:var(--muted); font-size:12px;">May 18</td>
+              <td>
+                <div class="row-actions">
+                  <button class="btn outline xs">Edit</button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td style="font-weight:600;">Alt text tips that actually convert</td>
+              <td><span class="pill s-approved">Approved</span></td>
+              <td><div class="uc"><div class="av g1 sm">LS</div><div class="u-name">Louisa</div></div></td>
+              <td style="text-align:right; color:var(--muted);">980</td>
+              <td style="text-align:right; color:var(--green); font-weight:600;">84</td>
+              <td><span class="pill" style="font-size:10px;">4 types</span></td>
+              <td style="color:var(--muted); font-size:12px;">May 17</td>
+              <td>
+                <div class="row-actions">
+                  <button class="btn outline xs">Edit</button>
+                  <button class="btn green xs">Sync</button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td style="font-weight:600;">New idea (untitled)</td>
+              <td><span class="pill s-idea">Idea</span></td>
+              <td><div class="uc"><div class="av g2 sm">LW</div><div class="u-name">Lingfei</div></div></td>
+              <td style="text-align:right; color:var(--muted-2);">0</td>
+              <td style="text-align:right; color:var(--muted-2);">,</td>
+              <td><span class="pill" style="font-size:10px; color:var(--muted-2);">none</span></td>
+              <td style="color:var(--muted); font-size:12px;">May 26</td>
+              <td>
+                <div class="row-actions">
+                  <button class="btn outline xs">Edit</button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td style="font-weight:600;">Core Web Vitals for Framer (published recap)</td>
+              <td><span class="pill s-published">Published</span></td>
+              <td><div class="uc"><div class="av g1 sm">LS</div><div class="u-name">Louisa</div></div></td>
+              <td style="text-align:right; color:var(--muted);">2,310</td>
+              <td style="text-align:right; color:var(--green); font-weight:600;">95</td>
+              <td><span class="pill green" style="font-size:10px;">7 types</span></td>
+              <td style="color:var(--muted); font-size:12px;">May 12</td>
+              <td>
+                <div class="row-actions">
+                  <button class="btn outline xs">Edit</button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="dev-note"><b>Dev note:</b> List view calls <code>GET /api/content/drafts?site_id=&amp;view=list&amp;sort=updated_desc</code>. Sortable columns set <code>?sort=</code> param (title_asc, status, words_desc, seo_desc, updated_desc). Server-side filters by <code>author_user_id</code> for Writer role so Writers only get their own rows. Action buttons rendered conditionally by role: Approve only for Admin when status=in_review; Sync only for Admin/Publisher when status=approved.</div>
+
+<div class="view-label member" style="margin-top:20px;"><span class="dot-r"></span>Member (Writer) view, own rows interactive, others muted/read-only, no Approve column</div>
+<div class="ro-banner" style="max-width:760px;"><div class="ic">i</div><div>You are viewing as <b>Writer</b>. Rows owned by other members appear dimmed: you can open them read-only, but only your own drafts can be edited or submitted for review.</div></div>
+<div class="dev-note"><b>Dev note:</b> For Writer role, server still returns all rows (so calendar markers and list visibility stay consistent), but UI dims rows where <code>author_user_id !== current_user_id</code> and replaces the row-actions cell with a single <code>View</code> button. Approve buttons are never rendered for Writers. Sync buttons are never rendered for Writers.</div>
 
 <!-- ============================================================
      SCREEN 2: RESEARCH WORKSPACE
@@ -1455,6 +1681,454 @@
   </div>
 </div>
 <div class="dev-note"><b>Dev note:</b> Top bar actions are role-gated. Admin: Assign dropdown + "Approve and Schedule". Publisher: "Sync to Framer" on Approved articles. Writer: "Submit for Review" when status is Draft; button disabled when status is In Review or beyond. AI sidebar actions call <code>POST /api/content/drafts/{id}/ai</code> with <code>action</code> field. AI actions visible to all roles with edit access; credit cost shown on each button. Outline and Links tabs populate from draft body parse.</div>
+
+<!-- ============================================================
+     SCREEN 3B: DRAFT EDITOR, AI TAB ACTIVE
+     ============================================================ -->
+<div class="screen-title" style="margin-top:60px;">Screen 3B - Draft Editor, AI tab active in right sidebar</div>
+<p class="screen-note">Same editor layout as Screen 3, but the right sidebar now shows the <b>AI</b> tab as active. All AI calls hit <code style="color:var(--pink-2)">POST /api/content/drafts/{id}/ai</code> with a different <code>action</code> field.</p>
+
+<div class="view-label"><span class="dot-r"></span>Admin / Writer / Publisher view, AI tab</div>
+<div class="web-page">
+  <div class="web-top">
+    <div class="web-logo"><div class="mark"></div><div class="name">Rank<span>Frame</span></div></div>
+    <div style="display:flex; align-items:center; gap:10px;">
+      <span style="font-size:13px; color:var(--muted); max-width:260px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">7 Best SEO Tools for Framer Sites</span>
+      <span class="pill amber">In Review</span>
+      <button class="btn green sm">Approve &amp; Schedule</button>
+      <button class="btn outline sm" style="padding:6px 8px; color:var(--muted);">&#8943;</button>
+    </div>
+  </div>
+
+  <div style="display:grid; grid-template-columns:1fr 340px; gap:0; border:1px solid var(--border); border-radius:14px; overflow:hidden; min-height:840px; background:var(--card);">
+    <!-- EDITOR AREA, condensed -->
+    <div style="border-right:1px solid var(--border); display:flex; flex-direction:column;">
+      <div class="editor-toolbar">
+        <button class="editor-tb-btn" style="font-size:11px; width:26px;">H1</button>
+        <button class="editor-tb-btn" style="font-size:11px; width:26px;">H2</button>
+        <button class="editor-tb-btn" style="font-size:11px; width:26px;">H3</button>
+        <div class="editor-tb-sep"></div>
+        <button class="editor-tb-btn"><b>B</b></button>
+        <button class="editor-tb-btn"><i>I</i></button>
+        <button class="editor-tb-btn" style="font-size:13px;">&#128279;</button>
+      </div>
+      <div style="padding:28px 36px; flex:1; overflow-y:auto;">
+        <div style="font-size:26px; font-weight:700; color:var(--text); margin-bottom:20px; line-height:1.3; border-bottom:1px solid var(--border-soft); padding-bottom:16px;">7 Best SEO Tools for Framer Sites (2026 Guide)</div>
+        <p style="color:var(--muted); font-size:14px; line-height:1.8; margin-bottom:18px;">If you are building websites on <strong style="color:var(--text);">Framer</strong>, you already know the platform excels at visual design. Getting your Framer site to rank requires the right SEO toolset.</p>
+        <h2 style="font-size:18px; font-weight:700; margin:24px 0 10px; color:var(--text);">Why Framer needs dedicated SEO tools</h2>
+        <p style="color:var(--muted); font-size:14px; line-height:1.8; margin-bottom:18px;">Generic SEO platforms do not understand Framer's CMS structure or its plugin API. Framer-specific tools hook directly into the platform.</p>
+        <p style="color:var(--muted-2); font-size:12px; font-style:italic; padding:10px; background:var(--row); border-radius:6px;">Editor body truncated for layout. Same content as Screen 3.</p>
+      </div>
+      <div style="padding:10px 36px; border-top:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; background:var(--row);">
+        <span style="font-size:12px; color:var(--muted);">1,240 words &nbsp;&bull;&nbsp; 5 min read &nbsp;&bull;&nbsp; Target: 2,600 words</span>
+      </div>
+    </div>
+
+    <!-- RIGHT SIDEBAR, AI TAB ACTIVE -->
+    <div style="display:flex; flex-direction:column; background:var(--card-2);">
+      <div style="padding:20px 18px; border-bottom:1px solid var(--border); display:flex; align-items:center; gap:16px;">
+        <div class="score-ring"><div class="score-circle"><span class="score-val">76</span></div></div>
+        <div>
+          <div style="font-size:13px; font-weight:700;">SEO Score</div>
+          <div style="font-size:11px; color:var(--muted); margin-top:3px;">Good. Switch to SEO tab for breakdown.</div>
+        </div>
+      </div>
+
+      <div style="display:flex; border-bottom:1px solid var(--border);">
+        <div class="tab" style="flex:1; text-align:center; padding:10px 4px; font-size:12px;">SEO</div>
+        <div class="tab active" style="flex:1; text-align:center; padding:10px 4px; font-size:12px;">AI</div>
+        <div class="tab" style="flex:1; text-align:center; padding:10px 4px; font-size:12px;">Outline</div>
+        <div class="tab" style="flex:1; text-align:center; padding:10px 4px; font-size:12px;">Links</div>
+      </div>
+      <div class="ann"><span class="a-note">Tab switching is client-only (no API). AI tab content below.</span></div>
+
+      <!-- AI TAB CONTENT -->
+      <div style="padding:14px 18px; flex:1; overflow-y:auto;">
+        <!-- 1. Quick AI actions -->
+        <div style="font-size:10px; color:var(--muted-2); text-transform:uppercase; letter-spacing:0.08em; font-weight:700; margin-bottom:8px;">1. Quick AI actions</div>
+        <p style="font-size:11px; color:var(--muted); margin:0 0 10px;">Operate on the currently selected section or paragraph in the editor.</p>
+        <div style="display:flex; flex-direction:column; gap:6px;">
+          <button class="btn outline xs" style="justify-content:space-between; font-size:11px;">Regenerate section <span class="credit-cost">&#9889; 5</span></button>
+          <div class="ann"><span class="a-api">POST /api/content/drafts/{id}/ai</span> body: { action: "regenerate", context: selected_section_html } &nbsp;|&nbsp; <span class="a-role">Role: Admin, Writer, Publisher (edit access)</span> &nbsp;|&nbsp; <span class="a-cr">Cost: 5 cr</span> &nbsp;|&nbsp; <span class="a-state">Replaces selected H2 section in-place via body_html PATCH; Claude Sonnet 4.5 with cached system prompt</span></div>
+
+          <button class="btn outline xs" style="justify-content:space-between; font-size:11px;">Rewrite intro <span class="credit-cost">&#9889; 5</span></button>
+          <div class="ann"><span class="a-api">POST /api/content/drafts/{id}/ai</span> body: { action: "rewrite-intro" } &nbsp;|&nbsp; <span class="a-role">Role: edit access</span> &nbsp;|&nbsp; <span class="a-cr">Cost: 5 cr</span> &nbsp;|&nbsp; <span class="a-state">Rewrites paragraphs before first H2; keeps headings intact</span></div>
+
+          <button class="btn outline xs" style="justify-content:space-between; font-size:11px;">Rewrite outro <span class="credit-cost">&#9889; 5</span></button>
+          <div class="ann"><span class="a-api">POST /api/content/drafts/{id}/ai</span> body: { action: "rewrite-outro" } &nbsp;|&nbsp; <span class="a-role">Role: edit access</span> &nbsp;|&nbsp; <span class="a-cr">Cost: 5 cr</span> &nbsp;|&nbsp; <span class="a-state">Rewrites the final H2 (typically Conclusion); preserves structure</span></div>
+
+          <button class="btn outline xs" style="justify-content:space-between; font-size:11px;">Expand paragraph <span class="credit-cost">&#9889; 3</span></button>
+          <div class="ann"><span class="a-api">POST /api/content/drafts/{id}/ai</span> body: { action: "expand", context: selected_para_html } &nbsp;|&nbsp; <span class="a-role">Role: edit access</span> &nbsp;|&nbsp; <span class="a-cr">Cost: 3 cr</span> &nbsp;|&nbsp; <span class="a-note">Doubles selected paragraph length. Cursor must be inside a paragraph.</span></div>
+
+          <button class="btn outline xs" style="justify-content:space-between; font-size:11px;">Shorten paragraph <span class="credit-cost">&#9889; 3</span></button>
+          <div class="ann"><span class="a-api">POST /api/content/drafts/{id}/ai</span> body: { action: "shorten", context: selected_para_html } &nbsp;|&nbsp; <span class="a-role">Role: edit access</span> &nbsp;|&nbsp; <span class="a-cr">Cost: 3 cr</span> &nbsp;|&nbsp; <span class="a-note">Compresses to roughly 50% length while preserving key facts</span></div>
+
+          <button class="btn outline xs" style="justify-content:space-between; font-size:11px;">Suggest internal links <span class="credit-cost">&#9889; 5</span></button>
+          <div class="ann"><span class="a-api">POST /api/content/drafts/{id}/ai</span> body: { action: "suggest-links" } &nbsp;|&nbsp; <span class="a-role">Role: edit access</span> &nbsp;|&nbsp; <span class="a-cr">Cost: 5 cr</span> &nbsp;|&nbsp; <span class="a-state">Injects ai-chip annotations inline; user clicks "Insert" to apply each one</span></div>
+
+          <button class="btn outline xs" style="justify-content:space-between; font-size:11px;">Add FAQ section <span class="credit-cost">&#9889; 5</span></button>
+          <div class="ann"><span class="a-api">POST /api/content/drafts/{id}/ai</span> body: { action: "add-faq" } &nbsp;|&nbsp; <span class="a-role">Role: edit access</span> &nbsp;|&nbsp; <span class="a-cr">Cost: 5 cr</span> &nbsp;|&nbsp; <span class="a-state">Appends an H2 "Frequently Asked Questions" with 5 Q&amp;As; triggers FAQPage schema auto-detection</span></div>
+
+          <button class="btn outline xs" style="justify-content:space-between; font-size:11px;">Add How-To steps <span class="credit-cost">&#9889; 5</span></button>
+          <div class="ann"><span class="a-api">POST /api/content/drafts/{id}/ai</span> body: { action: "add-howto" } &nbsp;|&nbsp; <span class="a-role">Role: edit access</span> &nbsp;|&nbsp; <span class="a-cr">Cost: 5 cr</span> &nbsp;|&nbsp; <span class="a-state">Inserts numbered ordered list at cursor; triggers HowTo schema auto-detection</span></div>
+
+          <button class="btn outline xs" style="justify-content:space-between; font-size:11px; border-color:var(--red-border); color:var(--red);">Full article rewrite <span class="credit-cost" style="background:var(--red-soft); color:var(--red);">&#9889; 50</span></button>
+          <div class="ann"><span class="a-api">POST /api/content/drafts/{id}/ai</span> body: { action: "full-rewrite" } &nbsp;|&nbsp; <span class="a-role">Role: edit access</span> &nbsp;|&nbsp; <span class="a-cr">Cost: 50 cr</span> &nbsp;|&nbsp; <span class="a-state">Confirmation modal required. Replaces entire body_html. Original archived to draft_revisions table for undo.</span></div>
+        </div>
+
+        <!-- 2. Image generation -->
+        <div style="border-top:1px solid var(--border); margin:14px 0 10px; padding-top:14px;"></div>
+        <div style="font-size:10px; color:var(--muted-2); text-transform:uppercase; letter-spacing:0.08em; font-weight:700; margin-bottom:8px;">2. Image generation</div>
+        <div class="field">
+          <label class="field-label" style="font-size:11px;">Hero image prompt (optional override)</label>
+          <input class="input" placeholder="e.g. flat illustration of SEO dashboard, dark mode" style="font-size:11px; padding:7px 10px;" />
+          <div class="field-hint" style="font-size:10px;">Leave blank to auto-generate from title and meta description.</div>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:6px;">
+          <button class="btn outline xs" style="justify-content:space-between; font-size:11px;">Generate hero image <span class="credit-cost">&#9889; 50</span></button>
+          <div class="ann"><span class="a-api">POST /api/content/drafts/{id}/ai</span> body: { action: "hero-image", prompt? } &nbsp;|&nbsp; <span class="a-role">Role: edit access</span> &nbsp;|&nbsp; <span class="a-cr">Cost: 50 cr</span> &nbsp;|&nbsp; <span class="a-state">Flux Pro 1.1 via Replicate ($0.04/image); 1024x576; uploads via framer.uploadImage(); sets cover_image_url</span></div>
+
+          <button class="btn outline xs" style="justify-content:space-between; font-size:11px;">Insert inline image at cursor <span class="credit-cost">&#9889; 30</span></button>
+          <div class="ann"><span class="a-api">POST /api/content/drafts/{id}/ai</span> body: { action: "inline-image", context: cursor_paragraph_html } &nbsp;|&nbsp; <span class="a-role">Role: edit access</span> &nbsp;|&nbsp; <span class="a-cr">Cost: 30 cr</span> &nbsp;|&nbsp; <span class="a-note">Nano Banana / Gemini 2.5 Flash Image ($0.039); inserts &lt;img&gt; at cursor with auto alt text</span></div>
+
+          <button class="btn outline xs" style="justify-content:space-between; font-size:11px;">Auto-illustrate full article <span class="credit-cost">&#9889; 100</span></button>
+          <div class="ann"><span class="a-api">POST /api/content/drafts/{id}/ai</span> body: { action: "auto-illustrate" } &nbsp;|&nbsp; <span class="a-role">Role: edit access</span> &nbsp;|&nbsp; <span class="a-cr">Cost: 100 cr</span> &nbsp;|&nbsp; <span class="a-state">Bundle: 1 hero (50 cr) + 2 inline (30 cr each, choosing best H2 sections) + alt text (1 cr each, 3 total). All uploaded to Framer.</span></div>
+        </div>
+
+        <!-- 3. Brand voice (collapsed accordion) -->
+        <div style="border-top:1px solid var(--border); margin:14px 0 10px; padding-top:14px;"></div>
+        <div style="display:flex; justify-content:space-between; align-items:center; cursor:pointer;">
+          <div style="font-size:10px; color:var(--muted-2); text-transform:uppercase; letter-spacing:0.08em; font-weight:700;">3. Brand voice settings</div>
+          <span style="color:var(--muted); font-size:13px;">&#9656;</span>
+        </div>
+        <p style="font-size:11px; color:var(--muted); margin:6px 0 10px;">Applied to every AI call as part of the cached system prompt. Team-wide default; override per article below.</p>
+        <div class="field">
+          <label class="field-label" style="font-size:11px;">Tone</label>
+          <select class="select" style="font-size:11px; padding:7px 10px;">
+            <option>Professional</option>
+            <option selected>Casual</option>
+            <option>Friendly</option>
+            <option>Authoritative</option>
+            <option>Technical</option>
+          </select>
+        </div>
+        <div class="ann"><span class="a-api">PATCH /api/team-settings</span> body: { brand_voice: { tone } } &nbsp;|&nbsp; <span class="a-role">Role: Admin only for team default; edit access for per-draft override</span> &nbsp;|&nbsp; <span class="a-cr">Cost: 0 cr</span> &nbsp;|&nbsp; <span class="a-note">Persisted in team_settings JSONB column; cached in prompt</span></div>
+
+        <div class="field">
+          <label class="field-label" style="font-size:11px;">Reading level (grade): <b style="color:var(--pink-2);">8</b></label>
+          <input type="range" min="5" max="12" value="8" style="width:100%; accent-color:var(--pink-2);" />
+          <div class="field-hint" style="font-size:10px;">Lower = simpler vocab. Higher = denser academic.</div>
+        </div>
+        <div class="ann"><span class="a-api">PATCH /api/team-settings</span> body: { brand_voice: { reading_level: 8 } } &nbsp;|&nbsp; <span class="a-role">Role: Admin / edit access</span> &nbsp;|&nbsp; <span class="a-cr">Cost: 0 cr</span> &nbsp;|&nbsp; <span class="a-note">Flesch-Kincaid grade level target passed to prompt</span></div>
+
+        <div class="field">
+          <label class="field-label" style="font-size:11px;">Custom instructions</label>
+          <textarea class="textarea" style="min-height:60px; font-size:11px; padding:7px 10px;" placeholder="e.g. Always reference our anytimeai.ai product when relevant. Avoid jargon. Use active voice."></textarea>
+        </div>
+        <div class="ann"><span class="a-api">PATCH /api/team-settings</span> body: { brand_voice: { custom_instructions } } &nbsp;|&nbsp; <span class="a-role">Role: Admin only for team default</span> &nbsp;|&nbsp; <span class="a-cr">Cost: 0 cr</span> &nbsp;|&nbsp; <span class="a-note">Appended verbatim to system prompt; up to 1000 chars; counts toward prompt cache</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="dev-note"><b>Dev note:</b> AI tab is the central hub for all AI calls. Every button posts to <code>POST /api/content/drafts/{id}/ai</code> with an <code>action</code> field, server validates credit balance, debits credits atomically, then calls Claude Sonnet 4.5 with prompt caching (cached blocks: system prompt + brand_voice JSON + article context). Brand voice persisted in <code>team_settings</code> table as JSONB; per-draft overrides persisted on <code>content_drafts.brand_voice_override</code>. Image actions call Replicate (Flux Pro) or fal.ai (Nano Banana) and upload via Framer plugin API. Credit costs shown per button match the Per-action cost table in the Appendix.</div>
+
+<!-- ============================================================
+     SCREEN 3C: DRAFT EDITOR, OUTLINE TAB ACTIVE
+     ============================================================ -->
+<div class="screen-title" style="margin-top:60px;">Screen 3C - Draft Editor, Outline tab active in right sidebar</div>
+<p class="screen-note">Auto-parsed structural outline of the article body. No API calls (purely client-side DOM parse). Drag handles reorder H2/H3 sections.</p>
+
+<div class="view-label"><span class="dot-r"></span>Admin / Writer / Publisher view, Outline tab</div>
+<div class="web-page">
+  <div class="web-top">
+    <div class="web-logo"><div class="mark"></div><div class="name">Rank<span>Frame</span></div></div>
+    <div style="display:flex; align-items:center; gap:10px;">
+      <span style="font-size:13px; color:var(--muted); max-width:260px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">7 Best SEO Tools for Framer Sites</span>
+      <span class="pill amber">In Review</span>
+      <button class="btn outline sm" style="padding:6px 8px; color:var(--muted);">&#8943;</button>
+    </div>
+  </div>
+
+  <div style="display:grid; grid-template-columns:1fr 340px; gap:0; border:1px solid var(--border); border-radius:14px; overflow:hidden; min-height:760px; background:var(--card);">
+    <div style="border-right:1px solid var(--border); display:flex; flex-direction:column;">
+      <div class="editor-toolbar">
+        <button class="editor-tb-btn" style="font-size:11px; width:26px;">H1</button>
+        <button class="editor-tb-btn" style="font-size:11px; width:26px;">H2</button>
+        <button class="editor-tb-btn" style="font-size:11px; width:26px;">H3</button>
+      </div>
+      <div style="padding:28px 36px; flex:1; overflow-y:auto;">
+        <div style="font-size:26px; font-weight:700; color:var(--text); margin-bottom:20px; line-height:1.3; border-bottom:1px solid var(--border-soft); padding-bottom:16px;">7 Best SEO Tools for Framer Sites (2026 Guide)</div>
+        <p style="color:var(--muted); font-size:14px; line-height:1.8; margin-bottom:18px;">Editor body identical to Screen 3. Click any heading in the Outline tab on the right to scroll the editor to that section.</p>
+        <h2 style="font-size:18px; font-weight:700; margin:24px 0 10px; color:var(--text); background:var(--pink-soft); padding:6px 10px; border-radius:6px; border-left:3px solid var(--pink-2);">1. RankFrame (best overall)</h2>
+        <p style="color:var(--muted-2); font-size:12px; font-style:italic; padding:8px 10px; background:var(--row); border-radius:6px;">Cursor is currently in this section. The matching row in the outline is highlighted on the right.</p>
+      </div>
+    </div>
+
+    <!-- RIGHT SIDEBAR, OUTLINE TAB ACTIVE -->
+    <div style="display:flex; flex-direction:column; background:var(--card-2);">
+      <div style="padding:20px 18px; border-bottom:1px solid var(--border); display:flex; align-items:center; gap:16px;">
+        <div class="score-ring"><div class="score-circle"><span class="score-val">76</span></div></div>
+        <div>
+          <div style="font-size:13px; font-weight:700;">Outline</div>
+          <div style="font-size:11px; color:var(--muted); margin-top:3px;">8 sections, 1,240 words total</div>
+        </div>
+      </div>
+
+      <div style="display:flex; border-bottom:1px solid var(--border);">
+        <div class="tab" style="flex:1; text-align:center; padding:10px 4px; font-size:12px;">SEO</div>
+        <div class="tab" style="flex:1; text-align:center; padding:10px 4px; font-size:12px;">AI</div>
+        <div class="tab active" style="flex:1; text-align:center; padding:10px 4px; font-size:12px;">Outline</div>
+        <div class="tab" style="flex:1; text-align:center; padding:10px 4px; font-size:12px;">Links</div>
+      </div>
+      <div class="ann"><span class="a-note">Outline parsed from body_html DOM client-side; no fetch on tab open.</span></div>
+
+      <div style="padding:14px 14px; flex:1; overflow-y:auto;">
+        <!-- H1 -->
+        <div style="display:flex; align-items:center; gap:6px; padding:8px 10px; background:var(--card); border:1px solid var(--border); border-radius:6px; margin-bottom:8px;">
+          <span style="color:var(--muted-2); cursor:grab; font-size:14px;">&#8942;&#8942;</span>
+          <span style="font-size:10px; color:var(--pink-2); font-weight:700; min-width:22px;">H1</span>
+          <span style="font-size:12px; font-weight:600; flex:1; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">7 Best SEO Tools for Framer Sites (2026 Guide)</span>
+        </div>
+
+        <!-- H2 children -->
+        <div style="margin-left:14px; display:flex; flex-direction:column; gap:4px;">
+          <div style="display:flex; align-items:center; gap:6px; padding:7px 10px; background:var(--row); border:1px solid var(--border); border-radius:6px;">
+            <span style="color:var(--muted-2); cursor:grab; font-size:14px;">&#8942;&#8942;</span>
+            <span style="font-size:10px; color:var(--muted); font-weight:700; min-width:22px;">H2</span>
+            <span style="font-size:11px; flex:1; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">Why Framer needs dedicated SEO tools</span>
+            <span style="font-size:10px; color:var(--muted-2);">180w</span>
+            <button class="btn outline xs" style="padding:2px 6px; font-size:11px;">&#8943;</button>
+          </div>
+          <div class="ann"><span class="a-note">Overflow menu: Regenerate (delegates to AI tab, 5 cr), Delete, Move up, Move down. No credit cost for delete/move.</span></div>
+
+          <!-- highlighted H2 (current cursor) -->
+          <div style="display:flex; align-items:center; gap:6px; padding:7px 10px; background:var(--pink-soft); border:1px solid var(--pink-border); border-radius:6px;">
+            <span style="color:var(--muted-2); cursor:grab; font-size:14px;">&#8942;&#8942;</span>
+            <span style="font-size:10px; color:var(--pink-2); font-weight:700; min-width:22px;">H2</span>
+            <span style="font-size:11px; flex:1; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-weight:600;">1. RankFrame (best overall)</span>
+            <span style="font-size:10px; color:var(--muted-2);">320w</span>
+            <button class="btn outline xs" style="padding:2px 6px; font-size:11px;">&#8943;</button>
+          </div>
+          <div class="ann"><span class="a-note">Highlighted background indicates current cursor position in editor. Click any row to scroll editor to that heading (smooth scroll, no API).</span></div>
+
+          <!-- H3 children of current H2 -->
+          <div style="margin-left:14px; display:flex; flex-direction:column; gap:4px;">
+            <div style="display:flex; align-items:center; gap:6px; padding:6px 10px; background:var(--row); border:1px solid var(--border-soft); border-radius:6px;">
+              <span style="color:var(--muted-2); cursor:grab; font-size:13px;">&#8942;&#8942;</span>
+              <span style="font-size:10px; color:var(--muted-2); font-weight:700; min-width:22px;">H3</span>
+              <span style="font-size:11px; color:var(--muted); flex:1; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">Key features</span>
+              <span style="font-size:10px; color:var(--muted-2);">110w</span>
+              <button class="btn outline xs" style="padding:2px 5px; font-size:11px;">&#8943;</button>
+            </div>
+            <div style="display:flex; align-items:center; gap:6px; padding:6px 10px; background:var(--row); border:1px solid var(--border-soft); border-radius:6px;">
+              <span style="color:var(--muted-2); cursor:grab; font-size:13px;">&#8942;&#8942;</span>
+              <span style="font-size:10px; color:var(--muted-2); font-weight:700; min-width:22px;">H3</span>
+              <span style="font-size:11px; color:var(--muted); flex:1; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">Pricing</span>
+              <span style="font-size:10px; color:var(--muted-2);">80w</span>
+              <button class="btn outline xs" style="padding:2px 5px; font-size:11px;">&#8943;</button>
+            </div>
+            <button class="btn outline xs" style="font-size:10px; align-self:flex-start; padding:3px 8px; color:var(--muted);">+ Add H3</button>
+            <div class="ann"><span class="a-api">PATCH /api/content/drafts/{id}</span> body: { body_html } &nbsp;|&nbsp; <span class="a-role">Role: edit access</span> &nbsp;|&nbsp; <span class="a-cr">Cost: 0 cr</span> &nbsp;|&nbsp; <span class="a-state">Inserts &lt;h3&gt;New section&lt;/h3&gt;&lt;p&gt;&lt;/p&gt; at end of parent H2 section; persists updated body_html</span></div>
+          </div>
+
+          <div style="display:flex; align-items:center; gap:6px; padding:7px 10px; background:var(--row); border:1px solid var(--border); border-radius:6px;">
+            <span style="color:var(--muted-2); cursor:grab; font-size:14px;">&#8942;&#8942;</span>
+            <span style="font-size:10px; color:var(--muted); font-weight:700; min-width:22px;">H2</span>
+            <span style="font-size:11px; flex:1; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">2. Framer's built-in SEO settings</span>
+            <span style="font-size:10px; color:var(--muted-2);">140w</span>
+            <button class="btn outline xs" style="padding:2px 6px; font-size:11px;">&#8943;</button>
+          </div>
+          <div style="display:flex; align-items:center; gap:6px; padding:7px 10px; background:var(--row); border:1px solid var(--border); border-radius:6px;">
+            <span style="color:var(--muted-2); cursor:grab; font-size:14px;">&#8942;&#8942;</span>
+            <span style="font-size:10px; color:var(--muted); font-weight:700; min-width:22px;">H2</span>
+            <span style="font-size:11px; flex:1; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">3. Surfer SEO</span>
+            <span style="font-size:10px; color:var(--muted-2);">210w</span>
+            <button class="btn outline xs" style="padding:2px 6px; font-size:11px;">&#8943;</button>
+          </div>
+
+          <div style="text-align:center; padding:6px; font-size:10px; color:var(--muted-2); font-style:italic;">4 more H2 sections collapsed</div>
+
+          <div style="display:flex; align-items:center; gap:6px; padding:7px 10px; background:var(--row); border:1px solid var(--border); border-radius:6px;">
+            <span style="color:var(--muted-2); cursor:grab; font-size:14px;">&#8942;&#8942;</span>
+            <span style="font-size:10px; color:var(--muted); font-weight:700; min-width:22px;">H2</span>
+            <span style="font-size:11px; flex:1; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">Conclusion</span>
+            <span style="font-size:10px; color:var(--muted-2);">160w</span>
+            <button class="btn outline xs" style="padding:2px 6px; font-size:11px;">&#8943;</button>
+          </div>
+
+          <button class="btn outline xs" style="font-size:11px; margin-top:6px; align-self:flex-start;">+ Add section</button>
+          <div class="ann"><span class="a-api">PATCH /api/content/drafts/{id}</span> body: { body_html } &nbsp;|&nbsp; <span class="a-role">Role: edit access</span> &nbsp;|&nbsp; <span class="a-cr">Cost: 0 cr</span> &nbsp;|&nbsp; <span class="a-state">Appends &lt;h2&gt;New section&lt;/h2&gt;&lt;p&gt;&lt;/p&gt; to body_html end; reparses outline</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="dev-note"><b>Dev note:</b> Outline parsed client-side from <code>body_html</code> DOM (querySelectorAll for h1/h2/h3). Word counts computed in-browser. Drag reorder uses HTML5 drag-and-drop; on drop, the H2 section (heading + all siblings until next H2) is moved as a block and the updated body_html is sent via <code>PATCH /api/content/drafts/{id}</code>. Zero credit cost for any outline operation. "Regenerate" in the overflow menu delegates to the AI tab's regenerate action (5 cr).</div>
+
+<!-- ============================================================
+     SCREEN 3D: DRAFT EDITOR, LINKS TAB ACTIVE
+     ============================================================ -->
+<div class="screen-title" style="margin-top:60px;">Screen 3D - Draft Editor, Links tab active in right sidebar</div>
+<p class="screen-note">Internal and external link health for the current draft. AI-suggested links can be inserted with one click.</p>
+
+<div class="view-label"><span class="dot-r"></span>Admin / Writer / Publisher view, Links tab</div>
+<div class="web-page">
+  <div class="web-top">
+    <div class="web-logo"><div class="mark"></div><div class="name">Rank<span>Frame</span></div></div>
+    <div style="display:flex; align-items:center; gap:10px;">
+      <span style="font-size:13px; color:var(--muted); max-width:260px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">7 Best SEO Tools for Framer Sites</span>
+      <span class="pill amber">In Review</span>
+      <button class="btn outline sm" style="padding:6px 8px; color:var(--muted);">&#8943;</button>
+    </div>
+  </div>
+
+  <div style="display:grid; grid-template-columns:1fr 340px; gap:0; border:1px solid var(--border); border-radius:14px; overflow:hidden; min-height:820px; background:var(--card);">
+    <div style="border-right:1px solid var(--border); display:flex; flex-direction:column;">
+      <div class="editor-toolbar">
+        <button class="editor-tb-btn" style="font-size:11px; width:26px;">H1</button>
+        <button class="editor-tb-btn" style="font-size:11px; width:26px;">H2</button>
+        <button class="editor-tb-btn" style="font-size:13px;">&#128279;</button>
+      </div>
+      <div style="padding:28px 36px; flex:1; overflow-y:auto;">
+        <div style="font-size:26px; font-weight:700; color:var(--text); margin-bottom:20px; line-height:1.3; border-bottom:1px solid var(--border-soft); padding-bottom:16px;">7 Best SEO Tools for Framer Sites (2026 Guide)</div>
+        <p style="color:var(--muted); font-size:14px; line-height:1.8; margin-bottom:18px;">Editor body identical to Screen 3. Existing <a style="color:var(--pink-2); text-decoration:underline;">internal link to Framer CMS guide</a> highlighted here.</p>
+        <p style="color:var(--muted-2); font-size:12px; font-style:italic; padding:8px 10px; background:var(--row); border-radius:6px;">AI-suggested links are previewed in the right sidebar; click Insert there to apply.</p>
+      </div>
+    </div>
+
+    <!-- RIGHT SIDEBAR, LINKS TAB ACTIVE -->
+    <div style="display:flex; flex-direction:column; background:var(--card-2);">
+      <div style="padding:20px 18px; border-bottom:1px solid var(--border); display:flex; align-items:center; gap:16px;">
+        <div class="score-ring"><div class="score-circle"><span class="score-val">76</span></div></div>
+        <div>
+          <div style="font-size:13px; font-weight:700;">Link health</div>
+          <div style="font-size:11px; color:var(--muted); margin-top:3px;">4 internal, 7 external, 0 broken</div>
+        </div>
+      </div>
+
+      <div style="display:flex; border-bottom:1px solid var(--border);">
+        <div class="tab" style="flex:1; text-align:center; padding:10px 4px; font-size:12px;">SEO</div>
+        <div class="tab" style="flex:1; text-align:center; padding:10px 4px; font-size:12px;">AI</div>
+        <div class="tab" style="flex:1; text-align:center; padding:10px 4px; font-size:12px;">Outline</div>
+        <div class="tab active" style="flex:1; text-align:center; padding:10px 4px; font-size:12px;">Links</div>
+      </div>
+
+      <div style="padding:14px 16px; flex:1; overflow-y:auto;">
+        <!-- Summary -->
+        <div style="background:var(--card); border:1px solid var(--border); border-radius:8px; padding:10px 12px; margin-bottom:14px;">
+          <div style="font-size:10px; color:var(--muted-2); text-transform:uppercase; letter-spacing:0.08em; font-weight:700; margin-bottom:8px;">Summary</div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px; font-size:11px;">
+            <div>Total internal: <b style="color:var(--text);">4</b></div>
+            <div>Total external: <b style="color:var(--text);">7</b></div>
+            <div>Broken: <b style="color:var(--green);">0</b></div>
+            <div>Incoming: <b style="color:var(--text);">2</b></div>
+          </div>
+        </div>
+
+        <!-- Internal links -->
+        <div style="font-size:10px; color:var(--muted-2); text-transform:uppercase; letter-spacing:0.08em; font-weight:700; margin-bottom:8px;">Internal links</div>
+        <div style="display:flex; border-bottom:1px solid var(--border); margin-bottom:10px;">
+          <div class="tab active" style="flex:1; text-align:center; padding:6px 4px; font-size:11px;">Outgoing (4)</div>
+          <div class="tab" style="flex:1; text-align:center; padding:6px 4px; font-size:11px;">Incoming (2)</div>
+        </div>
+        <div class="ann"><span class="a-api">GET /api/content/drafts/{id}/links</span> &nbsp;|&nbsp; <span class="a-role">Role: all</span> &nbsp;|&nbsp; <span class="a-cr">Cost: 0 cr</span> &nbsp;|&nbsp; <span class="a-note">Returns { outgoing_internal[], incoming_internal[], outgoing_external[] }. Outgoing parsed from body_html; incoming queried from other drafts whose body_html contains this article's slug.</span></div>
+
+        <!-- Existing outgoing -->
+        <div style="display:flex; flex-direction:column; gap:6px; margin-bottom:10px;">
+          <div style="padding:8px 10px; background:var(--row); border:1px solid var(--border); border-radius:6px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; gap:6px;">
+              <div style="flex:1; overflow:hidden;">
+                <div style="font-size:11px; color:var(--text); font-weight:600;">Framer CMS guide</div>
+                <div style="font-size:10px; color:var(--muted); overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">/blog/framer-cms-guide</div>
+              </div>
+              <span class="pill green" style="font-size:9px;">200</span>
+            </div>
+          </div>
+          <div style="padding:8px 10px; background:var(--row); border:1px solid var(--border); border-radius:6px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; gap:6px;">
+              <div style="flex:1; overflow:hidden;">
+                <div style="font-size:11px; color:var(--text); font-weight:600;">structured data</div>
+                <div style="font-size:10px; color:var(--muted); overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">/blog/structured-data-101</div>
+              </div>
+              <span class="pill green" style="font-size:9px;">200</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- AI suggested -->
+        <div style="font-size:10px; color:var(--pink-2); text-transform:uppercase; letter-spacing:0.08em; font-weight:700; margin:14px 0 8px;">AI-suggested (not yet added)</div>
+        <div style="display:flex; flex-direction:column; gap:6px;">
+          <div style="padding:8px 10px; background:var(--pink-soft); border:1px solid var(--pink-border); border-radius:6px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; gap:6px;">
+              <div style="flex:1; overflow:hidden;">
+                <div style="font-size:11px; color:var(--text); font-weight:600;">AI agents</div>
+                <div style="font-size:10px; color:var(--muted); overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">/blog/ai-agents-guide</div>
+              </div>
+              <button class="btn xs" style="font-size:10px; padding:3px 8px;">Insert</button>
+            </div>
+          </div>
+          <div class="ann"><span class="a-api">PATCH /api/content/drafts/{id}</span> body: { body_html } &nbsp;|&nbsp; <span class="a-role">Role: edit access</span> &nbsp;|&nbsp; <span class="a-cr">Cost: 0 cr</span> &nbsp;|&nbsp; <span class="a-state">Wraps first mention of "AI agents" in editor body with &lt;a href="/blog/ai-agents-guide"&gt; and persists. Removes suggestion from list on success.</span></div>
+
+          <div style="padding:8px 10px; background:var(--pink-soft); border:1px solid var(--pink-border); border-radius:6px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; gap:6px;">
+              <div style="flex:1; overflow:hidden;">
+                <div style="font-size:11px; color:var(--text); font-weight:600;">image alt text</div>
+                <div style="font-size:10px; color:var(--muted); overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">/blog/alt-text-best-practices</div>
+              </div>
+              <button class="btn xs" style="font-size:10px; padding:3px 8px;">Insert</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- External links -->
+        <div style="border-top:1px solid var(--border); margin:14px 0 10px; padding-top:14px;"></div>
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+          <div style="font-size:10px; color:var(--muted-2); text-transform:uppercase; letter-spacing:0.08em; font-weight:700;">External links (7)</div>
+          <button class="btn outline xs" style="font-size:10px; padding:3px 8px;">Scan <span class="credit-cost">&#9889; 5</span></button>
+        </div>
+        <div class="ann"><span class="a-api">POST /api/links/health-check</span> body: { urls: [...] } &nbsp;|&nbsp; <span class="a-role">Role: edit access</span> &nbsp;|&nbsp; <span class="a-cr">Cost: 5 cr</span> &nbsp;|&nbsp; <span class="a-state">Server-side HEAD request to each external URL; returns status code per URL. Updates link status pills in UI.</span></div>
+
+        <div style="display:flex; flex-direction:column; gap:6px;">
+          <div style="padding:8px 10px; background:var(--row); border:1px solid var(--border); border-radius:6px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; gap:6px;">
+              <div style="flex:1; overflow:hidden;">
+                <div style="font-size:11px; color:var(--text); font-weight:600;">Google Search Console docs</div>
+                <div style="font-size:10px; color:var(--muted); overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">developers.google.com/search/docs</div>
+              </div>
+              <span class="pill green" style="font-size:9px;">200</span>
+            </div>
+            <div style="display:flex; align-items:center; gap:8px; margin-top:6px; font-size:10px; color:var(--muted);">
+              <label style="display:flex; align-items:center; gap:4px; cursor:pointer;"><input type="checkbox" style="accent-color:var(--pink-2);" checked /> nofollow</label>
+              <label style="display:flex; align-items:center; gap:4px; cursor:pointer;"><input type="checkbox" style="accent-color:var(--pink-2);" /> sponsored</label>
+            </div>
+          </div>
+          <div class="ann"><span class="a-api">PATCH /api/content/drafts/{id}</span> body: { body_html } &nbsp;|&nbsp; <span class="a-role">Role: edit access</span> &nbsp;|&nbsp; <span class="a-cr">Cost: 0 cr</span> &nbsp;|&nbsp; <span class="a-note">Toggle rewrites the &lt;a rel="..."&gt; attribute in body_html for this anchor</span></div>
+
+          <div style="padding:8px 10px; background:var(--row); border:1px solid var(--border); border-radius:6px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; gap:6px;">
+              <div style="flex:1; overflow:hidden;">
+                <div style="font-size:11px; color:var(--text); font-weight:600;">Schema.org BlogPosting</div>
+                <div style="font-size:10px; color:var(--muted); overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">schema.org/BlogPosting</div>
+              </div>
+              <span class="pill green" style="font-size:9px;">200</span>
+            </div>
+          </div>
+          <div style="padding:8px 10px; background:var(--row); border:1px solid var(--border); border-radius:6px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; gap:6px;">
+              <div style="flex:1; overflow:hidden;">
+                <div style="font-size:11px; color:var(--text); font-weight:600;">Surfer SEO pricing</div>
+                <div style="font-size:10px; color:var(--muted); overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">surferseo.com/pricing</div>
+              </div>
+              <span class="pill amber" style="font-size:9px;">301</span>
+            </div>
+          </div>
+          <div style="text-align:center; padding:6px; font-size:10px; color:var(--muted-2); font-style:italic;">4 more external links</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="dev-note"><b>Dev note:</b> <code>GET /api/content/drafts/{id}/links</code> returns parsed link data (outgoing internal, incoming internal, outgoing external) by walking <code>body_html</code> server-side. Internal links are detected by matching <code>href</code> against the site's slug index. "Insert" calls <code>PATCH /api/content/drafts/{id}</code> with the rewritten <code>body_html</code> (wraps first text match with anchor). External scan calls <code>POST /api/links/health-check</code> (5 cr, server-side HEAD requests with 10s timeout, results cached 24h per URL).</div>
 
 <!-- ============================================================
      SCREEN 4: SUBMIT FOR REVIEW + APPROVE MODALS
@@ -2576,6 +3250,313 @@
   <code>email notification templates</code> - any mention of "image credits" in transactional emails<br>
   <code>onboarding copy</code> - welcome email and first-run tooltips
 </div>
+
+<!-- ============================================================
+     SECTION 4: SCHEMA MANAGEMENT
+     ============================================================ -->
+<div class="section-header">Section 4: Schema Manager &amp; One-time Setup</div>
+
+<!-- ============================================================
+     SCREEN 12: SCHEMA MANAGER
+     ============================================================ -->
+<div class="screen-title" style="margin-top:60px;">Screen 12 - Schema Manager (dedicated page)</div>
+<p class="screen-note">Route: <code style="color:var(--pink-2)">dashboard.rankframe.com/content/schema</code>. Two-column page for viewing and editing the JSON-LD schema bundle attached to every article. Left: article list with schema overview. Right: selected article schema editor with live JSON-LD preview.</p>
+
+<div class="view-label"><span class="dot-r"></span>Admin / Publisher view, full edit access</div>
+<div class="web-page" style="margin-bottom:10px;">
+  <div class="web-top">
+    <div class="web-logo"><div class="mark"></div><div class="name">Rank<span>Frame</span></div></div>
+    <div class="web-avatar">LS</div>
+  </div>
+  <div class="web-card tall">
+    <aside class="ws-side">
+      <nav class="ws-nav">
+        <div class="ws-item"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M2 8h12M8 2a9 9 0 0 1 0 12M8 2a9 9 0 0 0 0 12"/></svg> Websites</div>
+        <div class="ws-item"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="12" height="9" rx="1.5"/><line x1="2" y1="7" x2="14" y2="7"/></svg> Subscription</div>
+        <div class="ws-item"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="6" cy="8" r="4"/><circle cx="10" cy="8" r="4"/></svg> AI Credits <span class="count">4,210</span></div>
+        <div class="ws-item"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="6" cy="5.5" r="2.5"/><path d="M1 13c0-2.5 2.2-4 5-4"/><circle cx="11.5" cy="8" r="2"/><path d="M8.5 14c0-1.7 1.3-3 3-3s3 1.3 3 3"/></svg> Team <span class="count">4</span></div>
+        <div class="ws-item active"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 4h10M3 8h8M3 12h6"/><rect x="10" y="9" width="4" height="4" rx="1"/></svg> Content <span class="new-badge">NEW</span></div>
+        <div class="ws-item"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="5" r="3"/><path d="M2 14c0-3.3 2.7-5 6-5s6 1.7 6 5"/></svg> Account Details</div>
+      </nav>
+      <div class="ws-logout">
+        <div class="ws-logout-btn"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 14H3a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1h3M11 11l3-3-3-3M14 8H6"/></svg> Logout</div>
+      </div>
+    </aside>
+    <div class="ws-main">
+      <div class="ws-page-head">
+        <div>
+          <h1 class="ws-page-title">Schema Manager</h1>
+          <p class="ws-page-sub">anytimeai.ai, JSON-LD bundles for every article</p>
+        </div>
+        <div style="display:flex; gap:8px;">
+          <button class="btn outline sm">Schema setup &#10003;</button>
+          <div class="ann"><span class="a-note">Shortcut to Screen 13. Green check shown when framer_collection_mappings.schema_setup_verified = true for this site.</span></div>
+          <button class="btn sm">Regenerate all (free)</button>
+          <div class="ann"><span class="a-api">POST /api/content/schema/regenerate-all?site_id=</span> &nbsp;|&nbsp; <span class="a-role">Role: Admin, Publisher</span> &nbsp;|&nbsp; <span class="a-cr">Cost: 0 cr</span> &nbsp;|&nbsp; <span class="a-state">Rebuilds schema_json for every draft on this site from current body_html and schema_overrides. Async; toast on completion.</span></div>
+        </div>
+      </div>
+
+      <!-- Two-column: list + editor -->
+      <div style="display:grid; grid-template-columns: 1fr 1.4fr; gap:16px;">
+        <!-- LEFT: article list -->
+        <div style="background:var(--card); border:1px solid var(--border); border-radius:10px; padding:0; overflow:hidden;">
+          <div style="padding:10px 12px; border-bottom:1px solid var(--border); font-size:11px; color:var(--muted-2); text-transform:uppercase; letter-spacing:0.08em; font-weight:700;">Articles (14)</div>
+          <div class="table-wrap" style="margin:0;">
+            <table>
+              <thead><tr><th>Title</th><th>Schemas</th><th>Valid?</th></tr></thead>
+              <tbody>
+                <tr style="background:var(--pink-soft);">
+                  <td style="font-weight:600; font-size:12px;">7 Best SEO Tools for Framer (2026)</td>
+                  <td><span class="pill" style="font-size:10px;">6 types</span></td>
+                  <td><span class="pill green" style="font-size:10px;">&#10003;</span></td>
+                </tr>
+                <tr>
+                  <td style="font-size:12px;">Framer CMS deep dive</td>
+                  <td><span class="pill" style="font-size:10px;">7 types</span></td>
+                  <td><span class="pill green" style="font-size:10px;">&#10003;</span></td>
+                </tr>
+                <tr>
+                  <td style="font-size:12px;">Keyword research playbook</td>
+                  <td><span class="pill" style="font-size:10px;">5 types</span></td>
+                  <td><span class="pill green" style="font-size:10px;">&#10003;</span></td>
+                </tr>
+                <tr>
+                  <td style="font-size:12px;">Schema markup tutorial</td>
+                  <td><span class="pill" style="font-size:10px;">6 types</span></td>
+                  <td><span class="pill amber" style="font-size:10px;">!</span></td>
+                </tr>
+                <tr>
+                  <td style="font-size:12px;">Link building 101</td>
+                  <td><span class="pill" style="font-size:10px;">4 types</span></td>
+                  <td><span class="pill green" style="font-size:10px;">&#10003;</span></td>
+                </tr>
+                <tr>
+                  <td style="font-size:12px;">Best CMS tools for Framer</td>
+                  <td><span class="pill" style="font-size:10px;">4 types</span></td>
+                  <td><span class="pill green" style="font-size:10px;">&#10003;</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="ann"><span class="a-api">GET /api/content/drafts?site_id=&amp;fields=id,title,schema_json,schema_valid</span> &nbsp;|&nbsp; <span class="a-role">Role: all (scoped server-side)</span> &nbsp;|&nbsp; <span class="a-cr">Cost: 0 cr</span> &nbsp;|&nbsp; <span class="a-note">Validation status from cached last Google validator response; refresh on edit.</span></div>
+        </div>
+
+        <!-- RIGHT: selected article editor -->
+        <div style="background:var(--card); border:1px solid var(--border); border-radius:10px; padding:18px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;">
+            <div>
+              <div style="font-size:14px; font-weight:700;">7 Best SEO Tools for Framer Sites (2026 Guide)</div>
+              <div style="font-size:11px; color:var(--muted); margin-top:2px;">slug: /blog/framer-seo-tools</div>
+            </div>
+            <span class="pill amber">In Review</span>
+          </div>
+
+          <!-- Always-on schemas -->
+          <div style="font-size:10px; color:var(--muted-2); text-transform:uppercase; letter-spacing:0.08em; font-weight:700; margin-bottom:8px;">Always-on (cannot disable)</div>
+          <div style="display:flex; gap:6px; flex-wrap:wrap; margin-bottom:14px;">
+            <span class="pill green" style="font-size:11px;">&#10003; Article</span>
+            <span class="pill green" style="font-size:11px;">&#10003; BlogPosting</span>
+            <span class="pill green" style="font-size:11px;">&#10003; BreadcrumbList</span>
+            <span class="pill green" style="font-size:11px;">&#10003; Organization</span>
+          </div>
+          <div class="ann"><span class="a-note">Hard-coded server-side. Organization populated from team_settings (name, logo_url, website). BreadcrumbList from site nav + article slug. No UI to disable.</span></div>
+
+          <!-- Auto-detected -->
+          <div style="font-size:10px; color:var(--muted-2); text-transform:uppercase; letter-spacing:0.08em; font-weight:700; margin-bottom:8px;">Auto-detected from body (toggleable)</div>
+          <div style="display:flex; flex-direction:column; gap:6px; margin-bottom:14px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; padding:8px 10px; background:var(--pink-soft); border:1px solid var(--pink-border); border-radius:6px;">
+              <div>
+                <span style="color:var(--pink-2); font-weight:600; font-size:12px;">&#10003; FAQPage</span>
+                <span style="font-size:10px; color:var(--muted); margin-left:8px;">5 Q&amp;As detected (e.g. "What is the best SEO tool for Framer?")</span>
+              </div>
+              <label style="display:flex; align-items:center; gap:5px; cursor:pointer; font-size:10px; color:var(--muted);"><input type="checkbox" checked style="accent-color:var(--pink-2);" /> include</label>
+            </div>
+            <div class="ann"><span class="a-api">PATCH /api/content/drafts/{id}</span> body: { schema_overrides: { faqpage: { enabled: false } } } &nbsp;|&nbsp; <span class="a-role">Role: edit access</span> &nbsp;|&nbsp; <span class="a-cr">Cost: 0 cr</span> &nbsp;|&nbsp; <span class="a-state">Removes FAQPage from schema_json bundle even if auto-detected</span></div>
+
+            <div style="display:flex; justify-content:space-between; align-items:center; padding:8px 10px; background:var(--pink-soft); border:1px solid var(--pink-border); border-radius:6px;">
+              <div>
+                <span style="color:var(--pink-2); font-weight:600; font-size:12px;">&#10003; HowTo</span>
+                <span style="font-size:10px; color:var(--muted); margin-left:8px;">7 steps detected (Step 1: Sign up, Step 2: Connect Framer...)</span>
+              </div>
+              <label style="display:flex; align-items:center; gap:5px; cursor:pointer; font-size:10px; color:var(--muted);"><input type="checkbox" checked style="accent-color:var(--pink-2);" /> include</label>
+            </div>
+
+            <div style="display:flex; justify-content:space-between; align-items:center; padding:8px 10px; border:1px solid var(--border); border-radius:6px;">
+              <div>
+                <span style="color:var(--muted-2); font-weight:600; font-size:12px;">Review</span>
+                <span style="font-size:10px; color:var(--muted-2); margin-left:8px;">not detected in body</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Manual add -->
+          <div style="font-size:10px; color:var(--muted-2); text-transform:uppercase; letter-spacing:0.08em; font-weight:700; margin-bottom:8px;">Add manually</div>
+          <div style="display:flex; gap:6px; flex-wrap:wrap; margin-bottom:14px;">
+            <button class="btn outline xs" style="font-size:11px;">+ Product</button>
+            <button class="btn outline xs" style="font-size:11px;">+ VideoObject</button>
+            <button class="btn outline xs" style="font-size:11px;">+ Recipe</button>
+            <button class="btn outline xs" style="font-size:11px;">+ Event</button>
+            <button class="btn outline xs" style="font-size:11px;">+ LocalBusiness</button>
+            <button class="btn outline xs" style="font-size:11px;">+ JobPosting</button>
+            <button class="btn outline xs" style="font-size:11px;">+ Course</button>
+          </div>
+          <div class="ann"><span class="a-api">PATCH /api/content/drafts/{id}</span> body: { schema_overrides: { product: { name, sku, price, currency, ... } } } &nbsp;|&nbsp; <span class="a-role">Role: edit access</span> &nbsp;|&nbsp; <span class="a-cr">Cost: 0 cr</span> &nbsp;|&nbsp; <span class="a-state">Clicking opens an inline form with required fields for that schema type (per schema.org spec). Saved object merged into schema_json bundle on regenerate.</span></div>
+
+          <!-- Live preview -->
+          <div style="font-size:10px; color:var(--muted-2); text-transform:uppercase; letter-spacing:0.08em; font-weight:700; margin-bottom:8px;">Live JSON-LD preview</div>
+          <pre style="background:#000; border:1px solid var(--border); border-radius:6px; padding:12px; font-size:10px; font-family:'SF Mono', Menlo, monospace; color:var(--muted); overflow-x:auto; max-height:200px; margin:0;">[
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "7 Best SEO Tools for Framer Sites (2026 Guide)",
+    "image": "https://anytimeai.ai/blog/framer-seo-tools/hero.jpg",
+    "datePublished": "2026-05-31",
+    "author": { "@type": "Person", "name": "Louisa Smith" },
+    "publisher": { "@type": "Organization", "name": "AnytimeAI" }
+  },
+  { "@type": "BreadcrumbList", "itemListElement": [ ... ] },
+  { "@type": "Organization", "name": "AnytimeAI", "logo": "..." },
+  { "@type": "FAQPage", "mainEntity": [ 5 items ] },
+  { "@type": "HowTo", "step": [ 7 items ] }
+]</pre>
+          <div class="ann"><span class="a-note">Preview is the actual string written to Framer CMS schemaJson field on sync. Regenerated on every change to overrides or body_html.</span></div>
+
+          <div style="display:flex; gap:8px; margin-top:14px;">
+            <button class="btn outline sm">Regenerate</button>
+            <div class="ann"><span class="a-api">POST /api/content/drafts/{id}/schema/regenerate</span> &nbsp;|&nbsp; <span class="a-role">Role: edit access</span> &nbsp;|&nbsp; <span class="a-cr">Cost: 0 cr</span> &nbsp;|&nbsp; <span class="a-state">Re-runs body parser (FAQ, HowTo detectors), merges with schema_overrides, writes back to content_drafts.schema_json</span></div>
+            <button class="btn sm">Validate</button>
+            <div class="ann"><span class="a-api">POST /api/content/drafts/{id}/schema/validate</span> &nbsp;|&nbsp; <span class="a-role">Role: edit access</span> &nbsp;|&nbsp; <span class="a-cr">Cost: 0 cr</span> &nbsp;|&nbsp; <span class="a-state">Submits to Google Rich Results Test API (or schema.org validator); returns errors/warnings; caches result for 24h on schema_valid column</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="dev-note"><b>Dev note:</b> Schema is auto-generated server-side via <code>POST /api/content/drafts/{id}/schema/regenerate</code> (called on every body_html PATCH and on sync). Manual additions persisted in <code>content_drafts.schema_overrides</code> JSONB column. Validation calls Google Rich Results Test API (free tier, rate-limited) and caches outcome on <code>schema_valid</code> boolean. The final JSON-LD array is written to the Framer CMS <code>schemaJson</code> string field on sync. Viewer role gets read-only view (no edit/regenerate/validate buttons rendered).</div>
+
+<!-- ============================================================
+     SCREEN 13: ONE-TIME SCHEMA SETUP
+     ============================================================ -->
+<div class="screen-title" style="margin-top:60px;">Screen 13 - One-time Schema Setup (Framer custom code)</div>
+<p class="screen-note">Route: <code style="color:var(--pink-2)">dashboard.rankframe.com/content/setup-schema</code>. Mirrors RankFrame's existing Image SEO Framer setup. Performed ONCE per site so the &lt;script type="application/ld+json"&gt; tag picks up the schemaJson CMS field on every published article.</p>
+
+<div class="view-label"><span class="dot-r"></span>Admin / Publisher view (Writer cannot run this setup)</div>
+<div class="web-page" style="margin-bottom:10px;">
+  <div class="web-top">
+    <div class="web-logo"><div class="mark"></div><div class="name">Rank<span>Frame</span></div></div>
+    <div class="web-avatar">LS</div>
+  </div>
+  <div class="web-card tall">
+    <aside class="ws-side">
+      <nav class="ws-nav">
+        <div class="ws-item"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M2 8h12M8 2a9 9 0 0 1 0 12M8 2a9 9 0 0 0 0 12"/></svg> Websites</div>
+        <div class="ws-item"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="12" height="9" rx="1.5"/><line x1="2" y1="7" x2="14" y2="7"/></svg> Subscription</div>
+        <div class="ws-item"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="6" cy="8" r="4"/><circle cx="10" cy="8" r="4"/></svg> AI Credits <span class="count">4,210</span></div>
+        <div class="ws-item"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="6" cy="5.5" r="2.5"/><path d="M1 13c0-2.5 2.2-4 5-4"/><circle cx="11.5" cy="8" r="2"/><path d="M8.5 14c0-1.7 1.3-3 3-3s3 1.3 3 3"/></svg> Team <span class="count">4</span></div>
+        <div class="ws-item active"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 4h10M3 8h8M3 12h6"/><rect x="10" y="9" width="4" height="4" rx="1"/></svg> Content <span class="new-badge">NEW</span></div>
+        <div class="ws-item"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="5" r="3"/><path d="M2 14c0-3.3 2.7-5 6-5s6 1.7 6 5"/></svg> Account Details</div>
+      </nav>
+    </aside>
+    <div class="ws-main">
+      <div class="ws-page-head">
+        <div>
+          <h1 class="ws-page-title">One-time Schema Setup</h1>
+          <p class="ws-page-sub">anytimeai.ai, Framer custom code for JSON-LD output</p>
+        </div>
+      </div>
+
+      <!-- Status banner -->
+      <div style="background:var(--amber-soft); border:1px solid var(--amber-border); border-radius:10px; padding:14px 18px; margin-bottom:20px; display:flex; gap:12px; align-items:center;">
+        <div style="width:36px; height:36px; border-radius:50%; background:var(--amber-soft); border:1px solid var(--amber-border); display:flex; align-items:center; justify-content:center; color:var(--amber); font-size:18px;">!</div>
+        <div style="flex:1;">
+          <div style="font-size:13px; font-weight:700; color:var(--amber);">Setup not verified yet</div>
+          <div style="font-size:12px; color:var(--muted); margin-top:2px;">Once verified, your synced articles will ship with structured data (Article, BlogPosting, FAQPage, HowTo, ...) on every published page.</div>
+        </div>
+        <span class="pill amber" style="font-size:11px;">Pending</span>
+      </div>
+      <div class="ann"><span class="a-api">GET /api/content/schema-setup/status?site_id=</span> &nbsp;|&nbsp; <span class="a-role">Role: all</span> &nbsp;|&nbsp; <span class="a-cr">Cost: 0 cr</span> &nbsp;|&nbsp; <span class="a-state">Reads framer_collection_mappings.schema_setup_verified for site; banner switches to green once true. Banner hidden site-wide once verified.</span></div>
+
+      <!-- STEP 1 -->
+      <div style="background:var(--card); border:1px solid var(--border); border-radius:10px; padding:18px; margin-bottom:14px;">
+        <div style="display:flex; gap:12px; align-items:flex-start; margin-bottom:12px;">
+          <div style="width:28px; height:28px; border-radius:50%; background:var(--pink-soft); border:1px solid var(--pink-border); display:flex; align-items:center; justify-content:center; color:var(--pink-2); font-weight:700; font-size:13px; flex-shrink:0;">1</div>
+          <div style="flex:1;">
+            <div style="font-size:14px; font-weight:700;">Open Framer Project Settings</div>
+            <p style="font-size:12px; color:var(--muted); margin:4px 0 10px;">In your Framer project, open <b>Project Settings</b>, then go to the <b>Custom Code</b> section.</p>
+            <a class="btn outline xs" style="font-size:11px;">Open Framer docs &#8599;</a>
+            <div class="ann"><span class="a-note">External link to framer.com/help/custom-code; opens in new tab. No API call.</span></div>
+          </div>
+        </div>
+        <div style="height:140px; background:var(--row); border:1px dashed var(--border); border-radius:8px; display:flex; align-items:center; justify-content:center; color:var(--muted-2); font-size:11px; font-style:italic;">Screenshot: Framer Project Settings &rarr; Custom Code panel</div>
+      </div>
+
+      <!-- STEP 2 -->
+      <div style="background:var(--card); border:1px solid var(--border); border-radius:10px; padding:18px; margin-bottom:14px;">
+        <div style="display:flex; gap:12px; align-items:flex-start; margin-bottom:12px;">
+          <div style="width:28px; height:28px; border-radius:50%; background:var(--pink-soft); border:1px solid var(--pink-border); display:flex; align-items:center; justify-content:center; color:var(--pink-2); font-weight:700; font-size:13px; flex-shrink:0;">2</div>
+          <div style="flex:1;">
+            <div style="font-size:14px; font-weight:700;">Paste this code at the End of &lt;head&gt;</div>
+            <p style="font-size:12px; color:var(--muted); margin:4px 0 10px;">Add this snippet to the <b>End of &lt;head&gt; tag</b> field. Framer will replace <code>{{schemaJson}}</code> automatically with the JSON-LD bundle from your CMS item's <code>schemaJson</code> field.</p>
+          </div>
+        </div>
+        <div style="position:relative;">
+          <pre style="background:#000; border:1px solid var(--border); border-radius:8px; padding:14px 16px; font-size:12px; font-family:'SF Mono', Menlo, monospace; color:var(--pink-3); overflow-x:auto; margin:0;">&lt;script type="application/ld+json"&gt;
+{{schemaJson}}
+&lt;/script&gt;</pre>
+          <button class="btn sm" style="position:absolute; top:10px; right:10px; font-size:11px; padding:5px 10px;">Copy code</button>
+          <div class="ann"><span class="a-api">clipboard.writeText()</span> client-side &nbsp;|&nbsp; <span class="a-role">Role: all</span> &nbsp;|&nbsp; <span class="a-cr">Cost: 0 cr</span> &nbsp;|&nbsp; <span class="a-state">Copies the exact snippet to clipboard; shows "Copied!" toast. No analytics event.</span></div>
+        </div>
+        <div class="info-box" style="margin-top:12px;">
+          <div style="font-size:11px;"><b>Why {{schemaJson}}?</b> Framer's CMS template syntax substitutes the value of a field per item. By using <code>{{schemaJson}}</code>, each blog detail page gets its own structured data bundle rendered server-side.</div>
+        </div>
+      </div>
+
+      <!-- STEP 3 -->
+      <div style="background:var(--card); border:1px solid var(--border); border-radius:10px; padding:18px; margin-bottom:14px;">
+        <div style="display:flex; gap:12px; align-items:flex-start; margin-bottom:12px;">
+          <div style="width:28px; height:28px; border-radius:50%; background:var(--pink-soft); border:1px solid var(--pink-border); display:flex; align-items:center; justify-content:center; color:var(--pink-2); font-weight:700; font-size:13px; flex-shrink:0;">3</div>
+          <div style="flex:1;">
+            <div style="font-size:14px; font-weight:700;">Apply to your Blog Detail page only</div>
+            <p style="font-size:12px; color:var(--muted); margin:4px 0 10px;">Important: scope the custom code to the <b>blog detail page template</b>, not site-wide. Adding it site-wide will cause empty <code>schemaJson</code> output on non-blog pages.</p>
+          </div>
+        </div>
+        <div class="info-box" style="background:var(--amber-soft); border-color:var(--amber-border);">
+          <div style="font-size:11px; color:var(--text);"><b style="color:var(--amber);">Heads up:</b> In Framer, Custom Code can be configured per-page from the page's right panel. Open your blog detail template, then paste the snippet in <i>that</i> page's End-of-head field, not the global one.</div>
+        </div>
+        <div style="height:120px; background:var(--row); border:1px dashed var(--border); border-radius:8px; display:flex; align-items:center; justify-content:center; color:var(--muted-2); font-size:11px; font-style:italic; margin-top:12px;">Screenshot: per-page Custom Code panel</div>
+      </div>
+
+      <!-- STEP 4 -->
+      <div style="background:var(--card); border:1px solid var(--border); border-radius:10px; padding:18px;">
+        <div style="display:flex; gap:12px; align-items:flex-start; margin-bottom:12px;">
+          <div style="width:28px; height:28px; border-radius:50%; background:var(--pink-soft); border:1px solid var(--pink-border); display:flex; align-items:center; justify-content:center; color:var(--pink-2); font-weight:700; font-size:13px; flex-shrink:0;">4</div>
+          <div style="flex:1;">
+            <div style="font-size:14px; font-weight:700;">Verify on a live URL</div>
+            <p style="font-size:12px; color:var(--muted); margin:4px 0 10px;">Publish any synced blog post, then paste its live URL below. We will fetch the page and confirm the JSON-LD is rendering with all expected fields.</p>
+          </div>
+        </div>
+        <div style="display:flex; gap:8px;">
+          <input class="input" placeholder="https://anytimeai.ai/blog/framer-seo-tools" style="flex:1; font-size:12px; padding:9px 12px;" />
+          <button class="btn sm">Verify</button>
+          <div class="ann"><span class="a-api">POST /api/content/schema-setup/verify</span> body: { site_id, test_url } &nbsp;|&nbsp; <span class="a-role">Role: Admin, Publisher</span> &nbsp;|&nbsp; <span class="a-cr">Cost: 0 cr (free)</span> &nbsp;|&nbsp; <span class="a-state">Server fetches test_url via HTTPS GET, parses HTML for &lt;script type="application/ld+json"&gt;, validates JSON contains BlogPosting + Organization keys. On success: sets framer_collection_mappings.schema_setup_verified = true; banner across dashboard hidden. On failure: returns specific error (no script tag found / invalid JSON / missing expected fields).</span></div>
+        </div>
+
+        <!-- Success state preview -->
+        <div style="margin-top:14px; padding:12px 14px; background:var(--green-soft); border:1px solid var(--green-border); border-radius:8px; display:none;">
+          <div style="display:flex; gap:10px; align-items:center;">
+            <span style="color:var(--green); font-size:16px;">&#10003;</span>
+            <div>
+              <div style="font-size:13px; font-weight:700; color:var(--green);">Schema detected!</div>
+              <div style="font-size:11px; color:var(--muted); margin-top:2px;">All synced articles will now have valid structured data. Found: BlogPosting, BreadcrumbList, Organization, FAQPage.</div>
+            </div>
+          </div>
+        </div>
+        <p style="font-size:10px; color:var(--muted-2); margin-top:8px; font-style:italic;">Success state preview hidden until verification succeeds (shown above when status flips).</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="dev-note"><b>Dev note:</b> This is a ONE-TIME setup per site. <code>POST /api/content/schema-setup/verify</code> (free, no credit cost) fetches the live URL provided, parses for <code>&lt;script type="application/ld+json"&gt;</code> containing expected schema fields (BlogPosting + Organization minimum), then sets <code>framer_collection_mappings.schema_setup_verified = true</code> for that site. Once verified, the amber setup-not-verified banner is hidden everywhere across the dashboard (Content Engine home, Schema Manager, Sync wizard). Writer role does not see this page in nav (the Schema setup shortcut button is hidden too). Re-verification can be triggered manually from this page if the Framer template is later edited.</div>
 
 <!-- ============================================================
      APPENDIX
