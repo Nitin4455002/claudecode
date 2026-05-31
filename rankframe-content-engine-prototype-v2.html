@@ -1,0 +1,1961 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>RankFrame · Content Engine · Feature Prototype v2</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --rf-bg:           #000000;
+    --rf-bg-elev:      #050608;
+    --rf-bg-card:      #0C0E11;
+    --rf-bg-card-2:    #131519;
+    --rf-bg-card-3:    #1C1F25;
+    --rf-bg-active:    #202937;
+    --rf-bg-input:     #08090B;
+    --rf-border:       #1A1D24;
+    --rf-border-2:     #262A33;
+    --rf-border-strong:#373C46;
+    --rf-purple:       #BA24D5;
+    --rf-purple-btn:   #AB33CE;
+    --rf-purple-btn-2: #C234E0;
+    --rf-purple-deep:  #7A1A8C;
+    --rf-purple-soft:  rgba(186,36,213,0.10);
+    --rf-purple-soft-2:rgba(186,36,213,0.06);
+    --rf-purple-line:  rgba(186,36,213,0.35);
+    --rf-purple-glow:  rgba(186,36,213,0.30);
+    --rf-red:          #DD524C;
+    --rf-red-soft:     rgba(221,82,76,0.12);
+    --rf-amber:        #F5B919;
+    --rf-amber-2:      #F8C849;
+    --rf-amber-soft:   rgba(245,185,25,0.10);
+    --rf-amber-soft-2: rgba(245,185,25,0.18);
+    --rf-green:        #4ADE80;
+    --rf-green-2:      #22C55E;
+    --rf-green-soft:   rgba(74,222,128,0.12);
+    --rf-blue:         #3B82F6;
+    --rf-teal:         #14B8A6;
+    --rf-orange:       #F97316;
+    --rf-pink:         #EC4899;
+    --rf-text:         #FFFFFF;
+    --rf-text-2:       #D5D8DE;
+    --rf-text-muted:   #9BA1AE;
+    --rf-text-dim:     #6B7280;
+    --rf-text-faint:   #4B5563;
+    --rf-shadow-sm:  0 1px 2px rgba(0,0,0,0.4);
+    --rf-shadow-md:  0 8px 24px rgba(0,0,0,0.5);
+    --rf-shadow-lg:  0 20px 60px rgba(0,0,0,0.7);
+    --rf-glow-purple: 0 0 40px rgba(186,36,213,0.15);
+    --plugin-w: 880px;
+    --plugin-h: 720px;
+    --sub-nav-w: 240px;
+    --dash-w: 1180px;
+    --dash-h: 760px;
+    --dash-side-w: 232px;
+  }
+  *,*::before,*::after{ box-sizing:border-box; }
+  html,body{ margin:0; padding:0; }
+  body{
+    font-family:'Inter', -apple-system, system-ui, sans-serif;
+    background:#08090B;
+    color:var(--rf-text);
+    font-size:14px;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    min-height:100vh;
+    background-image:
+      radial-gradient(circle at 20% 0%, rgba(186,36,213,0.05) 0%, transparent 40%),
+      radial-gradient(circle at 80% 100%, rgba(186,36,213,0.04) 0%, transparent 40%);
+    background-attachment:fixed;
+  }
+
+  /* ========== PROTOTYPE OUTER LAYOUT ========== */
+  .proto-page{
+    display:grid;
+    grid-template-columns: 280px 1fr;
+    min-height:100vh;
+  }
+  .proto-side{
+    background:rgba(7,7,9,0.85);
+    backdrop-filter:blur(20px);
+    -webkit-backdrop-filter:blur(20px);
+    border-right:1px solid #16181D;
+    padding:0 0 32px;
+    position:sticky; top:0; height:100vh; overflow-y:auto;
+  }
+  .proto-side::-webkit-scrollbar{ width:5px; }
+  .proto-side::-webkit-scrollbar-thumb{ background:#262A33; border-radius:3px; }
+  .proto-side-head{
+    padding:22px 22px 18px;
+    border-bottom:1px solid #16181D;
+    margin-bottom:6px;
+    background:linear-gradient(180deg, rgba(186,36,213,0.05), transparent);
+  }
+  .proto-brand{ display:flex; align-items:center; gap:11px; margin-bottom:8px; }
+  .proto-brand-mark{
+    width:28px; height:28px; border-radius:7px;
+    background:#3E3B3B;
+    display:grid; grid-template-columns:1fr 1fr; gap:2.5px; padding:5px;
+    box-shadow:0 4px 12px rgba(0,0,0,0.4);
+  }
+  .proto-brand-mark span{ border-radius:50%; }
+  .proto-brand-mark span:nth-child(1){ background:#D9D9D9; }
+  .proto-brand-mark span:nth-child(2){ background:var(--rf-purple); box-shadow:0 0 8px rgba(186,36,213,0.5); }
+  .proto-brand-mark span:nth-child(3){ background:var(--rf-purple); box-shadow:0 0 8px rgba(186,36,213,0.5); }
+  .proto-brand-mark span:nth-child(4){ background:#D9D9D9; }
+  .proto-brand-name{ font-weight:600; font-size:15px; letter-spacing:-0.01em; }
+  .proto-brand-name .accent{ color:var(--rf-purple); }
+  .proto-side-sub{
+    font-size:10.5px; color:var(--rf-text-dim); letter-spacing:0.10em;
+    text-transform:uppercase; font-weight:600;
+  }
+  .proto-side-meta{
+    margin-top:8px;
+    display:flex; gap:8px; align-items:center;
+    font-size:11px; color:var(--rf-text-muted);
+  }
+  .proto-side-meta b{ color:var(--rf-purple); font-family:'JetBrains Mono', monospace; font-weight:500; }
+  .proto-side-meta .sep{ color:var(--rf-text-faint); }
+  .proto-side h4{
+    margin:18px 22px 6px;
+    font-size:10px; letter-spacing:0.12em; text-transform:uppercase;
+    color:var(--rf-text-faint); font-weight:700;
+    display:flex; align-items:center; gap:8px;
+  }
+  .proto-side h4::after{ content:''; display:block; flex:1; height:1px; background:#16181D; }
+  .proto-nav-item{
+    display:flex; align-items:center; gap:10px;
+    padding:7px 22px;
+    font-size:12.5px; color:var(--rf-text-muted);
+    cursor:pointer;
+    border-left:2px solid transparent;
+    transition:all 0.12s;
+    text-decoration:none;
+  }
+  .proto-nav-item:hover{ color:var(--rf-text); background:rgba(186,36,213,0.04); }
+  .proto-nav-item.active{
+    color:var(--rf-text);
+    background:rgba(186,36,213,0.07);
+    border-left-color:var(--rf-purple);
+  }
+  .proto-nav-num{
+    width:22px; height:20px; border-radius:5px;
+    background:#16181D; color:var(--rf-text-dim);
+    font-size:10px; font-weight:600;
+    font-family:'JetBrains Mono', monospace;
+    display:flex; align-items:center; justify-content:center;
+    flex-shrink:0;
+  }
+  .proto-nav-item.active .proto-nav-num{ background:var(--rf-purple-soft); color:var(--rf-purple); }
+  .proto-nav-item .new-dot{
+    width:6px; height:6px; border-radius:50%; background:var(--rf-purple);
+    margin-left:auto; box-shadow:0 0 6px rgba(186,36,213,0.6);
+  }
+  .proto-main{ padding:32px 44px 100px; overflow:hidden; min-width:0; }
+
+  /* ========== SECTION HEADER ========== */
+  .proto-screen-head{ margin-bottom:22px; }
+  .proto-screen-head h1{ margin:6px 0 6px; font-size:24px; font-weight:600; letter-spacing:-0.015em; }
+  .proto-screen-head p{
+    margin:0;
+    font-size:13px; color:var(--rf-text-muted);
+    max-width:680px;
+    line-height:1.6;
+  }
+  .proto-tag{
+    display:inline-flex; align-items:center; gap:6px;
+    padding:3px 10px; border-radius:999px;
+    font-size:10.5px; font-weight:600; letter-spacing:0.04em; text-transform:uppercase;
+    background:var(--rf-purple-soft); color:var(--rf-purple);
+    border:1px solid var(--rf-purple-line);
+  }
+  .proto-tag.new{
+    background:var(--rf-green-soft); color:var(--rf-green); border-color:rgba(74,222,128,0.30);
+  }
+
+  /* ========== DEVELOPER NOTES ========== */
+  .proto-anno{
+    margin-top:18px;
+    background:rgba(10,11,13,0.7);
+    border:1px solid #16181D;
+    border-radius:14px;
+    padding:18px 22px 20px;
+    max-width:var(--dash-w);
+  }
+  .proto-anno h3{
+    margin:0 0 14px;
+    font-size:11px; font-weight:700; letter-spacing:0.10em; text-transform:uppercase;
+    color:var(--rf-text-muted);
+    display:flex; align-items:center; gap:10px;
+  }
+  .proto-anno h3::before{
+    content:''; display:block; width:6px; height:6px; border-radius:50%; background:var(--rf-purple);
+    box-shadow:0 0 8px rgba(186,36,213,0.5);
+  }
+  .proto-anno-grid{
+    display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:16px 24px;
+  }
+  .proto-anno-item dt{
+    font-size:10.5px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase;
+    color:var(--rf-text-dim); margin-bottom:4px;
+  }
+  .proto-anno-item dd{ margin:0; font-size:12.5px; color:var(--rf-text-2); line-height:1.6; }
+  .proto-anno-item dd code{
+    font-family:'JetBrains Mono', monospace; font-size:11px;
+    background:#15171B; padding:1.5px 6px; border-radius:4px;
+    color:#D5D8DE; border:1px solid #20232A;
+  }
+  .change-tag{
+    display:inline-flex; align-items:center; gap:5px;
+    padding:2.5px 7px; border-radius:5px;
+    font-size:10.5px; font-weight:600; letter-spacing:0.02em;
+    margin-right:6px;
+    white-space:nowrap;
+  }
+  .change-tag.framer{ background:rgba(186,36,213,0.12); color:#D277E8; border:1px solid rgba(186,36,213,0.3); }
+  .change-tag.plugin{ background:rgba(59,130,246,0.12); color:#7AABFB; border:1px solid rgba(59,130,246,0.3); }
+  .change-tag.dash{ background:rgba(168,85,247,0.12); color:#C084FC; border:1px solid rgba(168,85,247,0.3); }
+  .change-tag.api{ background:rgba(20,184,166,0.12); color:#3FD7C4; border:1px solid rgba(20,184,166,0.3); }
+  .change-tag.cache{ background:rgba(245,185,25,0.12); color:#F5C547; border:1px solid rgba(245,185,25,0.3); }
+  .change-tag.clip{ background:rgba(107,114,128,0.18); color:#9CA3AF; border:1px solid rgba(107,114,128,0.3); }
+  .change-tag.db{ background:rgba(74,222,128,0.12); color:#86EFAC; border:1px solid rgba(74,222,128,0.30); }
+
+  /* ========== PLUGIN WINDOW ========== */
+  .plugin-window{
+    width:var(--plugin-w); height:var(--plugin-h);
+    background:var(--rf-bg);
+    border-radius:14px;
+    overflow:hidden;
+    box-shadow:var(--rf-shadow-lg), 0 0 0 1px #16181D;
+    display:grid;
+    grid-template-rows:48px 1fr;
+    position:relative;
+  }
+  .plugin-window::before{
+    content:''; position:absolute; inset:-1px; border-radius:14px;
+    background:linear-gradient(180deg, rgba(255,255,255,0.04), transparent 30%);
+    pointer-events:none; z-index:0;
+  }
+  .plg-top{
+    background:var(--rf-bg-card-2);
+    border-bottom:1px solid var(--rf-border);
+    display:flex; align-items:center; justify-content:space-between;
+    padding:0 16px;
+    font-size:13px;
+    position:relative; z-index:1;
+  }
+  .plg-top-l{ display:flex; align-items:center; gap:10px; }
+  .plg-top-l .mark{
+    width:22px; height:22px; border-radius:6px;
+    background:#3E3B3B; display:grid; grid-template-columns:1fr 1fr; gap:1.5px; padding:3.5px;
+  }
+  .plg-top-l .mark span{ border-radius:50%; }
+  .plg-top-l .mark span:nth-child(1){ background:#D9D9D9; }
+  .plg-top-l .mark span:nth-child(2){ background:var(--rf-purple); }
+  .plg-top-l .mark span:nth-child(3){ background:var(--rf-purple); }
+  .plg-top-l .mark span:nth-child(4){ background:#D9D9D9; }
+  .plg-top-l b{ font-weight:600; font-size:13px; }
+  .plg-top-l .dev-tag{ font-size:11px; color:var(--rf-text-dim); }
+  .plg-top-x{
+    width:24px; height:24px; border-radius:5px; display:flex; align-items:center; justify-content:center;
+    color:var(--rf-text-muted); cursor:pointer; font-size:14px;
+  }
+  .plg-top-x:hover{ background:#1C1F25; }
+  .plg-body{ display:grid; grid-template-columns:var(--sub-nav-w) 1fr; min-height:0; position:relative; z-index:1; }
+  .plg-nav{
+    background:var(--rf-bg-elev);
+    border-right:1px solid var(--rf-border);
+    padding:8px 0;
+    display:flex; flex-direction:column; gap:1px;
+    overflow-y:auto;
+  }
+  .plg-nav::-webkit-scrollbar{ width:5px; }
+  .plg-nav::-webkit-scrollbar-thumb{ background:#262A33; border-radius:3px; }
+  .plg-nav-brand{
+    display:flex; align-items:center; gap:8px;
+    padding:8px 14px 10px;
+  }
+  .plg-nav-brand .mini{
+    width:18px; height:18px; border-radius:5px;
+    background:#3E3B3B; display:grid; grid-template-columns:1fr 1fr; gap:1px; padding:3px;
+  }
+  .plg-nav-brand .mini span{ border-radius:50%; }
+  .plg-nav-brand .mini span:nth-child(1){ background:#D9D9D9; }
+  .plg-nav-brand .mini span:nth-child(2){ background:var(--rf-purple); }
+  .plg-nav-brand .mini span:nth-child(3){ background:var(--rf-purple); }
+  .plg-nav-brand .mini span:nth-child(4){ background:#D9D9D9; }
+  .plg-nav-brand b{ font-size:13px; font-weight:600; }
+  .plg-nav-brand b .a{ color:var(--rf-purple); }
+  .plg-nav-brand .arrow{ margin-left:auto; color:var(--rf-text-dim); font-size:14px; cursor:pointer; }
+  .plg-nav-group{
+    margin:8px 14px 4px;
+    font-size:9px; letter-spacing:0.12em; text-transform:uppercase;
+    color:var(--rf-text-faint); font-weight:700;
+    display:flex; align-items:center; gap:6px;
+  }
+  .plg-nav-group.content-group{ color:var(--rf-purple); }
+  .plg-nav-group .pinkdot{
+    width:5px; height:5px; border-radius:50%; background:var(--rf-pink);
+    box-shadow:0 0 5px var(--rf-pink);
+  }
+  .plg-nav-item{
+    display:flex; align-items:center; gap:10px;
+    padding:7px 14px;
+    margin:0 6px;
+    border-radius:7px;
+    font-size:12.5px; color:var(--rf-text-2);
+    cursor:pointer;
+    position:relative;
+    transition:background 0.1s;
+  }
+  .plg-nav-item:hover{ background:#0E1115; }
+  .plg-nav-item.active{ background:var(--rf-bg-active); color:#fff; }
+  .plg-nav-item .ico{
+    width:16px; height:16px; display:flex; align-items:center; justify-content:center;
+    color:var(--rf-text-muted); flex-shrink:0;
+  }
+  .plg-nav-item.active .ico{ color:#fff; }
+  .plg-nav-item .new-pill{
+    margin-left:auto;
+    font-size:8.5px; font-weight:700; letter-spacing:0.06em;
+    padding:2px 6px; border-radius:4px;
+    background:var(--rf-purple); color:#fff;
+    box-shadow:0 0 8px rgba(186,36,213,0.4);
+  }
+  .plg-nav-item .count-pill{
+    margin-left:auto;
+    font-size:9.5px; font-weight:600;
+    padding:1.5px 6px; border-radius:999px;
+    background:#15171B; color:var(--rf-text-muted);
+    font-family:'JetBrains Mono', monospace;
+  }
+  .plg-nav-divider{ height:1px; background:var(--rf-border); margin:6px 14px; }
+  .plg-nav-account{
+    display:flex; gap:9px; align-items:center;
+    padding:7px 14px; margin:0 6px;
+    border-radius:8px;
+  }
+  .plg-nav-account .ava{
+    width:30px; height:30px; border-radius:50%;
+    background:linear-gradient(135deg, #6B27D8, #BA24D5);
+    color:#fff; display:flex; align-items:center; justify-content:center;
+    font-size:11px; font-weight:600;
+  }
+  .plg-nav-account .info b{ display:block; font-size:12px; font-weight:600; }
+  .plg-nav-account .info span{ font-size:10.5px; color:var(--rf-text-dim); }
+  .plg-nav-plan{
+    margin:5px 10px 0;
+    padding:7px 10px;
+    background:var(--rf-bg-card);
+    border:1px solid var(--rf-border);
+    border-radius:8px;
+    font-size:11px;
+  }
+  .plg-nav-plan b{ display:block; font-size:11.5px; }
+  .plg-nav-plan span{ color:var(--rf-text-dim); font-size:10.5px; }
+  .plg-nav-cta{
+    display:block; text-align:center; width:calc(100% - 20px);
+    margin:5px 10px 0;
+    padding:7px 0;
+    background:var(--rf-purple-btn);
+    color:#fff; font-size:12px; font-weight:600;
+    border-radius:8px; border:none; cursor:pointer;
+  }
+  .plg-main{
+    background:var(--rf-bg);
+    overflow-y:auto;
+    padding:22px 26px 32px;
+    position:relative;
+  }
+  .plg-main::-webkit-scrollbar{ width:5px; }
+  .plg-main::-webkit-scrollbar-thumb{ background:#262A33; border-radius:3px; }
+
+  /* ========== DASHBOARD WINDOW ========== */
+  .dash-window{
+    width:var(--dash-w); height:var(--dash-h);
+    background:var(--rf-bg);
+    border-radius:14px;
+    overflow:hidden;
+    box-shadow:var(--rf-shadow-lg), 0 0 0 1px #16181D;
+    display:grid;
+    grid-template-rows:44px 1fr;
+    position:relative;
+  }
+  .dash-top{
+    background:var(--rf-bg-card-2);
+    border-bottom:1px solid var(--rf-border);
+    display:flex; align-items:center; gap:10px;
+    padding:0 14px;
+    font-size:12.5px;
+  }
+  .dash-top .dots{ display:flex; gap:6px; }
+  .dash-top .dots span{ width:10px; height:10px; border-radius:50%; background:#2A2D34; }
+  .dash-top .url{
+    margin-left:14px;
+    background:var(--rf-bg-input);
+    border:1px solid var(--rf-border-2);
+    padding:4px 10px; border-radius:6px;
+    font-size:11.5px; color:var(--rf-text-muted);
+    font-family:'JetBrains Mono', monospace;
+    flex:1; max-width:420px;
+  }
+  .dash-body{ display:grid; grid-template-columns:var(--dash-side-w) 1fr; min-height:0; }
+  .dash-side{
+    background:var(--rf-bg-elev);
+    border-right:1px solid var(--rf-border);
+    padding:18px 0;
+    display:flex; flex-direction:column;
+    overflow-y:auto;
+  }
+  .dash-side::-webkit-scrollbar{ width:5px; }
+  .dash-side::-webkit-scrollbar-thumb{ background:#262A33; border-radius:3px; }
+  .dash-side-brand{
+    display:flex; align-items:center; gap:10px;
+    padding:0 18px 16px;
+    border-bottom:1px solid var(--rf-border);
+    margin-bottom:10px;
+  }
+  .dash-side-brand .mini{
+    width:24px; height:24px; border-radius:6px;
+    background:#3E3B3B; display:grid; grid-template-columns:1fr 1fr; gap:1.5px; padding:4px;
+  }
+  .dash-side-brand .mini span{ border-radius:50%; }
+  .dash-side-brand .mini span:nth-child(1){ background:#D9D9D9; }
+  .dash-side-brand .mini span:nth-child(2){ background:var(--rf-purple); }
+  .dash-side-brand .mini span:nth-child(3){ background:var(--rf-purple); }
+  .dash-side-brand .mini span:nth-child(4){ background:#D9D9D9; }
+  .dash-side-brand b{ font-size:14px; font-weight:600; }
+  .dash-side-brand b .a{ color:var(--rf-purple); }
+  .dash-nav-item{
+    display:flex; align-items:center; gap:10px;
+    padding:9px 18px;
+    font-size:13px; color:var(--rf-text-2);
+    cursor:pointer;
+    border-left:2px solid transparent;
+  }
+  .dash-nav-item:hover{ background:rgba(186,36,213,0.04); }
+  .dash-nav-item.active{
+    background:rgba(186,36,213,0.08);
+    border-left-color:var(--rf-purple);
+    color:#fff;
+  }
+  .dash-nav-item .ico{
+    width:16px; height:16px; color:var(--rf-text-muted); flex-shrink:0;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .dash-nav-item.active .ico{ color:var(--rf-purple); }
+  .dash-nav-item .new-pill{
+    margin-left:auto;
+    font-size:8.5px; font-weight:700; letter-spacing:0.06em;
+    padding:2px 6px; border-radius:4px;
+    background:var(--rf-purple); color:#fff;
+  }
+  .dash-side-foot{
+    margin-top:auto;
+    padding:14px 18px;
+    border-top:1px solid var(--rf-border);
+    font-size:11px; color:var(--rf-text-dim);
+  }
+  .dash-main{
+    background:#08090B;
+    overflow-y:auto;
+    padding:24px 32px 40px;
+    position:relative;
+  }
+  .dash-main::-webkit-scrollbar{ width:6px; }
+  .dash-main::-webkit-scrollbar-thumb{ background:#262A33; border-radius:3px; }
+
+  /* ========== SHARED COMPONENTS ========== */
+  .pg-title{
+    font-size:20px; font-weight:600; letter-spacing:-0.015em; margin:0 0 4px;
+    display:flex; align-items:center; gap:8px;
+  }
+  .pg-title .info-trigger{
+    width:18px; height:18px; border-radius:50%;
+    background:#15171B; border:1px solid var(--rf-border-2);
+    color:var(--rf-text-dim); cursor:help;
+    display:inline-flex; align-items:center; justify-content:center;
+    font-size:11px;
+  }
+  .pg-sub{ font-size:12.5px; color:var(--rf-text-muted); margin:0 0 18px; }
+  .tooltip-pop{ position:relative; display:inline-block; }
+  .tooltip-pop .pop{
+    position:absolute; top:calc(100% + 8px); left:-8px;
+    width:300px; padding:12px 14px;
+    background:#0F1116; border:1px solid var(--rf-purple-line);
+    border-radius:10px;
+    font-size:12px; color:var(--rf-text-2); line-height:1.55;
+    box-shadow:var(--rf-shadow-md), 0 0 30px rgba(186,36,213,0.15);
+    z-index:10;
+  }
+  .tooltip-pop .pop::before{
+    content:''; position:absolute; top:-5px; left:14px;
+    width:9px; height:9px; background:#0F1116;
+    border-left:1px solid var(--rf-purple-line); border-top:1px solid var(--rf-purple-line);
+    transform:rotate(45deg);
+  }
+  .tooltip-pop .pop b{ display:block; color:var(--rf-purple); font-size:11px; letter-spacing:0.05em; text-transform:uppercase; margin-bottom:4px; }
+  .tooltip-pop .pop p{ margin:0; }
+  .tabs{
+    display:flex; gap:24px; border-bottom:1px solid var(--rf-border); margin-bottom:20px;
+    position:relative;
+  }
+  .tabs .tab{
+    padding:8px 0 12px;
+    font-size:13px; font-weight:500; color:var(--rf-text-muted);
+    cursor:pointer; border-bottom:2px solid transparent; margin-bottom:-1px;
+  }
+  .tabs .tab.active{ color:var(--rf-purple); border-bottom-color:var(--rf-purple); }
+  .tabs .tab.disabled{ color:var(--rf-text-faint); cursor:not-allowed; opacity:0.5; }
+  .ghost-btn{
+    background:transparent; color:var(--rf-text-2);
+    border:1px solid var(--rf-border-2);
+    padding:8px 12px; border-radius:8px;
+    font-size:12px; font-weight:500; cursor:pointer;
+    display:inline-flex; align-items:center; gap:7px;
+  }
+  .ghost-btn:hover{ background:#0E1115; border-color:var(--rf-border-strong); color:var(--rf-text); }
+  .ghost-btn.sm{ padding:5px 10px; font-size:11px; }
+  .btn-primary{
+    background:var(--rf-purple-btn);
+    color:#fff;
+    border:none;
+    padding:10px 18px;
+    border-radius:8px;
+    font-size:13px; font-weight:600;
+    cursor:pointer;
+    display:inline-flex; align-items:center; gap:8px;
+    box-shadow:0 4px 16px rgba(186,36,213,0.25);
+  }
+  .btn-primary:hover{ background:var(--rf-purple-btn-2); }
+  .btn-primary.full{ width:100%; justify-content:center; }
+  .btn-primary svg{ width:14px; height:14px; }
+  .btn-primary.sm{ padding:6px 12px; font-size:11.5px; }
+  .empty-state{
+    padding:54px 20px; text-align:center;
+    border:1px dashed var(--rf-border-2);
+    border-radius:14px;
+    background:radial-gradient(circle at 50% 0%, rgba(186,36,213,0.04), transparent 60%);
+    position:relative;
+  }
+  .empty-state .ico{
+    width:52px; height:52px; margin:0 auto 16px;
+    border-radius:13px;
+    background:var(--rf-purple-soft);
+    color:var(--rf-purple);
+    display:flex; align-items:center; justify-content:center; font-size:22px;
+    border:1px solid var(--rf-purple-line);
+    box-shadow:0 0 24px rgba(186,36,213,0.15);
+  }
+  .empty-state h3{ margin:0 0 6px; font-size:15px; font-weight:600; }
+  .empty-state p{ margin:0 0 20px; font-size:12.5px; color:var(--rf-text-muted); max-width:480px; margin-left:auto; margin-right:auto; line-height:1.55; }
+  .empty-state.compact{ padding:36px 18px; }
+  .loading-block{ text-align:center; padding:64px 20px; }
+  .loading-spinner{
+    width:44px; height:44px; margin:0 auto 18px;
+    border-radius:50%;
+    border:2px solid #1A1D24;
+    border-top-color:var(--rf-purple);
+    animation:spin 0.8s linear infinite;
+    box-shadow:0 0 20px rgba(186,36,213,0.2);
+  }
+  @keyframes spin{ to{ transform:rotate(360deg); } }
+  .loading-block h3{ margin:0 0 6px; font-size:14px; font-weight:600; }
+  .loading-block p{ margin:0; font-size:12px; color:var(--rf-text-muted); max-width:420px; margin-left:auto; margin-right:auto; line-height:1.55; }
+  .last-analyzed{
+    font-size:11.5px; color:var(--rf-text-dim);
+    display:flex; align-items:center; gap:8px;
+    margin-bottom:16px;
+  }
+  .last-analyzed .dot{ width:5px; height:5px; border-radius:50%; background:var(--rf-green); box-shadow:0 0 5px var(--rf-green); }
+
+  /* ========== CREDIT CHIP ========== */
+  .credit-chip{
+    display:inline-flex; align-items:center; gap:4px;
+    padding:1.5px 7px; border-radius:5px;
+    background:rgba(245,185,25,0.12); color:var(--rf-amber);
+    border:1px solid rgba(245,185,25,0.30);
+    font-size:10.5px; font-weight:600;
+    font-family:'JetBrains Mono', monospace;
+  }
+  .credit-chip.free{ background:var(--rf-green-soft); color:var(--rf-green); border-color:rgba(74,222,128,0.30); }
+
+  /* ========== STATUS PILLS (article workflow) ========== */
+  .status-pill{
+    display:inline-flex; align-items:center; gap:5px;
+    padding:2.5px 8px; border-radius:999px;
+    font-size:10.5px; font-weight:600; letter-spacing:0.03em;
+  }
+  .status-pill .dot{ width:5px; height:5px; border-radius:50%; background:currentColor; }
+  .status-idea{ background:rgba(107,114,128,0.18); color:#9CA3AF; }
+  .status-research{ background:rgba(59,130,246,0.12); color:#7AABFB; }
+  .status-draft{ background:rgba(245,185,25,0.12); color:var(--rf-amber); }
+  .status-review{ background:rgba(168,85,247,0.14); color:#C084FC; }
+  .status-approved{ background:rgba(186,36,213,0.14); color:#D277E8; }
+  .status-synced{ background:rgba(20,184,166,0.12); color:#3FD7C4; }
+  .status-published{ background:var(--rf-green-soft); color:var(--rf-green); }
+  .status-failed{ background:var(--rf-red-soft); color:var(--rf-red); }
+
+  /* ========== CALENDAR ========== */
+  .cal-toolbar{
+    display:flex; gap:10px; align-items:center; margin-bottom:14px;
+  }
+  .cal-toolbar .month{ font-size:15px; font-weight:600; letter-spacing:-0.01em; }
+  .cal-toolbar .nav-btn{
+    width:26px; height:26px; border-radius:6px;
+    background:var(--rf-bg-card); border:1px solid var(--rf-border-2);
+    color:var(--rf-text-muted); display:flex; align-items:center; justify-content:center; cursor:pointer;
+  }
+  .cal-toolbar .view-toggle{
+    display:inline-flex;
+    background:var(--rf-bg-card); border:1px solid var(--rf-border-2);
+    border-radius:7px; padding:2px;
+  }
+  .cal-toolbar .view-toggle .opt{
+    padding:4px 10px; font-size:11.5px; border-radius:5px; color:var(--rf-text-muted); cursor:pointer;
+  }
+  .cal-toolbar .view-toggle .opt.active{ background:var(--rf-bg-active); color:#fff; }
+  .cal-filter{
+    background:var(--rf-bg-card); border:1px solid var(--rf-border-2);
+    padding:5px 10px; border-radius:7px; font-size:11.5px;
+    color:var(--rf-text-2); display:inline-flex; gap:6px; align-items:center;
+  }
+  .cal-filter.active{ border-color:var(--rf-purple-line); background:var(--rf-purple-soft); color:var(--rf-purple); }
+  .cal-grid{
+    display:grid; grid-template-columns:repeat(7,1fr); gap:6px;
+    background:var(--rf-bg-card); border:1px solid var(--rf-border); border-radius:12px;
+    padding:10px;
+  }
+  .cal-dow{
+    font-size:9.5px; letter-spacing:0.10em; text-transform:uppercase;
+    color:var(--rf-text-dim); padding:4px 0 6px; font-weight:600; text-align:left;
+  }
+  .cal-cell{
+    min-height:78px;
+    background:var(--rf-bg-elev);
+    border:1px solid var(--rf-border);
+    border-radius:8px;
+    padding:6px 7px;
+    font-size:10.5px;
+    display:flex; flex-direction:column; gap:3px;
+    position:relative;
+  }
+  .cal-cell.muted{ opacity:0.32; }
+  .cal-cell.today{ border-color:var(--rf-purple-line); background:rgba(186,36,213,0.04); }
+  .cal-cell .d{ color:var(--rf-text-muted); font-weight:600; font-family:'JetBrains Mono', monospace; }
+  .cal-cell.today .d{ color:var(--rf-purple); }
+  .cal-art{
+    font-size:9.5px;
+    padding:3px 5px;
+    border-radius:4px;
+    line-height:1.3;
+    cursor:pointer;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+    border-left:2px solid;
+  }
+  .cal-art.draft{ background:rgba(245,185,25,0.08); color:#F5C547; border-color:var(--rf-amber); }
+  .cal-art.review{ background:rgba(168,85,247,0.10); color:#C084FC; border-color:#A855F7; }
+  .cal-art.approved{ background:rgba(186,36,213,0.12); color:#D277E8; border-color:var(--rf-purple); }
+  .cal-art.published{ background:var(--rf-green-soft); color:var(--rf-green); border-color:var(--rf-green); }
+  .cal-art.research{ background:rgba(59,130,246,0.10); color:#7AABFB; border-color:var(--rf-blue); }
+
+  /* ========== ARTICLE / DRAFT ROW ========== */
+  .article-row{
+    display:grid; grid-template-columns:1fr auto auto auto auto; gap:14px; align-items:center;
+    padding:12px 14px;
+    background:var(--rf-bg-card); border:1px solid var(--rf-border);
+    border-radius:10px; margin-bottom:6px;
+  }
+  .article-row .ar-title{ font-size:13px; font-weight:500; }
+  .article-row .ar-meta{ font-size:11px; color:var(--rf-text-dim); margin-top:2px; }
+  .article-row .ar-author{
+    display:flex; align-items:center; gap:6px;
+    font-size:11.5px; color:var(--rf-text-muted);
+  }
+  .article-row .ar-author .ava{
+    width:20px; height:20px; border-radius:50%;
+    background:linear-gradient(135deg, #6B27D8, #BA24D5);
+    color:#fff; font-size:9px; font-weight:600;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .article-row .ar-date{ font-size:11.5px; color:var(--rf-text-muted); font-family:'JetBrains Mono', monospace; }
+  .article-row:hover{ border-color:var(--rf-border-2); background:#0F1115; }
+
+  /* ========== EDITOR LAYOUT ========== */
+  .ed-frame{
+    display:grid; grid-template-columns:1fr 280px; gap:16px;
+    min-height:520px;
+  }
+  .ed-main{
+    background:var(--rf-bg-card); border:1px solid var(--rf-border);
+    border-radius:12px; padding:18px 22px;
+    display:flex; flex-direction:column; gap:10px;
+    min-height:0;
+  }
+  .ed-toolbar{
+    display:flex; gap:6px; align-items:center;
+    padding:6px 0 8px; border-bottom:1px solid var(--rf-border);
+    margin-bottom:6px;
+  }
+  .ed-tb-btn{
+    padding:4px 8px; border-radius:6px;
+    color:var(--rf-text-muted); font-size:11.5px;
+    cursor:pointer; font-weight:500;
+  }
+  .ed-tb-btn:hover{ background:var(--rf-bg-card-2); color:var(--rf-text); }
+  .ed-tb-btn.divider{ width:1px; height:14px; background:var(--rf-border); padding:0; pointer-events:none; }
+  .ed-title{
+    background:transparent; border:none;
+    font-size:22px; font-weight:600; color:var(--rf-text);
+    width:100%; outline:none; padding:4px 0;
+    letter-spacing:-0.01em; font-family:inherit;
+  }
+  .ed-h2{ font-size:16px; font-weight:600; color:var(--rf-text); margin:14px 0 4px; }
+  .ed-h3{ font-size:13.5px; font-weight:600; color:var(--rf-text-2); margin:10px 0 2px; }
+  .ed-p{ font-size:12.5px; color:var(--rf-text-2); line-height:1.7; margin:0 0 8px; }
+  .ed-img-block{
+    background:linear-gradient(135deg, #2D1B3A, #16121E);
+    border-radius:8px; height:160px;
+    display:flex; align-items:flex-end; padding:10px 12px;
+    color:#fff; font-size:10.5px; font-weight:500;
+    margin:6px 0;
+    border:1px solid var(--rf-border);
+  }
+  .ed-footer{
+    margin-top:auto; padding-top:8px; border-top:1px solid var(--rf-border);
+    display:flex; gap:14px; align-items:center;
+    font-size:10.5px; color:var(--rf-text-dim); font-family:'JetBrains Mono', monospace;
+  }
+  .ed-side{
+    background:var(--rf-bg-card); border:1px solid var(--rf-border);
+    border-radius:12px;
+    display:flex; flex-direction:column;
+    overflow:hidden;
+  }
+  .ed-side-tabs{
+    display:flex; border-bottom:1px solid var(--rf-border);
+  }
+  .ed-side-tab{
+    flex:1; padding:9px 0; text-align:center;
+    font-size:11px; font-weight:500; color:var(--rf-text-muted);
+    cursor:pointer; border-bottom:2px solid transparent; margin-bottom:-1px;
+  }
+  .ed-side-tab.active{ color:var(--rf-purple); border-bottom-color:var(--rf-purple); }
+  .ed-side-body{ padding:14px; font-size:12px; flex:1; overflow-y:auto; }
+  .ed-side-body::-webkit-scrollbar{ width:5px; }
+  .ed-side-body::-webkit-scrollbar-thumb{ background:#262A33; border-radius:3px; }
+  .ed-field{ margin-bottom:12px; }
+  .ed-field label{
+    display:block; font-size:9.5px; letter-spacing:0.08em; text-transform:uppercase;
+    color:var(--rf-text-dim); font-weight:600; margin-bottom:5px;
+  }
+  .ed-field .val{
+    background:var(--rf-bg-input); border:1px solid var(--rf-border-2);
+    border-radius:6px; padding:6px 9px; font-size:11.5px; color:var(--rf-text-2);
+  }
+  .kw-bar{ height:5px; background:#15181E; border-radius:3px; overflow:hidden; }
+  .kw-fill{ height:100%; background:var(--rf-green); width:62%; box-shadow:0 0 5px var(--rf-green); }
+  .ai-action{
+    display:flex; align-items:center; gap:8px;
+    padding:8px 10px; border-radius:7px;
+    background:var(--rf-bg-elev); border:1px solid var(--rf-border);
+    margin-bottom:5px; cursor:pointer;
+    font-size:11.5px;
+  }
+  .ai-action:hover{ border-color:var(--rf-purple-line); background:rgba(186,36,213,0.04); }
+  .ai-action .label{ flex:1; }
+  .ai-action .ico{ color:var(--rf-purple); width:14px; height:14px; flex-shrink:0; }
+  .schema-pills{ display:flex; gap:5px; flex-wrap:wrap; }
+  .schema-pill{
+    font-size:10px; font-weight:600;
+    padding:3px 7px; border-radius:5px;
+  }
+  .schema-pill.always{ background:var(--rf-green-soft); color:var(--rf-green); border:1px solid rgba(74,222,128,0.30); }
+  .schema-pill.detected{ background:rgba(236,72,153,0.12); color:var(--rf-pink); border:1px solid rgba(236,72,153,0.30); }
+  .schema-pill.add{ background:rgba(107,114,128,0.18); color:#9CA3AF; border:1px dashed var(--rf-border-strong); }
+
+  /* ========== MODAL ========== */
+  .modal-overlay{
+    position:absolute; inset:0;
+    background:rgba(0,0,0,0.6);
+    backdrop-filter:blur(4px);
+    display:flex; align-items:center; justify-content:center;
+    border-radius:14px;
+    z-index:5;
+  }
+  .modal{
+    width:420px;
+    background:var(--rf-bg-card); border:1px solid var(--rf-border);
+    border-radius:12px; padding:22px;
+    box-shadow:var(--rf-shadow-lg);
+  }
+  .modal h3{ margin:0 0 6px; font-size:15px; }
+  .modal p{ margin:0 0 16px; font-size:12.5px; color:var(--rf-text-muted); line-height:1.55; }
+  .modal textarea{
+    width:100%; min-height:90px;
+    background:var(--rf-bg-input); border:1px solid var(--rf-border-2);
+    border-radius:7px; padding:10px;
+    font-size:12.5px; color:var(--rf-text); font-family:inherit;
+    resize:vertical; outline:none; margin-bottom:14px;
+  }
+  .radio-row{
+    padding:10px 12px; border-radius:8px;
+    background:var(--rf-bg-elev); border:1px solid var(--rf-border);
+    display:flex; gap:10px; align-items:flex-start;
+    margin-bottom:6px; cursor:pointer;
+  }
+  .radio-row.selected{ border-color:var(--rf-purple-line); background:rgba(186,36,213,0.04); }
+  .radio-row .rd{
+    width:14px; height:14px; border-radius:50%;
+    border:1.5px solid var(--rf-border-strong);
+    flex-shrink:0; margin-top:2px;
+  }
+  .radio-row.selected .rd{ border-color:var(--rf-purple); background:radial-gradient(circle, var(--rf-purple) 40%, transparent 45%); }
+  .radio-row b{ display:block; font-size:12.5px; font-weight:600; margin-bottom:2px; }
+  .radio-row span{ font-size:11px; color:var(--rf-text-muted); }
+
+  /* ========== TABLE ========== */
+  .rf-table{
+    width:100%;
+    border-collapse:separate; border-spacing:0;
+    background:var(--rf-bg-card); border:1px solid var(--rf-border);
+    border-radius:10px; overflow:hidden;
+    font-size:12px;
+  }
+  .rf-table thead th{
+    background:var(--rf-bg-elev);
+    color:var(--rf-text-dim);
+    text-align:left;
+    font-size:10px; letter-spacing:0.08em; text-transform:uppercase; font-weight:600;
+    padding:9px 12px;
+    border-bottom:1px solid var(--rf-border);
+  }
+  .rf-table tbody td{
+    padding:11px 12px;
+    border-bottom:1px solid var(--rf-border);
+    color:var(--rf-text-2);
+  }
+  .rf-table tbody tr:last-child td{ border-bottom:none; }
+  .rf-table tbody tr:hover{ background:#0F1115; }
+
+  /* ========== BANNERS / ERRORS ========== */
+  .banner{
+    padding:12px 14px; border-radius:10px;
+    display:flex; gap:11px; align-items:flex-start;
+    font-size:12.5px; line-height:1.5;
+    margin-bottom:14px;
+  }
+  .banner .b-ico{ width:22px; height:22px; flex-shrink:0; display:flex; align-items:center; justify-content:center; border-radius:6px; }
+  .banner b{ display:block; margin-bottom:2px; }
+  .banner.warn{ background:rgba(245,185,25,0.08); border:1px solid rgba(245,185,25,0.30); }
+  .banner.warn .b-ico{ background:var(--rf-amber-soft-2); color:var(--rf-amber); }
+  .banner.err{ background:rgba(221,82,76,0.07); border:1px solid rgba(221,82,76,0.30); }
+  .banner.err .b-ico{ background:rgba(221,82,76,0.18); color:var(--rf-red); }
+  .banner.info{ background:var(--rf-purple-soft-2); border:1px solid var(--rf-purple-line); }
+  .banner.info .b-ico{ background:var(--rf-purple-soft); color:var(--rf-purple); }
+  .banner .b-cta{ margin-left:auto; }
+
+  /* ========== CARD STACK ========== */
+  .card{
+    background:var(--rf-bg-card); border:1px solid var(--rf-border);
+    border-radius:12px; padding:16px 18px;
+    margin-bottom:12px;
+  }
+  .card-head{
+    display:flex; align-items:center; gap:10px; margin-bottom:10px;
+  }
+  .card-head h3{
+    margin:0; font-size:13px; font-weight:600;
+  }
+  .card-head .meta{
+    margin-left:auto; font-size:11px; color:var(--rf-text-dim); font-family:'JetBrains Mono', monospace;
+  }
+
+  /* ========== OPPORTUNITY CARD ========== */
+  .opp{
+    padding:14px 16px;
+    background:var(--rf-bg-card); border:1px solid var(--rf-border);
+    border-radius:10px;
+    margin-bottom:8px;
+    display:grid; grid-template-columns:1fr auto auto; gap:14px; align-items:center;
+  }
+  .opp .opp-type{
+    font-size:9.5px; letter-spacing:0.08em; text-transform:uppercase; font-weight:700;
+    padding:2.5px 7px; border-radius:5px;
+    display:inline-block; margin-bottom:5px;
+  }
+  .opp .opp-type.refresh{ background:rgba(245,185,25,0.12); color:var(--rf-amber); }
+  .opp .opp-type.gap{ background:rgba(59,130,246,0.12); color:#7AABFB; }
+  .opp .opp-type.cluster{ background:var(--rf-purple-soft); color:var(--rf-purple); }
+  .opp .opp-type.trending{ background:var(--rf-green-soft); color:var(--rf-green); }
+  .opp .opp-title{ font-size:13px; font-weight:500; }
+  .opp .opp-sub{ font-size:11px; color:var(--rf-text-muted); margin-top:3px; }
+  .opp .impact{
+    text-align:center;
+  }
+  .opp .impact b{ font-size:14px; font-family:'JetBrains Mono', monospace; display:block; }
+  .opp .impact span{ font-size:9.5px; letter-spacing:0.08em; text-transform:uppercase; color:var(--rf-text-dim); }
+
+  /* ========== STEPPER (wizard) ========== */
+  .stepper{ display:flex; align-items:center; gap:10px; margin-bottom:18px; }
+  .step{ display:flex; align-items:center; gap:7px; font-size:11.5px; color:var(--rf-text-muted); }
+  .step .num{
+    width:20px; height:20px; border-radius:50%;
+    background:#15171B; color:var(--rf-text-dim);
+    font-size:10px; font-weight:700;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .step.active{ color:var(--rf-purple); }
+  .step.active .num{ background:var(--rf-purple); color:#fff; box-shadow:0 0 8px rgba(186,36,213,0.4); }
+  .step.done .num{ background:var(--rf-green); color:#000; }
+  .step-sep{ width:24px; height:1px; background:var(--rf-border-2); }
+
+  /* ========== CONTACT SHEET ========== */
+  .contact-sheet-wrap{ max-width:1400px; }
+  .contact-sheet{
+    display:grid; grid-template-columns:repeat(auto-fill, minmax(260px, 1fr)); gap:14px;
+    margin-bottom:20px;
+  }
+  .cs-tile{
+    background:#0C0E11;
+    border:1px solid var(--rf-border);
+    border-radius:10px;
+    overflow:hidden;
+    text-decoration:none; color:inherit;
+    transition:all 0.15s;
+    display:flex; flex-direction:column;
+  }
+  .cs-tile:hover{ border-color:var(--rf-purple-line); transform:translateY(-2px); box-shadow:0 12px 32px rgba(0,0,0,0.5), 0 0 24px rgba(186,36,213,0.10); }
+  .cs-tile-thumb{
+    aspect-ratio:880 / 540;
+    background:var(--rf-bg);
+    position:relative; overflow:hidden;
+    border-bottom:1px solid var(--rf-border);
+  }
+  .cs-mini{
+    transform:scale(0.27);
+    transform-origin:top left;
+    width:370%;
+    height:370%;
+    pointer-events:none;
+  }
+  .cs-tile-info{ padding:11px 13px; }
+  .cs-tile-num{
+    font-size:9.5px; letter-spacing:0.08em; color:var(--rf-text-dim);
+    font-family:'JetBrains Mono', monospace; font-weight:600;
+    margin-bottom:3px;
+  }
+  .cs-tile-title{ font-size:12.5px; font-weight:600; line-height:1.35; margin-bottom:4px; }
+  .cs-tile-tag{ font-size:9.5px; letter-spacing:0.04em; color:var(--rf-text-dim); font-weight:500; }
+  .cs-tile.new-screen .cs-tile-thumb::after{
+    content:'NEW'; position:absolute; top:8px; right:8px;
+    background:var(--rf-purple); color:#fff;
+    font-size:8.5px; font-weight:700; letter-spacing:0.06em;
+    padding:2px 6px; border-radius:4px;
+    box-shadow:0 0 8px rgba(186,36,213,0.6);
+  }
+  .cs-section-title{
+    margin:24px 0 12px;
+    font-size:11px; letter-spacing:0.10em; text-transform:uppercase;
+    color:var(--rf-text-dim); font-weight:700;
+    display:flex; align-items:center; gap:10px;
+  }
+  .cs-section-title::after{ content:''; flex:1; height:1px; background:#16181D; }
+  .cs-section-title:first-child{ margin-top:0; }
+
+  .ico-svg{ width:14px; height:14px; }
+  .ico-svg.lg{ width:16px; height:16px; }
+  .state-section + .state-section{ margin-top:56px; padding-top:56px; border-top:1px dashed #1F2228; }
+
+  /* ========== TYPED TOKEN STREAM ========== */
+  .token-stream{
+    background:#0A0B0D; border:1px solid var(--rf-border);
+    border-radius:10px; padding:14px;
+    font-family:'JetBrains Mono', monospace;
+    font-size:11px; line-height:1.7;
+    color:var(--rf-text-2);
+    max-height:200px; overflow:hidden;
+    position:relative;
+  }
+  .token-stream::after{
+    content:''; position:absolute; bottom:0; left:0; right:0; height:50px;
+    background:linear-gradient(transparent, #0A0B0D);
+  }
+  .token-stream .cur{ display:inline-block; width:6px; height:12px; background:var(--rf-purple); animation:blink 1s steps(2) infinite; vertical-align:text-bottom; }
+  @keyframes blink{ 50%{opacity:0;} }
+
+  /* progress bar */
+  .progress{ height:6px; background:#15181E; border-radius:3px; overflow:hidden; }
+  .progress .fill{ height:100%; background:linear-gradient(90deg, var(--rf-purple-deep), var(--rf-purple)); box-shadow:0 0 8px var(--rf-purple); }
+
+  /* phase tile */
+  .phase{
+    background:var(--rf-bg-card); border:1px solid var(--rf-border);
+    border-radius:10px; padding:14px;
+    display:flex; gap:12px; align-items:center;
+    margin-bottom:8px;
+  }
+  .phase .num{
+    width:30px; height:30px; border-radius:8px;
+    background:var(--rf-purple-soft); color:var(--rf-purple);
+    border:1px solid var(--rf-purple-line);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'JetBrains Mono', monospace; font-weight:700; font-size:13px;
+  }
+  .phase.done .num{ background:var(--rf-green-soft); color:var(--rf-green); border-color:rgba(74,222,128,0.30); }
+  .phase.active .num{ box-shadow:0 0 14px var(--rf-purple); }
+  .phase h4{ margin:0 0 2px; font-size:13px; font-weight:600; }
+  .phase p{ margin:0; font-size:11px; color:var(--rf-text-muted); }
+  .phase .right{ margin-left:auto; font-size:11px; color:var(--rf-text-dim); }
+
+  @media (max-width: 1200px){
+    .proto-page{ grid-template-columns: 1fr; }
+    .proto-side{ position:relative; height:auto; }
+  }
+</style>
+</head>
+<body>
+<div class="proto-page">
+  <aside class="proto-side">
+    <div class="proto-side-head">
+      <div class="proto-brand">
+        <div class="proto-brand-mark"><span></span><span></span><span></span><span></span></div>
+        <div>
+          <div class="proto-brand-name">Rank<span class="accent">Frame</span></div>
+        </div>
+      </div>
+      <div class="proto-side-sub">Content Engine Prototype</div>
+      <div class="proto-side-meta">
+        <b>v2</b><span class="sep">·</span><span>64 screens</span><span class="sep">·</span><span>May 2026</span>
+      </div>
+    </div>
+
+    <a class="proto-nav-item" href="#s0"><span class="proto-nav-num">00</span><span>Overview · contact sheet</span></a>
+
+    <h4>A · Navigation &amp; Entry</h4>
+    <a class="proto-nav-item" href="#s1"><span class="proto-nav-num">01</span>Plugin nav, SEO + CONTENT<span class="new-dot"></span></a>
+    <a class="proto-nav-item" href="#s2"><span class="proto-nav-num">02</span>Dashboard sidebar update<span class="new-dot"></span></a>
+    <a class="proto-nav-item" href="#s3"><span class="proto-nav-num">03</span>Content Engine landing<span class="new-dot"></span></a>
+    <a class="proto-nav-item" href="#s4"><span class="proto-nav-num">04</span>Feature tooltip<span class="new-dot"></span></a>
+
+    <h4>B · Calendar</h4>
+    <a class="proto-nav-item" href="#s5"><span class="proto-nav-num">05</span>Empty calendar</a>
+    <a class="proto-nav-item" href="#s6"><span class="proto-nav-num">06</span>Populated calendar</a>
+    <a class="proto-nav-item" href="#s7"><span class="proto-nav-num">07</span>List view</a>
+    <a class="proto-nav-item" href="#s8"><span class="proto-nav-num">08</span>Cell popover<span class="new-dot"></span></a>
+    <a class="proto-nav-item" href="#s9"><span class="proto-nav-num">09</span>Status filter</a>
+    <a class="proto-nav-item" href="#s10"><span class="proto-nav-num">10</span>Member filter</a>
+
+    <h4>C · Research Hub</h4>
+    <a class="proto-nav-item" href="#s11"><span class="proto-nav-num">11</span>Pre-research empty</a>
+    <a class="proto-nav-item" href="#s12"><span class="proto-nav-num">12</span>Phase 1 loading</a>
+    <a class="proto-nav-item" href="#s13"><span class="proto-nav-num">13</span>Phase 1 results</a>
+    <a class="proto-nav-item" href="#s14"><span class="proto-nav-num">14</span>Phase 2 loading</a>
+    <a class="proto-nav-item" href="#s15"><span class="proto-nav-num">15</span>Phase 2 results</a>
+    <a class="proto-nav-item" href="#s16"><span class="proto-nav-num">16</span>Opportunities dashboard</a>
+    <a class="proto-nav-item" href="#s17"><span class="proto-nav-num">17</span>Filter opportunities</a>
+    <a class="proto-nav-item" href="#s18"><span class="proto-nav-num">18</span>Start Draft transition<span class="new-dot"></span></a>
+
+    <h4>D · Draft Editor</h4>
+    <a class="proto-nav-item" href="#s19"><span class="proto-nav-num">19</span>Empty draft</a>
+    <a class="proto-nav-item" href="#s20"><span class="proto-nav-num">20</span>AI generating</a>
+    <a class="proto-nav-item" href="#s21"><span class="proto-nav-num">21</span>Populated editor</a>
+    <a class="proto-nav-item" href="#s22"><span class="proto-nav-num">22</span>SEO sidebar</a>
+    <a class="proto-nav-item" href="#s23"><span class="proto-nav-num">23</span>AI sidebar</a>
+    <a class="proto-nav-item" href="#s24"><span class="proto-nav-num">24</span>Outline sidebar</a>
+    <a class="proto-nav-item" href="#s25"><span class="proto-nav-num">25</span>Links sidebar</a>
+    <a class="proto-nav-item" href="#s26"><span class="proto-nav-num">26</span>Schema sidebar</a>
+    <a class="proto-nav-item" href="#s27"><span class="proto-nav-num">27</span>Regenerate section</a>
+    <a class="proto-nav-item" href="#s28"><span class="proto-nav-num">28</span>Hero image generated</a>
+    <a class="proto-nav-item" href="#s29"><span class="proto-nav-num">29</span>Inline image inserted</a>
+    <a class="proto-nav-item" href="#s30"><span class="proto-nav-num">30</span>Brand voice settings</a>
+
+    <h4>E · Approval Workflow</h4>
+    <a class="proto-nav-item" href="#s31"><span class="proto-nav-num">31</span>Writer Submit for Review</a>
+    <a class="proto-nav-item" href="#s32"><span class="proto-nav-num">32</span>Submit modal</a>
+    <a class="proto-nav-item" href="#s33"><span class="proto-nav-num">33</span>Admin Approve view</a>
+    <a class="proto-nav-item" href="#s34"><span class="proto-nav-num">34</span>Approve modal</a>
+    <a class="proto-nav-item" href="#s35"><span class="proto-nav-num">35</span>Approval Queue, Admin</a>
+    <a class="proto-nav-item" href="#s36"><span class="proto-nav-num">36</span>Approval Queue, Member<span class="new-dot"></span></a>
+    <a class="proto-nav-item" href="#s37"><span class="proto-nav-num">37</span>Returned with feedback</a>
+
+    <h4>F · Sync to Framer</h4>
+    <a class="proto-nav-item" href="#s38"><span class="proto-nav-num">38</span>Wizard step 1, collection</a>
+    <a class="proto-nav-item" href="#s39"><span class="proto-nav-num">39</span>Wizard step 2, mapping</a>
+    <a class="proto-nav-item" href="#s40"><span class="proto-nav-num">40</span>Wizard step 3, preview</a>
+    <a class="proto-nav-item" href="#s41"><span class="proto-nav-num">41</span>Sync success</a>
+    <a class="proto-nav-item" href="#s42"><span class="proto-nav-num">42</span>Writer locked variant<span class="new-dot"></span></a>
+
+    <h4>G · Plugin Views</h4>
+    <a class="proto-nav-item" href="#s43"><span class="proto-nav-num">43</span>Draft Queue, Admin</a>
+    <a class="proto-nav-item" href="#s44"><span class="proto-nav-num">44</span>Draft Queue, Writer</a>
+    <a class="proto-nav-item" href="#s45"><span class="proto-nav-num">45</span>Link Opportunities</a>
+    <a class="proto-nav-item" href="#s46"><span class="proto-nav-num">46</span>Sync Status</a>
+
+    <h4>H · First-run Setup</h4>
+    <a class="proto-nav-item" href="#s47"><span class="proto-nav-num">47</span>Set Up Blog, step 1</a>
+    <a class="proto-nav-item" href="#s48"><span class="proto-nav-num">48</span>Set Up Blog, step 2</a>
+    <a class="proto-nav-item" href="#s49"><span class="proto-nav-num">49</span>Set Up Blog, step 3</a>
+    <a class="proto-nav-item" href="#s50"><span class="proto-nav-num">50</span>Member waiting state</a>
+
+    <h4>I · Schema Manager</h4>
+    <a class="proto-nav-item" href="#s51"><span class="proto-nav-num">51</span>Schema Manager dashboard</a>
+    <a class="proto-nav-item" href="#s52"><span class="proto-nav-num">52</span>One-time setup page</a>
+    <a class="proto-nav-item" href="#s53"><span class="proto-nav-num">53</span>Setup awaiting</a>
+    <a class="proto-nav-item" href="#s54"><span class="proto-nav-num">54</span>Setup verified</a>
+
+    <h4>J · AI Credits &amp; ROI</h4>
+    <a class="proto-nav-item" href="#s55"><span class="proto-nav-num">55</span>AI Credits page</a>
+    <a class="proto-nav-item" href="#s56"><span class="proto-nav-num">56</span>Credit cost table</a>
+    <a class="proto-nav-item" href="#s57"><span class="proto-nav-num">57</span>ROI calculator</a>
+    <a class="proto-nav-item" href="#s58"><span class="proto-nav-num">58</span>Pack purchase modal</a>
+
+    <h4>K · Cross-cutting</h4>
+    <a class="proto-nav-item" href="#s59"><span class="proto-nav-num">59</span>Out of credits, Admin</a>
+    <a class="proto-nav-item" href="#s60"><span class="proto-nav-num">60</span>Out of credits, Member</a>
+    <a class="proto-nav-item" href="#s61"><span class="proto-nav-num">61</span>Permission denied</a>
+    <a class="proto-nav-item" href="#s62"><span class="proto-nav-num">62</span>Sync failure</a>
+    <a class="proto-nav-item" href="#s63"><span class="proto-nav-num">63</span>API error generic</a>
+    <a class="proto-nav-item" href="#s64"><span class="proto-nav-num">64</span>Schema validation error</a>
+  </aside>
+
+  <main class="proto-main" id="screens-root"></main>
+</div>
+<script>
+/* ============================================================
+   ICONS
+   ============================================================ */
+const ICONS = {
+  globe:`<svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>`,
+  pages:`<svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="3" width="14" height="18" rx="2"/><path d="M8 7h6M8 11h6M8 15h4"/></svg>`,
+  bolt:`<svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z"/></svg>`,
+  spark:`<svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2 2M16.4 16.4l2 2M5.6 18.4l2-2M16.4 7.6l2-2"/><circle cx="12" cy="12" r="3"/></svg>`,
+  sparkSm:`<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/><circle cx="12" cy="12" r="3"/></svg>`,
+  analyzer:`<svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19V5M9 19v-7M14 19V9M19 19V3"/></svg>`,
+  image:`<svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="1.5"/><path d="M21 16l-5-5-9 9"/></svg>`,
+  cog:`<svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .4 1.9l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.9-.4 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1-1.5 1.7 1.7 0 0 0-1.9.4l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .4-1.9 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1 1.7 1.7 0 0 0-.4-1.9l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.9.4H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.9-.4l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.4 1.9V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>`,
+  help:`<svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 0 1 5 0c0 1.5-2.5 2-2.5 4M12 17h.01"/></svg>`,
+  book:`<svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h12a3 3 0 0 1 3 3v13a2 2 0 0 0-2-2H4z"/><path d="M4 4v16"/></svg>`,
+  ext:`<svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 3h7v7M10 14l11-11M21 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5"/></svg>`,
+  refresh:`<svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 0 1 15-6.7L21 8M21 3v5h-5M21 12a9 9 0 0 1-15 6.7L3 16M3 21v-5h5"/></svg>`,
+  copy:`<svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="8" y="8" width="13" height="13" rx="2"/><path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3"/></svg>`,
+  check:`<svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4 10-10"/></svg>`,
+  warn:`<svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 3l10 18H2L12 3z"/><path d="M12 10v5M12 18h.01"/></svg>`,
+  search:`<svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-5-5"/></svg>`,
+  calendar:`<svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 3v4M16 3v4"/></svg>`,
+  edit:`<svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H5a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2h13a2 2 0 0 0 2-2v-6M18 2l4 4-11 11H7v-4z"/></svg>`,
+  sync:`<svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 0 1 9-9 9.7 9.7 0 0 1 6.7 2.7L21 8M3 8V3h5M21 12a9 9 0 0 1-9 9 9.7 9.7 0 0 1-6.7-2.7L3 16M21 21v-5h-5"/></svg>`,
+  schema:`<svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z"/></svg>`,
+  brain:`<svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 2a3 3 0 0 0-3 3v1a3 3 0 0 0-2 5 3 3 0 0 0 2 5v1a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3zM15 2a3 3 0 0 1 3 3v1a3 3 0 0 1 2 5 3 3 0 0 1-2 5v1a3 3 0 0 1-6 0"/></svg>`,
+  link:`<svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1M14 11a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"/></svg>`,
+  queue:`<svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h12"/></svg>`,
+  doc:`<svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h6"/></svg>`,
+  monitor:`<svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>`,
+  team:`<svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="8" r="3"/><path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/><circle cx="17" cy="8" r="2.5"/><path d="M21 21v-2a3 3 0 0 0-2-2.8"/></svg>`,
+  card:`<svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20M6 15h4"/></svg>`,
+  user:`<svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1"/></svg>`,
+  filter:`<svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 5h18l-7 9v6l-4-2v-4z"/></svg>`,
+  plus:`<svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>`,
+  chevR:`<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg>`,
+  chevL:`<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 6l-6 6 6 6"/></svg>`,
+  chevD:`<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>`,
+  arrowRight:`<svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>`,
+  info:`<svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 16v-4M12 8h.01"/></svg>`,
+  trending:`<svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 7l-9 9-4-4-7 7"/><path d="M16 7h6v6"/></svg>`,
+  lock:`<svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>`,
+  flag:`<svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 21V4h12l-2 4 2 4H4"/></svg>`,
+  code:`<svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/></svg>`,
+};
+
+/* ============================================================
+   PLUGIN SHELL
+   ============================================================ */
+function pluginSubNav(activeKey){
+  const seoItems = [
+    {key:'globalSettings', icon:ICONS.cog, label:'Global Settings'},
+    {key:'pages', icon:ICONS.pages, label:'Pages'},
+    {key:'submitIndexing', icon:ICONS.bolt, label:'Submit Indexing'},
+    {key:'seoAnalyzer', icon:ICONS.analyzer, label:'SEO Analyzer'},
+    {key:'imageSEO', icon:ICONS.image, label:'Image SEO'},
+    {key:'monitor404', icon:ICONS.monitor, label:'404 Monitor'},
+  ];
+  const contentItems = [
+    {key:'researchHub', icon:ICONS.brain, label:'Research Hub', isNew:true},
+    {key:'draftQueue', icon:ICONS.queue, label:'Draft Queue', isNew:true, count:'7'},
+    {key:'linkOpps', icon:ICONS.link, label:'Link Opportunities', isNew:true},
+    {key:'syncStatus', icon:ICONS.sync, label:'Sync Status', isNew:true},
+  ];
+  return `
+    <nav class="plg-nav">
+      <div class="plg-nav-brand">
+        <div class="mini"><span></span><span></span><span></span><span></span></div>
+        <b>Rank<span class="a">Frame</span></b>
+        <span class="arrow">‹</span>
+      </div>
+      <div class="plg-nav-group">SEO</div>
+      ${seoItems.map(it=>`
+        <div class="plg-nav-item ${activeKey===it.key?'active':''}">
+          <span class="ico">${it.icon}</span>
+          <span>${it.label}</span>
+        </div>
+      `).join('')}
+      <div class="plg-nav-group content-group"><span class="pinkdot"></span>CONTENT</div>
+      ${contentItems.map(it=>`
+        <div class="plg-nav-item ${activeKey===it.key?'active':''}">
+          <span class="ico">${it.icon}</span>
+          <span>${it.label}</span>
+          ${it.count?`<span class="count-pill">${it.count}</span>`:(it.isNew?'<span class="new-pill">NEW</span>':'')}
+        </div>
+      `).join('')}
+      <div class="plg-nav-divider"></div>
+      <div class="plg-nav-item"><span class="ico">${ICONS.help}</span><span>Support</span></div>
+      <div class="plg-nav-item"><span class="ico">${ICONS.ext}</span><span>Go To Dashboard</span></div>
+      <div class="plg-nav-account">
+        <div class="ava">7M</div>
+        <div class="info"><b>7seers media</b><span>7seersmedia@gmail.com</span></div>
+      </div>
+      <div class="plg-nav-plan">
+        <b>Agency Yearly Plan</b>
+        <span>1,240 AI credits left</span>
+      </div>
+    </nav>
+  `;
+}
+
+function pluginShell(activeKey, mainHTML, extra=''){
+  return `
+    <div class="plugin-window">
+      <div class="plg-top">
+        <div class="plg-top-l">
+          <div class="mark"><span></span><span></span><span></span><span></span></div>
+          <b>Rankframe Plugin</b>
+          <span class="dev-tag">(Development)</span>
+        </div>
+        <div class="plg-top-x">×</div>
+      </div>
+      <div class="plg-body">
+        ${pluginSubNav(activeKey)}
+        <div class="plg-main">${mainHTML}</div>
+      </div>
+      ${extra}
+    </div>
+  `;
+}
+
+/* ============================================================
+   DASHBOARD SHELL
+   ============================================================ */
+function dashShell(activeKey, mainHTML, extra=''){
+  const items = [
+    {key:'websites', icon:ICONS.globe, label:'Websites'},
+    {key:'subscription', icon:ICONS.card, label:'Subscription'},
+    {key:'credits', icon:ICONS.bolt, label:'AI Credits'},
+    {key:'team', icon:ICONS.team, label:'Team'},
+    {key:'content', icon:ICONS.doc, label:'Content', isNew:true},
+    {key:'account', icon:ICONS.user, label:'Account Details'},
+  ];
+  return `
+    <div class="dash-window">
+      <div class="dash-top">
+        <div class="dots"><span></span><span></span><span></span></div>
+        <div class="url">app.rankframe.io/${activeKey}</div>
+      </div>
+      <div class="dash-body">
+        <aside class="dash-side">
+          <div class="dash-side-brand">
+            <div class="mini"><span></span><span></span><span></span><span></span></div>
+            <b>Rank<span class="a">Frame</span></b>
+          </div>
+          ${items.map(it=>`
+            <div class="dash-nav-item ${activeKey===it.key?'active':''}">
+              <span class="ico">${it.icon}</span>
+              <span>${it.label}</span>
+              ${it.isNew?'<span class="new-pill">NEW</span>':''}
+            </div>
+          `).join('')}
+          <div class="dash-side-foot">7seersmedia.com<br>Agency Yearly Plan</div>
+        </aside>
+        <div class="dash-main">${mainHTML}</div>
+      </div>
+      ${extra}
+    </div>
+  `;
+}
+
+/* ============================================================
+   CONTENT TABS
+   ============================================================ */
+function contentTabs(active){
+  const tabs = [
+    {k:'calendar', label:'Calendar'},
+    {k:'research', label:'Research'},
+    {k:'drafts', label:'Drafts'},
+    {k:'queue', label:'Approval Queue'},
+    {k:'schema', label:'Schema Manager'},
+  ];
+  return `
+    <div class="tabs">
+      ${tabs.map(t=>`<div class="tab ${active===t.k?'active':''}">${t.label}</div>`).join('')}
+    </div>
+  `;
+}
+
+function editorTabs(active){
+  const tabs = [
+    {k:'seo', label:'SEO'},
+    {k:'ai', label:'AI'},
+    {k:'outline', label:'Outline'},
+    {k:'links', label:'Links'},
+  ];
+  return `
+    <div class="ed-side-tabs">
+      ${tabs.map(t=>`<div class="ed-side-tab ${active===t.k?'active':''}">${t.label}</div>`).join('')}
+    </div>
+  `;
+}
+
+/* ============================================================
+   HELPERS
+   ============================================================ */
+function creditChip(amount){
+  if (amount === 0) return `<span class="credit-chip free">FREE</span>`;
+  return `<span class="credit-chip">${ICONS.sparkSm} ${amount}</span>`;
+}
+function statusPill(status, label){
+  return `<span class="status-pill status-${status}"><span class="dot"></span>${label}</span>`;
+}
+function articleRow(props){
+  return `
+    <div class="article-row">
+      <div>
+        <div class="ar-title">${props.title}</div>
+        <div class="ar-meta">${props.meta||''}</div>
+      </div>
+      ${statusPill(props.status, props.statusLabel)}
+      <div class="ar-author"><span class="ava">${props.authorInitials||'AD'}</span>${props.author||'Admin'}</div>
+      <div class="ar-date">${props.date||''}</div>
+      <span style="color:var(--rf-text-dim);">${ICONS.chevR}</span>
+    </div>
+  `;
+}
+function emptyState(icon, h3, p, btnText){
+  return `
+    <div class="empty-state">
+      <div class="ico">${icon}</div>
+      <h3>${h3}</h3>
+      <p>${p}</p>
+      ${btnText?`<button class="btn-primary">${ICONS.spark}<span>${btnText}</span></button>`:''}
+    </div>
+  `;
+}
+function loadingBlock(h3, p){
+  return `
+    <div class="loading-block">
+      <div class="loading-spinner"></div>
+      <h3>${h3}</h3>
+      <p>${p}</p>
+    </div>
+  `;
+}
+function ceHeader(showTooltip=false){
+  return `
+    <h2 class="pg-title">
+      Content Engine
+      <span class="tooltip-pop">
+        <span class="info-trigger">${ICONS.info}</span>
+        ${showTooltip ? `
+          <span class="pop">
+            <b>What is the Content Engine?</b>
+            <p>Plan, research, draft, approve, and sync AI-written blog articles directly to your Framer CMS. Built around the article workflow: Idea, Research, Draft, In Review, Approved, Synced, Published. Drafts are written by Claude Sonnet 4.5 and edited by your team.</p>
+          </span>
+        ` : ''}
+      </span>
+    </h2>
+    <p class="pg-sub">Plan, research, draft, and sync articles to your Framer CMS. Powered by Claude Sonnet 4.5 + DataForSEO.</p>
+  `;
+}
+
+/* mini calendar grid */
+function calGrid(events){
+  // 35 cells, May 2026 starts on Friday (May 1 2026 is Friday)
+  const dows = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+  let html = dows.map(d=>`<div class="cal-dow">${d}</div>`).join('');
+  // 4 muted prev (Apr 27-30 Mon-Thu)
+  for(let d=27; d<=30; d++){ html += `<div class="cal-cell muted"><span class="d">${d}</span></div>`; }
+  // May 1-31
+  for(let d=1; d<=31; d++){
+    const ev = (events||{})[d] || [];
+    const isToday = d===15;
+    html += `<div class="cal-cell ${isToday?'today':''}">
+      <span class="d">${d}</span>
+      ${ev.map(e=>`<div class="cal-art ${e.s}">${e.t}</div>`).join('')}
+    </div>`;
+  }
+  // muted Jun 1-3 to fill 35
+  for(let d=1; d<=3; d++){ html += `<div class="cal-cell muted"><span class="d">${d}</span></div>`; }
+  return `<div class="cal-grid">${html}</div>`;
+}
+
+/* ============================================================
+   SCREEN DEFINITIONS
+   ============================================================ */
+const screens = [];
+
+/* 00 — Overview */
+screens.push({
+  id:'s0', tag:'Overview', title:'00 · All screens at a glance',
+  desc:'Every state in this Content Engine prototype. Click any tile to jump to the full screen with developer notes.',
+  fullWidth:true, body:'__CONTACT_SHEET__'
+});
+
+/* ================== A · NAVIGATION ================== */
+screens.push({
+  id:'s1', tag:'A · Navigation', newScreen:true,
+  title:'01 · Plugin nav, SEO group + new CONTENT group',
+  desc:'The plugin sidebar now has two grouped sections. SEO group is the existing six items (unchanged order). A new CONTENT group adds four items: Research Hub, Draft Queue, Link Opportunities, Sync Status. The CONTENT label has a pink indicator dot.',
+  body:`
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px; align-items:flex-start;">
+    <div>
+      <div style="font-size:10.5px; letter-spacing:0.10em; text-transform:uppercase; color:var(--rf-text-dim); font-weight:700; margin-bottom:10px;">BEFORE · current flat list</div>
+      <div style="background:var(--rf-bg); border:1px solid var(--rf-border); border-radius:12px; width:240px; padding:10px 0;">
+        <div class="plg-nav-brand"><div class="mini"><span></span><span></span><span></span><span></span></div><b>Rank<span class="a">Frame</span></b></div>
+        <div class="plg-nav-item"><span class="ico">${ICONS.cog}</span><span>Global Settings</span></div>
+        <div class="plg-nav-item"><span class="ico">${ICONS.pages}</span><span>Pages</span></div>
+        <div class="plg-nav-item"><span class="ico">${ICONS.bolt}</span><span>Submit Indexing</span></div>
+        <div class="plg-nav-item"><span class="ico">${ICONS.analyzer}</span><span>SEO Analyzer</span></div>
+        <div class="plg-nav-item"><span class="ico">${ICONS.image}</span><span>Image SEO</span></div>
+        <div class="plg-nav-item"><span class="ico">${ICONS.monitor}</span><span>404 Monitor</span></div>
+      </div>
+    </div>
+    <div>
+      <div style="font-size:10.5px; letter-spacing:0.10em; text-transform:uppercase; color:var(--rf-purple); font-weight:700; margin-bottom:10px;">AFTER · grouped, +4 CONTENT items</div>
+      <div style="background:var(--rf-bg); border:1px solid var(--rf-purple-line); border-radius:12px; width:240px; padding:10px 0;">
+        <div class="plg-nav-brand"><div class="mini"><span></span><span></span><span></span><span></span></div><b>Rank<span class="a">Frame</span></b></div>
+        <div class="plg-nav-group">SEO</div>
+        <div class="plg-nav-item"><span class="ico">${ICONS.cog}</span><span>Global Settings</span></div>
+        <div class="plg-nav-item"><span class="ico">${ICONS.pages}</span><span>Pages</span></div>
+        <div class="plg-nav-item"><span class="ico">${ICONS.bolt}</span><span>Submit Indexing</span></div>
+        <div class="plg-nav-item"><span class="ico">${ICONS.analyzer}</span><span>SEO Analyzer</span></div>
+        <div class="plg-nav-item"><span class="ico">${ICONS.image}</span><span>Image SEO</span></div>
+        <div class="plg-nav-item"><span class="ico">${ICONS.monitor}</span><span>404 Monitor</span></div>
+        <div class="plg-nav-group content-group"><span class="pinkdot"></span>CONTENT</div>
+        <div class="plg-nav-item"><span class="ico">${ICONS.brain}</span><span>Research Hub</span><span class="new-pill">NEW</span></div>
+        <div class="plg-nav-item"><span class="ico">${ICONS.queue}</span><span>Draft Queue</span><span class="count-pill">7</span></div>
+        <div class="plg-nav-item"><span class="ico">${ICONS.link}</span><span>Link Opportunities</span><span class="new-pill">NEW</span></div>
+        <div class="plg-nav-item"><span class="ico">${ICONS.sync}</span><span>Sync Status</span><span class="new-pill">NEW</span></div>
+      </div>
+    </div>
+  </div>
+  <div style="margin-top:18px; background:var(--rf-purple-soft-2); border:1px solid var(--rf-purple-line); border-radius:12px; padding:16px 18px; max-width:560px;">
+    <div style="font-size:10.5px; letter-spacing:0.10em; text-transform:uppercase; color:var(--rf-purple); font-weight:700; margin-bottom:6px;">What changed</div>
+    <div style="font-size:12.5px; color:var(--rf-text-2); line-height:1.6;">Items are now grouped under labeled headings (SEO, CONTENT). The new CONTENT group adds four entries. Draft Queue shows a count pill (pending items). Sync Status is hidden for the Writer role (sync requires Admin or Publisher).</div>
+  </div>
+  `,
+  anno:[
+    ['Where the change lives','<span class="change-tag plugin">PLUGIN UI</span> Plugin sidebar component takes a grouped items array. No backend or Framer canvas change.'],
+    ['Group label','Pink dot before "CONTENT" cues users that this group is new. Pink chosen to differentiate from purple SEO accent.'],
+    ['Count pill','<code>Draft Queue</code> shows pending-drafts count from <code>GET /api/content/drafts?status=in_review</code>. Refreshes every 60s.'],
+    ['Role visibility','<code>Sync Status</code> hidden when <code>currentUser.role === "writer"</code>. <code>Link Opportunities</code> visible to all roles (read-only for Viewer).'],
+    ['NEW pill','Carries until <code>content_engine_first_opened_at</code> is set on the user record.'],
+  ]
+});
+
+screens.push({
+  id:'s2', tag:'A · Navigation', newScreen:true,
+  title:'02 · Dashboard sidebar, new Content item',
+  desc:'The web dashboard gains a new "Content" item between Team and Account Details, with a NEW pill. Routes to /content. This is the primary entry point for the full editor and approval queue, both of which need wider screen space than the plugin window allows.',
+  body:dashShell('content', `
+    <h1 style="font-size:24px; margin:0 0 4px;">Content Engine</h1>
+    <p style="font-size:13px; color:var(--rf-text-muted); margin:0 0 20px;">Welcome. Pick a tab to plan, write, review, or sync articles.</p>
+    ${contentTabs('calendar')}
+    ${emptyState(ICONS.calendar, 'No articles yet for 7seersmedia.com', 'Start by opening Research Hub to find topic opportunities, or create a draft from scratch.', 'Start research')}
+  `),
+  anno:[
+    ['Where the change lives','<span class="change-tag dash">DASHBOARD UI</span> New nav item in the sidebar component. New route <code>/content</code>.'],
+    ['Why dashboard, not plugin','Editor needs ≥1180px. Plugin window caps at 880px. The dashboard hosts the full editor + queue; plugin hosts the quick-action surfaces (Draft Queue card view, Sync Status, Link Opps).'],
+    ['NEW pill','Stored as <code>users.content_engine_first_opened_at</code>. Hides after first visit.'],
+    ['Role','Visible to all roles. Member writers land on Drafts tab by default. Viewers land on read-only Calendar.'],
+  ]
+});
+
+screens.push({
+  id:'s3', tag:'A · Navigation', newScreen:true,
+  title:'03 · Content Engine landing, first open',
+  desc:'Default tab is Calendar. Site selector at top right (multi-site users). Empty state guides the user to start research, which is the recommended first action.',
+  body:dashShell('content', `
+    <div style="display:flex; align-items:flex-start; gap:14px; margin-bottom:18px;">
+      <div style="flex:1;">
+        <h1 style="font-size:24px; margin:0 0 4px;">Content Engine</h1>
+        <p style="font-size:13px; color:var(--rf-text-muted); margin:0;">Plan, research, draft, and sync articles to your Framer CMS.</p>
+      </div>
+      <div style="display:flex; gap:8px; align-items:center;">
+        <button class="ghost-btn">${ICONS.globe}<span>7seersmedia.com</span>${ICONS.chevD}</button>
+        <button class="btn-primary">${ICONS.plus}<span>New article</span></button>
+      </div>
+    </div>
+    ${contentTabs('calendar')}
+    ${emptyState(ICONS.doc, 'Nothing on the calendar yet', 'Start with Research Hub to find what your audience is searching for, what your competitors rank for, and which of your existing pages need a refresh. Or create a blank draft now.', 'Start research, 50 credits')}
+    <div style="margin-top:14px; font-size:11.5px; color:var(--rf-text-dim); text-align:center;">Already know what to write? <span style="color:var(--rf-purple); cursor:pointer;">Create a blank draft</span> (100 cr).</div>
+  `),
+  anno:[
+    ['Default route','<code>/content</code> opens to Calendar tab.'],
+    ['Where the change lives','<span class="change-tag dash">DASHBOARD UI</span> New page. <span class="change-tag api">API</span> <code>GET /api/content/calendar?site_id=&amp;month=</code> returns empty array.'],
+    ['Site picker','Reads <code>sites</code> table joined on <code>team_id</code>. Most teams have one site; multi-site is shown when >1.'],
+    ['Recommended first action','Research over blank draft. Research seeds the editor with keywords and outline so the AI draft is much stronger.'],
+    ['Role','All roles see this. Writers see "New article" only if their seat has draft creation enabled (default yes).'],
+  ]
+});
+
+screens.push({
+  id:'s4', tag:'A · Navigation', newScreen:true,
+  title:'04 · Feature explanation tooltip',
+  desc:'Hover or tap the small "i" next to the Content Engine title to learn what the feature does and the article workflow it manages.',
+  body:dashShell('content', `
+    ${ceHeader(true)}
+    ${contentTabs('calendar')}
+    <div class="empty-state" style="opacity:0.4;">
+      <div class="ico">${ICONS.doc}</div>
+      <h3>Nothing on the calendar yet</h3>
+      <p>Start with Research Hub or create a blank draft now.</p>
+      <button class="btn-primary">${ICONS.spark}<span>Start research</span></button>
+    </div>
+  `),
+  anno:[
+    ['Trigger','Hover (desktop) or tap (touch) the <code>i</code> icon next to the heading.'],
+    ['Copy','"Plan, research, draft, approve, and sync AI-written blog articles directly to your Framer CMS." Plus a short summary of the article workflow.'],
+    ['Where the change lives','<span class="change-tag dash">DASHBOARD UI</span> CSS-only tooltip. No data fetch.'],
+    ['Why it matters','Many users will see "Content Engine" without knowing it ships an AI writer; the tooltip explains it without taking permanent screen space.'],
+  ]
+});
+
+/* ================== B · CALENDAR ================== */
+screens.push({
+  id:'s5', tag:'B · Calendar',
+  title:'05 · Calendar tab, empty',
+  desc:'Calendar grid is rendered but every cell is blank. The toolbar still works (filters, view toggle, month nav). Empty hint appears at top.',
+  body:dashShell('content', `
+    ${ceHeader()}
+    ${contentTabs('calendar')}
+    <div class="cal-toolbar">
+      <button class="nav-btn">${ICONS.chevL}</button>
+      <div class="month">May 2026</div>
+      <button class="nav-btn">${ICONS.chevR}</button>
+      <div class="view-toggle" style="margin-left:14px;"><span class="opt active">Calendar</span><span class="opt">List</span></div>
+      <div class="cal-filter" style="margin-left:auto;">${ICONS.filter} All statuses</div>
+      <button class="ghost-btn sm">${ICONS.plus}<span>New article</span></button>
+    </div>
+    <div class="banner info" style="margin-bottom:12px;"><div class="b-ico">${ICONS.info}</div><div><b>Nothing scheduled this month</b>Use Research Hub to find opportunities, then schedule drafts to publish on a target date.</div></div>
+    ${calGrid({})}
+  `),
+  anno:[
+    ['Where the change lives','<span class="change-tag dash">DASHBOARD UI</span> <span class="change-tag api">API</span> <code>GET /api/content/calendar?site_id=&amp;month=2026-05</code> returns <code>{events: []}</code>.'],
+    ['Filters still active','Filters are stateful even with no data; persisted in URL search params for shareable views.'],
+    ['Empty hint','Single info banner. Not a giant empty state, so the user can see the grid is functional.'],
+    ['Role','All. Writers see only their own articles (server filters by <code>author_user_id</code>).'],
+  ]
+});
+
+screens.push({
+  id:'s6', tag:'B · Calendar',
+  title:'06 · Calendar populated, May 2026',
+  desc:'Populated month with eight articles in mixed statuses. Cell colors indicate status. Hover any pill to see article details (Screen 8).',
+  body:dashShell('content', `
+    ${ceHeader()}
+    ${contentTabs('calendar')}
+    <div class="cal-toolbar">
+      <button class="nav-btn">${ICONS.chevL}</button>
+      <div class="month">May 2026</div>
+      <button class="nav-btn">${ICONS.chevR}</button>
+      <div class="view-toggle" style="margin-left:14px;"><span class="opt active">Calendar</span><span class="opt">List</span></div>
+      <div class="cal-filter" style="margin-left:auto;">${ICONS.filter} All statuses</div>
+      <div class="cal-filter">All members</div>
+      <button class="ghost-btn sm">${ICONS.plus}<span>New article</span></button>
+    </div>
+    ${calGrid({
+      4: [{s:'published', t:'Framer SEO guide'}],
+      7: [{s:'published', t:'Best Framer templates'}],
+      11:[{s:'approved', t:'AI blog automation'}],
+      14:[{s:'review', t:'Headless CMS vs Framer CMS'}],
+      18:[{s:'draft', t:'Schema for blogs'}, {s:'research', t:'LLM optimization'}],
+      22:[{s:'draft', t:'404 monitoring guide'}],
+      27:[{s:'approved', t:'Image SEO checklist'}],
+    })}
+    <div style="margin-top:12px; display:flex; gap:14px; flex-wrap:wrap; font-size:11px; color:var(--rf-text-muted);">
+      <span><span style="display:inline-block; width:8px; height:8px; border-radius:2px; background:var(--rf-blue); vertical-align:middle; margin-right:5px;"></span>Researching</span>
+      <span><span style="display:inline-block; width:8px; height:8px; border-radius:2px; background:var(--rf-amber); vertical-align:middle; margin-right:5px;"></span>Draft</span>
+      <span><span style="display:inline-block; width:8px; height:8px; border-radius:2px; background:#A855F7; vertical-align:middle; margin-right:5px;"></span>In Review</span>
+      <span><span style="display:inline-block; width:8px; height:8px; border-radius:2px; background:var(--rf-purple); vertical-align:middle; margin-right:5px;"></span>Approved</span>
+      <span><span style="display:inline-block; width:8px; height:8px; border-radius:2px; background:var(--rf-green); vertical-align:middle; margin-right:5px;"></span>Published</span>
+    </div>
+  `),
+  anno:[
+    ['Where the change lives','<span class="change-tag dash">DASHBOARD UI</span><span class="change-tag api">API</span> <code>GET /api/content/calendar</code> returns array of <code>{id, title, status, scheduled_at, author}</code>.'],
+    ['Cell click','Opens popover (Screen 8) with article preview + "Open in editor" CTA.'],
+    ['Color system','5 status colors mapped to the workflow states. Two pills can stack per cell before overflow shows <code>+N</code>.'],
+    ['Today highlight','Cell 15 has purple border + tinted bg (today is May 15 2026 in this demo).'],
+    ['Role','Admin sees all. Writer sees only own articles (filtered server-side). Viewer sees all but read-only.'],
+  ]
+});
+
+screens.push({
+  id:'s7', tag:'B · Calendar',
+  title:'07 · List view of the same data',
+  desc:'Same data, table form. Sortable by date, status, or author. Useful when the user wants chronological scan or bulk actions.',
+  body:dashShell('content', `
+    ${ceHeader()}
+    ${contentTabs('calendar')}
+    <div class="cal-toolbar">
+      <button class="nav-btn">${ICONS.chevL}</button>
+      <div class="month">May 2026</div>
+      <button class="nav-btn">${ICONS.chevR}</button>
+      <div class="view-toggle" style="margin-left:14px;"><span class="opt">Calendar</span><span class="opt active">List</span></div>
+      <div class="cal-filter" style="margin-left:auto;">${ICONS.filter} All statuses</div>
+      <button class="ghost-btn sm">${ICONS.plus}<span>New article</span></button>
+    </div>
+    ${articleRow({title:'Framer SEO guide for 2026', meta:'Published · 2,140 words · 8 backlinks', status:'published', statusLabel:'Published', author:'Nitin', authorInitials:'NH', date:'May 04'})}
+    ${articleRow({title:'Best Framer templates this year', meta:'Published · 1,820 words', status:'published', statusLabel:'Published', author:'Priya', authorInitials:'PR', date:'May 07'})}
+    ${articleRow({title:'How AI blog automation actually works', meta:'Scheduled to publish · 1,640 words', status:'approved', statusLabel:'Approved', author:'Nitin', authorInitials:'NH', date:'May 11'})}
+    ${articleRow({title:'Headless CMS vs Framer CMS, which to pick', meta:'Awaiting Admin review · 1,450 words', status:'review', statusLabel:'In Review', author:'Aanya', authorInitials:'AS', date:'May 14'})}
+    ${articleRow({title:'Schema markup for Framer blogs', meta:'Draft · 980 words', status:'draft', statusLabel:'Draft', author:'Priya', authorInitials:'PR', date:'May 18'})}
+    ${articleRow({title:'LLM optimization for product pages', meta:'Researching · 0 words', status:'research', statusLabel:'Researching', author:'Nitin', authorInitials:'NH', date:'May 18'})}
+    ${articleRow({title:'404 monitoring guide', meta:'Draft · 1,210 words', status:'draft', statusLabel:'Draft', author:'Aanya', authorInitials:'AS', date:'May 22'})}
+    ${articleRow({title:'Image SEO checklist for Framer', meta:'Approved, scheduled', status:'approved', statusLabel:'Approved', author:'Priya', authorInitials:'PR', date:'May 27'})}
+  `),
+  anno:[
+    ['Where the change lives','<span class="change-tag dash">DASHBOARD UI</span> Same dataset as Calendar view; client renders as table.'],
+    ['View persistence','Calendar/List choice stored in <code>users.content_calendar_view</code>. URL also carries <code>?view=list</code> for shareable links.'],
+    ['Row click','Opens the article in the full editor.'],
+    ['Sort','Default sort: scheduled_at DESC. Column click swaps sort.'],
+  ]
+});
+
+screens.push({
+  id:'s8', tag:'B · Calendar', newScreen:true,
+  title:'08 · Cell click popover with preview',
+  desc:'Clicking an article pill inside a calendar cell opens a popover anchored to the cell. Shows title, status, author, word count, scheduled date, plus "Open in editor" and a secondary "Move date" action.',
+  body:dashShell('content', `
+    ${ceHeader()}
+    ${contentTabs('calendar')}
+    <div class="cal-toolbar">
+      <button class="nav-btn">${ICONS.chevL}</button>
+      <div class="month">May 2026</div>
+      <button class="nav-btn">${ICONS.chevR}</button>
+    </div>
+    <div style="position:relative;">
+      ${calGrid({
+        14:[{s:'review', t:'Headless CMS vs Framer CMS'}],
+        18:[{s:'draft', t:'Schema for blogs'}],
+        22:[{s:'draft', t:'404 monitoring guide'}],
+      })}
+      <div style="position:absolute; top:120px; left:280px; width:320px; background:#0F1116; border:1px solid var(--rf-purple-line); border-radius:12px; padding:14px 16px; box-shadow:0 20px 40px rgba(0,0,0,0.6), 0 0 24px rgba(186,36,213,0.15); z-index:5;">
+        <div style="display:flex; gap:8px; align-items:center; margin-bottom:8px;">
+          ${statusPill('review','In Review')}
+          <span style="font-size:10.5px; color:var(--rf-text-dim); margin-left:auto;">Scheduled May 14</span>
+        </div>
+        <h3 style="margin:0 0 4px; font-size:14px; font-weight:600;">Headless CMS vs Framer CMS, which to pick</h3>
+        <p style="margin:0 0 10px; font-size:11.5px; color:var(--rf-text-muted); line-height:1.5;">A side-by-side comparison covering pricing, schema flexibility, build time, and SEO. Submitted by Aanya 2 hours ago.</p>
+        <div style="display:flex; gap:14px; font-size:10.5px; color:var(--rf-text-dim); margin-bottom:12px;">
+          <span><b style="color:var(--rf-text);">1,450</b> words</span>
+          <span>Target kw: <b style="color:var(--rf-text);">headless cms framer</b></span>
+        </div>
+        <div style="display:flex; gap:8px;">
+          <button class="btn-primary sm" style="flex:1;">${ICONS.edit}<span>Open in editor</span></button>
+          <button class="ghost-btn sm">${ICONS.calendar}<span>Move</span></button>
+        </div>
+      </div>
+    </div>
+  `),
+  anno:[
+    ['Trigger','Click any pill inside a calendar cell. Popover anchored at cell, repositions if near viewport edge.'],
+    ['Where the change lives','<span class="change-tag dash">DASHBOARD UI</span> Read from already-loaded calendar payload. No additional fetch.'],
+    ['Open in editor','Routes to <code>/content/drafts/{id}</code>. Opens the full editor (Screens 21-26).'],
+    ['Move action','Drag-to-reschedule is also supported on the cell directly. Move button is an explicit alternative.'],
+    ['Role','Writer can open in editor only for own articles. Viewer cannot move or edit, only preview.'],
+  ]
+});
+
+screens.push({
+  id:'s9', tag:'B · Calendar',
+  title:'09 · Status filter, showing In Review only',
+  desc:'Status filter dropdown applied. Calendar dims out all cells that do not match. Filter chip turns purple to signal an active filter.',
+  body:dashShell('content', `
+    ${ceHeader()}
+    ${contentTabs('calendar')}
+    <div class="cal-toolbar">
+      <button class="nav-btn">${ICONS.chevL}</button>
+      <div class="month">May 2026</div>
+      <button class="nav-btn">${ICONS.chevR}</button>
+      <div class="cal-filter active" style="margin-left:auto;">${ICONS.filter} In Review only · clear</div>
+      <div class="cal-filter">All members</div>
+    </div>
+    ${calGrid({14:[{s:'review', t:'Headless CMS vs Framer CMS'}], 19:[{s:'review', t:'Form builders compared'}]})}
+    <div style="margin-top:10px; font-size:11.5px; color:var(--rf-text-muted);">Showing 2 articles. Filter persisted in URL.</div>
+  `),
+  anno:[
+    ['Where the change lives','<span class="change-tag dash">DASHBOARD UI</span> Client-side filter on already-fetched payload.'],
+    ['URL','Filter is reflected as <code>?status=in_review</code>. Refresh preserves selection.'],
+    ['Clear filter','Click the chip again to clear. Or use the <code>clear</code> action on the chip.'],
+  ]
+});
+
+screens.push({
+  id:'s10', tag:'B · Calendar',
+  title:'10 · Member filter, Admin only',
+  desc:'Admin sees a Members filter that scopes the calendar to a specific writer. The filter is hidden for Writer role (writers already see only their own articles).',
+  body:dashShell('content', `
+    ${ceHeader()}
+    ${contentTabs('calendar')}
+    <div class="cal-toolbar">
+      <button class="nav-btn">${ICONS.chevL}</button>
+      <div class="month">May 2026</div>
+      <button class="nav-btn">${ICONS.chevR}</button>
+      <div class="cal-filter active" style="margin-left:auto;"><span class="ava" style="width:14px; height:14px; border-radius:50%; background:linear-gradient(135deg,#6B27D8,#BA24D5); color:#fff; font-size:8px; display:inline-flex; align-items:center; justify-content:center; margin-right:4px;">PR</span>Priya only · clear</div>
+    </div>
+    ${calGrid({7:[{s:'published',t:'Best Framer templates'}], 18:[{s:'draft',t:'Schema for blogs'}], 27:[{s:'approved',t:'Image SEO checklist'}]})}
+    <div style="margin-top:10px; font-size:11.5px; color:var(--rf-text-muted);">Showing Priya Ranjan&apos;s 3 articles.</div>
+  `),
+  anno:[
+    ['Where the change lives','<span class="change-tag dash">DASHBOARD UI</span> Visible only when <code>currentUser.role === "admin"</code>.'],
+    ['Filter values','Loaded from <code>GET /api/team</code>. Each member with at least one article appears in the dropdown.'],
+    ['Why Writer doesn&apos;t see','Writers already get author-filtered server-side. Showing a member filter would be confusing.'],
+  ]
+});
+
+/* ================== C · RESEARCH HUB ================== */
+screens.push({
+  id:'s11', tag:'C · Research Hub',
+  title:'11 · Pre-research empty state',
+  desc:'Research tab landing when no research has been run. Three-phase flow explained. Single primary CTA: Start research.',
+  body:dashShell('content', `
+    ${ceHeader()}
+    ${contentTabs('research')}
+    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:14px; margin-bottom:18px;">
+      <div class="card"><div class="card-head"><span style="width:26px; height:26px; border-radius:7px; background:var(--rf-purple-soft); color:var(--rf-purple); display:flex; align-items:center; justify-content:center;">${ICONS.search}</span><h3>1 · Site Audit</h3>${creditChip(10)}</div><p style="margin:0; font-size:11.5px; color:var(--rf-text-muted); line-height:1.55;">We scan every page on your Framer site, embed and cluster the content, and flag stale articles 90+ days old.</p></div>
+      <div class="card"><div class="card-head"><span style="width:26px; height:26px; border-radius:7px; background:var(--rf-purple-soft); color:var(--rf-purple); display:flex; align-items:center; justify-content:center;">${ICONS.trending}</span><h3>2 · Competitor Analysis</h3>${creditChip(40)}</div><p style="margin:0; font-size:11.5px; color:var(--rf-text-muted); line-height:1.55;">We pull SERP data from DataForSEO and scrape your competitors with Firecrawl to find gap keywords.</p></div>
+      <div class="card"><div class="card-head"><span style="width:26px; height:26px; border-radius:7px; background:var(--rf-purple-soft); color:var(--rf-purple); display:flex; align-items:center; justify-content:center;">${ICONS.spark}</span><h3>3 · Opportunities</h3>${creditChip(0)}</div><p style="margin:0; font-size:11.5px; color:var(--rf-text-muted); line-height:1.55;">Ranked list of refresh, gap, cluster, and trending topics. One click to start a draft.</p></div>
+    </div>
+    ${emptyState(ICONS.brain, 'Start your research', 'Phases 1 and 2 run sequentially, about 90 seconds total. Results are cached for 7 days, so you can return without re-spending credits. Phase 3 is free, derived from the cached output.', 'Start research, 50 credits total')}
+  `),
+  anno:[
+    ['Where the change lives','<span class="change-tag dash">DASHBOARD UI</span><span class="change-tag api">API</span> <code>POST /api/content/research</code> body <code>{site_id, phases:["audit","competitor"]}</code>. Returns job id.'],
+    ['Credit cost','Bundle 50 cr (10 audit + 40 competitor). Phase 3 free. Cached 7 days.'],
+    ['Role','Admin and Publisher can start. Writer can view existing results. Viewer read-only.'],
+    ['Idempotency','If a research job ran within 7 days, the CTA copy changes to "View latest research" with a smaller "Re-run" button.'],
+  ]
+});
+
+screens.push({
+  id:'s12', tag:'C · Research Hub',
+  title:'12 · Phase 1 running, Site Audit',
+  desc:'Phase 1 is in progress. Live progress bar shows pages scanned. Phase 2 and 3 tiles appear queued.',
+  body:dashShell('content', `
+    ${ceHeader()}
+    ${contentTabs('research')}
+    <div class="phase active"><div class="num">1</div><div><h4>Site Audit · running</h4><p>Scanning Framer pages, embedding with Voyage AI, clustering with HDBSCAN.</p></div><div class="right">28 / 42 pages</div></div>
+    <div class="progress" style="margin-bottom:14px;"><div class="fill" style="width:66%;"></div></div>
+    <div class="phase"><div class="num">2</div><div><h4>Competitor Analysis · queued</h4><p>Starts after Phase 1 completes. DataForSEO + Firecrawl.</p></div><div class="right">${creditChip(40)}</div></div>
+    <div class="phase"><div class="num">3</div><div><h4>Opportunities · queued</h4><p>Ranks results once Phases 1 and 2 finish.</p></div><div class="right">${creditChip(0)}</div></div>
+    <div style="margin-top:14px; font-size:11px; color:var(--rf-text-dim); text-align:center;">Estimated 35 seconds remaining. You can navigate away, the job continues in the background.</div>
+  `),
+  anno:[
+    ['Backend flow','<span class="change-tag api">API</span> Plugin context calls <code>framer.getNodesWithType("WebPageNode")</code> and <code>collection.getItems()</code>; server embeds with <code>voyage-3</code>; HDBSCAN clusters at server.'],
+    ['Progress polling','<code>GET /api/content/research/{id}</code> polled every 2s. Returns <code>{phase, pages_scanned, total}</code>.'],
+    ['Background-safe','If user navigates away, job continues. Toast notifies on completion.'],
+    ['Failure','On error → Phase 1 card switches to error variant with Retry. Credits not consumed if phase fails mid-flight.'],
+  ]
+});
+
+screens.push({
+  id:'s13', tag:'C · Research Hub',
+  title:'13 · Phase 1 complete, audit results',
+  desc:'Phase 1 done. Summary stats appear in the card. Phase 2 auto-starts.',
+  body:dashShell('content', `
+    ${ceHeader()}
+    ${contentTabs('research')}
+    <div class="phase done"><div class="num">${ICONS.check}</div><div><h4>Site Audit · complete</h4><p>42 pages scanned · 6 topic clusters · 4 stale (90+ days)</p></div><div class="right" style="color:var(--rf-green);">10 cr used</div></div>
+    <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin:10px 0 16px;">
+      <div class="card" style="margin:0; padding:12px;"><div style="font-size:10.5px; color:var(--rf-text-dim); letter-spacing:0.08em; text-transform:uppercase; font-weight:600;">Pages scanned</div><div style="font-size:22px; font-weight:600; margin-top:4px;">42</div></div>
+      <div class="card" style="margin:0; padding:12px;"><div style="font-size:10.5px; color:var(--rf-text-dim); letter-spacing:0.08em; text-transform:uppercase; font-weight:600;">CMS articles</div><div style="font-size:22px; font-weight:600; margin-top:4px;">18</div></div>
+      <div class="card" style="margin:0; padding:12px;"><div style="font-size:10.5px; color:var(--rf-text-dim); letter-spacing:0.08em; text-transform:uppercase; font-weight:600;">Topic clusters</div><div style="font-size:22px; font-weight:600; margin-top:4px;">6</div></div>
+      <div class="card" style="margin:0; padding:12px;"><div style="font-size:10.5px; color:var(--rf-text-dim); letter-spacing:0.08em; text-transform:uppercase; font-weight:600; color:var(--rf-amber);">Stale 90+ days</div><div style="font-size:22px; font-weight:600; margin-top:4px; color:var(--rf-amber);">4</div></div>
+    </div>
+    <div class="phase active"><div class="num">2</div><div><h4>Competitor Analysis · starting</h4><p>Pulling SERP data from DataForSEO.</p></div><div class="right">${creditChip(40)}</div></div>
+    <div class="progress" style="margin-bottom:12px;"><div class="fill" style="width:8%;"></div></div>
+    <div class="phase"><div class="num">3</div><div><h4>Opportunities · queued</h4></div><div class="right">${creditChip(0)}</div></div>
+  `),
+  anno:[
+    ['DB write','<span class="change-tag db">DB</span> <code>content_research</code> row updated with audit summary JSON.'],
+    ['Cluster algo','Voyage AI <code>voyage-3</code> embeds, HDBSCAN clusters with <code>min_cluster_size=3</code>.'],
+    ['Stale threshold','Default 90 days from <code>updated_at</code>. Configurable per site.'],
+    ['Auto-advance','Phase 2 auto-starts. User can cancel before it begins to save 40 cr.'],
+  ]
+});
+
+screens.push({
+  id:'s14', tag:'C · Research Hub',
+  title:'14 · Phase 2 running, Competitor Analysis',
+  desc:'DataForSEO and Firecrawl running side by side. Status row shows each service.',
+  body:dashShell('content', `
+    ${ceHeader()}
+    ${contentTabs('research')}
+    <div class="phase done"><div class="num">${ICONS.check}</div><div><h4>Site Audit · complete</h4><p>42 pages · 6 clusters · 4 stale</p></div><div class="right" style="color:var(--rf-green);">10 cr used</div></div>
+    <div class="phase active"><div class="num">2</div><div><h4>Competitor Analysis · running</h4><p>Pulling SERP data for 6 competitors and scraping their top-ranking pages.</p></div><div class="right">about 25s left</div></div>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:14px;">
+      <div class="card" style="margin:0; padding:12px;">
+        <div style="font-size:10.5px; color:var(--rf-text-dim); letter-spacing:0.08em; text-transform:uppercase; font-weight:600;">DataForSEO · SERP</div>
+        <div style="display:flex; align-items:center; gap:8px; margin-top:6px; font-size:12.5px;"><span style="width:6px; height:6px; border-radius:50%; background:var(--rf-green); box-shadow:0 0 5px var(--rf-green);"></span>6 keyword sets · 142 results pulled</div>
+      </div>
+      <div class="card" style="margin:0; padding:12px;">
+        <div style="font-size:10.5px; color:var(--rf-text-dim); letter-spacing:0.08em; text-transform:uppercase; font-weight:600;">Firecrawl · scrape</div>
+        <div style="display:flex; align-items:center; gap:8px; margin-top:6px; font-size:12.5px;"><div class="loading-spinner" style="width:12px; height:12px; margin:0; border-width:1.5px;"></div>9 / 18 pages scraped</div>
+      </div>
+    </div>
+    <div class="progress"><div class="fill" style="width:62%;"></div></div>
+    <div class="phase" style="margin-top:14px;"><div class="num">3</div><div><h4>Opportunities · queued</h4></div><div class="right">${creditChip(0)}</div></div>
+  `),
+  anno:[
+    ['Parallelism','SERP and scrape run in parallel. Total wall-clock about 35-45s.'],
+    ['Cache','Per-keyword SERP responses cached 30 days. If a competitor was scraped in last 7 days, skipped.'],
+    ['Cost guard','40 cr deducted on phase start, not per-API. Partial failures refund pro-rata.'],
+    ['Where the change lives','<span class="change-tag api">API</span> Two service workers, results joined in Postgres.'],
+  ]
+});
+
+screens.push({
+  id:'s15', tag:'C · Research Hub',
+  title:'15 · Phase 2 complete, gap keywords',
+  desc:'Phase 2 done. Gap keywords appear in a sortable table with monthly volume.',
+  body:dashShell('content', `
+    ${ceHeader()}
+    ${contentTabs('research')}
+    <div class="phase done"><div class="num">${ICONS.check}</div><div><h4>Site Audit · complete</h4></div><div class="right" style="color:var(--rf-green);">10 cr</div></div>
+    <div class="phase done"><div class="num">${ICONS.check}</div><div><h4>Competitor Analysis · complete</h4><p>6 competitors · 18 pages scraped · 47 gap keywords</p></div><div class="right" style="color:var(--rf-green);">40 cr</div></div>
+    <table class="rf-table" style="margin-bottom:14px;">
+      <thead><tr><th>Gap keyword</th><th>Monthly volume</th><th>Difficulty</th><th>Competitors ranking</th><th></th></tr></thead>
+      <tbody>
+        <tr><td>headless cms framer</td><td>2,400</td><td>32</td><td>3 of 6</td><td><button class="ghost-btn sm">${ICONS.plus}<span>Add to ideas</span></button></td></tr>
+        <tr><td>framer cms scheduled publish</td><td>880</td><td>21</td><td>4 of 6</td><td><button class="ghost-btn sm">${ICONS.plus}<span>Add</span></button></td></tr>
+        <tr><td>framer blog seo</td><td>1,600</td><td>28</td><td>5 of 6</td><td><button class="ghost-btn sm">${ICONS.plus}<span>Add</span></button></td></tr>
+        <tr><td>framer ai image alt text</td><td>340</td><td>14</td><td>2 of 6</td><td><button class="ghost-btn sm">${ICONS.plus}<span>Add</span></button></td></tr>
+        <tr><td>llm seo framer</td><td>720</td><td>19</td><td>1 of 6</td><td><button class="ghost-btn sm">${ICONS.plus}<span>Add</span></button></td></tr>
+      </tbody>
+    </table>
+    <button class="btn-primary">${ICONS.spark}<span>Generate Opportunities (free)</span></button>
+  `),
+  anno:[
+    ['Gap formula','<code>gap = competitor_kws - your_kws</code>, joined to DataForSEO volume + difficulty.'],
+    ['Add to ideas','Creates an <code>idea</code>-status draft. Goes into Calendar with no scheduled date.'],
+    ['Where the change lives','<span class="change-tag db">DB</span> <code>content_research.suggested_keywords_json</code>.'],
+    ['Generate Opps','Free derivation step. Ranks all candidates (refresh + gap + cluster + trending) into one prioritized list.'],
+  ]
+});
+
+screens.push({
+  id:'s16', tag:'C · Research Hub',
+  title:'16 · Opportunities dashboard',
+  desc:'All four opportunity types ranked by impact. Each card shows type tag, title, brief, impact score, and Start Draft CTA.',
+  body:dashShell('content', `
+    ${ceHeader()}
+    ${contentTabs('research')}
+    <div style="display:flex; gap:10px; margin-bottom:14px; flex-wrap:wrap;">
+      <div class="cal-filter active">All · 24</div>
+      <div class="cal-filter">Refresh · 4</div>
+      <div class="cal-filter">Gap · 11</div>
+      <div class="cal-filter">Cluster · 6</div>
+      <div class="cal-filter">Trending · 3</div>
+      <div class="cal-filter" style="margin-left:auto;">Sort: Impact ↓</div>
+    </div>
+    <div class="opp">
+      <div><span class="opp-type gap">Gap</span><div class="opp-title">Headless CMS vs Framer CMS, which to pick</div><div class="opp-sub">2,400 vol · KD 32 · 3 of 6 competitors rank · cluster: CMS</div></div>
+      <div class="impact"><b>94</b><span>Impact</span></div>
+      <button class="btn-primary sm">${ICONS.edit}<span>Start Draft</span></button>
+    </div>
+    <div class="opp">
+      <div><span class="opp-type refresh">Refresh</span><div class="opp-title">Framer SEO complete guide</div><div class="opp-sub">Published 142 days ago · ranking #6 · 1,200 visits/mo lost vs peak</div></div>
+      <div class="impact"><b>91</b><span>Impact</span></div>
+      <button class="btn-primary sm">${ICONS.refresh}<span>Refresh</span></button>
+    </div>
+    <div class="opp">
+      <div><span class="opp-type cluster">Cluster</span><div class="opp-title">Image alt text best practices for Framer</div><div class="opp-sub">Extends your "Image SEO" cluster · 340 vol · KD 14 · easy win</div></div>
+      <div class="impact"><b>86</b><span>Impact</span></div>
+      <button class="btn-primary sm">${ICONS.edit}<span>Start Draft</span></button>
+    </div>
+    <div class="opp">
+      <div><span class="opp-type trending">Trending</span><div class="opp-title">LLM optimization for product pages</div><div class="opp-sub">Volume up 220% in 30 days · KD 19 · no competitors yet</div></div>
+      <div class="impact"><b>83</b><span>Impact</span></div>
+      <button class="btn-primary sm">${ICONS.edit}<span>Start Draft</span></button>
+    </div>
+    <div class="opp">
+      <div><span class="opp-type gap">Gap</span><div class="opp-title">Framer blog scheduled publishing setup</div><div class="opp-sub">880 vol · KD 21 · 4 of 6 competitors rank · cluster: Blog</div></div>
+      <div class="impact"><b>78</b><span>Impact</span></div>
+      <button class="btn-primary sm">${ICONS.edit}<span>Start Draft</span></button>
+    </div>
+  `),
+  anno:[
+    ['Impact formula','<code>volume * (1 + cluster_match) * recency_weight / difficulty</code> normalized to 0-100.'],
+    ['Four types','Refresh (your stale pages), Gap (competitors rank, you do not), Cluster (extends existing authority), Trending (surging volume).'],
+    ['Start Draft','<span class="change-tag api">API</span> <code>POST /api/content/drafts</code> with research context pre-attached. Routes into editor (Screen 18 → 19).'],
+    ['Cache','Opportunities derived live from cached research, free. Re-derive button (not shown) recomputes scores after editing settings.'],
+  ]
+});
+
+screens.push({
+  id:'s17', tag:'C · Research Hub',
+  title:'17 · Filter opportunities by type',
+  desc:'User clicked the Gap filter. Only Gap opportunities show. Count chips update.',
+  body:dashShell('content', `
+    ${ceHeader()}
+    ${contentTabs('research')}
+    <div style="display:flex; gap:10px; margin-bottom:14px;">
+      <div class="cal-filter">All · 24</div>
+      <div class="cal-filter">Refresh · 4</div>
+      <div class="cal-filter active">Gap · 11 · clear</div>
+      <div class="cal-filter">Cluster · 6</div>
+      <div class="cal-filter">Trending · 3</div>
+    </div>
+    <div class="opp"><div><span class="opp-type gap">Gap</span><div class="opp-title">Headless CMS vs Framer CMS, which to pick</div><div class="opp-sub">2,400 vol · KD 32</div></div><div class="impact"><b>94</b><span>Impact</span></div><button class="btn-primary sm">${ICONS.edit}<span>Start Draft</span></button></div>
+    <div class="opp"><div><span class="opp-type gap">Gap</span><div class="opp-title">Framer blog scheduled publishing setup</div><div class="opp-sub">880 vol · KD 21</div></div><div class="impact"><b>78</b><span>Impact</span></div><button class="btn-primary sm">${ICONS.edit}<span>Start Draft</span></button></div>
+    <div class="opp"><div><span class="opp-type gap">Gap</span><div class="opp-title">Framer vs Webflow for blogs in 2026</div><div class="opp-sub">1,820 vol · KD 38</div></div><div class="impact"><b>72</b><span>Impact</span></div><button class="btn-primary sm">${ICONS.edit}<span>Start Draft</span></button></div>
+    <div class="opp"><div><span class="opp-type gap">Gap</span><div class="opp-title">Framer plugin development tutorial</div><div class="opp-sub">560 vol · KD 24</div></div><div class="impact"><b>68</b><span>Impact</span></div><button class="btn-primary sm">${ICONS.edit}<span>Start Draft</span></button></div>
+  `),
+  anno:[
+    ['Where the change lives','<span class="change-tag dash">DASHBOARD UI</span> Pure client filter on opportunity payload.'],
+    ['URL','<code>?type=gap</code> reflected in URL.'],
+    ['Click another','Multi-select is single (not multi) for simplicity. Use "All" to clear.'],
+  ]
+});
+
+screens.push({
+  id:'s18', tag:'C · Research Hub', newScreen:true,
+  title:'18 · Start Draft transition into editor',
+  desc:'User clicked Start Draft on the top gap opportunity. Brief loading overlay while we create the draft row and prefetch SERP outlines.',
+  body:dashShell('content', `
+    ${ceHeader()}
+    ${contentTabs('research')}
+    <div class="opp" style="opacity:0.4;"><div><span class="opp-type gap">Gap</span><div class="opp-title">Headless CMS vs Framer CMS, which to pick</div></div><div class="impact"><b>94</b><span>Impact</span></div><button class="btn-primary sm">Starting...</button></div>
+    <div style="margin-top:24px; background:var(--rf-bg-card); border:1px solid var(--rf-purple-line); border-radius:14px; padding:24px; text-align:center;">
+      <div class="loading-spinner" style="margin-bottom:14px;"></div>
+      <h3 style="margin:0 0 4px; font-size:14px;">Creating draft and pre-loading research context</h3>
+      <p style="margin:0; font-size:12px; color:var(--rf-text-muted);">Attaching keyword, SERP outlines from top 3 competitors, and your owned topic cluster.</p>
+      <div style="margin-top:16px; font-size:11px; color:var(--rf-text-dim); font-family:'JetBrains Mono', monospace;">draft id rfd_8a3e1f · 0 cr (research already paid) · about 2s</div>
+    </div>
+  `),
+  anno:[
+    ['Where the change lives','<span class="change-tag api">API</span> <code>POST /api/content/drafts</code> body <code>{site_id, opportunity_id}</code>. Returns draft id; no AI generation yet (that happens when user clicks Generate inside editor).'],
+    ['Cost','0 credits at this step. Article draft 100 cr fires only on explicit "Generate with AI" click.'],
+    ['Prefetch','SERP outlines from research are attached as <code>draft.context_json</code> so editor sidebar shows them immediately.'],
+    ['Route','On success → <code>/content/drafts/{id}</code> (Screen 19).'],
+  ]
+});
+
+`;
+window.__SCREENS_BATCH_1_DONE = true;
+</script>
+</body>
+</html>
