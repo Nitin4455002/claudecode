@@ -6222,9 +6222,7 @@ sections.forEach(s=>obs.observe(s));
     // re-execute scripts (cloned scripts do not run); wrap each in an IIFE to keep top-level consts local
     Array.prototype.slice.call(stage.querySelectorAll("script")).forEach(function(old){
       var s=document.createElement("script");
-      s.textContent="(function(){
-"+old.textContent+"
-})();";
+      s.textContent="(function(){\n"+old.textContent+"\n})();";
       old.parentNode.replaceChild(s, old);
     });
     current=target;
