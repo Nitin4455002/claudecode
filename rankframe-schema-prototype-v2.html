@@ -7,7 +7,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   /* ============================================================
-     RankFrame Design Tokens — pulled from real screenshots
+     RankFrame Design Tokens, pulled from real screenshots
      ============================================================ */
   :root{
     --rf-bg:           #000000;
@@ -849,7 +849,7 @@
     cursor:not-allowed;
   }
 
-  /* AUTO-GENERATE — page list */
+  /* AUTO-GENERATE, page list */
   .info-banner{
     display:flex; align-items:flex-start; gap:10px;
     background:rgba(59,130,246,0.06);
@@ -949,7 +949,7 @@
     color:var(--rf-purple);
   }
 
-  /* Suggestion selector — the "we found 3 schemas" screen */
+  /* Suggestion selector, the "we found 3 schemas" screen */
   .suggest-card{
     background:var(--rf-bg-card);
     border:1px solid var(--rf-border);
@@ -1815,17 +1815,17 @@
     --rf-text-faint: #7A8290;  /* was #4B5563 (2.8:1) → now 5.4:1 on #0E1012 */
     --rf-text-dim:   #8A91A0;  /* was #6B7280 (4.4:1) → now 5.8:1 on #0E1012 */
 
-    /* Standardize radii — one of: 6 (small), 8 (med), 12 (large), 999 (pill) */
+    /* Standardize radii, one of: 6 (small), 8 (med), 12 (large), 999 (pill) */
     --rf-radius-sm: 6px;
     --rf-radius-md: 8px;
     --rf-radius-lg: 12px;
     --rf-radius-pill: 999px;
 
-    /* Focus ring — used everywhere for keyboard nav */
+    /* Focus ring, used everywhere for keyboard nav */
     --rf-focus: 0 0 0 2px var(--rf-bg), 0 0 0 4px var(--rf-purple);
   }
 
-  /* A11Y: Bump minimum font sizes — anything labelled at 9-10px goes to 11px minimum */
+  /* A11Y: Bump minimum font sizes, anything labelled at 9-10px goes to 11px minimum */
   .proto-tag,
   .badge-new,
   .src-tag,
@@ -1919,11 +1919,11 @@
   .page-row-pill.amber .dot-st::before { content: "!"; font-size: 11px; font-weight: 700; }
   .page-row-pill.gray .dot-st::before { content: "○"; font-size: 11px; line-height: 0.8; }
 
-  /* UX: Higher-contrast info banners — body text stays var(--rf-text), only the eyebrow/icon uses semantic color */
+  /* UX: Higher-contrast info banners, body text stays var(--rf-text), only the eyebrow/icon uses semantic color */
   .info-banner { color: var(--rf-text); }
   .info-banner strong { color: var(--rf-text); }
 
-  /* UX: Recommendation tag visual weight — Recommended should feel obviously primary vs Optional */
+  /* UX: Recommendation tag visual weight, Recommended should feel obviously primary vs Optional */
   .suggest-tag {
     padding: 3px 9px;
     border: 1px solid;
@@ -1941,11 +1941,11 @@
     box-shadow: 0 0 0 1px var(--rf-purple-line), 0 6px 18px rgba(186,36,213,0.06);
   }
 
-  /* UX: Sub-nav icon differentiation — color tint for Schema vs LLM SEO so they read as different features */
+  /* UX: Sub-nav icon differentiation, color tint for Schema vs LLM SEO so they read as different features */
   .sub-nav-item .ico { color: var(--rf-text-muted); }
   .sub-nav-item.active .ico { color: var(--rf-purple); }
 
-  /* UX: Standardize all border-radius values — gentle pass that doesn't break too much */
+  /* UX: Standardize all border-radius values, gentle pass that doesn't break too much */
   .schema-action-btn,
   .lib-btn,
   .btn-secondary,
@@ -1972,7 +1972,7 @@
   .picker-card,
   .page-picker-row { border-radius: var(--rf-radius-lg) !important; }
 
-  /* UX: Stronger CTA for "Scan all pages" — promote from text link to card */
+  /* UX: Stronger CTA for "Scan all pages", promote from text link to card */
   .scan-all-cta {
     display: flex;
     align-items: center;
@@ -2019,7 +2019,7 @@
     flex: 0 0 auto;
   }
 
-  /* UX: Validation specificity — make the "will pass Google" badge informative */
+  /* UX: Validation specificity, make the "will pass Google" badge informative */
   .validation-pill-detail {
     display: inline-flex;
     align-items: center;
@@ -2038,7 +2038,7 @@
     display: inline-flex; align-items: center; justify-content: center;
   }
 
-  /* UX: Field source tags — improve readability */
+  /* UX: Field source tags, improve readability */
   .field-source-tag {
     font-size: 10.5px;
     color: var(--rf-text-muted);
@@ -2056,7 +2056,7 @@
     background: rgba(186,36,213,0.08);
   }
 
-  /* UX: Scan tree — schema badges inside collapsed rows */
+  /* UX: Scan tree, schema badges inside collapsed rows */
   .scan-row-schemas {
     display: inline-flex;
     flex-wrap: wrap;
@@ -2104,7 +2104,7 @@
 
 
   /* ============================================================
-     V4 — Tab system + Library page-rows + Settings + Verification
+     V4, Tab system + Library page-rows + Settings + Verification
      ============================================================ */
 
   /* ---- Feature tabs (Generate / Library / Verification / Settings) ---- */
@@ -2296,7 +2296,7 @@
     color:var(--rf-text-dim);
   }
 
-  /* Expanded body — individual schema rows */
+  /* Expanded body, individual schema rows */
   .lib-page-body{
     padding:8px 16px 14px 60px;
   }
@@ -2585,7 +2585,7 @@
   }
 
   /* ============================================================
-     V5 — Density fixes, stepper, what-needs-attention, all-clear,
+     V5, Density fixes, stepper, what-needs-attention, all-clear,
           CMS coverage detail, uncovered-pages banner, keyboard hint
      ============================================================ */
 
@@ -3037,7 +3037,7 @@
       </div>
       <div class="proto-side-sub">Advanced Schema + LLM SEO</div>
       <div class="proto-side-meta">
-        <b>v2</b><span class="sep">·</span><span>26 screens</span><span class="sep">·</span><span>Jun 2026</span>
+        <b>v2</b><span class="sep">·</span><span>27 screens</span><span class="sep">·</span><span>Jun 2026</span>
       </div>
     </div>
 
@@ -3056,7 +3056,7 @@
 
 <script>
 /* ============================================================
-   ICONS — small SVG sprites used across the prototype
+   ICONS, small SVG sprites used across the prototype
    ============================================================ */
 const ico = {
   cog: '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 15.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7zM19.4 12.9a7.5 7.5 0 0 0 0-1.8l2.1-1.6-2-3.5-2.4 1a7.5 7.5 0 0 0-1.6-0.9L15 3h-4l-0.5 2.6a7.5 7.5 0 0 0-1.6 0.9l-2.4-1-2 3.5 2.1 1.6a7.5 7.5 0 0 0 0 1.8l-2.1 1.6 2 3.5 2.4-1a7.5 7.5 0 0 0 1.6 0.9L9 21h4l0.5-2.6a7.5 7.5 0 0 0 1.6-0.9l2.4 1 2-3.5z"/></svg>',
@@ -3123,14 +3123,14 @@ const ico = {
   download: '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>',
 };
 /* ============================================================
-   PLUGIN FRAME WRAPPER — every screen renders the 880x720 chrome
+   PLUGIN FRAME WRAPPER, every screen renders the 880x720 chrome
    ============================================================ */
 function pluginFrame(activeKey, mainHTML, topBanner=''){
   return `<div class="plugin-window"><div class="plg-top"><div class="plg-top-l"><div class="mark"><span></span><span></span><span></span><span></span></div><b>Rankframe Plugin</b><span class="dev-tag">(Development)</span></div><div class="plg-top-x">×</div></div><div class="plg-body">${pluginSubNav(activeKey)}<div class="plg-main">${topBanner}${mainHTML}</div></div></div>`;
 }
 
 /* ============================================================
-   CANONICAL PLUGIN NAV — accordion groups (Setup · Optimize ·
+   CANONICAL PLUGIN NAV, accordion groups (Setup · Optimize ·
    Index · Monitor · Content Engine). Shared identically across
    the schema, content-engine, and multiuser prototypes so the
    in-plugin left rail never conflicts between specs. Only the
@@ -3413,11 +3413,11 @@ function libRow(opts){
 }
 
 /* ============================================================
-   SCREEN DEFINITIONS — Schema v4 (4-tab restructure)
+   SCREEN DEFINITIONS, Schema v4 (4-tab restructure)
    ============================================================ */
 const screens = [];
 
-/* ==== S1 — Contact Sheet ==== */
+/* ==== S1, Contact Sheet ==== */
 screens.push({
   id:'s1', tag:'00 · Overview', title:'Contact sheet',
   desc:'Every screen in the Schema feature at a glance. Click any tile to jump to the full screen.',
@@ -3429,10 +3429,10 @@ screens.push({
    GENERATE TAB
    ============================================================ */
 
-/* ==== S2 — Empty state (first run) ==== */
+/* ==== S2, Empty state (first run) ==== */
 screens.push({
-  id:'s2', tag:'Generate', title:'Empty state — first run with explainer illustration',
-  desc:'Brand new user. No schemas exist yet. The empty state now includes a before/after Google search result illustration so users understand what schema actually does — it makes their pages show up richer in search.',
+  id:'s2', tag:'Generate', title:'Empty state, first run with explainer illustration',
+  desc:'Brand new user. No schemas exist yet. The empty state now includes a before/after Google search result illustration so users understand what schema actually does, it makes their pages show up richer in search.',
   newScreen:true,
   body: pluginFrame('schema', `
     ${schemaSectionHead('generate')}
@@ -3441,7 +3441,7 @@ screens.push({
       <div style="display:inline-flex; align-items:center; justify-content:center; width:48px; height:48px; background:var(--rf-purple-soft); border-radius:50%; color:var(--rf-purple); margin-bottom:10px;" aria-hidden="true">${ico.schema_tag}</div>
       <h3 style="font-size:18px; font-weight:600; margin:0 0 6px; color:var(--rf-text);">Make your pages show up richer in search</h3>
       <p style="font-size:13px; color:var(--rf-text-muted); margin:0; line-height:1.5; max-width:520px; margin:0 auto;">
-        Schema markup tells Google what your content is about. With it, your pages can appear with images, star ratings, FAQs, and other rich results — driving more clicks.
+        Schema markup tells Google what your content is about. With it, your pages can appear with images, star ratings, FAQs, and other rich results, driving more clicks.
       </p>
     </div>
 
@@ -3449,7 +3449,7 @@ screens.push({
       <div class="first-run-card">
         <div class="first-run-card-label">Without schema</div>
         <div class="frc-result">
-          <div class="frc-result-title">7 Seers Media — Brand Identity Studio</div>
+          <div class="frc-result-title">7 Seers Media, Brand Identity Studio</div>
           <div class="frc-result-url">7seersmedia.com › thoughts › master-color</div>
           <div class="frc-result-snippet">A practical guide to choosing color palettes that align with brand strategy and user perception in digital products...</div>
         </div>
@@ -3460,7 +3460,7 @@ screens.push({
           <div class="frc-result-rich" style="margin-bottom:6px;">
             <div class="frc-img" aria-hidden="true"></div>
             <div style="flex:1;">
-              <div class="frc-result-title">Master the Power of Color — 7 Seers Media</div>
+              <div class="frc-result-title">Master the Power of Color, 7 Seers Media</div>
               <div class="frc-result-url">7seersmedia.com › thoughts</div>
             </div>
           </div>
@@ -3496,9 +3496,9 @@ screens.push({
   ]
 });
 
-/* ==== S3 — Generate tab default (returning user) ==== */
+/* ==== S3, Generate tab default (returning user) ==== */
 screens.push({
-  id:'s3', tag:'Generate', title:'Generate tab — primary surface with actionable attention card',
+  id:'s3', tag:'Generate', title:'Generate tab, primary surface with actionable attention card',
   desc:'The Generate tab is the action surface. Two CTAs (per-page Auto-Generate + Whole-site scan) plus a "What needs your attention" card showing actionable items, not historical events.',
   newScreen:true,
   body: pluginFrame('schema', `
@@ -3514,7 +3514,7 @@ screens.push({
         <div class="needs-attention-ico failed">${ico.x}</div>
         <div class="needs-attention-text">
           <strong>1 schema failed verification</strong><br/>
-          <span style="color:var(--rf-text-muted); font-size:11.5px;">Event on /events/launch-2026 — missing startDate</span>
+          <span style="color:var(--rf-text-muted); font-size:11.5px;">Event on /events/launch-2026, missing startDate</span>
         </div>
         <button type="button" class="needs-attention-action" aria-label="Fix the failed Event schema">Fix →</button>
       </div>
@@ -3522,7 +3522,7 @@ screens.push({
         <div class="needs-attention-ico warning">${ico.alert}</div>
         <div class="needs-attention-text">
           <strong>1 schema has warnings</strong><br/>
-          <span style="color:var(--rf-text-muted); font-size:11.5px;">Service on /pricing — missing recommended fields</span>
+          <span style="color:var(--rf-text-muted); font-size:11.5px;">Service on /pricing, missing recommended fields</span>
         </div>
         <button type="button" class="needs-attention-action" aria-label="Fix the warning on Service schema">Fix →</button>
       </div>
@@ -3542,8 +3542,8 @@ screens.push({
     </div>
   `),
   anno:[
-    ['Actionable, not historical','The card was "Recent activity" — a log of what RankFrame did. Now it\'s "What needs your attention" — surfaces the 3 most important things to do next: failed verifications, warnings, and uncovered pages.'],
-    ['Each row has a one-click action','Fix the failed schema, fix the warning, or cover the uncovered pages. No browsing required — every problem is its own button.'],
+    ['Actionable, not historical','The card was "Recent activity", a log of what RankFrame did. Now it\'s "What needs your attention", surfaces the 3 most important things to do next: failed verifications, warnings, and uncovered pages.'],
+    ['Each row has a one-click action','Fix the failed schema, fix the warning, or cover the uncovered pages. No browsing required, every problem is its own button.'],
     ['Replaces passive Recent activity','Historical logs work in audit tools; for an active workspace, the user needs to know what to do RIGHT NOW.'],
     ['Generate tab earns its keep','When the card has rows, this tab is where action happens. When everything is clean, the card shows an "All clear" state (see Verification all-clear pattern).'],
   ]
@@ -3553,7 +3553,7 @@ screens.push({
    B · PER-PAGE AUTO-GENERATE FLOW
    ============================================================ */
 
-/* ==== S4 — Page list (after clicking Auto-Generate) ==== */
+/* ==== S4, Page list (after clicking Auto-Generate) ==== */
 screens.push({
   id:'s4', tag:'Generate · Per-page', title:'Pick a page',
   desc:'After clicking the primary button. Shows every page in the sitemap. Each row tells the user what schemas already exist on that page so they can decide.',
@@ -3635,14 +3635,14 @@ screens.push({
     </div>
   `),
   anno:[
-    ['Sitemap via Framer','Pages enumerated via <code>framer.getProjectInfo()</code> + sitemap parsing. CMS templates marked with item count.'],
-    ['Status pill is informative','Shows what schemas are ALREADY on the page (from headEnd marker parsing). User can avoid duplicates by reading at a glance.'],
-    ['"Generate more"','When schemas exist, the button text changes to "Generate more" — clarifies intent.'],
+    ['Where the page list comes from','The Framer Plugin API has no page-enumeration method (<code>getProjectInfo()</code> returns only the project name and a hashed id). RankFrame gets the page list by crawling the published site and its <code>sitemap.xml</code>, the same crawl behind Recrawl Website. CMS routes are detected from that crawl, with item counts.'],
+    ['Status pill is informative','Shows what RankFrame already manages for that page, read from its own injected block via <code>getCustomCode()</code>, plus anything found during the last crawl. Lets the user avoid duplicates at a glance.'],
+    ['"Generate more"','When schemas exist, the button text changes to "Generate more", clarifies intent.'],
     ['CMS template badge','Pages backed by a CMS collection show "<code>CMS · 47 items</code>" so user knows bulk-generation is available.'],
   ]
 });
 
-/* ==== S5 — Analyzing page ==== */
+/* ==== S5, Analyzing page ==== */
 screens.push({
   id:'s5', tag:'Generate · Per-page', title:'Analyzing page',
   desc:'After clicking Generate on a row. RankFrame reads the page (or CMS data if applicable), detects entities, matches schema types. 6-10 seconds.',
@@ -3675,10 +3675,10 @@ screens.push({
   ]
 });
 
-/* ==== S6 — Suggestions (multi-select, no Review per row) ==== */
+/* ==== S6, Suggestions (multi-select, no Review per row) ==== */
 screens.push({
-  id:'s6', tag:'Generate · Per-page', title:'Suggested schemas — multi-select',
-  desc:'RankFrame detected 3 relevant schemas. User checks/unchecks. No "Review" button per row — since editing is gone, suggestions just describe what will be generated. One Continue button.',
+  id:'s6', tag:'Generate · Per-page', title:'Suggested schemas, multi-select',
+  desc:'RankFrame detected 3 relevant schemas. User checks/unchecks. No "Review" button per row, since editing is gone, suggestions just describe what will be generated. One Continue button.',
   newScreen:true,
   body: pluginFrame('schema', `
     ${schemaSectionHead('generate')}
@@ -3735,17 +3735,17 @@ screens.push({
     </div>
   `),
   anno:[
-    ['No per-row Review','The old "Review" link is gone — there\'s nothing to edit. Clicking Generate produces the schemas directly.'],
+    ['No per-row Review','The old "Review" link is gone, there\'s nothing to edit. Clicking Generate produces the schemas directly.'],
     ['Recommended vs Optional','Pre-checked by default = Recommended. Unchecked = Optional. User toggles freely.'],
     ['Preview line','One-line summary of what was detected. Gives confidence RankFrame read the content correctly.'],
     ['Two confidence levels only','Removed the "blocked" pattern. Smart fallbacks in the prompts handle missing fields (e.g. Article uses Organization-as-author when no Person detected).'],
   ]
 });
 
-/* ==== S7 — Suggestions with cross-feature awareness (FAQPage already from LLM SEO) ==== */
+/* ==== S7, Suggestions with cross-feature awareness (FAQPage already from LLM SEO) ==== */
 screens.push({
-  id:'s7', tag:'Generate · Per-page', title:'Cross-feature — FAQPage already managed by LLM SEO',
-  desc:'On the homepage, LLM SEO has already injected FAQPage. RankFrame detects this via marker comments and shows it as "Managed by LLM SEO" — locked, with a deep-link to the LLM SEO tab. Cross-feature contract in action.',
+  id:'s7', tag:'Generate · Per-page', title:'Cross-feature, FAQPage already managed by LLM SEO',
+  desc:'On the homepage, LLM SEO has already injected FAQPage. RankFrame detects this via marker comments and shows it as "Managed by LLM SEO", locked, with a deep-link to the LLM SEO tab. Cross-feature contract in action.',
   newScreen:true,
   body: pluginFrame('schema', `
     ${schemaSectionHead('generate')}
@@ -3793,7 +3793,7 @@ screens.push({
         <div class="desc">A FAQPage schema already exists, generated by LLM SEO's FAQ Generator.</div>
         <div class="conflict-note success">
           ${ico.check}
-          <span>Existing FAQPage detected — no duplicate will be created. <a style="color:var(--rf-teal); text-decoration:underline; cursor:pointer;">View in LLM SEO →</a></span>
+          <span>Existing FAQPage detected, no duplicate will be created. <a style="color:var(--rf-teal); text-decoration:underline; cursor:pointer;">View in LLM SEO →</a></span>
         </div>
       </div>
     </div>
@@ -3822,9 +3822,9 @@ screens.push({
   ]
 });
 
-/* ==== S8 — CMS template detected ==== */
+/* ==== S8, CMS template detected ==== */
 screens.push({
-  id:'s8', tag:'Generate · Per-page', title:'CMS template detected — bulk option appears',
+  id:'s8', tag:'Generate · Per-page', title:'CMS template detected, bulk option appears',
   desc:'Auto-Generate on /shop/midnight-tote, which is a CMS template backed by Products[47]. RankFrame detects this and offers the bulk option for all 47 items in addition to the per-item flow.',
   newScreen:true,
   body: pluginFrame('schema', `
@@ -3841,7 +3841,7 @@ screens.push({
     <div class="cms-banner">
       <div class="cms-banner-ico">${ico.db}</div>
       <div class="cms-banner-text">
-        <strong>This page is a CMS template — backed by Products collection (47 items)</strong>
+        <strong>This page is a CMS template, backed by Products collection (47 items)</strong>
         <span>RankFrame can read the collection fields directly. More accurate than scraping the rendered page.</span>
       </div>
     </div>
@@ -3865,7 +3865,7 @@ screens.push({
           <span class="name">BreadcrumbList</span>
           <span class="suggest-tag">Recommended</span>
         </div>
-        <div class="desc">Home › Shop › Midnight Tote — improves SERP display.</div>
+        <div class="desc">Home › Shop › Midnight Tote, improves SERP display.</div>
       </div>
     </div>
 
@@ -3891,9 +3891,9 @@ screens.push({
   ]
 });
 
-/* ==== S9 — Generated schemas display (the key new screen) ==== */
+/* ==== S9, Generated schemas display (the key new screen) ==== */
 screens.push({
-  id:'s9', tag:'Generate · Per-page', title:'Generated schemas — Approve or Regenerate',
+  id:'s9', tag:'Generate · Per-page', title:'Generated schemas, Approve or Regenerate',
   desc:'The moment of truth. RankFrame has generated 2 schemas. User sees the content fully, source-tagged per field, with two buttons per card: Approve (saves and queues for injection) or Regenerate (opens instruction box).',
   newScreen:true,
   body: pluginFrame('schema', `
@@ -3982,17 +3982,17 @@ screens.push({
     </div>
   `),
   anno:[
-    ['No editing','As decided — RankFrame generates, user accepts or regenerates. No form fields to fill in.'],
-    ['Field source tags','"from page H1", "from CMS field", "fallback: Organization" — full transparency about where each value came from.'],
+    ['No editing','As decided, RankFrame generates, user accepts or regenerates. No form fields to fill in.'],
+    ['Field source tags','"from page H1", "from CMS field", "fallback: Organization", full transparency about where each value came from.'],
     ['Fallback indicators','Purple text marks values that came from a fallback chain (e.g. Creator → Organization). User can see and decide whether to regenerate.'],
-    ['"Will pass Google"','Green pill — local validation predicts the schema will pass GSC URL Inspection. Sets expectation up front.'],
+    ['"Will pass Google"','Green pill, local validation predicts the schema will pass GSC URL Inspection. Sets expectation up front.'],
     ['Per-schema approve','User can approve schemas one at a time, regenerate the one they don\'t like. Bulk Approve button at bottom for "looks good, ship it all."'],
   ]
 });
 
-/* ==== S10 — Regenerate with instruction box ==== */
+/* ==== S10, Regenerate with instruction box ==== */
 screens.push({
-  id:'s10', tag:'Generate · Per-page', title:'Regenerate with instruction — the conversational moment',
+  id:'s10', tag:'Generate · Per-page', title:'Regenerate with instruction, the conversational moment',
   desc:'User clicked Regenerate on the CreativeWork card. A small input appears: "Anything to change?" with examples. User types a hint, RankFrame regenerates with that context added to the prompt.',
   newScreen:true,
   body: pluginFrame('schema', `
@@ -4002,7 +4002,7 @@ screens.push({
     <div class="editor-head">
       <div class="editor-head-text">
         <h2 style="font-size:18px;">Regenerate CreativeWork</h2>
-        <p>Tell RankFrame what to change. Be specific — exact dates, names, or words work best.</p>
+        <p>Tell RankFrame what to change. Be specific, exact dates, names, or words work best.</p>
       </div>
       <div class="editor-back">${ico.back}<span>Cancel</span></div>
     </div>
@@ -4044,15 +4044,15 @@ screens.push({
   `),
   anno:[
     ['The conversational moment','This is where "no editing" stays usable. Instead of typing into 15 form fields, user types one instruction.'],
-    ['Examples as scaffolding','The hint box shows what good instructions look like. Lowers the barrier — user doesn\'t have to figure out what to say from scratch.'],
+    ['Examples as scaffolding','The hint box shows what good instructions look like. Lowers the barrier, user doesn\'t have to figure out what to say from scratch.'],
     ['Dumb regenerate still available','"Regenerate without changes" lets user retry without any hint, in case the first run was just unlucky.'],
     ['Cost transparency','Each regenerate costs another ~$0.012. (Not shown here but tracked in usage stats.)'],
   ]
 });
 
-/* ==== S11 — Regenerated result with diff hints ==== */
+/* ==== S11, Regenerated result with diff hints ==== */
 screens.push({
-  id:'s11', tag:'Generate · Per-page', title:'Regenerated — what changed',
+  id:'s11', tag:'Generate · Per-page', title:'Regenerated, what changed',
   desc:'RankFrame returned a new version. Changed fields are highlighted so user can scan quickly. Same Approve / Regenerate buttons.',
   newScreen:true,
   body: pluginFrame('schema', `
@@ -4118,15 +4118,15 @@ screens.push({
   `),
   anno:[
     ['Diff highlighting','Changed fields get a green left-border and CHANGED tag. User scans for what\'s different in ~2 seconds.'],
-    ['Instruction echoed back','The banner repeats what RankFrame applied — confirms it understood. If wrong, user regenerates with a clearer instruction.'],
+    ['Instruction echoed back','The banner repeats what RankFrame applied, confirms it understood. If wrong, user regenerates with a clearer instruction.'],
     ['Can regenerate again','No limit on regenerates. Cost shown per attempt in usage panel (not in this screen).'],
   ]
 });
 
-/* ==== S12 — Inject confirmation ==== */
+/* ==== S12, Inject confirmation ==== */
 screens.push({
-  id:'s12', tag:'Generate · Per-page', title:'Inject all approved — Save & Inject footer',
-  desc:'User approved both schemas. They sit in library with "Pending injection" status. Single button injects all to Framer headEnd at once.',
+  id:'s12', tag:'Generate · Per-page', title:'Inject all approved, Save & Inject footer',
+  desc:'User approved both schemas. They sit in library with "Pending injection" status. One button writes them into the single RankFrame-managed headEnd block (site-wide custom code), keyed by page path.',
   body: pluginFrame('schema', `
     ${schemaSectionHead('generate')}
     ${schemaStepper('inject')}
@@ -4169,7 +4169,8 @@ screens.push({
   `),
   anno:[
     ['Sticky footer','Shows up whenever there are pending schemas in the library. One click writes them all to Framer.'],
-    ['Same injection path','Whether single page, regenerated, or bulk — all routes funnel through the same <code>injectIntoFramer()</code> helper. Single audit log, single conflict detection.'],
+    ['One site-wide block, not per-page head edits','The Framer Plugin API only injects custom code site-wide (<code>setCustomCode({location:"headEnd"})</code>); there is no per-page head API. So every approved schema lives in ONE RankFrame-managed headEnd block: a small runtime reads <code>location.pathname</code> and renders the JSON-LD that matches the current page. The per-page UI is the mental model; the implementation is a single managed snippet.'],
+    ['Same injection path','Whether single page, regenerated, or bulk, all routes funnel through the same <code>setCustomCode()</code> call that rewrites the managed block. Single audit log, single conflict detection.'],
     ['After click','Framer\'s native <code>framer.notify()</code> fires: "2 schemas injected. Verifying with Google..."'],
   ]
 });
@@ -4178,9 +4179,9 @@ screens.push({
    C · WHOLE-SITE SCAN (secondary flow)
    ============================================================ */
 
-/* ==== S13 — Pre-scan estimate ==== */
+/* ==== S13, Pre-scan estimate ==== */
 screens.push({
-  id:'s13', tag:'Generate · Whole-site scan', title:'Pre-scan — cost estimate',
+  id:'s13', tag:'Generate · Whole-site scan', title:'Pre-scan, cost estimate',
   desc:'After clicking "Scan all pages." Shows what will happen: 17 pages, estimated cost, estimated time, what gets analyzed. User confirms before any API calls fire.',
   newScreen:true,
   body: pluginFrame('schema', `
@@ -4241,7 +4242,7 @@ screens.push({
 
     <div class="info-banner success" style="margin-bottom:16px;">
       ${ico.sparkles}
-      <div><strong>Smart caching</strong> — pages unchanged since last scan will use cached results. Re-running this in a week may cost much less.</div>
+      <div><strong>Smart caching</strong>, pages unchanged since last scan will use cached results. Re-running this in a week may cost much less.</div>
     </div>
 
     <div class="editor-footer">
@@ -4258,9 +4259,9 @@ screens.push({
   ]
 });
 
-/* ==== S14 — Scan in progress ==== */
+/* ==== S14, Scan in progress ==== */
 screens.push({
-  id:'s14', tag:'Generate · Whole-site scan', title:'Scan in progress — real-time list',
+  id:'s14', tag:'Generate · Whole-site scan', title:'Scan in progress, real-time list',
   desc:'17 pages being analyzed. Each row shows status: pending, analyzing, done, error. Overall progress bar at top. Hangs together visually while doing real concurrent work.',
   newScreen:true,
   body: pluginFrame('schema', `
@@ -4327,20 +4328,20 @@ screens.push({
     </div>
 
     <div style="margin-top:18px; padding:12px 14px; background:rgba(255,255,255,0.02); border-radius:8px; font-size:11.5px; color:var(--rf-text-muted); text-align:center;">
-      ${ico.info} You can leave this screen open — scan continues in the background.
+      ${ico.info} You can leave this screen open, scan continues in the background.
     </div>
   `),
   anno:[
     ['Status per row','Done (green check + schema count + time), Analyzing (spinner + purple), Queued (gray clock).'],
     ['Real concurrency','5 calls run in parallel server-side. UI updates as each completes via SSE or polling.'],
     ['Cached pages','Pages that haven\'t changed since last scan return instantly from cache, marked with a ⚡ icon (not shown here for clarity).'],
-    ['Background-safe','User can navigate away — scan keeps running, notification fires when done.'],
+    ['Background-safe','User can navigate away, scan keeps running, notification fires when done.'],
   ]
 });
 
-/* ==== S15 — Scan results — the tree (hardest screen) ==== */
+/* ==== S15, Scan results, the tree (hardest screen) ==== */
 screens.push({
-  id:'s15', tag:'Generate · Whole-site scan', title:'Scan complete — pick what to inject',
+  id:'s15', tag:'Generate · Whole-site scan', title:'Scan complete, pick what to inject',
   desc:'17 pages × 2-4 schemas each = up to ~60 line items. Solved with collapsed-by-default per-page rows. Each page shows summary (3 schemas found, all recommended). Expand a row to see/uncheck individual schemas. Bulk actions at top.',
   newScreen:true,
   body: pluginFrame('schema', `
@@ -4452,17 +4453,17 @@ screens.push({
   anno:[
     ['Collapse by default','Each page row collapsed to one line (page path + schema summary). Click to expand → individual schema checkboxes per page. Keeps the screen scannable.'],
     ['Per-page checkbox controls all','Top checkbox per page toggles all schemas in that page. Inside, per-schema checkbox lets user fine-tune.'],
-    ['Bulk action toolbar','"Select all recommended" / "Select all + optional" / "Select none" — three smart defaults at the top.'],
+    ['Bulk action toolbar','"Select all recommended" / "Select all + optional" / "Select none", three smart defaults at the top.'],
     ['Skipped pages dimmed','Pages already covered show as dimmed with "Skipped" label. User sees them but they\'re not actionable.'],
     ['CMS rows visually distinct','Purple border + DB icon. Makes the "this applies to 47 items" reality visible without expanding.'],
     ['Bottom counter live-updates','"38 schemas across 13 pages" updates as user toggles. Inject button shows the actual count.'],
   ]
 });
 
-/* ==== S16 — Scan injection in progress ==== */
+/* ==== S16, Scan injection in progress ==== */
 screens.push({
-  id:'s16', tag:'Generate · Whole-site scan', title:'Bulk inject — in progress',
-  desc:'User clicked Inject. 38 schemas being written to Framer headEnd across 13 pages. Progress shown per page. Same pattern as the scan-in-progress screen, but for writes.',
+  id:'s16', tag:'Generate · Whole-site scan', title:'Bulk inject, in progress',
+  desc:'User clicked Inject. 38 schemas for 13 pages are written into the single RankFrame-managed headEnd block in one setCustomCode call, with a runtime path router. Progress is shown per page as RankFrame builds the block. Same pattern as the scan-in-progress screen, but for the write.',
   newScreen:true,
   body: pluginFrame('schema', `
     ${schemaSectionHead('generate')}
@@ -4528,9 +4529,9 @@ screens.push({
    LIBRARY TAB
    ============================================================ */
 
-/* ==== S17 — Library default, with uncovered banner at top ==== */
+/* ==== S17, Library default, with uncovered banner at top ==== */
 screens.push({
-  id:'s17', tag:'Library', title:'Library — uncovered pages surfaced near top',
+  id:'s17', tag:'Library', title:'Library, uncovered pages surfaced near top',
   desc:'The smart default for users with 1+ schemas. v5 changes: uncovered-pages banner moved from bottom to TOP (most important call to action), search collapsed to icon button (filter pills are primary), status duplication removed (status pill carries it).',
   newScreen:true,
   body: pluginFrame('schema', `
@@ -4648,18 +4649,18 @@ screens.push({
     </div>
   `),
   anno:[
-    ['Uncovered banner moved to top','The "11 pages have no schemas yet" was buried at the bottom of v4. v5 promotes it to the top of the Library tab — it\'s the most actionable call out for users with incomplete coverage. Amber color signals "incomplete," not "broken."'],
+    ['Uncovered banner moved to top','The "11 pages have no schemas yet" was buried at the bottom of v4. v5 promotes it to the top of the Library tab, it\'s the most actionable call out for users with incomplete coverage. Amber color signals "incomplete," not "broken."'],
     ['Density reduced','Status info was duplicated in v4 (summary line said "all verified," status pill said the same thing again). v5 keeps only the status pill on the right; the summary line just says "3 schemas." Visually quieter.'],
-    ['Search demoted to icon','Most users have under 30 pages — search isn\'t their primary action. The filter pills (All / Auto / LLM SEO) are now primary. Search collapses into a single icon button on the right.'],
+    ['Search demoted to icon','Most users have under 30 pages, search isn\'t their primary action. The filter pills (All / Auto / LLM SEO) are now primary. Search collapses into a single icon button on the right.'],
     ['CMS coverage at a glance','/shop row says "2 schemas × 47 items" with "2 pending" pill. Clearer than v4\'s ambiguous "Pending" without item count. Expand to see item-level breakdown (see S18).'],
     ['Page-type icons','Home (green globe), Article (blue doc), Product (purple shop), Pages (gray). Subtle color coding helps at-a-glance scanning.'],
   ]
 });
 
-/* ==== S18 — Library expanded with CMS item-level coverage ==== */
+/* ==== S18, Library expanded with CMS item-level coverage ==== */
 screens.push({
-  id:'s18', tag:'Library', title:'Library — expanded with CMS item-level coverage',
-  desc:'User clicked /shop/midnight-tote to expand it. CMS rows expand differently from regular pages — they show item-level coverage (45 verified, 2 pending) with a progress bar. Solves the v4 ambiguity about what "Pending" means for a 47-item template.',
+  id:'s18', tag:'Library', title:'Library, expanded with CMS item-level coverage',
+  desc:'User clicked /shop/midnight-tote to expand it. CMS rows expand differently from regular pages, they show item-level coverage (45 verified, 2 pending) with a progress bar. Solves the v4 ambiguity about what "Pending" means for a 47-item template.',
   newScreen:true,
   body: pluginFrame('schema', `
     ${schemaSectionHead('library')}
@@ -4761,16 +4762,16 @@ screens.push({
   `),
   anno:[
     ['CMS expansion is different from regular','When a CMS row expands, schemas are shown as <em>templates applied to N items</em> rather than individual rows. Each template gets its own coverage card with a stacked progress bar.'],
-    ['Visual coverage progress bar','Two-segment bar shows verified (green) and pending (purple) proportions. Visual answer to "how is my product coverage doing?" — much faster than counting individual rows.'],
+    ['Visual coverage progress bar','Two-segment bar shows verified (green) and pending (purple) proportions. Visual answer to "how is my product coverage doing?", much faster than counting individual rows.'],
     ['Drilldown link','"View 2 pending items →" lets users dig into which specific items are pending if they need to investigate.'],
     ['Solves v4 ambiguity','In v4 the row said "Pending" but didn\'t clarify if all 47 items were pending or just some. v5 makes it explicit: 45 verified, 2 pending, 0 failed.'],
   ]
 });
 
-/* ==== S19 — Library page expanded (regular, non-CMS) ==== */
+/* ==== S19, Library page expanded (regular, non-CMS) ==== */
 screens.push({
-  id:'s19', tag:'Library', title:'Library — regular page expanded',
-  desc:'A regular (non-CMS) page expanded — /pricing showing its 3 individual schemas with action icons.',
+  id:'s19', tag:'Library', title:'Library, regular page expanded',
+  desc:'A regular (non-CMS) page expanded, /pricing showing its 3 individual schemas with action icons.',
   body: pluginFrame('schema', `
     ${schemaSectionHead('library')}
 
@@ -4848,9 +4849,9 @@ screens.push({
   ]
 });
 
-/* ==== S20 — Cross-feature banner on Library (Schema side) ==== */
+/* ==== S20, Cross-feature banner on Library (Schema side) ==== */
 screens.push({
-  id:'s20', tag:'Library', title:'Library — cross-feature banner when LLM SEO acts',
+  id:'s20', tag:'Library', title:'Library, cross-feature banner when LLM SEO acts',
   desc:'NEW v5: when LLM SEO generates schemas, Schema shows a banner crediting the action. Mirror of the existing banner LLM SEO shows when Schema acts. Cross-feature contract is bidirectional now.',
   newScreen:true,
   body: pluginFrame('schema', `
@@ -4926,9 +4927,9 @@ screens.push({
    VERIFICATION TAB
    ============================================================ */
 
-/* ==== S21 — Verification all-clear state (NEW v5) ==== */
+/* ==== S21, Verification all-clear state (NEW v5) ==== */
 screens.push({
-  id:'s21', tag:'Verification', title:'Verification — all-clear celebratory state',
+  id:'s21', tag:'Verification', title:'Verification, all-clear celebratory state',
   desc:'NEW v5: when every schema is verified, Verification shows a graceful "all clear" hero instead of a noisy list of green checkmarks. Tab earns its keep when there are issues, gracious when there aren\'t.',
   newScreen:true,
   body: pluginFrame('schema', `
@@ -4936,7 +4937,7 @@ screens.push({
 
     <div class="verif-allclear">
       <div class="verif-allclear-ico" aria-hidden="true">${ico.party_check}</div>
-      <h3>All clear — 9 schemas verified in Google</h3>
+      <h3>All clear, 9 schemas verified in Google</h3>
       <p>Every schema on your site is eligible for rich results. Google will use them to enhance how your pages appear in search.</p>
       <div class="verif-allclear-meta">
         <div>
@@ -4984,13 +4985,13 @@ screens.push({
   anno:[
     ['All-clear earns the tab\'s presence','When everything is verified (common case), the tab shows a celebratory state with key metadata (last check, next check, cadence). Re-verify and cadence-adjust buttons are still accessible.'],
     ['Recent verifications collapsed','Instead of listing all 9 verified schemas (noise), shows the 3 most recent with a "View all" deep-link. Graceful instead of overwhelming.'],
-    ['Hero card with metadata','User wants to know "is everything OK and how do I know?" — the meta row answers both: yes, checked 2h ago, will re-check in 22h, configurable cadence.'],
+    ['Hero card with metadata','User wants to know "is everything OK and how do I know?", the meta row answers both: yes, checked 2h ago, will re-check in 22h, configurable cadence.'],
   ]
 });
 
-/* ==== S22 — Verification with issues (sorted by severity) ==== */
+/* ==== S22, Verification with issues (sorted by severity) ==== */
 screens.push({
-  id:'s22', tag:'Verification', title:'Verification — issues present, sorted by severity',
+  id:'s22', tag:'Verification', title:'Verification, issues present, sorted by severity',
   desc:'When there ARE issues, the tab becomes the audit surface. Failed first (red), then warnings (amber), then verified (green). v5 adds a "Fix all matching" bulk action.',
   newScreen:true,
   body: pluginFrame('schema', `
@@ -5015,7 +5016,7 @@ screens.push({
     <div style="background:rgba(245,185,25,0.06); border:1px solid rgba(245,185,25,0.30); border-radius:var(--rf-radius-lg); padding:12px 14px; margin-bottom:14px; display:grid; grid-template-columns:auto 1fr auto; gap:12px; align-items:center;">
       <div style="width:28px; height:28px; border-radius:var(--rf-radius-md); background:rgba(245,185,25,0.12); color:var(--rf-amber); display:flex; align-items:center; justify-content:center;">${ico.sparkles}</div>
       <div style="font-size:12.5px; color:var(--rf-text-2);">
-        <strong style="color:var(--rf-text);">3 schemas have the same warning</strong> — all missing the <code style="background:rgba(255,255,255,0.05); padding:1px 5px; border-radius:4px;">brand</code> field. You can regenerate them all at once.
+        <strong style="color:var(--rf-text);">3 schemas have the same warning</strong>, all missing the <code style="background:rgba(255,255,255,0.05); padding:1px 5px; border-radius:4px;">brand</code> field. You can regenerate them all at once.
       </div>
       <button type="button" class="needs-attention-action" style="background:var(--rf-amber); color:#1A1D24; border-color:var(--rf-amber);" aria-label="Regenerate all 3 schemas with the same brand fix">Fix all 3 →</button>
     </div>
@@ -5073,15 +5074,15 @@ screens.push({
     </div>
   `),
   anno:[
-    ['Pattern detection banner','v5 detects when multiple schemas share the same issue (3 missing brand). Amber banner offers "Fix all 3 →" — regenerates them all with one instruction. Removes annoying repetition.'],
-    ['Verified hidden by default','When there are issues, the 5 verified schemas don\'t need attention — they\'re hidden behind "5 verified schemas hidden" link. Focuses the surface on what needs work.'],
+    ['Pattern detection banner','v5 detects when multiple schemas share the same issue (3 missing brand). Amber banner offers "Fix all 3 →", regenerates them all with one instruction. Removes annoying repetition.'],
+    ['Verified hidden by default','When there are issues, the 5 verified schemas don\'t need attention, they\'re hidden behind "5 verified schemas hidden" link. Focuses the surface on what needs work.'],
     ['Severity sort confirmed default','Failed first (left-border red), then warnings (amber), then verified (collapsed). User\'s eye lands on what needs action.'],
   ]
 });
 
-/* ==== S23 — Verification detail (failed) ==== */
+/* ==== S23, Verification detail (failed) ==== */
 screens.push({
-  id:'s23', tag:'Verification', title:'Verification detail — failed schema with one-click fix',
+  id:'s23', tag:'Verification', title:'Verification detail, failed schema with one-click fix',
   desc:'Clicked into the Event verification row. Shows Google failure detail, specific failure reason, history, and one primary CTA: regenerate with the exact fix pre-filled.',
   body: pluginFrame('schema', `
     ${schemaSectionHead('verification')}
@@ -5099,7 +5100,7 @@ screens.push({
 
     <div class="info-banner" style="background:rgba(221,82,76,0.06); border-color:rgba(221,82,76,0.30); color:var(--rf-text-2); margin-bottom:14px;">
       <div style="color:var(--rf-red); flex:0 0 18px;">${ico.alert}</div>
-      <div><strong>Failed — Google can\'t show this in search results.</strong> The Event schema is missing a required field. Without it, Google flagged this schema as ineligible for the Event rich result.</div>
+      <div><strong>Failed, Google can\'t show this in search results.</strong> The Event schema is missing a required field. Without it, Google flagged this schema as ineligible for the Event rich result.</div>
     </div>
 
     <div class="google-result-box" style="margin-bottom:14px;">
@@ -5111,7 +5112,7 @@ screens.push({
       <div style="padding:12px 14px; display:flex; gap:12px; align-items:flex-start;">
         <div style="width:20px; height:20px; border-radius:50%; background:var(--rf-red-soft); color:var(--rf-red); display:flex; align-items:center; justify-content:center; font-weight:700; font-size:12px; flex:0 0 20px;">✕</div>
         <div>
-          <div style="font-size:13px; font-weight:600; color:var(--rf-red); margin-bottom:4px;">Event — verdict: FAIL</div>
+          <div style="font-size:13px; font-weight:600; color:var(--rf-red); margin-bottom:4px;">Event, verdict: FAIL</div>
           <div style="font-size:12px; color:var(--rf-text-2); line-height:1.55;">Severity <strong>ERROR</strong> · Missing required field <code style="background:rgba(255,255,255,0.05); padding:1px 5px; border-radius:4px; font-family:'JetBrains Mono', monospace;">startDate</code>. Without this, Google can\'t display the event in search results, calendar carousels, or local listings.</div>
         </div>
       </div>
@@ -5136,7 +5137,7 @@ screens.push({
   anno:[
     ['Failure made specific','Names the exact missing field (startDate), explains what Google won\'t do without it.'],
     ['One-click recovery','Fix box pre-fills the regenerate-instruction box with the specific correction. User clicks once, RankFrame rebuilds with that hint.'],
-    ['Delete is the escape hatch','Sometimes the right answer is to remove a schema entirely (e.g. event cancelled). Available but de-emphasized — gray with red text, not red filled.'],
+    ['Delete is the escape hatch','Sometimes the right answer is to remove a schema entirely (e.g. event cancelled). Available but de-emphasized, gray with red text, not red filled.'],
   ]
 });
 
@@ -5144,10 +5145,10 @@ screens.push({
    SETTINGS TAB (trimmed to v1 essentials)
    ============================================================ */
 
-/* ==== S24 — Settings v1 essentials only ==== */
+/* ==== S24, Settings v1 essentials only ==== */
 screens.push({
-  id:'s24', tag:'Settings', title:'Settings — trimmed to v1 essentials',
-  desc:'v5: cut from 6 sections to 3 essentials — Feature toggle, Auto-verification cadence, Danger zone. Removed budget cap, default author override, access info display. Those add complexity without solving a problem v1 users have. Add them in v2 if there\'s demand.',
+  id:'s24', tag:'Settings', title:'Settings, trimmed to v1 essentials',
+  desc:'v5: cut from 6 sections to 3 essentials, Feature toggle, Auto-verification cadence, Danger zone. Removed budget cap, default author override, access info display. Those add complexity without solving a problem v1 users have. Add them in v2 if there\'s demand.',
   newScreen:true,
   body: pluginFrame('schema', `
     ${schemaSectionHead('settings')}
@@ -5237,7 +5238,7 @@ screens.push({
   anno:[
     ['Settings v1 = essentials only','v4 had 6 sections (toggle, verification, budget, author override, access display, danger). Most users would never touch them. v5 ships only the 3 sections users actually need at launch: toggle, verification cadence, danger zone.'],
     ['Budget cap deferred','Most users won\'t hit budget limits. Add this when usage data shows it\'s needed.'],
-    ['Author override deferred','The fallback is "Brand Name from Personalization" by default. Per-feature override is power-user territory — add in v2 if requested.'],
+    ['Author override deferred','The fallback is "Brand Name from Personalization" by default. Per-feature override is power-user territory, add in v2 if requested.'],
     ['Access info deferred','Permission state is already communicated in the disabled-state banner when relevant. Standalone display in Settings was redundant.'],
     ['Feedback footer','Tells users that more is coming and gives them a channel to ask for it. Frames v1 as the launch baseline, not the finished feature.'],
   ]
@@ -5247,9 +5248,9 @@ screens.push({
    EDGE CASES & CROSS-FEATURE
    ============================================================ */
 
-/* ==== S25 — Permission-gated ==== */
+/* ==== S25, Permission-gated ==== */
 screens.push({
-  id:'s25', tag:'Edge case', title:'Permission-gated — content-only user',
+  id:'s25', tag:'Edge case', title:'Permission-gated, content-only user',
   desc:'Content-only user opens Schema. Generate tab is gated. Library/Verification still accessible read-only.',
   body: pluginFrame('schema', `
     ${schemaSectionHead('generate')}
@@ -5260,14 +5261,14 @@ screens.push({
     </div>
 
     <div style="opacity:0.5; pointer-events:none; margin-bottom:14px;">
-      <button type="button" class="schema-action-btn primary" disabled aria-label="Auto-generate (disabled — needs Design access)" style="width:100%; height:56px; font-size:15px; cursor:not-allowed;">
+      <button type="button" class="schema-action-btn primary" disabled aria-label="Auto-generate (disabled, needs Design access)" style="width:100%; height:56px; font-size:15px; cursor:not-allowed;">
         ${ico.sparkles}<span>Auto-Generate Schema</span>
       </button>
       <div class="scan-all-cta" style="margin-top:14px; pointer-events:none;">
         <div class="scan-all-cta-ico">${ico.layers}</div>
         <div class="scan-all-cta-text">
           <strong>Scan all 17 pages at once</strong>
-          <span>Disabled — needs Design access</span>
+          <span>Disabled, needs Design access</span>
         </div>
       </div>
     </div>
@@ -5283,9 +5284,9 @@ screens.push({
   ]
 });
 
-/* ==== S26 — Cross-feature: Schema impact on LLM Score ==== */
+/* ==== S26, Cross-feature: Schema impact on LLM Score ==== */
 screens.push({
-  id:'s26', tag:'Cross-feature', title:'Cross-feature — Schema raises LLM Score (on LLM SEO side)',
+  id:'s26', tag:'Cross-feature', title:'Cross-feature, Schema raises LLM Score (on LLM SEO side)',
   desc:'The other direction of the cross-feature contract. When Schema injects, LLM Score reads the new schemas via shared library. Banner appears on LLM SEO side. Symmetric with the new s20 banner on Schema side.',
   body: pluginFrame('llmseo', `
     <h1 class="section-title">LLM SEO</h1>
@@ -5331,8 +5332,34 @@ screens.push({
   ]
 });
 
+/* ==== S27, Edge case: Custom code disabled by the user ==== */
+screens.push({
+  id:'s27', tag:'Edge case', title:'Custom code disabled, schemas are not live', newScreen:true,
+  desc:'RankFrame serves every schema through one site-wide headEnd block. Framer lets a user disable any plugin\'s custom code in Site Settings, and the plugin cannot turn it back on (getCustomCode().headEnd.disabled === true). Until the user re-enables it, none of the schemas render, so RankFrame shows a clear, persistent guard instead of silently failing.',
+  body: pluginFrame('schema', `
+    ${schemaSectionHead('generate')}
+    <div class="needs-attention" style="margin-bottom:16px;">
+      <div class="needs-attention-head" style="background:var(--rf-red-soft); color:var(--rf-red);">
+        ${ico.alert_triangle}<span>Schemas are not live</span>
+      </div>
+      <div style="padding:14px 16px; font-size:12.5px; color:var(--rf-text-2); line-height:1.6;">
+        Your <strong>RankFrame custom code is turned off</strong> in Framer Site Settings, so the 9 schemas in your Library are not being served to Google. RankFrame cannot re-enable it for you, this is a Framer safety control that only you can switch back on.
+        <div style="margin-top:12px; padding:12px 14px; background:var(--rf-bg-elev); border:1px solid var(--rf-border); border-radius:var(--rf-radius-md); font-size:12px; color:var(--rf-text-muted);">
+          <strong style="color:var(--rf-text);">To turn it back on:</strong> Framer, Site Settings, General, Custom Code, then re-enable the RankFrame snippet in the headEnd slot.
+        </div>
+      </div>
+    </div>
+    <button type="button" class="btn-primary full">${ico.refresh}<span>Re-check status</span></button>
+  `),
+  anno:[
+    ['Real API constraint','<code>getCustomCode()</code> reports <code>headEnd.disabled</code>. Framer lets users disable plugin custom code, and a plugin "does not have the ability to re-enable" it. A re-enable button would be a lie, so RankFrame only instructs and re-checks.'],
+    ['Clears itself','<code>subscribeToCustomCode()</code> fires when the user re-enables the snippet, so the guard disappears without a manual refresh.'],
+    ['Why it earns its place','Without this state, a user who toggled custom code off would think RankFrame broke. The guard names the exact cause and the exact fix.'],
+  ]
+});
+
 /* ============================================================
-   ASSEMBLER — sidebar nav, contact sheet, screens loop
+   ASSEMBLER, sidebar nav, contact sheet, screens loop
    ============================================================ */
 
 function buildContactSheet(){
@@ -5342,7 +5369,7 @@ function buildContactSheet(){
     { title:'Library tab',                          screenIds:['s17','s18','s19','s20'] },
     { title:'Verification tab',                     screenIds:['s21','s22','s23'] },
     { title:'Settings tab',                         screenIds:['s24'] },
-    { title:'Edge & cross-feature',                 screenIds:['s25','s26'] },
+    { title:'Edge & cross-feature',                 screenIds:['s25','s26','s27'] },
   ];
 
   return `
@@ -5409,7 +5436,7 @@ function buildSidebarNav(){
     { title:'D · Library',              screenIds:['s17','s18','s19','s20'] },
     { title:'E · Verification',         screenIds:['s21','s22','s23'] },
     { title:'F · Settings',             screenIds:['s24'] },
-    { title:'G · Edge & cross-feature', screenIds:['s25','s26'] },
+    { title:'G · Edge & cross-feature', screenIds:['s25','s26','s27'] },
   ];
 
   let html = `<a href="#s1" class="proto-nav-item active"><span class="proto-nav-num">00</span><span>Contact sheet</span></a>`;
@@ -5495,7 +5522,7 @@ document.addEventListener('click', (e) => {
   }
 });
 
-/* v5: Keyboard shortcuts for Schema tab switching — Cmd/Ctrl + 1/2/3/4 */
+/* v5: Keyboard shortcuts for Schema tab switching, Cmd/Ctrl + 1/2/3/4 */
 document.addEventListener('keydown', (e) => {
   // Only fire on Cmd (Mac) or Ctrl (Windows/Linux) modifier
   if (!(e.metaKey || e.ctrlKey)) return;
