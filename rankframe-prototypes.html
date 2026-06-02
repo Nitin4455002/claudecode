@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>RankFrame · Feature Prototypes</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --rf-bg:#000000;
+    --rf-bg-card:#0C0E11;
+    --rf-bg-card-2:#131519;
+    --rf-border:#1A1D24;
+    --rf-border-2:#262A33;
+    --rf-purple:#BA24D5;
+    --rf-purple-btn:#AB33CE;
+    --rf-purple-soft:rgba(186,36,213,0.10);
+    --rf-purple-line:rgba(186,36,213,0.35);
+    --rf-green:#4ADE80;
+    --rf-text:#FFFFFF;
+    --rf-text-2:#D5D8DE;
+    --rf-text-muted:#9BA1AE;
+    --rf-text-dim:#6B7280;
+    --rf-text-faint:#4B5563;
+  }
+  *,*::before,*::after{ box-sizing:border-box; }
+  html,body{ margin:0; padding:0; height:100%; }
+  body{
+    font-family:'Inter',-apple-system,system-ui,sans-serif;
+    background:#08090B; color:var(--rf-text);
+    -webkit-font-smoothing:antialiased;
+    height:100vh; overflow:hidden;
+  }
+
+  /* ============ CHOOSER ============ */
+  #chooser{
+    position:fixed; inset:0; z-index:20;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    padding:40px 24px;
+    background:
+      radial-gradient(circle at 22% 12%, rgba(186,36,213,0.10) 0%, transparent 45%),
+      radial-gradient(circle at 78% 92%, rgba(186,36,213,0.07) 0%, transparent 45%),
+      #08090B;
+    transition:opacity 0.35s ease, visibility 0.35s ease;
+  }
+  #chooser.hidden{ opacity:0; visibility:hidden; }
+
+  .ch-brand{ display:flex; align-items:center; gap:13px; margin-bottom:30px; }
+  .ch-mark{
+    width:38px; height:38px; border-radius:9px; background:#3E3B3B;
+    display:grid; grid-template-columns:1fr 1fr; gap:3.5px; padding:7px;
+    box-shadow:0 6px 18px rgba(0,0,0,0.55);
+  }
+  .ch-mark span{ border-radius:50%; }
+  .ch-mark span:nth-child(1){ background:#D9D9D9; }
+  .ch-mark span:nth-child(2){ background:var(--rf-purple); box-shadow:0 0 9px rgba(186,36,213,0.6); }
+  .ch-mark span:nth-child(3){ background:var(--rf-purple); box-shadow:0 0 9px rgba(186,36,213,0.6); }
+  .ch-mark span:nth-child(4){ background:#D9D9D9; }
+  .ch-brand b{ font-size:21px; font-weight:700; letter-spacing:-0.01em; }
+  .ch-brand b .a{ color:var(--rf-purple); }
+
+  .ch-tag{
+    display:inline-flex; align-items:center; gap:7px;
+    padding:4px 13px; border-radius:999px; margin-bottom:16px;
+    font-size:11px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase;
+    background:var(--rf-purple-soft); color:var(--rf-purple); border:1px solid var(--rf-purple-line);
+  }
+  .ch-title{ font-size:32px; font-weight:800; letter-spacing:-0.02em; margin:0 0 10px; text-align:center; }
+  .ch-sub{ font-size:15px; color:var(--rf-text-muted); margin:0 0 40px; text-align:center; max-width:560px; line-height:1.6; }
+
+  .ch-cards{ display:grid; grid-template-columns:repeat(2, minmax(0, 340px)); gap:22px; width:100%; max-width:740px; }
+  @media (max-width:760px){ .ch-cards{ grid-template-columns:1fr; max-width:380px; } }
+
+  .ch-card{
+    text-align:left; cursor:pointer;
+    background:linear-gradient(180deg, rgba(186,36,213,0.06), var(--rf-bg-card));
+    border:1px solid var(--rf-border-2); border-radius:18px;
+    padding:26px 24px 24px; color:inherit; font:inherit;
+    position:relative; overflow:hidden;
+    transition:transform 0.16s ease, border-color 0.16s ease, box-shadow 0.16s ease;
+  }
+  .ch-card::after{
+    content:''; position:absolute; top:-40px; right:-40px;
+    width:140px; height:140px; border-radius:50%;
+    background:radial-gradient(circle, rgba(186,36,213,0.22), transparent 70%);
+    opacity:0; transition:opacity 0.16s ease;
+  }
+  .ch-card:hover{ transform:translateY(-4px); border-color:var(--rf-purple-line); box-shadow:0 24px 60px rgba(0,0,0,0.6), 0 0 0 1px var(--rf-purple-line); }
+  .ch-card:hover::after{ opacity:1; }
+  .ch-card-ico{
+    width:46px; height:46px; border-radius:12px;
+    background:var(--rf-purple-soft); border:1px solid var(--rf-purple-line);
+    display:flex; align-items:center; justify-content:center; color:var(--rf-purple);
+    margin-bottom:18px;
+  }
+  .ch-card-ico svg{ width:24px; height:24px; }
+  .ch-card h3{ margin:0 0 7px; font-size:19px; font-weight:700; display:flex; align-items:center; gap:10px; }
+  .ch-card .new{
+    font-size:9px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase;
+    background:var(--rf-purple); color:#fff; border-radius:999px; padding:3px 8px;
+    box-shadow:0 0 10px rgba(186,36,213,0.5);
+  }
+  .ch-card p{ margin:0 0 16px; font-size:13px; color:var(--rf-text-muted); line-height:1.6; }
+  .ch-card .meta{ display:flex; gap:8px; flex-wrap:wrap; }
+  .ch-card .chip{
+    font-size:10.5px; font-weight:500; color:var(--rf-text-2);
+    background:var(--rf-bg-card-2); border:1px solid var(--rf-border-2);
+    border-radius:6px; padding:4px 9px; font-family:'JetBrains Mono', monospace;
+  }
+  .ch-card .go{
+    margin-top:18px; display:flex; align-items:center; gap:7px;
+    font-size:13px; font-weight:600; color:var(--rf-purple);
+  }
+  .ch-foot{ margin-top:38px; font-size:12px; color:var(--rf-text-faint); }
+
+  /* ============ VIEWER ============ */
+  #viewer{ position:fixed; inset:0; display:none; flex-direction:column; }
+  #viewer.show{ display:flex; }
+  .vw-bar{
+    flex:0 0 auto; height:52px;
+    display:flex; align-items:center; gap:16px;
+    padding:0 18px;
+    background:rgba(7,7,9,0.92); backdrop-filter:blur(18px);
+    border-bottom:1px solid var(--rf-border);
+    z-index:2;
+  }
+  .vw-brand{ display:flex; align-items:center; gap:10px; }
+  .vw-brand .mini{
+    width:24px; height:24px; border-radius:6px; background:#3E3B3B;
+    display:grid; grid-template-columns:1fr 1fr; gap:2px; padding:4px;
+  }
+  .vw-brand .mini span{ border-radius:50%; }
+  .vw-brand .mini span:nth-child(1){ background:#D9D9D9; }
+  .vw-brand .mini span:nth-child(2){ background:var(--rf-purple); }
+  .vw-brand .mini span:nth-child(3){ background:var(--rf-purple); }
+  .vw-brand .mini span:nth-child(4){ background:#D9D9D9; }
+  .vw-brand b{ font-size:14px; font-weight:600; }
+  .vw-brand b .a{ color:var(--rf-purple); }
+
+  .vw-switch{ display:flex; gap:3px; background:var(--rf-bg-card); border:1px solid var(--rf-border-2); border-radius:9px; padding:3px; }
+  .vw-switch button{
+    border:none; background:transparent; cursor:pointer;
+    font:inherit; font-size:12.5px; font-weight:500; color:var(--rf-text-muted);
+    padding:6px 14px; border-radius:6px; transition:all 0.12s;
+  }
+  .vw-switch button:hover{ color:var(--rf-text); }
+  .vw-switch button.active{ background:var(--rf-purple-btn); color:#fff; }
+
+  .vw-home{
+    margin-left:auto;
+    display:flex; align-items:center; gap:7px;
+    border:1px solid var(--rf-border-2); background:var(--rf-bg-card);
+    color:var(--rf-text-2); cursor:pointer; font:inherit; font-size:12.5px;
+    padding:7px 13px; border-radius:8px; transition:all 0.12s;
+  }
+  .vw-home:hover{ border-color:var(--rf-purple-line); color:var(--rf-text); }
+  .vw-home svg{ width:14px; height:14px; }
+
+  #frame{ flex:1 1 auto; width:100%; border:none; background:#08090B; }
+</style>
+</head>
+<body>
+
+  <!-- ============ CHOOSER ============ -->
+  <div id="chooser">
+    <div class="ch-brand">
+      <div class="ch-mark"><span></span><span></span><span></span><span></span></div>
+      <b>Rank<span class="a">Frame</span></b>
+    </div>
+    <span class="ch-tag">Feature Prototypes</span>
+    <h1 class="ch-title">Which prototype do you want to see?</h1>
+    <p class="ch-sub">Two dev-ready, fully-annotated walkthroughs. Pick one to open it full screen. You can switch between them at any time from the top bar.</p>
+
+    <div class="ch-cards">
+      <button class="ch-card" data-target="content" data-src="rankframe-content-engine-prototype-v2.html">
+        <div class="ch-card-ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h6"/></svg>
+        </div>
+        <h3>Content Engine <span class="new">New</span></h3>
+        <p>AI blog writing into the Framer CMS: research, calendar, draft editor, approval workflow, sync, and schema.</p>
+        <div class="meta">
+          <span class="chip">65 screens</span>
+          <span class="chip">A–K</span>
+          <span class="chip">dev notes</span>
+        </div>
+        <div class="go">Open Content Engine
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="13" height="13"><path d="M9 6l6 6-6 6"/></svg>
+        </div>
+      </button>
+
+      <button class="ch-card" data-target="multiuser" data-src="rankframe-multiuser-prototype-v2.html">
+        <div class="ch-card-ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/><circle cx="17" cy="8" r="2.5"/><path d="M21 21v-2a3 3 0 0 0-2-2.8"/></svg>
+        </div>
+        <h3>Multi-User / Team <span class="new">New</span></h3>
+        <p>Seat-based team access via Polar.sh: roster, roles, invites, per-member credits, billing, and activity log.</p>
+        <div class="meta">
+          <span class="chip">35 screens</span>
+          <span class="chip">A–H</span>
+          <span class="chip">admin + member</span>
+        </div>
+        <div class="go">Open Multi-User
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="13" height="13"><path d="M9 6l6 6-6 6"/></svg>
+        </div>
+      </button>
+    </div>
+
+    <div class="ch-foot">RankFrame · Feature Prototypes · keep all three HTML files in the same folder</div>
+  </div>
+
+  <!-- ============ VIEWER ============ -->
+  <div id="viewer">
+    <div class="vw-bar">
+      <div class="vw-brand">
+        <div class="mini"><span></span><span></span><span></span><span></span></div>
+        <b>Rank<span class="a">Frame</span></b>
+      </div>
+      <div class="vw-switch">
+        <button data-target="content" data-src="rankframe-content-engine-prototype-v2.html">Content Engine</button>
+        <button data-target="multiuser" data-src="rankframe-multiuser-prototype-v2.html">Multi-User</button>
+      </div>
+      <button class="vw-home" id="homeBtn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8M5 10v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V10"/></svg>
+        Chooser
+      </button>
+    </div>
+    <iframe id="frame" title="RankFrame prototype"></iframe>
+  </div>
+
+<script>
+  const chooser  = document.getElementById('chooser');
+  const viewer   = document.getElementById('viewer');
+  const frame    = document.getElementById('frame');
+  const switchBtns = [...document.querySelectorAll('.vw-switch button')];
+
+  function open(target, src){
+    frame.src = src;
+    switchBtns.forEach(b => b.classList.toggle('active', b.dataset.target === target));
+    chooser.classList.add('hidden');
+    viewer.classList.add('show');
+    location.hash = target;
+  }
+  function home(){
+    viewer.classList.remove('show');
+    chooser.classList.remove('hidden');
+    frame.src = 'about:blank';
+    location.hash = '';
+  }
+
+  document.querySelectorAll('.ch-card').forEach(c =>
+    c.addEventListener('click', () => open(c.dataset.target, c.dataset.src)));
+  switchBtns.forEach(b =>
+    b.addEventListener('click', () => open(b.dataset.target, b.dataset.src)));
+  document.getElementById('homeBtn').addEventListener('click', home);
+
+  /* deep-link support: #content or #multiuser opens straight into it */
+  const initial = location.hash.replace('#','');
+  const match = document.querySelector('.ch-card[data-target="'+initial+'"]');
+  if (match) open(match.dataset.target, match.dataset.src);
+</script>
+</body>
+</html>
