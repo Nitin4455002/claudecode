@@ -1634,6 +1634,11 @@ function pluginSubNav(activeKey, role){
         </div>
       </div>`;
   }).join('');
+  /* Nav structure is identical for every role. Only the bottom
+     account block reflects who is signed in. */
+  const acct = role==='member'
+    ? {av:'LF', name:'Lingfei',     email:'lingfei@anytimeai.ai'}
+    : {av:'7M', name:'7seers media', email:'7seersmedia@gmail.com'};
   return `
     <div class="sub-nav">
       <div class="sub-nav-head">
@@ -1649,10 +1654,10 @@ function pluginSubNav(activeKey, role){
         <div class="sub-nav-item">${ICONS.globe}<span>Go To Dashboard</span></div>
       </div>
       <div class="sub-nav-user">
-        <div class="sub-nav-user-av">7M</div>
+        <div class="sub-nav-user-av">${acct.av}</div>
         <div class="sub-nav-user-meta">
-          <div class="name">7seers media</div>
-          <div class="email">7seersmedia@gmail.com</div>
+          <div class="name">${acct.name}</div>
+          <div class="email">${acct.email}</div>
         </div>
       </div>
       <div class="sub-nav-cta red">${ICONS.refresh}<span>Recrawl Website</span></div>
