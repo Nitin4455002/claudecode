@@ -266,6 +266,207 @@
   }
   .plg-top-x:hover{ background:#1C1F25; }
   .plg-body{ display:grid; grid-template-columns:var(--sub-nav-w) 1fr; min-height:0; position:relative; z-index:1; }
+
+  /* ============================================================
+     CANONICAL SUB-NAV + ACCORDION PLUGIN NAV
+     Copied verbatim from rankframe-schema-prototype-v2.html.
+     ============================================================ */
+  .sub-nav{
+    background:var(--rf-bg-elev);
+    border-right:1px solid var(--rf-border);
+    padding:18px 12px;
+    display:flex; flex-direction:column;
+    overflow:hidden;
+  }
+  .sub-nav-head{
+    display:flex; align-items:center; gap:8px;
+    padding:4px 8px 14px;
+    border-bottom:1px solid var(--rf-border);
+    margin-bottom:10px;
+  }
+  .sub-nav-head-title{
+    font-size:14px; font-weight:600;
+    color:var(--rf-text);
+  }
+  .sub-nav-head-title .purple{ color:var(--rf-purple); }
+  .sub-nav-back{
+    margin-left:auto;
+    color:var(--rf-text-muted);
+    font-size:16px;
+  }
+  .sub-nav-item{
+    display:flex; align-items:center; gap:10px;
+    padding:8px 10px;
+    border-radius:7px;
+    color:var(--rf-text-muted);
+    font-size:13.5px;
+    cursor:pointer;
+    margin-bottom:2px;
+    position:relative;
+  }
+  .sub-nav-item:hover{ background:rgba(255,255,255,0.03); }
+  .sub-nav-item.active{ background:var(--rf-bg-active); color:var(--rf-text); }
+  .sub-nav-item .ico{
+    width:16px; height:16px;
+    flex:0 0 16px;
+    display:flex; align-items:center; justify-content:center;
+    color:currentColor;
+  }
+  .sub-nav-item .badge-new{
+    margin-left:auto;
+    font-size:9px; font-weight:700; letter-spacing:0.5px;
+    background:var(--rf-purple);
+    color:#fff;
+    padding:2px 5px; border-radius:4px;
+  }
+  .sub-nav-spacer{ flex:1; }
+  .sub-nav-foot{
+    border-top:1px solid var(--rf-border);
+    padding-top:10px; margin-top:10px;
+    display:flex; flex-direction:column; gap:2px;
+  }
+  .sub-nav-score-card{
+    margin:12px 0 14px;
+    background:var(--rf-bg-card);
+    border:1px solid var(--rf-border);
+    border-radius:10px;
+    padding:10px 12px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .sub-nav-score-ring{
+    width:36px; height:36px;
+    border-radius:50%;
+    background:
+      conic-gradient(var(--rf-purple) 0% 82%, rgba(255,255,255,0.08) 82% 100%);
+    display:flex; align-items:center; justify-content:center;
+    position:relative;
+  }
+  .sub-nav-score-ring::before{
+    content:""; position:absolute; inset:3px;
+    background:var(--rf-bg-card); border-radius:50%;
+  }
+  .sub-nav-score-ring span{
+    position:relative; z-index:1;
+    font-size:12px; font-weight:700;
+  }
+  .sub-nav-score-meta{
+    display:flex; flex-direction:column;
+  }
+  .sub-nav-score-meta .label{
+    font-size:9px; font-weight:700; letter-spacing:0.5px;
+    color:var(--rf-text-muted); text-transform:uppercase;
+  }
+  .sub-nav-score-meta .val{
+    font-size:12px; font-weight:600; color:var(--rf-text);
+  }
+  .sub-nav-user{
+    display:flex; align-items:center; gap:10px;
+    padding:10px;
+    background:var(--rf-bg-card);
+    border:1px solid var(--rf-border);
+    border-radius:10px;
+    margin-bottom:10px;
+  }
+  .sub-nav-user-av{
+    width:30px; height:30px;
+    border-radius:50%;
+    background:var(--rf-purple);
+    display:flex; align-items:center; justify-content:center;
+    font-size:10px; font-weight:700;
+  }
+  .sub-nav-user-meta{ overflow:hidden; }
+  .sub-nav-user-meta .name{
+    font-size:12px; font-weight:600;
+    white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+  }
+  .sub-nav-user-meta .email{
+    font-size:10px; color:var(--rf-text-dim);
+    white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+  }
+  .sub-nav-plan-note{
+    font-size:11px; color:var(--rf-text-muted);
+    margin:2px 4px 6px;
+  }
+  .sub-nav-plan-note strong{
+    display:block; color:var(--rf-text); font-size:12px; font-weight:600;
+  }
+  .sub-nav-cta{
+    display:flex; align-items:center; justify-content:center; gap:6px;
+    padding:8px;
+    border-radius:8px;
+    font-size:12.5px; font-weight:600;
+    cursor:pointer;
+    border:1px solid transparent;
+  }
+  .sub-nav-cta.purple{
+    background:linear-gradient(180deg, var(--rf-purple) 0%, var(--rf-purple-deep) 100%);
+    color:#fff;
+  }
+  .sub-nav-cta.red{
+    background:rgba(221,82,76,0.10);
+    border-color:rgba(221,82,76,0.35);
+    color:var(--rf-red);
+    margin-top:5px;
+  }
+  .plg-acc-scroll{
+    flex:1 1 auto;
+    min-height:0;
+    overflow-y:auto;
+    margin:4px -4px 6px;
+    padding:0 4px;
+  }
+  .plg-acc-group + .plg-acc-group{ margin-top:1px; }
+  .plg-acc-head{
+    width:100%;
+    display:flex; align-items:center; gap:10px;
+    padding:8px 10px;
+    border:0; background:transparent;
+    color:var(--rf-text-2);
+    font-family:inherit; font-size:13.5px; font-weight:600;
+    text-align:left; cursor:pointer;
+    border-radius:7px;
+  }
+  .plg-acc-head:hover{ background:rgba(255,255,255,0.03); color:var(--rf-text); }
+  .plg-acc-head.active-group{ color:var(--rf-text); }
+  .plg-acc-ico{
+    width:16px; height:16px; flex:0 0 16px;
+    display:flex; align-items:center; justify-content:center;
+    color:var(--rf-text-muted);
+  }
+  .plg-acc-head.active-group .plg-acc-ico{ color:var(--rf-purple); }
+  .plg-acc-label{ flex:1; }
+  .plg-acc-chev{
+    width:11px; height:11px; flex:0 0 11px;
+    color:var(--rf-text-dim);
+    transition:transform 150ms ease;
+  }
+  .plg-acc-group.open .plg-acc-chev{ transform:rotate(90deg); }
+  .plg-acc-new{
+    font-size:8.5px; font-weight:700; letter-spacing:0.5px;
+    background:var(--rf-purple); color:#fff;
+    padding:2px 5px; border-radius:4px;
+  }
+  .plg-acc-new.sm{ margin-left:auto; }
+  .plg-acc-children{ padding:1px 0 5px; }
+  .plg-acc-children[hidden]{ display:none; }
+  .plg-acc-item{
+    display:flex; align-items:center; gap:10px;
+    padding:6px 10px 6px 23px;
+    border-radius:7px;
+    color:var(--rf-text-muted);
+    font-size:13px; cursor:pointer;
+    margin-bottom:1px;
+  }
+  .plg-acc-item:hover{ background:rgba(255,255,255,0.03); color:var(--rf-text); }
+  .plg-acc-item.active{ background:var(--rf-bg-active); color:var(--rf-text); }
+  .plg-acc-item-label{ flex:1; }
+  .plg-acc-dot{
+    width:5px; height:5px; flex:0 0 5px;
+    border-radius:50%;
+    background:var(--rf-border-strong);
+  }
+  .plg-acc-item.active .plg-acc-dot{ background:var(--rf-purple); }
+
   .plg-nav{
     background:var(--rf-bg-elev);
     border-right:1px solid var(--rf-border);
@@ -1176,55 +1377,95 @@ const ICONS = {
 /* ============================================================
    PLUGIN SHELL
    ============================================================ */
+/* ============================================================
+   CANONICAL PLUGIN NAV (accordion). Mirrors rankframe-schema-prototype-v2.html.
+   Groups: Setup, Optimize, Index, Monitor, Content Engine. Only the
+   active group is expanded. Icons mapped to this file's ICONS object.
+   ============================================================ */
+const PLUGIN_NAV_GROUPS = [
+  { key:'setup',    label:'Setup',          icon:ICONS.cog,      items:[
+    {k:'global',     label:'Global Settings'},
+  ]},
+  { key:'optimize', label:'Optimize',       icon:ICONS.bolt,     items:[
+    {k:'pages',      label:'Pages'},
+    {k:'images',     label:'Image SEO'},
+    {k:'schema',     label:'Schema',     isNew:true},
+    {k:'llmseo',     label:'LLM SEO',    isNew:true},
+  ]},
+  { key:'index',    label:'Index',          icon:ICONS.globe,    items:[
+    {k:'submit',     label:'Submit Indexing'},
+    {k:'sitemap',    label:'Sitemap'},
+  ]},
+  { key:'monitor',  label:'Monitor',        icon:ICONS.analyzer, items:[
+    {k:'analyzer',   label:'SEO Analyzer'},
+    {k:'keywords',   label:'Keyword Tracker'},
+    {k:'speed',      label:'Page Speed'},
+    {k:'monitor404', label:'404 Monitor'},
+  ]},
+  { key:'content',  label:'Content Engine', icon:ICONS.doc, isNew:true, items:[
+    {k:'calendar',   label:'Calendar'},
+    {k:'research',   label:'Research Hub'},
+    {k:'drafts',     label:'Draft Queue'},
+    {k:'links',      label:'Link Opportunities'},
+    {k:'sync',       label:'Sync Status'},
+  ]},
+];
+/* Aliases let older per-screen activeKey strings resolve to the
+   canonical item keys without touching every screen. */
+const PLUGIN_NAV_ALIASES = {
+  globalSettings:'global', submitIndexing:'submit', seoAnalyzer:'analyzer',
+  imageSEO:'images', researchHub:'research', draftQueue:'drafts',
+  linkOpps:'links', syncStatus:'sync', advanced:'schema',
+};
 function pluginSubNav(activeKey){
-  const seoItems = [
-    {key:'globalSettings', icon:ICONS.cog, label:'Global Settings'},
-    {key:'pages', icon:ICONS.pages, label:'Pages'},
-    {key:'submitIndexing', icon:ICONS.bolt, label:'Submit Indexing'},
-    {key:'seoAnalyzer', icon:ICONS.analyzer, label:'SEO Analyzer'},
-    {key:'imageSEO', icon:ICONS.image, label:'Image SEO'},
-    {key:'monitor404', icon:ICONS.monitor, label:'404 Monitor'},
-  ];
-  const contentItems = [
-    {key:'researchHub', icon:ICONS.brain, label:'Research Hub', isNew:true},
-    {key:'draftQueue', icon:ICONS.queue, label:'Draft Queue', isNew:true, count:'7'},
-    {key:'linkOpps', icon:ICONS.link, label:'Link Opportunities', isNew:true},
-    {key:'syncStatus', icon:ICONS.sync, label:'Sync Status', isNew:true},
-  ];
+  const key = PLUGIN_NAV_ALIASES[activeKey] || activeKey;
+  const activeGroup = PLUGIN_NAV_GROUPS.find(g => g.items.some(it=>it.k===key));
+  const agKey = activeGroup ? activeGroup.key : 'optimize';
+  const chev = '<svg class="plg-acc-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg>';
+  const groupsHtml = PLUGIN_NAV_GROUPS.map(g=>{
+    const open = g.key === agKey;
+    return `
+      <div class="plg-acc-group ${open?'open':''}">
+        <button type="button" class="plg-acc-head ${open?'active-group':''}" aria-expanded="${open?'true':'false'}">
+          <span class="plg-acc-ico">${g.icon}</span>
+          <span class="plg-acc-label">${g.label}</span>
+          ${g.isNew?'<span class="plg-acc-new">NEW</span>':''}
+          ${chev}
+        </button>
+        <div class="plg-acc-children"${open?'':' hidden'}>
+          ${g.items.map(it=>`
+            <div class="plg-acc-item ${key===it.k?'active':''}">
+              <span class="plg-acc-dot"></span>
+              <span class="plg-acc-item-label">${it.label}</span>
+              ${it.isNew?'<span class="plg-acc-new sm">NEW</span>':''}
+            </div>
+          `).join('')}
+        </div>
+      </div>`;
+  }).join('');
   return `
-    <nav class="plg-nav">
-      <div class="plg-nav-brand">
-        <div class="mini"><span></span><span></span><span></span><span></span></div>
-        <b>Rank<span class="a">Frame</span></b>
-        <span class="arrow">‹</span>
+    <div class="sub-nav">
+      <div class="sub-nav-head">
+        <div class="proto-logo" style="width:22px;height:22px;border-radius:5px;"></div>
+        <div class="sub-nav-head-title">Rank<span class="purple">Frame</span></div>
+        <div class="sub-nav-back">${ICONS.chevL}</div>
       </div>
-      <div class="plg-nav-group">SEO</div>
-      ${seoItems.map(it=>`
-        <div class="plg-nav-item ${activeKey===it.key?'active':''}">
-          <span class="ico">${it.icon}</span>
-          <span>${it.label}</span>
+      <div class="plg-acc-scroll">
+        ${groupsHtml}
+      </div>
+      <div class="sub-nav-foot">
+        <div class="sub-nav-item">${ICONS.help}<span>Support</span></div>
+        <div class="sub-nav-item">${ICONS.globe}<span>Go To Dashboard</span></div>
+      </div>
+      <div class="sub-nav-user">
+        <div class="sub-nav-user-av">7M</div>
+        <div class="sub-nav-user-meta">
+          <div class="name">7seers media</div>
+          <div class="email">7seersmedia@gmail.com</div>
         </div>
-      `).join('')}
-      <div class="plg-nav-group content-group"><span class="pinkdot"></span>CONTENT</div>
-      ${contentItems.map(it=>`
-        <div class="plg-nav-item ${activeKey===it.key?'active':''}">
-          <span class="ico">${it.icon}</span>
-          <span>${it.label}</span>
-          ${it.count?`<span class="count-pill">${it.count}</span>`:(it.isNew?'<span class="new-pill">NEW</span>':'')}
-        </div>
-      `).join('')}
-      <div class="plg-nav-divider"></div>
-      <div class="plg-nav-item"><span class="ico">${ICONS.help}</span><span>Support</span></div>
-      <div class="plg-nav-item"><span class="ico">${ICONS.ext}</span><span>Go To Dashboard</span></div>
-      <div class="plg-nav-account">
-        <div class="ava">7M</div>
-        <div class="info"><b>7seers media</b><span>7seersmedia@gmail.com</span></div>
       </div>
-      <div class="plg-nav-plan">
-        <b>Agency Yearly Plan</b>
-        <span>1,240 AI credits left</span>
-      </div>
-    </nav>
+      <div class="sub-nav-cta red">${ICONS.refresh}<span>Recrawl Website</span></div>
+    </div>
   `;
 }
 
