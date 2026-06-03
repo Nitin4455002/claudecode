@@ -527,6 +527,87 @@
   .cs-tile-tag{ font-size:10.5px; color:var(--rf-text-muted); margin-top:3px; }
   .cs-tile.new-screen .cs-tile-num::before{ content:"NEW · "; color:var(--rf-purple); font-weight:700; }
 
+  /* ===== edge-case + multi-user additions ===== */
+  /* generic empty / error state block */
+  .state-block{ text-align:center; padding:40px 24px 24px; }
+  .state-block .sb-ico{ width:54px; height:54px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; margin-bottom:14px; }
+  .state-block .sb-ico svg{ width:24px; height:24px; }
+  .state-block .sb-ico.amber{ background:var(--rf-amber-soft); color:var(--rf-amber); }
+  .state-block .sb-ico.red{ background:var(--rf-red-soft); color:var(--rf-red); }
+  .state-block .sb-ico.purple{ background:var(--rf-purple-soft); color:var(--rf-purple); }
+  .state-block .sb-ico.blue{ background:rgba(59,130,246,0.12); color:var(--rf-blue); }
+  .state-block h3{ font-size:17px; font-weight:600; margin:0 0 6px; }
+  .state-block p{ font-size:13px; color:var(--rf-text-muted); margin:0 auto 18px; max-width:460px; line-height:1.55; }
+  .state-actions{ display:flex; justify-content:center; gap:10px; flex-wrap:wrap; }
+
+  /* error detail panel */
+  .err-panel{ background:rgba(221,82,76,0.05); border:1px solid rgba(221,82,76,0.30); border-radius:var(--rf-radius-lg); padding:14px 16px; margin:14px 0; text-align:left; }
+  .err-panel .err-code{ font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--rf-red); background:rgba(221,82,76,0.10); padding:2px 7px; border-radius:4px; display:inline-block; margin-bottom:8px; }
+  .err-panel .err-msg{ font-size:12.5px; color:var(--rf-text-2); line-height:1.55; }
+  .err-panel .err-msg code{ background:rgba(255,255,255,0.05); padding:1px 5px; border-radius:4px; font-size:11px; }
+
+  /* bulk results summary */
+  .bulk-summary{ display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-bottom:16px; }
+  .bulk-stat{ background:var(--rf-bg-card); border:1px solid var(--rf-border); border-radius:var(--rf-radius-lg); padding:13px 14px; text-align:center; }
+  .bulk-stat .v{ font-size:24px; font-weight:600; }
+  .bulk-stat .v.green{ color:var(--rf-green); } .bulk-stat .v.amber{ color:var(--rf-amber); } .bulk-stat .v.red{ color:var(--rf-red); }
+  .bulk-stat .l{ font-size:10.5px; color:var(--rf-text-muted); margin-top:3px; text-transform:uppercase; letter-spacing:0.4px; }
+
+  /* modal overlay */
+  .modal-scrim{ position:absolute; inset:0; background:rgba(0,0,0,0.66); backdrop-filter:blur(2px); display:flex; align-items:center; justify-content:center; padding:24px; z-index:5; }
+  .modal-card{ background:var(--rf-bg-card-2); border:1px solid var(--rf-border-2); border-radius:14px; padding:22px 24px; max-width:420px; width:100%; box-shadow:var(--rf-shadow-lg); }
+  .modal-card .m-ico{ width:46px; height:46px; border-radius:50%; display:flex; align-items:center; justify-content:center; margin-bottom:14px; }
+  .modal-card .m-ico svg{ width:21px; height:21px; }
+  .modal-card .m-ico.amber{ background:var(--rf-amber-soft); color:var(--rf-amber); }
+  .modal-card .m-ico.red{ background:var(--rf-red-soft); color:var(--rf-red); }
+  .modal-card .m-ico.purple{ background:var(--rf-purple-soft); color:var(--rf-purple); }
+  .modal-card h3{ margin:0 0 8px; font-size:16px; font-weight:600; }
+  .modal-card p{ margin:0 0 16px; font-size:13px; color:var(--rf-text-muted); line-height:1.55; }
+  .modal-card p code{ background:rgba(255,255,255,0.05); padding:1px 5px; border-radius:4px; font-size:11.5px; }
+  .modal-actions{ display:flex; gap:10px; justify-content:flex-end; }
+
+  /* seats / members list */
+  .seat-row{ display:grid; grid-template-columns:auto 1fr auto auto; gap:12px; align-items:center; padding:12px 14px; background:var(--rf-bg-card); border:1px solid var(--rf-border); border-radius:var(--rf-radius-lg); margin-bottom:8px; }
+  .seat-av{ width:34px; height:34px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:700; flex:0 0 34px; }
+  .seat-av.purple{ background:var(--rf-purple); } .seat-av.teal{ background:var(--rf-teal); } .seat-av.gray{ background:var(--rf-bg-card-3); color:var(--rf-text-muted); }
+  .seat-meta .name{ font-size:13px; font-weight:600; }
+  .seat-meta .email{ font-size:11px; color:var(--rf-text-dim); margin-top:1px; }
+  .seat-role{ font-size:11px; font-weight:600; padding:4px 10px; border-radius:var(--rf-radius-pill); }
+  .seat-role.admin{ background:var(--rf-purple-soft); color:var(--rf-purple); }
+  .seat-role.member{ background:rgba(59,130,246,0.12); color:var(--rf-blue); }
+  .seat-role.pending{ background:var(--rf-amber-soft); color:var(--rf-amber); }
+  .seat-action{ color:var(--rf-text-muted); cursor:pointer; display:flex; }
+  .seat-action svg{ width:15px; height:15px; }
+  .invite-bar{ display:flex; gap:8px; margin-bottom:16px; }
+  .invite-input{ flex:1; display:flex; align-items:center; gap:8px; background:var(--rf-bg-input); border:1px solid var(--rf-border-2); border-radius:var(--rf-radius-md); padding:9px 12px; color:var(--rf-text-muted); }
+  .invite-input svg{ width:15px; height:15px; }
+  .invite-input input{ background:transparent; border:0; outline:none; color:var(--rf-text); font-family:inherit; font-size:13px; flex:1; }
+
+  /* concurrent lock banner */
+  .lock-banner{ background:rgba(245,185,25,0.07); border:1px solid rgba(245,185,25,0.30); border-radius:var(--rf-radius-lg); padding:14px 16px; margin-bottom:14px; display:grid; grid-template-columns:auto 1fr auto; gap:12px; align-items:center; }
+  .lock-banner-av{ width:34px; height:34px; border-radius:50%; background:var(--rf-teal); display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:700; flex:0 0 34px; }
+  .lock-banner-text strong{ display:block; font-size:13px; color:var(--rf-text); }
+  .lock-banner-text span{ display:block; font-size:11.5px; color:var(--rf-text-muted); margin-top:2px; }
+  .lock-banner-cta{ background:transparent; border:1px solid rgba(245,185,25,0.40); color:var(--rf-amber); padding:6px 12px; border-radius:var(--rf-radius-md); font-size:11.5px; font-weight:600; cursor:pointer; font-family:inherit; white-space:nowrap; }
+
+  /* activity log */
+  .activity-feed{ background:var(--rf-bg-card); border:1px solid var(--rf-border); border-radius:var(--rf-radius-lg); padding:4px 16px; }
+  .activity-row{ display:grid; grid-template-columns:auto 1fr auto; gap:12px; align-items:flex-start; padding:13px 0; border-top:1px solid var(--rf-border); }
+  .activity-row:first-child{ border-top:0; }
+  .activity-dot{ width:30px; height:30px; border-radius:50%; display:flex; align-items:center; justify-content:center; flex:0 0 30px; margin-top:1px; }
+  .activity-dot svg{ width:14px; height:14px; }
+  .activity-dot.gen{ background:var(--rf-purple-soft); color:var(--rf-purple); }
+  .activity-dot.del{ background:var(--rf-red-soft); color:var(--rf-red); }
+  .activity-dot.edit{ background:rgba(59,130,246,0.12); color:var(--rf-blue); }
+  .activity-dot.verify{ background:var(--rf-green-soft); color:var(--rf-green); }
+  .activity-text{ font-size:12.5px; color:var(--rf-text-2); line-height:1.5; }
+  .activity-text strong{ color:var(--rf-text); font-weight:600; }
+  .activity-text .who{ color:var(--rf-purple); font-weight:600; }
+  .activity-time{ font-size:11px; color:var(--rf-text-dim); white-space:nowrap; }
+  .activity-src{ display:inline-block; font-size:9px; font-weight:700; letter-spacing:0.4px; padding:1px 6px; border-radius:4px; margin-left:6px; text-transform:uppercase; }
+  .activity-src.schema{ background:var(--rf-purple-soft); color:var(--rf-purple); }
+  .activity-src.llmseo{ background:rgba(20,184,166,0.12); color:var(--rf-teal); }
+
   a:focus-visible,button:focus-visible,[role="button"]:focus-visible{ outline:none; box-shadow:var(--rf-focus); }
 </style>
 </head>
@@ -1030,10 +1111,246 @@ screens.push({ id:'s29', group:'Multi-user', tag:'Multi-user · LLM SEO', title:
     '<div class="info-note amber"><span class="ni">'+ico.lock+'</span><div><strong>FAQ Generator</strong> and <strong>Citation Optimizer</strong> require Admin access (note the lock icons in the tab bar). Score and AI Preview are open to all members.</div></div>',
     'member'),
   anno:[['Read-only insight','Members can view the score and run AI Preview to understand standing.'],['Locked write tabs','FAQ Generator and Citation Optimizer carry a lock icon and are not clickable for members.'],['Consistent gating','The same isAllowedTo rule governs both Schema generation and LLM SEO writes.'],['No surprise','The lock icons in the tab bar make the boundary obvious before a member clicks.']] });
+/* ===== MULTI-USER · additions ===== */
+screens.push({ id:'s30', group:'Multi-user', tag:'Multi-user · Permission', title:'Blocked action (permission denied)', desc:'A member clicks a locked write tab (Citation Optimizer). A modal explains the gate and offers a request-access path instead of failing silently.', newScreen:true,
+  body: pluginFrame('llmseo',
+    llmSectionHead('score','member')+
+    '<div style="filter:blur(1.5px);opacity:0.5;pointer-events:none;"><div class="score-hero"><div class="score-ring-wrap"><div class="score-ring-bg" style="background:conic-gradient(var(--rf-green) 0% 73%, rgba(255,255,255,0.06) 73% 100%);"></div><div class="score-ring-inner"><div class="score-num">73</div><div class="score-num-suffix">/ 100</div></div></div><div><div class="score-meta-head">Citability Score</div><div class="score-meta-title">Strong Citability</div></div></div></div>'+
+    '<div class="modal-scrim"><div class="modal-card"><div class="m-ico amber">'+ico.lock+'</div><h3>Citation Optimizer is admin-only</h3><p>Writing changes to the Framer canvas is limited to admins on this site. Ask <strong>7seers media</strong> (<code>7seersmedia@gmail.com</code>) to apply the change, or request edit access.</p><div class="modal-actions"><button class="btn-secondary">Got it</button><button class="btn-primary">'+ico.user+'<span>Request access</span></button></div></div></div>',
+    'member'),
+  anno:[['No silent failure','The locked tab does not just do nothing. A modal names the gate and the owner.'],['isAllowedTo boundary','The click is intercepted by the same isAllowedTo check that disables Schema generation.'],['Request path','Request access notifies the admin instead of leaving the member stuck.'],['Reversible','Got it dismisses with no change. Nothing was written to the canvas.']] });
+
+screens.push({ id:'s31', group:'Multi-user', tag:'Multi-user · Admin', title:'Team and access (admin)', desc:'The admin manages who can use the plugin. Seats show role, status, and a per-row action. Invite happens inline from the top bar.', newScreen:true,
+  body: pluginFrame('global',
+    '<h1 class="section-title">Team and access</h1><p class="section-sub">Invite teammates and control who can generate schema and write LLM SEO changes. Admin only.</p>'+
+    '<div class="invite-bar"><div class="invite-input">'+ico.user+'<input placeholder="teammate@company.com"/></div><button class="btn-secondary">Member ▾</button><button class="btn-primary">'+ico.sparkles+'<span>Send invite</span></button></div>'+
+    '<div class="seat-row"><div class="seat-av purple">7M</div><div class="seat-meta"><div class="name">7seers media</div><div class="email">7seersmedia@gmail.com</div></div><span class="seat-role admin">Admin (you)</span><div></div></div>'+
+    '<div class="seat-row"><div class="seat-av teal">L</div><div class="seat-meta"><div class="name">Lingfei</div><div class="email">lingfei@anytimeai.ai</div></div><span class="seat-role member">Member</span><div class="seat-action">'+ico.trash+'</div></div>'+
+    '<div class="seat-row"><div class="seat-av gray">'+ico.user+'</div><div class="seat-meta"><div class="name">mira@studio.co</div><div class="email">Invite sent 2 days ago</div></div><span class="seat-role pending">Pending</span><div class="seat-action">'+ico.trash+'</div></div>'+
+    '<div class="info-note plain"><span class="ni">'+ico.info+'</span><div>Agency Yearly Plan includes <strong>5 seats</strong>. 2 used, 1 pending, 2 available. Members get a read-only view of gated actions unless you grant edit access.</div></div>',
+    'admin'),
+  anno:[['Single source of truth','Seats, roles, and pending invites all live in one admin surface.'],['Role at a glance','Admin, Member, and Pending pills make each person status obvious.'],['Seat accounting','Plan seat count, used, pending, and available are reconciled in the note.'],['Per-row control','Revoke a seat or cancel an invite from the row action, admin only.']] });
+
+screens.push({ id:'s32', group:'Multi-user', tag:'Multi-user · Admin', title:'Invite sent (role picker)', desc:'The admin picked a role and sent an invite. A toast confirms, and the new seat appears as pending. Roles map directly to action gates.', newScreen:true,
+  body: pluginFrame('global',
+    '<h1 class="section-title">Team and access</h1><p class="section-sub">Invite teammates and control who can generate schema and write LLM SEO changes. Admin only.</p>'+
+    '<div class="toast purple"><span class="t-ico">'+ico.check+'</span><span class="t-txt">Invite sent to mira@studio.co as a Member</span></div>'+
+    '<div class="info-note"><span class="ni">'+ico.info+'</span><div><strong>Roles:</strong> <strong>Admin</strong> can generate schema, write LLM SEO changes, manage seats, and recrawl. <strong>Member</strong> gets read-only access to gated actions (view scores, run AI Preview) but cannot write to the canvas or head.</div></div>'+
+    '<div class="seat-row"><div class="seat-av purple">7M</div><div class="seat-meta"><div class="name">7seers media</div><div class="email">7seersmedia@gmail.com</div></div><span class="seat-role admin">Admin (you)</span><div></div></div>'+
+    '<div class="seat-row"><div class="seat-av teal">L</div><div class="seat-meta"><div class="name">Lingfei</div><div class="email">lingfei@anytimeai.ai</div></div><span class="seat-role member">Member</span><div class="seat-action">'+ico.trash+'</div></div>'+
+    '<div class="seat-row"><div class="seat-av gray">'+ico.user+'</div><div class="seat-meta"><div class="name">mira@studio.co</div><div class="email">Invite sent just now</div></div><span class="seat-role pending">Pending</span><div class="seat-action">'+ico.trash+'</div></div>',
+    'admin'),
+  anno:[['Native confirmation','A toast (framer.notify in the real plugin) confirms the invite without a page change.'],['Role to gate mapping','The note spells out exactly what Admin and Member can and cannot do.'],['Optimistic row','The pending seat appears immediately, before the invitee accepts.'],['Two roles only','Admin and Member keep the model simple, no custom permission matrix.']] });
+
+screens.push({ id:'s33', group:'Multi-user', tag:'Multi-user · Concurrent', title:'Concurrent edit lock', desc:'The admin opens a page another teammate is actively editing. A lock banner names the editor and offers wait or override, preventing a clobbered write.', newScreen:true,
+  body: pluginFrame('schema',
+    schemaSectionHead('library')+
+    '<div class="lock-banner"><div class="lock-banner-av">L</div><div class="lock-banner-text"><strong>Lingfei is editing schema on this page</strong><span>Lock acquired 40 seconds ago. Saving now could overwrite their changes.</span></div><button class="lock-banner-cta">Override lock</button></div>'+
+    '<div class="lib-page expanded"><div class="lib-page-head"><div class="lib-page-chevron">'+ico.chevron_right+'</div><div class="lib-page-ico">'+ico.globe+'</div><div><div class="lib-page-path">/</div><div class="lib-page-summary">WebSite, Organization, BreadcrumbList, FAQPage</div></div><span class="lib-page-status warning">Locked</span></div>'+
+    '<div class="lib-page-body"><div class="lib-schema-row"><div class="lib-schema-ico purple">'+ico.globe+'</div><div><strong style="font-size:13px;">WebSite</strong></div><span class="lock-badge">'+ico.lock+'In use</span><button class="btn-generate disabled">Edit</button></div>'+
+    '<div class="lib-schema-row"><div class="lib-schema-ico purple">'+ico.building+'</div><div><strong style="font-size:13px;">Organization</strong></div><span class="lock-badge">'+ico.lock+'In use</span><button class="btn-generate disabled">Edit</button></div></div></div>'+
+    '<div class="info-note amber"><span class="ni">'+ico.info+'</span><div>RankFrame uses a short-lived edit lock per page so two teammates never inject conflicting schema into the same head at once. The lock auto-releases after 5 minutes of inactivity.</div></div>',
+    'admin'),
+  anno:[['Conflict prevention','A per-page lock stops two writers from clobbering the same head injection.'],['Who and when','The banner names the lock owner and how long they have held it.'],['Escape hatch','Override is available for a stuck lock, with a clear warning about consequences.'],['Auto-release','The lock expires after inactivity so a closed tab never blocks the team forever.']] });
+
+screens.push({ id:'s34', group:'Multi-user', tag:'Multi-user · Audit', title:'Activity log (audit trail)', desc:'A cross-feature audit trail of who generated, edited, deleted, or verified what, across both Schema and LLM SEO, with timestamps and source tags.', newScreen:true,
+  body: pluginFrame('global',
+    '<h1 class="section-title">Team activity</h1><p class="section-sub">Every schema and LLM SEO change, who made it, and when. Read-only audit trail across the whole team.</p>'+
+    '<div class="activity-feed">'+
+    '<div class="activity-row"><div class="activity-dot gen">'+ico.sparkles+'</div><div class="activity-text"><span class="who">Lingfei</span> generated <strong>Article schema</strong> on /thoughts/master-the-power-of-color<span class="activity-src schema">Schema</span></div><div class="activity-time">2 min ago</div></div>'+
+    '<div class="activity-row"><div class="activity-dot edit">'+ico.edit+'</div><div class="activity-text"><span class="who">7seers media</span> applied a <strong>Citation Optimizer</strong> edit to the hero paragraph on /thoughts/master-the-power-of-color<span class="activity-src llmseo">LLM SEO</span></div><div class="activity-time">18 min ago</div></div>'+
+    '<div class="activity-row"><div class="activity-dot verify">'+ico.check+'</div><div class="activity-text"><strong>GSC verification</strong> passed for 7 schemas across 4 pages<span class="activity-src schema">Schema</span></div><div class="activity-time">2 hours ago</div></div>'+
+    '<div class="activity-row"><div class="activity-dot gen">'+ico.sparkles+'</div><div class="activity-text"><span class="who">7seers media</span> generated <strong>FAQPage</strong> on / (homepage)<span class="activity-src llmseo">LLM SEO</span></div><div class="activity-time">Yesterday, 4:12pm</div></div>'+
+    '<div class="activity-row"><div class="activity-dot del">'+ico.trash+'</div><div class="activity-text"><span class="who">7seers media</span> deleted a duplicate <strong>Organization schema</strong> on /about<span class="activity-src schema">Schema</span></div><div class="activity-time">Yesterday, 4:09pm</div></div>'+
+    '<div class="activity-row"><div class="activity-dot gen">'+ico.layers+'</div><div class="activity-text"><span class="who">7seers media</span> ran a <strong>whole-site scan</strong> generating 14 schemas across 11 pages<span class="activity-src schema">Schema</span></div><div class="activity-time">2 days ago</div></div>'+
+    '</div>',
+    'admin'),
+  anno:[['Cross-feature trail','Schema and LLM SEO writes share one timeline so nothing happens off the record.'],['Attribution','Each row names the teammate, the action, the page, and the source feature.'],['Source tags','Schema and LLM SEO badges show which feature performed each write.'],['Read-only','The log is immutable. It is for accountability, not editing.']] });
+
+/* ===== SCHEMA · EDGE CASES ===== */
+screens.push({ id:'s35', group:'Schema · Edge cases', tag:'Schema · Error', title:'Detection failed (retry)', desc:'The AI detection call failed (timeout or model error). The flow holds state, explains what happened, and offers a one-click retry instead of dumping the user back to the start.', newScreen:true,
+  body: pluginFrame('schema',
+    schemaSectionHead('generate')+schemaStepper('detect')+
+    '<div class="editor-head"><div class="editor-head-text"><h2>Auto-Generate · /projects/rkg</h2></div><div class="editor-back">'+ico.back+'<span>Back</span></div></div>'+
+    '<div class="state-block"><div class="sb-ico red">'+ico.alert+'</div><h3>Detection could not finish</h3><p>The model timed out while reading this page. Your place in the flow is saved, nothing was injected.</p>'+
+    '<div class="err-panel"><div class="err-code">AI_TIMEOUT · request 8f2a1c</div><div class="err-msg">The detection request to <code>claude-sonnet-4-6</code> exceeded 30s. This is usually transient on very large pages. Retrying often succeeds.</div></div>'+
+    '<div class="state-actions"><button class="btn-secondary">'+ico.back+'<span>Pick another page</span></button><button class="btn-primary">'+ico.refresh+'<span>Retry detection</span></button></div></div>',
+    'admin'),
+  anno:[['State preserved','A failed detection does not reset the flow. The user stays on the same page and step.'],['Honest error','The error code and model name are shown so support can trace it.'],['No partial write','The copy makes clear nothing was injected, so retry is safe.'],['One-click recovery','Retry re-runs detection. Pick another page is the alternate exit.']] });
+
+screens.push({ id:'s36', group:'Schema · Edge cases', tag:'Schema · Error', title:'Injection failed (permission)', desc:'Detection succeeded but writing to the site head failed because the plugin lacks the setCustomCode permission. The schema is preserved so the user can retry after granting access.', newScreen:true,
+  body: pluginFrame('schema',
+    schemaSectionHead('generate')+schemaStepper('inject')+
+    '<div class="editor-head"><div class="editor-head-text"><h2>Auto-Generate · /projects/rkg</h2><p>3 schemas detected and ready</p></div></div>'+
+    '<div class="state-block"><div class="sb-ico red">'+ico.x+'</div><h3>Could not inject into the site head</h3><p>The schema is generated and saved, but RankFrame was blocked from writing it to your site. This usually means the plugin lacks Custom Code permission.</p>'+
+    '<div class="err-panel"><div class="err-code">SET_CUSTOM_CODE_DENIED</div><div class="err-msg">Framer rejected <code>setCustomCode()</code>. Custom code is a site-wide head injection and requires the plugin to be allowed. Check Plugin permissions in Framer, then retry.</div></div>'+
+    '<div class="state-actions"><button class="btn-secondary">'+ico.info+'<span>How to grant access</span></button><button class="btn-primary">'+ico.refresh+'<span>Retry injection</span></button></div></div>'+
+    '<div class="info-note plain"><span class="ni">'+ico.info+'</span><div>RankFrame injects schema as a single site-wide block via <code>setCustomCode({location:"headEnd"})</code>. Framer has no per-page head API, so all schema lives in one managed block keyed by page path.</div></div>',
+    'admin'),
+  anno:[['Generation vs injection','Detection succeeded. Only the write step failed, so the schema is not lost.'],['Real API constraint','setCustomCode is site-wide. The note states the actual Framer limitation honestly.'],['Permission path','How to grant access explains the fix; Retry re-attempts the write.'],['No data loss','The generated schema persists so retry does not re-bill the AI call.']] });
+
+screens.push({ id:'s37', group:'Schema · Edge cases', tag:'Schema · Not ready', title:'Site not crawled yet (no pages)', desc:'A first-time user before any crawl. There are no pages to act on yet, so the empty state routes straight to a recrawl rather than showing an empty list.', newScreen:true,
+  body: pluginFrame('schema',
+    schemaSectionHead('generate')+
+    '<div class="state-block"><div class="sb-ico blue">'+ico.globe+'</div><h3>We have not crawled your site yet</h3><p>RankFrame builds the page list from your published-site crawl plus sitemap.xml. Run a crawl to unlock schema generation across every page.</p>'+
+    '<div class="state-actions"><button class="btn-primary">'+ico.refresh+'<span>Crawl my site now</span></button></div></div>'+
+    '<div class="info-note plain"><span class="ni">'+ico.info+'</span><div>Pages come from the published-site crawl and <code>sitemap.xml</code>, not from <code>getProjectInfo()</code>, which does not enumerate pages. Publish your site at least once so it has a crawlable URL.</div></div>',
+    'admin'),
+  anno:[['No empty table','When there are no pages, the state routes to the action that creates them.'],['Accurate source','Pages come from crawl plus sitemap.xml. The note states this precisely.'],['Publish prerequisite','An unpublished site has no crawlable URL, which the note calls out.'],['Single CTA','One button, crawl now, removes any guesswork about the next step.']] });
+
+screens.push({ id:'s38', group:'Schema · Edge cases', tag:'Schema · Bulk', title:'Whole-site scan results', desc:'The bulk scan finished. A summary tallies generated, warnings, and failures, with per-page outcomes and a single inject-all action for the successful set.', newScreen:true,
+  body: pluginFrame('schema',
+    schemaSectionHead('generate')+
+    '<div class="editor-head"><div class="editor-head-text"><h2>Scan complete · 17 pages</h2><p>32 schemas detected. Review before injecting.</p></div></div>'+
+    '<div class="bulk-summary"><div class="bulk-stat"><div class="v green">28</div><div class="l">Ready</div></div><div class="bulk-stat"><div class="v amber">3</div><div class="l">Warnings</div></div><div class="bulk-stat"><div class="v red">1</div><div class="l">Failed</div></div><div class="bulk-stat"><div class="v">$0.42</div><div class="l">Spent</div></div></div>'+
+    '<div class="page-row"><div class="page-row-ico green-bg">'+ico.check+'</div><div class="page-row-meta"><div class="path">/</div><div class="url">WebSite, Organization, BreadcrumbList</div></div><div class="page-row-pill"><span class="dot-st"></span>3 ready</div><div></div><div></div></div>'+
+    '<div class="page-row"><div class="page-row-ico green-bg">'+ico.check+'</div><div class="page-row-meta"><div class="path">/shop/midnight-tote <span class="cms-badge">CMS · 47 items</span></div><div class="url">Product template, one schema covers all items</div></div><div class="page-row-pill"><span class="dot-st"></span>1 ready</div><div></div><div></div></div>'+
+    '<div class="page-row"><div class="page-row-ico" style="background:var(--rf-amber-soft);color:var(--rf-amber);">'+ico.alert+'</div><div class="page-row-meta"><div class="path">/pricing</div><div class="url">Service detected, missing recommended fields</div></div><div class="page-row-pill amber"><span class="dot-st"></span>warning</div><div></div><button class="btn-generate">Review</button></div>'+
+    '<div class="page-row"><div class="page-row-ico" style="background:var(--rf-red-soft);color:var(--rf-red);">'+ico.x+'</div><div class="page-row-meta"><div class="path">/events/launch-2026</div><div class="url">Event detected, could not read startDate</div></div><div class="page-row-pill" style="background:var(--rf-red-soft);color:var(--rf-red);"><span class="dot-st"></span>failed</div><div></div><button class="btn-generate purple">'+ico.refresh+'<span>Retry</span></button></div>'+
+    '<div class="editor-footer"><span class="left-text">28 ready schemas inject as one managed head block. Warnings inject too; the 1 failure is skipped.</span><button class="btn-primary">'+ico.sparkles+'<span>Inject 28 schemas</span></button></div>',
+    'admin'),
+  anno:[['Outcome tally','Ready, warnings, failed, and cost give a one-glance result before any write.'],['Partial success','A single failed page does not block the other 31. Inject-all skips the failure.'],['Per-page recovery','The failed row has its own Retry so the user fixes just that one.'],['CMS coverage','One product template schema covers all 47 collection items in a single row.']] });
+
+screens.push({ id:'s39', group:'Schema · Edge cases', tag:'Schema · Conflict', title:'Existing hand-written schema found', desc:'Detection found schema already on the page that RankFrame did not write (hand-coded or another tool). The user chooses to keep, replace, or merge, never a silent overwrite.', newScreen:true,
+  body: pluginFrame('schema',
+    schemaSectionHead('generate')+schemaStepper('review')+
+    '<div class="editor-head"><div class="editor-head-text"><h2>Existing schema detected · /about</h2><p>This page already has structured data RankFrame did not create</p></div></div>'+
+    '<div class="info-note amber"><span class="ni">'+ico.alert+'</span><div><strong>Found 1 hand-written Organization schema.</strong> RankFrame will not overwrite markup it did not author without your say-so.</div></div>'+
+    '<div class="json-card"><div class="json-head"><h3>Existing on page (not RankFrame)</h3><span class="lock-badge">'+ico.code+'External</span></div><div class="json-block">'+jsonHTML({'@context':'https://schema.org','@type':'Organization',name:'7 Seers Media',url:'https://7seersmedia.com'})+'</div></div>'+
+    '<div class="json-card"><div class="json-head"><h3>RankFrame would generate</h3><span class="cms-badge" style="background:var(--rf-purple-soft);">Richer</span></div><div class="json-block">'+jsonHTML({'@context':'https://schema.org','@type':'Organization',name:'7 Seers Media',url:'https://7seersmedia.com',logo:'https://7seersmedia.com/logo.png',sameAs:['https://www.linkedin.com/company/7seersmedia'],description:'Brand identity studio for technology companies'})+'</div></div>'+
+    '<div class="state-actions" style="justify-content:flex-start;"><button class="btn-secondary">Keep existing</button><button class="btn-secondary">'+ico.layers+'<span>Merge fields</span></button><button class="btn-primary">'+ico.refresh+'<span>Replace with richer</span></button></div>',
+    'admin'),
+  anno:[['Never clobber','RankFrame detects external schema and refuses to overwrite it silently.'],['Side-by-side','Existing and proposed JSON-LD are shown together so the choice is informed.'],['Three routes','Keep, merge missing fields, or replace. The user decides, not the tool.'],['Source aware','The External tag marks schema RankFrame did not author and does not manage.']] });
+
+screens.push({ id:'s40', group:'Schema · Edge cases', tag:'Schema · Confirm', title:'Delete schema confirmation', desc:'A destructive delete is gated behind a modal that states exactly what is removed and that the head block updates on the next publish. No accidental one-click deletes.', newScreen:true,
+  body: pluginFrame('schema',
+    schemaSectionHead('library')+
+    '<div style="filter:blur(1.5px);opacity:0.5;pointer-events:none;"><div class="lib-page expanded"><div class="lib-page-head"><div class="lib-page-chevron">'+ico.chevron_right+'</div><div class="lib-page-ico">'+ico.globe+'</div><div><div class="lib-page-path">/</div><div class="lib-page-summary">WebSite, Organization, BreadcrumbList</div></div><span class="lib-page-status verified">Verified</span></div></div></div>'+
+    '<div class="modal-scrim"><div class="modal-card"><div class="m-ico red">'+ico.trash+'</div><h3>Delete BreadcrumbList schema?</h3><p>This removes the <strong>BreadcrumbList</strong> schema from <code>/</code> and updates the managed head block on your next publish. This cannot be undone, but you can regenerate it anytime.</p><div class="modal-actions"><button class="btn-secondary">Cancel</button><button class="btn-primary" style="background:var(--rf-red);border-color:var(--rf-red);box-shadow:none;">'+ico.trash+'<span>Delete schema</span></button></div></div></div>',
+    'admin'),
+  anno:[['Confirm destructive','Delete is never one-click. A modal states exactly what is removed.'],['Scope clarity','The copy names the schema type, the page, and when the head updates.'],['Reversible enough','It warns this cannot be undone but notes regeneration is always available.'],['Publish timing','It is explicit that the live head changes only on the next publish.']] });
+
+screens.push({ id:'s41', group:'Schema · Edge cases', tag:'Schema · Verification', title:'GSC not connected', desc:'Verification needs a Google Search Console property, and none is connected. The tab explains why and routes to connect, instead of showing a broken verification panel.', newScreen:true,
+  body: pluginFrame('schema',
+    schemaSectionHead('verification')+
+    '<div class="state-block"><div class="sb-ico amber">'+ico.alert+'</div><h3>Connect Google Search Console to verify</h3><p>Verification checks whether Google can read each schema using the GSC URL Inspection API. That requires a connected Search Console property for this domain.</p>'+
+    '<div class="state-actions"><button class="btn-primary">'+ico.link+'<span>Connect Search Console</span></button></div></div>'+
+    '<div class="info-note plain"><span class="ni">'+ico.info+'</span><div>There is no public Rich Results Test API. The <strong>GSC URL Inspection API</strong> (<code>urlInspection/index:inspect</code>) is the only programmatic way to confirm Google parses your structured data. Connect once and a daily cron keeps status fresh.</div></div>'+
+    '<div class="info-note amber"><span class="ni">'+ico.alert+'</span><div>Until connected, schemas still inject and work. You just will not see verified or failed status here.</div></div>',
+    'admin'),
+  anno:[['Honest dependency','Verification is gated on real GSC access. The screen says so plainly.'],['Correct API','It names the GSC URL Inspection API, not a non-existent Rich Results Test API.'],['Injection still works','Generation does not depend on GSC. Only the verified status does.'],['One-time connect','Connect once and the daily cron handles ongoing checks.']] });
+
+screens.push({ id:'s42', group:'Schema · Edge cases', tag:'Schema · Limit', title:'Generation limit reached', desc:'The plan AI generation quota is exhausted. Generation is paused with a clear count, reset date, and upgrade path, rather than failing mid-flow.', newScreen:true,
+  body: pluginFrame('schema',
+    schemaSectionHead('generate')+
+    '<div class="state-block"><div class="sb-ico amber">'+ico.zap+'</div><h3>Monthly generation limit reached</h3><p>You have used all <strong>500</strong> AI generations on the Agency Yearly Plan this cycle. Existing schemas keep working and verifying. New generation resumes when the cycle resets.</p>'+
+    '<div class="err-panel" style="background:var(--rf-amber-soft);border-color:rgba(245,185,25,0.30);"><div class="err-code" style="color:var(--rf-amber);background:rgba(245,185,25,0.12);">QUOTA_EXHAUSTED · 500 / 500</div><div class="err-msg">Resets on <strong>July 1, 2026</strong> (28 days). Upgrade for a higher monthly allowance, or wait for the reset.</div></div>'+
+    '<div class="state-actions"><button class="btn-secondary">'+ico.clock+'<span>Wait for reset</span></button><button class="btn-primary">'+ico.trending_up+'<span>Upgrade plan</span></button></div></div>',
+    'admin'),
+  anno:[['Graceful stop','Hitting the quota pauses new generation. It does not error mid-detection.'],['Clear counters','Used vs allowance and the reset date remove any ambiguity.'],['Existing unaffected','Already-generated schemas keep working and verifying past the limit.'],['Two paths','Wait for the reset or upgrade. Both are one click.']] });
+
+/* ===== LLM SEO · EDGE CASES ===== */
+screens.push({ id:'s43', group:'LLM SEO · Edge cases', tag:'LLM SEO · Score', title:'Low score (many fixes)', desc:'A weak citability result. The same six-factor model surfaces a red score with the highest-leverage fixes ranked first, so a poor result is still actionable.', newScreen:true,
+  body: pluginFrame('llmseo',
+    llmSectionHead('score')+
+    '<div class="score-hero"><div class="score-ring-wrap"><div class="score-ring-bg" style="background:conic-gradient(var(--rf-red) 0% 34%, rgba(255,255,255,0.06) 34% 100%);"></div><div class="score-ring-inner"><div class="score-num">34</div><div class="score-num-suffix">/ 100</div></div></div><div><div class="score-meta-head">Citability Score</div><div class="score-meta-title" style="color:var(--rf-red);">Low Citability</div><span class="score-tier-pill" style="background:var(--rf-red-soft);color:var(--rf-red);">'+ico.alert+'Bottom 30% of Framer sites</span><div class="score-meta-sub">AI tools rarely cite these pages. The fixes below move the score the most.</div></div></div>'+
+    '<div class="xf-banner" style="background:var(--rf-amber-soft);border-color:rgba(245,185,25,0.30);"><div class="xf-banner-ico" style="background:rgba(245,185,25,0.12);color:var(--rf-amber);">'+ico.schema_tag+'</div><div class="xf-banner-text"><strong>Biggest win: add schema.</strong> 15 of 17 pages have no markup. Generating schema would add an estimated +18 pts.</div><button class="xf-banner-cta" style="border-color:rgba(245,185,25,0.40);color:var(--rf-amber);">Open Schema</button></div>'+
+    factorRow('weak','Answer Directness','Pages bury answers in marketing copy instead of stating them','6/25',24)+
+    factorRow('weak','Entity Clarity','No clear Organization or author entities are defined','5/20',25)+
+    factorRow('partial','Structured Content','Some headings exist, but content is mostly long paragraphs','9/20',45)+
+    factorRow('weak','Factual Density','Very few specific facts, stats, or dates','4/15',27)+
+    factorRow('weak','Citation Signals','No author credentials or publication dates','3/10',30)+
+    factorRow('weak','Schema Coverage','15 of 17 pages lack schema markup','2/10',20)+
+    '<div class="improve-strip"><h4>Highest-leverage fixes</h4><div class="improve-item">'+ico.schema_tag+'<span>Generate schema across the site</span><span class="pts">+18 pts</span></div><div class="improve-item">'+ico.help+'<span>Add FAQ blocks to 5 key pages</span><span class="pts">+9 pts</span></div><div class="improve-item">'+ico.user+'<span>Add credentialed author bios</span><span class="pts">+5 pts</span></div></div>',
+    'admin'),
+  anno:[['Poor but actionable','A low score still ranks the fixes that move it most, so it is never a dead end.'],['Same six factors','The model is consistent. Low scores just have more weak factors.'],['Cross-feature lever','Schema is the biggest single win here, and the banner routes straight to it.'],['Estimated gains','Each fix shows projected points so the user sequences effort by impact.']] });
+
+screens.push({ id:'s44', group:'LLM SEO · Edge cases', tag:'LLM SEO · AI Preview', title:'AI Preview running', desc:'The AI Preview is querying three models in parallel. Each simulation streams in as it returns, with a per-model progress state.', newScreen:true,
+  body: pluginFrame('llmseo',
+    llmSectionHead('preview')+
+    '<div class="ai-preview-input"><div class="ai-preview-input-head">Test query</div><div class="ai-preview-query">'+ico.quote+'<span>best brand identity studio for tech startups</span></div></div>'+
+    '<div class="spinner-wrap" style="padding-top:24px;"><div class="spinner"></div><p>Simulating AI answers...</p><small>Querying three models and checking whether they cite your site.</small>'+
+    '<div class="step-log"><div class="step-log-row"><span class="ok">'+ico.check+'</span>ChatGPT responded, citation detected</div><div class="step-log-row"><span class="spinner-sm"></span>Perplexity answering...</div><div class="step-log-row" style="opacity:0.5;"><span>'+ico.clock+'</span>Claude queued</div></div></div>'+
+    '<div class="progress-bar-wrap"><div class="progress-bar"><div class="fill" style="width:55%"></div></div><div class="progress-bar-label">1 of 3 models complete</div></div>',
+    'admin'),
+  anno:[['Parallel simulations','ChatGPT, Perplexity, and Claude run together, streaming in as each returns.'],['Per-model status','The step log shows which models are done, running, or queued.'],['Citation detection','As each model returns, RankFrame parses whether your domain was cited.'],['Backend','POST /api/llmseo/preview fans out to the three model simulations and aggregates.']] });
+
+screens.push({ id:'s45', group:'LLM SEO · Edge cases', tag:'LLM SEO · AI Preview', title:'Not cited (poor result)', desc:'A query where none of the three models cite the site. Each card explains the specific gap and links to the fix that would change the outcome.', newScreen:true,
+  body: pluginFrame('llmseo',
+    llmSectionHead('preview')+
+    '<div class="ai-preview-input"><div class="ai-preview-input-head">Test query</div><div class="ai-preview-query">'+ico.quote+'<span>affordable framer seo plugin for agencies</span></div><button class="btn-primary full">'+ico.refresh+'<span>Re-run AI Preview</span></button></div>'+
+    '<div class="info-note amber"><span class="ni">'+ico.alert+'</span><div><strong>0 of 3 models cited your site</strong> for this query. The cards below show why and what to fix.</div></div>'+
+    '<div class="ai-result-card"><div class="ai-result-head"><div class="ai-result-head-logo chatgpt">G</div><span>ChatGPT</span><span class="ai-result-cite-status not-cited">not cited</span></div><div class="ai-result-body">For agency-focused Framer SEO, popular options include <span class="ai-result-citation competitor">competitor-a.com</span> and <span class="ai-result-citation competitor">competitor-b.com</span>. I do not have enough information about your site for this query.</div><div class="ai-result-sources"><strong>Why not cited:</strong> No page directly answers "framer seo plugin for agencies" with pricing and feature specifics.</div></div>'+
+    '<div class="ai-result-card"><div class="ai-result-head"><div class="ai-result-head-logo perplexity">P</div><span>Perplexity</span><span class="ai-result-cite-status not-cited">not cited</span></div><div class="ai-result-body">Several Framer SEO tools exist. <span class="ai-result-citation competitor">[1] competitor-a.com</span> ranks for this query with a dedicated agencies page.</div><div class="ai-result-sources"><strong>Why not cited:</strong> Competitors have a dedicated agencies landing page with clear facts; you do not.</div></div>'+
+    '<div class="improve-strip"><h4>Make this query citable</h4><div class="improve-item">'+ico.sparkles+'<span>Add an agencies page that answers this directly</span><span class="pts">High impact</span></div><div class="improve-item">'+ico.help+'<span>Add FAQ: "Is RankFrame good for agencies?"</span><span class="pts">+ citation odds</span></div></div>',
+    'admin'),
+  anno:[['Honest miss','When no model cites you, the screen says so plainly and explains each gap.'],['Per-model reasons','Each card states specifically why that model did not cite the site.'],['Competitor visibility','Seeing who got cited instead shows the user the bar to clear.'],['Routed fixes','The improve strip links to the content and FAQ actions that close the gap.']] });
+
+screens.push({ id:'s46', group:'LLM SEO · Edge cases', tag:'LLM SEO · Optimizer', title:'No layer selected', desc:'Citation Optimizer needs a text layer selected on the Framer canvas to apply an edit. With nothing selected, it explains the requirement instead of failing on apply.', newScreen:true,
+  body: pluginFrame('llmseo',
+    llmSectionHead('optimizer')+
+    '<div class="state-block"><div class="sb-ico purple">'+ico.target+'</div><h3>Select a text layer to optimize</h3><p>Citation Optimizer writes improved copy directly to your canvas with <code>node.setText()</code>. Select the text layer you want to improve in Framer, and its suggestions appear here.</p>'+
+    '<div class="state-actions"><button class="btn-secondary">'+ico.info+'<span>How selection works</span></button></div></div>'+
+    '<div class="info-note plain"><span class="ni">'+ico.info+'</span><div>RankFrame reads the current Framer selection. Only <strong>TextNode</strong> layers can be rewritten with <code>node.setText()</code>. Image and frame layers are skipped.</div></div>'+
+    '<div class="info-note teal"><span class="ni">'+ico.thumbs_up+'</span><div>Tip: select your hero headline or opening paragraph first. Those carry the most citation weight.</div></div>',
+    'admin'),
+  anno:[['Selection-driven','Optimizer acts on the live Framer selection, so it needs a layer chosen.'],['Real API','Only TextNode layers support node.setText(). The note states this honestly.'],['No dead apply','Rather than fail on apply, it explains the requirement up front.'],['Guidance','The tip points the user at the highest-leverage layers to select first.']] });
+
+screens.push({ id:'s47', group:'LLM SEO · Edge cases', tag:'LLM SEO · Optimizer', title:'Edit applied (canvas write)', desc:'A single optimization was applied. A native toast confirms the canvas write, the card flips to applied, and a reminder notes changes go live on publish.', newScreen:true,
+  body: pluginFrame('llmseo',
+    llmSectionHead('optimizer')+
+    '<div class="toast purple"><span class="t-ico">'+ico.check+'</span><span class="t-txt">Applied to canvas via node.setText(). Publish to go live.</span></div>'+
+    '<div class="editor-head"><div class="editor-head-text"><h2>3 optimization suggestions</h2><p>/thoughts/master-the-power-of-color · 1 of 3 applied</p></div></div>'+
+    '<div class="opt-edit-card applied"><div class="opt-edit-head"><div class="opt-edit-ico">'+ico.target+'</div><div><div class="opt-edit-title">Opening paragraph</div><div class="opt-edit-loc">Hero section</div></div><span class="opt-edit-impact">High impact +6 pts</span></div><div class="opt-diff"><div class="opt-diff-side before"><div class="opt-diff-label">Before</div><div class="opt-diff-text"><del>Color is an important aspect of brand design.</del></div></div><div class="opt-diff-side after"><div class="opt-diff-label">After</div><div class="opt-diff-text"><ins>Color psychology drives 85% of purchase decisions. At 7 Seers Media, we turn three decades of color research into a practical Framer framework.</ins></div></div></div><div class="opt-edit-foot"><div class="opt-edit-foot-reason"><strong>Applied just now</strong> to the selected TextNode.</div><button class="opt-apply-btn">'+ico.check+'<span>Applied</span></button></div></div>'+
+    '<div class="opt-edit-card"><div class="opt-edit-head"><div class="opt-edit-ico">'+ico.user+'</div><div><div class="opt-edit-title">Author bio</div><div class="opt-edit-loc">Article footer</div></div><span class="opt-edit-impact">Medium impact +3 pts</span></div><div class="opt-edit-foot"><div class="opt-edit-foot-reason"><strong>Why:</strong> Named, credentialed authors are a strong citation signal.</div><button class="opt-apply-btn">'+ico.check+'<span>Apply</span></button></div></div>'+
+    '<div class="info-note teal"><span class="ni">'+ico.check+'</span><div>The canvas now holds the new text. Nothing is live until you <strong>publish</strong> the site. You can undo in Framer like any edit.</div></div>',
+    'admin'),
+  anno:[['Native confirmation','A framer.notify toast confirms the write the moment it lands.'],['Applied state','The card flips to Applied so the user sees what is done versus pending.'],['Publish gating','The toast and note both make clear changes go live only on publish.'],['Undoable','Because it is a normal canvas edit, Framer undo reverts it.']] });
+
+screens.push({ id:'s48', group:'LLM SEO · Edge cases', tag:'LLM SEO · FAQ', title:'Not enough content for FAQs', desc:'FAQ generation needs enough page content to draft accurate questions. On a thin page, it declines rather than inventing answers, and suggests what to add.', newScreen:true,
+  body: pluginFrame('llmseo',
+    llmSectionHead('faq')+faqStepper('generate')+
+    '<div class="editor-head"><div class="editor-head-text"><h2>/contact</h2><p>Generating FAQs</p></div><div class="editor-back">'+ico.back+'<span>Back</span></div></div>'+
+    '<div class="state-block"><div class="sb-ico amber">'+ico.alert+'</div><h3>Not enough content to draft accurate FAQs</h3><p>This page has about 40 words. RankFrame will not invent answers that are not grounded in your content, since fabricated FAQs hurt citability and trust.</p>'+
+    '<div class="state-actions"><button class="btn-secondary">'+ico.pages+'<span>Pick a richer page</span></button><button class="btn-primary">'+ico.edit+'<span>Write FAQs manually</span></button></div></div>'+
+    '<div class="info-note plain"><span class="ni">'+ico.info+'</span><div>FAQs are drafted only from real page content. Pages with at least a few paragraphs (like /pricing or blog posts) produce the strongest, most citable question-answer pairs.</div></div>',
+    'admin'),
+  anno:[['No fabrication','On thin content, RankFrame declines rather than inventing ungrounded answers.'],['Honest reason','It explains that fabricated FAQs would hurt citability and trust.'],['Two exits','Pick a richer page, or write FAQs manually. No dead end.'],['Content threshold','The note sets expectations on what page length produces good FAQs.']] });
+
+screens.push({ id:'s49', group:'LLM SEO · Edge cases', tag:'LLM SEO · Speakable', title:'Speakable auto-injected', desc:'On the first score run, LLM SEO injects Speakable schema so voice assistants can read key answers. The screen confirms it and shows the exact JSON-LD, owned by LLM SEO only.', newScreen:true,
+  body: pluginFrame('llmseo',
+    llmSectionHead('score')+
+    '<div class="toast purple"><span class="t-ico">'+ico.check+'</span><span class="t-txt">Speakable schema injected on 3 key pages</span></div>'+
+    '<div class="xf-banner"><div class="xf-banner-ico">'+ico.brain+'</div><div class="xf-banner-text"><strong>Speakable is owned by LLM SEO only.</strong> The Schema feature never generates or edits Speakable, so there is no cross-feature conflict.</div><button class="xf-banner-cta">View in Schema Library</button></div>'+
+    jsonBlock('SpeakableSpecification · / (homepage)', {'@context':'https://schema.org','@type':'WebPage',speakable:{'@type':'SpeakableSpecification',cssSelector:['.hero-headline','.intro-answer']},url:'https://7seersmedia.com/'})+
+    '<div class="info-note plain"><span class="ni">'+ico.info+'</span><div>Injected through the shared <code>injectIntoFramer()</code> helper with the marker <code>&lt;!-- RankFrame:Speakable:start source=llmseo --&gt;</code>, so it appears in the unified Library tagged to LLM SEO.</div></div>'+
+    '<div class="info-note teal"><span class="ni">'+ico.thumbs_up+'</span><div>Speakable highlights the headline and the first direct answer on each page, the parts a voice assistant should read aloud.</div></div>',
+    'admin'),
+  anno:[['Single owner','Speakable belongs to LLM SEO only. Schema never touches it, so no conflict.'],['Auto on first run','The first score run injects Speakable, no separate step needed.'],['Shared injection','It uses the same injectIntoFramer helper and marker system as all schema.'],['Unified library','Tagged source=llmseo, it still shows in the one shared Library view.']] });
+
 /* ===== RENDER ===== */
 function tileIcon(s){
   const g = (s.group||'').toLowerCase();
   const t = (s.title||'').toLowerCase();
+  if(g.indexOf('multi-user')>-1){
+    if(t.indexOf('blocked')>-1||t.indexOf('permission')>-1) return ico.lock;
+    if(t.indexOf('team')>-1||t.indexOf('invite')>-1||t.indexOf('seat')>-1) return ico.user;
+    if(t.indexOf('lock')>-1||t.indexOf('concurrent')>-1) return ico.lock;
+    if(t.indexOf('activity')>-1||t.indexOf('audit')>-1) return ico.clock;
+    return ico.user;
+  }
+  if(g.indexOf('edge')>-1){
+    if(t.indexOf('fail')>-1||t.indexOf('error')>-1||t.indexOf('denied')>-1) return ico.alert;
+    if(t.indexOf('limit')>-1||t.indexOf('quota')>-1) return ico.zap;
+    if(t.indexOf('not connected')>-1||t.indexOf('not crawled')>-1||t.indexOf('not enough')>-1||t.indexOf('no layer')>-1) return ico.info;
+    if(t.indexOf('conflict')>-1||t.indexOf('existing')>-1) return ico.alert;
+    if(t.indexOf('confirm')>-1||t.indexOf('delete')>-1) return ico.trash;
+    if(t.indexOf('result')>-1) return ico.layers;
+    if(t.indexOf('applied')>-1) return ico.check;
+    if(t.indexOf('speakable')>-1) return ico.brain;
+    if(t.indexOf('running')>-1) return ico.refresh;
+    return ico.alert;
+  }
   if(g.indexOf('llm')===0){
     if(g.indexOf('score')>-1) return ico.target;
     if(g.indexOf('faq')>-1) return ico.help;
