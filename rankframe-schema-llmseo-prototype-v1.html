@@ -688,21 +688,31 @@ function pluginFrame(activeKey, mainHTML, role){
 }
 
 const PLUGIN_NAV_GROUPS = [
-  { key:'setup',    label:'Setup',          ico:ico.cog,        items:[
+  { key:'setup',    label:'Setup',          ico:ico.cog,   items:[
     {k:'global',     label:'Global Settings'},
   ]},
-  { key:'optimize', label:'Optimize',       ico:ico.sparkles,   items:[
+  { key:'optimize', label:'Optimize',       ico:ico.zap,   items:[
     {k:'pages',      label:'Pages'},
     {k:'images',     label:'Image SEO'},
     {k:'schema',     label:'Schema',      isNew:true},
     {k:'llmseo',     label:'LLM SEO',     isNew:true},
   ]},
-  { key:'index',    label:'Index',          ico:ico.globe,       items:[
+  { key:'index',    label:'Index',          ico:ico.globe, items:[
     {k:'submit',     label:'Submit Indexing'},
+    {k:'sitemap',    label:'Sitemap'},
   ]},
-  { key:'monitor',  label:'Monitor',        ico:ico.chart,       items:[
+  { key:'monitor',  label:'Monitor',        ico:ico.search, items:[
     {k:'analyzer',   label:'SEO Analyzer'},
-    {k:'images',     label:'Image SEO'},
+    {k:'keywords',   label:'Keyword Tracker'},
+    {k:'speed',      label:'Page Speed'},
+    {k:'monitor404', label:'404 Monitor'},
+  ]},
+  { key:'content',  label:'Content Engine', ico:ico.doc, isNew:true, items:[
+    {k:'calendar',   label:'Calendar'},
+    {k:'research',   label:'Research Hub'},
+    {k:'drafts',     label:'Draft Queue'},
+    {k:'links',      label:'Link Opportunities'},
+    {k:'sync',       label:'Sync Status'},
   ]},
 ];
 
