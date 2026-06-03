@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>RankFrame · Explainer Video Script (40s)</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --rf-bg:#000000;
+    --rf-bg-elev:#08090B;
+    --rf-bg-card:#0C0E11;
+    --rf-bg-card-2:#131519;
+    --rf-border:#1A1D24;
+    --rf-border-2:#262A33;
+    --rf-purple:#BA24D5;
+    --rf-purple-btn:#AB33CE;
+    --rf-purple-soft:rgba(186,36,213,0.10);
+    --rf-purple-line:rgba(186,36,213,0.35);
+    --rf-green:#4ADE80;
+    --rf-green-soft:rgba(74,222,128,0.12);
+    --rf-amber:#F5B919;
+    --rf-text:#FFFFFF;
+    --rf-text-2:#D5D8DE;
+    --rf-text-muted:#9BA1AE;
+    --rf-text-dim:#6B7280;
+    --rf-text-faint:#4B5563;
+  }
+  *,*::before,*::after{ box-sizing:border-box; }
+  html,body{ margin:0; padding:0; }
+  body{
+    font-family:'Inter',-apple-system,system-ui,sans-serif;
+    background:#08090B;
+    color:var(--rf-text);
+    font-size:14px;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+    background-image:
+      radial-gradient(circle at 20% 0%, rgba(186,36,213,0.06) 0%, transparent 42%),
+      radial-gradient(circle at 80% 100%, rgba(186,36,213,0.04) 0%, transparent 42%);
+    background-attachment:fixed;
+  }
+
+  /* ===== LAYOUT ===== */
+  .wrap{ max-width:980px; margin:0 auto; padding:56px 28px 120px; }
+
+  /* ===== HEADER ===== */
+  .doc-head{ margin-bottom:40px; }
+  .brand{ display:flex; align-items:center; gap:12px; margin-bottom:26px; }
+  .brand-mark{
+    width:34px; height:34px; border-radius:8px; background:#3E3B3B;
+    display:grid; grid-template-columns:1fr 1fr; gap:3px; padding:6px;
+    box-shadow:0 4px 14px rgba(0,0,0,0.5);
+  }
+  .brand-mark span{ border-radius:50%; }
+  .brand-mark span:nth-child(1){ background:#D9D9D9; }
+  .brand-mark span:nth-child(2){ background:var(--rf-purple); box-shadow:0 0 8px rgba(186,36,213,0.5); }
+  .brand-mark span:nth-child(3){ background:var(--rf-purple); box-shadow:0 0 8px rgba(186,36,213,0.5); }
+  .brand-mark span:nth-child(4){ background:#D9D9D9; }
+  .brand-name{ font-weight:700; font-size:18px; letter-spacing:-0.01em; }
+  .brand-name .a{ color:var(--rf-purple); }
+  .doc-tag{
+    display:inline-flex; align-items:center; gap:7px;
+    padding:4px 12px; border-radius:999px;
+    font-size:11px; font-weight:600; letter-spacing:0.05em; text-transform:uppercase;
+    background:var(--rf-purple-soft); color:var(--rf-purple);
+    border:1px solid var(--rf-purple-line);
+    margin-bottom:18px;
+  }
+  .doc-head h1{ margin:0 0 12px; font-size:34px; font-weight:800; letter-spacing:-0.02em; }
+  .doc-head p{ margin:0; font-size:15px; color:var(--rf-text-muted); max-width:680px; line-height:1.65; }
+
+  /* ===== META STRIP ===== */
+  .meta-strip{
+    display:flex; flex-wrap:wrap; gap:14px;
+    margin:28px 0 0; padding:0;
+  }
+  .meta-pill{
+    display:flex; flex-direction:column; gap:3px;
+    background:var(--rf-bg-card); border:1px solid var(--rf-border);
+    border-radius:10px; padding:11px 16px; min-width:120px;
+  }
+  .meta-pill .k{ font-size:10px; letter-spacing:0.08em; text-transform:uppercase; color:var(--rf-text-faint); font-weight:700; }
+  .meta-pill .v{ font-size:14px; font-weight:600; color:var(--rf-text); }
+  .meta-pill .v.mono{ font-family:'JetBrains Mono',monospace; color:var(--rf-purple); }
+
+  /* ===== SECTION TITLES ===== */
+  .sec-title{
+    margin:48px 0 18px;
+    font-size:12px; letter-spacing:0.12em; text-transform:uppercase;
+    color:var(--rf-text-faint); font-weight:700;
+    display:flex; align-items:center; gap:12px;
+  }
+  .sec-title::after{ content:''; flex:1; height:1px; background:var(--rf-border); }
+
+  /* ===== TIMELINE BAR ===== */
+  .timeline{
+    display:flex; height:46px; border-radius:10px; overflow:hidden;
+    border:1px solid var(--rf-border); margin-bottom:8px;
+  }
+  .timeline .seg{
+    display:flex; align-items:center; justify-content:center;
+    font-size:11px; font-weight:600; color:#fff;
+    border-right:1px solid rgba(0,0,0,0.3);
+    white-space:nowrap; overflow:hidden;
+  }
+  .timeline .seg:last-child{ border-right:none; }
+  .timeline .seg.hook{ background:linear-gradient(135deg,#7A1A8C,#BA24D5); flex:4; }
+  .timeline .seg.features{ background:linear-gradient(135deg,#AB33CE,#C234E0); flex:22; }
+  .timeline .seg.soon{ background:linear-gradient(135deg,#262A33,#373C46); flex:10; color:var(--rf-text-2); }
+  .timeline .seg.close{ background:#0C0E11; flex:4; color:var(--rf-text-muted); border:1px solid var(--rf-border); }
+  .timeline-legend{ display:flex; gap:18px; font-size:11px; color:var(--rf-text-dim); margin-bottom:8px; }
+  .timeline-legend b{ color:var(--rf-text-2); font-family:'JetBrains Mono',monospace; }
+
+  /* ===== SCENE CARD ===== */
+  .scene{
+    background:var(--rf-bg-card);
+    border:1px solid var(--rf-border);
+    border-radius:14px;
+    padding:0; margin-bottom:14px;
+    overflow:hidden;
+    display:grid; grid-template-columns:108px 1fr;
+  }
+  .scene-time{
+    background:var(--rf-bg-elev);
+    border-right:1px solid var(--rf-border);
+    padding:18px 14px;
+    display:flex; flex-direction:column; gap:6px; align-items:flex-start;
+  }
+  .scene-num{
+    width:26px; height:26px; border-radius:7px;
+    background:var(--rf-purple-soft); color:var(--rf-purple);
+    font-family:'JetBrains Mono',monospace; font-size:12px; font-weight:600;
+    display:flex; align-items:center; justify-content:center;
+    border:1px solid var(--rf-purple-line);
+  }
+  .scene-clock{ font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--rf-text); font-weight:500; }
+  .scene-dur{ font-size:10px; color:var(--rf-text-faint); letter-spacing:0.04em; }
+  .scene-body{ padding:18px 22px 20px; }
+  .scene-label{
+    font-size:11px; letter-spacing:0.06em; text-transform:uppercase;
+    color:var(--rf-purple); font-weight:700; margin-bottom:12px;
+  }
+  .scene-row{ display:grid; grid-template-columns:78px 1fr; gap:14px; padding:8px 0; border-top:1px solid var(--rf-border); }
+  .scene-row:first-of-type{ border-top:none; }
+  .scene-row .rk{
+    font-size:10px; letter-spacing:0.06em; text-transform:uppercase;
+    color:var(--rf-text-faint); font-weight:700; padding-top:2px;
+  }
+  .scene-row .rv{ font-size:13.5px; color:var(--rf-text-2); line-height:1.6; }
+  .scene-row .rv.vo{ color:var(--rf-text); font-weight:500; font-size:15px; line-height:1.55; }
+  .scene-row .rv .cue{
+    display:inline-block; font-family:'JetBrains Mono',monospace; font-size:11px;
+    color:var(--rf-amber); background:rgba(245,185,25,0.08);
+    border:1px solid rgba(245,185,25,0.2); border-radius:4px; padding:1px 6px; margin:2px 4px 2px 0;
+  }
+
+  /* ===== COMING SOON CARDS ===== */
+  .soon-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:4px; }
+  .soon-card{
+    background:linear-gradient(180deg, rgba(186,36,213,0.05), var(--rf-bg-card));
+    border:1px solid var(--rf-purple-line);
+    border-radius:14px; padding:20px 18px;
+    position:relative; overflow:hidden;
+  }
+  .soon-card::before{
+    content:''; position:absolute; top:-30px; right:-30px;
+    width:90px; height:90px; border-radius:50%;
+    background:radial-gradient(circle, rgba(186,36,213,0.25), transparent 70%);
+  }
+  .soon-badge{
+    display:inline-block; font-size:9px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase;
+    background:var(--rf-purple-soft); color:var(--rf-purple);
+    border:1px solid var(--rf-purple-line); border-radius:999px; padding:3px 9px; margin-bottom:12px;
+  }
+  .soon-card h4{ margin:0 0 7px; font-size:16px; font-weight:700; }
+  .soon-card p{ margin:0; font-size:12.5px; color:var(--rf-text-muted); line-height:1.55; }
+
+  /* ===== NOTES ===== */
+  .notes{
+    background:var(--rf-bg-card); border:1px solid var(--rf-border);
+    border-radius:14px; padding:22px 24px;
+  }
+  .notes-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:18px 28px; }
+  .note-item dt{ font-size:10.5px; letter-spacing:0.06em; text-transform:uppercase; color:var(--rf-text-faint); font-weight:700; margin-bottom:5px; }
+  .note-item dd{ margin:0; font-size:13px; color:var(--rf-text-2); line-height:1.55; }
+  .note-item dd .swatch{ display:inline-block; width:12px; height:12px; border-radius:3px; vertical-align:-1px; margin-right:6px; }
+  .note-item dd code{ font-family:'JetBrains Mono',monospace; font-size:11.5px; background:#15171B; border:1px solid #20232A; border-radius:4px; padding:1.5px 6px; color:#D5D8DE; }
+
+  /* ===== FULL VO BLOCK ===== */
+  .vo-block{
+    background:#0A0B0D; border:1px solid var(--rf-border);
+    border-radius:14px; padding:26px 28px;
+    font-size:16px; line-height:1.9; color:var(--rf-text); font-weight:500;
+  }
+  .vo-block .vo-line{ margin-bottom:4px; }
+  .vo-block .pause{ color:var(--rf-text-faint); font-size:12px; font-family:'JetBrains Mono',monospace; }
+  .wordcount{ margin-top:14px; font-size:12px; color:var(--rf-text-dim); }
+  .wordcount b{ color:var(--rf-purple); font-family:'JetBrains Mono',monospace; }
+
+  .foot{ margin-top:50px; padding-top:24px; border-top:1px solid var(--rf-border); font-size:12px; color:var(--rf-text-faint); text-align:center; }
+  .foot b{ color:var(--rf-text-muted); }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- HEADER -->
+  <div class="doc-head">
+    <div class="brand">
+      <div class="brand-mark"><span></span><span></span><span></span><span></span></div>
+      <div class="brand-name">Rank<span class="a">Frame</span></div>
+    </div>
+    <div class="doc-tag">Motion Explainer · Production Script</div>
+    <h1>RankFrame Feature Explainer</h1>
+    <p>A 40-second SaaS motion explainer covering every RankFrame feature shipped so far, closing with a soft nudge toward three features on the way. This doc is the single source of truth for the video editor: scene order, exact timing, on-screen action, and voiceover.</p>
+
+    <div class="meta-strip">
+      <div class="meta-pill"><span class="k">Runtime</span><span class="v mono">0:40</span></div>
+      <div class="meta-pill"><span class="k">Scenes</span><span class="v mono">7</span></div>
+      <div class="meta-pill"><span class="k">VO words</span><span class="v mono">~95</span></div>
+      <div class="meta-pill"><span class="k">Aspect</span><span class="v">16:9 + 9:16</span></div>
+      <div class="meta-pill"><span class="k">Domain</span><span class="v">rankframe.com</span></div>
+    </div>
+  </div>
+
+  <!-- TIMELINE -->
+  <div class="sec-title">Timeline at a glance</div>
+  <div class="timeline-legend">
+    <span>Hook <b>0:00–0:04</b></span>
+    <span>Features <b>0:04–0:26</b></span>
+    <span>Coming Soon <b>0:26–0:36</b></span>
+    <span>Close <b>0:36–0:40</b></span>
+  </div>
+  <div class="timeline">
+    <div class="seg hook">Hook</div>
+    <div class="seg features">Features (fast cuts)</div>
+    <div class="seg soon">Coming Soon</div>
+    <div class="seg close">Close</div>
+  </div>
+
+  <!-- SCENES -->
+  <div class="sec-title">Scene by scene</div>
+
+  <!-- SCENE 1 -->
+  <div class="scene">
+    <div class="scene-time">
+      <div class="scene-num">01</div>
+      <div class="scene-clock">0:00–0:04</div>
+      <div class="scene-dur">4 sec</div>
+    </div>
+    <div class="scene-body">
+      <div class="scene-label">Hook</div>
+      <div class="scene-row"><div class="rk">On screen</div><div class="rv"><span class="cue">bold kinetic type</span> A beautiful Framer site renders, then a search bar appears empty. Punchy.</div></div>
+      <div class="scene-row"><div class="rk">VO</div><div class="rv vo">"Your Framer site looks great. Now make Google find it."</div></div>
+    </div>
+  </div>
+
+  <!-- SCENE 2 -->
+  <div class="scene">
+    <div class="scene-time">
+      <div class="scene-num">02</div>
+      <div class="scene-clock">0:04–0:09</div>
+      <div class="scene-dur">5 sec</div>
+    </div>
+    <div class="scene-body">
+      <div class="scene-label">The plugin</div>
+      <div class="scene-row"><div class="rk">On screen</div><div class="rv"><span class="cue">plugin slides in</span> RankFrame plugin opens docked inside the Framer editor.</div></div>
+      <div class="scene-row"><div class="rk">VO</div><div class="rv vo">"RankFrame is SEO, built right inside Framer."</div></div>
+    </div>
+  </div>
+
+  <!-- SCENE 3 -->
+  <div class="scene">
+    <div class="scene-time">
+      <div class="scene-num">03</div>
+      <div class="scene-clock">0:09–0:15</div>
+      <div class="scene-dur">6 sec</div>
+    </div>
+    <div class="scene-body">
+      <div class="scene-label">Global Settings</div>
+      <div class="scene-row"><div class="rk">On screen</div><div class="rv"><span class="cue">title + description fields fill</span> <span class="cue">"Write with AI" button glows</span> Global Settings panel, Basic tab. Show the AI-generated title populating.</div></div>
+      <div class="scene-row"><div class="rk">VO</div><div class="rv vo">"Global Settings. Set your title, description, and schema once. AI writes it if you need it."</div></div>
+    </div>
+  </div>
+
+  <!-- SCENE 4 -->
+  <div class="scene">
+    <div class="scene-time">
+      <div class="scene-num">04</div>
+      <div class="scene-clock">0:15–0:20</div>
+      <div class="scene-dur">5 sec</div>
+    </div>
+    <div class="scene-body">
+      <div class="scene-label">Pages + SEO Analyzer</div>
+      <div class="scene-row"><div class="rk">On screen</div><div class="rv"><span class="cue">Pages list scrolls</span> <span class="cue">SEO score ring fills to 85</span> Quick cut: Pages list, then the SEO Analyzer score ring snapping to "85 · Excellent".</div></div>
+      <div class="scene-row"><div class="rk">VO</div><div class="rv vo">"Full SEO control on every page. Then get a score and a fix list that gets you ranking."</div></div>
+    </div>
+  </div>
+
+  <!-- SCENE 5 -->
+  <div class="scene">
+    <div class="scene-time">
+      <div class="scene-num">05</div>
+      <div class="scene-clock">0:20–0:26</div>
+      <div class="scene-dur">6 sec</div>
+    </div>
+    <div class="scene-body">
+      <div class="scene-label">Image SEO · 404 Monitor · Submit Indexing</div>
+      <div class="scene-row"><div class="rk">On screen</div><div class="rv"><span class="cue">3 quick icon-led cuts</span> Image alt-text auto-fills, 404 Monitor flags a broken link, Submit Indexing fires to Google.</div></div>
+      <div class="scene-row"><div class="rk">VO</div><div class="rv vo">"Image SEO, a 404 monitor, and one-click indexing to Google. Everything covered."</div></div>
+    </div>
+  </div>
+
+  <!-- SCENE 6 -->
+  <div class="scene">
+    <div class="scene-time">
+      <div class="scene-num">06</div>
+      <div class="scene-clock">0:26–0:36</div>
+      <div class="scene-dur">10 sec</div>
+    </div>
+    <div class="scene-body">
+      <div class="scene-label">Coming Soon · soft nudge</div>
+      <div class="scene-row"><div class="rk">On screen</div><div class="rv"><span class="cue">tempo slows</span> <span class="cue">3 cards fade in one by one, purple glow</span> Atmospheric. Let each card breathe.</div></div>
+      <div class="scene-row"><div class="rk">VO</div><div class="rv vo">"And three big things are on the way. Content Engine. Team Access. Advanced Schema and LLM SEO."</div></div>
+      <div class="scene-row"><div class="rk">Cards</div><div class="rv" style="padding-top:6px;">
+        <div class="soon-grid">
+          <div class="soon-card"><span class="soon-badge">Coming Soon</span><h4>Content Engine</h4><p>AI-powered blog writing, straight into your Framer CMS.</p></div>
+          <div class="soon-card"><span class="soon-badge">Coming Soon</span><h4>Team Access</h4><p>Invite writers, publishers, and reviewers. Everyone in sync.</p></div>
+          <div class="soon-card"><span class="soon-badge">Coming Soon</span><h4>Advanced Schema + LLM SEO</h4><p>Structured data and AI-optimized content, built for how search works now.</p></div>
+        </div>
+      </div></div>
+    </div>
+  </div>
+
+  <!-- SCENE 7 -->
+  <div class="scene">
+    <div class="scene-time">
+      <div class="scene-num">07</div>
+      <div class="scene-clock">0:36–0:40</div>
+      <div class="scene-dur">4 sec</div>
+    </div>
+    <div class="scene-body">
+      <div class="scene-label">Close</div>
+      <div class="scene-row"><div class="rk">On screen</div><div class="rv"><span class="cue">logo lockup</span> <span class="cue">CTA</span> RankFrame mark, tagline, and URL. Soft purple swell, fade to black.</div></div>
+      <div class="scene-row"><div class="rk">VO</div><div class="rv vo">"RankFrame. SEO built for Framer. Try it free at rankframe.com"</div></div>
+    </div>
+  </div>
+
+  <!-- FULL VO -->
+  <div class="sec-title">Voiceover (clean read)</div>
+  <div class="vo-block">
+    <div class="vo-line">Your Framer site looks great. Now make Google find it.</div>
+    <div class="vo-line">RankFrame is SEO, built right inside Framer.</div>
+    <div class="vo-line">Global Settings. Set your title, description, and schema once. AI writes it if you need it.</div>
+    <div class="vo-line">Full SEO control on every page. Then get a score and a fix list that gets you ranking.</div>
+    <div class="vo-line">Image SEO, a 404 monitor, and one-click indexing to Google. Everything covered.</div>
+    <div class="vo-line"><span class="pause">[ slow ]</span> And three big things are on the way. Content Engine. Team Access. Advanced Schema and LLM SEO.</div>
+    <div class="vo-line">RankFrame. SEO built for Framer. Try it free at rankframe.com</div>
+    <div class="wordcount">Approx <b>95 words</b> · comfortable at a relaxed pace for <b>0:40</b>. Tight cuts on features, breathing room on Coming Soon.</div>
+  </div>
+
+  <!-- NOTES -->
+  <div class="sec-title">Production notes</div>
+  <div class="notes">
+    <dl class="notes-grid">
+      <div class="note-item"><dt>Tone</dt><dd>Confident and clean, never hype-y. Let the product do the talking.</dd></div>
+      <div class="note-item"><dt>Background</dt><dd><span class="swatch" style="background:#000;"></span>Pure black <code>#000000</code> with subtle purple radial glows.</dd></div>
+      <div class="note-item"><dt>Accent</dt><dd><span class="swatch" style="background:#BA24D5;"></span>RankFrame purple <code>#BA24D5</code> on buttons, glows, highlights.</dd></div>
+      <div class="note-item"><dt>Typeface</dt><dd>Inter for all on-screen text. Mono only for tiny UI numbers.</dd></div>
+      <div class="note-item"><dt>Pacing</dt><dd>Snappy hard cuts through features (0:04–0:26), then ease off for the Coming Soon section.</dd></div>
+      <div class="note-item"><dt>Sound</dt><dd>Minimal ambient bed, punchy whoosh on feature cuts, soft swell into Coming Soon.</dd></div>
+      <div class="note-item"><dt>Screen capture</dt><dd>Use real RankFrame plugin UI: Global Settings, Pages, SEO Analyzer (85 score), Image SEO, 404 Monitor, Submit Indexing.</dd></div>
+      <div class="note-item"><dt>Deliverables</dt><dd>16:9 master plus a 9:16 vertical cut for social. Captions burned-in optional.</dd></div>
+    </dl>
+  </div>
+
+  <div class="foot">
+    <b>RankFrame</b> · Explainer Video Script · 0:40 · share with motion editor &nbsp;·&nbsp; rankframe.com
+  </div>
+
+</div>
+</body>
+</html>

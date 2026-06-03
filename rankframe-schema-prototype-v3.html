@@ -1,0 +1,3022 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>RankFrame · Schema + LLM SEO · Feature Prototype v3</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --rf-bg:           #000000;
+    --rf-bg-elev:      #050608;
+    --rf-bg-card:      #0C0E11;
+    --rf-bg-card-2:    #131519;
+    --rf-bg-card-3:    #1C1F25;
+    --rf-bg-active:    #202937;
+    --rf-bg-input:     #08090B;
+    --rf-border:       #1A1D24;
+    --rf-border-2:     #262A33;
+    --rf-border-strong:#373C46;
+    --rf-purple:       #BA24D5;
+    --rf-purple-btn:   #AB33CE;
+    --rf-purple-btn-2: #C234E0;
+    --rf-purple-deep:  #7A1A8C;
+    --rf-purple-soft:  rgba(186,36,213,0.10);
+    --rf-purple-soft-2:rgba(186,36,213,0.06);
+    --rf-purple-line:  rgba(186,36,213,0.35);
+    --rf-purple-glow:  rgba(186,36,213,0.30);
+    --rf-red:          #DD524C;
+    --rf-red-soft:     rgba(221,82,76,0.12);
+    --rf-amber:        #F5B919;
+    --rf-amber-2:      #F8C849;
+    --rf-amber-soft:   rgba(245,185,25,0.10);
+    --rf-amber-soft-2: rgba(245,185,25,0.18);
+    --rf-green:        #4ADE80;
+    --rf-green-2:      #22C55E;
+    --rf-green-soft:   rgba(74,222,128,0.12);
+    --rf-blue:         #3B82F6;
+    --rf-teal:         #14B8A6;
+    --rf-orange:       #F97316;
+    --rf-pink:         #EC4899;
+    --rf-text:         #FFFFFF;
+    --rf-text-2:       #D5D8DE;
+    --rf-text-muted:   #9BA1AE;
+    --rf-text-dim:     #6B7280;
+    --rf-text-faint:   #4B5563;
+    --rf-shadow-sm:  0 1px 2px rgba(0,0,0,0.4);
+    --rf-shadow-md:  0 8px 24px rgba(0,0,0,0.5);
+    --rf-shadow-lg:  0 20px 60px rgba(0,0,0,0.7);
+    --rf-glow-purple: 0 0 40px rgba(186,36,213,0.15);
+    --plugin-w: 880px;
+    --plugin-h: 720px;
+    --sub-nav-w: 240px;
+    --dash-w: 1180px;
+    --dash-h: 760px;
+    --dash-side-w: 232px;
+  }
+  *,*::before,*::after{ box-sizing:border-box; }
+  html,body{ margin:0; padding:0; }
+  body{
+    font-family:'Inter', -apple-system, system-ui, sans-serif;
+    background:#08090B;
+    color:var(--rf-text);
+    font-size:14px;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    min-height:100vh;
+    background-image:
+      radial-gradient(circle at 20% 0%, rgba(186,36,213,0.05) 0%, transparent 40%),
+      radial-gradient(circle at 80% 100%, rgba(186,36,213,0.04) 0%, transparent 40%);
+    background-attachment:fixed;
+  }
+
+  /* ========== PROTOTYPE OUTER LAYOUT ========== */
+  .proto-page{
+    display:grid;
+    grid-template-columns: 280px 1fr;
+    min-height:100vh;
+  }
+  .proto-side{
+    background:rgba(7,7,9,0.85);
+    backdrop-filter:blur(20px);
+    -webkit-backdrop-filter:blur(20px);
+    border-right:1px solid #16181D;
+    padding:0 0 32px;
+    position:sticky; top:0; height:100vh; overflow-y:auto;
+  }
+  .proto-side::-webkit-scrollbar{ width:5px; }
+  .proto-side::-webkit-scrollbar-thumb{ background:#262A33; border-radius:3px; }
+  .proto-side-head{
+    padding:22px 22px 18px;
+    border-bottom:1px solid #16181D;
+    margin-bottom:6px;
+    background:linear-gradient(180deg, rgba(186,36,213,0.05), transparent);
+  }
+  .proto-brand{ display:flex; align-items:center; gap:11px; margin-bottom:8px; }
+  .proto-brand-mark{
+    width:28px; height:28px; border-radius:7px;
+    background:#3E3B3B;
+    display:grid; grid-template-columns:1fr 1fr; gap:2.5px; padding:5px;
+    box-shadow:0 4px 12px rgba(0,0,0,0.4);
+  }
+  .proto-brand-mark span{ border-radius:50%; }
+  .proto-brand-mark span:nth-child(1){ background:#D9D9D9; }
+  .proto-brand-mark span:nth-child(2){ background:var(--rf-purple); box-shadow:0 0 8px rgba(186,36,213,0.5); }
+  .proto-brand-mark span:nth-child(3){ background:var(--rf-purple); box-shadow:0 0 8px rgba(186,36,213,0.5); }
+  .proto-brand-mark span:nth-child(4){ background:#D9D9D9; }
+  .proto-brand-name{ font-weight:600; font-size:15px; letter-spacing:-0.01em; }
+  .proto-brand-name .accent{ color:var(--rf-purple); }
+  .proto-side-sub{
+    font-size:10.5px; color:var(--rf-text-dim); letter-spacing:0.10em;
+    text-transform:uppercase; font-weight:600;
+  }
+  .proto-side-meta{
+    margin-top:8px;
+    display:flex; gap:8px; align-items:center;
+    font-size:11px; color:var(--rf-text-muted);
+  }
+  .proto-side-meta b{ color:var(--rf-purple); font-family:'JetBrains Mono', monospace; font-weight:500; }
+  .proto-side-meta .sep{ color:var(--rf-text-faint); }
+  .proto-side h4{
+    margin:18px 22px 6px;
+    font-size:10px; letter-spacing:0.12em; text-transform:uppercase;
+    color:var(--rf-text-faint); font-weight:700;
+    display:flex; align-items:center; gap:8px;
+  }
+  .proto-side h4::after{ content:''; display:block; flex:1; height:1px; background:#16181D; }
+  .proto-nav-item{
+    display:flex; align-items:center; gap:10px;
+    padding:7px 22px;
+    font-size:12.5px; color:var(--rf-text-muted);
+    cursor:pointer;
+    border-left:2px solid transparent;
+    transition:all 0.12s;
+    text-decoration:none;
+  }
+  .proto-nav-item:hover{ color:var(--rf-text); background:rgba(186,36,213,0.04); }
+  .proto-nav-item.active{
+    color:var(--rf-text);
+    background:rgba(186,36,213,0.07);
+    border-left-color:var(--rf-purple);
+  }
+  .proto-nav-num{
+    width:22px; height:20px; border-radius:5px;
+    background:#16181D; color:var(--rf-text-dim);
+    font-size:10px; font-weight:600;
+    font-family:'JetBrains Mono', monospace;
+    display:flex; align-items:center; justify-content:center;
+    flex-shrink:0;
+  }
+  .proto-nav-item.active .proto-nav-num{ background:var(--rf-purple-soft); color:var(--rf-purple); }
+  .proto-nav-item .new-dot{
+    width:6px; height:6px; border-radius:50%; background:var(--rf-purple);
+    margin-left:auto; box-shadow:0 0 6px rgba(186,36,213,0.6);
+  }
+  .proto-main{ padding:32px 44px 100px; overflow-x:hidden; min-width:0; }
+
+  /* ========== SECTION HEADER ========== */
+  .proto-screen-head{ margin-bottom:22px; }
+  .proto-screen-head h1{ margin:6px 0 6px; font-size:24px; font-weight:600; letter-spacing:-0.015em; }
+  .proto-screen-head p{
+    margin:0;
+    font-size:13px; color:var(--rf-text-muted);
+    max-width:680px;
+    line-height:1.6;
+  }
+  .proto-tag{
+    display:inline-flex; align-items:center; gap:6px;
+    padding:3px 10px; border-radius:999px;
+    font-size:10.5px; font-weight:600; letter-spacing:0.04em; text-transform:uppercase;
+    background:var(--rf-purple-soft); color:var(--rf-purple);
+    border:1px solid var(--rf-purple-line);
+  }
+  .proto-tag.new{
+    background:var(--rf-green-soft); color:var(--rf-green); border-color:rgba(74,222,128,0.30);
+  }
+
+  /* ========== DEVELOPER NOTES ========== */
+  .proto-anno{
+    margin-top:18px;
+    background:rgba(10,11,13,0.7);
+    border:1px solid #16181D;
+    border-radius:14px;
+    padding:18px 22px 20px;
+    max-width:var(--dash-w);
+  }
+  .proto-anno h3{
+    margin:0 0 14px;
+    font-size:11px; font-weight:700; letter-spacing:0.10em; text-transform:uppercase;
+    color:var(--rf-text-muted);
+    display:flex; align-items:center; gap:10px;
+  }
+  .proto-anno h3::before{
+    content:''; display:block; width:6px; height:6px; border-radius:50%; background:var(--rf-purple);
+    box-shadow:0 0 8px rgba(186,36,213,0.5);
+  }
+  .proto-anno-grid{
+    display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:16px 24px;
+  }
+  .proto-anno-item dt{
+    font-size:10.5px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase;
+    color:var(--rf-text-dim); margin-bottom:4px;
+  }
+  .proto-anno-item dd{ margin:0; font-size:12.5px; color:var(--rf-text-2); line-height:1.6; }
+  .proto-anno-item dd code{
+    font-family:'JetBrains Mono', monospace; font-size:11px;
+    background:#15171B; padding:1.5px 6px; border-radius:4px;
+    color:#D5D8DE; border:1px solid #20232A;
+  }
+  .change-tag{
+    display:inline-flex; align-items:center; gap:5px;
+    padding:2.5px 7px; border-radius:5px;
+    font-size:10.5px; font-weight:600; letter-spacing:0.02em;
+    margin-right:6px;
+    white-space:nowrap;
+  }
+  .change-tag.framer{ background:rgba(186,36,213,0.12); color:#D277E8; border:1px solid rgba(186,36,213,0.3); }
+  .change-tag.plugin{ background:rgba(59,130,246,0.12); color:#7AABFB; border:1px solid rgba(59,130,246,0.3); }
+  .change-tag.dash{ background:rgba(168,85,247,0.12); color:#C084FC; border:1px solid rgba(168,85,247,0.3); }
+  .change-tag.api{ background:rgba(20,184,166,0.12); color:#3FD7C4; border:1px solid rgba(20,184,166,0.3); }
+  .change-tag.cache{ background:rgba(245,185,25,0.12); color:#F5C547; border:1px solid rgba(245,185,25,0.3); }
+  .change-tag.clip{ background:rgba(107,114,128,0.18); color:#9CA3AF; border:1px solid rgba(107,114,128,0.3); }
+  .change-tag.db{ background:rgba(74,222,128,0.12); color:#86EFAC; border:1px solid rgba(74,222,128,0.30); }
+
+  /* ========== PLUGIN WINDOW ========== */
+  .plugin-window{
+    width:min(var(--plugin-w), 100%); height:var(--plugin-h);
+    background:var(--rf-bg);
+    border-radius:14px;
+    overflow:hidden;
+    box-shadow:var(--rf-shadow-lg), 0 0 0 1px #16181D;
+    display:grid;
+    grid-template-rows:48px 1fr;
+    position:relative;
+  }
+  .plugin-window::before{
+    content:''; position:absolute; inset:-1px; border-radius:14px;
+    background:linear-gradient(180deg, rgba(255,255,255,0.04), transparent 30%);
+    pointer-events:none; z-index:0;
+  }
+  .plg-top{
+    background:var(--rf-bg-card-2);
+    border-bottom:1px solid var(--rf-border);
+    display:flex; align-items:center; justify-content:space-between;
+    padding:0 16px;
+    font-size:13px;
+    position:relative; z-index:1;
+  }
+  .plg-top-l{ display:flex; align-items:center; gap:10px; }
+  .plg-top-l .mark{
+    width:22px; height:22px; border-radius:6px;
+    background:#3E3B3B; display:grid; grid-template-columns:1fr 1fr; gap:1.5px; padding:3.5px;
+  }
+  .plg-top-l .mark span{ border-radius:50%; }
+  .plg-top-l .mark span:nth-child(1){ background:#D9D9D9; }
+  .plg-top-l .mark span:nth-child(2){ background:var(--rf-purple); }
+  .plg-top-l .mark span:nth-child(3){ background:var(--rf-purple); }
+  .plg-top-l .mark span:nth-child(4){ background:#D9D9D9; }
+  .plg-top-l b{ font-weight:600; font-size:13px; }
+  .plg-top-l .dev-tag{ font-size:11px; color:var(--rf-text-dim); }
+  .plg-top-x{
+    width:24px; height:24px; border-radius:5px; display:flex; align-items:center; justify-content:center;
+    color:var(--rf-text-muted); cursor:pointer; font-size:14px;
+  }
+  .plg-top-x:hover{ background:#1C1F25; }
+  .plg-body{ display:grid; grid-template-columns:var(--sub-nav-w) 1fr; min-height:0; position:relative; z-index:1; }
+
+  /* sub-nav (left rail inside plugin) */
+  .sub-nav{
+    background:var(--rf-bg-elev);
+    border-right:1px solid var(--rf-border);
+    padding:18px 12px;
+    display:flex; flex-direction:column;
+    overflow:hidden;
+  }
+  .sub-nav-head{
+    display:flex; align-items:center; gap:8px;
+    padding:4px 8px 14px;
+    border-bottom:1px solid var(--rf-border);
+    margin-bottom:10px;
+  }
+  .sub-nav-head-title{
+    font-size:14px; font-weight:600;
+    color:var(--rf-text);
+  }
+  .sub-nav-head-title .purple{ color:var(--rf-purple); }
+  .sub-nav-back{
+    margin-left:auto;
+    color:var(--rf-text-muted);
+    font-size:16px;
+  }
+  .sub-nav-item{
+    display:flex; align-items:center; gap:10px;
+    padding:8px 10px;
+    border-radius:7px;
+    color:var(--rf-text-muted);
+    font-size:13.5px;
+    cursor:pointer;
+    margin-bottom:2px;
+    position:relative;
+  }
+  .sub-nav-item:hover{ background:rgba(255,255,255,0.03); }
+  .sub-nav-item.active{ background:var(--rf-bg-active); color:var(--rf-text); }
+  .sub-nav-item .ico{
+    width:16px; height:16px;
+    flex:0 0 16px;
+    display:flex; align-items:center; justify-content:center;
+    color:currentColor;
+  }
+  .sub-nav-item .badge-new{
+    margin-left:auto;
+    font-size:9px; font-weight:700; letter-spacing:0.5px;
+    background:var(--rf-purple);
+    color:#fff;
+    padding:2px 5px; border-radius:4px;
+  }
+  .sub-nav-spacer{ flex:1; }
+  .sub-nav-foot{
+    border-top:1px solid var(--rf-border);
+    padding-top:10px; margin-top:10px;
+    display:flex; flex-direction:column; gap:2px;
+  }
+  .sub-nav-score-card{
+    margin:12px 0 14px;
+    background:var(--rf-bg-card);
+    border:1px solid var(--rf-border);
+    border-radius:10px;
+    padding:10px 12px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .sub-nav-score-ring{
+    width:36px; height:36px;
+    border-radius:50%;
+    background:
+      conic-gradient(var(--rf-purple) 0% 82%, rgba(255,255,255,0.08) 82% 100%);
+    display:flex; align-items:center; justify-content:center;
+    position:relative;
+  }
+  .sub-nav-score-ring::before{
+    content:""; position:absolute; inset:3px;
+    background:var(--rf-bg-card); border-radius:50%;
+  }
+  .sub-nav-score-ring span{
+    position:relative; z-index:1;
+    font-size:12px; font-weight:700;
+  }
+  .sub-nav-score-meta{
+    display:flex; flex-direction:column;
+  }
+  .sub-nav-score-meta .label{
+    font-size:9px; font-weight:700; letter-spacing:0.5px;
+    color:var(--rf-text-muted); text-transform:uppercase;
+  }
+  .sub-nav-score-meta .val{
+    font-size:12px; font-weight:600; color:var(--rf-text);
+  }
+
+  .sub-nav-user{
+    display:flex; align-items:center; gap:10px;
+    padding:10px;
+    background:var(--rf-bg-card);
+    border:1px solid var(--rf-border);
+    border-radius:10px;
+    margin-bottom:10px;
+  }
+  .sub-nav-user-av{
+    width:30px; height:30px;
+    border-radius:50%;
+    background:var(--rf-purple);
+    display:flex; align-items:center; justify-content:center;
+    font-size:10px; font-weight:700;
+  }
+  .sub-nav-user-meta{ overflow:hidden; }
+  .sub-nav-user-meta .name{
+    font-size:12px; font-weight:600;
+    white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+  }
+  .sub-nav-user-meta .email{
+    font-size:10px; color:var(--rf-text-dim);
+    white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+  }
+  .sub-nav-plan-note{
+    font-size:11px; color:var(--rf-text-muted);
+    margin:2px 4px 6px;
+  }
+  .sub-nav-plan-note strong{
+    display:block; color:var(--rf-text); font-size:12px; font-weight:600;
+  }
+  .sub-nav-cta{
+    display:flex; align-items:center; justify-content:center; gap:6px;
+    padding:8px;
+    border-radius:8px;
+    font-size:12.5px; font-weight:600;
+    cursor:pointer;
+    border:1px solid transparent;
+  }
+  .sub-nav-cta.purple{
+    background:linear-gradient(180deg, var(--rf-purple) 0%, var(--rf-purple-deep) 100%);
+    color:#fff;
+  }
+  .sub-nav-cta.red{
+    background:rgba(221,82,76,0.10);
+    border-color:rgba(221,82,76,0.35);
+    color:var(--rf-red);
+    margin-top:5px;
+  }
+
+  /* ============================================================
+     CANONICAL ACCORDION PLUGIN NAV
+     Only the active group is expanded. The scroll region flexes
+     so the footer + account + Recrawl stay pinned to the bottom
+     of the short plugin window without ever overlapping content.
+     ============================================================ */
+  .plg-acc-scroll{
+    flex:1 1 auto;
+    min-height:0;
+    overflow-y:auto;
+    margin:4px -4px 6px;
+    padding:0 4px;
+  }
+  .plg-acc-group + .plg-acc-group{ margin-top:1px; }
+  .plg-acc-head{
+    width:100%;
+    display:flex; align-items:center; gap:10px;
+    padding:8px 10px;
+    border:0; background:transparent;
+    color:var(--rf-text-2);
+    font-family:inherit; font-size:13.5px; font-weight:600;
+    text-align:left; cursor:pointer;
+    border-radius:7px;
+  }
+  .plg-acc-head:hover{ background:rgba(255,255,255,0.03); color:var(--rf-text); }
+  .plg-acc-head.active-group{ color:var(--rf-text); }
+  .plg-acc-ico{
+    width:16px; height:16px; flex:0 0 16px;
+    display:flex; align-items:center; justify-content:center;
+    color:var(--rf-text-muted);
+  }
+  .plg-acc-head.active-group .plg-acc-ico{ color:var(--rf-purple); }
+  .plg-acc-label{ flex:1; }
+  .plg-acc-chev{
+    width:11px; height:11px; flex:0 0 11px;
+    color:var(--rf-text-dim);
+    transition:transform 150ms ease;
+  }
+  .plg-acc-group.open .plg-acc-chev{ transform:rotate(90deg); }
+  .plg-acc-new{
+    font-size:8.5px; font-weight:700; letter-spacing:0.5px;
+    background:var(--rf-purple); color:#fff;
+    padding:2px 5px; border-radius:4px;
+  }
+  .plg-acc-new.sm{ margin-left:auto; }
+  .plg-acc-children{ padding:1px 0 5px; }
+  .plg-acc-children[hidden]{ display:none; }
+  .plg-acc-item{
+    display:flex; align-items:center; gap:10px;
+    padding:6px 10px 6px 23px;
+    border-radius:7px;
+    color:var(--rf-text-muted);
+    font-size:13px; cursor:pointer;
+    margin-bottom:1px;
+  }
+  .plg-acc-item:hover{ background:rgba(255,255,255,0.03); color:var(--rf-text); }
+  .plg-acc-item.active{ background:var(--rf-bg-active); color:var(--rf-text); }
+  .plg-acc-item-label{ flex:1; }
+  .plg-acc-dot{
+    width:5px; height:5px; flex:0 0 5px;
+    border-radius:50%;
+    background:var(--rf-border-strong);
+  }
+  .plg-acc-item.active .plg-acc-dot{ background:var(--rf-purple); }
+
+  .plg-nav{
+    background:var(--rf-bg-elev);
+    border-right:1px solid var(--rf-border);
+    padding:8px 0;
+    display:flex; flex-direction:column; gap:1px;
+    overflow-y:auto;
+  }
+  .plg-nav::-webkit-scrollbar{ width:5px; }
+  .plg-nav::-webkit-scrollbar-thumb{ background:#262A33; border-radius:3px; }
+  .plg-nav-brand{
+    display:flex; align-items:center; gap:8px;
+    padding:8px 14px 10px;
+  }
+  .plg-nav-brand .mini{
+    width:18px; height:18px; border-radius:5px;
+    background:#3E3B3B; display:grid; grid-template-columns:1fr 1fr; gap:1px; padding:3px;
+  }
+  .plg-nav-brand .mini span{ border-radius:50%; }
+  .plg-nav-brand .mini span:nth-child(1){ background:#D9D9D9; }
+  .plg-nav-brand .mini span:nth-child(2){ background:var(--rf-purple); }
+  .plg-nav-brand .mini span:nth-child(3){ background:var(--rf-purple); }
+  .plg-nav-brand .mini span:nth-child(4){ background:#D9D9D9; }
+  .plg-nav-brand b{ font-size:13px; font-weight:600; }
+  .plg-nav-brand b .a{ color:var(--rf-purple); }
+  .plg-nav-brand .arrow{ margin-left:auto; color:var(--rf-text-dim); font-size:14px; cursor:pointer; }
+  .plg-nav-group{
+    margin:8px 14px 4px;
+    font-size:9px; letter-spacing:0.12em; text-transform:uppercase;
+    color:var(--rf-text-faint); font-weight:700;
+    display:flex; align-items:center; gap:6px;
+  }
+  .plg-nav-group.content-group{ color:var(--rf-purple); }
+  .plg-nav-group .pinkdot{
+    width:5px; height:5px; border-radius:50%; background:var(--rf-pink);
+    box-shadow:0 0 5px var(--rf-pink);
+  }
+  .plg-nav-item{
+    display:flex; align-items:center; gap:10px;
+    padding:7px 14px;
+    margin:0 6px;
+    border-radius:7px;
+    font-size:12.5px; color:var(--rf-text-2);
+    cursor:pointer;
+    position:relative;
+    transition:background 0.1s;
+  }
+  .plg-nav-item:hover{ background:#0E1115; }
+  .plg-nav-item.active{ background:var(--rf-bg-active); color:#fff; }
+  .plg-nav-item .ico{
+    width:16px; height:16px; display:flex; align-items:center; justify-content:center;
+    color:var(--rf-text-muted); flex-shrink:0;
+  }
+  .plg-nav-item.active .ico{ color:#fff; }
+  .plg-nav-item .new-pill{
+    margin-left:auto;
+    font-size:8.5px; font-weight:700; letter-spacing:0.06em;
+    padding:2px 6px; border-radius:4px;
+    background:var(--rf-purple); color:#fff;
+    box-shadow:0 0 8px rgba(186,36,213,0.4);
+  }
+  .plg-nav-item .count-pill{
+    margin-left:auto;
+    font-size:9.5px; font-weight:600;
+    padding:1.5px 6px; border-radius:999px;
+    background:#15171B; color:var(--rf-text-muted);
+    font-family:'JetBrains Mono', monospace;
+  }
+  .plg-nav-divider{ height:1px; background:var(--rf-border); margin:6px 14px; }
+  .plg-nav-account{
+    display:flex; gap:9px; align-items:center;
+    padding:7px 14px; margin:0 6px;
+    border-radius:8px;
+  }
+  .plg-nav-account .ava{
+    width:30px; height:30px; border-radius:50%;
+    background:linear-gradient(135deg, #6B27D8, #BA24D5);
+    color:#fff; display:flex; align-items:center; justify-content:center;
+    font-size:11px; font-weight:600;
+  }
+  .plg-nav-account .info b{ display:block; font-size:12px; font-weight:600; }
+  .plg-nav-account .info span{ font-size:10.5px; color:var(--rf-text-dim); }
+  .plg-nav-plan{
+    margin:5px 10px 0;
+    padding:7px 10px;
+    background:var(--rf-bg-card);
+    border:1px solid var(--rf-border);
+    border-radius:8px;
+    font-size:11px;
+  }
+  .plg-nav-plan b{ display:block; font-size:11.5px; }
+  .plg-nav-plan span{ color:var(--rf-text-dim); font-size:10.5px; }
+  .plg-nav-cta{
+    display:block; text-align:center; width:calc(100% - 20px);
+    margin:5px 10px 0;
+    padding:7px 0;
+    background:var(--rf-purple-btn);
+    color:#fff; font-size:12px; font-weight:600;
+    border-radius:8px; border:none; cursor:pointer;
+  }
+  .plg-main{
+    background:var(--rf-bg);
+    overflow-y:auto;
+    padding:22px 26px 32px;
+    position:relative;
+  }
+  .plg-main::-webkit-scrollbar{ width:5px; }
+  .plg-main::-webkit-scrollbar-thumb{ background:#262A33; border-radius:3px; }
+
+  /* ========== DASHBOARD WINDOW ========== */
+  .dash-window{
+    width:min(var(--dash-w), 100%); height:var(--dash-h);
+    background:var(--rf-bg);
+    border-radius:14px;
+    overflow:hidden;
+    box-shadow:var(--rf-shadow-lg), 0 0 0 1px #16181D;
+    display:grid;
+    grid-template-rows:44px 1fr;
+    position:relative;
+  }
+  .dash-top{
+    background:var(--rf-bg-card-2);
+    border-bottom:1px solid var(--rf-border);
+    display:flex; align-items:center; gap:10px;
+    padding:0 14px;
+    font-size:12.5px;
+  }
+  .dash-top .dots{ display:flex; gap:6px; }
+  .dash-top .dots span{ width:10px; height:10px; border-radius:50%; background:#2A2D34; }
+  .dash-top .url{
+    margin-left:14px;
+    background:var(--rf-bg-input);
+    border:1px solid var(--rf-border-2);
+    padding:4px 10px; border-radius:6px;
+    font-size:11.5px; color:var(--rf-text-muted);
+    font-family:'JetBrains Mono', monospace;
+    flex:1; max-width:420px;
+  }
+  .dash-body{ display:grid; grid-template-columns:var(--dash-side-w) 1fr; min-height:0; }
+  .dash-side{
+    background:var(--rf-bg-elev);
+    border-right:1px solid var(--rf-border);
+    padding:18px 0;
+    display:flex; flex-direction:column;
+    overflow-y:auto;
+  }
+  .dash-side::-webkit-scrollbar{ width:5px; }
+  .dash-side::-webkit-scrollbar-thumb{ background:#262A33; border-radius:3px; }
+  .dash-side-brand{
+    display:flex; align-items:center; gap:10px;
+    padding:0 18px 16px;
+    border-bottom:1px solid var(--rf-border);
+    margin-bottom:10px;
+  }
+  .dash-side-brand .mini{
+    width:24px; height:24px; border-radius:6px;
+    background:#3E3B3B; display:grid; grid-template-columns:1fr 1fr; gap:1.5px; padding:4px;
+  }
+  .dash-side-brand .mini span{ border-radius:50%; }
+  .dash-side-brand .mini span:nth-child(1){ background:#D9D9D9; }
+  .dash-side-brand .mini span:nth-child(2){ background:var(--rf-purple); }
+  .dash-side-brand .mini span:nth-child(3){ background:var(--rf-purple); }
+  .dash-side-brand .mini span:nth-child(4){ background:#D9D9D9; }
+  .dash-side-brand b{ font-size:14px; font-weight:600; }
+  .dash-side-brand b .a{ color:var(--rf-purple); }
+  .dash-nav-item{
+    display:flex; align-items:center; gap:10px;
+    padding:9px 18px;
+    font-size:13px; color:var(--rf-text-2);
+    cursor:pointer;
+    border-left:2px solid transparent;
+  }
+  .dash-nav-item:hover{ background:rgba(186,36,213,0.04); }
+  .dash-nav-item.active{
+    background:rgba(186,36,213,0.08);
+    border-left-color:var(--rf-purple);
+    color:#fff;
+  }
+  .dash-nav-item .ico{
+    width:16px; height:16px; color:var(--rf-text-muted); flex-shrink:0;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .dash-nav-item.active .ico{ color:var(--rf-purple); }
+  .dash-nav-item .new-pill{
+    margin-left:auto;
+    font-size:8.5px; font-weight:700; letter-spacing:0.06em;
+    padding:2px 6px; border-radius:4px;
+    background:var(--rf-purple); color:#fff;
+  }
+  .dash-side-foot{
+    margin-top:auto;
+    padding:14px 18px;
+    border-top:1px solid var(--rf-border);
+    font-size:11px; color:var(--rf-text-dim);
+  }
+  .dash-main{
+    background:#08090B;
+    overflow-y:auto;
+    padding:24px 32px 40px;
+    position:relative;
+  }
+  .dash-main::-webkit-scrollbar{ width:6px; }
+  .dash-main::-webkit-scrollbar-thumb{ background:#262A33; border-radius:3px; }
+
+  /* ========== SHARED COMPONENTS ========== */
+  .pg-title{
+    font-size:20px; font-weight:600; letter-spacing:-0.015em; margin:0 0 4px;
+    display:flex; align-items:center; gap:8px;
+  }
+  .pg-title .info-trigger{
+    width:18px; height:18px; border-radius:50%;
+    background:#15171B; border:1px solid var(--rf-border-2);
+    color:var(--rf-text-dim); cursor:help;
+    display:inline-flex; align-items:center; justify-content:center;
+    font-size:11px;
+  }
+  .pg-sub{ font-size:12.5px; color:var(--rf-text-muted); margin:0 0 18px; }
+  .tooltip-pop{ position:relative; display:inline-block; }
+  .tooltip-pop .pop{
+    position:absolute; top:calc(100% + 8px); left:-8px;
+    width:300px; padding:12px 14px;
+    background:#0F1116; border:1px solid var(--rf-purple-line);
+    border-radius:10px;
+    font-size:12px; color:var(--rf-text-2); line-height:1.55;
+    box-shadow:var(--rf-shadow-md), 0 0 30px rgba(186,36,213,0.15);
+    z-index:10;
+  }
+  .tooltip-pop .pop::before{
+    content:''; position:absolute; top:-5px; left:14px;
+    width:9px; height:9px; background:#0F1116;
+    border-left:1px solid var(--rf-purple-line); border-top:1px solid var(--rf-purple-line);
+    transform:rotate(45deg);
+  }
+  .tooltip-pop .pop b{ display:block; color:var(--rf-purple); font-size:11px; letter-spacing:0.05em; text-transform:uppercase; margin-bottom:4px; }
+  .tooltip-pop .pop p{ margin:0; }
+  .tabs{
+    display:flex; gap:24px; border-bottom:1px solid var(--rf-border); margin-bottom:20px;
+    position:relative;
+  }
+  .tabs .tab{
+    padding:8px 0 12px;
+    font-size:13px; font-weight:500; color:var(--rf-text-muted);
+    cursor:pointer; border-bottom:2px solid transparent; margin-bottom:-1px;
+  }
+  .tabs .tab.active{ color:var(--rf-purple); border-bottom-color:var(--rf-purple); }
+  .tabs .tab.disabled{ color:var(--rf-text-faint); cursor:not-allowed; opacity:0.5; }
+  .ghost-btn{
+    background:transparent; color:var(--rf-text-2);
+    border:1px solid var(--rf-border-2);
+    padding:8px 12px; border-radius:8px;
+    font-size:12px; font-weight:500; cursor:pointer;
+    display:inline-flex; align-items:center; gap:7px;
+  }
+  .ghost-btn:hover{ background:#0E1115; border-color:var(--rf-border-strong); color:var(--rf-text); }
+  .ghost-btn.sm{ padding:5px 10px; font-size:11px; }
+  .btn-primary{
+    background:var(--rf-purple-btn);
+    color:#fff;
+    border:none;
+    padding:10px 18px;
+    border-radius:8px;
+    font-size:13px; font-weight:600;
+    cursor:pointer;
+    display:inline-flex; align-items:center; gap:8px;
+    box-shadow:0 4px 16px rgba(186,36,213,0.25);
+  }
+  .btn-primary:hover{ background:var(--rf-purple-btn-2); }
+  .btn-primary.full{ width:100%; justify-content:center; }
+  .btn-primary svg{ width:14px; height:14px; }
+  .btn-primary.sm{ padding:6px 12px; font-size:11.5px; }
+  .empty-state{
+    padding:54px 20px; text-align:center;
+    border:1px dashed var(--rf-border-2);
+    border-radius:14px;
+    background:radial-gradient(circle at 50% 0%, rgba(186,36,213,0.04), transparent 60%);
+    position:relative;
+  }
+  .empty-state .ico{
+    width:52px; height:52px; margin:0 auto 16px;
+    border-radius:13px;
+    background:var(--rf-purple-soft);
+    color:var(--rf-purple);
+    display:flex; align-items:center; justify-content:center; font-size:22px;
+    border:1px solid var(--rf-purple-line);
+    box-shadow:0 0 24px rgba(186,36,213,0.15);
+  }
+  .empty-state h3{ margin:0 0 6px; font-size:15px; font-weight:600; }
+  .empty-state p{ margin:0 0 20px; font-size:12.5px; color:var(--rf-text-muted); max-width:480px; margin-left:auto; margin-right:auto; line-height:1.55; }
+  .empty-state.compact{ padding:36px 18px; }
+  .loading-block{ text-align:center; padding:64px 20px; }
+  .loading-spinner{
+    width:44px; height:44px; margin:0 auto 18px;
+    border-radius:50%;
+    border:2px solid #1A1D24;
+    border-top-color:var(--rf-purple);
+    animation:spin 0.8s linear infinite;
+    box-shadow:0 0 20px rgba(186,36,213,0.2);
+  }
+  @keyframes spin{ to{ transform:rotate(360deg); } }
+  .loading-block h3{ margin:0 0 6px; font-size:14px; font-weight:600; }
+  .loading-block p{ margin:0; font-size:12px; color:var(--rf-text-muted); max-width:420px; margin-left:auto; margin-right:auto; line-height:1.55; }
+  .last-analyzed{
+    font-size:11.5px; color:var(--rf-text-dim);
+    display:flex; align-items:center; gap:8px;
+    margin-bottom:16px;
+  }
+  .last-analyzed .dot{ width:5px; height:5px; border-radius:50%; background:var(--rf-green); box-shadow:0 0 5px var(--rf-green); }
+
+  /* ========== CREDIT CHIP ========== */
+  .credit-chip{
+    display:inline-flex; align-items:center; gap:4px;
+    padding:1.5px 7px; border-radius:5px;
+    background:rgba(245,185,25,0.12); color:var(--rf-amber);
+    border:1px solid rgba(245,185,25,0.30);
+    font-size:10.5px; font-weight:600;
+    font-family:'JetBrains Mono', monospace;
+  }
+  .credit-chip.free{ background:var(--rf-green-soft); color:var(--rf-green); border-color:rgba(74,222,128,0.30); }
+
+  /* ========== STATUS PILLS (article workflow) ========== */
+  .status-pill{
+    display:inline-flex; align-items:center; gap:5px;
+    padding:2.5px 8px; border-radius:999px;
+    font-size:10.5px; font-weight:600; letter-spacing:0.03em;
+  }
+  .status-pill .dot{ width:5px; height:5px; border-radius:50%; background:currentColor; }
+  .status-idea{ background:rgba(107,114,128,0.18); color:#9CA3AF; }
+  .status-research{ background:rgba(59,130,246,0.12); color:#7AABFB; }
+  .status-draft{ background:rgba(245,185,25,0.12); color:var(--rf-amber); }
+  .status-review{ background:rgba(168,85,247,0.14); color:#C084FC; }
+  .status-approved{ background:rgba(186,36,213,0.14); color:#D277E8; }
+  .status-synced{ background:rgba(20,184,166,0.12); color:#3FD7C4; }
+  .status-published{ background:var(--rf-green-soft); color:var(--rf-green); }
+  .status-failed{ background:var(--rf-red-soft); color:var(--rf-red); }
+
+  /* ========== CALENDAR ========== */
+  .cal-toolbar{
+    display:flex; gap:10px; align-items:center; margin-bottom:14px;
+  }
+  .cal-toolbar .month{ font-size:15px; font-weight:600; letter-spacing:-0.01em; }
+  .cal-toolbar .nav-btn{
+    width:26px; height:26px; border-radius:6px;
+    background:var(--rf-bg-card); border:1px solid var(--rf-border-2);
+    color:var(--rf-text-muted); display:flex; align-items:center; justify-content:center; cursor:pointer;
+  }
+  .cal-toolbar .view-toggle{
+    display:inline-flex;
+    background:var(--rf-bg-card); border:1px solid var(--rf-border-2);
+    border-radius:7px; padding:2px;
+  }
+  .cal-toolbar .view-toggle .opt{
+    padding:4px 10px; font-size:11.5px; border-radius:5px; color:var(--rf-text-muted); cursor:pointer;
+  }
+  .cal-toolbar .view-toggle .opt.active{ background:var(--rf-bg-active); color:#fff; }
+  .cal-filter{
+    background:var(--rf-bg-card); border:1px solid var(--rf-border-2);
+    padding:5px 10px; border-radius:7px; font-size:11.5px;
+    color:var(--rf-text-2); display:inline-flex; gap:6px; align-items:center;
+  }
+  .cal-filter.active{ border-color:var(--rf-purple-line); background:var(--rf-purple-soft); color:var(--rf-purple); }
+  .cal-grid{
+    display:grid; grid-template-columns:repeat(7,1fr); gap:6px;
+    background:var(--rf-bg-card); border:1px solid var(--rf-border); border-radius:12px;
+    padding:10px;
+  }
+  .cal-dow{
+    font-size:9.5px; letter-spacing:0.10em; text-transform:uppercase;
+    color:var(--rf-text-dim); padding:4px 0 6px; font-weight:600; text-align:left;
+  }
+  .cal-cell{
+    min-height:78px;
+    background:var(--rf-bg-elev);
+    border:1px solid var(--rf-border);
+    border-radius:8px;
+    padding:6px 7px;
+    font-size:10.5px;
+    display:flex; flex-direction:column; gap:3px;
+    position:relative;
+  }
+  .cal-cell.muted{ opacity:0.32; }
+  .cal-cell.today{ border-color:var(--rf-purple-line); background:rgba(186,36,213,0.04); }
+  .cal-cell .d{ color:var(--rf-text-muted); font-weight:600; font-family:'JetBrains Mono', monospace; }
+  .cal-cell.today .d{ color:var(--rf-purple); }
+  .cal-art{
+    font-size:9.5px;
+    padding:3px 5px;
+    border-radius:4px;
+    line-height:1.3;
+    cursor:pointer;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+    border-left:2px solid;
+  }
+  .cal-art.draft{ background:rgba(245,185,25,0.08); color:#F5C547; border-color:var(--rf-amber); }
+  .cal-art.review{ background:rgba(168,85,247,0.10); color:#C084FC; border-color:#A855F7; }
+  .cal-art.approved{ background:rgba(186,36,213,0.12); color:#D277E8; border-color:var(--rf-purple); }
+  .cal-art.published{ background:var(--rf-green-soft); color:var(--rf-green); border-color:var(--rf-green); }
+  .cal-art.research{ background:rgba(59,130,246,0.10); color:#7AABFB; border-color:var(--rf-blue); }
+
+  /* ========== ARTICLE / DRAFT ROW ========== */
+  .article-row{
+    display:grid; grid-template-columns:1fr auto auto auto auto; gap:14px; align-items:center;
+    padding:12px 14px;
+    background:var(--rf-bg-card); border:1px solid var(--rf-border);
+    border-radius:10px; margin-bottom:6px;
+  }
+  .article-row .ar-title{ font-size:13px; font-weight:500; }
+  .article-row .ar-meta{ font-size:11px; color:var(--rf-text-dim); margin-top:2px; }
+  .article-row .ar-author{
+    display:flex; align-items:center; gap:6px;
+    font-size:11.5px; color:var(--rf-text-muted);
+  }
+  .article-row .ar-author .ava{
+    width:20px; height:20px; border-radius:50%;
+    background:linear-gradient(135deg, #6B27D8, #BA24D5);
+    color:#fff; font-size:9px; font-weight:600;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .article-row .ar-date{ font-size:11.5px; color:var(--rf-text-muted); font-family:'JetBrains Mono', monospace; }
+  .article-row:hover{ border-color:var(--rf-border-2); background:#0F1115; }
+
+  /* ========== EDITOR LAYOUT ========== */
+  .ed-frame{
+    display:grid; grid-template-columns:1fr 280px; gap:16px;
+    min-height:520px;
+  }
+  .ed-main{
+    background:var(--rf-bg-card); border:1px solid var(--rf-border);
+    border-radius:12px; padding:18px 22px;
+    display:flex; flex-direction:column; gap:10px;
+    min-height:0;
+  }
+  .ed-toolbar{
+    display:flex; gap:6px; align-items:center;
+    padding:6px 0 8px; border-bottom:1px solid var(--rf-border);
+    margin-bottom:6px;
+  }
+  .ed-tb-btn{
+    padding:4px 8px; border-radius:6px;
+    color:var(--rf-text-muted); font-size:11.5px;
+    cursor:pointer; font-weight:500;
+  }
+  .ed-tb-btn:hover{ background:var(--rf-bg-card-2); color:var(--rf-text); }
+  .ed-tb-btn.divider{ width:1px; height:14px; background:var(--rf-border); padding:0; pointer-events:none; }
+  .ed-title{
+    background:transparent; border:none;
+    font-size:22px; font-weight:600; color:var(--rf-text);
+    width:100%; outline:none; padding:4px 0;
+    letter-spacing:-0.01em; font-family:inherit;
+  }
+  .ed-h2{ font-size:16px; font-weight:600; color:var(--rf-text); margin:14px 0 4px; }
+  .ed-h3{ font-size:13.5px; font-weight:600; color:var(--rf-text-2); margin:10px 0 2px; }
+  .ed-p{ font-size:12.5px; color:var(--rf-text-2); line-height:1.7; margin:0 0 8px; }
+  .ed-img-block{
+    background:linear-gradient(135deg, #2D1B3A, #16121E);
+    border-radius:8px; height:160px;
+    display:flex; align-items:flex-end; padding:10px 12px;
+    color:#fff; font-size:10.5px; font-weight:500;
+    margin:6px 0;
+    border:1px solid var(--rf-border);
+  }
+  .ed-footer{
+    margin-top:auto; padding-top:8px; border-top:1px solid var(--rf-border);
+    display:flex; gap:14px; align-items:center;
+    font-size:10.5px; color:var(--rf-text-dim); font-family:'JetBrains Mono', monospace;
+  }
+  .ed-side{
+    background:var(--rf-bg-card); border:1px solid var(--rf-border);
+    border-radius:12px;
+    display:flex; flex-direction:column;
+    overflow:hidden;
+  }
+  .ed-side-tabs{
+    display:flex; border-bottom:1px solid var(--rf-border);
+  }
+  .ed-side-tab{
+    flex:1; padding:9px 0; text-align:center;
+    font-size:11px; font-weight:500; color:var(--rf-text-muted);
+    cursor:pointer; border-bottom:2px solid transparent; margin-bottom:-1px;
+  }
+  .ed-side-tab.active{ color:var(--rf-purple); border-bottom-color:var(--rf-purple); }
+  .ed-side-body{ padding:14px; font-size:12px; flex:1; overflow-y:auto; }
+  .ed-side-body::-webkit-scrollbar{ width:5px; }
+  .ed-side-body::-webkit-scrollbar-thumb{ background:#262A33; border-radius:3px; }
+  .ed-field{ margin-bottom:12px; }
+  .ed-field label{
+    display:block; font-size:9.5px; letter-spacing:0.08em; text-transform:uppercase;
+    color:var(--rf-text-dim); font-weight:600; margin-bottom:5px;
+  }
+  .ed-field .val{
+    background:var(--rf-bg-input); border:1px solid var(--rf-border-2);
+    border-radius:6px; padding:6px 9px; font-size:11.5px; color:var(--rf-text-2);
+  }
+  .kw-bar{ height:5px; background:#15181E; border-radius:3px; overflow:hidden; }
+  .kw-fill{ height:100%; background:var(--rf-green); width:62%; box-shadow:0 0 5px var(--rf-green); }
+  .ai-action{
+    display:flex; align-items:center; gap:8px;
+    padding:8px 10px; border-radius:7px;
+    background:var(--rf-bg-elev); border:1px solid var(--rf-border);
+    margin-bottom:5px; cursor:pointer;
+    font-size:11.5px;
+  }
+  .ai-action:hover{ border-color:var(--rf-purple-line); background:rgba(186,36,213,0.04); }
+  .ai-action .label{ flex:1; }
+  .ai-action .ico{ color:var(--rf-purple); width:14px; height:14px; flex-shrink:0; }
+  .schema-pills{ display:flex; gap:5px; flex-wrap:wrap; }
+  .schema-pill{
+    font-size:10px; font-weight:600;
+    padding:3px 7px; border-radius:5px;
+  }
+  .schema-pill.always{ background:var(--rf-green-soft); color:var(--rf-green); border:1px solid rgba(74,222,128,0.30); }
+  .schema-pill.detected{ background:rgba(236,72,153,0.12); color:var(--rf-pink); border:1px solid rgba(236,72,153,0.30); }
+  .schema-pill.add{ background:rgba(107,114,128,0.18); color:#9CA3AF; border:1px dashed var(--rf-border-strong); }
+
+  /* ========== MODAL ========== */
+  .modal-overlay{
+    position:absolute; inset:0;
+    background:rgba(0,0,0,0.6);
+    backdrop-filter:blur(4px);
+    display:flex; align-items:center; justify-content:center;
+    border-radius:14px;
+    z-index:5;
+  }
+  .modal{
+    width:420px;
+    background:var(--rf-bg-card); border:1px solid var(--rf-border);
+    border-radius:12px; padding:22px;
+    box-shadow:var(--rf-shadow-lg);
+  }
+  .modal h3{ margin:0 0 6px; font-size:15px; }
+  .modal p{ margin:0 0 16px; font-size:12.5px; color:var(--rf-text-muted); line-height:1.55; }
+  .modal textarea{
+    width:100%; min-height:90px;
+    background:var(--rf-bg-input); border:1px solid var(--rf-border-2);
+    border-radius:7px; padding:10px;
+    font-size:12.5px; color:var(--rf-text); font-family:inherit;
+    resize:vertical; outline:none; margin-bottom:14px;
+  }
+  .radio-row{
+    padding:10px 12px; border-radius:8px;
+    background:var(--rf-bg-elev); border:1px solid var(--rf-border);
+    display:flex; gap:10px; align-items:flex-start;
+    margin-bottom:6px; cursor:pointer;
+  }
+  .radio-row.selected{ border-color:var(--rf-purple-line); background:rgba(186,36,213,0.04); }
+  .radio-row .rd{
+    width:14px; height:14px; border-radius:50%;
+    border:1.5px solid var(--rf-border-strong);
+    flex-shrink:0; margin-top:2px;
+  }
+  .radio-row.selected .rd{ border-color:var(--rf-purple); background:radial-gradient(circle, var(--rf-purple) 40%, transparent 45%); }
+  .radio-row b{ display:block; font-size:12.5px; font-weight:600; margin-bottom:2px; }
+  .radio-row span{ font-size:11px; color:var(--rf-text-muted); }
+
+  /* ========== TABLE ========== */
+  .rf-table{
+    width:100%;
+    border-collapse:separate; border-spacing:0;
+    background:var(--rf-bg-card); border:1px solid var(--rf-border);
+    border-radius:10px; overflow:visible;
+    font-size:12px;
+  }
+  /* round corners via cells so overflow can stay visible (lets row menus escape) */
+  .rf-table thead th:first-child{ border-top-left-radius:10px; }
+  .rf-table thead th:last-child{ border-top-right-radius:10px; }
+  .rf-table tbody tr:last-child td:first-child{ border-bottom-left-radius:10px; }
+  .rf-table tbody tr:last-child td:last-child{ border-bottom-right-radius:10px; }
+  .rf-table thead th{
+    background:var(--rf-bg-elev);
+    color:var(--rf-text-dim);
+    text-align:left;
+    font-size:10px; letter-spacing:0.08em; text-transform:uppercase; font-weight:600;
+    padding:9px 12px;
+    border-bottom:1px solid var(--rf-border);
+  }
+  .rf-table tbody td{
+    padding:11px 12px;
+    border-bottom:1px solid var(--rf-border);
+    color:var(--rf-text-2);
+  }
+  .rf-table tbody tr:last-child td{ border-bottom:none; }
+  .rf-table tbody tr:hover{ background:#0F1115; }
+
+  /* ========== BANNERS / ERRORS ========== */
+  .banner{
+    padding:12px 14px; border-radius:10px;
+    display:flex; gap:11px; align-items:flex-start;
+    font-size:12.5px; line-height:1.5;
+    margin-bottom:14px;
+  }
+  .banner .b-ico{ width:22px; height:22px; flex-shrink:0; display:flex; align-items:center; justify-content:center; border-radius:6px; }
+  .banner b{ display:block; margin-bottom:2px; }
+  .banner.warn{ background:rgba(245,185,25,0.08); border:1px solid rgba(245,185,25,0.30); }
+  .banner.warn .b-ico{ background:var(--rf-amber-soft-2); color:var(--rf-amber); }
+  .banner.err{ background:rgba(221,82,76,0.07); border:1px solid rgba(221,82,76,0.30); }
+  .banner.err .b-ico{ background:rgba(221,82,76,0.18); color:var(--rf-red); }
+  .banner.info{ background:var(--rf-purple-soft-2); border:1px solid var(--rf-purple-line); }
+  .banner.info .b-ico{ background:var(--rf-purple-soft); color:var(--rf-purple); }
+  .banner .b-cta{ margin-left:auto; }
+
+  /* ========== CARD STACK ========== */
+  .card{
+    background:var(--rf-bg-card); border:1px solid var(--rf-border);
+    border-radius:12px; padding:16px 18px;
+    margin-bottom:12px;
+  }
+  .card-head{
+    display:flex; align-items:center; gap:10px; margin-bottom:10px;
+  }
+  .card-head h3{
+    margin:0; font-size:13px; font-weight:600;
+  }
+  .card-head .meta{
+    margin-left:auto; font-size:11px; color:var(--rf-text-dim); font-family:'JetBrains Mono', monospace;
+  }
+
+  /* ========== OPPORTUNITY CARD ========== */
+  .opp{
+    padding:14px 16px;
+    background:var(--rf-bg-card); border:1px solid var(--rf-border);
+    border-radius:10px;
+    margin-bottom:8px;
+    display:grid; grid-template-columns:1fr auto auto; gap:14px; align-items:center;
+  }
+  .opp .opp-type{
+    font-size:9.5px; letter-spacing:0.08em; text-transform:uppercase; font-weight:700;
+    padding:2.5px 7px; border-radius:5px;
+    display:inline-block; margin-bottom:5px;
+  }
+  .opp .opp-type.refresh{ background:rgba(245,185,25,0.12); color:var(--rf-amber); }
+  .opp .opp-type.gap{ background:rgba(59,130,246,0.12); color:#7AABFB; }
+  .opp .opp-type.cluster{ background:var(--rf-purple-soft); color:var(--rf-purple); }
+  .opp .opp-type.trending{ background:var(--rf-green-soft); color:var(--rf-green); }
+  .opp .opp-title{ font-size:13px; font-weight:500; }
+  .opp .opp-sub{ font-size:11px; color:var(--rf-text-muted); margin-top:3px; }
+  .opp .impact{
+    text-align:center;
+  }
+  .opp .impact b{ font-size:14px; font-family:'JetBrains Mono', monospace; display:block; }
+  .opp .impact span{ font-size:9.5px; letter-spacing:0.08em; text-transform:uppercase; color:var(--rf-text-dim); }
+
+  /* ========== STEPPER (wizard) ========== */
+  .stepper{ display:flex; align-items:center; gap:10px; margin-bottom:18px; }
+  .step{ display:flex; align-items:center; gap:7px; font-size:11.5px; color:var(--rf-text-muted); }
+  .step .num{
+    width:20px; height:20px; border-radius:50%;
+    background:#15171B; color:var(--rf-text-dim);
+    font-size:10px; font-weight:700;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .step.active{ color:var(--rf-purple); }
+  .step.active .num{ background:var(--rf-purple); color:#fff; box-shadow:0 0 8px rgba(186,36,213,0.4); }
+  .step.done .num{ background:var(--rf-green); color:#000; }
+  .step-sep{ width:24px; height:1px; background:var(--rf-border-2); }
+
+  /* ========== CONTACT SHEET ========== */
+  .contact-sheet-wrap{ max-width:1400px; }
+  .contact-sheet{
+    display:grid; grid-template-columns:repeat(auto-fill, minmax(260px, 1fr)); gap:14px;
+    margin-bottom:20px;
+  }
+  .cs-tile{
+    background:#0C0E11;
+    border:1px solid var(--rf-border);
+    border-radius:10px;
+    overflow:hidden;
+    text-decoration:none; color:inherit;
+    transition:all 0.15s;
+    display:flex; flex-direction:column;
+  }
+  .cs-tile:hover{ border-color:var(--rf-purple-line); transform:translateY(-2px); box-shadow:0 12px 32px rgba(0,0,0,0.5), 0 0 24px rgba(186,36,213,0.10); }
+  .cs-tile-thumb{
+    aspect-ratio:880 / 540;
+    background:var(--rf-bg);
+    position:relative; overflow:hidden;
+    border-bottom:1px solid var(--rf-border);
+  }
+  .cs-mini{
+    transform:scale(0.27);
+    transform-origin:top left;
+    width:370%;
+    height:370%;
+    pointer-events:none;
+  }
+  .cs-tile-info{ padding:11px 13px; }
+  .cs-tile-num{
+    font-size:9.5px; letter-spacing:0.08em; color:var(--rf-text-dim);
+    font-family:'JetBrains Mono', monospace; font-weight:600;
+    margin-bottom:3px;
+  }
+  .cs-tile-title{ font-size:12.5px; font-weight:600; line-height:1.35; margin-bottom:4px; }
+  .cs-tile-tag{ font-size:9.5px; letter-spacing:0.04em; color:var(--rf-text-dim); font-weight:500; }
+  .cs-tile.new-screen .cs-tile-thumb::after{
+    content:'NEW'; position:absolute; top:8px; right:8px;
+    background:var(--rf-purple); color:#fff;
+    font-size:8.5px; font-weight:700; letter-spacing:0.06em;
+    padding:2px 6px; border-radius:4px;
+    box-shadow:0 0 8px rgba(186,36,213,0.6);
+  }
+  .cs-section-title{
+    margin:24px 0 12px;
+    font-size:11px; letter-spacing:0.10em; text-transform:uppercase;
+    color:var(--rf-text-dim); font-weight:700;
+    display:flex; align-items:center; gap:10px;
+  }
+  .cs-section-title::after{ content:''; flex:1; height:1px; background:#16181D; }
+  .cs-section-title:first-child{ margin-top:0; }
+
+  .ico-svg{ width:14px; height:14px; }
+  .ico-svg.lg{ width:16px; height:16px; }
+  .state-section + .state-section{ margin-top:56px; padding-top:56px; border-top:1px dashed #1F2228; }
+
+  /* ========== TYPED TOKEN STREAM ========== */
+  .token-stream{
+    background:#0A0B0D; border:1px solid var(--rf-border);
+    border-radius:10px; padding:14px;
+    font-family:'JetBrains Mono', monospace;
+    font-size:11px; line-height:1.7;
+    color:var(--rf-text-2);
+    max-height:200px; overflow:hidden;
+    position:relative;
+  }
+  .token-stream::after{
+    content:''; position:absolute; bottom:0; left:0; right:0; height:50px;
+    background:linear-gradient(transparent, #0A0B0D);
+  }
+  .token-stream .cur{ display:inline-block; width:6px; height:12px; background:var(--rf-purple); animation:blink 1s steps(2) infinite; vertical-align:text-bottom; }
+  @keyframes blink{ 50%{opacity:0;} }
+
+  /* progress bar */
+  .progress{ height:6px; background:#15181E; border-radius:3px; overflow:hidden; }
+  .progress .fill{ height:100%; background:linear-gradient(90deg, var(--rf-purple-deep), var(--rf-purple)); box-shadow:0 0 8px var(--rf-purple); }
+
+  /* phase tile */
+  .phase{
+    background:var(--rf-bg-card); border:1px solid var(--rf-border);
+    border-radius:10px; padding:14px;
+    display:flex; gap:12px; align-items:center;
+    margin-bottom:8px;
+  }
+  .phase .num{
+    width:30px; height:30px; border-radius:8px;
+    background:var(--rf-purple-soft); color:var(--rf-purple);
+    border:1px solid var(--rf-purple-line);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'JetBrains Mono', monospace; font-weight:700; font-size:13px;
+  }
+  .phase.done .num{ background:var(--rf-green-soft); color:var(--rf-green); border-color:rgba(74,222,128,0.30); }
+  .phase.active .num{ box-shadow:0 0 14px var(--rf-purple); }
+  .phase h4{ margin:0 0 2px; font-size:13px; font-weight:600; }
+  .phase p{ margin:0; font-size:11px; color:var(--rf-text-muted); }
+  .phase .right{ margin-left:auto; font-size:11px; color:var(--rf-text-dim); }
+
+  @media (max-width: 1200px){
+    .proto-page{ grid-template-columns: 1fr; }
+    .proto-side{ position:relative; height:auto; }
+  }
+
+  /* ========== MULTI-USER ADDITIONS ========== */
+  /* role badges */
+  .role-badge{
+    display:inline-flex; align-items:center; gap:5px;
+    padding:2.5px 9px; border-radius:999px;
+    font-size:10.5px; font-weight:600; letter-spacing:0.03em;
+  }
+  .role-badge .dot{ width:5px; height:5px; border-radius:50%; background:currentColor; }
+  .role-admin{ background:rgba(186,36,213,0.14); color:#D277E8; border:1px solid var(--rf-purple-line); }
+  .role-publisher{ background:rgba(20,184,166,0.12); color:#3FD7C4; border:1px solid rgba(20,184,166,0.30); }
+  .role-writer{ background:rgba(59,130,246,0.12); color:#7AABFB; border:1px solid rgba(59,130,246,0.30); }
+  .role-viewer{ background:rgba(107,114,128,0.18); color:#9CA3AF; border:1px solid rgba(107,114,128,0.30); }
+  .role-pending{ background:rgba(245,185,25,0.12); color:var(--rf-amber); border:1px solid rgba(245,185,25,0.30); }
+
+  /* permissions matrix */
+  .perm-matrix{
+    width:100%; border-collapse:separate; border-spacing:0;
+    background:var(--rf-bg-card); border:1px solid var(--rf-border);
+    border-radius:10px; overflow:hidden; font-size:12px;
+  }
+  .perm-matrix thead th{
+    background:var(--rf-bg-elev); color:var(--rf-text-dim);
+    font-size:10px; letter-spacing:0.06em; text-transform:uppercase; font-weight:600;
+    padding:10px 12px; border-bottom:1px solid var(--rf-border); text-align:center;
+  }
+  .perm-matrix thead th:first-child{ text-align:left; }
+  .perm-matrix tbody td{ padding:10px 12px; border-bottom:1px solid var(--rf-border); text-align:center; color:var(--rf-text-2); }
+  .perm-matrix tbody td:first-child{ text-align:left; font-weight:500; color:var(--rf-text); }
+  .perm-matrix tbody tr:last-child td{ border-bottom:none; }
+  .perm-matrix tbody tr:hover{ background:#0F1115; }
+  .perm-yes{ color:var(--rf-green); }
+  .perm-no{ color:var(--rf-text-faint); }
+  .perm-matrix .ico-svg{ width:15px; height:15px; }
+
+  /* member / seat row */
+  .member-row{
+    display:grid; grid-template-columns:1fr auto auto auto auto; gap:16px; align-items:center;
+    padding:12px 14px;
+    background:var(--rf-bg-card); border:1px solid var(--rf-border);
+    border-radius:10px; margin-bottom:6px;
+    position:relative;
+  }
+  .member-row:hover{ border-color:var(--rf-border-2); background:#0F1115; }
+  .member-id{ display:flex; align-items:center; gap:11px; }
+  .member-id .ava{
+    width:34px; height:34px; border-radius:50%;
+    background:linear-gradient(135deg, #6B27D8, #BA24D5);
+    color:#fff; font-size:12px; font-weight:600;
+    display:flex; align-items:center; justify-content:center; flex-shrink:0;
+  }
+  .member-id .ava.pending{ background:#1C1F25; color:var(--rf-text-dim); border:1px dashed var(--rf-border-strong); }
+  .member-id b{ display:block; font-size:13px; font-weight:600; }
+  .member-id span{ font-size:11px; color:var(--rf-text-dim); }
+  .member-bal{ font-family:'JetBrains Mono', monospace; font-size:13px; color:var(--rf-amber); text-align:right; }
+  .member-bal small{ display:block; font-size:9.5px; letter-spacing:0.06em; text-transform:uppercase; color:var(--rf-text-dim); font-family:'Inter',sans-serif; }
+  .member-actions{ display:flex; gap:6px; }
+  .row-menu{
+    position:absolute; right:14px; top:calc(100% - 2px);
+    background:#0F1116; border:1px solid var(--rf-border-2);
+    border-radius:10px; padding:5px; width:170px; z-index:6;
+    box-shadow:var(--rf-shadow-md);
+  }
+  .row-menu .mi{
+    display:flex; align-items:center; gap:9px;
+    padding:7px 10px; border-radius:6px; font-size:12px; color:var(--rf-text-2); cursor:pointer;
+  }
+  .row-menu .mi:hover{ background:#16181D; }
+  .row-menu .mi.danger{ color:var(--rf-red); }
+  .row-menu .mi.danger:hover{ background:var(--rf-red-soft); }
+  .row-menu .mi .ico{ width:14px; height:14px; }
+  .row-menu .sep{ height:1px; background:var(--rf-border); margin:4px 6px; }
+
+  /* stat cards */
+  .stat-row{ display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:12px; margin-bottom:18px; }
+  .stat-card{
+    background:var(--rf-bg-card); border:1px solid var(--rf-border);
+    border-radius:12px; padding:14px 16px;
+  }
+  .stat-card .lbl{ font-size:10px; letter-spacing:0.08em; text-transform:uppercase; color:var(--rf-text-dim); font-weight:600; margin-bottom:6px; display:flex; align-items:center; gap:7px; }
+  .stat-card .lbl .ico{ width:13px; height:13px; color:var(--rf-purple); }
+  .stat-card .big{ font-size:22px; font-weight:600; letter-spacing:-0.01em; font-family:'JetBrains Mono', monospace; }
+  .stat-card .big small{ font-size:13px; color:var(--rf-text-dim); font-weight:400; }
+  .stat-card .note{ font-size:11px; color:var(--rf-text-muted); margin-top:3px; }
+
+  /* pack picker */
+  .pack-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-bottom:14px; }
+  .pack-card{
+    background:var(--rf-bg-elev); border:1px solid var(--rf-border-2);
+    border-radius:10px; padding:14px 12px; text-align:center; cursor:pointer;
+  }
+  .pack-card.selected{ border-color:var(--rf-purple); background:rgba(186,36,213,0.06); box-shadow:0 0 18px rgba(186,36,213,0.12); }
+  .pack-card .pk-cr{ font-size:18px; font-weight:600; font-family:'JetBrains Mono', monospace; }
+  .pack-card .pk-name{ font-size:10px; letter-spacing:0.08em; text-transform:uppercase; color:var(--rf-text-dim); font-weight:600; margin:2px 0 6px; }
+  .pack-card .pk-price{ font-size:12.5px; color:var(--rf-purple); font-weight:600; }
+
+  /* toast */
+  .toast{
+    position:absolute; bottom:18px; right:24px;
+    background:#0F1116; border:1px solid var(--rf-purple-line);
+    border-radius:10px; padding:11px 16px;
+    display:flex; align-items:center; gap:10px;
+    font-size:12.5px; color:var(--rf-text);
+    box-shadow:var(--rf-shadow-md), 0 0 30px rgba(186,36,213,0.18);
+    z-index:7; max-width:min(420px, calc(100% - 48px));
+  }
+  .toast .ico{ width:16px; height:16px; color:var(--rf-purple); flex-shrink:0; }
+  .toast.ok{ border-color:rgba(74,222,128,0.4); }
+  .toast.ok .ico{ color:var(--rf-green); }
+
+  /* account tab bar (plugin) */
+  .acct-tabs{
+    display:flex; gap:22px; border-bottom:1px solid var(--rf-border); margin-bottom:18px;
+  }
+  .acct-tabs .tab{
+    padding:7px 0 11px; font-size:13px; font-weight:500; color:var(--rf-text-muted);
+    cursor:pointer; border-bottom:2px solid transparent; margin-bottom:-1px;
+    display:flex; align-items:center; gap:6px;
+  }
+  .acct-tabs .tab.active{ color:var(--rf-purple); border-bottom-color:var(--rf-purple); }
+  .acct-tabs .tab .new-pill{ font-size:8px; font-weight:700; padding:1.5px 5px; border-radius:4px; background:var(--rf-purple); color:#fff; }
+
+  /* hero seat pill */
+  .seat-hero{
+    display:flex; align-items:center; gap:12px;
+    padding:12px 16px; border-radius:12px;
+    background:linear-gradient(135deg, rgba(186,36,213,0.10), rgba(186,36,213,0.02));
+    border:1px solid var(--rf-purple-line); margin-bottom:16px;
+  }
+  .seat-hero .ava{
+    width:38px; height:38px; border-radius:10px;
+    background:linear-gradient(135deg, #6B27D8, #BA24D5); color:#fff;
+    display:flex; align-items:center; justify-content:center; font-weight:600; font-size:14px;
+  }
+  .seat-hero b{ font-size:14px; }
+  .seat-hero span{ font-size:11.5px; color:var(--rf-text-muted); }
+
+  /* skeleton */
+  .skeleton{
+    background:linear-gradient(90deg, #0F1115 25%, #16181D 50%, #0F1115 75%);
+    background-size:200% 100%; animation:shimmer 1.3s infinite;
+    border-radius:6px;
+  }
+  @keyframes shimmer{ to{ background-position:-200% 0; } }
+  .skel-row{ display:grid; grid-template-columns:1fr auto auto auto; gap:16px; align-items:center; padding:12px 14px; background:var(--rf-bg-card); border:1px solid var(--rf-border); border-radius:10px; margin-bottom:6px; }
+
+  /* ledger */
+  .ledger-row{
+    display:grid; grid-template-columns:auto 1fr auto auto; gap:14px; align-items:center;
+    padding:10px 14px; border-bottom:1px solid var(--rf-border); font-size:12px;
+  }
+  .ledger-row:last-child{ border-bottom:none; }
+  .ledger-row .when{ font-family:'JetBrains Mono', monospace; font-size:10.5px; color:var(--rf-text-dim); }
+  .ledger-row .amt.pos{ color:var(--rf-green); font-family:'JetBrains Mono', monospace; }
+  .ledger-row .amt.neg{ color:var(--rf-red); font-family:'JetBrains Mono', monospace; }
+  .ledger-type{ font-size:9.5px; letter-spacing:0.06em; text-transform:uppercase; font-weight:700; padding:2px 7px; border-radius:5px; }
+  .ledger-type.spent{ background:rgba(59,130,246,0.12); color:#7AABFB; }
+  .ledger-type.granted{ background:var(--rf-green-soft); color:var(--rf-green); }
+  .ledger-type.allocated{ background:var(--rf-purple-soft); color:#D277E8; }
+  .ledger-type.purchased{ background:rgba(20,184,166,0.12); color:#3FD7C4; }
+  .ledger-type.refunded{ background:rgba(245,185,25,0.12); color:var(--rf-amber); }
+
+  /* status pills (team) */
+  .status-active{ background:var(--rf-green-soft); color:var(--rf-green); }
+  .status-pending{ background:rgba(245,185,25,0.12); color:var(--rf-amber); }
+  .status-revoked{ background:var(--rf-red-soft); color:var(--rf-red); }
+
+  /* credit chip low */
+  .credit-chip.low{ background:var(--rf-red-soft); color:#E8857F; border-color:rgba(221,82,76,0.30); }
+
+  /* modal fields + actions */
+  .modal .field-label{ display:block; font-size:11px; font-weight:600; letter-spacing:0.04em; text-transform:uppercase; color:var(--rf-text-dim); margin:0 0 6px; }
+  .modal .input{ width:100%; background:var(--rf-bg-input); border:1px solid var(--rf-border-2); border-radius:7px; padding:9px 11px; font-size:12.5px; color:var(--rf-text); font-family:inherit; outline:none; margin-bottom:14px; }
+  .modal .input:focus{ border-color:var(--rf-purple-line); }
+  .modal.wide{ width:480px; }
+  .modal-actions{ display:flex; gap:8px; justify-content:flex-end; margin-top:16px; }
+  .ghost-btn.danger{ color:#E8857F; border-color:rgba(221,82,76,0.3); }
+  .ghost-btn.danger:hover{ background:var(--rf-red-soft); border-color:var(--rf-red); color:#fff; }
+  .radio-row .price{ margin-left:auto; font-size:12px; font-weight:600; font-family:'JetBrains Mono', monospace; color:var(--rf-text-2); }
+
+  /* toast warn */
+  .toast.warn{ border-color:rgba(245,185,25,0.4); box-shadow:var(--rf-shadow-md), 0 0 30px rgba(245,185,25,0.14); }
+  .toast.warn .ico{ color:var(--rf-amber); }
+
+  /* activity log rows */
+  .log-row{ display:flex; gap:12px; align-items:flex-start; padding:12px 4px; border-bottom:1px solid var(--rf-border); }
+  .log-row:last-child{ border-bottom:none; }
+  .log-ico{ width:30px; height:30px; border-radius:8px; flex-shrink:0; display:flex; align-items:center; justify-content:center; background:var(--rf-bg-card-2); color:var(--rf-text-muted); }
+  .log-ico .ico-svg{ width:15px; height:15px; }
+  .log-ico.green{ background:var(--rf-green-soft); color:var(--rf-green); }
+  .log-ico.amber{ background:var(--rf-amber-soft-2); color:var(--rf-amber); }
+  .log-ico.purple{ background:var(--rf-purple-soft); color:var(--rf-purple); }
+  .log-ico.orange{ background:rgba(249,115,22,0.14); color:#FBA56A; }
+  .log-line{ font-size:12.5px; color:var(--rf-text-2); }
+  .log-meta{ font-size:11px; color:var(--rf-text-dim); margin-top:2px; font-family:'JetBrains Mono', monospace; }
+
+  /* plugin member row */
+  .pl-m-row{ display:flex; align-items:center; gap:10px; padding:10px 12px; background:var(--rf-bg-card); border:1px solid var(--rf-border); border-radius:10px; margin-bottom:6px; }
+  .pl-m-row .ava{ width:30px; height:30px; border-radius:50%; background:linear-gradient(135deg, #6B27D8, #BA24D5); color:#fff; font-size:11px; font-weight:600; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .pl-m-row .ava.gray{ background:linear-gradient(135deg, #3A3D45, #565A64); }
+  .pl-m-info b{ display:block; font-size:12.5px; font-weight:600; }
+  .pl-m-info .meta{ font-size:10.5px; color:var(--rf-text-dim); }
+  .pl-m-info .meta.warn{ color:var(--rf-amber); }
+  .pl-m-right{ margin-left:auto; display:flex; align-items:center; gap:6px; }
+
+  /* refill cards */
+  .refill-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-bottom:8px; }
+  .refill-card{ background:var(--rf-bg-card); border:1px solid var(--rf-border); border-radius:10px; padding:14px; cursor:pointer; text-align:center; }
+  .refill-card:hover{ border-color:var(--rf-purple-line); }
+  .refill-card.best{ border-color:var(--rf-purple-line); background:radial-gradient(circle at 50% 0%, rgba(186,36,213,0.06), transparent 70%); }
+  .refill-card .t{ font-size:13px; font-weight:700; }
+  .refill-card .cr{ font-size:11px; color:var(--rf-text-muted); margin-top:2px; }
+  .refill-card .pr{ font-size:16px; font-weight:600; font-family:'JetBrains Mono', monospace; margin-top:8px; }
+  .refill-card .tag{ font-size:9px; letter-spacing:0.08em; text-transform:uppercase; color:var(--rf-purple); font-weight:700; margin-top:4px; }
+
+  /* progress + member table helpers */
+  .progress{ height:6px; background:#15181E; border-radius:3px; overflow:hidden; }
+  .progress .fill{ height:100%; background:linear-gradient(90deg, var(--rf-purple-deep), var(--rf-purple)); box-shadow:0 0 8px var(--rf-purple); }
+  .progress .fill.amber{ background:linear-gradient(90deg, #8A6A0E, var(--rf-amber)); box-shadow:0 0 8px var(--rf-amber); }
+  .rf-table .member-cell{ display:flex; align-items:center; gap:9px; }
+  .rf-table .member-cell .ava{ width:28px; height:28px; border-radius:50%; background:linear-gradient(135deg, #6B27D8, #BA24D5); color:#fff; font-size:11px; font-weight:600; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .rf-table .member-cell .ava.gray{ background:linear-gradient(135deg, #3A3D45, #565A64); }
+  .rf-table .member-cell b{ display:block; font-size:12.5px; font-weight:600; color:var(--rf-text); }
+  .rf-table .member-cell span{ font-size:10.5px; color:var(--rf-text-dim); }
+  .row-actions{ display:flex; gap:6px; justify-content:flex-end; }
+  .change-tag.polar{ background:rgba(249,115,22,0.12); color:#FBA56A; border:1px solid rgba(249,115,22,0.3); }
+  .ico-svg.lg{ width:16px; height:16px; }
+
+  /* ========================================================
+     SCHEMA + LLM SEO ADDITIONS (v3)
+     Built on the shared token + component layer. Only new,
+     schema-specific surfaces live here. Tables, buttons,
+     pills, cards, radii all inherit from the base.
+     ======================================================== */
+
+  /* JSON-LD code block */
+  .json-ld{
+    background:var(--rf-bg-input);
+    border:1px solid var(--rf-border-2);
+    border-radius:10px;
+    padding:14px 16px;
+    font-family:'JetBrains Mono', monospace;
+    font-size:11.5px; line-height:1.65;
+    color:var(--rf-text-2);
+    overflow-x:auto;
+    position:relative;
+  }
+  .json-ld::-webkit-scrollbar{ height:6px; }
+  .json-ld::-webkit-scrollbar-thumb{ background:#262A33; border-radius:3px; }
+  .json-ld .k{ color:#7AABFB; }
+  .json-ld .s{ color:#86EFAC; }
+  .json-ld .n{ color:var(--rf-amber-2); }
+  .json-ld .p{ color:var(--rf-text-dim); }
+  .json-ld .cm{ color:var(--rf-text-faint); font-style:italic; }
+  .json-ld-head{
+    display:flex; align-items:center; gap:8px;
+    margin-bottom:9px;
+  }
+  .json-ld-head .ttl{
+    font-size:10.5px; letter-spacing:0.08em; text-transform:uppercase;
+    color:var(--rf-text-dim); font-weight:700;
+  }
+  .json-ld-head .copy{
+    margin-left:auto;
+    display:inline-flex; align-items:center; gap:6px;
+    font-size:11px; color:var(--rf-text-muted); cursor:pointer;
+    padding:3px 8px; border-radius:6px; border:1px solid var(--rf-border-2);
+  }
+  .json-ld-head .copy:hover{ background:#0E1115; color:var(--rf-text); }
+
+  /* template / type picker */
+  .type-grid{
+    display:grid; grid-template-columns:repeat(auto-fill, minmax(168px, 1fr));
+    gap:12px;
+  }
+  .type-card{
+    background:var(--rf-bg-card); border:1px solid var(--rf-border);
+    border-radius:12px; padding:15px 15px 14px;
+    cursor:pointer; position:relative;
+    transition:border-color 0.12s, background 0.12s, transform 0.12s;
+  }
+  .type-card:hover{ border-color:var(--rf-border-2); background:#0F1115; transform:translateY(-2px); }
+  .type-card.selected{ border-color:var(--rf-purple-line); background:var(--rf-purple-soft-2); }
+  .type-card .tc-ico{
+    width:34px; height:34px; border-radius:9px;
+    background:var(--rf-purple-soft); color:var(--rf-purple);
+    border:1px solid var(--rf-purple-line);
+    display:flex; align-items:center; justify-content:center;
+    margin-bottom:11px;
+  }
+  .type-card .tc-ico svg{ width:17px; height:17px; }
+  .type-card .tc-title{ font-size:13px; font-weight:600; margin-bottom:3px; }
+  .type-card .tc-desc{ font-size:11px; color:var(--rf-text-muted); line-height:1.5; }
+  .type-card .tc-check{
+    position:absolute; top:12px; right:12px;
+    width:18px; height:18px; border-radius:50%;
+    background:var(--rf-purple); color:#fff;
+    display:none; align-items:center; justify-content:center;
+  }
+  .type-card .tc-check svg{ width:11px; height:11px; }
+  .type-card.selected .tc-check{ display:flex; }
+  .type-card .tc-badge{
+    display:inline-block; margin-top:9px;
+    font-size:9.5px; font-weight:700; letter-spacing:0.04em;
+    padding:2px 6px; border-radius:5px;
+    background:var(--rf-green-soft); color:var(--rf-green);
+  }
+
+  /* structured editor field */
+  .sch-field{ margin-bottom:13px; }
+  .sch-field > label{
+    display:block; font-size:11px; font-weight:600;
+    color:var(--rf-text-2); margin-bottom:5px;
+    display:flex; align-items:center; gap:7px;
+  }
+  .sch-field > label .req{ color:var(--rf-red); }
+  .sch-field > label .auto{
+    margin-left:auto;
+    font-size:9px; font-weight:700; letter-spacing:0.04em;
+    padding:1.5px 6px; border-radius:4px;
+    background:rgba(20,184,166,0.12); color:#3FD7C4; border:1px solid rgba(20,184,166,0.30);
+  }
+  .sch-input{
+    background:var(--rf-bg-input); border:1px solid var(--rf-border-2);
+    border-radius:8px; padding:9px 11px; font-size:12.5px; color:var(--rf-text);
+    width:100%; font-family:inherit;
+  }
+  .sch-input.filled{ color:var(--rf-text); }
+  .sch-input.ph{ color:var(--rf-text-dim); }
+  .sch-hint{ font-size:10.5px; color:var(--rf-text-dim); margin-top:4px; }
+
+  /* injection flow diagram */
+  .flow-diagram{
+    display:flex; align-items:stretch; gap:10px; flex-wrap:wrap;
+    margin:4px 0 2px;
+  }
+  .flow-node{
+    flex:1; min-width:150px;
+    background:var(--rf-bg-card); border:1px solid var(--rf-border);
+    border-radius:11px; padding:14px;
+  }
+  .flow-node.accent{ border-color:var(--rf-purple-line); background:var(--rf-purple-soft-2); }
+  .flow-node .fn-ico{
+    width:30px; height:30px; border-radius:8px;
+    background:var(--rf-bg-card-3); color:var(--rf-text-2);
+    display:flex; align-items:center; justify-content:center; margin-bottom:9px;
+  }
+  .flow-node.accent .fn-ico{ background:var(--rf-purple-soft); color:var(--rf-purple); border:1px solid var(--rf-purple-line); }
+  .flow-node .fn-t{ font-size:12.5px; font-weight:600; margin-bottom:3px; }
+  .flow-node .fn-d{ font-size:11px; color:var(--rf-text-muted); line-height:1.5; }
+  .flow-arrow{
+    align-self:center; color:var(--rf-text-faint); flex:0 0 auto;
+    display:flex; align-items:center;
+  }
+  .flow-arrow svg{ width:18px; height:18px; }
+
+  /* callout / info note */
+  .sch-note{
+    border-radius:12px; padding:14px 16px;
+    font-size:12.5px; line-height:1.6; color:var(--rf-text-2);
+    display:flex; gap:11px; align-items:flex-start;
+  }
+  .sch-note.info{ background:var(--rf-purple-soft-2); border:1px solid var(--rf-purple-line); }
+  .sch-note.warn{ background:var(--rf-amber-soft); border:1px solid rgba(245,185,25,0.30); }
+  .sch-note.danger{ background:var(--rf-red-soft); border:1px solid rgba(221,82,76,0.30); }
+  .sch-note.ok{ background:var(--rf-green-soft); border:1px solid rgba(74,222,128,0.30); }
+  .sch-note .sn-ico{ flex:0 0 18px; margin-top:1px; }
+  .sch-note.info .sn-ico{ color:var(--rf-purple); }
+  .sch-note.warn .sn-ico{ color:var(--rf-amber); }
+  .sch-note.danger .sn-ico{ color:var(--rf-red); }
+  .sch-note.ok .sn-ico{ color:var(--rf-green); }
+  .sch-note b{ color:var(--rf-text); }
+
+  /* rich-results check rows */
+  .rr-row{
+    display:flex; align-items:center; gap:11px;
+    padding:11px 13px;
+    border-bottom:1px solid var(--rf-border);
+  }
+  .rr-row:last-child{ border-bottom:none; }
+  .rr-ico{ width:20px; height:20px; flex:0 0 20px; display:flex; align-items:center; justify-content:center; }
+  .rr-ico.ok{ color:var(--rf-green); }
+  .rr-ico.warn{ color:var(--rf-amber); }
+  .rr-ico.err{ color:var(--rf-red); }
+  .rr-row .rr-t{ font-size:12.5px; font-weight:500; }
+  .rr-row .rr-m{ font-size:11px; color:var(--rf-text-dim); margin-top:1px; }
+  .rr-row .rr-right{ margin-left:auto; font-size:11px; color:var(--rf-text-muted); }
+
+  /* stat cards row */
+  .sch-stats{ display:grid; grid-template-columns:repeat(auto-fit, minmax(140px,1fr)); gap:12px; }
+  .sch-stat{
+    background:var(--rf-bg-card); border:1px solid var(--rf-border);
+    border-radius:12px; padding:14px 16px;
+  }
+  .sch-stat .v{ font-size:24px; font-weight:600; letter-spacing:-0.02em; }
+  .sch-stat .v.green{ color:var(--rf-green); }
+  .sch-stat .v.amber{ color:var(--rf-amber); }
+  .sch-stat .v.red{ color:var(--rf-red); }
+  .sch-stat .l{ font-size:11px; color:var(--rf-text-muted); margin-top:3px; }
+
+  /* simple list surface (page rows) */
+  .sch-pagerow .pg-url{ font-family:'JetBrains Mono', monospace; font-size:12px; color:var(--rf-text); }
+  .sch-pagerow .pg-types{ display:flex; gap:5px; flex-wrap:wrap; }
+  .sch-type-chip{
+    font-size:10px; font-weight:600;
+    padding:2.5px 7px; border-radius:5px;
+    background:var(--rf-bg-card-3); color:var(--rf-text-2);
+    border:1px solid var(--rf-border-2);
+  }
+
+  /* segmented role toggle (doc-only helper) */
+  .role-seg{
+    display:inline-flex; background:var(--rf-bg-card); border:1px solid var(--rf-border-2);
+    border-radius:8px; padding:2px; gap:2px;
+  }
+  .role-seg .opt{ padding:5px 12px; font-size:11.5px; border-radius:6px; color:var(--rf-text-muted); cursor:pointer; }
+  .role-seg .opt.active{ background:var(--rf-bg-active); color:#fff; }
+
+</style>
+</head>
+<body>
+<div class="proto-page">
+  <aside class="proto-side">
+    <div class="proto-side-head">
+      <div class="proto-brand">
+        <div class="proto-brand-mark"><span></span><span></span><span></span><span></span></div>
+        <div>
+          <div class="proto-brand-name">Rank<span class="accent">Frame</span></div>
+        </div>
+      </div>
+      <div class="proto-side-sub">Schema + LLM SEO Prototype</div>
+      <div class="proto-side-meta">
+        <b>v3</b><span class="sep">·</span><span>32 screens</span><span class="sep">·</span><span>Jun 2026</span>
+      </div>
+    </div>
+
+    <a class="proto-nav-item" href="#s0"><span class="proto-nav-num">00</span><span>Overview · contact sheet</span></a>
+
+    <h4>A · Entry &amp; Nav</h4>
+    <a class="proto-nav-item" href="#s1"><span class="proto-nav-num">01</span>Plugin nav, Schema in Optimize<span class="new-dot"></span></a>
+    <a class="proto-nav-item" href="#s2"><span class="proto-nav-num">02</span>Dashboard, where Schema lives<span class="new-dot"></span></a>
+    <a class="proto-nav-item" href="#s3"><span class="proto-nav-num">03</span>Schema landing, first open<span class="new-dot"></span></a>
+
+    <h4>B · One-time Setup</h4>
+    <a class="proto-nav-item" href="#s4"><span class="proto-nav-num">04</span>How injection works<span class="new-dot"></span></a>
+    <a class="proto-nav-item" href="#s5"><span class="proto-nav-num">05</span>Enable custom code guide<span class="new-dot"></span></a>
+    <a class="proto-nav-item" href="#s6"><span class="proto-nav-num">06</span>Setup verifying</a>
+    <a class="proto-nav-item" href="#s7"><span class="proto-nav-num">07</span>Setup verified, live</a>
+    <a class="proto-nav-item" href="#s8"><span class="proto-nav-num">08</span>Custom code disabled guard<span class="new-dot"></span></a>
+
+    <h4>C · Pages &amp; Status</h4>
+    <a class="proto-nav-item" href="#s9"><span class="proto-nav-num">09</span>Pages with schema status</a>
+    <a class="proto-nav-item" href="#s10"><span class="proto-nav-num">10</span>Filter by status</a>
+    <a class="proto-nav-item" href="#s11"><span class="proto-nav-num">11</span>Page detail, no schema yet</a>
+
+    <h4>D · Add Schema (Designer flow)</h4>
+    <a class="proto-nav-item" href="#s12"><span class="proto-nav-num">12</span>Auto-detect + template picker<span class="new-dot"></span></a>
+    <a class="proto-nav-item" href="#s13"><span class="proto-nav-num">13</span>Structured editor, no JSON</a>
+    <a class="proto-nav-item" href="#s14"><span class="proto-nav-num">14</span>JSON-LD preview</a>
+    <a class="proto-nav-item" href="#s15"><span class="proto-nav-num">15</span>Validate, Rich Results</a>
+    <a class="proto-nav-item" href="#s16"><span class="proto-nav-num">16</span>Inject confirm</a>
+    <a class="proto-nav-item" href="#s17"><span class="proto-nav-num">17</span>Injected, live</a>
+
+    <h4>E · Manage Existing</h4>
+    <a class="proto-nav-item" href="#s18"><span class="proto-nav-num">18</span>Schema manager overview</a>
+    <a class="proto-nav-item" href="#s19"><span class="proto-nav-num">19</span>Edit existing schema</a>
+    <a class="proto-nav-item" href="#s20"><span class="proto-nav-num">20</span>Bulk apply, agency</a>
+    <a class="proto-nav-item" href="#s21"><span class="proto-nav-num">21</span>Schema health, errors</a>
+
+    <h4>F · LLM SEO</h4>
+    <a class="proto-nav-item" href="#s22"><span class="proto-nav-num">22</span>LLM SEO overview<span class="new-dot"></span></a>
+    <a class="proto-nav-item" href="#s23"><span class="proto-nav-num">23</span>AI visibility check<span class="new-dot"></span></a>
+
+    <h4>G · Multi-User</h4>
+    <a class="proto-nav-item" href="#s24"><span class="proto-nav-num">24</span>Schema permissions, Admin<span class="new-dot"></span></a>
+    <a class="proto-nav-item" href="#s25"><span class="proto-nav-num">25</span>Member view, inject locked<span class="new-dot"></span></a>
+    <a class="proto-nav-item" href="#s26"><span class="proto-nav-num">26</span>Admin approval queue<span class="new-dot"></span></a>
+    <a class="proto-nav-item" href="#s27"><span class="proto-nav-num">27</span>Member waiting, approved<span class="new-dot"></span></a>
+    <a class="proto-nav-item" href="#s28"><span class="proto-nav-num">28</span>Schema activity log<span class="new-dot"></span></a>
+
+    <h4>H · Cross-cutting</h4>
+    <a class="proto-nav-item" href="#s29"><span class="proto-nav-num">29</span>Permission denied<span class="new-dot"></span></a>
+    <a class="proto-nav-item" href="#s30"><span class="proto-nav-num">30</span>Validation error<span class="new-dot"></span></a>
+    <a class="proto-nav-item" href="#s31"><span class="proto-nav-num">31</span>Existing JSON-LD conflict<span class="new-dot"></span></a>
+    <a class="proto-nav-item" href="#s32"><span class="proto-nav-num">32</span>No pages crawled yet<span class="new-dot"></span></a>
+  </aside>
+
+  <main class="proto-main" id="screens-root"></main>
+</div>
+
+<script>
+/* ============================================================
+   ICONS
+   ============================================================ */
+const ICONS = {
+  globe:`<svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>`,
+  bolt:`<svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z"/></svg>`,
+  sparkSm:`<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/><circle cx="12" cy="12" r="3"/></svg>`,
+  cog:`<svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .4 1.9l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.9-.4 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1-1.5 1.7 1.7 0 0 0-1.9.4l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .4-1.9 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1 1.7 1.7 0 0 0-.4-1.9l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.9.4H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.9-.4l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.4 1.9V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>`,
+  help:`<svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 0 1 5 0c0 1.5-2.5 2-2.5 4M12 17h.01"/></svg>`,
+  ext:`<svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 3h7v7M10 14l11-11M21 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5"/></svg>`,
+  refresh:`<svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 0 1 15-6.7L21 8M21 3v5h-5M21 12a9 9 0 0 1-15 6.7L3 16M3 21v-5h5"/></svg>`,
+  check:`<svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4 10-10"/></svg>`,
+  warn:`<svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 3l10 18H2L12 3z"/><path d="M12 10v5M12 18h.01"/></svg>`,
+  search:`<svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-5-5"/></svg>`,
+  card:`<svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20M6 15h4"/></svg>`,
+  user:`<svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1"/></svg>`,
+  team:`<svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="8" r="3"/><path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/><circle cx="17" cy="8" r="2.5"/><path d="M21 21v-2a3 3 0 0 0-2-2.8"/></svg>`,
+  doc:`<svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h6"/></svg>`,
+  filter:`<svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 5h18l-7 9v6l-4-2v-4z"/></svg>`,
+  plus:`<svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>`,
+  chevR:`<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg>`,
+  chevD:`<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>`,
+  info:`<svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 16v-4M12 8h.01"/></svg>`,
+  lock:`<svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>`,
+  download:`<svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12M7 11l5 5 5-5M5 21h14"/></svg>`,
+  mail:`<svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>`,
+  trash:`<svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M6 7l1 13a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2l1-13"/></svg>`,
+  shield:`<svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg>`,
+  seat:`<svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="8" rx="2"/><path d="M6 10V7a3 3 0 0 1 3-3h6a3 3 0 0 1 3 3v3M7 18v2M17 18v2"/></svg>`,
+  clock:`<svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>`,
+};
+
+/* ============================================================
+   PLUGIN SHELL
+   ============================================================ */
+/* ============================================================
+   CANONICAL PLUGIN NAV (accordion). Mirrors rankframe-schema-prototype-v2.html.
+   Groups: Setup, Optimize, Index, Monitor, Content Engine. Only the
+   active group is expanded. Icons mapped to this file's ICONS object.
+   The optional `role` argument is accepted for call-site compatibility
+   but the rail itself is the shared canonical nav (identical across the
+   schema, content-engine, and multiuser prototypes).
+   ============================================================ */
+const PLUGIN_NAV_GROUPS = [
+  { key:'setup',    label:'Setup',          icon:ICONS.cog,      items:[
+    {k:'global',     label:'Global Settings'},
+  ]},
+  { key:'optimize', label:'Optimize',       icon:ICONS.bolt,     items:[
+    {k:'pages',      label:'Pages'},
+    {k:'images',     label:'Image SEO'},
+    {k:'schema',     label:'Schema',     isNew:true},
+    {k:'llmseo',     label:'LLM SEO',    isNew:true},
+  ]},
+  { key:'index',    label:'Index',          icon:ICONS.globe,    items:[
+    {k:'submit',     label:'Submit Indexing'},
+    {k:'sitemap',    label:'Sitemap'},
+  ]},
+  { key:'monitor',  label:'Monitor',        icon:ICONS.search,   items:[
+    {k:'analyzer',   label:'SEO Analyzer'},
+    {k:'keywords',   label:'Keyword Tracker'},
+    {k:'speed',      label:'Page Speed'},
+    {k:'monitor404', label:'404 Monitor'},
+  ]},
+  { key:'content',  label:'Content Engine', icon:ICONS.doc, isNew:true, items:[
+    {k:'calendar',   label:'Calendar'},
+    {k:'research',   label:'Research Hub'},
+    {k:'drafts',     label:'Draft Queue'},
+    {k:'links',      label:'Link Opportunities'},
+    {k:'sync',       label:'Sync Status'},
+  ]},
+];
+/* Aliases let older per-screen activeKey strings resolve to the
+   canonical item keys without touching every screen. */
+const PLUGIN_NAV_ALIASES = {
+  globalSettings:'global', submitIndexing:'submit', seoAnalyzer:'analyzer',
+  imageSEO:'images', researchHub:'research', draftQueue:'drafts',
+  linkOpps:'links', syncStatus:'sync', advanced:'schema',
+};
+function pluginSubNav(activeKey, role){
+  const key = PLUGIN_NAV_ALIASES[activeKey] || activeKey;
+  const activeGroup = PLUGIN_NAV_GROUPS.find(g => g.items.some(it=>it.k===key));
+  const agKey = activeGroup ? activeGroup.key : 'optimize';
+  const chev = '<svg class="plg-acc-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg>';
+  const groupsHtml = PLUGIN_NAV_GROUPS.map(g=>{
+    const open = g.key === agKey;
+    return `
+      <div class="plg-acc-group ${open?'open':''}">
+        <button type="button" class="plg-acc-head ${open?'active-group':''}" aria-expanded="${open?'true':'false'}">
+          <span class="plg-acc-ico">${g.icon}</span>
+          <span class="plg-acc-label">${g.label}</span>
+          ${g.isNew?'<span class="plg-acc-new">NEW</span>':''}
+          ${chev}
+        </button>
+        <div class="plg-acc-children"${open?'':' hidden'}>
+          ${g.items.map(it=>`
+            <div class="plg-acc-item ${key===it.k?'active':''}">
+              <span class="plg-acc-dot"></span>
+              <span class="plg-acc-item-label">${it.label}</span>
+              ${it.isNew?'<span class="plg-acc-new sm">NEW</span>':''}
+            </div>
+          `).join('')}
+        </div>
+      </div>`;
+  }).join('');
+  /* Nav structure is identical for every role. Only the bottom
+     account block reflects who is signed in. */
+  const acct = role==='member'
+    ? {av:'LF', name:'Lingfei',     email:'lingfei@anytimeai.ai'}
+    : {av:'7M', name:'7seers media', email:'7seersmedia@gmail.com'};
+  return `
+    <div class="sub-nav">
+      <div class="sub-nav-head">
+        <div class="proto-logo" style="width:22px;height:22px;border-radius:5px;"></div>
+        <div class="sub-nav-head-title">Rank<span class="purple">Frame</span></div>
+        <div class="sub-nav-back">${ICONS.chevL || ICONS.chevR}</div>
+      </div>
+      <div class="plg-acc-scroll">
+        ${groupsHtml}
+      </div>
+      <div class="sub-nav-foot">
+        <div class="sub-nav-item">${ICONS.help}<span>Support</span></div>
+        <div class="sub-nav-item">${ICONS.globe}<span>Go To Dashboard</span></div>
+      </div>
+      <div class="sub-nav-user">
+        <div class="sub-nav-user-av">${acct.av}</div>
+        <div class="sub-nav-user-meta">
+          <div class="name">${acct.name}</div>
+          <div class="email">${acct.email}</div>
+        </div>
+      </div>
+      <div class="sub-nav-cta red">${ICONS.refresh}<span>Recrawl Website</span></div>
+    </div>
+  `;
+}
+
+function pluginShell(activeKey, mainHTML, extra='', role='admin'){
+  return `
+    <div class="plugin-window">
+      <div class="plg-top">
+        <div class="plg-top-l">
+          <div class="mark"><span></span><span></span><span></span><span></span></div>
+          <b>Rankframe Plugin</b>
+          <span class="dev-tag">(Development)</span>
+        </div>
+        <div class="plg-top-x">×</div>
+      </div>
+      <div class="plg-body">
+        ${pluginSubNav(activeKey, role)}
+        <div class="plg-main">${mainHTML}</div>
+      </div>
+      ${extra}
+    </div>
+  `;
+}
+
+/* ============================================================
+   DASHBOARD SHELL ('team' active key supported)
+   ============================================================ */
+function dashShell(activeKey, mainHTML, extra='', role='admin'){
+  const adminItems = [
+    {key:'websites', icon:ICONS.globe, label:'Websites'},
+    {key:'subscription', icon:ICONS.card, label:'Subscription'},
+    {key:'credits', icon:ICONS.bolt, label:'AI Credits'},
+    {key:'team', icon:ICONS.team, label:'Team'},
+    {key:'content', icon:ICONS.doc, label:'Content', isNew:true},
+    {key:'account', icon:ICONS.user, label:'Account Details'},
+  ];
+  const memberItems = [
+    {key:'websites', icon:ICONS.globe, label:'Websites'},
+    {key:'credits', icon:ICONS.bolt, label:'My Credits'},
+    {key:'team', icon:ICONS.team, label:'Team', isNew:true},
+    {key:'account', icon:ICONS.user, label:'Account Details'},
+  ];
+  const items = role==='member' ? memberItems : adminItems;
+  const foot = role==='member' ? 'anytimeai.ai<br>Member · Lingfei' : '7seersmedia.com<br>Agency Yearly Plan';
+  return `
+    <div class="dash-window">
+      <div class="dash-top">
+        <div class="dots"><span></span><span></span><span></span></div>
+        <div class="url">app.rankframe.io/${activeKey}</div>
+      </div>
+      <div class="dash-body">
+        <aside class="dash-side">
+          <div class="dash-side-brand">
+            <div class="mini"><span></span><span></span><span></span><span></span></div>
+            <b>Rank<span class="a">Frame</span></b>
+          </div>
+          ${items.map(it=>`
+            <div class="dash-nav-item ${activeKey===it.key?'active':''}">
+              <span class="ico">${it.icon}</span>
+              <span>${it.label}</span>
+              ${it.isNew?'<span class="new-pill">NEW</span>':''}
+            </div>
+          `).join('')}
+          <div class="dash-side-foot">${foot}</div>
+        </aside>
+        <div class="dash-main">${mainHTML}</div>
+      </div>
+      ${extra}
+    </div>
+  `;
+}
+
+/* ============================================================
+   ACCOUNT TABS (5-tab bar, fixed order everywhere)
+   ============================================================ */
+function acctTabs(active){
+  const tabs = [
+    {k:'profile', label:'Profile'},
+    {k:'team', label:'Team', isNew:true},
+    {k:'credits', label:'Credits'},
+    {k:'activity', label:'Activity'},
+    {k:'personalization', label:'Personalization'},
+  ];
+  return `
+    <div class="acct-tabs">
+      ${tabs.map(t=>`<div class="tab ${active===t.k?'active':''}">${t.label}${t.isNew?'<span class="new-pill">NEW</span>':''}</div>`).join('')}
+    </div>
+  `;
+}
+
+/* ============================================================
+   HELPERS
+   ============================================================ */
+function pageHead(title, sub){ return `<h2 class="pg-title">${title}</h2><p class="pg-sub">${sub}</p>`; }
+function creditChip(amount, cls=''){ return `<span class="credit-chip ${cls}">${ICONS.sparkSm} ${amount}</span>`; }
+function statusPill(status, label){ return `<span class="status-pill status-${status}"><span class="dot"></span>${label}</span>`; }
+function roleBadge(role){
+  const map = { admin:['admin','Admin'], publisher:['publisher','Publisher'], writer:['writer','Writer'], viewer:['viewer','Viewer'] };
+  const [cls,label] = map[role] || map.viewer;
+  return `<span class="role-badge role-${cls}"><span class="dot"></span>${label}</span>`;
+}
+function emptyState(icon, h3, p, btnText){
+  return `
+    <div class="empty-state">
+      <div class="ico">${icon}</div>
+      <h3>${h3}</h3>
+      <p>${p}</p>
+      ${btnText?`<button class="btn-primary">${ICONS.plus}<span>${btnText}</span></button>`:''}
+    </div>
+  `;
+}
+function loadingBlock(h3, p){
+  return `<div class="loading-block"><div class="loading-spinner"></div><h3>${h3}</h3><p>${p}</p></div>`;
+}
+function memberCell(initials, name, email, gray=false){
+  return `<div class="member-cell"><span class="ava ${gray?'gray':''}">${initials}</span><div><b>${name}</b><span>${email}</span></div></div>`;
+}
+function logRow(tone, icon, line, meta){
+  return `<div class="log-row"><div class="log-ico ${tone}">${icon}</div><div><div class="log-line">${line}</div><div class="log-meta">${meta}</div></div></div>`;
+}
+function rolePickerRows(){
+  const roles = [
+    {sel:false, t:'Admin', d:'Full access: approve / reject, sync, manage team and billing.'},
+    {sel:true,  t:'Publisher', d:'Research, draft, and sync directly. No approval needed.'},
+    {sel:false, t:'Writer', d:'Research and draft, submit for review. Cannot sync.'},
+    {sel:false, t:'Viewer', d:'Read-only access to content and reports.'},
+  ];
+  return roles.map(r=>`
+    <div class="radio-row ${r.sel?'selected':''}">
+      <span class="rd"></span>
+      <div><b>${r.t}</b><span>${r.d}</span></div>
+    </div>
+  `).join('');
+}
+function refillCards(payerLine){
+  return `
+    <div class="refill-grid">
+      <div class="refill-card"><div class="t">Starter</div><div class="cr">250 credits</div><div class="pr">$3</div></div>
+      <div class="refill-card"><div class="t">Base</div><div class="cr">1,000 credits</div><div class="pr">$10</div></div>
+      <div class="refill-card best"><div class="t">Max</div><div class="cr">30,000 credits</div><div class="pr">$100</div><div class="tag">Best value</div></div>
+    </div>
+    <p style="font-size:11px; color:var(--rf-text-dim); margin:8px 0 0;">${payerLine}</p>
+  `;
+}
+
+/* ============================================================
+   SCREEN DEFINITIONS
+   ============================================================ */
+const screens = [];
+
+/* ============================================================
+   SCHEMA + LLM SEO  ·  screen definitions (v3)
+   Authored on the shared shell + component layer forked from
+   the multi-user prototype, so every table, button, pill,
+   card, radius and color is identical by construction.
+   ============================================================ */
+
+/* extra icons this flow needs (merged into the shared ICONS) */
+Object.assign(ICONS, {
+  schema:`<svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z"/></svg>`,
+  code:`<svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/></svg>`,
+  edit:`<svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H5a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2h13a2 2 0 0 0 2-2v-6M18 2l4 4-11 11H7v-4z"/></svg>`,
+  eye:`<svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>`,
+  spark:`<svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2 2M16.4 16.4l2 2M5.6 18.4l2-2M16.4 7.6l2-2"/><circle cx="12" cy="12" r="3"/></svg>`,
+  copy:`<svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="8" y="8" width="13" height="13" rx="2"/><path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3"/></svg>`,
+  arrowRight:`<svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>`,
+  chevL:`<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 6l-6 6 6 6"/></svg>`,
+  pages:`<svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="3" width="14" height="18" rx="2"/><path d="M8 7h6M8 11h6M8 15h4"/></svg>`,
+  image:`<svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="1.5"/><path d="M21 16l-5-5-9 9"/></svg>`,
+  store:`<svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l1.5-5h15L21 9M4 9v10a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V9M4 9h16"/></svg>`,
+  person:`<svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1"/></svg>`,
+  faq:`<svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M9.5 9a2.5 2.5 0 0 1 5 0c0 1.5-2.5 2-2.5 3"/></svg>`,
+  layers:`<svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 2l9 5-9 5-9-5z"/><path d="M3 12l9 5 9-5M3 17l9 5 9-5"/></svg>`,
+  history:`<svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 3-6.7L3 8M3 3v5h5"/><path d="M12 7v5l3 2"/></svg>`,
+  robot:`<svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="8" width="16" height="12" rx="2"/><path d="M12 8V4M9 14h.01M15 14h.01M2 13v2M22 13v2"/></svg>`,
+});
+
+/* ---- schema-flow helpers ---- */
+function schStatus(kind){
+  const map = {
+    live:['published','Live'], draft:['draft','Draft'], none:['idea','No schema'],
+    error:['failed','Error'], review:['review','In review'], approved:['approved','Approved'],
+  };
+  const [c,l] = map[kind] || map.none;
+  return statusPill(c, l);
+}
+function jsonLd(title, inner){
+  return `
+    <div class="json-ld-head">
+      <span class="ttl">${title||'JSON-LD · generated'}</span>
+      <span class="copy">${ICONS.copy}<span>Copy</span></span>
+    </div>
+    <div class="json-ld">${inner}</div>`;
+}
+function schField(label, value, opts={}){
+  const cls = value ? 'filled' : 'ph';
+  return `
+    <div class="sch-field">
+      <label>${label}${opts.req?'<span class="req">*</span>':''}${opts.auto?'<span class="auto">AUTO-FILLED</span>':''}</label>
+      <div class="sch-input ${cls}">${value || opts.placeholder || ''}</div>
+      ${opts.hint?`<div class="sch-hint">${opts.hint}</div>`:''}
+    </div>`;
+}
+function typeCard(icon, title, desc, opts={}){
+  return `
+    <div class="type-card ${opts.selected?'selected':''}">
+      <div class="tc-check">${ICONS.check}</div>
+      <div class="tc-ico">${icon}</div>
+      <div class="tc-title">${title}</div>
+      <div class="tc-desc">${desc}</div>
+      ${opts.badge?`<span class="tc-badge">${opts.badge}</span>`:''}
+    </div>`;
+}
+function flowArrow(){ return `<div class="flow-arrow">${ICONS.arrowRight}</div>`; }
+
+/* shared page sample (crawl + sitemap derived) */
+const SCH_PAGES = [
+  {url:'/',            label:'Home',           types:['Organization','WebSite'], status:'live'},
+  {url:'/about',       label:'About',          types:['Organization','Person'],  status:'live'},
+  {url:'/services',    label:'Services',       types:['Service'],                status:'draft'},
+  {url:'/work',        label:'Work',           types:[],                         status:'none'},
+  {url:'/contact',     label:'Contact',        types:['LocalBusiness'],          status:'error'},
+  {url:'/blog',        label:'Blog index',     types:['Blog'],                   status:'live'},
+];
+
+/* screens[] is already declared by the shared helper layer. */
+
+/* 00 · Overview */
+screens.push({
+  id:'s0', tag:'Overview', title:'00 · All screens at a glance',
+  desc:'Every state in the Schema + LLM SEO prototype. The flow is built for Framer designers and agencies: pick a page, choose a template, fill a structured form (never raw JSON), validate, then inject. Multi-user roles gate who can edit versus who can push live. Click any tile to jump to the full screen with developer notes.',
+  fullWidth:true, body:'__CONTACT_SHEET__'
+});
+
+/* ================== A · ENTRY & NAV ================== */
+screens.push({
+  id:'s1', tag:'A · Entry & Nav', newScreen:true,
+  title:'01 · Plugin nav, Schema lives under Optimize',
+  desc:'Schema is not a new top-level section. It sits inside the Optimize group of the canonical accordion nav, next to Pages, Image SEO and LLM SEO. The accordion keeps the short Framer plugin window usable: only the active group is expanded. The bottom rail reflects who is signed in (here, the agency admin).',
+  body:pluginShell('schema', `
+    ${pageHead('Schema', 'Add structured data to your pages so Google and AI assistants understand them. No code required.')}
+    <div class="sch-note info" style="margin-bottom:16px;">
+      <span class="sn-ico">${ICONS.info}</span>
+      <div>RankFrame writes one managed snippet into your site head and serves the right schema per page from it. You design here, we handle the injection. <b>Setup is a one-time step.</b></div>
+    </div>
+    <button class="btn-primary">${ICONS.spark}<span>Set up Schema</span></button>
+  `, '', 'admin'),
+  anno:[
+    ['Where it lives','<span class="change-tag plugin">PLUGIN UI</span> <code>Optimize ▸ Schema</code> in the accordion nav. Same group as Pages, Image SEO, LLM SEO.'],
+    ['Why accordion','Framer plugin window is short (~720px). Flat lists overflow. Only the active group expands, so the nav scales as features grow.'],
+    ['Rail','Bottom account block is role-aware via <code>pluginSubNav(activeKey, role)</code>. Admin shows 7seers media; member shows Lingfei. Nav items are identical for both.'],
+    ['Entry','First open routes to setup (screens 04 to 07). After setup, Schema opens to the Pages list (screen 09).'],
+  ]
+});
+
+screens.push({
+  id:'s2', tag:'A · Entry & Nav', newScreen:true,
+  title:'02 · Dashboard, where Schema lives on the web',
+  desc:'Most schema work happens inside the plugin, on the canvas, next to the page being designed. The web dashboard hosts the wider Schema Manager (bulk apply, health report, activity) under the existing Content area. No new top-level dashboard item is added.',
+  body:dashShell('content', `
+    <h1 style="font-size:24px; margin:0 0 4px;">Content</h1>
+    <p style="font-size:13px; color:var(--rf-text-muted); margin:0 0 18px;">Articles, schema, and structured data for 7seersmedia.com.</p>
+    <div class="tabs" style="margin-bottom:20px;">
+      <div class="tab">Calendar</div>
+      <div class="tab">Drafts</div>
+      <div class="tab">Approval Queue</div>
+      <div class="tab active">Schema Manager</div>
+    </div>
+    <div class="sch-stats" style="margin-bottom:16px;">
+      <div class="sch-stat"><div class="v">6</div><div class="l">Pages crawled</div></div>
+      <div class="sch-stat"><div class="v green">4</div><div class="l">Schema live</div></div>
+      <div class="sch-stat"><div class="v amber">1</div><div class="l">Draft</div></div>
+      <div class="sch-stat"><div class="v red">1</div><div class="l">Needs fix</div></div>
+    </div>
+    <div class="sch-note info"><span class="sn-ico">${ICONS.info}</span><div>The full editor and bulk tools live here, on the wider dashboard. Quick per-page edits happen in the plugin while you design.</div></div>
+  `, '', 'admin'),
+  anno:[
+    ['Where it lives','<span class="change-tag dash">DASHBOARD UI</span> New <code>Schema Manager</code> tab inside the existing Content area. No new sidebar item.'],
+    ['Plugin vs dashboard','Plugin = per-page, in-context, on the canvas. Dashboard = overview, bulk apply, health, activity. Same data, two surfaces.'],
+    ['Multi-site','Agencies switch site at the top of Content. Schema state is scoped per site.'],
+    ['Roles','Members see the tab read-only plus their own drafts. Admin sees bulk + approval tools.'],
+  ]
+});
+
+screens.push({
+  id:'s3', tag:'A · Entry & Nav', newScreen:true,
+  title:'03 · Schema landing, first open',
+  desc:'For a designer who has never touched structured data, the landing leads with the outcome (rich results, AI answers) not the jargon. Three short value points, then a single primary action. The plain-language explanation of how injection works sits one tap away, not in the user’s face.',
+  body:pluginShell('schema', `
+    ${pageHead('Schema', 'Help Google and AI assistants understand every page. No code, no copy-paste.')}
+    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px; margin-bottom:18px;">
+      <div class="flow-node"><div class="fn-ico">${ICONS.search}</div><div class="fn-t">Rich results</div><div class="fn-d">Stars, FAQs, breadcrumbs and more in Google search.</div></div>
+      <div class="flow-node"><div class="fn-ico">${ICONS.robot}</div><div class="fn-t">AI answers</div><div class="fn-d">ChatGPT, Gemini and AI Overviews cite structured pages.</div></div>
+      <div class="flow-node"><div class="fn-ico">${ICONS.bolt}</div><div class="fn-t">Auto-detected</div><div class="fn-d">We read each page and suggest the right schema type.</div></div>
+    </div>
+    <div style="display:flex; gap:10px; align-items:center;">
+      <button class="btn-primary">${ICONS.spark}<span>Set up Schema</span></button>
+      <button class="ghost-btn">${ICONS.info}<span>How does it work?</span></button>
+    </div>
+  `, '', 'admin'),
+  anno:[
+    ['Goal','Designers and agency staff are not SEO engineers. Lead with the outcome, hide the plumbing until asked.'],
+    ['Primary action','<code>Set up Schema</code> begins the one-time custom-code setup (screen 04). Everything else is secondary.'],
+    ['Auto-detect','On setup we crawl the published site and pre-classify pages, so the first real screen already has suggestions.'],
+    ['Copy rule','No "JSON-LD", "schema.org" or "head injection" in the hero. Those appear only in the optional explainer.'],
+  ]
+});
+
+/* ================== B · ONE-TIME SETUP ================== */
+screens.push({
+  id:'s4', tag:'B · One-time Setup', newScreen:true,
+  title:'04 · How injection actually works',
+  desc:'The honest model, shown plainly. The Framer Plugin API only allows site-wide custom code (headStart, headEnd, bodyStart, bodyEnd). There is no per-page head API. So RankFrame writes ONE managed block into headEnd containing a tiny router that reads the current path and prints the matching schema. The UI is per-page; the implementation is one snippet.',
+  body:pluginShell('schema', `
+    ${pageHead('How Schema gets onto your site', 'One managed snippet. You never touch code.')}
+    <div class="flow-diagram" style="margin-bottom:14px;">
+      <div class="flow-node"><div class="fn-ico">${ICONS.edit}</div><div class="fn-t">You design here</div><div class="fn-d">Pick a page, choose a template, fill a form.</div></div>
+      ${flowArrow()}
+      <div class="flow-node accent"><div class="fn-ico">${ICONS.code}</div><div class="fn-t">One snippet in head</div><div class="fn-d">RankFrame writes a single block to your site’s head custom code.</div></div>
+      ${flowArrow()}
+      <div class="flow-node"><div class="fn-ico">${ICONS.globe}</div><div class="fn-t">Right schema per page</div><div class="fn-d">The snippet detects the path and prints the matching JSON-LD.</div></div>
+    </div>
+    <div class="sch-note warn" style="margin-bottom:14px;">
+      <span class="sn-ico">${ICONS.warn}</span>
+      <div>Framer only allows <b>site-wide</b> custom code, not per-page head edits. That is why RankFrame uses one router snippet instead of editing each page. It keeps your head clean: one block, not dozens.</div>
+    </div>
+    <button class="btn-primary">${ICONS.arrowRight}<span>Continue to setup</span></button>
+  `, '', 'admin'),
+  anno:[
+    ['Framer API truth','<span class="change-tag api">FRAMER API</span> <code>setCustomCode({location})</code> supports only <code>headStart / headEnd / bodyStart / bodyEnd</code>, site-wide. No per-page head injection exists.'],
+    ['The router','One <code>headEnd</code> block holds a small script: it reads <code>location.pathname</code> and writes the JSON-LD mapped to that route. Adding a page-schema updates the block’s data, not the site structure.'],
+    ['Why one block','Keeps the user’s head readable and avoids hitting code limits. The UI presents per-page views for good UX; the artifact is a single managed snippet.'],
+    ['Idempotent','Writes are upserts on the RankFrame block by a marker comment, so re-running never duplicates code.'],
+  ]
+});
+
+screens.push({
+  id:'s5', tag:'B · One-time Setup', newScreen:true,
+  title:'05 · Enable custom code, guided',
+  desc:'Framer requires the site owner to allow custom code once, in Site Settings. The plugin cannot toggle this for the user (the API has no enable method). So we guide it: clear steps, a deep link to the right Framer settings panel, and a live status chip that flips to Detected the moment it is on.',
+  body:pluginShell('schema', `
+    ${pageHead('Enable custom code', 'A one-time switch in your Framer site settings. Takes about 20 seconds.')}
+    <div style="background:var(--rf-bg-card); border:1px solid var(--rf-border); border-radius:12px; padding:6px 4px; margin-bottom:14px;">
+      <div class="rr-row"><div class="rr-ico" style="color:var(--rf-purple); font-family:'JetBrains Mono',monospace; font-weight:700;">1</div><div><div class="rr-t">Open Site Settings ▸ General in Framer</div><div class="rr-m">Top-left menu of your Framer project.</div></div></div>
+      <div class="rr-row"><div class="rr-ico" style="color:var(--rf-purple); font-family:'JetBrains Mono',monospace; font-weight:700;">2</div><div><div class="rr-t">Scroll to Custom Code</div><div class="rr-m">Find the End of &lt;head&gt; tag section.</div></div></div>
+      <div class="rr-row"><div class="rr-ico" style="color:var(--rf-purple); font-family:'JetBrains Mono',monospace; font-weight:700;">3</div><div><div class="rr-t">Make sure custom code is allowed</div><div class="rr-m">Free Framer sites cannot use custom code. A paid site plan is required.</div></div></div>
+    </div>
+    <div style="display:flex; align-items:center; gap:10px; padding:12px 14px; background:var(--rf-bg-card); border:1px solid var(--rf-border); border-radius:10px;">
+      <span style="font-size:12.5px; color:var(--rf-text-2);">Custom code status</span>
+      ${schStatus('error').replace('Error','Not detected yet')}
+      <button class="ghost-btn sm" style="margin-left:auto;">${ICONS.refresh}<span>Check again</span></button>
+    </div>
+  `, '', 'admin'),
+  anno:[
+    ['Plugin limit','<span class="change-tag api">FRAMER API</span> The plugin can read custom-code state but <b>cannot enable</b> it. There is no API to flip the toggle. The user must do it once in Site Settings.'],
+    ['Live detection','<code>subscribeToCustomCode()</code> fires when the head block becomes writable. The status chip flips to Detected without a manual refresh.'],
+    ['Paid plan note','Custom code requires a paid Framer site plan. We surface this up front so free-plan users are not stuck later.'],
+    ['Deep link','We open Framer settings where possible; otherwise the steps are explicit so support load stays low.'],
+  ]
+});
+
+screens.push({
+  id:'s6', tag:'B · One-time Setup',
+  title:'06 · Setup verifying',
+  desc:'After the user enables custom code, RankFrame writes its managed head block and confirms it is present and writable. Short, honest loading state. No fake progress.',
+  body:pluginShell('schema', `
+    ${pageHead('Setting up Schema', 'Writing the managed snippet to your site head.')}
+    ${loadingBlock('Verifying custom code access', 'Confirming RankFrame can write to the end of your &lt;head&gt; tag, then installing the schema router. This runs once.')}
+  `, '', 'admin'),
+  anno:[
+    ['What runs','<span class="change-tag api">FRAMER API</span> <code>getCustomCode()</code> to confirm <code>headEnd</code> is enabled, then <code>setCustomCode()</code> to install the RankFrame router block.'],
+    ['Marker','The block is wrapped in <code>&lt;!-- rankframe:schema --&gt;</code> markers so future writes upsert in place.'],
+    ['Failure path','If the write fails (code disabled mid-flow), we route to the disabled guard (screen 08).'],
+    ['Duration','Typically under 2 seconds. We do not animate fake progress bars.'],
+  ]
+});
+
+screens.push({
+  id:'s7', tag:'B · One-time Setup',
+  title:'07 · Setup verified, schema is live-ready',
+  desc:'Confirmation that the managed snippet is installed. From here the user lands on the Pages list. We restate the model in one line so there is no confusion about why there is no per-page code.',
+  body:pluginShell('schema', `
+    ${pageHead('Schema is ready', 'The managed snippet is installed in your site head.')}
+    <div class="sch-note ok" style="margin-bottom:16px;">
+      <span class="sn-ico">${ICONS.check}</span>
+      <div><b>You are set up.</b> RankFrame now controls one snippet in your head. Every schema you add from here updates that snippet automatically. Publish your Framer site to push changes live.</div>
+    </div>
+    <div class="rr-row" style="border:1px solid var(--rf-border); border-radius:10px; margin-bottom:16px;">
+      <div class="rr-ico ok">${ICONS.check}</div>
+      <div><div class="rr-t">Managed head snippet installed</div><div class="rr-m">rankframe:schema router · headEnd · site-wide</div></div>
+      ${schStatus('live')}
+    </div>
+    <button class="btn-primary">${ICONS.pages}<span>Go to Pages</span></button>
+  `, '', 'admin'),
+  anno:[
+    ['State stored','Setup completion stored server-side per site. The setup flow is skipped on subsequent opens.'],
+    ['Publish reminder','Custom code changes only go live when the Framer site is published. We remind the user at confirm and inject steps.'],
+    ['Next','Primary action goes to the Pages list (screen 09), which is the home of the feature after setup.'],
+    ['Revert','If the user later disables custom code, the next open shows the disabled guard (screen 08).'],
+  ]
+});
+
+screens.push({
+  id:'s8', tag:'B · One-time Setup', newScreen:true,
+  title:'08 · Custom code disabled, schemas are paused',
+  desc:'If the user later turns custom code off in Framer (or downgrades to a free plan), the managed snippet stops loading and every schema goes dark. The plugin cannot re-enable it. This guard explains the state honestly, shows exactly what is affected, and watches for re-enable so it self-clears.',
+  body:pluginShell('schema', `
+    ${pageHead('Schemas are paused', 'Custom code is turned off for this site, so your schema is not loading.')}
+    <div class="sch-note danger" style="margin-bottom:16px;">
+      <span class="sn-ico">${ICONS.warn}</span>
+      <div><b>Custom code is disabled in Framer.</b> Your 4 live schemas are not being served right now. RankFrame cannot turn this back on for you, it is a Framer site setting. Re-enable custom code and this clears automatically.</div>
+    </div>
+    <div style="background:var(--rf-bg-card); border:1px solid var(--rf-border); border-radius:10px; margin-bottom:16px;">
+      <div class="rr-row"><div class="rr-ico err">${ICONS.warn}</div><div><div class="rr-t">4 schemas paused</div><div class="rr-m">Home, About, Blog index, Services</div></div><div class="rr-right">Not loading</div></div>
+    </div>
+    <div style="display:flex; gap:10px; align-items:center;">
+      <button class="btn-primary">${ICONS.ext}<span>Open Framer settings</span></button>
+      <button class="ghost-btn">${ICONS.refresh}<span>Re-check</span></button>
+    </div>
+  `, '', 'admin'),
+  anno:[
+    ['Detection','<span class="change-tag api">FRAMER API</span> <code>getCustomCode().headEnd.disabled === true</code>. We also subscribe via <code>subscribeToCustomCode()</code> so the guard clears the instant code is re-enabled.'],
+    ['Plugin cannot fix','There is no API to re-enable custom code. The only honest action is to guide the user to Framer settings.'],
+    ['No data loss','Schema definitions are stored by RankFrame. Nothing is lost, it is only paused. Re-enabling restores everything.'],
+    ['Free-plan cause','Downgrading to a free Framer plan also disables custom code. Same guard, same fix path.'],
+  ]
+});
+
+/* ================== C · PAGES & STATUS ================== */
+function pagesTable(){
+  return `
+    <table class="rf-table">
+      <thead><tr><th>Page</th><th>Schema types</th><th>Status</th><th></th></tr></thead>
+      <tbody>
+        ${SCH_PAGES.map(p=>`
+          <tr class="sch-pagerow">
+            <td><div><b style="font-size:12.5px;">${p.label}</b><div class="pg-url" style="color:var(--rf-text-dim); margin-top:1px;">7seersmedia.com${p.url}</div></div></td>
+            <td><div class="pg-types">${p.types.length?p.types.map(t=>`<span class="sch-type-chip">${t}</span>`).join(''):'<span style="color:var(--rf-text-faint); font-size:11.5px;">none</span>'}</div></td>
+            <td>${schStatus(p.status)}</td>
+            <td style="text-align:right;"><span style="color:var(--rf-text-dim);">${ICONS.chevR}</span></td>
+          </tr>
+        `).join('')}
+      </tbody>
+    </table>`;
+}
+screens.push({
+  id:'s9', tag:'C · Pages & Status',
+  title:'09 · Pages with schema status',
+  desc:'The home of the feature after setup. Pages come from the published-site crawl plus sitemap.xml (the Framer API does not enumerate pages). Each row shows what schema types are attached and whether they are live, draft, missing, or erroring. This is the same row + table surface used across the other prototypes.',
+  body:pluginShell('schema', `
+    ${pageHead('Schema', 'Structured data for each page on 7seersmedia.com.')}
+    <div style="display:flex; align-items:center; gap:10px; margin-bottom:14px;">
+      <button class="ghost-btn sm">${ICONS.filter}<span>All statuses</span>${ICONS.chevD}</button>
+      <div class="last-analyzed" style="margin:0;"><span class="dot"></span>Crawled 6 pages · 4 min ago</div>
+      <button class="btn-primary sm" style="margin-left:auto;">${ICONS.refresh}<span>Recrawl</span></button>
+    </div>
+    ${pagesTable()}
+  `, '', 'admin'),
+  anno:[
+    ['Page source','<span class="change-tag api">FRAMER API</span> <code>getProjectInfo()</code> returns only project name + a hashed id, no page list. Pages are discovered by crawling the published site and reading <code>sitemap.xml</code>, the same source used for Recrawl Website.'],
+    ['Status meaning','Live = served by the snippet. Draft = saved, not pushed. No schema = nothing attached. Error = validation failed on last check.'],
+    ['Table','Reuses the shared <code>.rf-table</code> surface (connected divided rows, hover) so it matches the multi-user roster and content tables exactly.'],
+    ['Row click','Opens the page detail (screen 11), where schema is added or edited.'],
+  ]
+});
+
+screens.push({
+  id:'s10', tag:'C · Pages & Status',
+  title:'10 · Filter by status',
+  desc:'Agencies managing dozens of pages need to find the gaps fast. The status filter narrows the list. Here, filtered to pages that need attention (no schema or erroring).',
+  body:pluginShell('schema', `
+    ${pageHead('Schema', 'Structured data for each page on 7seersmedia.com.')}
+    <div style="display:flex; align-items:center; gap:10px; margin-bottom:14px;">
+      <button class="ghost-btn sm" style="border-color:var(--rf-purple-line); background:var(--rf-purple-soft); color:var(--rf-purple);">${ICONS.filter}<span>Needs attention</span>${ICONS.chevD}</button>
+      <span style="font-size:11.5px; color:var(--rf-text-dim);">2 of 6 pages</span>
+    </div>
+    <table class="rf-table">
+      <thead><tr><th>Page</th><th>Schema types</th><th>Status</th><th></th></tr></thead>
+      <tbody>
+        <tr class="sch-pagerow"><td><div><b style="font-size:12.5px;">Work</b><div class="pg-url" style="color:var(--rf-text-dim); margin-top:1px;">7seersmedia.com/work</div></div></td><td><span style="color:var(--rf-text-faint); font-size:11.5px;">none</span></td><td>${schStatus('none')}</td><td style="text-align:right;"><button class="btn-primary sm">${ICONS.plus}<span>Add</span></button></td></tr>
+        <tr class="sch-pagerow"><td><div><b style="font-size:12.5px;">Contact</b><div class="pg-url" style="color:var(--rf-text-dim); margin-top:1px;">7seersmedia.com/contact</div></div></td><td><div class="pg-types"><span class="sch-type-chip">LocalBusiness</span></div></td><td>${schStatus('error')}</td><td style="text-align:right;"><button class="ghost-btn sm">${ICONS.edit}<span>Fix</span></button></td></tr>
+      </tbody>
+    </table>
+  `, '', 'admin'),
+  anno:[
+    ['Filter options','All statuses, Live, Draft, No schema, Error. Default All. State held in component, not persisted.'],
+    ['Inline actions','No-schema rows get a one-tap Add. Error rows get Fix, which deep-links to the failing field (screen 21).'],
+    ['Scale','For large sites the list paginates; counts come from the crawl index.'],
+    ['Consistency','Same filter chip pattern as the content calendar filters.'],
+  ]
+});
+
+screens.push({
+  id:'s11', tag:'C · Pages & Status',
+  title:'11 · Page detail, no schema yet',
+  desc:'Opening a page with no schema. We show what RankFrame read from the live page (title, description, detected entity) and the single recommended action. The page preview gives designers confidence we are looking at the right page.',
+  body:pluginShell('schema', `
+    <div style="display:flex; align-items:center; gap:8px; margin-bottom:6px;">
+      <span style="color:var(--rf-text-dim); cursor:pointer;">${ICONS.chevL}</span>
+      <span style="font-size:11.5px; color:var(--rf-text-dim);">Schema</span>
+      <span style="color:var(--rf-text-faint);">/</span>
+      <span style="font-size:11.5px; color:var(--rf-text-2);">Services</span>
+    </div>
+    ${pageHead('Services', '7seersmedia.com/services')}
+    <div class="sch-note info" style="margin-bottom:14px;">
+      <span class="sn-ico">${ICONS.bolt}</span>
+      <div>We read this page and think it is a <b>Service</b> listing. Start from that template, or pick another. You can change everything before it goes live.</div>
+    </div>
+    <div style="background:var(--rf-bg-card); border:1px solid var(--rf-border); border-radius:11px; padding:14px 16px; margin-bottom:16px;">
+      <div style="font-size:10.5px; letter-spacing:0.08em; text-transform:uppercase; color:var(--rf-text-dim); font-weight:700; margin-bottom:9px;">Read from the live page</div>
+      <div style="font-size:12.5px; color:var(--rf-text-2); line-height:1.7;"><span style="color:var(--rf-text-dim);">Title</span> &nbsp; SEO &amp; Growth Services · 7 Seers Media<br><span style="color:var(--rf-text-dim);">Description</span> &nbsp; Full-funnel SEO, content, and design for Framer sites.<br><span style="color:var(--rf-text-dim);">Detected</span> &nbsp; Service offering, 5 service items</div>
+    </div>
+    <button class="btn-primary">${ICONS.spark}<span>Add schema to this page</span></button>
+  `, '', 'admin'),
+  anno:[
+    ['Auto-read','Page metadata + visible content scraped from the published URL at crawl time. Drives the template suggestion.'],
+    ['No raw data dump','We translate detection into a plain sentence, not a JSON blob. Designers should never see internals here.'],
+    ['Single action','One primary button. The template picker (screen 12) opens with the suggested template pre-selected.'],
+    ['Breadcrumb','Lightweight back nav inside the plugin window so the user never feels lost.'],
+  ]
+});
+
+/* ================== D · ADD SCHEMA (DESIGNER FLOW) ================== */
+screens.push({
+  id:'s12', tag:'D · Add Schema', newScreen:true,
+  title:'12 · Auto-detect + template picker',
+  desc:'The heart of the designer flow. We pre-select the detected template, but show the full set as friendly cards (icon, name, plain description) not schema.org type names. Recommended cards carry a badge. One tap moves to the structured editor.',
+  body:pluginShell('schema', `
+    ${pageHead('Choose a template', 'For Services · 7seersmedia.com/services')}
+    <div class="type-grid" style="margin-bottom:16px;">
+      ${typeCard(ICONS.bolt, 'Service', 'A service you offer. Best for service and offer pages.', {selected:true, badge:'RECOMMENDED'})}
+      ${typeCard(ICONS.store, 'Local business', 'Name, address, hours and contact for a physical or local business.')}
+      ${typeCard(ICONS.person, 'About / Organization', 'Your company or personal brand identity and social links.')}
+      ${typeCard(ICONS.doc, 'Article / Blog', 'A blog post or article with author and date.')}
+      ${typeCard(ICONS.faq, 'FAQ', 'Question and answer pairs eligible for rich results.')}
+      ${typeCard(ICONS.image, 'Product', 'A product with price, availability and reviews.')}
+    </div>
+    <div style="display:flex; align-items:center; gap:10px;">
+      <button class="btn-primary">${ICONS.arrowRight}<span>Use Service template</span></button>
+      <button class="ghost-btn">${ICONS.code}<span>Start from blank</span></button>
+    </div>
+  `, '', 'admin'),
+  anno:[
+    ['Templates','Service, LocalBusiness, Organization, Article/BlogPosting, FAQPage, Product. Each maps to a schema.org type but the label is human.'],
+    ['Recommended','Driven by auto-detection. Pre-selected so the fast path is one tap, but fully overridable.'],
+    ['Cards','Reuse the selectable-card pattern (purple-line selected border, check badge) consistent with other pickers.'],
+    ['Blank start','Power users can start from an empty template; advanced raw-JSON editing is gated behind LLM SEO / advanced mode, not shown to first-timers.'],
+  ]
+});
+
+screens.push({
+  id:'s13', tag:'D · Add Schema',
+  title:'13 · Structured editor, never raw JSON',
+  desc:'Designers fill a form, not JSON. Fields are labeled in plain language, required fields marked, and anything we could read from the page is pre-filled and tagged AUTO-FILLED. The live JSON-LD is one tab away for the curious, but never the default surface.',
+  body:pluginShell('schema', `
+    <div style="display:flex; align-items:center; gap:8px; margin-bottom:10px;">
+      <span style="color:var(--rf-text-dim); cursor:pointer;">${ICONS.chevL}</span>
+      <span style="font-size:11.5px; color:var(--rf-text-2);">Service schema · /services</span>
+      <span class="sch-type-chip" style="margin-left:auto;">Service</span>
+    </div>
+    <div class="tabs" style="margin-bottom:16px;">
+      <div class="tab active">Form</div>
+      <div class="tab">JSON-LD</div>
+      <div class="tab">Validate</div>
+    </div>
+    ${schField('Service name', 'SEO &amp; Growth Services', {req:true, auto:true})}
+    ${schField('Provider', '7 Seers Media', {req:true, auto:true})}
+    ${schField('Description', 'Full-funnel SEO, content, and design for Framer sites.', {auto:true})}
+    ${schField('Area served', '', {placeholder:'e.g. Worldwide, United States', hint:'Optional. Where you deliver this service.'})}
+    ${schField('Price range', '', {placeholder:'e.g. $$ or from $1,500', hint:'Optional. Shown in some rich results.'})}
+    <div style="display:flex; align-items:center; gap:10px; margin-top:6px;">
+      <button class="btn-primary">${ICONS.eye}<span>Preview JSON-LD</span></button>
+      <button class="ghost-btn">Save as draft</button>
+    </div>
+  `, '', 'admin'),
+  anno:[
+    ['Form first','The structured form is the default and primary surface. Field labels are plain English, mapped to schema.org properties under the hood.'],
+    ['Auto-fill','Fields populated from the page crawl are tagged AUTO-FILLED so users trust them but can override.'],
+    ['Required','Required-by-schema.org properties are marked with a red asterisk. Validation (screen 15) enforces them before inject.'],
+    ['Escape hatch','The JSON-LD tab shows the generated code read-only (editable in advanced mode). Most users never open it.'],
+  ]
+});
+
+screens.push({
+  id:'s14', tag:'D · Add Schema',
+  title:'14 · JSON-LD preview',
+  desc:'The optional code view. Generated from the form, syntax-highlighted, copyable. Read-only by default so the form stays the source of truth. This is what RankFrame stores against the page and serves from the router snippet.',
+  body:pluginShell('schema', `
+    <div style="display:flex; align-items:center; gap:8px; margin-bottom:10px;">
+      <span style="color:var(--rf-text-dim); cursor:pointer;">${ICONS.chevL}</span>
+      <span style="font-size:11.5px; color:var(--rf-text-2);">Service schema · /services</span>
+    </div>
+    <div class="tabs" style="margin-bottom:16px;">
+      <div class="tab">Form</div>
+      <div class="tab active">JSON-LD</div>
+      <div class="tab">Validate</div>
+    </div>
+    ${jsonLd('Generated from your form · read-only', `<span class="p">{</span>
+  <span class="k">"@context"</span><span class="p">:</span> <span class="s">"https://schema.org"</span><span class="p">,</span>
+  <span class="k">"@type"</span><span class="p">:</span> <span class="s">"Service"</span><span class="p">,</span>
+  <span class="k">"name"</span><span class="p">:</span> <span class="s">"SEO &amp; Growth Services"</span><span class="p">,</span>
+  <span class="k">"description"</span><span class="p">:</span> <span class="s">"Full-funnel SEO, content, and design for Framer sites."</span><span class="p">,</span>
+  <span class="k">"provider"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="k">"@type"</span><span class="p">:</span> <span class="s">"Organization"</span><span class="p">,</span>
+    <span class="k">"name"</span><span class="p">:</span> <span class="s">"7 Seers Media"</span><span class="p">,</span>
+    <span class="k">"url"</span><span class="p">:</span> <span class="s">"https://7seersmedia.com"</span>
+  <span class="p">}</span><span class="p">,</span>
+  <span class="k">"url"</span><span class="p">:</span> <span class="s">"https://7seersmedia.com/services"</span>
+<span class="p">}</span>`)}
+    <div style="display:flex; align-items:center; gap:10px; margin-top:14px;">
+      <button class="btn-primary">${ICONS.check}<span>Validate</span></button>
+      <button class="ghost-btn">${ICONS.edit}<span>Back to form</span></button>
+    </div>
+  `, '', 'admin'),
+  anno:[
+    ['Source of truth','The form generates this. Editing the form regenerates the JSON. Direct JSON edits are allowed only in advanced mode and round-trip back to the form where possible.'],
+    ['Stored shape','This object is stored against the route and embedded into the router snippet keyed by path.'],
+    ['Copy','Copy button lets developers lift the JSON for their own use or review.'],
+    ['Highlighting','Mono font + token colors match the editor code blocks in the content prototype.'],
+  ]
+});
+
+screens.push({
+  id:'s15', tag:'D · Add Schema',
+  title:'15 · Validate against Rich Results',
+  desc:'Before anything goes live we validate: required properties present, types correct, URLs resolvable, and whether the result is eligible for a Google rich result. Errors block inject; warnings do not. Honest, actionable rows.',
+  body:pluginShell('schema', `
+    <div class="tabs" style="margin-bottom:16px;">
+      <div class="tab">Form</div>
+      <div class="tab">JSON-LD</div>
+      <div class="tab active">Validate</div>
+    </div>
+    <div style="background:var(--rf-bg-card); border:1px solid var(--rf-border); border-radius:11px; margin-bottom:14px;">
+      <div class="rr-row"><div class="rr-ico ok">${ICONS.check}</div><div><div class="rr-t">Valid Service schema</div><div class="rr-m">All required properties present</div></div></div>
+      <div class="rr-row"><div class="rr-ico ok">${ICONS.check}</div><div><div class="rr-t">Provider resolves to Organization</div><div class="rr-m">Linked to your site Organization schema</div></div></div>
+      <div class="rr-row"><div class="rr-ico warn">${ICONS.warn}</div><div><div class="rr-t">No areaServed set</div><div class="rr-m">Optional. Adding it can improve local relevance.</div></div><div class="rr-right">Warning</div></div>
+    </div>
+    <div class="sch-note ok" style="margin-bottom:16px;"><span class="sn-ico">${ICONS.check}</span><div><b>Ready to go live.</b> 2 checks passed, 1 optional suggestion. No blocking errors.</div></div>
+    <button class="btn-primary">${ICONS.arrowRight}<span>Inject to site</span></button>
+  `, '', 'admin'),
+  anno:[
+    ['Validator','Server-side schema.org validation plus Google Rich Results eligibility check where feasible.'],
+    ['Errors vs warnings','Errors (missing required, wrong type) block inject. Warnings (optional gaps) do not. Clear visual split.'],
+    ['Inject gate','The Inject button is enabled only when there are zero blocking errors.'],
+    ['Re-run','Validation re-runs automatically on every form change and again server-side at inject time.'],
+  ]
+});
+
+screens.push({
+  id:'s16', tag:'D · Add Schema',
+  title:'16 · Inject confirm',
+  desc:'The single confirm before we touch the head snippet. We restate plainly what happens: the route is added to the managed router, and the user must publish their Framer site for it to go live. No surprises.',
+  body:pluginShell('schema', `
+    ${pageHead('Add this schema to your site?', 'Service schema for /services')}
+    <div class="flow-diagram" style="margin-bottom:14px;">
+      <div class="flow-node accent"><div class="fn-ico">${ICONS.code}</div><div class="fn-t">Router snippet updated</div><div class="fn-d">/services is added to your one managed head block.</div></div>
+      ${flowArrow()}
+      <div class="flow-node"><div class="fn-ico">${ICONS.globe}</div><div class="fn-t">Publish to go live</div><div class="fn-d">Changes serve once you publish your Framer site.</div></div>
+    </div>
+    <div class="sch-note info" style="margin-bottom:16px;"><span class="sn-ico">${ICONS.info}</span><div>No other pages are affected. Your head stays a single RankFrame block, we just add this route to it.</div></div>
+    <div style="display:flex; align-items:center; gap:10px;">
+      <button class="btn-primary">${ICONS.check}<span>Inject and save</span></button>
+      <button class="ghost-btn">Cancel</button>
+    </div>
+  `, '', 'admin'),
+  anno:[
+    ['What happens','<span class="change-tag api">FRAMER API</span> <code>setCustomCode()</code> upserts the RankFrame <code>headEnd</code> block with the new route added to the router data. Idempotent by marker.'],
+    ['Publish requirement','Framer serves custom code only after publish. We state this every time so expectations are correct.'],
+    ['Scope clarity','We explicitly reassure that other pages and the head structure are untouched.'],
+    ['Role gate','For members with inject locked, this button is replaced by Submit for approval (screen 25).'],
+  ]
+});
+
+screens.push({
+  id:'s17', tag:'D · Add Schema',
+  title:'17 · Injected, live',
+  desc:'Success. The schema is in the router and the page status flips to Live (after publish). We offer the natural next steps: validate in Google, add schema to the next gap page, or view all.',
+  body:pluginShell('schema', `
+    <div class="sch-note ok" style="margin-bottom:16px;"><span class="sn-ico">${ICONS.check}</span><div><b>Service schema added.</b> /services is now in your managed snippet. Publish your Framer site to serve it, then validate in Google.</div></div>
+    <div class="rr-row" style="border:1px solid var(--rf-border); border-radius:10px; margin-bottom:16px;">
+      <div class="rr-ico ok">${ICONS.check}</div><div><div class="rr-t">Services</div><div class="rr-m">Service · 7seersmedia.com/services</div></div>${schStatus('live')}
+    </div>
+    <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
+      <button class="btn-primary">${ICONS.pages}<span>Add schema to Work</span></button>
+      <button class="ghost-btn">${ICONS.ext}<span>Test in Google</span></button>
+      <button class="ghost-btn">All pages</button>
+    </div>
+  `, '', 'admin'),
+  anno:[
+    ['Status flip','Page moves to Live in the list. Until the site is published it shows Live (pending publish) in the detail view.'],
+    ['Next gap','We nudge the user to the next no-schema page to build momentum across the site.'],
+    ['External test','Deep link to Google Rich Results Test with the page URL prefilled.'],
+    ['Undo','Removing the schema upserts the route out of the router block; no orphaned code remains.'],
+  ]
+});
+
+/* ================== E · MANAGE EXISTING ================== */
+screens.push({
+  id:'s18', tag:'E · Manage Existing',
+  title:'18 · Schema Manager overview (dashboard)',
+  desc:'The wider view on the web dashboard. Health at a glance, every page and its types, and bulk entry points. This is where an agency runs schema across a whole site rather than page by page.',
+  body:dashShell('content', `
+    <h1 style="font-size:24px; margin:0 0 4px;">Schema Manager</h1>
+    <p style="font-size:13px; color:var(--rf-text-muted); margin:0 0 18px;">All structured data for 7seersmedia.com.</p>
+    <div class="sch-stats" style="margin-bottom:18px;">
+      <div class="sch-stat"><div class="v green">4</div><div class="l">Live</div></div>
+      <div class="sch-stat"><div class="v amber">1</div><div class="l">Draft</div></div>
+      <div class="sch-stat"><div class="v">1</div><div class="l">No schema</div></div>
+      <div class="sch-stat"><div class="v red">1</div><div class="l">Error</div></div>
+    </div>
+    <div style="display:flex; gap:10px; margin-bottom:16px;">
+      <button class="btn-primary">${ICONS.layers}<span>Bulk apply</span></button>
+      <button class="ghost-btn">${ICONS.shield}<span>Run health check</span></button>
+      <button class="ghost-btn">${ICONS.history}<span>Activity</span></button>
+    </div>
+    ${pagesTable()}
+  `, '', 'admin'),
+  anno:[
+    ['Where','<span class="change-tag dash">DASHBOARD UI</span> Content ▸ Schema Manager. Wider canvas for the full table and bulk tools.'],
+    ['Same data','Reads the same per-site schema store as the plugin. Edits sync both ways.'],
+    ['Bulk + health','Entry points for bulk apply (screen 20) and the health report (screen 21).'],
+    ['Table parity','Identical <code>.rf-table</code> surface as the plugin and the other prototypes.'],
+  ]
+});
+
+screens.push({
+  id:'s19', tag:'E · Manage Existing',
+  title:'19 · Edit existing schema',
+  desc:'Editing an already-live schema. Same structured form, pre-filled with current values, plus a small header showing it is live and when it last changed. Saving re-validates and re-injects.',
+  body:pluginShell('schema', `
+    <div style="display:flex; align-items:center; gap:8px; margin-bottom:10px;">
+      <span style="color:var(--rf-text-dim); cursor:pointer;">${ICONS.chevL}</span>
+      <span style="font-size:11.5px; color:var(--rf-text-2);">About · /about</span>
+      ${schStatus('live')}
+      <span style="font-size:10.5px; color:var(--rf-text-dim); margin-left:auto;">Edited 2 days ago</span>
+    </div>
+    <div class="tabs" style="margin-bottom:16px;">
+      <div class="tab active">Form</div>
+      <div class="tab">JSON-LD</div>
+      <div class="tab">Validate</div>
+    </div>
+    ${schField('Organization name', '7 Seers Media', {req:true})}
+    ${schField('Logo URL', 'https://7seersmedia.com/logo.png', {req:true, auto:true})}
+    ${schField('Founder', 'Harsh', {})}
+    ${schField('Same-as (social)', 'x.com/7seersmedia, linkedin.com/company/7seersmedia', {hint:'Comma-separated profile URLs. Strengthens entity recognition.'})}
+    <div style="display:flex; align-items:center; gap:10px; margin-top:6px;">
+      <button class="btn-primary">${ICONS.check}<span>Save and re-inject</span></button>
+      <button class="ghost-btn" style="color:var(--rf-red); border-color:rgba(221,82,76,0.35);">${ICONS.trash}<span>Remove schema</span></button>
+    </div>
+  `, '', 'admin'),
+  anno:[
+    ['Edit = re-inject','Saving re-validates then upserts the route in the router block. Same idempotent write.'],
+    ['Remove','Removing pulls the route out of the router and flips the page to No schema. No orphaned code.'],
+    ['Version','Each save is recorded in the activity log (screen 28) with before/after.'],
+    ['Same form','Identical editor to the add flow, just pre-filled. One component, two entry points.'],
+  ]
+});
+
+screens.push({
+  id:'s20', tag:'E · Manage Existing',
+  title:'20 · Bulk apply (agency flow)',
+  desc:'Agencies do not want to add Organization schema to 40 sites one page at a time. Bulk apply pushes a base schema (Organization, WebSite) across selected pages in one move, with a preview of what changes. This is an admin-only capability.',
+  body:dashShell('content', `
+    <h1 style="font-size:24px; margin:0 0 4px;">Bulk apply schema</h1>
+    <p style="font-size:13px; color:var(--rf-text-muted); margin:0 0 18px;">Apply a base schema across multiple pages at once.</p>
+    <div class="sch-field" style="max-width:420px;"><label>Schema to apply</label><div class="sch-input filled">Organization + WebSite (site-wide base)</div></div>
+    <div style="background:var(--rf-bg-card); border:1px solid var(--rf-border); border-radius:11px; margin:8px 0 16px;">
+      <div class="rr-row"><input type="checkbox" checked style="accent-color:var(--rf-purple);"><div><div class="rr-t">Apply to all 6 pages</div><div class="rr-m">Organization added where missing; existing page schemas kept</div></div><div class="rr-right">6 pages</div></div>
+    </div>
+    <div class="sch-note info" style="margin-bottom:16px;"><span class="sn-ico">${ICONS.info}</span><div>Bulk apply never overwrites a page’s specific schema. It only adds the base where it is missing, then re-injects the router once.</div></div>
+    <button class="btn-primary">${ICONS.layers}<span>Preview and apply to 6 pages</span></button>
+  `, '', 'admin'),
+  anno:[
+    ['Admin only','<span class="change-tag dash">DASHBOARD UI</span> Bulk apply is gated to Admin / Publisher. Writers and Viewers do not see it.'],
+    ['Non-destructive','Adds base schema only where absent. Page-specific schemas (Service, FAQ) are preserved.'],
+    ['One write','All changes batch into a single router-block upsert, not N writes.'],
+    ['Preview','Shows a diff of which pages gain what before committing.'],
+  ]
+});
+
+screens.push({
+  id:'s21', tag:'E · Manage Existing',
+  title:'21 · Schema health, errors',
+  desc:'The health report surfaces what is broken across the site and routes straight to the fix. Here, the Contact page LocalBusiness schema is missing a required property. One click opens the failing field.',
+  body:dashShell('content', `
+    <h1 style="font-size:24px; margin:0 0 4px;">Schema health</h1>
+    <p style="font-size:13px; color:var(--rf-text-muted); margin:0 0 18px;">Last checked 6 min ago across 6 pages.</p>
+    <div class="sch-note danger" style="margin-bottom:16px;"><span class="sn-ico">${ICONS.warn}</span><div><b>1 page has a blocking error.</b> Invalid schema is ignored by Google and AI assistants, so the page loses its rich-result eligibility until fixed.</div></div>
+    <table class="rf-table">
+      <thead><tr><th>Page</th><th>Issue</th><th>Status</th><th></th></tr></thead>
+      <tbody>
+        <tr><td><div><b style="font-size:12.5px;">Contact</b><div class="pg-url" style="color:var(--rf-text-dim); margin-top:1px;">/contact · LocalBusiness</div></div></td><td style="font-size:12px; color:var(--rf-text-2);">Missing required property <code style="font-family:'JetBrains Mono',monospace; font-size:11px; background:#15171B; padding:1px 5px; border-radius:4px;">address</code></td><td>${schStatus('error')}</td><td style="text-align:right;"><button class="btn-primary sm">${ICONS.edit}<span>Fix</span></button></td></tr>
+        <tr><td><div><b style="font-size:12.5px;">Services</b><div class="pg-url" style="color:var(--rf-text-dim); margin-top:1px;">/services · Service</div></div></td><td style="font-size:12px; color:var(--rf-text-muted);">Optional: areaServed not set</td><td>${schStatus('live')}</td><td style="text-align:right;"><button class="ghost-btn sm">Review</button></td></tr>
+      </tbody>
+    </table>
+  `, '', 'admin'),
+  anno:[
+    ['Why it matters','Invalid structured data is silently dropped by Google and LLMs. Surfacing it prevents quiet visibility loss.'],
+    ['Direct fix','Fix deep-links to the exact failing field in the editor (screen 13 pattern) with the error highlighted.'],
+    ['Severity','Blocking errors first, optional suggestions below. Same error/warning split as inline validation.'],
+    ['Schedule','Health re-checks on every inject and on a periodic crawl.'],
+  ]
+});
+
+/* ================== F · LLM SEO ================== */
+screens.push({
+  id:'s22', tag:'F · LLM SEO', newScreen:true,
+  title:'22 · LLM SEO overview',
+  desc:'Schema is the foundation; LLM SEO is the payoff. This screen connects the two: structured data is how ChatGPT, Gemini, Perplexity and Google AI Overviews understand and cite a page. It sits next to Schema in the Optimize group and reuses the same data.',
+  body:pluginShell('llmseo', `
+    ${pageHead('LLM SEO', 'Get cited by AI assistants. Built on the schema you already added.')}
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:16px;">
+      <div class="flow-node"><div class="fn-ico">${ICONS.schema}</div><div class="fn-t">Schema feeds AI</div><div class="fn-d">Your structured data tells assistants what each page is and who is behind it.</div></div>
+      <div class="flow-node"><div class="fn-ico">${ICONS.robot}</div><div class="fn-t">Answerable content</div><div class="fn-d">Clear entities + FAQ schema make pages easy to quote in AI answers.</div></div>
+    </div>
+    <div class="sch-note info" style="margin-bottom:16px;"><span class="sn-ico">${ICONS.info}</span><div>You already have <b>4 pages with schema</b>. LLM SEO builds on that: it scores how answerable each page is and suggests the structured data assistants look for.</div></div>
+    <button class="btn-primary">${ICONS.spark}<span>Check AI visibility</span></button>
+  `, '', 'admin'),
+  anno:[
+    ['Relationship','<span class="change-tag plugin">PLUGIN UI</span> LLM SEO sits beside Schema in Optimize and reads the same schema store. Schema is the input, AI visibility is the output.'],
+    ['No magic claims','We do not promise rankings in AI. We improve the structured signals assistants actually use.'],
+    ['Shared data','Pages, types and health come from the schema layer, no separate crawl.'],
+    ['Scope','This prototype shows the tie-in; the full LLM SEO flow is its own spec.'],
+  ]
+});
+
+screens.push({
+  id:'s23', tag:'F · LLM SEO', newScreen:true,
+  title:'23 · AI visibility check',
+  desc:'A per-page answerability score driven by schema completeness and content clarity. Honest signals, concrete suggestions, each linking back to a schema action. This is the bridge that makes the schema work pay off.',
+  body:pluginShell('llmseo', `
+    ${pageHead('AI visibility', 'How answerable your pages are to AI assistants.')}
+    <div class="sub-nav-score-card" style="margin:0 0 16px; max-width:none; padding:14px 16px;">
+      <div class="sub-nav-score-ring" style="width:48px; height:48px;"><span style="font-size:14px;">78</span></div>
+      <div class="sub-nav-score-meta"><span class="label">Site AI visibility</span><span class="val" style="font-size:13px;">Good · 4 of 6 pages structured</span></div>
+    </div>
+    <div style="background:var(--rf-bg-card); border:1px solid var(--rf-border); border-radius:11px;">
+      <div class="rr-row"><div class="rr-ico ok">${ICONS.check}</div><div><div class="rr-t">Organization + author entities present</div><div class="rr-m">Assistants can attribute your content to 7 Seers Media</div></div></div>
+      <div class="rr-row"><div class="rr-ico warn">${ICONS.warn}</div><div><div class="rr-t">No FAQ schema on Services</div><div class="rr-m">FAQ pairs are highly quotable in AI answers</div></div><div class="rr-right"><button class="ghost-btn sm">Add FAQ</button></div></div>
+      <div class="rr-row"><div class="rr-ico err">${ICONS.warn}</div><div><div class="rr-t">Work page has no schema</div><div class="rr-m">Invisible to entity-based AI retrieval</div></div><div class="rr-right"><button class="btn-primary sm">Add schema</button></div></div>
+    </div>
+  `, '', 'admin'),
+  anno:[
+    ['Score','Weighted by schema coverage, entity completeness, and content answerability. Not a Google or OpenAI metric, a RankFrame heuristic, labeled as such.'],
+    ['Actionable','Every row links to a schema action (add FAQ, add schema), closing the loop back to the editor.'],
+    ['Reuses ring','Same score-ring component as the plugin sub-nav, kept visually consistent.'],
+    ['Honest framing','We describe what assistants use, not guaranteed placement.'],
+  ]
+});
+
+/* ================== G · MULTI-USER ================== */
+screens.push({
+  id:'s24', tag:'G · Multi-User', newScreen:true,
+  title:'24 · Schema permissions, Admin',
+  desc:'For agencies, schema touches live code, so who can push matters. The permissions matrix (admin only) controls per role: edit drafts, validate, inject live, bulk apply, and edit raw JSON. Defaults are safe: writers draft, admins and publishers push.',
+  body:dashShell('team', `
+    <h1 style="font-size:24px; margin:0 0 4px;">Schema permissions</h1>
+    <p style="font-size:13px; color:var(--rf-text-muted); margin:0 0 18px;">Control who can change structured data on 7seersmedia.com.</p>
+    <table class="rf-table">
+      <thead><tr><th>Capability</th><th style="text-align:center;">Admin</th><th style="text-align:center;">Publisher</th><th style="text-align:center;">Writer</th><th style="text-align:center;">Viewer</th></tr></thead>
+      <tbody>
+        ${[
+          ['Edit schema drafts', true,true,true,false],
+          ['Validate', true,true,true,true],
+          ['Inject live', true,true,false,false],
+          ['Bulk apply', true,false,false,false],
+          ['Edit raw JSON-LD', true,false,false,false],
+        ].map(([cap,a,p,w,v])=>{
+          const dot = on => on
+            ? `<span style="color:var(--rf-green);">${ICONS.check}</span>`
+            : `<span style="display:inline-block; width:11px; height:2px; border-radius:1px; background:var(--rf-text-faint); vertical-align:middle;"></span>`;
+          return `<tr><td style="font-size:12.5px;">${cap}</td><td style="text-align:center;">${dot(a)}</td><td style="text-align:center;">${dot(p)}</td><td style="text-align:center;">${dot(w)}</td><td style="text-align:center;">${dot(v)}</td></tr>`;
+        }).join('')}
+      </tbody>
+    </table>
+    <div class="sch-note info" style="margin-top:16px;"><span class="sn-ico">${ICONS.lock}</span><div>Writers can prepare schema but cannot push it live. Their changes go to the approval queue (screen 26). Raw JSON editing is admin-only to protect the head snippet.</div></div>
+  `, '', 'admin'),
+  anno:[
+    ['Roles','<span class="change-tag dash">DASHBOARD UI</span> Reuses the existing Admin / Publisher / Writer / Viewer model from the multi-user prototype. No new role system.'],
+    ['Why gate inject','Inject writes to live site code. Restricting it to Admin / Publisher prevents accidental or unreviewed head changes.'],
+    ['Raw JSON','Editing raw JSON-LD can break validity, so it is admin-only. Everyone else uses the structured form.'],
+    ['Matrix','Same <code>.rf-table</code> matrix style as the roles &amp; permissions screen in the multi-user spec.'],
+  ]
+});
+
+screens.push({
+  id:'s25', tag:'G · Multi-User', newScreen:true,
+  title:'25 · Member view, inject locked',
+  desc:'The same editor seen by Lingfei, a Writer on the agency. The rail shows her identity. She can fill the form and validate, but Inject is replaced by Submit for approval. Nothing about the UI feels punitive: she gets the full design experience, just not the publish button.',
+  body:pluginShell('schema', `
+    <div style="display:flex; align-items:center; gap:8px; margin-bottom:10px;">
+      <span style="color:var(--rf-text-dim); cursor:pointer;">${ICONS.chevL}</span>
+      <span style="font-size:11.5px; color:var(--rf-text-2);">FAQ schema · /services</span>
+      ${roleBadge('writer')}
+    </div>
+    <div class="tabs" style="margin-bottom:16px;">
+      <div class="tab active">Form</div>
+      <div class="tab">JSON-LD</div>
+      <div class="tab">Validate</div>
+    </div>
+    ${schField('Question 1', 'How long does SEO take to show results?', {req:true})}
+    ${schField('Answer 1', 'Most Framer sites see movement in 8 to 12 weeks with consistent content.', {req:true})}
+    ${schField('Question 2', 'Do you work with existing Framer sites?', {req:true})}
+    <div class="sch-note info" style="margin:6px 0 14px;"><span class="sn-ico">${ICONS.lock}</span><div>As a Writer you can prepare and validate schema. An admin reviews and pushes it live.</div></div>
+    <div style="display:flex; align-items:center; gap:10px;">
+      <button class="btn-primary">${ICONS.arrowRight}<span>Submit for approval</span></button>
+      <button class="ghost-btn">Save draft</button>
+    </div>
+  `, '', 'member'),
+  anno:[
+    ['Role-aware rail','<code>pluginShell(..., \'member\')</code> renders Lingfei in the bottom rail. Identical nav, different identity.'],
+    ['Locked action','Inject is swapped for Submit for approval when <code>canInject === false</code> for the role.'],
+    ['Full experience','Writers get the entire editor and validation, so the work is real, only the publish gate differs.'],
+    ['Submission','Submit sends the draft to the admin approval queue (screen 26) with a diff.'],
+  ]
+});
+
+screens.push({
+  id:'s26', tag:'G · Multi-User', newScreen:true,
+  title:'26 · Admin approval queue',
+  desc:'Schema changes submitted by writers land here for an admin. Each item shows the page, type, who submitted it, and a validation status. Approve injects it; reject returns it with a note. This mirrors the content approval queue exactly.',
+  body:dashShell('content', `
+    <h1 style="font-size:24px; margin:0 0 4px;">Schema approvals</h1>
+    <p style="font-size:13px; color:var(--rf-text-muted); margin:0 0 18px;">Changes waiting for review before they go live.</p>
+    <table class="rf-table">
+      <thead><tr><th>Change</th><th>Submitted by</th><th>Validation</th><th>Status</th><th></th></tr></thead>
+      <tbody>
+        <tr>
+          <td><div><b style="font-size:12.5px;">Add FAQ schema</b><div class="pg-url" style="color:var(--rf-text-dim); margin-top:1px;">/services · FAQPage</div></div></td>
+          <td>${memberCell('LF','Lingfei','lingfei@anytimeai.ai')}</td>
+          <td><span style="color:var(--rf-green); display:inline-flex; align-items:center; gap:5px; font-size:12px;">${ICONS.check} Valid</span></td>
+          <td>${schStatus('review')}</td>
+          <td style="text-align:right;"><div style="display:flex; gap:6px; justify-content:flex-end;"><button class="ghost-btn sm">View</button><button class="btn-primary sm">Approve</button></div></td>
+        </tr>
+        <tr>
+          <td><div><b style="font-size:12.5px;">Edit Organization</b><div class="pg-url" style="color:var(--rf-text-dim); margin-top:1px;">/about · Organization</div></div></td>
+          <td>${memberCell('LF','Lingfei','lingfei@anytimeai.ai')}</td>
+          <td><span style="color:var(--rf-amber); display:inline-flex; align-items:center; gap:5px; font-size:12px;">${ICONS.warn} 1 warning</span></td>
+          <td>${schStatus('review')}</td>
+          <td style="text-align:right;"><div style="display:flex; gap:6px; justify-content:flex-end;"><button class="ghost-btn sm">View</button><button class="btn-primary sm">Approve</button></div></td>
+        </tr>
+      </tbody>
+    </table>
+  `, '', 'admin'),
+  anno:[
+    ['Mirrors content','<span class="change-tag dash">DASHBOARD UI</span> Same queue pattern and table as the content Approval Queue. One mental model for the whole product.'],
+    ['Approve = inject','Approving runs final server-side validation then upserts the router block. Reject returns the draft with a comment.'],
+    ['Validation shown','Each item carries its validation state so admins triage fast.'],
+    ['Audit','Approve/reject is logged in the schema activity log (screen 28).'],
+  ]
+});
+
+screens.push({
+  id:'s27', tag:'G · Multi-User', newScreen:true,
+  title:'27 · Member waiting, then approved',
+  desc:'Lingfei’s view after submitting. Her change shows as In review, then flips to Approved and Live once an admin pushes it. She is never left guessing where her work went.',
+  body:pluginShell('schema', `
+    ${pageHead('Your schema changes', 'Status of what you submitted.')}
+    <table class="rf-table">
+      <thead><tr><th>Change</th><th>Status</th><th></th></tr></thead>
+      <tbody>
+        <tr><td><div><b style="font-size:12.5px;">Add FAQ schema</b><div class="pg-url" style="color:var(--rf-text-dim); margin-top:1px;">/services · FAQPage</div></div></td><td>${schStatus('approved')}</td><td style="text-align:right; font-size:11px; color:var(--rf-text-dim);">Live now</td></tr>
+        <tr><td><div><b style="font-size:12.5px;">Edit Organization</b><div class="pg-url" style="color:var(--rf-text-dim); margin-top:1px;">/about · Organization</div></div></td><td>${schStatus('review')}</td><td style="text-align:right; font-size:11px; color:var(--rf-text-dim);">Awaiting admin</td></tr>
+      </tbody>
+    </table>
+    <div class="sch-note ok" style="margin-top:16px;"><span class="sn-ico">${ICONS.check}</span><div>Your FAQ schema was approved and is live on /services. Nice work.</div></div>
+  `, '', 'member'),
+  anno:[
+    ['Member clarity','Writers see exactly where each submission stands: In review, Approved, or Returned with a note.'],
+    ['Rail','Member rail (Lingfei) via the role-aware shell.'],
+    ['Notifications','Approval / return triggers an in-app and email notification, reusing the multi-user notification layer.'],
+    ['Returned state','A rejected item returns with the admin’s comment and reopens in the editor (not shown, same as content returns).'],
+  ]
+});
+
+screens.push({
+  id:'s28', tag:'G · Multi-User', newScreen:true,
+  title:'28 · Schema activity log',
+  desc:'Every schema change is recorded: who added, edited, approved, or removed what, and when. For agencies this is accountability and a rollback trail. Reuses the activity-log row component from the multi-user spec.',
+  body:dashShell('content', `
+    <h1 style="font-size:24px; margin:0 0 4px;">Schema activity</h1>
+    <p style="font-size:13px; color:var(--rf-text-muted); margin:0 0 18px;">A record of every structured-data change on this site.</p>
+    <div style="background:var(--rf-bg-card); border:1px solid var(--rf-border); border-radius:12px; padding:6px 4px;">
+      ${logRow('ok', ICONS.check, '<b>7seers media</b> approved and injected <b>FAQ schema</b> on /services', 'Today · 10:42')}
+      ${logRow('purple', ICONS.edit, '<b>Lingfei</b> submitted <b>Organization edit</b> on /about for review', 'Today · 10:31')}
+      ${logRow('ok', ICONS.plus, '<b>7seers media</b> added <b>Service schema</b> to /services', 'Yesterday · 16:05')}
+      ${logRow('warn', ICONS.warn, '<b>System</b> flagged <b>LocalBusiness</b> on /contact: missing address', 'Yesterday · 09:12')}
+      ${logRow('red', ICONS.trash, '<b>7seers media</b> removed <b>Product schema</b> from /work', '2 days ago · 14:20')}
+    </div>
+  `, '', 'admin'),
+  anno:[
+    ['Component','<span class="change-tag dash">DASHBOARD UI</span> Same <code>logRow()</code> helper and styling as the multi-user Activity Log. Consistent across features.'],
+    ['What is logged','Add, edit, submit, approve, reject, remove, and system validation flags. Each with actor + timestamp.'],
+    ['Rollback','Stored before/after snapshots enable reverting a schema to a prior version (admin only).'],
+    ['Member scope','Writers see only their own entries; admins see everything, matching the content activity rules.'],
+  ]
+});
+
+/* ================== H · CROSS-CUTTING ================== */
+screens.push({
+  id:'s29', tag:'H · Cross-cutting', newScreen:true,
+  title:'29 · Permission denied',
+  desc:'A Writer opens a page and taps an admin-only action (bulk apply or raw JSON). Instead of a dead end, we explain the limit and offer the path that is open to them: submit for approval.',
+  body:pluginShell('schema', `
+    ${pageHead('Schema', 'Structured data for 7seersmedia.com.')}
+    <div class="empty-state">
+      <div class="ico">${ICONS.lock}</div>
+      <h3>Admins push schema live</h3>
+      <p>As a Writer you can create and validate schema, but injecting to the live site is limited to Admins and Publishers. Submit your change and an admin will review it.</p>
+      <button class="btn-primary">${ICONS.arrowRight}<span>Submit for approval</span></button>
+    </div>
+  `, '', 'member'),
+  anno:[
+    ['Not a dead end','Denied states always offer the action that IS available to the role. Here, submit for approval.'],
+    ['Source','Gated by the schema permission matrix (screen 24).'],
+    ['Tone','Explains the why in one sentence, no jargon, no blame.'],
+    ['Reuses empty-state','Same <code>.empty-state</code> component used across the product.'],
+  ]
+});
+
+screens.push({
+  id:'s30', tag:'H · Cross-cutting', newScreen:true,
+  title:'30 · Validation error blocks inject',
+  desc:'The honest failure case. The user tried to inject but a required property is missing. We block, explain precisely what is wrong, and jump them to the exact field. No vague errors.',
+  body:pluginShell('schema', `
+    <div class="tabs" style="margin-bottom:16px;">
+      <div class="tab">Form</div>
+      <div class="tab">JSON-LD</div>
+      <div class="tab active">Validate</div>
+    </div>
+    <div class="sch-note danger" style="margin-bottom:14px;"><span class="sn-ico">${ICONS.warn}</span><div><b>Cannot inject yet.</b> 1 required property is missing. Google and AI assistants would ignore this schema as invalid.</div></div>
+    <div style="background:var(--rf-bg-card); border:1px solid var(--rf-border); border-radius:11px; margin-bottom:16px;">
+      <div class="rr-row"><div class="rr-ico err">${ICONS.warn}</div><div><div class="rr-t">Missing required property: address</div><div class="rr-m">LocalBusiness requires a postal address</div></div><div class="rr-right"><button class="btn-primary sm">${ICONS.edit}<span>Fix field</span></button></div></div>
+      <div class="rr-row"><div class="rr-ico ok">${ICONS.check}</div><div><div class="rr-t">name, telephone present</div></div></div>
+    </div>
+    <button class="ghost-btn" style="opacity:0.5; cursor:not-allowed;">${ICONS.arrowRight}<span>Inject to site</span></button>
+  `, '', 'admin'),
+  anno:[
+    ['Hard block','Inject is disabled while any required property is missing. The button is visibly inert.'],
+    ['Precise','We name the exact property and type rule, not a generic "invalid schema" message.'],
+    ['Jump to fix','Fix field deep-links to that input in the form tab with focus and a red outline.'],
+    ['Server re-check','Even if the client passes, the server re-validates at inject; the same error shape is returned.'],
+  ]
+});
+
+screens.push({
+  id:'s31', tag:'H · Cross-cutting', newScreen:true,
+  title:'31 · Existing custom JSON-LD conflict',
+  desc:'Some users already hand-wrote JSON-LD in Framer’s custom code before installing RankFrame. We detect it, do not silently clobber it, and let the user choose: keep theirs, let RankFrame take over, or merge. Respecting existing work builds trust.',
+  body:pluginShell('schema', `
+    ${pageHead('We found existing schema', 'There is already structured data in your site’s custom code.')}
+    <div class="sch-note warn" style="margin-bottom:14px;"><span class="sn-ico">${ICONS.warn}</span><div>Your head already contains hand-written JSON-LD (Organization). RankFrame will not overwrite it without your say-so.</div></div>
+    <div style="display:flex; flex-direction:column; gap:10px; margin-bottom:16px;">
+      <div class="type-card" style="cursor:pointer;"><div class="tc-title">Let RankFrame manage it</div><div class="tc-desc">Import your existing Organization schema into RankFrame and manage it here going forward.</div></div>
+      <div class="type-card" style="cursor:pointer;"><div class="tc-title">Keep yours, add alongside</div><div class="tc-desc">Leave your code untouched. RankFrame manages only the pages you add here.</div></div>
+      <div class="type-card" style="cursor:pointer;"><div class="tc-title">Review the conflict</div><div class="tc-desc">See both versions side by side before deciding.</div></div>
+    </div>
+  `, '', 'admin'),
+  anno:[
+    ['Detection','<span class="change-tag api">FRAMER API</span> <code>getCustomCode()</code> is parsed for existing JSON-LD outside RankFrame’s marked block before any write.'],
+    ['Never clobber','We never overwrite user code silently. The user explicitly chooses import, coexist, or review.'],
+    ['Coexist','RankFrame’s block and the user’s code can live side by side; the router only owns routes the user adds here.'],
+    ['Trust','Respecting existing work is critical for adoption among technical users and agencies.'],
+  ]
+});
+
+screens.push({
+  id:'s32', tag:'H · Cross-cutting', newScreen:true,
+  title:'32 · No pages crawled yet',
+  desc:'The genuine empty state: setup is done but the site has not been crawled, or the site is unpublished so there is nothing to read. We explain why the list is empty and give the one action that fixes it.',
+  body:pluginShell('schema', `
+    ${pageHead('Schema', 'Structured data for your pages.')}
+    <div class="empty-state">
+      <div class="ico">${ICONS.globe}</div>
+      <h3>No pages to show yet</h3>
+      <p>RankFrame reads your published site to find pages. Publish your Framer site, then recrawl, and your pages will appear here ready for schema.</p>
+      <button class="btn-primary">${ICONS.refresh}<span>Recrawl website</span></button>
+    </div>
+  `, '', 'admin'),
+  anno:[
+    ['Cause','Pages come from the published-site crawl + sitemap. An unpublished or never-crawled site has nothing to list.'],
+    ['One action','Recrawl is the single fix. We also remind the user the site must be published.'],
+    ['Honest','We do not show fake placeholder pages. Empty means empty, with a clear reason.'],
+    ['Reuses empty-state','Same component as the rest of the product.'],
+  ]
+});
+
+
+function buildContactSheet(){
+  const groups = [
+    { title:'A · Entry & Nav', screenIds:['s1','s2','s3'] },
+    { title:'B · One-time Setup', screenIds:['s4','s5','s6','s7','s8'] },
+    { title:'C · Pages & Status', screenIds:['s9','s10','s11'] },
+    { title:'D · Add Schema (Designer flow)', screenIds:['s12','s13','s14','s15','s16','s17'] },
+    { title:'E · Manage Existing', screenIds:['s18','s19','s20','s21'] },
+    { title:'F · LLM SEO', screenIds:['s22','s23'] },
+    { title:'G · Multi-User', screenIds:['s24','s25','s26','s27','s28'] },
+    { title:'H · Cross-cutting', screenIds:['s29','s30','s31','s32'] },
+  ];
+  return `
+    <div class="contact-sheet-wrap">
+      ${groups.map(g => {
+        const tiles = g.screenIds.map(sid => {
+          const s = screens.find(x => x.id === sid);
+          if (!s) return '';
+          const num = s.id.replace('s','').padStart(2, '0');
+          const newCls = s.newScreen ? 'new-screen' : '';
+          return `
+            <a class="cs-tile ${newCls}" href="#${s.id}">
+              <div class="cs-tile-thumb"><div class="cs-mini">${s.body}</div></div>
+              <div class="cs-tile-info">
+                <div class="cs-tile-num">SCREEN ${num}</div>
+                <div class="cs-tile-title">${s.title.replace(/^\d+ · /, '')}</div>
+                <div class="cs-tile-tag">${s.tag}</div>
+              </div>
+            </a>
+          `;
+        }).join('');
+        return `
+          <div class="cs-section-title">${g.title}</div>
+          <div class="contact-sheet">${tiles}</div>
+        `;
+      }).join('')}
+    </div>
+  `;
+}
+
+/* ============================================================
+   RENDER ALL SCREENS
+   ============================================================ */
+const root = document.getElementById('screens-root');
+
+root.innerHTML = screens.map(s => {
+  let body = s.body;
+  if (body === '__CONTACT_SHEET__') body = buildContactSheet();
+  return `
+    <section class="state-section" id="${s.id}">
+      <div class="proto-screen-head">
+        <span class="proto-tag ${s.newScreen?'new':''}">${s.newScreen?'NEW · ':''}${s.tag}</span>
+        <h1>${s.title}</h1>
+        ${s.desc ? `<p>${s.desc}</p>` : ''}
+      </div>
+      ${body}
+      ${s.anno ? `
+        <div class="proto-anno">
+          <h3>Developer notes</h3>
+          <div class="proto-anno-grid">
+            ${s.anno.map(([k,v])=>`<div class="proto-anno-item"><dt>${k}</dt><dd>${v}</dd></div>`).join('')}
+          </div>
+        </div>
+      ` : ''}
+    </section>
+  `;
+}).join('');
+
+/* sidebar active highlighting on scroll */
+const sideLinks = [...document.querySelectorAll('.proto-side .proto-nav-item')];
+const sections = [...document.querySelectorAll('.state-section')];
+const obs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      sideLinks.forEach(a=>a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id));
+    }
+  });
+}, {rootMargin:'-30% 0px -60% 0px'});
+sections.forEach(s=>obs.observe(s));
+</script>
+</body>
+</html>

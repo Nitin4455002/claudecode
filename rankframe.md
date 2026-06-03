@@ -2010,5 +2010,52 @@ Everywhere "Image Credits" appears in the codebase (display strings only, NOT DB
 |---|---|
 | `/tmp/rankframe-multiuser-spec.html` | 13 screens, 26 admin+member views, multi-user team feature |
 | `/tmp/rankframe-content-engine-spec.html` | 12 screens, content engine, credits ROI calc, tech stack appendix |
+| `/home/user/claudecode/rankframe-content-engine-spec.html` | Same as above, committed to git on branch `rankframe-main` |
+
+---
+
+## 39. Session Memory: Content Engine Annotation Pass (May 2026)
+
+### What was completed
+
+Full dev-annotation pass on `rankframe-content-engine-spec.html`. Every interactive element in all 11 screens now has a visible `.ann` callout showing API endpoint, role restriction, credit cost, and state change.
+
+**Annotation system added:**
+- CSS: `.ann` class (teal-bordered code box, hidden by default, revealed when `body.show-anns` is active)
+- JS toggle: fixed-position button bottom-right corner: "Show dev annotations" / "Hide dev annotations"
+- 54 annotation divs placed throughout the spec
+
+**Coverage by screen:**
+| Screen | Count | Elements annotated |
+|---|---|---|
+| 1 Calendar | 7 | Calendar/List toggle, member filter, status filter, prev/next month, New Article |
+| 2 Research Hub | 8 | Re-run all, Re-scan, Edit competitors, opportunity filter tabs, Start Rewrite, Start Draft x3 |
+| 3 Draft Editor | 12 | Assign dropdown, schema type select, Approve and Schedule, sidebar tabs, 4 AI text actions, 3 image gen actions, schema bundle, Save Draft, Submit for Review, Sync to Framer |
+| 4 Modals | 2 | Submit for Review modal, Approve Article modal |
+| 5 Approval Queue | 3 | Preview, Request Changes, Approve |
+| 6 Sync Wizard | 3 | Collection compatibility check, Sync to Framer button, View in Framer CMS link |
+| 7 Plugin Draft Queue | 3 | Sync to Framer, Approve, Submit for Review |
+| 8 Link Opportunities | 4 | Scan Site, Add Link in Dashboard x3 |
+| 9 Blog Setup Wizard | 4 | Continue, Copy code snippet, Go to Draft Queue, Contact admin |
+| 10 Sync Status | 1 | Retry sync |
+| 11 AI Credits | 4 | Buy Credit Pack, Purchase credits, Reset, Buy recommended pack |
+
+### Annotation format used
+
+```html
+<div class="ann">
+  <span class="a-api">POST /api/content/drafts/{id}/ai</span>
+  | <span class="a-role">Role: Admin, Writer, Publisher</span>
+  | <span class="a-cr">Cost: 5 cr</span>
+  | <span class="a-state">Replaces selected H2 section content in-place</span>
+  | <span class="a-note">Uses Claude Sonnet 4.5 with prompt caching</span>
+</div>
+```
+
+Colors: API = teal, Role = yellow, Cost = red, State = green, Note = grey.
+
+### File location
+
+`/home/user/claudecode/rankframe-content-engine-spec.html` (3,094 lines, committed to branch `rankframe-main`, commit `8c2e93f`)
 
 Both files are self-contained HTML, no external dependencies, open in any browser.

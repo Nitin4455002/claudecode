@@ -1,0 +1,190 @@
+
+  /* ========================================================
+     SCHEMA + LLM SEO ADDITIONS (v3)
+     Built on the shared token + component layer. Only new,
+     schema-specific surfaces live here. Tables, buttons,
+     pills, cards, radii all inherit from the base.
+     ======================================================== */
+
+  /* JSON-LD code block */
+  .json-ld{
+    background:var(--rf-bg-input);
+    border:1px solid var(--rf-border-2);
+    border-radius:10px;
+    padding:14px 16px;
+    font-family:'JetBrains Mono', monospace;
+    font-size:11.5px; line-height:1.65;
+    color:var(--rf-text-2);
+    overflow-x:auto;
+    position:relative;
+  }
+  .json-ld::-webkit-scrollbar{ height:6px; }
+  .json-ld::-webkit-scrollbar-thumb{ background:#262A33; border-radius:3px; }
+  .json-ld .k{ color:#7AABFB; }
+  .json-ld .s{ color:#86EFAC; }
+  .json-ld .n{ color:var(--rf-amber-2); }
+  .json-ld .p{ color:var(--rf-text-dim); }
+  .json-ld .cm{ color:var(--rf-text-faint); font-style:italic; }
+  .json-ld-head{
+    display:flex; align-items:center; gap:8px;
+    margin-bottom:9px;
+  }
+  .json-ld-head .ttl{
+    font-size:10.5px; letter-spacing:0.08em; text-transform:uppercase;
+    color:var(--rf-text-dim); font-weight:700;
+  }
+  .json-ld-head .copy{
+    margin-left:auto;
+    display:inline-flex; align-items:center; gap:6px;
+    font-size:11px; color:var(--rf-text-muted); cursor:pointer;
+    padding:3px 8px; border-radius:6px; border:1px solid var(--rf-border-2);
+  }
+  .json-ld-head .copy:hover{ background:#0E1115; color:var(--rf-text); }
+
+  /* template / type picker */
+  .type-grid{
+    display:grid; grid-template-columns:repeat(auto-fill, minmax(168px, 1fr));
+    gap:12px;
+  }
+  .type-card{
+    background:var(--rf-bg-card); border:1px solid var(--rf-border);
+    border-radius:12px; padding:15px 15px 14px;
+    cursor:pointer; position:relative;
+    transition:border-color 0.12s, background 0.12s, transform 0.12s;
+  }
+  .type-card:hover{ border-color:var(--rf-border-2); background:#0F1115; transform:translateY(-2px); }
+  .type-card.selected{ border-color:var(--rf-purple-line); background:var(--rf-purple-soft-2); }
+  .type-card .tc-ico{
+    width:34px; height:34px; border-radius:9px;
+    background:var(--rf-purple-soft); color:var(--rf-purple);
+    border:1px solid var(--rf-purple-line);
+    display:flex; align-items:center; justify-content:center;
+    margin-bottom:11px;
+  }
+  .type-card .tc-ico svg{ width:17px; height:17px; }
+  .type-card .tc-title{ font-size:13px; font-weight:600; margin-bottom:3px; }
+  .type-card .tc-desc{ font-size:11px; color:var(--rf-text-muted); line-height:1.5; }
+  .type-card .tc-check{
+    position:absolute; top:12px; right:12px;
+    width:18px; height:18px; border-radius:50%;
+    background:var(--rf-purple); color:#fff;
+    display:none; align-items:center; justify-content:center;
+  }
+  .type-card .tc-check svg{ width:11px; height:11px; }
+  .type-card.selected .tc-check{ display:flex; }
+  .type-card .tc-badge{
+    display:inline-block; margin-top:9px;
+    font-size:9.5px; font-weight:700; letter-spacing:0.04em;
+    padding:2px 6px; border-radius:5px;
+    background:var(--rf-green-soft); color:var(--rf-green);
+  }
+
+  /* structured editor field */
+  .sch-field{ margin-bottom:13px; }
+  .sch-field > label{
+    display:block; font-size:11px; font-weight:600;
+    color:var(--rf-text-2); margin-bottom:5px;
+    display:flex; align-items:center; gap:7px;
+  }
+  .sch-field > label .req{ color:var(--rf-red); }
+  .sch-field > label .auto{
+    margin-left:auto;
+    font-size:9px; font-weight:700; letter-spacing:0.04em;
+    padding:1.5px 6px; border-radius:4px;
+    background:rgba(20,184,166,0.12); color:#3FD7C4; border:1px solid rgba(20,184,166,0.30);
+  }
+  .sch-input{
+    background:var(--rf-bg-input); border:1px solid var(--rf-border-2);
+    border-radius:8px; padding:9px 11px; font-size:12.5px; color:var(--rf-text);
+    width:100%; font-family:inherit;
+  }
+  .sch-input.filled{ color:var(--rf-text); }
+  .sch-input.ph{ color:var(--rf-text-dim); }
+  .sch-hint{ font-size:10.5px; color:var(--rf-text-dim); margin-top:4px; }
+
+  /* injection flow diagram */
+  .flow-diagram{
+    display:flex; align-items:stretch; gap:10px; flex-wrap:wrap;
+    margin:4px 0 2px;
+  }
+  .flow-node{
+    flex:1; min-width:150px;
+    background:var(--rf-bg-card); border:1px solid var(--rf-border);
+    border-radius:11px; padding:14px;
+  }
+  .flow-node.accent{ border-color:var(--rf-purple-line); background:var(--rf-purple-soft-2); }
+  .flow-node .fn-ico{
+    width:30px; height:30px; border-radius:8px;
+    background:var(--rf-bg-card-3); color:var(--rf-text-2);
+    display:flex; align-items:center; justify-content:center; margin-bottom:9px;
+  }
+  .flow-node.accent .fn-ico{ background:var(--rf-purple-soft); color:var(--rf-purple); border:1px solid var(--rf-purple-line); }
+  .flow-node .fn-t{ font-size:12.5px; font-weight:600; margin-bottom:3px; }
+  .flow-node .fn-d{ font-size:11px; color:var(--rf-text-muted); line-height:1.5; }
+  .flow-arrow{
+    align-self:center; color:var(--rf-text-faint); flex:0 0 auto;
+    display:flex; align-items:center;
+  }
+  .flow-arrow svg{ width:18px; height:18px; }
+
+  /* callout / info note */
+  .sch-note{
+    border-radius:12px; padding:14px 16px;
+    font-size:12.5px; line-height:1.6; color:var(--rf-text-2);
+    display:flex; gap:11px; align-items:flex-start;
+  }
+  .sch-note.info{ background:var(--rf-purple-soft-2); border:1px solid var(--rf-purple-line); }
+  .sch-note.warn{ background:var(--rf-amber-soft); border:1px solid rgba(245,185,25,0.30); }
+  .sch-note.danger{ background:var(--rf-red-soft); border:1px solid rgba(221,82,76,0.30); }
+  .sch-note.ok{ background:var(--rf-green-soft); border:1px solid rgba(74,222,128,0.30); }
+  .sch-note .sn-ico{ flex:0 0 18px; margin-top:1px; }
+  .sch-note.info .sn-ico{ color:var(--rf-purple); }
+  .sch-note.warn .sn-ico{ color:var(--rf-amber); }
+  .sch-note.danger .sn-ico{ color:var(--rf-red); }
+  .sch-note.ok .sn-ico{ color:var(--rf-green); }
+  .sch-note b{ color:var(--rf-text); }
+
+  /* rich-results check rows */
+  .rr-row{
+    display:flex; align-items:center; gap:11px;
+    padding:11px 13px;
+    border-bottom:1px solid var(--rf-border);
+  }
+  .rr-row:last-child{ border-bottom:none; }
+  .rr-ico{ width:20px; height:20px; flex:0 0 20px; display:flex; align-items:center; justify-content:center; }
+  .rr-ico.ok{ color:var(--rf-green); }
+  .rr-ico.warn{ color:var(--rf-amber); }
+  .rr-ico.err{ color:var(--rf-red); }
+  .rr-row .rr-t{ font-size:12.5px; font-weight:500; }
+  .rr-row .rr-m{ font-size:11px; color:var(--rf-text-dim); margin-top:1px; }
+  .rr-row .rr-right{ margin-left:auto; font-size:11px; color:var(--rf-text-muted); }
+
+  /* stat cards row */
+  .sch-stats{ display:grid; grid-template-columns:repeat(auto-fit, minmax(140px,1fr)); gap:12px; }
+  .sch-stat{
+    background:var(--rf-bg-card); border:1px solid var(--rf-border);
+    border-radius:12px; padding:14px 16px;
+  }
+  .sch-stat .v{ font-size:24px; font-weight:600; letter-spacing:-0.02em; }
+  .sch-stat .v.green{ color:var(--rf-green); }
+  .sch-stat .v.amber{ color:var(--rf-amber); }
+  .sch-stat .v.red{ color:var(--rf-red); }
+  .sch-stat .l{ font-size:11px; color:var(--rf-text-muted); margin-top:3px; }
+
+  /* simple list surface (page rows) */
+  .sch-pagerow .pg-url{ font-family:'JetBrains Mono', monospace; font-size:12px; color:var(--rf-text); }
+  .sch-pagerow .pg-types{ display:flex; gap:5px; flex-wrap:wrap; }
+  .sch-type-chip{
+    font-size:10px; font-weight:600;
+    padding:2.5px 7px; border-radius:5px;
+    background:var(--rf-bg-card-3); color:var(--rf-text-2);
+    border:1px solid var(--rf-border-2);
+  }
+
+  /* segmented role toggle (doc-only helper) */
+  .role-seg{
+    display:inline-flex; background:var(--rf-bg-card); border:1px solid var(--rf-border-2);
+    border-radius:8px; padding:2px; gap:2px;
+  }
+  .role-seg .opt{ padding:5px 12px; font-size:11.5px; border-radius:6px; color:var(--rf-text-muted); cursor:pointer; }
+  .role-seg .opt.active{ background:var(--rf-bg-active); color:#fff; }

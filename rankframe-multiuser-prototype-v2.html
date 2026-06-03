@@ -1,0 +1,2807 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>RankFrame · Multi-User / Team · Feature Prototype v2</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --rf-bg:           #000000;
+    --rf-bg-elev:      #050608;
+    --rf-bg-card:      #0C0E11;
+    --rf-bg-card-2:    #131519;
+    --rf-bg-card-3:    #1C1F25;
+    --rf-bg-active:    #202937;
+    --rf-bg-input:     #08090B;
+    --rf-border:       #1A1D24;
+    --rf-border-2:     #262A33;
+    --rf-border-strong:#373C46;
+    --rf-purple:       #BA24D5;
+    --rf-purple-btn:   #AB33CE;
+    --rf-purple-btn-2: #C234E0;
+    --rf-purple-deep:  #7A1A8C;
+    --rf-purple-soft:  rgba(186,36,213,0.10);
+    --rf-purple-soft-2:rgba(186,36,213,0.06);
+    --rf-purple-line:  rgba(186,36,213,0.35);
+    --rf-purple-glow:  rgba(186,36,213,0.30);
+    --rf-red:          #DD524C;
+    --rf-red-soft:     rgba(221,82,76,0.12);
+    --rf-amber:        #F5B919;
+    --rf-amber-2:      #F8C849;
+    --rf-amber-soft:   rgba(245,185,25,0.10);
+    --rf-amber-soft-2: rgba(245,185,25,0.18);
+    --rf-green:        #4ADE80;
+    --rf-green-2:      #22C55E;
+    --rf-green-soft:   rgba(74,222,128,0.12);
+    --rf-blue:         #3B82F6;
+    --rf-teal:         #14B8A6;
+    --rf-orange:       #F97316;
+    --rf-pink:         #EC4899;
+    --rf-text:         #FFFFFF;
+    --rf-text-2:       #D5D8DE;
+    --rf-text-muted:   #9BA1AE;
+    --rf-text-dim:     #6B7280;
+    --rf-text-faint:   #4B5563;
+    --rf-shadow-sm:  0 1px 2px rgba(0,0,0,0.4);
+    --rf-shadow-md:  0 8px 24px rgba(0,0,0,0.5);
+    --rf-shadow-lg:  0 20px 60px rgba(0,0,0,0.7);
+    --rf-glow-purple: 0 0 40px rgba(186,36,213,0.15);
+    --plugin-w: 880px;
+    --plugin-h: 720px;
+    --sub-nav-w: 240px;
+    --dash-w: 1180px;
+    --dash-h: 760px;
+    --dash-side-w: 232px;
+  }
+  *,*::before,*::after{ box-sizing:border-box; }
+  html,body{ margin:0; padding:0; }
+  body{
+    font-family:'Inter', -apple-system, system-ui, sans-serif;
+    background:#08090B;
+    color:var(--rf-text);
+    font-size:14px;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    min-height:100vh;
+    background-image:
+      radial-gradient(circle at 20% 0%, rgba(186,36,213,0.05) 0%, transparent 40%),
+      radial-gradient(circle at 80% 100%, rgba(186,36,213,0.04) 0%, transparent 40%);
+    background-attachment:fixed;
+  }
+
+  /* ========== PROTOTYPE OUTER LAYOUT ========== */
+  .proto-page{
+    display:grid;
+    grid-template-columns: 280px 1fr;
+    min-height:100vh;
+  }
+  .proto-side{
+    background:rgba(7,7,9,0.85);
+    backdrop-filter:blur(20px);
+    -webkit-backdrop-filter:blur(20px);
+    border-right:1px solid #16181D;
+    padding:0 0 32px;
+    position:sticky; top:0; height:100vh; overflow-y:auto;
+  }
+  .proto-side::-webkit-scrollbar{ width:5px; }
+  .proto-side::-webkit-scrollbar-thumb{ background:#262A33; border-radius:3px; }
+  .proto-side-head{
+    padding:22px 22px 18px;
+    border-bottom:1px solid #16181D;
+    margin-bottom:6px;
+    background:linear-gradient(180deg, rgba(186,36,213,0.05), transparent);
+  }
+  .proto-brand{ display:flex; align-items:center; gap:11px; margin-bottom:8px; }
+  .proto-brand-mark{
+    width:28px; height:28px; border-radius:7px;
+    background:#3E3B3B;
+    display:grid; grid-template-columns:1fr 1fr; gap:2.5px; padding:5px;
+    box-shadow:0 4px 12px rgba(0,0,0,0.4);
+  }
+  .proto-brand-mark span{ border-radius:50%; }
+  .proto-brand-mark span:nth-child(1){ background:#D9D9D9; }
+  .proto-brand-mark span:nth-child(2){ background:var(--rf-purple); box-shadow:0 0 8px rgba(186,36,213,0.5); }
+  .proto-brand-mark span:nth-child(3){ background:var(--rf-purple); box-shadow:0 0 8px rgba(186,36,213,0.5); }
+  .proto-brand-mark span:nth-child(4){ background:#D9D9D9; }
+  .proto-brand-name{ font-weight:600; font-size:15px; letter-spacing:-0.01em; }
+  .proto-brand-name .accent{ color:var(--rf-purple); }
+  .proto-side-sub{
+    font-size:10.5px; color:var(--rf-text-dim); letter-spacing:0.10em;
+    text-transform:uppercase; font-weight:600;
+  }
+  .proto-side-meta{
+    margin-top:8px;
+    display:flex; gap:8px; align-items:center;
+    font-size:11px; color:var(--rf-text-muted);
+  }
+  .proto-side-meta b{ color:var(--rf-purple); font-family:'JetBrains Mono', monospace; font-weight:500; }
+  .proto-side-meta .sep{ color:var(--rf-text-faint); }
+  .proto-side h4{
+    margin:18px 22px 6px;
+    font-size:10px; letter-spacing:0.12em; text-transform:uppercase;
+    color:var(--rf-text-faint); font-weight:700;
+    display:flex; align-items:center; gap:8px;
+  }
+  .proto-side h4::after{ content:''; display:block; flex:1; height:1px; background:#16181D; }
+  .proto-nav-item{
+    display:flex; align-items:center; gap:10px;
+    padding:7px 22px;
+    font-size:12.5px; color:var(--rf-text-muted);
+    cursor:pointer;
+    border-left:2px solid transparent;
+    transition:all 0.12s;
+    text-decoration:none;
+  }
+  .proto-nav-item:hover{ color:var(--rf-text); background:rgba(186,36,213,0.04); }
+  .proto-nav-item.active{
+    color:var(--rf-text);
+    background:rgba(186,36,213,0.07);
+    border-left-color:var(--rf-purple);
+  }
+  .proto-nav-num{
+    width:22px; height:20px; border-radius:5px;
+    background:#16181D; color:var(--rf-text-dim);
+    font-size:10px; font-weight:600;
+    font-family:'JetBrains Mono', monospace;
+    display:flex; align-items:center; justify-content:center;
+    flex-shrink:0;
+  }
+  .proto-nav-item.active .proto-nav-num{ background:var(--rf-purple-soft); color:var(--rf-purple); }
+  .proto-nav-item .new-dot{
+    width:6px; height:6px; border-radius:50%; background:var(--rf-purple);
+    margin-left:auto; box-shadow:0 0 6px rgba(186,36,213,0.6);
+  }
+  .proto-main{ padding:32px 44px 100px; overflow-x:hidden; min-width:0; }
+
+  /* ========== SECTION HEADER ========== */
+  .proto-screen-head{ margin-bottom:22px; }
+  .proto-screen-head h1{ margin:6px 0 6px; font-size:24px; font-weight:600; letter-spacing:-0.015em; }
+  .proto-screen-head p{
+    margin:0;
+    font-size:13px; color:var(--rf-text-muted);
+    max-width:680px;
+    line-height:1.6;
+  }
+  .proto-tag{
+    display:inline-flex; align-items:center; gap:6px;
+    padding:3px 10px; border-radius:999px;
+    font-size:10.5px; font-weight:600; letter-spacing:0.04em; text-transform:uppercase;
+    background:var(--rf-purple-soft); color:var(--rf-purple);
+    border:1px solid var(--rf-purple-line);
+  }
+  .proto-tag.new{
+    background:var(--rf-green-soft); color:var(--rf-green); border-color:rgba(74,222,128,0.30);
+  }
+
+  /* ========== DEVELOPER NOTES ========== */
+  .proto-anno{
+    margin-top:18px;
+    background:rgba(10,11,13,0.7);
+    border:1px solid #16181D;
+    border-radius:14px;
+    padding:18px 22px 20px;
+    max-width:var(--dash-w);
+  }
+  .proto-anno h3{
+    margin:0 0 14px;
+    font-size:11px; font-weight:700; letter-spacing:0.10em; text-transform:uppercase;
+    color:var(--rf-text-muted);
+    display:flex; align-items:center; gap:10px;
+  }
+  .proto-anno h3::before{
+    content:''; display:block; width:6px; height:6px; border-radius:50%; background:var(--rf-purple);
+    box-shadow:0 0 8px rgba(186,36,213,0.5);
+  }
+  .proto-anno-grid{
+    display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:16px 24px;
+  }
+  .proto-anno-item dt{
+    font-size:10.5px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase;
+    color:var(--rf-text-dim); margin-bottom:4px;
+  }
+  .proto-anno-item dd{ margin:0; font-size:12.5px; color:var(--rf-text-2); line-height:1.6; }
+  .proto-anno-item dd code{
+    font-family:'JetBrains Mono', monospace; font-size:11px;
+    background:#15171B; padding:1.5px 6px; border-radius:4px;
+    color:#D5D8DE; border:1px solid #20232A;
+  }
+  .change-tag{
+    display:inline-flex; align-items:center; gap:5px;
+    padding:2.5px 7px; border-radius:5px;
+    font-size:10.5px; font-weight:600; letter-spacing:0.02em;
+    margin-right:6px;
+    white-space:nowrap;
+  }
+  .change-tag.framer{ background:rgba(186,36,213,0.12); color:#D277E8; border:1px solid rgba(186,36,213,0.3); }
+  .change-tag.plugin{ background:rgba(59,130,246,0.12); color:#7AABFB; border:1px solid rgba(59,130,246,0.3); }
+  .change-tag.dash{ background:rgba(168,85,247,0.12); color:#C084FC; border:1px solid rgba(168,85,247,0.3); }
+  .change-tag.api{ background:rgba(20,184,166,0.12); color:#3FD7C4; border:1px solid rgba(20,184,166,0.3); }
+  .change-tag.cache{ background:rgba(245,185,25,0.12); color:#F5C547; border:1px solid rgba(245,185,25,0.3); }
+  .change-tag.clip{ background:rgba(107,114,128,0.18); color:#9CA3AF; border:1px solid rgba(107,114,128,0.3); }
+  .change-tag.db{ background:rgba(74,222,128,0.12); color:#86EFAC; border:1px solid rgba(74,222,128,0.30); }
+
+  /* ========== PLUGIN WINDOW ========== */
+  .plugin-window{
+    width:min(var(--plugin-w), 100%); height:var(--plugin-h);
+    background:var(--rf-bg);
+    border-radius:14px;
+    overflow:hidden;
+    box-shadow:var(--rf-shadow-lg), 0 0 0 1px #16181D;
+    display:grid;
+    grid-template-rows:48px 1fr;
+    position:relative;
+  }
+  .plugin-window::before{
+    content:''; position:absolute; inset:-1px; border-radius:14px;
+    background:linear-gradient(180deg, rgba(255,255,255,0.04), transparent 30%);
+    pointer-events:none; z-index:0;
+  }
+  .plg-top{
+    background:var(--rf-bg-card-2);
+    border-bottom:1px solid var(--rf-border);
+    display:flex; align-items:center; justify-content:space-between;
+    padding:0 16px;
+    font-size:13px;
+    position:relative; z-index:1;
+  }
+  .plg-top-l{ display:flex; align-items:center; gap:10px; }
+  .plg-top-l .mark{
+    width:22px; height:22px; border-radius:6px;
+    background:#3E3B3B; display:grid; grid-template-columns:1fr 1fr; gap:1.5px; padding:3.5px;
+  }
+  .plg-top-l .mark span{ border-radius:50%; }
+  .plg-top-l .mark span:nth-child(1){ background:#D9D9D9; }
+  .plg-top-l .mark span:nth-child(2){ background:var(--rf-purple); }
+  .plg-top-l .mark span:nth-child(3){ background:var(--rf-purple); }
+  .plg-top-l .mark span:nth-child(4){ background:#D9D9D9; }
+  .plg-top-l b{ font-weight:600; font-size:13px; }
+  .plg-top-l .dev-tag{ font-size:11px; color:var(--rf-text-dim); }
+  .plg-top-x{
+    width:24px; height:24px; border-radius:5px; display:flex; align-items:center; justify-content:center;
+    color:var(--rf-text-muted); cursor:pointer; font-size:14px;
+  }
+  .plg-top-x:hover{ background:#1C1F25; }
+  .plg-body{ display:grid; grid-template-columns:var(--sub-nav-w) 1fr; min-height:0; position:relative; z-index:1; }
+
+  /* sub-nav (left rail inside plugin) */
+  .sub-nav{
+    background:var(--rf-bg-elev);
+    border-right:1px solid var(--rf-border);
+    padding:18px 12px;
+    display:flex; flex-direction:column;
+    overflow:hidden;
+  }
+  .sub-nav-head{
+    display:flex; align-items:center; gap:8px;
+    padding:4px 8px 14px;
+    border-bottom:1px solid var(--rf-border);
+    margin-bottom:10px;
+  }
+  .sub-nav-head-title{
+    font-size:14px; font-weight:600;
+    color:var(--rf-text);
+  }
+  .sub-nav-head-title .purple{ color:var(--rf-purple); }
+  .sub-nav-back{
+    margin-left:auto;
+    color:var(--rf-text-muted);
+    font-size:16px;
+  }
+  .sub-nav-item{
+    display:flex; align-items:center; gap:10px;
+    padding:8px 10px;
+    border-radius:7px;
+    color:var(--rf-text-muted);
+    font-size:13.5px;
+    cursor:pointer;
+    margin-bottom:2px;
+    position:relative;
+  }
+  .sub-nav-item:hover{ background:rgba(255,255,255,0.03); }
+  .sub-nav-item.active{ background:var(--rf-bg-active); color:var(--rf-text); }
+  .sub-nav-item .ico{
+    width:16px; height:16px;
+    flex:0 0 16px;
+    display:flex; align-items:center; justify-content:center;
+    color:currentColor;
+  }
+  .sub-nav-item .badge-new{
+    margin-left:auto;
+    font-size:9px; font-weight:700; letter-spacing:0.5px;
+    background:var(--rf-purple);
+    color:#fff;
+    padding:2px 5px; border-radius:4px;
+  }
+  .sub-nav-spacer{ flex:1; }
+  .sub-nav-foot{
+    border-top:1px solid var(--rf-border);
+    padding-top:10px; margin-top:10px;
+    display:flex; flex-direction:column; gap:2px;
+  }
+  .sub-nav-score-card{
+    margin:12px 0 14px;
+    background:var(--rf-bg-card);
+    border:1px solid var(--rf-border);
+    border-radius:10px;
+    padding:10px 12px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .sub-nav-score-ring{
+    width:36px; height:36px;
+    border-radius:50%;
+    background:
+      conic-gradient(var(--rf-purple) 0% 82%, rgba(255,255,255,0.08) 82% 100%);
+    display:flex; align-items:center; justify-content:center;
+    position:relative;
+  }
+  .sub-nav-score-ring::before{
+    content:""; position:absolute; inset:3px;
+    background:var(--rf-bg-card); border-radius:50%;
+  }
+  .sub-nav-score-ring span{
+    position:relative; z-index:1;
+    font-size:12px; font-weight:700;
+  }
+  .sub-nav-score-meta{
+    display:flex; flex-direction:column;
+  }
+  .sub-nav-score-meta .label{
+    font-size:9px; font-weight:700; letter-spacing:0.5px;
+    color:var(--rf-text-muted); text-transform:uppercase;
+  }
+  .sub-nav-score-meta .val{
+    font-size:12px; font-weight:600; color:var(--rf-text);
+  }
+
+  .sub-nav-user{
+    display:flex; align-items:center; gap:10px;
+    padding:10px;
+    background:var(--rf-bg-card);
+    border:1px solid var(--rf-border);
+    border-radius:10px;
+    margin-bottom:10px;
+  }
+  .sub-nav-user-av{
+    width:30px; height:30px;
+    border-radius:50%;
+    background:var(--rf-purple);
+    display:flex; align-items:center; justify-content:center;
+    font-size:10px; font-weight:700;
+  }
+  .sub-nav-user-meta{ overflow:hidden; }
+  .sub-nav-user-meta .name{
+    font-size:12px; font-weight:600;
+    white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+  }
+  .sub-nav-user-meta .email{
+    font-size:10px; color:var(--rf-text-dim);
+    white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+  }
+  .sub-nav-plan-note{
+    font-size:11px; color:var(--rf-text-muted);
+    margin:2px 4px 6px;
+  }
+  .sub-nav-plan-note strong{
+    display:block; color:var(--rf-text); font-size:12px; font-weight:600;
+  }
+  .sub-nav-cta{
+    display:flex; align-items:center; justify-content:center; gap:6px;
+    padding:8px;
+    border-radius:8px;
+    font-size:12.5px; font-weight:600;
+    cursor:pointer;
+    border:1px solid transparent;
+  }
+  .sub-nav-cta.purple{
+    background:linear-gradient(180deg, var(--rf-purple) 0%, var(--rf-purple-deep) 100%);
+    color:#fff;
+  }
+  .sub-nav-cta.red{
+    background:rgba(221,82,76,0.10);
+    border-color:rgba(221,82,76,0.35);
+    color:var(--rf-red);
+    margin-top:5px;
+  }
+
+  /* ============================================================
+     CANONICAL ACCORDION PLUGIN NAV
+     Only the active group is expanded. The scroll region flexes
+     so the footer + account + Recrawl stay pinned to the bottom
+     of the short plugin window without ever overlapping content.
+     ============================================================ */
+  .plg-acc-scroll{
+    flex:1 1 auto;
+    min-height:0;
+    overflow-y:auto;
+    margin:4px -4px 6px;
+    padding:0 4px;
+  }
+  .plg-acc-group + .plg-acc-group{ margin-top:1px; }
+  .plg-acc-head{
+    width:100%;
+    display:flex; align-items:center; gap:10px;
+    padding:8px 10px;
+    border:0; background:transparent;
+    color:var(--rf-text-2);
+    font-family:inherit; font-size:13.5px; font-weight:600;
+    text-align:left; cursor:pointer;
+    border-radius:7px;
+  }
+  .plg-acc-head:hover{ background:rgba(255,255,255,0.03); color:var(--rf-text); }
+  .plg-acc-head.active-group{ color:var(--rf-text); }
+  .plg-acc-ico{
+    width:16px; height:16px; flex:0 0 16px;
+    display:flex; align-items:center; justify-content:center;
+    color:var(--rf-text-muted);
+  }
+  .plg-acc-head.active-group .plg-acc-ico{ color:var(--rf-purple); }
+  .plg-acc-label{ flex:1; }
+  .plg-acc-chev{
+    width:11px; height:11px; flex:0 0 11px;
+    color:var(--rf-text-dim);
+    transition:transform 150ms ease;
+  }
+  .plg-acc-group.open .plg-acc-chev{ transform:rotate(90deg); }
+  .plg-acc-new{
+    font-size:8.5px; font-weight:700; letter-spacing:0.5px;
+    background:var(--rf-purple); color:#fff;
+    padding:2px 5px; border-radius:4px;
+  }
+  .plg-acc-new.sm{ margin-left:auto; }
+  .plg-acc-children{ padding:1px 0 5px; }
+  .plg-acc-children[hidden]{ display:none; }
+  .plg-acc-item{
+    display:flex; align-items:center; gap:10px;
+    padding:6px 10px 6px 23px;
+    border-radius:7px;
+    color:var(--rf-text-muted);
+    font-size:13px; cursor:pointer;
+    margin-bottom:1px;
+  }
+  .plg-acc-item:hover{ background:rgba(255,255,255,0.03); color:var(--rf-text); }
+  .plg-acc-item.active{ background:var(--rf-bg-active); color:var(--rf-text); }
+  .plg-acc-item-label{ flex:1; }
+  .plg-acc-dot{
+    width:5px; height:5px; flex:0 0 5px;
+    border-radius:50%;
+    background:var(--rf-border-strong);
+  }
+  .plg-acc-item.active .plg-acc-dot{ background:var(--rf-purple); }
+
+  .plg-nav{
+    background:var(--rf-bg-elev);
+    border-right:1px solid var(--rf-border);
+    padding:8px 0;
+    display:flex; flex-direction:column; gap:1px;
+    overflow-y:auto;
+  }
+  .plg-nav::-webkit-scrollbar{ width:5px; }
+  .plg-nav::-webkit-scrollbar-thumb{ background:#262A33; border-radius:3px; }
+  .plg-nav-brand{
+    display:flex; align-items:center; gap:8px;
+    padding:8px 14px 10px;
+  }
+  .plg-nav-brand .mini{
+    width:18px; height:18px; border-radius:5px;
+    background:#3E3B3B; display:grid; grid-template-columns:1fr 1fr; gap:1px; padding:3px;
+  }
+  .plg-nav-brand .mini span{ border-radius:50%; }
+  .plg-nav-brand .mini span:nth-child(1){ background:#D9D9D9; }
+  .plg-nav-brand .mini span:nth-child(2){ background:var(--rf-purple); }
+  .plg-nav-brand .mini span:nth-child(3){ background:var(--rf-purple); }
+  .plg-nav-brand .mini span:nth-child(4){ background:#D9D9D9; }
+  .plg-nav-brand b{ font-size:13px; font-weight:600; }
+  .plg-nav-brand b .a{ color:var(--rf-purple); }
+  .plg-nav-brand .arrow{ margin-left:auto; color:var(--rf-text-dim); font-size:14px; cursor:pointer; }
+  .plg-nav-group{
+    margin:8px 14px 4px;
+    font-size:9px; letter-spacing:0.12em; text-transform:uppercase;
+    color:var(--rf-text-faint); font-weight:700;
+    display:flex; align-items:center; gap:6px;
+  }
+  .plg-nav-group.content-group{ color:var(--rf-purple); }
+  .plg-nav-group .pinkdot{
+    width:5px; height:5px; border-radius:50%; background:var(--rf-pink);
+    box-shadow:0 0 5px var(--rf-pink);
+  }
+  .plg-nav-item{
+    display:flex; align-items:center; gap:10px;
+    padding:7px 14px;
+    margin:0 6px;
+    border-radius:7px;
+    font-size:12.5px; color:var(--rf-text-2);
+    cursor:pointer;
+    position:relative;
+    transition:background 0.1s;
+  }
+  .plg-nav-item:hover{ background:#0E1115; }
+  .plg-nav-item.active{ background:var(--rf-bg-active); color:#fff; }
+  .plg-nav-item .ico{
+    width:16px; height:16px; display:flex; align-items:center; justify-content:center;
+    color:var(--rf-text-muted); flex-shrink:0;
+  }
+  .plg-nav-item.active .ico{ color:#fff; }
+  .plg-nav-item .new-pill{
+    margin-left:auto;
+    font-size:8.5px; font-weight:700; letter-spacing:0.06em;
+    padding:2px 6px; border-radius:4px;
+    background:var(--rf-purple); color:#fff;
+    box-shadow:0 0 8px rgba(186,36,213,0.4);
+  }
+  .plg-nav-item .count-pill{
+    margin-left:auto;
+    font-size:9.5px; font-weight:600;
+    padding:1.5px 6px; border-radius:999px;
+    background:#15171B; color:var(--rf-text-muted);
+    font-family:'JetBrains Mono', monospace;
+  }
+  .plg-nav-divider{ height:1px; background:var(--rf-border); margin:6px 14px; }
+  .plg-nav-account{
+    display:flex; gap:9px; align-items:center;
+    padding:7px 14px; margin:0 6px;
+    border-radius:8px;
+  }
+  .plg-nav-account .ava{
+    width:30px; height:30px; border-radius:50%;
+    background:linear-gradient(135deg, #6B27D8, #BA24D5);
+    color:#fff; display:flex; align-items:center; justify-content:center;
+    font-size:11px; font-weight:600;
+  }
+  .plg-nav-account .info b{ display:block; font-size:12px; font-weight:600; }
+  .plg-nav-account .info span{ font-size:10.5px; color:var(--rf-text-dim); }
+  .plg-nav-plan{
+    margin:5px 10px 0;
+    padding:7px 10px;
+    background:var(--rf-bg-card);
+    border:1px solid var(--rf-border);
+    border-radius:8px;
+    font-size:11px;
+  }
+  .plg-nav-plan b{ display:block; font-size:11.5px; }
+  .plg-nav-plan span{ color:var(--rf-text-dim); font-size:10.5px; }
+  .plg-nav-cta{
+    display:block; text-align:center; width:calc(100% - 20px);
+    margin:5px 10px 0;
+    padding:7px 0;
+    background:var(--rf-purple-btn);
+    color:#fff; font-size:12px; font-weight:600;
+    border-radius:8px; border:none; cursor:pointer;
+  }
+  .plg-main{
+    background:var(--rf-bg);
+    overflow-y:auto;
+    padding:22px 26px 32px;
+    position:relative;
+  }
+  .plg-main::-webkit-scrollbar{ width:5px; }
+  .plg-main::-webkit-scrollbar-thumb{ background:#262A33; border-radius:3px; }
+
+  /* ========== DASHBOARD WINDOW ========== */
+  .dash-window{
+    width:min(var(--dash-w), 100%); height:var(--dash-h);
+    background:var(--rf-bg);
+    border-radius:14px;
+    overflow:hidden;
+    box-shadow:var(--rf-shadow-lg), 0 0 0 1px #16181D;
+    display:grid;
+    grid-template-rows:44px 1fr;
+    position:relative;
+  }
+  .dash-top{
+    background:var(--rf-bg-card-2);
+    border-bottom:1px solid var(--rf-border);
+    display:flex; align-items:center; gap:10px;
+    padding:0 14px;
+    font-size:12.5px;
+  }
+  .dash-top .dots{ display:flex; gap:6px; }
+  .dash-top .dots span{ width:10px; height:10px; border-radius:50%; background:#2A2D34; }
+  .dash-top .url{
+    margin-left:14px;
+    background:var(--rf-bg-input);
+    border:1px solid var(--rf-border-2);
+    padding:4px 10px; border-radius:6px;
+    font-size:11.5px; color:var(--rf-text-muted);
+    font-family:'JetBrains Mono', monospace;
+    flex:1; max-width:420px;
+  }
+  .dash-body{ display:grid; grid-template-columns:var(--dash-side-w) 1fr; min-height:0; }
+  .dash-side{
+    background:var(--rf-bg-elev);
+    border-right:1px solid var(--rf-border);
+    padding:18px 0;
+    display:flex; flex-direction:column;
+    overflow-y:auto;
+  }
+  .dash-side::-webkit-scrollbar{ width:5px; }
+  .dash-side::-webkit-scrollbar-thumb{ background:#262A33; border-radius:3px; }
+  .dash-side-brand{
+    display:flex; align-items:center; gap:10px;
+    padding:0 18px 16px;
+    border-bottom:1px solid var(--rf-border);
+    margin-bottom:10px;
+  }
+  .dash-side-brand .mini{
+    width:24px; height:24px; border-radius:6px;
+    background:#3E3B3B; display:grid; grid-template-columns:1fr 1fr; gap:1.5px; padding:4px;
+  }
+  .dash-side-brand .mini span{ border-radius:50%; }
+  .dash-side-brand .mini span:nth-child(1){ background:#D9D9D9; }
+  .dash-side-brand .mini span:nth-child(2){ background:var(--rf-purple); }
+  .dash-side-brand .mini span:nth-child(3){ background:var(--rf-purple); }
+  .dash-side-brand .mini span:nth-child(4){ background:#D9D9D9; }
+  .dash-side-brand b{ font-size:14px; font-weight:600; }
+  .dash-side-brand b .a{ color:var(--rf-purple); }
+  .dash-nav-item{
+    display:flex; align-items:center; gap:10px;
+    padding:9px 18px;
+    font-size:13px; color:var(--rf-text-2);
+    cursor:pointer;
+    border-left:2px solid transparent;
+  }
+  .dash-nav-item:hover{ background:rgba(186,36,213,0.04); }
+  .dash-nav-item.active{
+    background:rgba(186,36,213,0.08);
+    border-left-color:var(--rf-purple);
+    color:#fff;
+  }
+  .dash-nav-item .ico{
+    width:16px; height:16px; color:var(--rf-text-muted); flex-shrink:0;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .dash-nav-item.active .ico{ color:var(--rf-purple); }
+  .dash-nav-item .new-pill{
+    margin-left:auto;
+    font-size:8.5px; font-weight:700; letter-spacing:0.06em;
+    padding:2px 6px; border-radius:4px;
+    background:var(--rf-purple); color:#fff;
+  }
+  .dash-side-foot{
+    margin-top:auto;
+    padding:14px 18px;
+    border-top:1px solid var(--rf-border);
+    font-size:11px; color:var(--rf-text-dim);
+  }
+  .dash-main{
+    background:#08090B;
+    overflow-y:auto;
+    padding:24px 32px 40px;
+    position:relative;
+  }
+  .dash-main::-webkit-scrollbar{ width:6px; }
+  .dash-main::-webkit-scrollbar-thumb{ background:#262A33; border-radius:3px; }
+
+  /* ========== SHARED COMPONENTS ========== */
+  .pg-title{
+    font-size:20px; font-weight:600; letter-spacing:-0.015em; margin:0 0 4px;
+    display:flex; align-items:center; gap:8px;
+  }
+  .pg-title .info-trigger{
+    width:18px; height:18px; border-radius:50%;
+    background:#15171B; border:1px solid var(--rf-border-2);
+    color:var(--rf-text-dim); cursor:help;
+    display:inline-flex; align-items:center; justify-content:center;
+    font-size:11px;
+  }
+  .pg-sub{ font-size:12.5px; color:var(--rf-text-muted); margin:0 0 18px; }
+  .tooltip-pop{ position:relative; display:inline-block; }
+  .tooltip-pop .pop{
+    position:absolute; top:calc(100% + 8px); left:-8px;
+    width:300px; padding:12px 14px;
+    background:#0F1116; border:1px solid var(--rf-purple-line);
+    border-radius:10px;
+    font-size:12px; color:var(--rf-text-2); line-height:1.55;
+    box-shadow:var(--rf-shadow-md), 0 0 30px rgba(186,36,213,0.15);
+    z-index:10;
+  }
+  .tooltip-pop .pop::before{
+    content:''; position:absolute; top:-5px; left:14px;
+    width:9px; height:9px; background:#0F1116;
+    border-left:1px solid var(--rf-purple-line); border-top:1px solid var(--rf-purple-line);
+    transform:rotate(45deg);
+  }
+  .tooltip-pop .pop b{ display:block; color:var(--rf-purple); font-size:11px; letter-spacing:0.05em; text-transform:uppercase; margin-bottom:4px; }
+  .tooltip-pop .pop p{ margin:0; }
+  .tabs{
+    display:flex; gap:24px; border-bottom:1px solid var(--rf-border); margin-bottom:20px;
+    position:relative;
+  }
+  .tabs .tab{
+    padding:8px 0 12px;
+    font-size:13px; font-weight:500; color:var(--rf-text-muted);
+    cursor:pointer; border-bottom:2px solid transparent; margin-bottom:-1px;
+  }
+  .tabs .tab.active{ color:var(--rf-purple); border-bottom-color:var(--rf-purple); }
+  .tabs .tab.disabled{ color:var(--rf-text-faint); cursor:not-allowed; opacity:0.5; }
+  .ghost-btn{
+    background:transparent; color:var(--rf-text-2);
+    border:1px solid var(--rf-border-2);
+    padding:8px 12px; border-radius:8px;
+    font-size:12px; font-weight:500; cursor:pointer;
+    display:inline-flex; align-items:center; gap:7px;
+  }
+  .ghost-btn:hover{ background:#0E1115; border-color:var(--rf-border-strong); color:var(--rf-text); }
+  .ghost-btn.sm{ padding:5px 10px; font-size:11px; }
+  .btn-primary{
+    background:var(--rf-purple-btn);
+    color:#fff;
+    border:none;
+    padding:10px 18px;
+    border-radius:8px;
+    font-size:13px; font-weight:600;
+    cursor:pointer;
+    display:inline-flex; align-items:center; gap:8px;
+    box-shadow:0 4px 16px rgba(186,36,213,0.25);
+  }
+  .btn-primary:hover{ background:var(--rf-purple-btn-2); }
+  .btn-primary.full{ width:100%; justify-content:center; }
+  .btn-primary svg{ width:14px; height:14px; }
+  .btn-primary.sm{ padding:6px 12px; font-size:11.5px; }
+  .empty-state{
+    padding:54px 20px; text-align:center;
+    border:1px dashed var(--rf-border-2);
+    border-radius:14px;
+    background:radial-gradient(circle at 50% 0%, rgba(186,36,213,0.04), transparent 60%);
+    position:relative;
+  }
+  .empty-state .ico{
+    width:52px; height:52px; margin:0 auto 16px;
+    border-radius:13px;
+    background:var(--rf-purple-soft);
+    color:var(--rf-purple);
+    display:flex; align-items:center; justify-content:center; font-size:22px;
+    border:1px solid var(--rf-purple-line);
+    box-shadow:0 0 24px rgba(186,36,213,0.15);
+  }
+  .empty-state h3{ margin:0 0 6px; font-size:15px; font-weight:600; }
+  .empty-state p{ margin:0 0 20px; font-size:12.5px; color:var(--rf-text-muted); max-width:480px; margin-left:auto; margin-right:auto; line-height:1.55; }
+  .empty-state.compact{ padding:36px 18px; }
+  .loading-block{ text-align:center; padding:64px 20px; }
+  .loading-spinner{
+    width:44px; height:44px; margin:0 auto 18px;
+    border-radius:50%;
+    border:2px solid #1A1D24;
+    border-top-color:var(--rf-purple);
+    animation:spin 0.8s linear infinite;
+    box-shadow:0 0 20px rgba(186,36,213,0.2);
+  }
+  @keyframes spin{ to{ transform:rotate(360deg); } }
+  .loading-block h3{ margin:0 0 6px; font-size:14px; font-weight:600; }
+  .loading-block p{ margin:0; font-size:12px; color:var(--rf-text-muted); max-width:420px; margin-left:auto; margin-right:auto; line-height:1.55; }
+  .last-analyzed{
+    font-size:11.5px; color:var(--rf-text-dim);
+    display:flex; align-items:center; gap:8px;
+    margin-bottom:16px;
+  }
+  .last-analyzed .dot{ width:5px; height:5px; border-radius:50%; background:var(--rf-green); box-shadow:0 0 5px var(--rf-green); }
+
+  /* ========== CREDIT CHIP ========== */
+  .credit-chip{
+    display:inline-flex; align-items:center; gap:4px;
+    padding:1.5px 7px; border-radius:5px;
+    background:rgba(245,185,25,0.12); color:var(--rf-amber);
+    border:1px solid rgba(245,185,25,0.30);
+    font-size:10.5px; font-weight:600;
+    font-family:'JetBrains Mono', monospace;
+  }
+  .credit-chip.free{ background:var(--rf-green-soft); color:var(--rf-green); border-color:rgba(74,222,128,0.30); }
+
+  /* ========== STATUS PILLS (article workflow) ========== */
+  .status-pill{
+    display:inline-flex; align-items:center; gap:5px;
+    padding:2.5px 8px; border-radius:999px;
+    font-size:10.5px; font-weight:600; letter-spacing:0.03em;
+  }
+  .status-pill .dot{ width:5px; height:5px; border-radius:50%; background:currentColor; }
+  .status-idea{ background:rgba(107,114,128,0.18); color:#9CA3AF; }
+  .status-research{ background:rgba(59,130,246,0.12); color:#7AABFB; }
+  .status-draft{ background:rgba(245,185,25,0.12); color:var(--rf-amber); }
+  .status-review{ background:rgba(168,85,247,0.14); color:#C084FC; }
+  .status-approved{ background:rgba(186,36,213,0.14); color:#D277E8; }
+  .status-synced{ background:rgba(20,184,166,0.12); color:#3FD7C4; }
+  .status-published{ background:var(--rf-green-soft); color:var(--rf-green); }
+  .status-failed{ background:var(--rf-red-soft); color:var(--rf-red); }
+
+  /* ========== CALENDAR ========== */
+  .cal-toolbar{
+    display:flex; gap:10px; align-items:center; margin-bottom:14px;
+  }
+  .cal-toolbar .month{ font-size:15px; font-weight:600; letter-spacing:-0.01em; }
+  .cal-toolbar .nav-btn{
+    width:26px; height:26px; border-radius:6px;
+    background:var(--rf-bg-card); border:1px solid var(--rf-border-2);
+    color:var(--rf-text-muted); display:flex; align-items:center; justify-content:center; cursor:pointer;
+  }
+  .cal-toolbar .view-toggle{
+    display:inline-flex;
+    background:var(--rf-bg-card); border:1px solid var(--rf-border-2);
+    border-radius:7px; padding:2px;
+  }
+  .cal-toolbar .view-toggle .opt{
+    padding:4px 10px; font-size:11.5px; border-radius:5px; color:var(--rf-text-muted); cursor:pointer;
+  }
+  .cal-toolbar .view-toggle .opt.active{ background:var(--rf-bg-active); color:#fff; }
+  .cal-filter{
+    background:var(--rf-bg-card); border:1px solid var(--rf-border-2);
+    padding:5px 10px; border-radius:7px; font-size:11.5px;
+    color:var(--rf-text-2); display:inline-flex; gap:6px; align-items:center;
+  }
+  .cal-filter.active{ border-color:var(--rf-purple-line); background:var(--rf-purple-soft); color:var(--rf-purple); }
+  .cal-grid{
+    display:grid; grid-template-columns:repeat(7,1fr); gap:6px;
+    background:var(--rf-bg-card); border:1px solid var(--rf-border); border-radius:12px;
+    padding:10px;
+  }
+  .cal-dow{
+    font-size:9.5px; letter-spacing:0.10em; text-transform:uppercase;
+    color:var(--rf-text-dim); padding:4px 0 6px; font-weight:600; text-align:left;
+  }
+  .cal-cell{
+    min-height:78px;
+    background:var(--rf-bg-elev);
+    border:1px solid var(--rf-border);
+    border-radius:8px;
+    padding:6px 7px;
+    font-size:10.5px;
+    display:flex; flex-direction:column; gap:3px;
+    position:relative;
+  }
+  .cal-cell.muted{ opacity:0.32; }
+  .cal-cell.today{ border-color:var(--rf-purple-line); background:rgba(186,36,213,0.04); }
+  .cal-cell .d{ color:var(--rf-text-muted); font-weight:600; font-family:'JetBrains Mono', monospace; }
+  .cal-cell.today .d{ color:var(--rf-purple); }
+  .cal-art{
+    font-size:9.5px;
+    padding:3px 5px;
+    border-radius:4px;
+    line-height:1.3;
+    cursor:pointer;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+    border-left:2px solid;
+  }
+  .cal-art.draft{ background:rgba(245,185,25,0.08); color:#F5C547; border-color:var(--rf-amber); }
+  .cal-art.review{ background:rgba(168,85,247,0.10); color:#C084FC; border-color:#A855F7; }
+  .cal-art.approved{ background:rgba(186,36,213,0.12); color:#D277E8; border-color:var(--rf-purple); }
+  .cal-art.published{ background:var(--rf-green-soft); color:var(--rf-green); border-color:var(--rf-green); }
+  .cal-art.research{ background:rgba(59,130,246,0.10); color:#7AABFB; border-color:var(--rf-blue); }
+
+  /* ========== ARTICLE / DRAFT ROW ========== */
+  .article-row{
+    display:grid; grid-template-columns:1fr auto auto auto auto; gap:14px; align-items:center;
+    padding:12px 14px;
+    background:var(--rf-bg-card); border:1px solid var(--rf-border);
+    border-radius:10px; margin-bottom:6px;
+  }
+  .article-row .ar-title{ font-size:13px; font-weight:500; }
+  .article-row .ar-meta{ font-size:11px; color:var(--rf-text-dim); margin-top:2px; }
+  .article-row .ar-author{
+    display:flex; align-items:center; gap:6px;
+    font-size:11.5px; color:var(--rf-text-muted);
+  }
+  .article-row .ar-author .ava{
+    width:20px; height:20px; border-radius:50%;
+    background:linear-gradient(135deg, #6B27D8, #BA24D5);
+    color:#fff; font-size:9px; font-weight:600;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .article-row .ar-date{ font-size:11.5px; color:var(--rf-text-muted); font-family:'JetBrains Mono', monospace; }
+  .article-row:hover{ border-color:var(--rf-border-2); background:#0F1115; }
+
+  /* ========== EDITOR LAYOUT ========== */
+  .ed-frame{
+    display:grid; grid-template-columns:1fr 280px; gap:16px;
+    min-height:520px;
+  }
+  .ed-main{
+    background:var(--rf-bg-card); border:1px solid var(--rf-border);
+    border-radius:12px; padding:18px 22px;
+    display:flex; flex-direction:column; gap:10px;
+    min-height:0;
+  }
+  .ed-toolbar{
+    display:flex; gap:6px; align-items:center;
+    padding:6px 0 8px; border-bottom:1px solid var(--rf-border);
+    margin-bottom:6px;
+  }
+  .ed-tb-btn{
+    padding:4px 8px; border-radius:6px;
+    color:var(--rf-text-muted); font-size:11.5px;
+    cursor:pointer; font-weight:500;
+  }
+  .ed-tb-btn:hover{ background:var(--rf-bg-card-2); color:var(--rf-text); }
+  .ed-tb-btn.divider{ width:1px; height:14px; background:var(--rf-border); padding:0; pointer-events:none; }
+  .ed-title{
+    background:transparent; border:none;
+    font-size:22px; font-weight:600; color:var(--rf-text);
+    width:100%; outline:none; padding:4px 0;
+    letter-spacing:-0.01em; font-family:inherit;
+  }
+  .ed-h2{ font-size:16px; font-weight:600; color:var(--rf-text); margin:14px 0 4px; }
+  .ed-h3{ font-size:13.5px; font-weight:600; color:var(--rf-text-2); margin:10px 0 2px; }
+  .ed-p{ font-size:12.5px; color:var(--rf-text-2); line-height:1.7; margin:0 0 8px; }
+  .ed-img-block{
+    background:linear-gradient(135deg, #2D1B3A, #16121E);
+    border-radius:8px; height:160px;
+    display:flex; align-items:flex-end; padding:10px 12px;
+    color:#fff; font-size:10.5px; font-weight:500;
+    margin:6px 0;
+    border:1px solid var(--rf-border);
+  }
+  .ed-footer{
+    margin-top:auto; padding-top:8px; border-top:1px solid var(--rf-border);
+    display:flex; gap:14px; align-items:center;
+    font-size:10.5px; color:var(--rf-text-dim); font-family:'JetBrains Mono', monospace;
+  }
+  .ed-side{
+    background:var(--rf-bg-card); border:1px solid var(--rf-border);
+    border-radius:12px;
+    display:flex; flex-direction:column;
+    overflow:hidden;
+  }
+  .ed-side-tabs{
+    display:flex; border-bottom:1px solid var(--rf-border);
+  }
+  .ed-side-tab{
+    flex:1; padding:9px 0; text-align:center;
+    font-size:11px; font-weight:500; color:var(--rf-text-muted);
+    cursor:pointer; border-bottom:2px solid transparent; margin-bottom:-1px;
+  }
+  .ed-side-tab.active{ color:var(--rf-purple); border-bottom-color:var(--rf-purple); }
+  .ed-side-body{ padding:14px; font-size:12px; flex:1; overflow-y:auto; }
+  .ed-side-body::-webkit-scrollbar{ width:5px; }
+  .ed-side-body::-webkit-scrollbar-thumb{ background:#262A33; border-radius:3px; }
+  .ed-field{ margin-bottom:12px; }
+  .ed-field label{
+    display:block; font-size:9.5px; letter-spacing:0.08em; text-transform:uppercase;
+    color:var(--rf-text-dim); font-weight:600; margin-bottom:5px;
+  }
+  .ed-field .val{
+    background:var(--rf-bg-input); border:1px solid var(--rf-border-2);
+    border-radius:6px; padding:6px 9px; font-size:11.5px; color:var(--rf-text-2);
+  }
+  .kw-bar{ height:5px; background:#15181E; border-radius:3px; overflow:hidden; }
+  .kw-fill{ height:100%; background:var(--rf-green); width:62%; box-shadow:0 0 5px var(--rf-green); }
+  .ai-action{
+    display:flex; align-items:center; gap:8px;
+    padding:8px 10px; border-radius:7px;
+    background:var(--rf-bg-elev); border:1px solid var(--rf-border);
+    margin-bottom:5px; cursor:pointer;
+    font-size:11.5px;
+  }
+  .ai-action:hover{ border-color:var(--rf-purple-line); background:rgba(186,36,213,0.04); }
+  .ai-action .label{ flex:1; }
+  .ai-action .ico{ color:var(--rf-purple); width:14px; height:14px; flex-shrink:0; }
+  .schema-pills{ display:flex; gap:5px; flex-wrap:wrap; }
+  .schema-pill{
+    font-size:10px; font-weight:600;
+    padding:3px 7px; border-radius:5px;
+  }
+  .schema-pill.always{ background:var(--rf-green-soft); color:var(--rf-green); border:1px solid rgba(74,222,128,0.30); }
+  .schema-pill.detected{ background:rgba(236,72,153,0.12); color:var(--rf-pink); border:1px solid rgba(236,72,153,0.30); }
+  .schema-pill.add{ background:rgba(107,114,128,0.18); color:#9CA3AF; border:1px dashed var(--rf-border-strong); }
+
+  /* ========== MODAL ========== */
+  .modal-overlay{
+    position:absolute; inset:0;
+    background:rgba(0,0,0,0.6);
+    backdrop-filter:blur(4px);
+    display:flex; align-items:center; justify-content:center;
+    border-radius:14px;
+    z-index:5;
+  }
+  .modal{
+    width:420px;
+    background:var(--rf-bg-card); border:1px solid var(--rf-border);
+    border-radius:12px; padding:22px;
+    box-shadow:var(--rf-shadow-lg);
+  }
+  .modal h3{ margin:0 0 6px; font-size:15px; }
+  .modal p{ margin:0 0 16px; font-size:12.5px; color:var(--rf-text-muted); line-height:1.55; }
+  .modal textarea{
+    width:100%; min-height:90px;
+    background:var(--rf-bg-input); border:1px solid var(--rf-border-2);
+    border-radius:7px; padding:10px;
+    font-size:12.5px; color:var(--rf-text); font-family:inherit;
+    resize:vertical; outline:none; margin-bottom:14px;
+  }
+  .radio-row{
+    padding:10px 12px; border-radius:8px;
+    background:var(--rf-bg-elev); border:1px solid var(--rf-border);
+    display:flex; gap:10px; align-items:flex-start;
+    margin-bottom:6px; cursor:pointer;
+  }
+  .radio-row.selected{ border-color:var(--rf-purple-line); background:rgba(186,36,213,0.04); }
+  .radio-row .rd{
+    width:14px; height:14px; border-radius:50%;
+    border:1.5px solid var(--rf-border-strong);
+    flex-shrink:0; margin-top:2px;
+  }
+  .radio-row.selected .rd{ border-color:var(--rf-purple); background:radial-gradient(circle, var(--rf-purple) 40%, transparent 45%); }
+  .radio-row b{ display:block; font-size:12.5px; font-weight:600; margin-bottom:2px; }
+  .radio-row span{ font-size:11px; color:var(--rf-text-muted); }
+
+  /* ========== TABLE ========== */
+  .rf-table{
+    width:100%;
+    border-collapse:separate; border-spacing:0;
+    background:var(--rf-bg-card); border:1px solid var(--rf-border);
+    border-radius:10px; overflow:visible;
+    font-size:12px;
+  }
+  /* round corners via cells so overflow can stay visible (lets row menus escape) */
+  .rf-table thead th:first-child{ border-top-left-radius:10px; }
+  .rf-table thead th:last-child{ border-top-right-radius:10px; }
+  .rf-table tbody tr:last-child td:first-child{ border-bottom-left-radius:10px; }
+  .rf-table tbody tr:last-child td:last-child{ border-bottom-right-radius:10px; }
+  .rf-table thead th{
+    background:var(--rf-bg-elev);
+    color:var(--rf-text-dim);
+    text-align:left;
+    font-size:10px; letter-spacing:0.08em; text-transform:uppercase; font-weight:600;
+    padding:9px 12px;
+    border-bottom:1px solid var(--rf-border);
+  }
+  .rf-table tbody td{
+    padding:11px 12px;
+    border-bottom:1px solid var(--rf-border);
+    color:var(--rf-text-2);
+  }
+  .rf-table tbody tr:last-child td{ border-bottom:none; }
+  .rf-table tbody tr:hover{ background:#0F1115; }
+
+  /* ========== BANNERS / ERRORS ========== */
+  .banner{
+    padding:12px 14px; border-radius:10px;
+    display:flex; gap:11px; align-items:flex-start;
+    font-size:12.5px; line-height:1.5;
+    margin-bottom:14px;
+  }
+  .banner .b-ico{ width:22px; height:22px; flex-shrink:0; display:flex; align-items:center; justify-content:center; border-radius:6px; }
+  .banner b{ display:block; margin-bottom:2px; }
+  .banner.warn{ background:rgba(245,185,25,0.08); border:1px solid rgba(245,185,25,0.30); }
+  .banner.warn .b-ico{ background:var(--rf-amber-soft-2); color:var(--rf-amber); }
+  .banner.err{ background:rgba(221,82,76,0.07); border:1px solid rgba(221,82,76,0.30); }
+  .banner.err .b-ico{ background:rgba(221,82,76,0.18); color:var(--rf-red); }
+  .banner.info{ background:var(--rf-purple-soft-2); border:1px solid var(--rf-purple-line); }
+  .banner.info .b-ico{ background:var(--rf-purple-soft); color:var(--rf-purple); }
+  .banner .b-cta{ margin-left:auto; }
+
+  /* ========== CARD STACK ========== */
+  .card{
+    background:var(--rf-bg-card); border:1px solid var(--rf-border);
+    border-radius:12px; padding:16px 18px;
+    margin-bottom:12px;
+  }
+  .card-head{
+    display:flex; align-items:center; gap:10px; margin-bottom:10px;
+  }
+  .card-head h3{
+    margin:0; font-size:13px; font-weight:600;
+  }
+  .card-head .meta{
+    margin-left:auto; font-size:11px; color:var(--rf-text-dim); font-family:'JetBrains Mono', monospace;
+  }
+
+  /* ========== OPPORTUNITY CARD ========== */
+  .opp{
+    padding:14px 16px;
+    background:var(--rf-bg-card); border:1px solid var(--rf-border);
+    border-radius:10px;
+    margin-bottom:8px;
+    display:grid; grid-template-columns:1fr auto auto; gap:14px; align-items:center;
+  }
+  .opp .opp-type{
+    font-size:9.5px; letter-spacing:0.08em; text-transform:uppercase; font-weight:700;
+    padding:2.5px 7px; border-radius:5px;
+    display:inline-block; margin-bottom:5px;
+  }
+  .opp .opp-type.refresh{ background:rgba(245,185,25,0.12); color:var(--rf-amber); }
+  .opp .opp-type.gap{ background:rgba(59,130,246,0.12); color:#7AABFB; }
+  .opp .opp-type.cluster{ background:var(--rf-purple-soft); color:var(--rf-purple); }
+  .opp .opp-type.trending{ background:var(--rf-green-soft); color:var(--rf-green); }
+  .opp .opp-title{ font-size:13px; font-weight:500; }
+  .opp .opp-sub{ font-size:11px; color:var(--rf-text-muted); margin-top:3px; }
+  .opp .impact{
+    text-align:center;
+  }
+  .opp .impact b{ font-size:14px; font-family:'JetBrains Mono', monospace; display:block; }
+  .opp .impact span{ font-size:9.5px; letter-spacing:0.08em; text-transform:uppercase; color:var(--rf-text-dim); }
+
+  /* ========== STEPPER (wizard) ========== */
+  .stepper{ display:flex; align-items:center; gap:10px; margin-bottom:18px; }
+  .step{ display:flex; align-items:center; gap:7px; font-size:11.5px; color:var(--rf-text-muted); }
+  .step .num{
+    width:20px; height:20px; border-radius:50%;
+    background:#15171B; color:var(--rf-text-dim);
+    font-size:10px; font-weight:700;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .step.active{ color:var(--rf-purple); }
+  .step.active .num{ background:var(--rf-purple); color:#fff; box-shadow:0 0 8px rgba(186,36,213,0.4); }
+  .step.done .num{ background:var(--rf-green); color:#000; }
+  .step-sep{ width:24px; height:1px; background:var(--rf-border-2); }
+
+  /* ========== CONTACT SHEET ========== */
+  .contact-sheet-wrap{ max-width:1400px; }
+  .contact-sheet{
+    display:grid; grid-template-columns:repeat(auto-fill, minmax(260px, 1fr)); gap:14px;
+    margin-bottom:20px;
+  }
+  .cs-tile{
+    background:#0C0E11;
+    border:1px solid var(--rf-border);
+    border-radius:10px;
+    overflow:hidden;
+    text-decoration:none; color:inherit;
+    transition:all 0.15s;
+    display:flex; flex-direction:column;
+  }
+  .cs-tile:hover{ border-color:var(--rf-purple-line); transform:translateY(-2px); box-shadow:0 12px 32px rgba(0,0,0,0.5), 0 0 24px rgba(186,36,213,0.10); }
+  .cs-tile-thumb{
+    aspect-ratio:880 / 540;
+    background:var(--rf-bg);
+    position:relative; overflow:hidden;
+    border-bottom:1px solid var(--rf-border);
+  }
+  .cs-mini{
+    transform:scale(0.27);
+    transform-origin:top left;
+    width:370%;
+    height:370%;
+    pointer-events:none;
+  }
+  .cs-tile-info{ padding:11px 13px; }
+  .cs-tile-num{
+    font-size:9.5px; letter-spacing:0.08em; color:var(--rf-text-dim);
+    font-family:'JetBrains Mono', monospace; font-weight:600;
+    margin-bottom:3px;
+  }
+  .cs-tile-title{ font-size:12.5px; font-weight:600; line-height:1.35; margin-bottom:4px; }
+  .cs-tile-tag{ font-size:9.5px; letter-spacing:0.04em; color:var(--rf-text-dim); font-weight:500; }
+  .cs-tile.new-screen .cs-tile-thumb::after{
+    content:'NEW'; position:absolute; top:8px; right:8px;
+    background:var(--rf-purple); color:#fff;
+    font-size:8.5px; font-weight:700; letter-spacing:0.06em;
+    padding:2px 6px; border-radius:4px;
+    box-shadow:0 0 8px rgba(186,36,213,0.6);
+  }
+  .cs-section-title{
+    margin:24px 0 12px;
+    font-size:11px; letter-spacing:0.10em; text-transform:uppercase;
+    color:var(--rf-text-dim); font-weight:700;
+    display:flex; align-items:center; gap:10px;
+  }
+  .cs-section-title::after{ content:''; flex:1; height:1px; background:#16181D; }
+  .cs-section-title:first-child{ margin-top:0; }
+
+  .ico-svg{ width:14px; height:14px; }
+  .ico-svg.lg{ width:16px; height:16px; }
+  .state-section + .state-section{ margin-top:56px; padding-top:56px; border-top:1px dashed #1F2228; }
+
+  /* ========== TYPED TOKEN STREAM ========== */
+  .token-stream{
+    background:#0A0B0D; border:1px solid var(--rf-border);
+    border-radius:10px; padding:14px;
+    font-family:'JetBrains Mono', monospace;
+    font-size:11px; line-height:1.7;
+    color:var(--rf-text-2);
+    max-height:200px; overflow:hidden;
+    position:relative;
+  }
+  .token-stream::after{
+    content:''; position:absolute; bottom:0; left:0; right:0; height:50px;
+    background:linear-gradient(transparent, #0A0B0D);
+  }
+  .token-stream .cur{ display:inline-block; width:6px; height:12px; background:var(--rf-purple); animation:blink 1s steps(2) infinite; vertical-align:text-bottom; }
+  @keyframes blink{ 50%{opacity:0;} }
+
+  /* progress bar */
+  .progress{ height:6px; background:#15181E; border-radius:3px; overflow:hidden; }
+  .progress .fill{ height:100%; background:linear-gradient(90deg, var(--rf-purple-deep), var(--rf-purple)); box-shadow:0 0 8px var(--rf-purple); }
+
+  /* phase tile */
+  .phase{
+    background:var(--rf-bg-card); border:1px solid var(--rf-border);
+    border-radius:10px; padding:14px;
+    display:flex; gap:12px; align-items:center;
+    margin-bottom:8px;
+  }
+  .phase .num{
+    width:30px; height:30px; border-radius:8px;
+    background:var(--rf-purple-soft); color:var(--rf-purple);
+    border:1px solid var(--rf-purple-line);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'JetBrains Mono', monospace; font-weight:700; font-size:13px;
+  }
+  .phase.done .num{ background:var(--rf-green-soft); color:var(--rf-green); border-color:rgba(74,222,128,0.30); }
+  .phase.active .num{ box-shadow:0 0 14px var(--rf-purple); }
+  .phase h4{ margin:0 0 2px; font-size:13px; font-weight:600; }
+  .phase p{ margin:0; font-size:11px; color:var(--rf-text-muted); }
+  .phase .right{ margin-left:auto; font-size:11px; color:var(--rf-text-dim); }
+
+  @media (max-width: 1200px){
+    .proto-page{ grid-template-columns: 1fr; }
+    .proto-side{ position:relative; height:auto; }
+  }
+
+  /* ========== MULTI-USER ADDITIONS ========== */
+  /* role badges */
+  .role-badge{
+    display:inline-flex; align-items:center; gap:5px;
+    padding:2.5px 9px; border-radius:999px;
+    font-size:10.5px; font-weight:600; letter-spacing:0.03em;
+  }
+  .role-badge .dot{ width:5px; height:5px; border-radius:50%; background:currentColor; }
+  .role-admin{ background:rgba(186,36,213,0.14); color:#D277E8; border:1px solid var(--rf-purple-line); }
+  .role-publisher{ background:rgba(20,184,166,0.12); color:#3FD7C4; border:1px solid rgba(20,184,166,0.30); }
+  .role-writer{ background:rgba(59,130,246,0.12); color:#7AABFB; border:1px solid rgba(59,130,246,0.30); }
+  .role-viewer{ background:rgba(107,114,128,0.18); color:#9CA3AF; border:1px solid rgba(107,114,128,0.30); }
+  .role-pending{ background:rgba(245,185,25,0.12); color:var(--rf-amber); border:1px solid rgba(245,185,25,0.30); }
+
+  /* permissions matrix */
+  .perm-matrix{
+    width:100%; border-collapse:separate; border-spacing:0;
+    background:var(--rf-bg-card); border:1px solid var(--rf-border);
+    border-radius:10px; overflow:hidden; font-size:12px;
+  }
+  .perm-matrix thead th{
+    background:var(--rf-bg-elev); color:var(--rf-text-dim);
+    font-size:10px; letter-spacing:0.06em; text-transform:uppercase; font-weight:600;
+    padding:10px 12px; border-bottom:1px solid var(--rf-border); text-align:center;
+  }
+  .perm-matrix thead th:first-child{ text-align:left; }
+  .perm-matrix tbody td{ padding:10px 12px; border-bottom:1px solid var(--rf-border); text-align:center; color:var(--rf-text-2); }
+  .perm-matrix tbody td:first-child{ text-align:left; font-weight:500; color:var(--rf-text); }
+  .perm-matrix tbody tr:last-child td{ border-bottom:none; }
+  .perm-matrix tbody tr:hover{ background:#0F1115; }
+  .perm-yes{ color:var(--rf-green); }
+  .perm-no{ color:var(--rf-text-faint); }
+  .perm-matrix .ico-svg{ width:15px; height:15px; }
+
+  /* member / seat row */
+  .member-row{
+    display:grid; grid-template-columns:1fr auto auto auto auto; gap:16px; align-items:center;
+    padding:12px 14px;
+    background:var(--rf-bg-card); border:1px solid var(--rf-border);
+    border-radius:10px; margin-bottom:6px;
+    position:relative;
+  }
+  .member-row:hover{ border-color:var(--rf-border-2); background:#0F1115; }
+  .member-id{ display:flex; align-items:center; gap:11px; }
+  .member-id .ava{
+    width:34px; height:34px; border-radius:50%;
+    background:linear-gradient(135deg, #6B27D8, #BA24D5);
+    color:#fff; font-size:12px; font-weight:600;
+    display:flex; align-items:center; justify-content:center; flex-shrink:0;
+  }
+  .member-id .ava.pending{ background:#1C1F25; color:var(--rf-text-dim); border:1px dashed var(--rf-border-strong); }
+  .member-id b{ display:block; font-size:13px; font-weight:600; }
+  .member-id span{ font-size:11px; color:var(--rf-text-dim); }
+  .member-bal{ font-family:'JetBrains Mono', monospace; font-size:13px; color:var(--rf-amber); text-align:right; }
+  .member-bal small{ display:block; font-size:9.5px; letter-spacing:0.06em; text-transform:uppercase; color:var(--rf-text-dim); font-family:'Inter',sans-serif; }
+  .member-actions{ display:flex; gap:6px; }
+  .row-menu{
+    position:absolute; right:14px; top:calc(100% - 2px);
+    background:#0F1116; border:1px solid var(--rf-border-2);
+    border-radius:10px; padding:5px; width:170px; z-index:6;
+    box-shadow:var(--rf-shadow-md);
+  }
+  .row-menu .mi{
+    display:flex; align-items:center; gap:9px;
+    padding:7px 10px; border-radius:6px; font-size:12px; color:var(--rf-text-2); cursor:pointer;
+  }
+  .row-menu .mi:hover{ background:#16181D; }
+  .row-menu .mi.danger{ color:var(--rf-red); }
+  .row-menu .mi.danger:hover{ background:var(--rf-red-soft); }
+  .row-menu .mi .ico{ width:14px; height:14px; }
+  .row-menu .sep{ height:1px; background:var(--rf-border); margin:4px 6px; }
+
+  /* stat cards */
+  .stat-row{ display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:12px; margin-bottom:18px; }
+  .stat-card{
+    background:var(--rf-bg-card); border:1px solid var(--rf-border);
+    border-radius:12px; padding:14px 16px;
+  }
+  .stat-card .lbl{ font-size:10px; letter-spacing:0.08em; text-transform:uppercase; color:var(--rf-text-dim); font-weight:600; margin-bottom:6px; display:flex; align-items:center; gap:7px; }
+  .stat-card .lbl .ico{ width:13px; height:13px; color:var(--rf-purple); }
+  .stat-card .big{ font-size:22px; font-weight:600; letter-spacing:-0.01em; font-family:'JetBrains Mono', monospace; }
+  .stat-card .big small{ font-size:13px; color:var(--rf-text-dim); font-weight:400; }
+  .stat-card .note{ font-size:11px; color:var(--rf-text-muted); margin-top:3px; }
+
+  /* pack picker */
+  .pack-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-bottom:14px; }
+  .pack-card{
+    background:var(--rf-bg-elev); border:1px solid var(--rf-border-2);
+    border-radius:10px; padding:14px 12px; text-align:center; cursor:pointer;
+  }
+  .pack-card.selected{ border-color:var(--rf-purple); background:rgba(186,36,213,0.06); box-shadow:0 0 18px rgba(186,36,213,0.12); }
+  .pack-card .pk-cr{ font-size:18px; font-weight:600; font-family:'JetBrains Mono', monospace; }
+  .pack-card .pk-name{ font-size:10px; letter-spacing:0.08em; text-transform:uppercase; color:var(--rf-text-dim); font-weight:600; margin:2px 0 6px; }
+  .pack-card .pk-price{ font-size:12.5px; color:var(--rf-purple); font-weight:600; }
+
+  /* toast */
+  .toast{
+    position:absolute; bottom:18px; right:24px;
+    background:#0F1116; border:1px solid var(--rf-purple-line);
+    border-radius:10px; padding:11px 16px;
+    display:flex; align-items:center; gap:10px;
+    font-size:12.5px; color:var(--rf-text);
+    box-shadow:var(--rf-shadow-md), 0 0 30px rgba(186,36,213,0.18);
+    z-index:7; max-width:min(420px, calc(100% - 48px));
+  }
+  .toast .ico{ width:16px; height:16px; color:var(--rf-purple); flex-shrink:0; }
+  .toast.ok{ border-color:rgba(74,222,128,0.4); }
+  .toast.ok .ico{ color:var(--rf-green); }
+
+  /* account tab bar (plugin) */
+  .acct-tabs{
+    display:flex; gap:22px; border-bottom:1px solid var(--rf-border); margin-bottom:18px;
+  }
+  .acct-tabs .tab{
+    padding:7px 0 11px; font-size:13px; font-weight:500; color:var(--rf-text-muted);
+    cursor:pointer; border-bottom:2px solid transparent; margin-bottom:-1px;
+    display:flex; align-items:center; gap:6px;
+  }
+  .acct-tabs .tab.active{ color:var(--rf-purple); border-bottom-color:var(--rf-purple); }
+  .acct-tabs .tab .new-pill{ font-size:8px; font-weight:700; padding:1.5px 5px; border-radius:4px; background:var(--rf-purple); color:#fff; }
+
+  /* hero seat pill */
+  .seat-hero{
+    display:flex; align-items:center; gap:12px;
+    padding:12px 16px; border-radius:12px;
+    background:linear-gradient(135deg, rgba(186,36,213,0.10), rgba(186,36,213,0.02));
+    border:1px solid var(--rf-purple-line); margin-bottom:16px;
+  }
+  .seat-hero .ava{
+    width:38px; height:38px; border-radius:10px;
+    background:linear-gradient(135deg, #6B27D8, #BA24D5); color:#fff;
+    display:flex; align-items:center; justify-content:center; font-weight:600; font-size:14px;
+  }
+  .seat-hero b{ font-size:14px; }
+  .seat-hero span{ font-size:11.5px; color:var(--rf-text-muted); }
+
+  /* skeleton */
+  .skeleton{
+    background:linear-gradient(90deg, #0F1115 25%, #16181D 50%, #0F1115 75%);
+    background-size:200% 100%; animation:shimmer 1.3s infinite;
+    border-radius:6px;
+  }
+  @keyframes shimmer{ to{ background-position:-200% 0; } }
+  .skel-row{ display:grid; grid-template-columns:1fr auto auto auto; gap:16px; align-items:center; padding:12px 14px; background:var(--rf-bg-card); border:1px solid var(--rf-border); border-radius:10px; margin-bottom:6px; }
+
+  /* ledger */
+  .ledger-row{
+    display:grid; grid-template-columns:auto 1fr auto auto; gap:14px; align-items:center;
+    padding:10px 14px; border-bottom:1px solid var(--rf-border); font-size:12px;
+  }
+  .ledger-row:last-child{ border-bottom:none; }
+  .ledger-row .when{ font-family:'JetBrains Mono', monospace; font-size:10.5px; color:var(--rf-text-dim); }
+  .ledger-row .amt.pos{ color:var(--rf-green); font-family:'JetBrains Mono', monospace; }
+  .ledger-row .amt.neg{ color:var(--rf-red); font-family:'JetBrains Mono', monospace; }
+  .ledger-type{ font-size:9.5px; letter-spacing:0.06em; text-transform:uppercase; font-weight:700; padding:2px 7px; border-radius:5px; }
+  .ledger-type.spent{ background:rgba(59,130,246,0.12); color:#7AABFB; }
+  .ledger-type.granted{ background:var(--rf-green-soft); color:var(--rf-green); }
+  .ledger-type.allocated{ background:var(--rf-purple-soft); color:#D277E8; }
+  .ledger-type.purchased{ background:rgba(20,184,166,0.12); color:#3FD7C4; }
+  .ledger-type.refunded{ background:rgba(245,185,25,0.12); color:var(--rf-amber); }
+
+  /* status pills (team) */
+  .status-active{ background:var(--rf-green-soft); color:var(--rf-green); }
+  .status-pending{ background:rgba(245,185,25,0.12); color:var(--rf-amber); }
+  .status-revoked{ background:var(--rf-red-soft); color:var(--rf-red); }
+
+  /* credit chip low */
+  .credit-chip.low{ background:var(--rf-red-soft); color:#E8857F; border-color:rgba(221,82,76,0.30); }
+
+  /* modal fields + actions */
+  .modal .field-label{ display:block; font-size:11px; font-weight:600; letter-spacing:0.04em; text-transform:uppercase; color:var(--rf-text-dim); margin:0 0 6px; }
+  .modal .input{ width:100%; background:var(--rf-bg-input); border:1px solid var(--rf-border-2); border-radius:7px; padding:9px 11px; font-size:12.5px; color:var(--rf-text); font-family:inherit; outline:none; margin-bottom:14px; }
+  .modal .input:focus{ border-color:var(--rf-purple-line); }
+  .modal.wide{ width:480px; }
+  .modal-actions{ display:flex; gap:8px; justify-content:flex-end; margin-top:16px; }
+  .ghost-btn.danger{ color:#E8857F; border-color:rgba(221,82,76,0.3); }
+  .ghost-btn.danger:hover{ background:var(--rf-red-soft); border-color:var(--rf-red); color:#fff; }
+  .radio-row .price{ margin-left:auto; font-size:12px; font-weight:600; font-family:'JetBrains Mono', monospace; color:var(--rf-text-2); }
+
+  /* toast warn */
+  .toast.warn{ border-color:rgba(245,185,25,0.4); box-shadow:var(--rf-shadow-md), 0 0 30px rgba(245,185,25,0.14); }
+  .toast.warn .ico{ color:var(--rf-amber); }
+
+  /* activity log rows */
+  .log-row{ display:flex; gap:12px; align-items:flex-start; padding:12px 4px; border-bottom:1px solid var(--rf-border); }
+  .log-row:last-child{ border-bottom:none; }
+  .log-ico{ width:30px; height:30px; border-radius:8px; flex-shrink:0; display:flex; align-items:center; justify-content:center; background:var(--rf-bg-card-2); color:var(--rf-text-muted); }
+  .log-ico .ico-svg{ width:15px; height:15px; }
+  .log-ico.green{ background:var(--rf-green-soft); color:var(--rf-green); }
+  .log-ico.amber{ background:var(--rf-amber-soft-2); color:var(--rf-amber); }
+  .log-ico.purple{ background:var(--rf-purple-soft); color:var(--rf-purple); }
+  .log-ico.orange{ background:rgba(249,115,22,0.14); color:#FBA56A; }
+  .log-line{ font-size:12.5px; color:var(--rf-text-2); }
+  .log-meta{ font-size:11px; color:var(--rf-text-dim); margin-top:2px; font-family:'JetBrains Mono', monospace; }
+
+  /* plugin member row */
+  .pl-m-row{ display:flex; align-items:center; gap:10px; padding:10px 12px; background:var(--rf-bg-card); border:1px solid var(--rf-border); border-radius:10px; margin-bottom:6px; }
+  .pl-m-row .ava{ width:30px; height:30px; border-radius:50%; background:linear-gradient(135deg, #6B27D8, #BA24D5); color:#fff; font-size:11px; font-weight:600; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .pl-m-row .ava.gray{ background:linear-gradient(135deg, #3A3D45, #565A64); }
+  .pl-m-info b{ display:block; font-size:12.5px; font-weight:600; }
+  .pl-m-info .meta{ font-size:10.5px; color:var(--rf-text-dim); }
+  .pl-m-info .meta.warn{ color:var(--rf-amber); }
+  .pl-m-right{ margin-left:auto; display:flex; align-items:center; gap:6px; }
+
+  /* refill cards */
+  .refill-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-bottom:8px; }
+  .refill-card{ background:var(--rf-bg-card); border:1px solid var(--rf-border); border-radius:10px; padding:14px; cursor:pointer; text-align:center; }
+  .refill-card:hover{ border-color:var(--rf-purple-line); }
+  .refill-card.best{ border-color:var(--rf-purple-line); background:radial-gradient(circle at 50% 0%, rgba(186,36,213,0.06), transparent 70%); }
+  .refill-card .t{ font-size:13px; font-weight:700; }
+  .refill-card .cr{ font-size:11px; color:var(--rf-text-muted); margin-top:2px; }
+  .refill-card .pr{ font-size:16px; font-weight:600; font-family:'JetBrains Mono', monospace; margin-top:8px; }
+  .refill-card .tag{ font-size:9px; letter-spacing:0.08em; text-transform:uppercase; color:var(--rf-purple); font-weight:700; margin-top:4px; }
+
+  /* progress + member table helpers */
+  .progress{ height:6px; background:#15181E; border-radius:3px; overflow:hidden; }
+  .progress .fill{ height:100%; background:linear-gradient(90deg, var(--rf-purple-deep), var(--rf-purple)); box-shadow:0 0 8px var(--rf-purple); }
+  .progress .fill.amber{ background:linear-gradient(90deg, #8A6A0E, var(--rf-amber)); box-shadow:0 0 8px var(--rf-amber); }
+  .rf-table .member-cell{ display:flex; align-items:center; gap:9px; }
+  .rf-table .member-cell .ava{ width:28px; height:28px; border-radius:50%; background:linear-gradient(135deg, #6B27D8, #BA24D5); color:#fff; font-size:11px; font-weight:600; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .rf-table .member-cell .ava.gray{ background:linear-gradient(135deg, #3A3D45, #565A64); }
+  .rf-table .member-cell b{ display:block; font-size:12.5px; font-weight:600; color:var(--rf-text); }
+  .rf-table .member-cell span{ font-size:10.5px; color:var(--rf-text-dim); }
+  .row-actions{ display:flex; gap:6px; justify-content:flex-end; }
+  .change-tag.polar{ background:rgba(249,115,22,0.12); color:#FBA56A; border:1px solid rgba(249,115,22,0.3); }
+  .ico-svg.lg{ width:16px; height:16px; }
+</style>
+</head>
+<body>
+<div class="proto-page">
+  <aside class="proto-side">
+    <div class="proto-side-head">
+      <div class="proto-brand">
+        <div class="proto-brand-mark"><span></span><span></span><span></span><span></span></div>
+        <div>
+          <div class="proto-brand-name">Rank<span class="accent">Frame</span></div>
+        </div>
+      </div>
+      <div class="proto-side-sub">Multi-User Prototype</div>
+      <div class="proto-side-meta">
+        <b>v2</b><span class="sep">·</span><span>34 screens</span><span class="sep">·</span><span>Jun 2026</span>
+      </div>
+    </div>
+
+    <a class="proto-nav-item" href="#s0"><span class="proto-nav-num">00</span><span>Overview · contact sheet</span></a>
+
+    <h4>A · Navigation &amp; Entry</h4>
+    <a class="proto-nav-item" href="#s1"><span class="proto-nav-num">01</span>Dashboard sidebar, +Team<span class="new-dot"></span></a>
+    <a class="proto-nav-item" href="#s2"><span class="proto-nav-num">02</span>Plugin Account 5-tab bar<span class="new-dot"></span></a>
+
+    <h4>B · Team Roster (Dashboard)</h4>
+    <a class="proto-nav-item" href="#s3"><span class="proto-nav-num">03</span>Empty team<span class="new-dot"></span></a>
+    <a class="proto-nav-item" href="#s4"><span class="proto-nav-num">04</span>Roster, Admin view<span class="new-dot"></span></a>
+    <a class="proto-nav-item" href="#s5"><span class="proto-nav-num">05</span>Roster, Member view<span class="new-dot"></span></a>
+    <a class="proto-nav-item" href="#s6"><span class="proto-nav-num">06</span>Row hover, actions menu</a>
+
+    <h4>C · Invite &amp; Roles</h4>
+    <a class="proto-nav-item" href="#s7"><span class="proto-nav-num">07</span>Invite Member modal<span class="new-dot"></span></a>
+    <a class="proto-nav-item" href="#s8"><span class="proto-nav-num">08</span>Invite sent / pending</a>
+    <a class="proto-nav-item" href="#s9"><span class="proto-nav-num">09</span>Member-blocked toast</a>
+    <a class="proto-nav-item" href="#s10"><span class="proto-nav-num">10</span>Resend / revoke invite</a>
+    <a class="proto-nav-item" href="#s11"><span class="proto-nav-num">11</span>Roles &amp; permissions matrix<span class="new-dot"></span></a>
+
+    <h4>D · Credits &amp; Top-up</h4>
+    <a class="proto-nav-item" href="#s12"><span class="proto-nav-num">12</span>Admin team Credits<span class="new-dot"></span></a>
+    <a class="proto-nav-item" href="#s13"><span class="proto-nav-num">13</span>Member My Credits<span class="new-dot"></span></a>
+    <a class="proto-nav-item" href="#s14"><span class="proto-nav-num">14</span>Top Up Member, Admin pays</a>
+    <a class="proto-nav-item" href="#s15"><span class="proto-nav-num">15</span>Member self top-up</a>
+    <a class="proto-nav-item" href="#s16"><span class="proto-nav-num">16</span>Ask-Admin toast</a>
+
+    <h4>E · Billing &amp; Seats (Polar)</h4>
+    <a class="proto-nav-item" href="#s17"><span class="proto-nav-num">17</span>Subscription, Admin + Seats<span class="new-dot"></span></a>
+    <a class="proto-nav-item" href="#s18"><span class="proto-nav-num">18</span>Subscription, Member blocked</a>
+    <a class="proto-nav-item" href="#s19"><span class="proto-nav-num">19</span>Manage Seats / proration</a>
+
+    <h4>F · Activity Log</h4>
+    <a class="proto-nav-item" href="#s20"><span class="proto-nav-num">20</span>Activity, Admin (all)<span class="new-dot"></span></a>
+    <a class="proto-nav-item" href="#s21"><span class="proto-nav-num">21</span>Activity, Member (self)<span class="new-dot"></span></a>
+
+    <h4>G · Plugin Team Tab</h4>
+    <a class="proto-nav-item" href="#s22"><span class="proto-nav-num">22</span>Plugin Team tab, Admin<span class="new-dot"></span></a>
+    <a class="proto-nav-item" href="#s23"><span class="proto-nav-num">23</span>Plugin Team tab, Member<span class="new-dot"></span></a>
+    <a class="proto-nav-item" href="#s24"><span class="proto-nav-num">24</span>Plugin Invite modal<span class="new-dot"></span></a>
+    <a class="proto-nav-item" href="#s25"><span class="proto-nav-num">25</span>Plugin Credits tab + Ask<span class="new-dot"></span></a>
+
+    <h4>H · Cross-cutting States</h4>
+    <a class="proto-nav-item" href="#s26"><span class="proto-nav-num">26</span>Plugin Top Up modal<span class="new-dot"></span></a>
+    <a class="proto-nav-item" href="#s27"><span class="proto-nav-num">27</span>Plugin Activity tab<span class="new-dot"></span></a>
+    <a class="proto-nav-item" href="#s28"><span class="proto-nav-num">28</span>Role badge reference<span class="new-dot"></span></a>
+    <a class="proto-nav-item" href="#s29"><span class="proto-nav-num">29</span>Roster loading skeleton<span class="new-dot"></span></a>
+    <a class="proto-nav-item" href="#s30"><span class="proto-nav-num">30</span>Seat pending claim<span class="new-dot"></span></a>
+    <a class="proto-nav-item" href="#s31"><span class="proto-nav-num">31</span>Webhook lag error<span class="new-dot"></span></a>
+    <a class="proto-nav-item" href="#s32"><span class="proto-nav-num">32</span>Revoke member confirm<span class="new-dot"></span></a>
+    <a class="proto-nav-item" href="#s33"><span class="proto-nav-num">33</span>Top-up payment failed<span class="new-dot"></span></a>
+    <a class="proto-nav-item" href="#s34"><span class="proto-nav-num">34</span>Seat limit reached<span class="new-dot"></span></a>
+  </aside>
+
+  <main class="proto-main" id="screens-root"></main>
+</div>
+<script>
+/* ============================================================
+   ICONS
+   ============================================================ */
+const ICONS = {
+  globe:`<svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>`,
+  bolt:`<svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z"/></svg>`,
+  sparkSm:`<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/><circle cx="12" cy="12" r="3"/></svg>`,
+  cog:`<svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .4 1.9l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.9-.4 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1-1.5 1.7 1.7 0 0 0-1.9.4l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .4-1.9 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1 1.7 1.7 0 0 0-.4-1.9l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.9.4H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.9-.4l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.4 1.9V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>`,
+  help:`<svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 0 1 5 0c0 1.5-2.5 2-2.5 4M12 17h.01"/></svg>`,
+  ext:`<svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 3h7v7M10 14l11-11M21 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5"/></svg>`,
+  refresh:`<svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 0 1 15-6.7L21 8M21 3v5h-5M21 12a9 9 0 0 1-15 6.7L3 16M3 21v-5h5"/></svg>`,
+  check:`<svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4 10-10"/></svg>`,
+  warn:`<svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 3l10 18H2L12 3z"/><path d="M12 10v5M12 18h.01"/></svg>`,
+  search:`<svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-5-5"/></svg>`,
+  card:`<svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20M6 15h4"/></svg>`,
+  user:`<svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1"/></svg>`,
+  team:`<svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="8" r="3"/><path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/><circle cx="17" cy="8" r="2.5"/><path d="M21 21v-2a3 3 0 0 0-2-2.8"/></svg>`,
+  doc:`<svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h6"/></svg>`,
+  filter:`<svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 5h18l-7 9v6l-4-2v-4z"/></svg>`,
+  plus:`<svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>`,
+  chevR:`<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg>`,
+  chevD:`<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>`,
+  info:`<svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 16v-4M12 8h.01"/></svg>`,
+  lock:`<svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>`,
+  download:`<svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12M7 11l5 5 5-5M5 21h14"/></svg>`,
+  mail:`<svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>`,
+  trash:`<svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M6 7l1 13a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2l1-13"/></svg>`,
+  shield:`<svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg>`,
+  seat:`<svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="8" rx="2"/><path d="M6 10V7a3 3 0 0 1 3-3h6a3 3 0 0 1 3 3v3M7 18v2M17 18v2"/></svg>`,
+  clock:`<svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>`,
+};
+
+/* ============================================================
+   PLUGIN SHELL
+   ============================================================ */
+/* ============================================================
+   CANONICAL PLUGIN NAV (accordion). Mirrors rankframe-schema-prototype-v2.html.
+   Groups: Setup, Optimize, Index, Monitor, Content Engine. Only the
+   active group is expanded. Icons mapped to this file's ICONS object.
+   The optional `role` argument is accepted for call-site compatibility
+   but the rail itself is the shared canonical nav (identical across the
+   schema, content-engine, and multiuser prototypes).
+   ============================================================ */
+const PLUGIN_NAV_GROUPS = [
+  { key:'setup',    label:'Setup',          icon:ICONS.cog,      items:[
+    {k:'global',     label:'Global Settings'},
+  ]},
+  { key:'optimize', label:'Optimize',       icon:ICONS.bolt,     items:[
+    {k:'pages',      label:'Pages'},
+    {k:'images',     label:'Image SEO'},
+    {k:'schema',     label:'Schema',     isNew:true},
+    {k:'llmseo',     label:'LLM SEO',    isNew:true},
+  ]},
+  { key:'index',    label:'Index',          icon:ICONS.globe,    items:[
+    {k:'submit',     label:'Submit Indexing'},
+    {k:'sitemap',    label:'Sitemap'},
+  ]},
+  { key:'monitor',  label:'Monitor',        icon:ICONS.search,   items:[
+    {k:'analyzer',   label:'SEO Analyzer'},
+    {k:'keywords',   label:'Keyword Tracker'},
+    {k:'speed',      label:'Page Speed'},
+    {k:'monitor404', label:'404 Monitor'},
+  ]},
+  { key:'content',  label:'Content Engine', icon:ICONS.doc, isNew:true, items:[
+    {k:'calendar',   label:'Calendar'},
+    {k:'research',   label:'Research Hub'},
+    {k:'drafts',     label:'Draft Queue'},
+    {k:'links',      label:'Link Opportunities'},
+    {k:'sync',       label:'Sync Status'},
+  ]},
+];
+/* Aliases let older per-screen activeKey strings resolve to the
+   canonical item keys without touching every screen. */
+const PLUGIN_NAV_ALIASES = {
+  globalSettings:'global', submitIndexing:'submit', seoAnalyzer:'analyzer',
+  imageSEO:'images', researchHub:'research', draftQueue:'drafts',
+  linkOpps:'links', syncStatus:'sync', advanced:'schema',
+};
+function pluginSubNav(activeKey, role){
+  const key = PLUGIN_NAV_ALIASES[activeKey] || activeKey;
+  const activeGroup = PLUGIN_NAV_GROUPS.find(g => g.items.some(it=>it.k===key));
+  const agKey = activeGroup ? activeGroup.key : 'optimize';
+  const chev = '<svg class="plg-acc-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg>';
+  const groupsHtml = PLUGIN_NAV_GROUPS.map(g=>{
+    const open = g.key === agKey;
+    return `
+      <div class="plg-acc-group ${open?'open':''}">
+        <button type="button" class="plg-acc-head ${open?'active-group':''}" aria-expanded="${open?'true':'false'}">
+          <span class="plg-acc-ico">${g.icon}</span>
+          <span class="plg-acc-label">${g.label}</span>
+          ${g.isNew?'<span class="plg-acc-new">NEW</span>':''}
+          ${chev}
+        </button>
+        <div class="plg-acc-children"${open?'':' hidden'}>
+          ${g.items.map(it=>`
+            <div class="plg-acc-item ${key===it.k?'active':''}">
+              <span class="plg-acc-dot"></span>
+              <span class="plg-acc-item-label">${it.label}</span>
+              ${it.isNew?'<span class="plg-acc-new sm">NEW</span>':''}
+            </div>
+          `).join('')}
+        </div>
+      </div>`;
+  }).join('');
+  /* Nav structure is identical for every role. Only the bottom
+     account block reflects who is signed in. */
+  const acct = role==='member'
+    ? {av:'LF', name:'Lingfei',     email:'lingfei@anytimeai.ai'}
+    : {av:'7M', name:'7seers media', email:'7seersmedia@gmail.com'};
+  return `
+    <div class="sub-nav">
+      <div class="sub-nav-head">
+        <div class="proto-logo" style="width:22px;height:22px;border-radius:5px;"></div>
+        <div class="sub-nav-head-title">Rank<span class="purple">Frame</span></div>
+        <div class="sub-nav-back">${ICONS.chevL || ICONS.chevR}</div>
+      </div>
+      <div class="plg-acc-scroll">
+        ${groupsHtml}
+      </div>
+      <div class="sub-nav-foot">
+        <div class="sub-nav-item">${ICONS.help}<span>Support</span></div>
+        <div class="sub-nav-item">${ICONS.globe}<span>Go To Dashboard</span></div>
+      </div>
+      <div class="sub-nav-user">
+        <div class="sub-nav-user-av">${acct.av}</div>
+        <div class="sub-nav-user-meta">
+          <div class="name">${acct.name}</div>
+          <div class="email">${acct.email}</div>
+        </div>
+      </div>
+      <div class="sub-nav-cta red">${ICONS.refresh}<span>Recrawl Website</span></div>
+    </div>
+  `;
+}
+
+function pluginShell(activeKey, mainHTML, extra='', role='admin'){
+  return `
+    <div class="plugin-window">
+      <div class="plg-top">
+        <div class="plg-top-l">
+          <div class="mark"><span></span><span></span><span></span><span></span></div>
+          <b>Rankframe Plugin</b>
+          <span class="dev-tag">(Development)</span>
+        </div>
+        <div class="plg-top-x">×</div>
+      </div>
+      <div class="plg-body">
+        ${pluginSubNav(activeKey, role)}
+        <div class="plg-main">${mainHTML}</div>
+      </div>
+      ${extra}
+    </div>
+  `;
+}
+
+/* ============================================================
+   DASHBOARD SHELL ('team' active key supported)
+   ============================================================ */
+function dashShell(activeKey, mainHTML, extra='', role='admin'){
+  const adminItems = [
+    {key:'websites', icon:ICONS.globe, label:'Websites'},
+    {key:'subscription', icon:ICONS.card, label:'Subscription'},
+    {key:'credits', icon:ICONS.bolt, label:'AI Credits'},
+    {key:'team', icon:ICONS.team, label:'Team'},
+    {key:'content', icon:ICONS.doc, label:'Content', isNew:true},
+    {key:'account', icon:ICONS.user, label:'Account Details'},
+  ];
+  const memberItems = [
+    {key:'websites', icon:ICONS.globe, label:'Websites'},
+    {key:'credits', icon:ICONS.bolt, label:'My Credits'},
+    {key:'team', icon:ICONS.team, label:'Team', isNew:true},
+    {key:'account', icon:ICONS.user, label:'Account Details'},
+  ];
+  const items = role==='member' ? memberItems : adminItems;
+  const foot = role==='member' ? 'anytimeai.ai<br>Member · Lingfei' : '7seersmedia.com<br>Agency Yearly Plan';
+  return `
+    <div class="dash-window">
+      <div class="dash-top">
+        <div class="dots"><span></span><span></span><span></span></div>
+        <div class="url">app.rankframe.io/${activeKey}</div>
+      </div>
+      <div class="dash-body">
+        <aside class="dash-side">
+          <div class="dash-side-brand">
+            <div class="mini"><span></span><span></span><span></span><span></span></div>
+            <b>Rank<span class="a">Frame</span></b>
+          </div>
+          ${items.map(it=>`
+            <div class="dash-nav-item ${activeKey===it.key?'active':''}">
+              <span class="ico">${it.icon}</span>
+              <span>${it.label}</span>
+              ${it.isNew?'<span class="new-pill">NEW</span>':''}
+            </div>
+          `).join('')}
+          <div class="dash-side-foot">${foot}</div>
+        </aside>
+        <div class="dash-main">${mainHTML}</div>
+      </div>
+      ${extra}
+    </div>
+  `;
+}
+
+/* ============================================================
+   ACCOUNT TABS (5-tab bar, fixed order everywhere)
+   ============================================================ */
+function acctTabs(active){
+  const tabs = [
+    {k:'profile', label:'Profile'},
+    {k:'team', label:'Team', isNew:true},
+    {k:'credits', label:'Credits'},
+    {k:'activity', label:'Activity'},
+    {k:'personalization', label:'Personalization'},
+  ];
+  return `
+    <div class="acct-tabs">
+      ${tabs.map(t=>`<div class="tab ${active===t.k?'active':''}">${t.label}${t.isNew?'<span class="new-pill">NEW</span>':''}</div>`).join('')}
+    </div>
+  `;
+}
+
+/* ============================================================
+   HELPERS
+   ============================================================ */
+function pageHead(title, sub){ return `<h2 class="pg-title">${title}</h2><p class="pg-sub">${sub}</p>`; }
+function creditChip(amount, cls=''){ return `<span class="credit-chip ${cls}">${ICONS.sparkSm} ${amount}</span>`; }
+function statusPill(status, label){ return `<span class="status-pill status-${status}"><span class="dot"></span>${label}</span>`; }
+function roleBadge(role){
+  const map = { admin:['admin','Admin'], publisher:['publisher','Publisher'], writer:['writer','Writer'], viewer:['viewer','Viewer'] };
+  const [cls,label] = map[role] || map.viewer;
+  return `<span class="role-badge role-${cls}"><span class="dot"></span>${label}</span>`;
+}
+function emptyState(icon, h3, p, btnText){
+  return `
+    <div class="empty-state">
+      <div class="ico">${icon}</div>
+      <h3>${h3}</h3>
+      <p>${p}</p>
+      ${btnText?`<button class="btn-primary">${ICONS.plus}<span>${btnText}</span></button>`:''}
+    </div>
+  `;
+}
+function loadingBlock(h3, p){
+  return `<div class="loading-block"><div class="loading-spinner"></div><h3>${h3}</h3><p>${p}</p></div>`;
+}
+function memberCell(initials, name, email, gray=false){
+  return `<div class="member-cell"><span class="ava ${gray?'gray':''}">${initials}</span><div><b>${name}</b><span>${email}</span></div></div>`;
+}
+function logRow(tone, icon, line, meta){
+  return `<div class="log-row"><div class="log-ico ${tone}">${icon}</div><div><div class="log-line">${line}</div><div class="log-meta">${meta}</div></div></div>`;
+}
+function rolePickerRows(){
+  const roles = [
+    {sel:false, t:'Admin', d:'Full access: approve / reject, sync, manage team and billing.'},
+    {sel:true,  t:'Publisher', d:'Research, draft, and sync directly. No approval needed.'},
+    {sel:false, t:'Writer', d:'Research and draft, submit for review. Cannot sync.'},
+    {sel:false, t:'Viewer', d:'Read-only access to content and reports.'},
+  ];
+  return roles.map(r=>`
+    <div class="radio-row ${r.sel?'selected':''}">
+      <span class="rd"></span>
+      <div><b>${r.t}</b><span>${r.d}</span></div>
+    </div>
+  `).join('');
+}
+function refillCards(payerLine){
+  return `
+    <div class="refill-grid">
+      <div class="refill-card"><div class="t">Starter</div><div class="cr">250 credits</div><div class="pr">$3</div></div>
+      <div class="refill-card"><div class="t">Base</div><div class="cr">1,000 credits</div><div class="pr">$10</div></div>
+      <div class="refill-card best"><div class="t">Max</div><div class="cr">30,000 credits</div><div class="pr">$100</div><div class="tag">Best value</div></div>
+    </div>
+    <p style="font-size:11px; color:var(--rf-text-dim); margin:8px 0 0;">${payerLine}</p>
+  `;
+}
+
+/* ============================================================
+   SCREEN DEFINITIONS
+   ============================================================ */
+const screens = [];
+
+/* 00 · Overview */
+screens.push({
+  id:'s0', tag:'Overview', title:'00 · All screens at a glance',
+  desc:'Every state in this Multi-User / Team prototype. Both Admin and Member variants are included where they differ. Click any tile to jump to the full screen with developer notes.',
+  fullWidth:true, body:'__CONTACT_SHEET__'
+});
+
+/* ================== A · NAVIGATION & ENTRY ================== */
+screens.push({
+  id:'s1', tag:'A · Navigation', newScreen:true,
+  title:'01 · Dashboard sidebar with new Team item',
+  desc:'A new Team item is inserted into the dashboard sidebar between AI Credits and Account Details. Admins keep the full nav; members get a reduced nav (no Subscription, AI Credits renamed to "My Credits").',
+  body:`
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px; align-items:flex-start;">
+    <div>
+      <div style="font-size:10.5px; letter-spacing:0.10em; text-transform:uppercase; color:var(--rf-text-dim); font-weight:700; margin-bottom:10px;">BEFORE · no Team</div>
+      <div style="background:var(--rf-bg-elev); border:1px solid var(--rf-border); border-radius:12px; width:232px; padding:14px 0;">
+        <div class="dash-side-brand" style="padding-left:18px;"><div class="mini"><span></span><span></span><span></span><span></span></div><b>Rank<span class="a">Frame</span></b></div>
+        <div class="dash-nav-item active"><span class="ico">${ICONS.globe}</span><span>Websites</span></div>
+        <div class="dash-nav-item"><span class="ico">${ICONS.card}</span><span>Subscription</span></div>
+        <div class="dash-nav-item"><span class="ico">${ICONS.bolt}</span><span>AI Credits</span></div>
+        <div class="dash-nav-item"><span class="ico">${ICONS.user}</span><span>Account Details</span></div>
+      </div>
+    </div>
+    <div>
+      <div style="font-size:10.5px; letter-spacing:0.10em; text-transform:uppercase; color:var(--rf-purple); font-weight:700; margin-bottom:10px;">AFTER · Admin nav, +Team</div>
+      <div style="background:var(--rf-bg-elev); border:1px solid var(--rf-purple-line); border-radius:12px; width:232px; padding:14px 0;">
+        <div class="dash-side-brand" style="padding-left:18px;"><div class="mini"><span></span><span></span><span></span><span></span></div><b>Rank<span class="a">Frame</span></b></div>
+        <div class="dash-nav-item"><span class="ico">${ICONS.globe}</span><span>Websites</span></div>
+        <div class="dash-nav-item"><span class="ico">${ICONS.card}</span><span>Subscription</span></div>
+        <div class="dash-nav-item"><span class="ico">${ICONS.bolt}</span><span>AI Credits</span></div>
+        <div class="dash-nav-item active"><span class="ico">${ICONS.team}</span><span>Team</span><span class="new-pill">NEW</span></div>
+        <div class="dash-nav-item"><span class="ico">${ICONS.user}</span><span>Account Details</span></div>
+      </div>
+    </div>
+  </div>`,
+  anno:[
+    ['Where the change lives','<span class="change-tag dash">DASHBOARD UI</span> New nav item at <code>/team</code>. Admin sees full nav; member nav swaps Subscription out and renames AI Credits to "My Credits".'],
+    ['API','<span class="change-tag api">API</span> <code>GET /api/team</code> returns members + seat stats. Nav role gate reads <code>currentUser.role</code> from session.'],
+    ['DB tables','<span class="change-tag db">DB</span> <code>teams</code>, <code>team_seats</code>. Admin vs member determined by <code>team_seats.role</code>.'],
+    ['Billing source','<span class="change-tag polar">POLAR</span> Seat counts hydrated from <code>customer_seat.*</code> webhooks (Polar.sh native seat API).'],
+  ],
+});
+
+screens.push({
+  id:'s2', tag:'A · Navigation', newScreen:true,
+  title:'02 · Plugin Account Settings 5-tab nav bar',
+  desc:'Inside the plugin, Account Settings opens a unified tab bar with five tabs in a fixed order everywhere: Profile, Team, Credits, Activity, Personalization. Team and Credits are the new multi-user surfaces.',
+  body: pluginShell('account', `
+    ${pageHead('Account Settings', 'Manage your profile, team, credits, and activity for this workspace.')}
+    ${acctTabs('profile')}
+    <div class="card">
+      <div class="card-head"><h3>Profile</h3></div>
+      <p style="font-size:12.5px; color:var(--rf-text-muted); margin:0;">Profile is the default landing tab. The other four tabs (Team, Credits, Activity, Personalization) render the multi-user surfaces documented in this prototype.</p>
+    </div>
+    <div class="banner info"><div class="b-ico">${ICONS.info}</div><div><b>Same 5-tab bar everywhere.</b>The order never changes between admin and member; only the contents of Team / Credits / Activity branch on role.</div></div>
+  `, '', 'admin'),
+  anno:[
+    ['Where the change lives','<span class="change-tag plugin">PLUGIN UI</span> New <code>acctTabs()</code> bar in the Account Settings modal. Order is constant: Profile, Team, Credits, Activity, Personalization.'],
+    ['Role branching','<span class="change-tag plugin">PLUGIN UI</span> Tab contents branch on <code>user.role</code>. Member never sees invite / remove / top-up-other controls.'],
+    ['API','<span class="change-tag api">API</span> Tabs call dashboard endpoints in the plugin auth context: <code>GET /api/team</code>, <code>GET /api/team/activity</code>.'],
+    ['DB tables','<span class="change-tag db">DB</span> <code>teams</code>, <code>team_seats</code>, <code>credit_ledger</code>, <code>activity_log</code>.'],
+  ],
+});
+
+/* ================== B · TEAM ROSTER ================== */
+screens.push({
+  id:'s3', tag:'B · Team Roster', newScreen:true,
+  title:'03 · Empty team, Admin',
+  desc:'First visit to the Team page when the owner is the only seat. Shows the "invite your first member" empty state with a brief explanation of seat billing.',
+  body: dashShell('team', `
+    ${pageHead('Team', 'Manage seats, credits, and access for 7seersmedia.com')}
+    ${emptyState(ICONS.team, 'Invite your first member', 'Add teammates to research, draft, and publish together. Each extra seat is $15/month, prorated via Polar.sh, and arrives with 500 AI credits when the member accepts.', 'Invite Member')}
+  `, '', 'admin'),
+  anno:[
+    ['Where the change lives','<span class="change-tag dash">DASHBOARD UI</span> Empty state shown when <code>team_seats</code> has only the owner row.'],
+    ['API','<span class="change-tag api">API</span> <code>GET /api/team</code> returns <code>{members:[owner], seats:{used:1,total:1}}</code>. Invite opens screen 07.'],
+    ['Seat billing','<span class="change-tag polar">POLAR</span> $15/mo per extra seat via Polar.sh native seat API, prorated on add/remove.'],
+    ['DB tables','<span class="change-tag db">DB</span> <code>teams</code> (one per account), <code>team_seats</code> (one per seat, owner = role "admin").'],
+  ],
+});
+
+screens.push({
+  id:'s4', tag:'B · Team Roster', newScreen:true,
+  title:'04 · Populated roster, Admin',
+  desc:'Admin roster with Seats Used and Pending Invites stat cards, a member table with role pills and per-member credit balances, and per-row Top Up / Remove actions. Invite Member sits in the header.',
+  body: dashShell('team', `
+    <div style="display:flex; align-items:flex-start; gap:12px; margin-bottom:14px;">
+      <div style="flex:1;">${pageHead('Team', 'Manage seats, credits, and access for anytimeai.ai')}</div>
+      <button class="btn-primary sm">${ICONS.plus}<span>Invite Member</span></button>
+    </div>
+    <div class="stat-row">
+      <div class="stat-card"><div class="lbl"><span class="ico">${ICONS.seat}</span>Seats Used</div><div class="big">2<small> / 2</small></div><div class="note">$15 per extra seat / month</div></div>
+      <div class="stat-card"><div class="lbl"><span class="ico">${ICONS.mail}</span>Pending Invites</div><div class="big">1</div><div class="note">invited 2d ago</div></div>
+      <div class="stat-card"><div class="lbl"><span class="ico">${ICONS.bolt}</span>Team Credits</div><div class="big">1,330</div><div class="note">across all members</div></div>
+    </div>
+    <table class="rf-table">
+      <thead><tr><th>Member</th><th>Role</th><th>Status</th><th>Credits</th><th style="text-align:right;">Actions</th></tr></thead>
+      <tbody>
+        <tr><td>${memberCell('7M','7seers media','7seersmedia@gmail.com')}</td><td>${roleBadge('admin')}</td><td>${statusPill('active','Active')}</td><td>${creditChip(1240)}</td><td><div class="row-actions"><span style="color:var(--rf-text-faint); font-size:11px;">Owner</span></div></td></tr>
+        <tr><td>${memberCell('LW','Lingfei Wu','lingfei@anytimeai.ai')}</td><td>${roleBadge('writer')}</td><td>${statusPill('active','Active')}</td><td>${creditChip(90,'low')}</td><td><div class="row-actions"><button class="ghost-btn sm">Top Up</button><button class="ghost-btn sm danger">Remove</button></div></td></tr>
+        <tr><td>${memberCell('CV','carol@anytimeai.ai','Invitation pending', true)}</td><td>${roleBadge('publisher')}</td><td>${statusPill('pending','Pending')}</td><td><span style="color:var(--rf-text-dim); font-size:11px;">500 on accept</span></td><td><div class="row-actions"><button class="ghost-btn sm">Resend</button><button class="ghost-btn sm danger">Cancel</button></div></td></tr>
+      </tbody>
+    </table>
+  `, '', 'admin'),
+  anno:[
+    ['Where the change lives','<span class="change-tag dash">DASHBOARD UI</span> Stat cards + member table. Search/filter is a client-side filter over the rendered list.'],
+    ['API','<span class="change-tag api">API</span> <code>GET /api/team</code> returns members, stats, and per-member balances. Top Up opens screen 14; Remove opens screen 32.'],
+    ['Credit model','<span class="change-tag db">DB</span> Per-member balances from <code>credit_ledger</code> grouped by <code>member_id</code>. Each paid seat starts at 500 on <code>customer_seat.claimed</code>.'],
+    ['Billing source','<span class="change-tag polar">POLAR</span> Rows + statuses hydrated from <code>customer_seat.assigned</code> / <code>claimed</code> / <code>revoked</code> webhooks.'],
+  ],
+});
+
+screens.push({
+  id:'s5', tag:'B · Team Roster', newScreen:true,
+  title:'05 · Roster, Member view',
+  desc:'Members see a read-only roster: no invite, remove, or top-up controls, no other members’ credit columns, no Pending Invites stat. Their own balance shows with an "Ask Admin to Top Up" button.',
+  body: dashShell('team', `
+    <div style="display:flex; align-items:flex-start; gap:12px; margin-bottom:14px;">
+      <div style="flex:1;">${pageHead('Team', 'You are part of anytimeai.ai')}</div>
+      <button class="ghost-btn" style="color:#D277E8; border-color:var(--rf-purple-line);">${ICONS.mail}<span>Ask Admin to Top Up</span></button>
+    </div>
+    <div class="stat-row">
+      <div class="stat-card"><div class="lbl"><span class="ico">${ICONS.bolt}</span>My Credits</div><div class="big" style="color:var(--rf-amber);">90<small> / 500</small></div><div class="note">running low this period</div></div>
+      <div class="stat-card"><div class="lbl"><span class="ico">${ICONS.shield}</span>My Role</div><div style="margin-top:4px;">${roleBadge('writer')}</div><div class="note">research, draft, submit for review</div></div>
+    </div>
+    <table class="rf-table">
+      <thead><tr><th>Member</th><th>Role</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>${memberCell('7M','7seers media','Admin')}</td><td>${roleBadge('admin')}</td><td>${statusPill('active','Active')}</td></tr>
+        <tr><td>${memberCell('LW','Lingfei Wu','You')}</td><td>${roleBadge('writer')}</td><td>${statusPill('active','Active')}</td></tr>
+      </tbody>
+    </table>
+  `, '', 'member'),
+  anno:[
+    ['Where the change lives','<span class="change-tag dash">DASHBOARD UI</span> Same <code>/team</code> route, role-based render. No Invite / Remove / Top Up, no other members’ credit column, no Pending Invites stat.'],
+    ['API','<span class="change-tag api">API</span> <code>GET /api/team</code> returns a member-scoped payload (roster names + roles only). Ask Admin calls <code>POST /api/team/notify-admin</code>.'],
+    ['Role gate','<span class="change-tag db">DB</span> <code>team_seats.role != "admin"</code> hides controls; server also rejects mutating endpoints with 403.'],
+    ['Credits','<span class="change-tag db">DB</span> Member balance from <code>credit_ledger</code> where <code>member_id = me</code>. Members replace Subscription with a My Credits page.'],
+  ],
+});
+
+screens.push({
+  id:'s6', tag:'B · Team Roster', newScreen:true,
+  title:'06 · Roster row actions menu',
+  desc:'Hovering an active member row reveals a kebab actions menu: Change role, Top Up credits, View activity, and Remove from team (destructive). Admin only.',
+  body: dashShell('team', `
+    ${pageHead('Team', 'Manage seats, credits, and access for anytimeai.ai')}
+    <table class="rf-table">
+      <thead><tr><th>Member</th><th>Role</th><th>Status</th><th>Credits</th><th style="text-align:right;">Actions</th></tr></thead>
+      <tbody>
+        <tr style="background:#0F1115;">
+          <td>${memberCell('LW','Lingfei Wu','lingfei@anytimeai.ai')}</td>
+          <td>${roleBadge('writer')}</td>
+          <td>${statusPill('active','Active')}</td>
+          <td>${creditChip(90,'low')}</td>
+          <td style="position:relative;">
+            <div class="row-actions"><button class="ghost-btn sm">${ICONS.chevD} Manage</button></div>
+            <div class="row-menu" style="top:42px;">
+              <div class="mi">${ICONS.shield}<span>Change role</span></div>
+              <div class="mi">${ICONS.bolt}<span>Top Up credits</span></div>
+              <div class="mi">${ICONS.doc}<span>View activity</span></div>
+              <div class="sep"></div>
+              <div class="mi danger">${ICONS.trash}<span>Remove from team</span></div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  `, '', 'admin'),
+  anno:[
+    ['Where the change lives','<span class="change-tag dash">DASHBOARD UI</span> Per-row dropdown. Admin only; hidden entirely in member render.'],
+    ['Change role','<span class="change-tag api">API</span> <code>PATCH /api/team/members/:id</code> body <code>{role}</code>. Updates <code>team_seats.role</code>.'],
+    ['Remove','<span class="change-tag api">API</span> <code>DELETE /api/team/members/:id</code> opens confirm (screen 32), then revokes the Polar seat.'],
+    ['Activity','<span class="change-tag api">API</span> View activity deep-links to <code>GET /api/team/activity?member=:id</code>.'],
+  ],
+});
+
+/* ================== C · INVITE & ROLES ================== */
+screens.push({
+  id:'s7', tag:'C · Invite & Roles', newScreen:true,
+  title:'07 · Invite Member modal',
+  desc:'Admin-only modal. Email field, a role picker where each role has a one-line permission description, a starting-credits field, and a note that adding a member adds 1 seat at $15/mo prorated via Polar.sh.',
+  body: dashShell('team', `
+    ${pageHead('Team', 'Manage seats, credits, and access for anytimeai.ai')}
+    <div style="filter:blur(1px); opacity:0.5;"><div class="stat-row"><div class="stat-card"><div class="lbl">Seats Used</div><div class="big">2 / 2</div></div></div></div>
+  `, `
+    <div class="modal-overlay"><div class="modal">
+      <h3>Invite team member</h3>
+      <p>They get their own login, their own credits, and the access level you choose.</p>
+      <label class="field-label">Email address</label>
+      <input class="input" value="carol@anytimeai.ai" />
+      <label class="field-label">Role</label>
+      ${rolePickerRows()}
+      <label class="field-label" style="margin-top:14px;">Starting credits</label>
+      <input class="input" value="500" />
+      <div class="banner info" style="margin:6px 0 0;"><div class="b-ico">${ICONS.seat}</div><div>Adding 1 seat at <b>$15/mo</b>, prorated for the rest of your billing period via Polar.sh.</div></div>
+      <div class="modal-actions"><button class="ghost-btn">Cancel</button><button class="btn-primary sm">${ICONS.mail}<span>Send Invite</span></button></div>
+    </div></div>
+  `, 'admin'),
+  anno:[
+    ['Where the change lives','<span class="change-tag dash">DASHBOARD UI</span> Modal opened from Invite Member. Admin only; route also blocked server-side for members.'],
+    ['API','<span class="change-tag api">API</span> <code>POST /api/team/invite</code> body <code>{email, role, starting_credits}</code>.'],
+    ['Seat creation','<span class="change-tag polar">POLAR</span> Server calls <code>PATCH /v1/subscriptions/{id}</code> <code>{seats, proration_behavior:"prorate"}</code> then <code>POST /v1/customer-seats/assign</code>.'],
+    ['On claim','<span class="change-tag polar">POLAR</span> On <code>customer_seat.claimed</code>, grant 500 credits and bill the prorated seat amount.'],
+  ],
+});
+
+screens.push({
+  id:'s8', tag:'C · Invite & Roles', newScreen:true,
+  title:'08 · Invite sent / pending state',
+  desc:'After sending, a success toast confirms the invite and the roster gains a pending row (grayed avatar, Pending status, credits "500 on accept"). The seat is reserved in Polar but not billed until claimed.',
+  body: dashShell('team', `
+    ${pageHead('Team', 'Manage seats, credits, and access for anytimeai.ai')}
+    <table class="rf-table">
+      <thead><tr><th>Member</th><th>Role</th><th>Status</th><th>Credits</th><th style="text-align:right;">Actions</th></tr></thead>
+      <tbody>
+        <tr><td>${memberCell('7M','7seers media','7seersmedia@gmail.com')}</td><td>${roleBadge('admin')}</td><td>${statusPill('active','Active')}</td><td>${creditChip(1240)}</td><td><div class="row-actions"><span style="color:var(--rf-text-faint); font-size:11px;">Owner</span></div></td></tr>
+        <tr><td>${memberCell('CV','carol@anytimeai.ai','Invited just now', true)}</td><td>${roleBadge('publisher')}</td><td>${statusPill('pending','Pending')}</td><td><span style="color:var(--rf-text-dim); font-size:11px;">500 on accept</span></td><td><div class="row-actions"><button class="ghost-btn sm">Resend</button><button class="ghost-btn sm danger">Cancel</button></div></td></tr>
+      </tbody>
+    </table>
+  `, `
+    <div class="toast ok"><span class="ico">${ICONS.check}</span><span>Invite sent to carol@anytimeai.ai. Seat reserved, billed when they accept.</span></div>
+  `, 'admin'),
+  anno:[
+    ['Where the change lives','<span class="change-tag dash">DASHBOARD UI</span> Optimistic pending row + success toast on 200 from the invite endpoint.'],
+    ['Seat state','<span class="change-tag polar">POLAR</span> Seat is <code>assigned</code> but not <code>claimed</code>; not billed until the member accepts.'],
+    ['DB tables','<span class="change-tag db">DB</span> <code>team_seats</code> row inserted with status "pending", <code>starting_credits = 500</code>.'],
+    ['Email','<span class="change-tag api">API</span> Polar sends the seat-claim email; we also write an <code>activity_log</code> row type <code>invite_sent</code>.'],
+  ],
+});
+
+screens.push({
+  id:'s9', tag:'C · Invite & Roles', newScreen:true,
+  title:'09 · Member-blocked invite toast',
+  desc:'If a member navigates directly to the invite route, the action is blocked with a toast: "Only admins can invite team members." The Invite button never renders in the member roster.',
+  body: dashShell('team', `
+    ${pageHead('Team', 'You are part of anytimeai.ai')}
+    <table class="rf-table">
+      <thead><tr><th>Member</th><th>Role</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>${memberCell('7M','7seers media','Admin')}</td><td>${roleBadge('admin')}</td><td>${statusPill('active','Active')}</td></tr>
+        <tr><td>${memberCell('LW','Lingfei Wu','You')}</td><td>${roleBadge('writer')}</td><td>${statusPill('active','Active')}</td></tr>
+      </tbody>
+    </table>
+  `, `
+    <div class="toast warn"><span class="ico">${ICONS.lock}</span><span>Only admins can invite team members.</span></div>
+  `, 'member'),
+  anno:[
+    ['Where the change lives','<span class="change-tag dash">DASHBOARD UI</span> Member render never shows the Invite button. Direct navigation is intercepted by the route guard.'],
+    ['Server gate','<span class="change-tag api">API</span> <code>POST /api/team/invite</code> returns 403 when <code>currentUser.role != "admin"</code>; UI surfaces the toast.'],
+    ['Role','<span class="change-tag db">DB</span> Gate reads <code>team_seats.role</code> for the requesting user.'],
+    ['UX','<span class="change-tag clip">UX</span> Toast auto-dismisses after 4s. No state mutation occurs.'],
+  ],
+});
+
+screens.push({
+  id:'s10', tag:'C · Invite & Roles', newScreen:true,
+  title:'10 · Resend / revoke pending invite',
+  desc:'Pending invite rows expose Resend (re-sends the claim email) and Cancel (revokes the reserved seat in Polar before it is billed). A small confirm popover appears on Cancel.',
+  body: dashShell('team', `
+    ${pageHead('Team', 'Manage seats, credits, and access for anytimeai.ai')}
+    <table class="rf-table">
+      <thead><tr><th>Member</th><th>Role</th><th>Status</th><th>Invited</th><th style="text-align:right;">Actions</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>${memberCell('CV','carol@anytimeai.ai','Invitation pending', true)}</td>
+          <td>${roleBadge('publisher')}</td>
+          <td>${statusPill('pending','Pending')}</td>
+          <td style="font-size:11px; color:var(--rf-text-dim); font-family:'JetBrains Mono', monospace;">2d ago</td>
+          <td style="position:relative;">
+            <div class="row-actions"><button class="ghost-btn sm">${ICONS.refresh} Resend</button><button class="ghost-btn sm danger">${ICONS.trash} Cancel</button></div>
+            <div class="row-menu" style="top:42px; width:230px;">
+              <div style="font-size:12px; color:var(--rf-text-2); padding:4px 8px 10px;">Cancel this invite? The reserved seat is released in Polar and not billed.</div>
+              <div style="display:flex; gap:6px; justify-content:flex-end; padding:0 6px 4px;"><button class="ghost-btn sm">Keep</button><button class="ghost-btn sm danger">Cancel invite</button></div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  `, '', 'admin'),
+  anno:[
+    ['Resend','<span class="change-tag api">API</span> <code>POST /api/team/invite/:id/resend</code> re-triggers the Polar claim email. Rate-limited to 1/min.'],
+    ['Revoke','<span class="change-tag api">API</span> <code>DELETE /api/team/invite/:id</code> releases the reserved seat (<code>PATCH /v1/subscriptions/{id}</code> seats -1, prorated credit).'],
+    ['DB tables','<span class="change-tag db">DB</span> Pending row deleted from <code>team_seats</code>; <code>activity_log</code> row type <code>invite_revoked</code>.'],
+    ['Webhook','<span class="change-tag polar">POLAR</span> <code>customer_seat.revoked</code> confirms release. No charge because the seat was never claimed.'],
+  ],
+});
+
+screens.push({
+  id:'s11', tag:'C · Invite & Roles', newScreen:true,
+  title:'11 · Roles & permissions matrix',
+  desc:'Reference matrix mapping content capabilities to the four content sub-roles. Rows: Research, Draft, Submit for review, Approve / reject, Sync, Manage team, Billing & seats. Columns: Admin, Publisher, Writer, Viewer.',
+  body: dashShell('team', `
+    ${pageHead('Roles & permissions', 'What each role can do across the Content Engine and team management.')}
+    <div style="display:flex; gap:8px; margin-bottom:14px;">${roleBadge('admin')} ${roleBadge('publisher')} ${roleBadge('writer')} ${roleBadge('viewer')}</div>
+    <table class="perm-matrix">
+      <thead><tr><th>Capability</th><th>Admin</th><th>Publisher</th><th>Writer</th><th>Viewer</th></tr></thead>
+      <tbody>
+        ${[
+          ['Research keywords', [1,1,1,0]],
+          ['Draft articles', [1,1,1,0]],
+          ['Submit for review', [1,1,1,0]],
+          ['Approve / reject', [1,0,0,0]],
+          ['Sync to Framer', [1,1,0,0]],
+          ['Top up own credits', [1,1,1,1]],
+          ['Manage team', [1,0,0,0]],
+          ['Billing &amp; seats', [1,0,0,0]],
+        ].map(([cap, marks])=>`
+          <tr><td>${cap}</td>${marks.map(m=>`<td>${m? '<span class="perm-yes">'+ICONS.check+'</span>' : '<span class="perm-no">'+ICONS.lock+'</span>'}</td>`).join('')}</tr>
+        `).join('')}
+      </tbody>
+    </table>
+  `, '', 'admin'),
+  anno:[
+    ['Where the change lives','<span class="change-tag dash">DASHBOARD UI</span> Static reference table. Source: rankframe.md Section 38 content sub-roles.'],
+    ['Roles','<span class="change-tag db">DB</span> <code>team_seats.role</code> in (admin, publisher, writer, viewer). Enforced at every content + team endpoint.'],
+    ['Enforcement','<span class="change-tag api">API</span> Sync rejects writers/viewers with 403; Approve restricted to admin; Billing restricted to admin.'],
+    ['UI gating','<span class="change-tag clip">UX</span> Buttons hidden per role client-side, but the server is the authority on every mutation.'],
+  ],
+});
+
+/* ================== D · CREDITS & TOP-UP ================== */
+screens.push({
+  id:'s12', tag:'D · Credits & Top-up', newScreen:true,
+  title:'12 · Team Credits page, Admin',
+  desc:'Admin team-wide credits. An "Allocation across team" card lists every seat with its balance and a Top Up action, plus a per-member ledger with a Type column (Spent, Granted, Allocated, Purchased, Refunded).',
+  body: dashShell('credits', `
+    ${pageHead('Credits & Usage', 'Per-member credit balances and ledger for anytimeai.ai. Credits are per-member, not a shared pool.')}
+    <div class="banner info"><div class="b-ico">${ICONS.info}</div><div><b>How it works.</b>Each paid seat is granted 500 AI credits when the member joins. Credits stay with the member. You can top up any member, or members can buy their own. Removing a member returns unused credits to your pool.</div></div>
+    <div class="card">
+      <div class="card-head"><h3>Allocation across team</h3><span class="meta">1,330 total</span></div>
+      <table class="rf-table" style="border:none;">
+        <tbody>
+          <tr><td>${memberCell('7M','7seers media','Admin · you')}</td><td>${creditChip(1240)}</td><td style="text-align:right;"><button class="ghost-btn sm">Buy more</button></td></tr>
+          <tr><td>${memberCell('LW','Lingfei Wu','Writer')}</td><td><div style="display:flex; align-items:center; gap:8px;">${creditChip(90,'low')}<div class="progress" style="width:80px;"><div class="fill amber" style="width:18%;"></div></div></div></td><td style="text-align:right;"><button class="ghost-btn sm">Top Up</button></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="card">
+      <div class="card-head"><h3>Credit ledger</h3><span class="meta">last 3 events</span></div>
+      <div class="ledger-row"><span class="ledger-type spent">Spent</span><div>Lingfei Wu, drafted "Best AI tools 2026"</div><span class="when">Jun 02</span><span class="amt neg">-30</span></div>
+      <div class="ledger-row"><span class="ledger-type purchased">Purchased</span><div>Lingfei Wu, Base Refill (own card)</div><span class="when">May 20</span><span class="amt pos">+1,000</span></div>
+      <div class="ledger-row"><span class="ledger-type granted">Granted</span><div>Lingfei Wu, starter credits on joining team</div><span class="when">May 14</span><span class="amt pos">+500</span></div>
+    </div>
+  `, '', 'admin'),
+  anno:[
+    ['Where the change lives','<span class="change-tag dash">DASHBOARD UI</span> "Allocation across team" card + per-member ledger. Top card shows the admin’s own balance only.'],
+    ['Credit model','<span class="change-tag db">DB</span> Per-member, not shared. <code>credit_ledger(id, team_id, member_id, type, amount, ref, created_at)</code>. Types: Spent, Granted, Allocated, Purchased, Refunded.'],
+    ['API','<span class="change-tag api">API</span> <code>GET /api/team</code> for balances; Top Up opens screen 14 via <code>POST /api/team/topup</code>.'],
+    ['On revoke','<span class="change-tag polar">POLAR</span> On <code>customer_seat.revoked</code>, unused member credits return to the admin pool (Refunded entry).'],
+  ],
+});
+
+screens.push({
+  id:'s13', tag:'D · Credits & Top-up', newScreen:true,
+  title:'13 · My Credits page, Member',
+  desc:'Member view of credits: own balance only, no allocation-across-team card, no other members in the ledger. Refill cards charge the member’s own card, with an "Ask Admin to Top Up" link.',
+  body: dashShell('credits', `
+    <div style="display:flex; align-items:flex-start; gap:12px; margin-bottom:14px;">
+      <div style="flex:1;">${pageHead('My Credits', 'Your AI credit balance for anytimeai.ai')}</div>
+      <button class="ghost-btn" style="color:#D277E8; border-color:var(--rf-purple-line);">${ICONS.mail}<span>Ask Admin to Top Up</span></button>
+    </div>
+    <div class="card">
+      <div class="card-head"><h3>Available credits</h3><span class="meta">90 / 500</span></div>
+      <div class="progress"><div class="fill amber" style="width:18%;"></div></div>
+      <p style="font-size:12px; color:var(--rf-amber); margin:8px 0 0;">Running low this period.</p>
+    </div>
+    <div class="card">
+      <div class="card-head"><h3>Refill with your own card</h3></div>
+      ${refillCards('Charged to your saved card via Polar.sh. Base credits never expire and roll over.')}
+    </div>
+  `, '', 'member'),
+  anno:[
+    ['Where the change lives','<span class="change-tag dash">DASHBOARD UI</span> Scoped to <code>member_id = me</code>. No allocation card, no other members’ ledger rows.'],
+    ['Self top-up','<span class="change-tag api">API</span> <code>POST /api/team/topup</code> body <code>{member_id:self, pack_id, payer:"self"}</code>. Polar checkout opens with the member’s card.'],
+    ['Ask admin','<span class="change-tag api">API</span> <code>POST /api/team/notify-admin</code> emails + in-app notifies the admin.'],
+    ['DB tables','<span class="change-tag db">DB</span> Balance from <code>credit_ledger</code> where <code>member_id = me</code>.'],
+  ],
+});
+
+screens.push({
+  id:'s14', tag:'D · Credits & Top-up', newScreen:true,
+  title:'14 · Top Up Member modal, Admin pays',
+  desc:'Opens from a member row. Shows the member’s current balance, a pack picker (Starter / Base / Max), and a note that credits are added to the member’s balance and charged to the admin’s account via Polar.sh.',
+  body: dashShell('team', `
+    ${pageHead('Team', 'Manage seats, credits, and access for anytimeai.ai')}
+    <div style="filter:blur(1px); opacity:0.5;"><div class="card"><div class="card-head"><h3>Allocation across team</h3></div></div></div>
+  `, `
+    <div class="modal-overlay"><div class="modal">
+      <h3>Top up Lingfei Wu</h3>
+      <p>Current balance: 90 / 500 credits</p>
+      <div class="radio-row"><span class="rd"></span><div><b>Starter Refill</b><span>250 credits</span></div><span class="price">$3</span></div>
+      <div class="radio-row selected"><span class="rd"></span><div><b>Base Refill</b><span>1,000 credits</span></div><span class="price">$10</span></div>
+      <div class="radio-row"><span class="rd"></span><div><b>Max Refill</b><span>30,000 credits · best value</span></div><span class="price">$100</span></div>
+      <div class="banner info" style="margin:8px 0 0;"><div class="b-ico">${ICONS.card}</div><div>Credits added to <b>Lingfei’s balance</b> immediately and charged to your account via Polar.sh.</div></div>
+      <div class="modal-actions"><button class="ghost-btn">Cancel</button><button class="btn-primary sm">${ICONS.bolt}<span>Top Up & Pay $10</span></button></div>
+    </div></div>
+  `, 'admin'),
+  anno:[
+    ['Where the change lives','<span class="change-tag dash">DASHBOARD UI</span> Modal from the member-row Top Up. Admin only.'],
+    ['API','<span class="change-tag api">API</span> <code>POST /api/team/topup</code> body <code>{member_id, pack_id, payer:"admin"}</code>. Server creates a Polar checkout on the owner’s account.'],
+    ['On paid','<span class="change-tag polar">POLAR</span> On <code>order.paid</code>, add credits to the member’s ledger (type Allocated) and write an <code>activity_log</code> row.'],
+    ['Packs','<span class="change-tag clip">PACKS</span> Starter $3/250, Base $10/1,000, Max $100/30,000.'],
+  ],
+});
+
+screens.push({
+  id:'s15', tag:'D · Credits & Top-up', newScreen:true,
+  title:'15 · Member self top-up modal',
+  desc:'Members can buy their own credits with their own saved card. Same pack picker, payer is self, and an "Ask Admin instead" link routes to the notify-admin flow.',
+  body: dashShell('credits', `
+    ${pageHead('My Credits', 'Your AI credit balance for anytimeai.ai')}
+    <div style="filter:blur(1px); opacity:0.5;"><div class="card"><div class="card-head"><h3>Available credits</h3></div></div></div>
+  `, `
+    <div class="modal-overlay"><div class="modal">
+      <h3>Buy credits</h3>
+      <p>Current balance: 90 / 500 credits</p>
+      <div class="radio-row"><span class="rd"></span><div><b>Starter Refill</b><span>250 credits</span></div><span class="price">$3</span></div>
+      <div class="radio-row selected"><span class="rd"></span><div><b>Base Refill</b><span>1,000 credits, billed to your card</span></div><span class="price">$10</span></div>
+      <div class="radio-row"><span class="rd"></span><div><b>Max Refill</b><span>30,000 credits, best value</span></div><span class="price">$100</span></div>
+      <div class="banner info" style="margin:8px 0 0;"><div class="b-ico">${ICONS.card}</div><div>Charged to your saved card via Polar.sh. Prefer not to pay? <a href="#" style="color:#D277E8;">Ask Admin to top up</a>.</div></div>
+      <div class="modal-actions"><button class="ghost-btn">Cancel</button><button class="btn-primary sm">${ICONS.bolt}<span>Pay $10</span></button></div>
+    </div></div>
+  `, 'member'),
+  anno:[
+    ['Where the change lives','<span class="change-tag dash">DASHBOARD UI</span> Member buys own credits. Same modal as admin top-up with payer = self.'],
+    ['API','<span class="change-tag api">API</span> <code>POST /api/team/topup</code> body <code>{member_id:self, pack_id, payer:"self"}</code>. Polar opens with the member’s card, not the admin’s.'],
+    ['Ask admin link','<span class="change-tag api">API</span> The inline link calls <code>POST /api/team/notify-admin</code> (screen 16).'],
+    ['On paid','<span class="change-tag polar">POLAR</span> <code>order.paid</code> adds credits to the member’s own ledger (type Purchased).'],
+  ],
+});
+
+screens.push({
+  id:'s16', tag:'D · Credits & Top-up', newScreen:true,
+  title:'16 · Ask Admin to Top Up confirmation',
+  desc:'After a member taps "Ask Admin to Top Up", a confirmation toast acknowledges the request. The admin receives an email and an in-app notification.',
+  body: dashShell('credits', `
+    ${pageHead('My Credits', 'Your AI credit balance for anytimeai.ai')}
+    <div class="card"><div class="card-head"><h3>Available credits</h3><span class="meta">90 / 500</span></div><div class="progress"><div class="fill amber" style="width:18%;"></div></div></div>
+  `, `
+    <div class="toast ok"><span class="ico">${ICONS.mail}</span><span>Request sent. 7seers media (Admin) has been notified to top up your credits.</span></div>
+  `, 'member'),
+  anno:[
+    ['Where the change lives','<span class="change-tag dash">DASHBOARD UI</span> Toast confirmation after the notify call returns 200.'],
+    ['API','<span class="change-tag api">API</span> <code>POST /api/team/notify-admin</code> body <code>{reason:"topup"}</code>. Idempotent per 10-min window to avoid spam.'],
+    ['Notification','<span class="change-tag api">API</span> Emails the admin, writes an in-app notification + <code>activity_log</code> row type <code>topup_requested</code>.'],
+    ['Resulting flow','<span class="change-tag clip">FLOW</span> Admin can then top up via screen 14, charged to the admin account.'],
+  ],
+});
+
+/* ================== E · BILLING & SEATS ================== */
+screens.push({
+  id:'s17', tag:'E · Billing & Seats', newScreen:true,
+  title:'17 · Subscription page + Team Seats, Admin',
+  desc:'The existing Subscription page gains a Team Seats card (active seats, pending, Manage Seats) between the current plan and billing history. Billing history now lists seat changes and credit top-ups as Polar line items.',
+  body: dashShell('subscription', `
+    ${pageHead('Billing & Subscription', 'Manage your current plan, seats, and billing history.')}
+    <div class="card">
+      <div class="card-head"><h3>Agency Yearly Plan</h3><span class="meta">renews May 2027</span></div>
+      <p style="font-size:12px; color:var(--rf-text-muted); margin:0;">Includes the Content Engine, unlimited sites, and one owner seat.</p>
+    </div>
+    <div class="card" style="border-color:var(--rf-purple-line);">
+      <div class="card-head"><h3>Team Seats</h3><button class="ghost-btn sm" style="margin-left:auto;">Manage Seats</button></div>
+      <div class="stat-row" style="margin:0;">
+        <div class="stat-card"><div class="lbl"><span class="ico">${ICONS.seat}</span>Active Seats</div><div class="big">2</div><div class="note">$15 per seat / month, prorated</div></div>
+        <div class="stat-card"><div class="lbl"><span class="ico">${ICONS.mail}</span>Pending Invites</div><div class="big">1</div><div class="note">billed on accept</div></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-head"><h3>Billing history</h3></div>
+      <table class="rf-table" style="border:none;">
+        <thead><tr><th>Date</th><th>Description</th><th style="text-align:right;">Amount</th></tr></thead>
+        <tbody>
+          <tr><td style="font-family:'JetBrains Mono', monospace;">Jun 02</td><td>Base Credit Refill, allocated to Lingfei Wu</td><td style="text-align:right;">$10.00</td></tr>
+          <tr><td style="font-family:'JetBrains Mono', monospace;">May 12</td><td>1 seat added (prorated)</td><td style="text-align:right;">$7.14</td></tr>
+          <tr><td style="font-family:'JetBrains Mono', monospace;">May 01</td><td>Agency Yearly Plan</td><td style="text-align:right;">$948.00</td></tr>
+        </tbody>
+      </table>
+    </div>
+  `, '', 'admin'),
+  anno:[
+    ['Where the change lives','<span class="change-tag dash">DASHBOARD UI</span> New Team Seats card between current plan and billing history. Manage Seats opens screen 19.'],
+    ['API','<span class="change-tag api">API</span> <code>GET /api/subscription/seats</code> for the card. Billing history is hydrated from Polar order webhooks.'],
+    ['Seat changes','<span class="change-tag polar">POLAR</span> <code>PATCH /v1/subscriptions/{id}</code> <code>{seats, proration_behavior:"prorate"}</code>; <code>subscription.updated</code> + <code>order.paid</code> feed history.'],
+    ['DB tables','<span class="change-tag db">DB</span> <code>team_seats</code> for counts; line items derived from Polar orders.'],
+  ],
+});
+
+screens.push({
+  id:'s18', tag:'E · Billing & Seats', newScreen:true,
+  title:'18 · Subscription blocked, Member',
+  desc:'Members do not see billing. The Subscription sidebar item is hidden; direct navigation shows an empty state naming the admin and offering "View My Credits" and "Contact Admin".',
+  body: dashShell('subscription', `
+    ${pageHead('Billing & Subscription', 'Billing for anytimeai.ai is managed by your admin.')}
+    <div class="empty-state">
+      <div class="ico">${ICONS.lock}</div>
+      <h3>Billing is managed by your admin</h3>
+      <p>7seers media handles the subscription, seats, and billing history for anytimeai.ai. You can buy your own credit top-ups from the My Credits page.</p>
+      <div style="display:flex; gap:8px; justify-content:center;">
+        <button class="ghost-btn">${ICONS.bolt} View My Credits</button>
+        <button class="btn-primary sm">${ICONS.mail} Contact Admin</button>
+      </div>
+    </div>
+  `, '', 'member'),
+  anno:[
+    ['Where the change lives','<span class="change-tag dash">DASHBOARD UI</span> Subscription item hidden for members. Direct navigation renders this empty state.'],
+    ['Server gate','<span class="change-tag api">API</span> Billing endpoints return 403 for non-admins. Members never see invoices, plan price, seat count, or Polar history.'],
+    ['Actions','<span class="change-tag clip">UX</span> "View My Credits" goes to <code>/credits</code>; "Contact Admin" opens a mailto: prefilled with the admin’s email.'],
+    ['Role','<span class="change-tag db">DB</span> Gate reads <code>team_seats.role</code>.'],
+  ],
+});
+
+screens.push({
+  id:'s19', tag:'E · Billing & Seats', newScreen:true,
+  title:'19 · Manage Seats / proration preview',
+  desc:'The Manage Seats modal shows the current seat count, a stepper to add or remove seats, and a live proration preview computed from the days left in the billing period before confirming with Polar.',
+  body: dashShell('subscription', `
+    ${pageHead('Billing & Subscription', 'Manage your current plan, seats, and billing history.')}
+    <div style="filter:blur(1px); opacity:0.5;"><div class="card" style="border-color:var(--rf-purple-line);"><div class="card-head"><h3>Team Seats</h3></div></div></div>
+  `, `
+    <div class="modal-overlay"><div class="modal wide">
+      <h3>Manage seats</h3>
+      <p>Each seat is $15/month, prorated for the remaining 18 days of this billing period.</p>
+      <div style="display:flex; align-items:center; gap:14px; padding:12px 14px; background:var(--rf-bg-elev); border:1px solid var(--rf-border); border-radius:10px; margin-bottom:12px;">
+        <div style="flex:1;"><b style="font-size:13px;">Seats</b><div style="font-size:11px; color:var(--rf-text-dim);">2 active &middot; 1 pending</div></div>
+        <button class="ghost-btn sm">&minus;</button>
+        <span style="font-family:'JetBrains Mono', monospace; font-size:18px; font-weight:600;">3</span>
+        <button class="ghost-btn sm">${ICONS.plus}</button>
+      </div>
+      <div class="card" style="margin:0 0 4px; background:var(--rf-bg-elev);">
+        <div style="display:flex; justify-content:space-between; font-size:12.5px; margin-bottom:6px;"><span style="color:var(--rf-text-muted);">1 new seat (18 days prorated)</span><span style="font-family:'JetBrains Mono', monospace;">$9.00</span></div>
+        <div style="display:flex; justify-content:space-between; font-size:12.5px; font-weight:600;"><span>Charged today</span><span style="font-family:'JetBrains Mono', monospace; color:var(--rf-purple);">$9.00</span></div>
+      </div>
+      <div class="modal-actions"><button class="ghost-btn">Cancel</button><button class="btn-primary sm">${ICONS.check}<span>Confirm & Pay</span></button></div>
+    </div></div>
+  `, 'admin'),
+  anno:[
+    ['Where the change lives','<span class="change-tag dash">DASHBOARD UI</span> Stepper + proration preview computed client-side from <code>days_remaining</code> for instant feedback.'],
+    ['Confirm','<span class="change-tag polar">POLAR</span> <code>PATCH /v1/subscriptions/{id}</code> <code>{seats, proration_behavior:"prorate"}</code>. Polar returns the authoritative prorated amount.'],
+    ['Webhook','<span class="change-tag polar">POLAR</span> <code>subscription.updated</code> + <code>order.paid</code> confirm the change and feed billing history.'],
+    ['DB tables','<span class="change-tag db">DB</span> Seat capacity tracked in <code>team_seats</code>; ledger untouched until a member claims.'],
+  ],
+});
+
+/* ================== F · ACTIVITY LOG ================== */
+screens.push({
+  id:'s20', tag:'F · Activity Log', newScreen:true,
+  title:'20 · Activity Log, Admin',
+  desc:'Full team activity log. Filters by member, type, and date range, with an Export CSV action. Rows are written whenever a seat changes, credits flow, or a member generates content.',
+  body: dashShell('team', `
+    ${pageHead('Team', 'Activity log for anytimeai.ai')}
+    <div class="tabs"><div class="tab">Members</div><div class="tab active">Activity Log</div></div>
+    <div style="display:flex; gap:8px; margin-bottom:14px; align-items:center;">
+      <button class="ghost-btn sm">${ICONS.filter} All members ${ICONS.chevD}</button>
+      <button class="ghost-btn sm">${ICONS.filter} All types ${ICONS.chevD}</button>
+      <button class="ghost-btn sm">${ICONS.clock} Last 30 days ${ICONS.chevD}</button>
+      <button class="ghost-btn sm" style="margin-left:auto;">${ICONS.download} Export CSV</button>
+    </div>
+    <div class="card">
+      ${logRow('green', ICONS.bolt, '<b>You</b> topped up <b>Lingfei Wu</b> with 1,000 credits', 'Today, 11:42 AM &middot; +$10 charged via Polar.sh &middot; invoice INV-7B5A1578')}
+      ${logRow('amber', ICONS.warn, '<b>Lingfei Wu</b> reached <b>low credit balance</b> (90 / 500)', 'Today, 9:18 AM')}
+      ${logRow('purple', ICONS.doc, '<b>Lingfei Wu</b> drafted "Best AI tools 2026", 30 credits', 'Yesterday, 4:02 PM')}
+      ${logRow('green', ICONS.team, '<b>Lingfei Wu</b> joined the team and received <b>500 starter credits</b>', 'May 14, 2026')}
+      ${logRow('orange', ICONS.seat, '<b>1 seat added</b> to subscription, prorated charge $7.14', 'May 12, 2026 &middot; Polar.sh invoice INV-9BD3A44B')}
+    </div>
+  `, '', 'admin'),
+  anno:[
+    ['Where the change lives','<span class="change-tag dash">DASHBOARD UI</span> Activity Log tab on the Team page. Filters + Export CSV.'],
+    ['API','<span class="change-tag api">API</span> <code>GET /api/team/activity?member=&type=&range=&scope=all</code>. CSV via <code>GET /api/team/activity.csv</code> with the same filters.'],
+    ['DB tables','<span class="change-tag db">DB</span> <code>activity_log(id, team_id, actor_user_id, target_user_id, type, payload_json, created_at)</code>.'],
+    ['Sources','<span class="change-tag polar">POLAR</span> Seat + credit rows from <code>customer_seat.*</code> and <code>order.paid</code> webhooks; content rows from Content Engine actions.'],
+  ],
+});
+
+screens.push({
+  id:'s21', tag:'F · Activity Log', newScreen:true,
+  title:'21 · Activity Log, Member',
+  desc:'Members see only their own events. The member filter is removed (no other members listed); type and range remain. No account billing/invoice details, only the member’s own credit and content events.',
+  body: dashShell('team', `
+    ${pageHead('Team', 'Your activity in anytimeai.ai')}
+    <div class="tabs"><div class="tab">Members</div><div class="tab active">Activity Log</div></div>
+    <div style="display:flex; gap:8px; margin-bottom:14px; align-items:center;">
+      <button class="ghost-btn sm">${ICONS.filter} All types ${ICONS.chevD}</button>
+      <button class="ghost-btn sm">${ICONS.clock} Last 30 days ${ICONS.chevD}</button>
+    </div>
+    <div class="card">
+      ${logRow('amber', ICONS.warn, 'You reached <b>low credit balance</b> (90 / 500)', 'Today, 9:18 AM')}
+      ${logRow('purple', ICONS.doc, 'You drafted "Best AI tools 2026", 30 credits', 'Yesterday, 4:02 PM')}
+      ${logRow('green', ICONS.bolt, 'You purchased <b>Base Refill</b> (1,000 credits) with your own card', 'May 20, 2026')}
+      ${logRow('green', ICONS.team, 'You joined the team and received <b>500 starter credits</b>', 'May 14, 2026')}
+    </div>
+  `, '', 'member'),
+  anno:[
+    ['Where the change lives','<span class="change-tag dash">DASHBOARD UI</span> Same Activity Log component, member-scoped. No member filter, no account billing details.'],
+    ['API','<span class="change-tag api">API</span> <code>GET /api/team/activity?scope=self</code>. Server forces <code>target_user_id = me</code> regardless of params.'],
+    ['DB tables','<span class="change-tag db">DB</span> <code>activity_log</code> filtered to the member. Other members’ rows never leave the server.'],
+    ['Role','<span class="change-tag clip">UX</span> Member can still export their own CSV, scoped to self.'],
+  ],
+});
+
+/* ================== G · PLUGIN TEAM TAB ================== */
+screens.push({
+  id:'s22', tag:'G · Plugin Team Tab', newScreen:true,
+  title:'22 · Plugin Team tab, Admin',
+  desc:'Account Settings > Team in the plugin, admin view. A hero pill reads "Admin · 2 of 2 seats", a member list shows roles and balances with per-member Top Up, and a + Invite Member CTA sits at the bottom.',
+  body: pluginShell('account', `
+    ${pageHead('Account Settings', 'Team for anytimeai.ai')}
+    ${acctTabs('team')}
+    <div class="seat-hero">
+      <div class="ava">7M</div>
+      <div><b>Admin · 2 of 2 seats</b><span>$15 per extra seat / month, prorated via Polar.sh</span></div>
+    </div>
+    <div class="banner info"><div class="b-ico">${ICONS.info}</div><div><b>Admin view.</b>Invite, remove, and top up members. Each paid seat starts with 500 credits.</div></div>
+    <div class="pl-m-row"><span class="ava">7M</span><div class="pl-m-info"><b>7seers media</b><span class="meta">7seersmedia@gmail.com</span></div><div class="pl-m-right">${roleBadge('admin')}</div></div>
+    <div class="pl-m-row"><span class="ava">LW</span><div class="pl-m-info"><b>Lingfei Wu</b><span class="meta warn">90 / 500 credits, Low balance</span></div><div class="pl-m-right">${roleBadge('writer')}<button class="ghost-btn sm">Top Up</button></div></div>
+    <div class="pl-m-row"><span class="ava gray">CV</span><div class="pl-m-info"><b>carol@anytimeai.ai</b><span class="meta">Invited 2 days ago</span></div><div class="pl-m-right">${statusPill('pending','Pending')}</div></div>
+    <button class="plg-nav-cta" style="margin:12px 0 0; width:100%;">+ Invite Member</button>
+  `, '', 'admin'),
+  anno:[
+    ['Where the change lives','<span class="change-tag plugin">PLUGIN UI</span> Team tab content branches on <code>user.role</code>. Admin gets invite / remove / top-up.'],
+    ['API','<span class="change-tag api">API</span> Admin actions hit dashboard APIs in the plugin auth context: <code>GET /api/team</code>, <code>POST /api/team/topup</code>, <code>POST /api/team/invite</code>.'],
+    ['Seats','<span class="change-tag polar">POLAR</span> Hero pill seat count from <code>customer_seat.*</code> webhooks.'],
+    ['DB tables','<span class="change-tag db">DB</span> <code>team_seats</code>, <code>credit_ledger</code>.'],
+  ],
+});
+
+screens.push({
+  id:'s23', tag:'G · Plugin Team Tab', newScreen:true,
+  title:'23 · Plugin Team tab, Member',
+  desc:'Member view of the plugin Team tab: read-only roster, own balance shown, and a single "Ask Admin to Top Up My Credits" CTA. No invite, remove, or other-member balances.',
+  body: pluginShell('account', `
+    ${pageHead('Account Settings', 'Team for anytimeai.ai')}
+    ${acctTabs('team')}
+    <div class="seat-hero">
+      <div class="ava">LW</div>
+      <div><b>Writer · member</b><span style="color:var(--rf-amber);">90 of 500 credits remaining, Running low</span></div>
+    </div>
+    <div class="pl-m-row"><span class="ava">7M</span><div class="pl-m-info"><b>7seers media</b><span class="meta">Admin</span></div><div class="pl-m-right">${roleBadge('admin')}</div></div>
+    <div class="pl-m-row"><span class="ava">LW</span><div class="pl-m-info"><b>Lingfei Wu</b><span class="meta">You</span></div><div class="pl-m-right">${roleBadge('writer')}</div></div>
+    <button class="plg-nav-cta" style="margin:12px 0 0; width:100%; background:transparent; border:1px solid var(--rf-purple-line); color:#D277E8;">Ask Admin to Top Up My Credits</button>
+  `, '', 'member'),
+  anno:[
+    ['Where the change lives','<span class="change-tag plugin">PLUGIN UI</span> Member render: read-only roster, no invite / remove, no other balances.'],
+    ['Ask admin','<span class="change-tag api">API</span> CTA posts to <code>POST /api/team/notify-admin</code> which emails + in-app notifies the admin.'],
+    ['Role gate','<span class="change-tag db">DB</span> <code>team_seats.role != "admin"</code>. Server rejects mutating endpoints with 403.'],
+    ['Balance','<span class="change-tag db">DB</span> Own balance from <code>credit_ledger</code> where <code>member_id = me</code>.'],
+  ],
+});
+
+screens.push({
+  id:'s24', tag:'G · Plugin Team Tab', newScreen:true,
+  title:'24 · Plugin Invite Member modal',
+  desc:'Triggered from + Invite Member on the plugin Team tab. Same role picker and seat note as the dashboard invite, sized for the plugin window. Admin only.',
+  body: pluginShell('account', `
+    ${pageHead('Account Settings', 'Team for anytimeai.ai')}
+    ${acctTabs('team')}
+    <div style="filter:blur(1px); opacity:0.5;"><div class="seat-hero"><div class="ava">7M</div><div><b>Admin · 2 of 2 seats</b></div></div></div>
+  `, `
+    <div class="modal-overlay"><div class="modal">
+      <h3>Invite team member</h3>
+      <p>They get their own login, their own credits, and the access level you choose.</p>
+      <label class="field-label">Email address</label>
+      <input class="input" value="carol@anytimeai.ai" />
+      <label class="field-label">Role</label>
+      ${rolePickerRows()}
+      <div class="banner info" style="margin:8px 0 0;"><div class="b-ico">${ICONS.seat}</div><div>Adding 1 seat at <b>$15/mo</b>, prorated via Polar.sh.</div></div>
+      <div class="modal-actions"><button class="ghost-btn">Cancel</button><button class="btn-primary sm">${ICONS.mail}<span>Send Invite</span></button></div>
+    </div></div>
+  `, 'admin'),
+  anno:[
+    ['Where the change lives','<span class="change-tag plugin">PLUGIN UI</span> Same Account Settings modal, sized for the 880px plugin window. Admin only.'],
+    ['API','<span class="change-tag api">API</span> <code>POST /api/team/invite</code> body <code>{email, role, starting_credits:500}</code>.'],
+    ['Seat creation','<span class="change-tag polar">POLAR</span> <code>PATCH /v1/subscriptions/{id}</code> then <code>POST /v1/customer-seats/assign</code>.'],
+    ['On claim','<span class="change-tag polar">POLAR</span> <code>customer_seat.claimed</code> grants 500 credits and bills the prorated seat.'],
+  ],
+});
+
+screens.push({
+  id:'s25', tag:'G · Plugin Team Tab', newScreen:true,
+  title:'25 · Plugin Credits tab + Ask Admin',
+  desc:'Account Settings > Credits in the plugin, member view. Shows the member’s own balance, refill cards charged to their own card, and an Ask Admin CTA. Admin variant additionally lets them buy for any member.',
+  body: pluginShell('account', `
+    ${pageHead('Account Settings', 'Credits for anytimeai.ai')}
+    ${acctTabs('credits')}
+    <div class="card">
+      <div class="card-head"><h3>Available credits</h3><span class="meta">90 / 500</span></div>
+      <div class="progress"><div class="fill amber" style="width:18%;"></div></div>
+      <p style="font-size:12px; color:var(--rf-amber); margin:8px 0 0;">of 500 this period, running low.</p>
+    </div>
+    <div class="card">
+      <div class="card-head"><h3>Refill</h3></div>
+      ${refillCards('Charged to your saved card via Polar.sh. Base credits never expire.')}
+    </div>
+    <button class="plg-nav-cta" style="margin:6px 0 0; width:100%; background:transparent; border:1px solid var(--rf-purple-line); color:#D277E8;">Ask Admin to Top Up My Credits</button>
+  `, '', 'member'),
+  anno:[
+    ['Where the change lives','<span class="change-tag plugin">PLUGIN UI</span> Credits tab. Member-scoped balance + own-card refill. Admin variant can target any member.'],
+    ['Self top-up','<span class="change-tag api">API</span> <code>POST /api/team/topup</code> body <code>{member_id:self, pack_id, payer:"self"}</code>.'],
+    ['Ask admin','<span class="change-tag api">API</span> CTA posts to <code>POST /api/team/notify-admin</code> (toast confirms, screen 16 flow).'],
+    ['DB tables','<span class="change-tag db">DB</span> <code>credit_ledger</code>.'],
+  ],
+});
+
+/* ================== H · CROSS-CUTTING STATES ================== */
+screens.push({
+  id:'s26', tag:'H · Cross-cutting', newScreen:true,
+  title:'26 · Plugin Top Up Member modal, Admin',
+  desc:'Admin tops up a member from inside the plugin. Same pack picker as the dashboard, charged to the admin’s account via Polar.sh, sized for the plugin window.',
+  body: pluginShell('account', `
+    ${pageHead('Account Settings', 'Team for anytimeai.ai')}
+    ${acctTabs('team')}
+    <div style="filter:blur(1px); opacity:0.5;"><div class="pl-m-row"><span class="ava">LW</span><div class="pl-m-info"><b>Lingfei Wu</b></div></div></div>
+  `, `
+    <div class="modal-overlay"><div class="modal">
+      <h3>Top up Lingfei Wu</h3>
+      <p>Current balance, 90 / 500</p>
+      <div class="radio-row"><span class="rd"></span><div><b>Starter Refill</b><span>250 credits</span></div><span class="price">$3</span></div>
+      <div class="radio-row selected"><span class="rd"></span><div><b>Base Refill</b><span>1,000 credits</span></div><span class="price">$10</span></div>
+      <div class="radio-row"><span class="rd"></span><div><b>Max Refill</b><span>30,000 credits, best value</span></div><span class="price">$100</span></div>
+      <div class="banner info" style="margin:8px 0 0;"><div class="b-ico">${ICONS.card}</div><div>Added to Lingfei’s balance and charged to your account via Polar.sh.</div></div>
+      <div class="modal-actions"><button class="ghost-btn">Cancel</button><button class="btn-primary sm">${ICONS.bolt}<span>Top Up & Pay $10</span></button></div>
+    </div></div>
+  `, 'admin'),
+  anno:[
+    ['Where the change lives','<span class="change-tag plugin">PLUGIN UI</span> Admin top-up modal inside the plugin Team tab.'],
+    ['API','<span class="change-tag api">API</span> <code>POST /api/team/topup</code> body <code>{member_id, pack_id, payer:"admin"}</code>.'],
+    ['On paid','<span class="change-tag polar">POLAR</span> <code>order.paid</code> adds credits to the member’s ledger (type Allocated).'],
+    ['Packs','<span class="change-tag clip">PACKS</span> Starter $3/250, Base $10/1,000, Max $100/30,000.'],
+  ],
+});
+
+screens.push({
+  id:'s27', tag:'H · Cross-cutting', newScreen:true,
+  title:'27 · Plugin Activity tab',
+  desc:'Account Settings > Activity in the plugin. Admin sees the full team log; members see only their own events. Compact rows sized for the plugin window.',
+  body: pluginShell('account', `
+    ${pageHead('Account Settings', 'Activity for anytimeai.ai')}
+    ${acctTabs('activity')}
+    <div style="display:flex; gap:6px; margin-bottom:12px; align-items:center;">
+      <button class="ghost-btn sm">${ICONS.filter} All members ${ICONS.chevD}</button>
+      <button class="ghost-btn sm">${ICONS.clock} 30 days ${ICONS.chevD}</button>
+      <button class="ghost-btn sm" style="margin-left:auto;">${ICONS.download} CSV</button>
+    </div>
+    <div class="card">
+      ${logRow('green', ICONS.bolt, '<b>You</b> topped up <b>Lingfei</b> with 1,000 credits', 'Today, 11:42 AM')}
+      ${logRow('amber', ICONS.warn, '<b>Lingfei</b> reached low balance (90 / 500)', 'Today, 9:18 AM')}
+      ${logRow('green', ICONS.team, '<b>Lingfei</b> joined the team, 500 starter credits granted', 'May 14, 2026')}
+    </div>
+  `, '', 'admin'),
+  anno:[
+    ['Where the change lives','<span class="change-tag plugin">PLUGIN UI</span> Activity tab. Admin gets full log + member filter; member view drops the member filter and scopes to self.'],
+    ['API','<span class="change-tag api">API</span> <code>GET /api/team/activity?scope=all</code> (admin) or <code>scope=self</code> (member). CSV via <code>GET /api/team/activity.csv</code>.'],
+    ['DB tables','<span class="change-tag db">DB</span> <code>activity_log</code>.'],
+    ['Sources','<span class="change-tag polar">POLAR</span> Seat + credit events from webhooks; content events from the Content Engine.'],
+  ],
+});
+
+screens.push({
+  id:'s28', tag:'H · Cross-cutting', newScreen:true,
+  title:'28 · Role badge reference',
+  desc:'One place to see the four content sub-role badges with their one-line definitions: Admin, Publisher, Writer, Viewer. These badge styles are reused across roster, invite, and plugin surfaces.',
+  body: dashShell('team', `
+    ${pageHead('Role badges', 'Visual reference for the four content sub-roles.')}
+    <div class="card"><div style="display:flex; align-items:center; gap:12px;">${roleBadge('admin')}<span style="font-size:12.5px; color:var(--rf-text-muted);">Full access: approve / reject, sync, manage team and billing.</span></div></div>
+    <div class="card"><div style="display:flex; align-items:center; gap:12px;">${roleBadge('publisher')}<span style="font-size:12.5px; color:var(--rf-text-muted);">Research, draft, and sync directly. No approval needed.</span></div></div>
+    <div class="card"><div style="display:flex; align-items:center; gap:12px;">${roleBadge('writer')}<span style="font-size:12.5px; color:var(--rf-text-muted);">Research and draft, submit for review. Cannot sync.</span></div></div>
+    <div class="card"><div style="display:flex; align-items:center; gap:12px;">${roleBadge('viewer')}<span style="font-size:12.5px; color:var(--rf-text-muted);">Read-only access to content and reports.</span></div></div>
+  `, '', 'admin'),
+  anno:[
+    ['Where the change lives','<span class="change-tag dash">DASHBOARD UI</span> Shared <code>roleBadge()</code> component reused in roster, invite, plugin, and matrix.'],
+    ['Roles','<span class="change-tag db">DB</span> <code>team_seats.role</code> in (admin, publisher, writer, viewer).'],
+    ['Enforcement','<span class="change-tag api">API</span> Capability mapping enforced server-side (see permissions matrix, screen 11).'],
+    ['Source','<span class="change-tag clip">SPEC</span> rankframe.md Section 38 content sub-roles.'],
+  ],
+});
+
+screens.push({
+  id:'s29', tag:'H · Cross-cutting', newScreen:true,
+  title:'29 · Roster loading skeleton',
+  desc:'While GET /api/team resolves, the roster renders a shimmer skeleton: stat-card placeholders and member rows. Keeps layout stable so content does not jump on load.',
+  body: dashShell('team', `
+    ${pageHead('Team', 'Manage seats, credits, and access for anytimeai.ai')}
+    <div class="stat-row">
+      <div class="stat-card"><div class="skeleton" style="height:11px; width:60%;"></div><div class="skeleton" style="height:22px; width:40%; margin-top:10px;"></div></div>
+      <div class="stat-card"><div class="skeleton" style="height:11px; width:55%;"></div><div class="skeleton" style="height:22px; width:35%; margin-top:10px;"></div></div>
+      <div class="stat-card"><div class="skeleton" style="height:11px; width:50%;"></div><div class="skeleton" style="height:22px; width:45%; margin-top:10px;"></div></div>
+    </div>
+    ${[1,2,3].map(()=>`
+      <div class="skel-row">
+        <div style="display:flex; align-items:center; gap:11px;"><div class="skeleton" style="width:34px; height:34px; border-radius:50%;"></div><div><div class="skeleton" style="height:11px; width:90px;"></div><div class="skeleton" style="height:9px; width:130px; margin-top:6px;"></div></div></div>
+        <div class="skeleton" style="width:70px; height:18px; border-radius:999px;"></div>
+        <div class="skeleton" style="width:50px; height:14px;"></div>
+        <div class="skeleton" style="width:60px; height:24px; border-radius:7px;"></div>
+      </div>
+    `).join('')}
+  `, '', 'admin'),
+  anno:[
+    ['Where the change lives','<span class="change-tag dash">DASHBOARD UI</span> Shimmer skeleton while <code>GET /api/team</code> is in flight. Same for the plugin Team tab.'],
+    ['API','<span class="change-tag api">API</span> Replaced by the real roster on resolve.'],
+    ['UX','<span class="change-tag clip">UX</span> Fixed heights prevent layout shift. Skeleton count matches the expected seat count when known.'],
+    ['DB tables','<span class="change-tag db">DB</span> Hydrates from <code>team_seats</code> + <code>credit_ledger</code>.'],
+  ],
+});
+
+screens.push({
+  id:'s30', tag:'H · Cross-cutting', newScreen:true,
+  title:'30 · Seat pending claim',
+  desc:'A seat has been assigned in Polar but the member has not yet claimed it. The row shows a "Pending claim" status with a hint that billing and the 500-credit grant start on claim.',
+  body: dashShell('team', `
+    ${pageHead('Team', 'Manage seats, credits, and access for anytimeai.ai')}
+    <div class="banner warn"><div class="b-ico">${ICONS.clock}</div><div><b>1 seat awaiting claim.</b>carol@anytimeai.ai was assigned a seat in Polar but has not accepted yet. Billing and the 500-credit grant start when they claim it.</div></div>
+    <table class="rf-table">
+      <thead><tr><th>Member</th><th>Role</th><th>Status</th><th>Credits</th><th style="text-align:right;">Actions</th></tr></thead>
+      <tbody>
+        <tr><td>${memberCell('CV','carol@anytimeai.ai','Seat assigned, not claimed', true)}</td><td>${roleBadge('publisher')}</td><td>${statusPill('pending','Pending claim')}</td><td><span style="color:var(--rf-text-dim); font-size:11px;">500 on claim</span></td><td><div class="row-actions"><button class="ghost-btn sm">${ICONS.refresh} Resend</button><button class="ghost-btn sm danger">Cancel</button></div></td></tr>
+      </tbody>
+    </table>
+  `, '', 'admin'),
+  anno:[
+    ['Where the change lives','<span class="change-tag dash">DASHBOARD UI</span> Distinct "Pending claim" status between assigned and active.'],
+    ['Seat state','<span class="change-tag polar">POLAR</span> Seat is <code>assigned</code> (via <code>POST /v1/customer-seats/assign</code>) but not yet <code>claimed</code>. No charge until claim.'],
+    ['On claim','<span class="change-tag polar">POLAR</span> <code>customer_seat.claimed</code> flips status to active, grants 500 credits, and bills the prorated seat.'],
+    ['DB tables','<span class="change-tag db">DB</span> <code>team_seats.status = "pending"</code> until the webhook arrives.'],
+  ],
+});
+
+screens.push({
+  id:'s31', tag:'H · Cross-cutting', newScreen:true,
+  title:'31 · Webhook lag error',
+  desc:'A member claimed their seat but the Polar webhook has not yet arrived, so credits show as not-yet-granted. An error banner explains the brief delay and offers a manual refresh.',
+  body: dashShell('team', `
+    ${pageHead('Team', 'Manage seats, credits, and access for anytimeai.ai')}
+    <div class="banner err"><div class="b-ico">${ICONS.warn}</div><div><b>Sync delayed.</b>Lingfei accepted their seat, but Polar has not confirmed yet (<code>customer_seat.claimed</code> webhook pending). Their 500 starter credits will appear within a minute.<button class="ghost-btn sm b-cta">${ICONS.refresh} Refresh</button></div></div>
+    <table class="rf-table">
+      <thead><tr><th>Member</th><th>Role</th><th>Status</th><th>Credits</th></tr></thead>
+      <tbody>
+        <tr><td>${memberCell('LW','Lingfei Wu','lingfei@anytimeai.ai')}</td><td>${roleBadge('writer')}</td><td>${statusPill('pending','Confirming...')}</td><td><span style="color:var(--rf-text-dim); font-size:11px;">awaiting webhook</span></td></tr>
+      </tbody>
+    </table>
+  `, '', 'admin'),
+  anno:[
+    ['Where the change lives','<span class="change-tag dash">DASHBOARD UI</span> Transient state when claim is done but <code>customer_seat.claimed</code> is lagging.'],
+    ['Recovery','<span class="change-tag api">API</span> Refresh re-fetches <code>GET /api/team</code>. A reconciliation job also polls Polar to backfill if a webhook is missed.'],
+    ['Webhook','<span class="change-tag polar">POLAR</span> Credits granted on <code>customer_seat.claimed</code>; UI shows "Confirming..." until it arrives.'],
+    ['DB tables','<span class="change-tag db">DB</span> <code>team_seats.status</code> stays pending; no <code>credit_ledger</code> grant until confirmed (avoids double-grant).'],
+  ],
+});
+
+screens.push({
+  id:'s32', tag:'H · Cross-cutting', newScreen:true,
+  title:'32 · Revoke member confirmation',
+  desc:'Removing a member opens a destructive confirm modal that warns the seat is released in Polar (prorated credit) and the member’s unused credits return to the admin pool.',
+  body: dashShell('team', `
+    ${pageHead('Team', 'Manage seats, credits, and access for anytimeai.ai')}
+    <div style="filter:blur(1px); opacity:0.5;"><table class="rf-table"><thead><tr><th>Member</th></tr></thead><tbody><tr><td>${memberCell('LW','Lingfei Wu','lingfei@anytimeai.ai')}</td></tr></tbody></table></div>
+  `, `
+    <div class="modal-overlay"><div class="modal">
+      <h3 style="color:#E8857F;">Remove Lingfei Wu from the team?</h3>
+      <p>This releases their seat and revokes access immediately.</p>
+      <div class="banner warn" style="margin:0 0 14px;"><div class="b-ico">${ICONS.warn}</div><div>Their <b>90 unused credits</b> return to your admin pool. The seat is released in Polar with a prorated credit on your next invoice.</div></div>
+      <div class="modal-actions"><button class="ghost-btn">Cancel</button><button class="ghost-btn danger">${ICONS.trash} Remove member</button></div>
+    </div></div>
+  `, 'admin'),
+  anno:[
+    ['Where the change lives','<span class="change-tag dash">DASHBOARD UI</span> Destructive confirm modal from the Remove action. Admin only.'],
+    ['API','<span class="change-tag api">API</span> <code>DELETE /api/team/members/:id</code>. Server revokes the Polar seat and reclaims credits.'],
+    ['On revoke','<span class="change-tag polar">POLAR</span> <code>customer_seat.revoked</code> + <code>subscription.updated</code>. Unused member credits posted back to admin as a Refunded ledger entry.'],
+    ['DB tables','<span class="change-tag db">DB</span> <code>team_seats</code> row removed; <code>credit_ledger</code> Refunded entry written; <code>activity_log</code> type <code>member_removed</code>.'],
+  ],
+});
+
+screens.push({
+  id:'s33', tag:'H · Cross-cutting', newScreen:true,
+  title:'33 · Top-up payment failed',
+  desc:'A credit top-up failed at the Polar checkout (card declined). An error toast explains the charge did not go through and credits were not added, with a Retry action.',
+  body: dashShell('credits', `
+    ${pageHead('My Credits', 'Your AI credit balance for anytimeai.ai')}
+    <div class="card"><div class="card-head"><h3>Available credits</h3><span class="meta">90 / 500</span></div><div class="progress"><div class="fill amber" style="width:18%;"></div></div></div>
+  `, `
+    <div class="toast warn"><span class="ico">${ICONS.warn}</span><span>Payment declined. No credits were added. <a href="#" style="color:#D277E8;">Retry</a> or use a different card.</span></div>
+  `, 'member'),
+  anno:[
+    ['Where the change lives','<span class="change-tag dash">DASHBOARD UI</span> Error toast when Polar checkout returns a failed/declined order.'],
+    ['API','<span class="change-tag api">API</span> <code>POST /api/team/topup</code> surfaces the Polar failure category. No ledger entry on failure.'],
+    ['Webhook','<span class="change-tag polar">POLAR</span> Credits only added on <code>order.paid</code>; a failed checkout never reaches that event.'],
+    ['DB tables','<span class="change-tag db">DB</span> No <code>credit_ledger</code> write; <code>activity_log</code> type <code>topup_failed</code> recorded for support.'],
+  ],
+});
+
+screens.push({
+  id:'s34', tag:'H · Cross-cutting', newScreen:true,
+  title:'34 · Seat limit reached',
+  desc:'An edge state when the account hits a seat cap (e.g. plan ceiling). Invite is disabled with an explanation to upgrade the plan or remove a seat first.',
+  body: dashShell('team', `
+    ${pageHead('Team', 'Manage seats, credits, and access for anytimeai.ai')}
+    <div class="banner warn"><div class="b-ico">${ICONS.seat}</div><div><b>Seat limit reached.</b>This plan allows up to 10 seats and all are in use. Remove a member or upgrade the plan to add more.<button class="ghost-btn sm b-cta">Upgrade plan</button></div></div>
+    <div style="display:flex; align-items:flex-start; gap:12px; margin-bottom:14px;">
+      <div class="stat-row" style="flex:1; margin:0;"><div class="stat-card"><div class="lbl"><span class="ico">${ICONS.seat}</span>Seats Used</div><div class="big">10<small> / 10</small></div><div class="note">plan ceiling reached</div></div></div>
+      <button class="btn-primary sm" disabled style="opacity:0.5; cursor:not-allowed;">${ICONS.plus}<span>Invite Member</span></button>
+    </div>
+  `, '', 'admin'),
+  anno:[
+    ['Where the change lives','<span class="change-tag dash">DASHBOARD UI</span> Invite disabled when seats used equals the plan ceiling.'],
+    ['API','<span class="change-tag api">API</span> <code>POST /api/team/invite</code> returns 409 (seat cap) when at the ceiling; UI pre-empts with the disabled button + banner.'],
+    ['Seats','<span class="change-tag polar">POLAR</span> Plan ceiling enforced before <code>PATCH /v1/subscriptions/{id}</code>. Upgrade flow raises the cap.'],
+    ['DB tables','<span class="change-tag db">DB</span> Count from <code>team_seats</code>; ceiling from the plan config.'],
+  ],
+});
+
+/* ============================================================
+   CONTACT SHEET RENDERER
+   ============================================================ */
+function buildContactSheet(){
+  const groups = [
+    { title:'A · Navigation & Entry', screenIds:['s1','s2'] },
+    { title:'B · Team Roster (Dashboard)', screenIds:['s3','s4','s5','s6'] },
+    { title:'C · Invite & Roles', screenIds:['s7','s8','s9','s10','s11'] },
+    { title:'D · Credits & Top-up', screenIds:['s12','s13','s14','s15','s16'] },
+    { title:'E · Billing & Seats (Polar)', screenIds:['s17','s18','s19'] },
+    { title:'F · Activity Log', screenIds:['s20','s21'] },
+    { title:'G · Plugin Team Tab', screenIds:['s22','s23','s24','s25'] },
+    { title:'H · Cross-cutting States', screenIds:['s26','s27','s28','s29','s30','s31','s32','s33','s34'] },
+  ];
+  return `
+    <div class="contact-sheet-wrap">
+      ${groups.map(g => {
+        const tiles = g.screenIds.map(sid => {
+          const s = screens.find(x => x.id === sid);
+          if (!s) return '';
+          const num = s.id.replace('s','').padStart(2, '0');
+          const newCls = s.newScreen ? 'new-screen' : '';
+          return `
+            <a class="cs-tile ${newCls}" href="#${s.id}">
+              <div class="cs-tile-thumb"><div class="cs-mini">${s.body}</div></div>
+              <div class="cs-tile-info">
+                <div class="cs-tile-num">SCREEN ${num}</div>
+                <div class="cs-tile-title">${s.title.replace(/^\d+ · /, '')}</div>
+                <div class="cs-tile-tag">${s.tag}</div>
+              </div>
+            </a>
+          `;
+        }).join('');
+        return `
+          <div class="cs-section-title">${g.title}</div>
+          <div class="contact-sheet">${tiles}</div>
+        `;
+      }).join('')}
+    </div>
+  `;
+}
+
+/* ============================================================
+   RENDER ALL SCREENS
+   ============================================================ */
+const root = document.getElementById('screens-root');
+
+root.innerHTML = screens.map(s => {
+  let body = s.body;
+  if (body === '__CONTACT_SHEET__') body = buildContactSheet();
+  return `
+    <section class="state-section" id="${s.id}">
+      <div class="proto-screen-head">
+        <span class="proto-tag ${s.newScreen?'new':''}">${s.newScreen?'NEW · ':''}${s.tag}</span>
+        <h1>${s.title}</h1>
+        ${s.desc ? `<p>${s.desc}</p>` : ''}
+      </div>
+      ${body}
+      ${s.anno ? `
+        <div class="proto-anno">
+          <h3>Developer notes</h3>
+          <div class="proto-anno-grid">
+            ${s.anno.map(([k,v])=>`<div class="proto-anno-item"><dt>${k}</dt><dd>${v}</dd></div>`).join('')}
+          </div>
+        </div>
+      ` : ''}
+    </section>
+  `;
+}).join('');
+
+/* sidebar active highlighting on scroll */
+const sideLinks = [...document.querySelectorAll('.proto-side .proto-nav-item')];
+const sections = [...document.querySelectorAll('.state-section')];
+const obs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      sideLinks.forEach(a=>a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id));
+    }
+  });
+}, {rootMargin:'-30% 0px -60% 0px'});
+sections.forEach(s=>obs.observe(s));
+</script>
+</body>
+</html>
