@@ -369,6 +369,28 @@
   }
   .plg-nav::-webkit-scrollbar{ width:5px; }
   .plg-nav::-webkit-scrollbar-thumb{ background:#262A33; border-radius:3px; }
+  /* grouped accordion nav (shared standard across all prototypes) */
+  .plg-acc-scroll{ flex:1 1 auto; min-height:0; overflow-y:auto; margin:2px 0 4px; padding:0 6px; }
+  .plg-acc-group + .plg-acc-group{ margin-top:1px; }
+  .plg-acc-head{ width:100%; display:flex; align-items:center; gap:10px; padding:8px 10px; border:0; background:transparent; color:var(--rf-text-2); font-family:inherit; font-size:13px; font-weight:600; text-align:left; cursor:pointer; border-radius:7px; }
+  .plg-acc-head:hover{ background:rgba(255,255,255,0.03); color:var(--rf-text); }
+  .plg-acc-head.active-group{ color:var(--rf-text); }
+  .plg-acc-ico{ width:16px; height:16px; flex:0 0 16px; display:flex; align-items:center; justify-content:center; color:var(--rf-text-muted); }
+  .plg-acc-ico svg{ width:16px; height:16px; }
+  .plg-acc-head.active-group .plg-acc-ico{ color:var(--rf-purple); }
+  .plg-acc-label{ flex:1; }
+  .plg-acc-chev{ width:11px; height:11px; flex:0 0 11px; color:var(--rf-text-dim); transition:transform 150ms ease; }
+  .plg-acc-group.open .plg-acc-chev{ transform:rotate(90deg); }
+  .plg-acc-new{ font-size:8.5px; font-weight:700; letter-spacing:0.5px; background:var(--rf-purple); color:#fff; padding:2px 5px; border-radius:4px; }
+  .plg-acc-new.sm{ margin-left:auto; }
+  .plg-acc-children{ padding:1px 0 5px; }
+  .plg-acc-children[hidden]{ display:none; }
+  .plg-acc-item{ display:flex; align-items:center; gap:10px; padding:6px 10px 6px 23px; border-radius:7px; color:var(--rf-text-muted); font-size:12.5px; cursor:pointer; margin-bottom:1px; }
+  .plg-acc-item:hover{ background:rgba(255,255,255,0.03); color:var(--rf-text); }
+  .plg-acc-item.active{ background:var(--rf-bg-active); color:var(--rf-text); }
+  .plg-acc-item-label{ flex:1; }
+  .plg-acc-dot{ width:5px; height:5px; flex:0 0 5px; border-radius:50%; background:var(--rf-border-strong); }
+  .plg-acc-item.active .plg-acc-dot{ background:var(--rf-purple); }
   .plg-nav-brand{
     display:flex; align-items:center; gap:8px;
     padding:8px 14px 10px;
@@ -1269,20 +1291,58 @@ const ICONS = {
    PLUGIN SHELL
    ============================================================ */
 function pluginSubNav(activeKey){
-  const seoItems = [
-    {key:'globalSettings', icon:ICONS.cog, label:'Global Settings'},
-    {key:'pages', icon:ICONS.pages, label:'Pages'},
-    {key:'submitIndexing', icon:ICONS.bolt, label:'Submit Indexing'},
-    {key:'seoAnalyzer', icon:ICONS.analyzer, label:'SEO Analyzer'},
-    {key:'imageSEO', icon:ICONS.image, label:'Image SEO'},
-    {key:'monitor404', icon:ICONS.monitor, label:'404 Monitor'},
+  const GROUPS = [
+    { key:'setup',    label:'Setup',          icon:ICONS.cog,   items:[
+      {k:'globalSettings', label:'Global Settings'},
+    ]},
+    { key:'optimize', label:'Optimize',       icon:ICONS.bolt,  items:[
+      {k:'pages',          label:'Pages'},
+      {k:'imageSEO',       label:'Image SEO'},
+      {k:'schema',         label:'Schema',     isNew:true},
+      {k:'llmseo',         label:'LLM SEO',    isNew:true},
+    ]},
+    { key:'index',    label:'Index',          icon:ICONS.globe, items:[
+      {k:'submitIndexing', label:'Submit Indexing'},
+      {k:'sitemap',        label:'Sitemap'},
+    ]},
+    { key:'monitor',  label:'Monitor',        icon:ICONS.search,items:[
+      {k:'seoAnalyzer',    label:'SEO Analyzer'},
+      {k:'keywords',       label:'Keyword Tracker'},
+      {k:'speed',          label:'Page Speed'},
+      {k:'monitor404',     label:'404 Monitor'},
+    ]},
+    { key:'content',  label:'Content Engine', icon:ICONS.doc, isNew:true, items:[
+      {k:'calendar',       label:'Calendar'},
+      {k:'researchHub',    label:'Research Hub'},
+      {k:'draftQueue',     label:'Draft Queue'},
+      {k:'linkOpps',       label:'Link Opportunities'},
+      {k:'syncStatus',     label:'Sync Status'},
+    ]},
   ];
-  const contentItems = [
-    {key:'researchHub', icon:ICONS.brain, label:'Research Hub', isNew:true},
-    {key:'draftQueue', icon:ICONS.queue, label:'Draft Queue', isNew:true, count:'7'},
-    {key:'linkOpps', icon:ICONS.link, label:'Link Opportunities', isNew:true},
-    {key:'syncStatus', icon:ICONS.sync, label:'Sync Status', isNew:true},
-  ];
+  const activeGroup = GROUPS.find(g => g.items.some(it=>it.k===activeKey));
+  const agKey = activeGroup ? activeGroup.key : 'content';
+  const chev = '<svg class="plg-acc-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg>';
+  const groupsHtml = GROUPS.map(g=>{
+    const open = g.key === agKey;
+    return `
+      <div class="plg-acc-group ${open?'open':''}">
+        <button type="button" class="plg-acc-head ${open?'active-group':''}">
+          <span class="plg-acc-ico">${g.icon}</span>
+          <span class="plg-acc-label">${g.label}</span>
+          ${g.isNew?'<span class="plg-acc-new">NEW</span>':''}
+          ${chev}
+        </button>
+        <div class="plg-acc-children"${open?'':' hidden'}>
+          ${g.items.map(it=>`
+            <div class="plg-acc-item ${activeKey===it.k?'active':''}">
+              <span class="plg-acc-dot"></span>
+              <span class="plg-acc-item-label">${it.label}</span>
+              ${it.isNew?'<span class="plg-acc-new sm">NEW</span>':''}
+            </div>
+          `).join('')}
+        </div>
+      </div>`;
+  }).join('');
   return `
     <nav class="plg-nav">
       <div class="plg-nav-brand">
@@ -1290,21 +1350,7 @@ function pluginSubNav(activeKey){
         <b>Rank<span class="a">Frame</span></b>
         <span class="arrow">‹</span>
       </div>
-      <div class="plg-nav-group">SEO</div>
-      ${seoItems.map(it=>`
-        <div class="plg-nav-item ${activeKey===it.key?'active':''}">
-          <span class="ico">${it.icon}</span>
-          <span>${it.label}</span>
-        </div>
-      `).join('')}
-      <div class="plg-nav-group content-group"><span class="pinkdot"></span>CONTENT</div>
-      ${contentItems.map(it=>`
-        <div class="plg-nav-item ${activeKey===it.key?'active':''}">
-          <span class="ico">${it.icon}</span>
-          <span>${it.label}</span>
-          ${it.count?`<span class="count-pill">${it.count}</span>`:(it.isNew?'<span class="new-pill">NEW</span>':'')}
-        </div>
-      `).join('')}
+      <div class="plg-acc-scroll">${groupsHtml}</div>
       <div class="plg-nav-divider"></div>
       <div class="plg-nav-item"><span class="ico">${ICONS.help}</span><span>Support</span></div>
       <div class="plg-nav-item"><span class="ico">${ICONS.ext}</span><span>Go To Dashboard</span></div>
@@ -1509,8 +1555,8 @@ screens.push({
 /* ================== A · NAVIGATION ================== */
 screens.push({
   id:'s1', tag:'A · Navigation', newScreen:true,
-  title:'01 · Plugin nav, SEO group + new CONTENT group',
-  desc:'The plugin sidebar now has two grouped sections. SEO group is the existing six items (unchanged order). A new CONTENT group adds four items: Research Hub, Draft Queue, Link Opportunities, Sync Status. The CONTENT label has a pink indicator dot.',
+  title:'01 · Plugin nav, collapsible accordion groups',
+  desc:'The plugin sidebar moves from a flat list to collapsible accordion groups (Setup, Optimize, Index, Monitor, Content Engine). Only the active group is expanded; the rest collapse to reduce clutter. The new Content Engine group carries a NEW badge and holds Calendar, Research Hub, Draft Queue, Link Opportunities, and Sync Status.',
   body:`
   <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px; align-items:flex-start;">
     <div>
@@ -1526,27 +1572,28 @@ screens.push({
       </div>
     </div>
     <div>
-      <div style="font-size:10.5px; letter-spacing:0.10em; text-transform:uppercase; color:var(--rf-purple); font-weight:700; margin-bottom:10px;">AFTER · grouped, +4 CONTENT items</div>
-      <div style="background:var(--rf-bg); border:1px solid var(--rf-purple-line); border-radius:12px; width:240px; padding:10px 0;">
-        <div class="plg-nav-brand"><div class="mini"><span></span><span></span><span></span><span></span></div><b>Rank<span class="a">Frame</span></b></div>
-        <div class="plg-nav-group">SEO</div>
-        <div class="plg-nav-item"><span class="ico">${ICONS.cog}</span><span>Global Settings</span></div>
-        <div class="plg-nav-item"><span class="ico">${ICONS.pages}</span><span>Pages</span></div>
-        <div class="plg-nav-item"><span class="ico">${ICONS.bolt}</span><span>Submit Indexing</span></div>
-        <div class="plg-nav-item"><span class="ico">${ICONS.analyzer}</span><span>SEO Analyzer</span></div>
-        <div class="plg-nav-item"><span class="ico">${ICONS.image}</span><span>Image SEO</span></div>
-        <div class="plg-nav-item"><span class="ico">${ICONS.monitor}</span><span>404 Monitor</span></div>
-        <div class="plg-nav-group content-group"><span class="pinkdot"></span>CONTENT</div>
-        <div class="plg-nav-item"><span class="ico">${ICONS.brain}</span><span>Research Hub</span><span class="new-pill">NEW</span></div>
-        <div class="plg-nav-item"><span class="ico">${ICONS.queue}</span><span>Draft Queue</span><span class="count-pill">7</span></div>
-        <div class="plg-nav-item"><span class="ico">${ICONS.link}</span><span>Link Opportunities</span><span class="new-pill">NEW</span></div>
-        <div class="plg-nav-item"><span class="ico">${ICONS.sync}</span><span>Sync Status</span><span class="new-pill">NEW</span></div>
+      <div style="font-size:10.5px; letter-spacing:0.10em; text-transform:uppercase; color:var(--rf-purple); font-weight:700; margin-bottom:10px;">AFTER · collapsible accordion groups</div>
+      <div style="background:var(--rf-bg); border:1px solid var(--rf-purple-line); border-radius:12px; width:240px; padding:10px 6px;">
+        <div class="plg-nav-brand" style="padding-left:8px;"><div class="mini"><span></span><span></span><span></span><span></span></div><b>Rank<span class="a">Frame</span></b></div>
+        <div class="plg-acc-group"><button type="button" class="plg-acc-head"><span class="plg-acc-ico">${ICONS.cog}</span><span class="plg-acc-label">Setup</span><svg class="plg-acc-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></button></div>
+        <div class="plg-acc-group"><button type="button" class="plg-acc-head"><span class="plg-acc-ico">${ICONS.bolt}</span><span class="plg-acc-label">Optimize</span><svg class="plg-acc-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></button></div>
+        <div class="plg-acc-group"><button type="button" class="plg-acc-head"><span class="plg-acc-ico">${ICONS.globe}</span><span class="plg-acc-label">Index</span><svg class="plg-acc-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></button></div>
+        <div class="plg-acc-group"><button type="button" class="plg-acc-head"><span class="plg-acc-ico">${ICONS.search}</span><span class="plg-acc-label">Monitor</span><svg class="plg-acc-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></button></div>
+        <div class="plg-acc-group open"><button type="button" class="plg-acc-head active-group"><span class="plg-acc-ico">${ICONS.doc}</span><span class="plg-acc-label">Content Engine</span><span class="plg-acc-new">NEW</span><svg class="plg-acc-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></button>
+          <div class="plg-acc-children">
+            <div class="plg-acc-item"><span class="plg-acc-dot"></span><span class="plg-acc-item-label">Calendar</span></div>
+            <div class="plg-acc-item active"><span class="plg-acc-dot"></span><span class="plg-acc-item-label">Research Hub</span></div>
+            <div class="plg-acc-item"><span class="plg-acc-dot"></span><span class="plg-acc-item-label">Draft Queue</span><span class="count-pill">7</span></div>
+            <div class="plg-acc-item"><span class="plg-acc-dot"></span><span class="plg-acc-item-label">Link Opportunities</span></div>
+            <div class="plg-acc-item"><span class="plg-acc-dot"></span><span class="plg-acc-item-label">Sync Status</span></div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
   <div style="margin-top:18px; background:var(--rf-purple-soft-2); border:1px solid var(--rf-purple-line); border-radius:12px; padding:16px 18px; max-width:560px;">
     <div style="font-size:10.5px; letter-spacing:0.10em; text-transform:uppercase; color:var(--rf-purple); font-weight:700; margin-bottom:6px;">What changed</div>
-    <div style="font-size:12.5px; color:var(--rf-text-2); line-height:1.6;">Items are now grouped under labeled headings (SEO, CONTENT). The new CONTENT group adds four entries. Draft Queue shows a count pill (pending items). Sync Status is hidden for the Writer role (sync requires Admin or Publisher).</div>
+    <div style="font-size:12.5px; color:var(--rf-text-2); line-height:1.6;">Items are now organized into collapsible accordion groups (Setup, Optimize, Index, Monitor, Content Engine). Only the active group expands; the rest collapse to keep the rail compact. The new Content Engine group carries a NEW badge. Draft Queue shows a count pill (pending items). Sync Status is hidden for the Writer role (sync requires Admin or Publisher).</div>
   </div>
   `,
   anno:[
@@ -3962,6 +4009,27 @@ sections.forEach(s=>obs.observe(s));
   }
   .plg-nav::-webkit-scrollbar{ width:5px; }
   .plg-nav::-webkit-scrollbar-thumb{ background:#262A33; border-radius:3px; }
+  .plg-acc-scroll{ flex:1 1 auto; min-height:0; overflow-y:auto; margin:2px 0 4px; padding:0 6px; }
+  .plg-acc-group + .plg-acc-group{ margin-top:1px; }
+  .plg-acc-head{ width:100%; display:flex; align-items:center; gap:10px; padding:8px 10px; border:0; background:transparent; color:var(--rf-text-2); font-family:inherit; font-size:13px; font-weight:600; text-align:left; cursor:pointer; border-radius:7px; }
+  .plg-acc-head:hover{ background:rgba(255,255,255,0.03); color:var(--rf-text); }
+  .plg-acc-head.active-group{ color:var(--rf-text); }
+  .plg-acc-ico{ width:16px; height:16px; flex:0 0 16px; display:flex; align-items:center; justify-content:center; color:var(--rf-text-muted); }
+  .plg-acc-ico svg{ width:16px; height:16px; }
+  .plg-acc-head.active-group .plg-acc-ico{ color:var(--rf-purple); }
+  .plg-acc-label{ flex:1; }
+  .plg-acc-chev{ width:11px; height:11px; flex:0 0 11px; color:var(--rf-text-dim); transition:transform 150ms ease; }
+  .plg-acc-group.open .plg-acc-chev{ transform:rotate(90deg); }
+  .plg-acc-new{ font-size:8.5px; font-weight:700; letter-spacing:0.5px; background:var(--rf-purple); color:#fff; padding:2px 5px; border-radius:4px; }
+  .plg-acc-new.sm{ margin-left:auto; }
+  .plg-acc-children{ padding:1px 0 5px; }
+  .plg-acc-children[hidden]{ display:none; }
+  .plg-acc-item{ display:flex; align-items:center; gap:10px; padding:6px 10px 6px 23px; border-radius:7px; color:var(--rf-text-muted); font-size:12.5px; cursor:pointer; margin-bottom:1px; }
+  .plg-acc-item:hover{ background:rgba(255,255,255,0.03); color:var(--rf-text); }
+  .plg-acc-item.active{ background:var(--rf-bg-active); color:var(--rf-text); }
+  .plg-acc-item-label{ flex:1; }
+  .plg-acc-dot{ width:5px; height:5px; flex:0 0 5px; border-radius:50%; background:var(--rf-border-strong); }
+  .plg-acc-item.active .plg-acc-dot{ background:var(--rf-purple); }
   .plg-nav-brand{
     display:flex; align-items:center; gap:8px;
     padding:8px 14px 10px;
@@ -5050,6 +5118,59 @@ function pluginSubNav(activeKey, role){
   const acctInit = role==='member' ? 'LW' : '7M';
   const planTitle = role==='member' ? 'anytimeai.ai' : 'Agency Yearly Plan';
   const planLine = role==='member' ? 'Member · 90 AI credits left' : '1,240 AI credits left';
+  const GROUPS = [
+    { key:'setup',    label:'Setup',          icon:ICONS.cog,   items:[
+      {k:'globalSettings', label:'Global Settings'},
+      {k:'account',        label:'Account Settings', isNew:true},
+    ]},
+    { key:'optimize', label:'Optimize',       icon:ICONS.bolt,  items:[
+      {k:'pages',          label:'Pages'},
+      {k:'imageSEO',       label:'Image SEO'},
+      {k:'schema',         label:'Schema',     isNew:true},
+      {k:'llmseo',         label:'LLM SEO',    isNew:true},
+    ]},
+    { key:'index',    label:'Index',          icon:ICONS.globe, items:[
+      {k:'submitIndexing', label:'Submit Indexing'},
+      {k:'sitemap',        label:'Sitemap'},
+    ]},
+    { key:'monitor',  label:'Monitor',        icon:ICONS.search,items:[
+      {k:'seoAnalyzer',    label:'SEO Analyzer'},
+      {k:'keywords',       label:'Keyword Tracker'},
+      {k:'speed',          label:'Page Speed'},
+      {k:'monitor404',     label:'404 Monitor'},
+    ]},
+    { key:'content',  label:'Content Engine', icon:ICONS.doc, isNew:true, items:[
+      {k:'calendar',       label:'Calendar'},
+      {k:'researchHub',    label:'Research Hub'},
+      {k:'draftQueue',     label:'Draft Queue'},
+      {k:'linkOpps',       label:'Link Opportunities'},
+      {k:'syncStatus',     label:'Sync Status'},
+    ]},
+  ];
+  const activeGroup = GROUPS.find(g => g.items.some(it=>it.k===activeKey));
+  const agKey = activeGroup ? activeGroup.key : 'setup';
+  const chev = '<svg class="plg-acc-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg>';
+  const groupsHtml = GROUPS.map(g=>{
+    const open = g.key === agKey;
+    return `
+      <div class="plg-acc-group ${open?'open':''}">
+        <button type="button" class="plg-acc-head ${open?'active-group':''}">
+          <span class="plg-acc-ico">${g.icon}</span>
+          <span class="plg-acc-label">${g.label}</span>
+          ${g.isNew?'<span class="plg-acc-new">NEW</span>':''}
+          ${chev}
+        </button>
+        <div class="plg-acc-children"${open?'':' hidden'}>
+          ${g.items.map(it=>`
+            <div class="plg-acc-item ${activeKey===it.k?'active':''}">
+              <span class="plg-acc-dot"></span>
+              <span class="plg-acc-item-label">${it.label}</span>
+              ${it.isNew?'<span class="plg-acc-new sm">NEW</span>':''}
+            </div>
+          `).join('')}
+        </div>
+      </div>`;
+  }).join('');
   return `
     <nav class="plg-nav">
       <div class="plg-nav-brand">
@@ -5057,11 +5178,7 @@ function pluginSubNav(activeKey, role){
         <b>Rank<span class="a">Frame</span></b>
         <span class="arrow">‹</span>
       </div>
-      <div class="plg-nav-group">SEO</div>
-      <div class="plg-nav-item"><span class="ico">${ICONS.cog}</span><span>Global Settings</span></div>
-      <div class="plg-nav-item"><span class="ico">${ICONS.search}</span><span>SEO Analyzer</span></div>
-      <div class="plg-nav-group content-group"><span class="pinkdot"></span>ACCOUNT</div>
-      <div class="plg-nav-item ${activeKey==='account'?'active':''}"><span class="ico">${ICONS.user}</span><span>Account Settings</span><span class="new-pill">NEW</span></div>
+      <div class="plg-acc-scroll">${groupsHtml}</div>
       <div class="plg-nav-divider"></div>
       <div class="plg-nav-item"><span class="ico">${ICONS.help}</span><span>Support</span></div>
       <div class="plg-nav-item"><span class="ico">${ICONS.ext}</span><span>Go To Dashboard</span></div>
