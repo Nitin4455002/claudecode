@@ -97,6 +97,8 @@
   .sub-nav-item:hover{ background:rgba(255,255,255,0.03); }
   .sub-nav-item.active{ background:var(--rf-bg-active); color:var(--rf-text); }
   .sub-nav-item .ico{ width:16px; height:16px; flex:0 0 16px; display:flex; align-items:center; justify-content:center; color:currentColor; }
+  .sub-nav-item .ico svg{ width:16px; height:16px; }
+  .sub-nav-item > svg{ width:16px; height:16px; flex:0 0 16px; }
   .sub-nav-item.active .ico{ color:var(--rf-purple); }
   .sub-nav-item .badge-new{ margin-left:auto; font-size:9px; font-weight:700; letter-spacing:0.5px; background:var(--rf-purple); color:#fff; padding:2px 5px; border-radius:4px; }
   .sub-nav-spacer{ flex:1; }
@@ -612,7 +614,7 @@ function pluginSubNav(activeKey, role){
     items.map(it=>'<div class="sub-nav-item '+(activeKey===it.k?'active':'')+'"><span class="ico">'+it.ico+'</span><span>'+it.label+'</span></div>').join('')+
     '<div class="sub-nav-score-card"><div class="sub-nav-score-ring"><span>82</span></div><div class="sub-nav-score-meta"><span class="label">SEO Score</span><span class="val">Excellent</span></div></div>'+
     '<div class="sub-nav-spacer"></div>'+
-    '<div class="sub-nav-foot"><div class="sub-nav-item">'+ico.help+'<span>Support</span></div><div class="sub-nav-item">'+ico.book+'<span>Documentation</span></div><div class="sub-nav-item">'+ico.globe+'<span>Go To Dashboard</span></div></div>'+
+    '<div class="sub-nav-foot"><div class="sub-nav-item"><span class="ico">'+ico.help+'</span><span>Support</span></div><div class="sub-nav-item"><span class="ico">'+ico.book+'</span><span>Documentation</span></div><div class="sub-nav-item"><span class="ico">'+ico.globe+'</span><span>Go To Dashboard</span></div></div>'+
     userCard+'</div>';
 }
 
@@ -1029,9 +1031,31 @@ screens.push({ id:'s29', group:'Multi-user', tag:'Multi-user · LLM SEO', title:
     'member'),
   anno:[['Read-only insight','Members can view the score and run AI Preview to understand standing.'],['Locked write tabs','FAQ Generator and Citation Optimizer carry a lock icon and are not clickable for members.'],['Consistent gating','The same isAllowedTo rule governs both Schema generation and LLM SEO writes.'],['No surprise','The lock icons in the tab bar make the boundary obvious before a member clicks.']] });
 /* ===== RENDER ===== */
+function tileIcon(s){
+  const g = (s.group||'').toLowerCase();
+  const t = (s.title||'').toLowerCase();
+  if(g.indexOf('llm')===0){
+    if(g.indexOf('score')>-1) return ico.target;
+    if(g.indexOf('faq')>-1) return ico.help;
+    if(g.indexOf('preview')>-1) return ico.brain;
+    if(g.indexOf('citation')>-1) return ico.quote;
+    if(g.indexOf('entity')>-1) return ico.layers;
+    return ico.brain;
+  }
+  if(g.indexOf('library')>-1) return ico.layers;
+  if(g.indexOf('verification')>-1) return ico.check;
+  if(g.indexOf('settings')>-1) return ico.cog;
+  if(t.indexOf('generat')>-1||t.indexOf('inject')>-1) return ico.sparkles;
+  if(t.indexOf('detect')>-1||t.indexOf('scan')>-1) return ico.search;
+  if(t.indexOf('success')>-1) return ico.check;
+  if(t.indexOf('regenerate')>-1) return ico.refresh;
+  if(t.indexOf('conflict')>-1) return ico.alert;
+  if(t.indexOf('pick')>-1) return ico.pages;
+  return ico.schema_tag;
+}
 function buildContactSheet(){
   return '<div class="contact-sheet">'+screens.filter(s=>s.id!=='s1').map(s=>
-    '<a class="cs-tile '+(s.newScreen?'new-screen':'')+'" href="#'+s.id+'"><div class="cs-tile-top">'+(s.group&&s.group.indexOf('LLM')===0?ico.brain:ico.schema_tag)+'</div><div class="cs-tile-info"><div class="cs-tile-num">'+s.id.toUpperCase()+'</div><div class="cs-tile-title">'+s.title+'</div><div class="cs-tile-tag">'+s.tag+'</div></div></a>'
+    '<a class="cs-tile '+(s.newScreen?'new-screen':'')+'" href="#'+s.id+'"><div class="cs-tile-top">'+tileIcon(s)+'</div><div class="cs-tile-info"><div class="cs-tile-num">'+s.id.toUpperCase()+'</div><div class="cs-tile-title">'+s.title+'</div><div class="cs-tile-tag">'+s.tag+'</div></div></a>'
   ).join('')+'</div>';
 }
 
