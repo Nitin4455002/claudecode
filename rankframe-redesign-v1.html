@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RankFrame Redesign · 01 Onboarding</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --rf-bg:#000; --rf-bg-elev:#050608; --rf-bg-card:#0C0E11; --rf-bg-card-2:#131519;
+    --rf-bg-card-3:#1C1F25; --rf-bg-input:#08090B; --rf-bg-active:#202937;
+    --rf-border:#1A1D24; --rf-border-2:#262A33; --rf-border-strong:#373C46;
+    --rf-purple:#BA24D5; --rf-purple-btn:#AB33CE; --rf-purple-btn-2:#C234E0; --rf-purple-deep:#7A1A8C;
+    --rf-purple-soft:rgba(186,36,213,0.10); --rf-purple-line:rgba(186,36,213,0.35); --rf-purple-glow:rgba(186,36,213,0.30);
+    --rf-green:#4ADE80; --rf-green-soft:rgba(74,222,128,0.12);
+    --rf-amber:#F5B919; --rf-amber-soft:rgba(245,185,25,0.10);
+    --rf-red:#DD524C; --rf-blue:#3B82F6; --rf-teal:#14B8A6;
+    --rf-text:#fff; --rf-text-2:#D5D8DE; --rf-text-muted:#9BA1AE; --rf-text-dim:#8A91A0; --rf-text-faint:#6B7280;
+    --rf-shadow-lg:0 20px 60px rgba(0,0,0,0.7); --rf-glow-purple:0 0 40px rgba(186,36,213,0.15);
+    --plugin-w:880px; --plugin-h:720px; --sub-nav-w:240px;
+    --r-sm:6px; --r-md:8px; --r-lg:12px; --r-pill:999px;
+  }
+  *,*::before,*::after{ box-sizing:border-box; }
+  html,body{ margin:0; padding:0; }
+  body{
+    font-family:'Inter',-apple-system,system-ui,sans-serif; background:#08090B; color:var(--rf-text);
+    font-size:14px; line-height:1.5; -webkit-font-smoothing:antialiased;
+    background-image:radial-gradient(circle at 20% 0%, rgba(186,36,213,0.05) 0, transparent 40%),
+      radial-gradient(circle at 80% 100%, rgba(186,36,213,0.04) 0, transparent 40%);
+    background-attachment:fixed;
+  }
+  .mono{ font-family:'JetBrains Mono',ui-monospace,monospace; }
+
+  /* page shell */
+  .page-head{ max-width:980px; margin:0 auto; padding:44px 24px 8px; }
+  .page-head .kicker{ font-size:11px; font-weight:700; letter-spacing:1.4px; text-transform:uppercase; color:var(--rf-purple); }
+  .page-head h1{ font-size:26px; font-weight:700; margin:8px 0 6px; }
+  .page-head p{ color:var(--rf-text-muted); font-size:14px; margin:0; max-width:640px; }
+  .flowbar{ display:flex; flex-wrap:wrap; gap:8px; margin-top:18px; }
+  .flowbar .step{ display:flex; align-items:center; gap:8px; font-size:12px; color:var(--rf-text-dim); background:var(--rf-bg-card); border:1px solid var(--rf-border-2); border-radius:var(--r-pill); padding:6px 12px; }
+  .flowbar .step b{ color:var(--rf-text-2); font-weight:600; }
+  .flowbar .step .n{ font-family:'JetBrains Mono',monospace; color:var(--rf-purple); }
+  .flowbar .arrow{ color:var(--rf-border-strong); align-self:center; }
+
+  .stage{ max-width:980px; margin:0 auto; padding:24px 24px 160px; }
+  .screen{ margin-top:54px; scroll-margin-top:24px; }
+  .screen-label{ display:flex; align-items:baseline; gap:12px; margin-bottom:14px; }
+  .screen-label .id{ font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--rf-purple); background:var(--rf-purple-soft); border:1px solid var(--rf-purple-line); padding:2px 8px; border-radius:6px; }
+  .screen-label h2{ font-size:17px; font-weight:600; margin:0; }
+  .screen-label .sub{ font-size:13px; color:var(--rf-text-muted); }
+
+  /* plugin chrome */
+  .frame{ width:var(--plugin-w); height:var(--plugin-h); background:var(--rf-bg); border-radius:14px; overflow:hidden; border:1px solid var(--rf-border); box-shadow:var(--rf-shadow-lg), var(--rf-glow-purple); display:flex; flex-direction:column; margin:0 auto; }
+  .frame-bar{ height:42px; flex:0 0 42px; background:var(--rf-bg-card-2); border-bottom:1px solid var(--rf-border); display:flex; align-items:center; padding:0 14px; gap:10px; }
+  .logo-dots{ width:18px; height:18px; border-radius:5px; background:radial-gradient(circle at 30% 30%, #fff 0 1.5px, transparent 1.5px),radial-gradient(circle at 70% 30%, var(--rf-purple) 0 1.5px, transparent 1.5px),radial-gradient(circle at 30% 70%, var(--rf-purple) 0 1.5px, transparent 1.5px),radial-gradient(circle at 70% 70%, #fff 0 1.5px, transparent 1.5px),#000; }
+  .frame-bar .ttl{ font-size:13px; font-weight:600; }
+  .frame-bar .ttl .p{ color:var(--rf-purple); }
+  .frame-bar .x{ margin-left:auto; width:22px; height:22px; border-radius:5px; display:flex; align-items:center; justify-content:center; color:var(--rf-text-muted); }
+  .frame-bar .x svg{ width:14px; height:14px; }
+  .frame-body{ flex:1; min-height:0; display:flex; }
+
+  /* onboarding canvas (no sidebar) */
+  .ob{ flex:1; min-height:0; overflow:hidden; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:36px 40px; position:relative; text-align:center; }
+  .ob.scroll{ justify-content:flex-start; overflow-y:auto; text-align:left; }
+  .ob-crumbs{ position:absolute; top:18px; left:0; right:0; display:flex; align-items:center; justify-content:center; gap:7px; }
+  .ob-crumb{ width:26px; height:4px; border-radius:99px; background:var(--rf-border-2); }
+  .ob-crumb.done{ background:var(--rf-purple-deep); }
+  .ob-crumb.active{ background:var(--rf-purple); }
+  .ob-logo{ width:54px; height:54px; border-radius:14px; margin-bottom:22px; background:radial-gradient(circle at 30% 30%, #fff 0 4px, transparent 4px),radial-gradient(circle at 70% 30%, var(--rf-purple) 0 4px, transparent 4px),radial-gradient(circle at 30% 70%, var(--rf-purple) 0 4px, transparent 4px),radial-gradient(circle at 70% 70%, #fff 0 4px, transparent 4px),#000; box-shadow:0 0 30px var(--rf-purple-glow); }
+  .ob h1{ font-size:25px; font-weight:700; margin:0 0 8px; letter-spacing:-0.2px; }
+  .ob .lede{ font-size:14px; color:var(--rf-text-muted); margin:0 0 28px; max-width:440px; line-height:1.6; }
+  .ob.scroll h1{ font-size:21px; }
+
+  .gbtn{ display:inline-flex; align-items:center; justify-content:center; gap:10px; height:48px; padding:0 22px; min-width:300px; border-radius:var(--r-md); background:#fff; color:#1a1a1a; font-size:14.5px; font-weight:600; border:0; cursor:pointer; font-family:inherit; }
+  .gbtn svg{ width:18px; height:18px; }
+  .pbtn{ display:inline-flex; align-items:center; justify-content:center; gap:8px; height:48px; padding:0 22px; min-width:300px; border-radius:var(--r-md); background:linear-gradient(180deg,var(--rf-purple-btn-2),var(--rf-purple-btn)); border:1px solid var(--rf-purple-line); color:#fff; font-size:14.5px; font-weight:600; cursor:pointer; box-shadow:0 0 24px var(--rf-purple-glow); font-family:inherit; }
+  .pbtn:disabled{ background:var(--rf-bg-card-3); border-color:var(--rf-border-2); color:var(--rf-text-dim); box-shadow:none; cursor:not-allowed; }
+  .pbtn svg{ width:16px; height:16px; }
+  .lbtn{ background:none; border:0; color:var(--rf-text-dim); font-size:12.5px; cursor:pointer; font-family:inherit; margin-top:16px; text-decoration:underline; text-underline-offset:2px; }
+  .ob-foot{ font-size:11.5px; color:var(--rf-text-faint); margin-top:18px; max-width:380px; line-height:1.5; }
+  .ob-foot a{ color:var(--rf-text-dim); }
+
+  /* trial / plan card */
+  .plan-card{ width:420px; background:var(--rf-bg-card); border:1px solid var(--rf-border-2); border-radius:var(--r-lg); padding:0; overflow:hidden; text-align:left; margin-bottom:18px; }
+  .plan-top{ padding:18px 20px; border-bottom:1px solid var(--rf-border); display:flex; align-items:center; gap:12px; }
+  .plan-badge{ font-size:10px; font-weight:700; letter-spacing:0.6px; text-transform:uppercase; color:var(--rf-purple); background:var(--rf-purple-soft); border:1px solid var(--rf-purple-line); padding:3px 8px; border-radius:5px; }
+  .plan-top .nm{ font-size:15px; font-weight:600; }
+  .plan-price{ margin-left:auto; text-align:right; }
+  .plan-price b{ font-size:18px; }
+  .plan-price span{ font-size:11px; color:var(--rf-text-dim); display:block; }
+  .plan-list{ padding:16px 20px; display:flex; flex-direction:column; gap:9px; }
+  .plan-row{ display:flex; align-items:center; gap:10px; font-size:13px; color:var(--rf-text-2); }
+  .plan-row svg{ width:15px; height:15px; color:var(--rf-green); flex:0 0 15px; }
+  .trial-note{ display:flex; align-items:center; gap:8px; padding:11px 14px; background:var(--rf-amber-soft); border:1px solid rgba(245,185,25,0.3); border-radius:var(--r-md); font-size:12px; color:var(--rf-amber); width:420px; margin-bottom:18px; text-align:left; }
+  .trial-note svg{ width:15px; height:15px; flex:0 0 15px; }
+
+  /* waiting / handoff */
+  .spinner{ width:38px; height:38px; border-radius:50%; border:3px solid var(--rf-border-2); border-top-color:var(--rf-purple); animation:spin 0.8s linear infinite; margin-bottom:22px; }
+  @keyframes spin{ to{ transform:rotate(360deg); } }
+
+  /* connect site card */
+  .connect-card{ width:440px; background:var(--rf-bg-card); border:1px solid var(--rf-border-2); border-radius:var(--r-lg); padding:18px; text-align:left; margin-bottom:8px; }
+  .connect-row{ display:flex; align-items:center; gap:13px; }
+  .connect-fav{ width:40px; height:40px; border-radius:9px; background:var(--rf-bg-card-3); border:1px solid var(--rf-border-2); display:flex; align-items:center; justify-content:center; font-size:15px; font-weight:700; color:var(--rf-text-2); flex:0 0 40px; }
+  .connect-meta .u{ font-size:14px; font-weight:600; }
+  .connect-meta .s{ font-size:12px; color:var(--rf-text-dim); margin-top:2px; }
+  .connect-state{ margin-left:auto; display:flex; align-items:center; gap:7px; font-size:12px; font-weight:600; }
+  .connect-state.verifying{ color:var(--rf-amber); }
+  .connect-state.verified{ color:var(--rf-green); }
+  .connect-state .mini{ width:13px; height:13px; border-radius:50%; border:2px solid var(--rf-border-2); border-top-color:var(--rf-amber); animation:spin 0.8s linear infinite; }
+  .connect-state svg{ width:15px; height:15px; }
+  .detect-note{ display:flex; gap:9px; align-items:flex-start; padding:11px 13px; margin-top:14px; background:rgba(59,130,246,0.08); border:1px solid rgba(59,130,246,0.25); border-radius:var(--r-md); font-size:12px; color:#9DC3F5; text-align:left; line-height:1.5; }
+  .detect-note svg{ width:15px; height:15px; flex:0 0 15px; margin-top:1px; color:var(--rf-blue); }
+
+  /* personalization form */
+  .pz{ width:560px; margin:0 auto; }
+  .pz-head{ display:flex; align-items:center; gap:10px; margin:4px 0 18px; }
+  .pz-head .ico{ width:30px; height:30px; border-radius:8px; background:var(--rf-purple-soft); border:1px solid var(--rf-purple-line); display:flex; align-items:center; justify-content:center; color:var(--rf-purple); }
+  .pz-head .ico svg{ width:16px; height:16px; }
+  .pz-sec{ font-size:11px; font-weight:700; letter-spacing:0.9px; text-transform:uppercase; color:var(--rf-text-dim); margin:0 0 12px; display:flex; align-items:center; gap:8px; }
+  .pz-sec svg{ width:14px; height:14px; }
+  .field{ margin-bottom:16px; }
+  .field label{ display:block; font-size:13px; font-weight:600; margin-bottom:7px; }
+  .inp{ width:100%; background:var(--rf-bg-input); border:1px solid var(--rf-border-2); border-radius:var(--r-md); padding:11px 13px; color:var(--rf-text); font-size:13.5px; font-family:inherit; }
+  .inp::placeholder{ color:var(--rf-text-faint); }
+  textarea.inp{ resize:none; min-height:78px; line-height:1.55; }
+  .sel{ width:100%; display:flex; align-items:center; justify-content:space-between; background:var(--rf-bg-input); border:1px solid var(--rf-border-2); border-radius:var(--r-md); padding:11px 13px; color:var(--rf-text-2); font-size:13.5px; cursor:pointer; }
+  .sel svg{ width:15px; height:15px; color:var(--rf-text-dim); }
+  .two{ display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+  .tagbox{ min-height:96px; background:var(--rf-bg-input); border:1px solid var(--rf-border-2); border-radius:var(--r-md); padding:11px; display:flex; flex-wrap:wrap; gap:7px; align-content:flex-start; }
+  .tag{ display:inline-flex; align-items:center; gap:6px; height:26px; padding:0 9px; background:var(--rf-purple-soft); border:1px solid var(--rf-purple-line); border-radius:6px; font-size:12px; color:var(--rf-purple); }
+  .tag svg{ width:11px; height:11px; opacity:0.8; }
+  .tag-hint{ font-size:11px; color:var(--rf-text-faint); margin-top:6px; }
+  .comp-row{ display:flex; align-items:center; gap:8px; margin-bottom:10px; }
+  .comp-row .inp{ flex:1; }
+  .comp-row .rm{ width:32px; height:32px; flex:0 0 32px; border-radius:7px; border:1px solid var(--rf-border-2); background:var(--rf-bg-card); color:var(--rf-text-dim); display:flex; align-items:center; justify-content:center; cursor:pointer; }
+  .comp-row .rm svg{ width:14px; height:14px; }
+  .add-link{ display:inline-flex; align-items:center; gap:7px; color:var(--rf-purple); font-size:13px; font-weight:600; cursor:pointer; background:none; border:0; font-family:inherit; padding:4px 0; }
+  .add-link svg{ width:15px; height:15px; }
+
+  .pz-foot{ display:flex; align-items:center; gap:12px; margin-top:24px; padding-top:18px; border-top:1px solid var(--rf-border); }
+  .pz-foot .skip{ color:var(--rf-text-dim); font-size:13px; cursor:pointer; background:none; border:0; font-family:inherit; }
+  .pz-foot .grow{ flex:1; }
+
+  /* all set */
+  .check-burst{ width:64px; height:64px; border-radius:50%; background:var(--rf-green-soft); border:1px solid rgba(74,222,128,0.35); display:flex; align-items:center; justify-content:center; color:var(--rf-green); margin-bottom:22px; }
+  .check-burst svg{ width:32px; height:32px; }
+  .recap{ width:420px; display:flex; flex-direction:column; gap:8px; margin-bottom:24px; text-align:left; }
+  .recap-row{ display:flex; align-items:center; gap:11px; padding:11px 14px; background:var(--rf-bg-card); border:1px solid var(--rf-border); border-radius:var(--r-md); font-size:13px; color:var(--rf-text-2); }
+  .recap-row svg{ width:15px; height:15px; color:var(--rf-green); flex:0 0 15px; }
+  .recap-row b{ color:var(--rf-text); font-weight:600; }
+
+  /* ===== Global Settings landing (with accordion sidebar) ===== */
+  .gs-side{ width:var(--sub-nav-w); flex:0 0 var(--sub-nav-w); background:var(--rf-bg-elev); border-right:1px solid var(--rf-border); display:flex; flex-direction:column; padding:12px 10px; overflow:hidden; }
+  .gs-side-head{ display:flex; align-items:center; gap:8px; padding:4px 8px 12px; border-bottom:1px solid var(--rf-border); margin-bottom:6px; }
+  .gs-side-head .t{ font-size:14px; font-weight:600; } .gs-side-head .t .p{ color:var(--rf-purple); }
+  .acc-scroll{ flex:1 1 auto; min-height:0; overflow-y:auto; margin:2px -4px; padding:0 4px; }
+  .acc-g + .acc-g{ margin-top:1px; }
+  .acc-h{ width:100%; display:flex; align-items:center; gap:10px; padding:8px 10px; border:0; background:transparent; color:var(--rf-text-2); font-family:inherit; font-size:13px; font-weight:600; text-align:left; cursor:pointer; border-radius:7px; }
+  .acc-h:hover{ background:rgba(255,255,255,0.03); }
+  .acc-h .gi{ width:16px; height:16px; flex:0 0 16px; color:var(--rf-text-muted); display:flex; align-items:center; justify-content:center; }
+  .acc-h .gi svg{ width:16px; height:16px; }
+  .acc-g.open .acc-h{ color:var(--rf-text); } .acc-g.open .acc-h .gi{ color:var(--rf-purple); }
+  .acc-h .lbl{ flex:1; }
+  .acc-h .nw{ font-size:8.5px; font-weight:700; letter-spacing:0.4px; background:var(--rf-purple); color:#fff; padding:2px 5px; border-radius:4px; }
+  .acc-h .cv{ width:11px; height:11px; color:var(--rf-text-dim); transition:transform .15s; }
+  .acc-g.open .acc-h .cv{ transform:rotate(90deg); }
+  .acc-c{ padding:1px 0 5px; } .acc-c[hidden]{ display:none; }
+  .acc-i{ display:flex; align-items:center; gap:10px; padding:6px 10px 6px 23px; border-radius:7px; color:var(--rf-text-muted); font-size:12.5px; cursor:pointer; margin-bottom:1px; }
+  .acc-i:hover{ background:rgba(255,255,255,0.03); color:var(--rf-text); }
+  .acc-i.active{ background:var(--rf-bg-active); color:var(--rf-text); }
+  .acc-i .dot{ width:5px; height:5px; flex:0 0 5px; border-radius:50%; background:var(--rf-border-strong); }
+  .acc-i.active .dot{ background:var(--rf-purple); }
+  .acc-i .lbl{ flex:1; }
+  .acc-i .nw{ font-size:8px; font-weight:700; background:var(--rf-purple); color:#fff; padding:1px 4px; border-radius:3px; }
+  .gs-score{ display:flex; align-items:center; gap:11px; padding:11px; margin:8px 2px 6px; background:var(--rf-bg-card); border:1px solid var(--rf-border); border-radius:var(--r-md); }
+  .gs-score .ring{ width:42px; height:42px; border-radius:50%; flex:0 0 42px; display:flex; align-items:center; justify-content:center; font-size:15px; font-weight:700; color:var(--rf-green); background:conic-gradient(var(--rf-green) 0 82%, var(--rf-bg-card-3) 82% 100%); position:relative; }
+  .gs-score .ring::after{ content:''; position:absolute; inset:3px; border-radius:50%; background:var(--rf-bg-card); }
+  .gs-score .ring span{ position:relative; z-index:1; }
+  .gs-score .m .v{ font-size:12px; font-weight:600; } .gs-score .m .l{ font-size:11px; color:var(--rf-text-dim); }
+  .gs-user{ display:flex; align-items:center; gap:10px; padding:9px; background:var(--rf-bg-card); border:1px solid var(--rf-border); border-radius:var(--r-md); margin:2px; }
+  .gs-user .av{ width:28px; height:28px; border-radius:50%; background:var(--rf-purple); display:flex; align-items:center; justify-content:center; font-size:10px; font-weight:700; flex:0 0 28px; }
+  .gs-user .nm{ font-size:12px; font-weight:600; } .gs-user .em{ font-size:10px; color:var(--rf-text-dim); }
+
+  .gs-main{ flex:1; min-width:0; background:var(--rf-bg); overflow-y:auto; padding:22px 26px 40px; }
+  .gs-main h1{ font-size:21px; font-weight:600; margin:0 0 3px; }
+  .gs-main .sub{ color:var(--rf-text-muted); font-size:13px; margin:0 0 16px; }
+  .gs-tabs{ display:flex; gap:22px; border-bottom:1px solid var(--rf-border); margin-bottom:20px; }
+  .gs-tab{ padding:0 2px 11px; font-size:13.5px; font-weight:500; color:var(--rf-text-muted); cursor:pointer; position:relative; }
+  .gs-tab.active{ color:var(--rf-purple); font-weight:600; }
+  .gs-tab.active::after{ content:''; position:absolute; left:0; right:0; bottom:-1px; height:2px; background:var(--rf-purple); border-radius:2px 2px 0 0; }
+  .gs-welcome{ display:flex; align-items:flex-start; gap:11px; padding:13px 15px; background:var(--rf-purple-soft); border:1px solid var(--rf-purple-line); border-radius:var(--r-md); margin-bottom:20px; }
+  .gs-welcome svg{ width:17px; height:17px; color:var(--rf-purple); flex:0 0 17px; margin-top:1px; }
+  .gs-welcome .t{ font-size:13px; color:var(--rf-text-2); line-height:1.55; } .gs-welcome .t b{ color:var(--rf-text); }
+  .gs-block-h{ font-size:14px; font-weight:600; margin:0 0 3px; }
+  .gs-block-s{ font-size:12.5px; color:var(--rf-text-dim); margin:0 0 14px; }
+  .gs-grid{ display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  .gs-fld label{ display:block; font-size:12px; font-weight:600; color:var(--rf-text-2); margin-bottom:6px; }
+  .gs-val{ background:var(--rf-bg-card); border:1px solid var(--rf-border-2); border-radius:var(--r-md); padding:11px 13px; font-size:13px; color:var(--rf-text-2); line-height:1.5; min-height:64px; }
+  .gs-val.ai{ border-color:var(--rf-purple-line); background:var(--rf-purple-soft); color:var(--rf-text); }
+  .gs-fld-foot{ display:flex; align-items:center; gap:10px; margin-top:8px; }
+  .gs-chars{ font-size:11px; color:var(--rf-text-dim); }
+  .gs-mini{ display:inline-flex; align-items:center; gap:6px; height:28px; padding:0 11px; border-radius:6px; font-size:12px; font-weight:500; border:1px solid var(--rf-border-2); background:var(--rf-bg-card); color:var(--rf-text-2); cursor:pointer; }
+  .gs-mini.ai{ background:var(--rf-purple-soft); border-color:var(--rf-purple-line); color:var(--rf-purple); margin-left:auto; }
+  .gs-mini svg{ width:13px; height:13px; }
+
+  /* dev annotations */
+  .anno{ max-width:880px; margin:14px auto 0; background:rgba(255,255,255,0.02); border:1px solid var(--rf-border); border-radius:12px; padding:15px 18px; }
+  .anno h4{ margin:0 0 10px; font-size:10.5px; font-weight:700; letter-spacing:1.1px; text-transform:uppercase; color:var(--rf-text-dim); }
+  .anno-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:9px 24px; }
+  .anno-item dt{ font-size:10.5px; font-weight:700; letter-spacing:0.4px; text-transform:uppercase; color:var(--rf-purple); margin-bottom:2px; }
+  .anno-item dd{ margin:0; font-size:12.5px; color:var(--rf-text-2); line-height:1.5; }
+  .anno-item dd code{ font-family:'JetBrains Mono',monospace; font-size:11px; background:rgba(255,255,255,0.05); padding:1px 5px; border-radius:4px; color:#C9B8E8; }
+</style>
+</head>
+<body>
+
+<div class="page-head">
+  <div class="kicker">RankFrame Redesign · Section 01</div>
+  <h1>Onboarding</h1>
+  <p>Plugin-first. A new user installs RankFrame inside Framer and lands here. Account is created with Google OAuth, the trial requires a card up front, the current Framer site auto-connects, personalization is captured per website, and the user lands on Global Settings.</p>
+  <div class="flowbar">
+    <span class="step"><span class="n">01</span> <b>Login</b></span><span class="arrow">→</span>
+    <span class="step"><span class="n">02</span> <b>Start trial + card</b></span><span class="arrow">→</span>
+    <span class="step"><span class="n">03</span> <b>Connect site</b></span><span class="arrow">→</span>
+    <span class="step"><span class="n">04</span> <b>Personalization</b></span><span class="arrow">→</span>
+    <span class="step"><span class="n">05</span> <b>Global Settings</b></span>
+  </div>
+</div>
+
+<div class="stage" id="stage"></div>
+
+<script>
+const ico = {
+  x:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>',
+  google:'<svg viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.27-4.74 3.27-8.1z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84A11 11 0 0 0 12 23z"/><path fill="#FBBC05" d="M5.84 14.1a6.6 6.6 0 0 1 0-4.2V7.06H2.18a11 11 0 0 0 0 9.88l3.66-2.84z"/><path fill="#EA4335" d="M12 4.75c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 1.46 14.97.5 12 .5A11 11 0 0 0 2.18 7.06l3.66 2.84C6.71 6.68 9.14 4.75 12 4.75z"/></svg>',
+  check:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="20 6 9 17 4 12"/></svg>',
+  shield:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M12 2l8 3v6c0 5-3.5 8.5-8 11-4.5-2.5-8-6-8-11V5z"/></svg>',
+  info:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>',
+  alert:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="13"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>',
+  target:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>',
+  bldg:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M9 22V12h6v10M9 6h.01M15 6h.01M9 10h.01M15 10h.01"/></svg>',
+  chev:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>',
+  chevR:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 6 15 12 9 18"/></svg>',
+  plus:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>',
+  trash:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-2 14a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L5 6"/></svg>',
+  spark:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l1.5 4.5L18 9l-4.5 1.5L12 15l-1.5-4.5L6 9l4.5-1.5z"/></svg>',
+  copy:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>',
+  cog:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3.2"/><path d="M19.4 12.9a7.5 7.5 0 0 0 0-1.8l2.1-1.6-2-3.5-2.4 1a7.5 7.5 0 0 0-1.6-.9L15 3h-4l-.5 2.6a7.5 7.5 0 0 0-1.6.9l-2.4-1-2 3.5 2.1 1.6a7.5 7.5 0 0 0 0 1.8L2.5 14.5l2 3.5 2.4-1a7.5 7.5 0 0 0 1.6.9L9 21h4l.5-2.6a7.5 7.5 0 0 0 1.6-.9l2.4 1 2-3.5z"/></svg>',
+  zap:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10"/></svg>',
+  globe:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg>',
+  search:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>',
+  doc:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>',
+};
+
+// plugin chrome wrappers
+function frameOB(inner){ return '<div class="frame"><div class="frame-bar"><div class="logo-dots"></div><div class="ttl">Rank<span class="p">Frame</span></div><div class="x">'+ico.x+'</div></div><div class="frame-body"><div class="ob'+(inner.scroll?' scroll':'')+'">'+inner.html+'</div></div></div>'; }
+function crumbs(active){ let s='<div class="ob-crumbs">'; for(let i=1;i<=4;i++){ s+='<div class="ob-crumb '+(i<active?'done':i===active?'active':'')+'"></div>'; } return s+'</div>'; }
+
+// in-plugin accordion nav (Global Settings active)
+const NAV=[
+  {k:'setup',label:'Setup',ico:ico.cog,items:[{k:'global',label:'Global Settings',active:true}]},
+  {k:'optimize',label:'Optimize',ico:ico.zap,items:[{k:'pages',label:'Pages'},{k:'images',label:'Image SEO'},{k:'schema',label:'Schema',nw:1},{k:'llmseo',label:'LLM SEO',nw:1}]},
+  {k:'index',label:'Index',ico:ico.globe,items:[{k:'submit',label:'Submit Indexing'},{k:'sitemap',label:'Sitemap'}]},
+  {k:'monitor',label:'Monitor',ico:ico.search,items:[{k:'analyzer',label:'SEO Analyzer'},{k:'keywords',label:'Keyword Tracker'},{k:'speed',label:'Page Speed'},{k:'monitor404',label:'404 Monitor'}]},
+  {k:'content',label:'Content Engine',ico:ico.doc,nw:1,items:[{k:'calendar',label:'Calendar'},{k:'research',label:'Research Hub'},{k:'drafts',label:'Draft Queue'}]},
+];
+function sideNav(){
+  let g=NAV.map(grp=>{
+    const open=grp.k==='setup';
+    const items=grp.items.map(it=>'<div class="acc-i '+(it.active?'active':'')+'"><span class="dot"></span><span class="lbl">'+it.label+'</span>'+(it.nw?'<span class="nw">NEW</span>':'')+'</div>').join('');
+    return '<div class="acc-g '+(open?'open':'')+'"><button class="acc-h">'+'<span class="gi">'+grp.ico+'</span><span class="lbl">'+grp.label+'</span>'+(grp.nw?'<span class="nw">NEW</span>':'')+'<span class="cv">'+ico.chevR+'</span></button><div class="acc-c"'+(open?'':' hidden')+'>'+items+'</div></div>';
+  }).join('');
+  return '<div class="gs-side">'+
+    '<div class="gs-side-head"><div class="logo-dots"></div><div class="t">Rank<span class="p">Frame</span></div></div>'+
+    '<div class="acc-scroll">'+g+'</div>'+
+    '<div class="gs-score"><div class="ring"><span>82</span></div><div class="m"><div class="v">SEO Score</div><div class="l">Excellent</div></div></div>'+
+    '<div class="gs-user"><div class="av">7M</div><div><div class="nm">7seers media</div><div class="em">7seersmedia@gmail.com</div></div></div>'+
+  '</div>';
+}
+
+const screens = [];
+
+// O1 LOGIN
+screens.push({ id:'O1', title:'Login', sub:'Google OAuth, plugin-first',
+  frame: frameOB({ html:
+    '<div class="ob-logo"></div>'+
+    '<h1>Welcome to RankFrame</h1>'+
+    '<p class="lede">The first native SEO suite built inside Framer. Sign in to connect this site and start your trial.</p>'+
+    '<button class="gbtn">'+ico.google+'<span>Continue with Google</span></button>'+
+    '<div class="ob-foot">By continuing you agree to our <a>Terms</a> and <a>Privacy Policy</a>. RankFrame uses your Google account only for sign-in and profile.</div>'
+  }),
+  anno:[
+    ['Auth method','Google OAuth only (verified from dashboard: profile picture synced from Google). No email/password.'],
+    ['Why plugin-first','User is already inside their Framer project. Auth bootstraps the account; <code>dashboard.rankframe.com</code> shares the same session.'],
+    ['Endpoint','<code>POST /api/auth/google</code> returns session + account state (new vs returning, has-subscription).'],
+    ['Branch','New account with no active subscription continues to Start Trial. Returning subscriber skips straight to Global Settings.'],
+  ]});
+
+// O2 START TRIAL + CARD
+screens.push({ id:'O2', title:'Start trial + card', sub:'Card required up front',
+  frame: frameOB({ html:
+    crumbs(1)+
+    '<h1 style="margin-top:14px;">Start your 7-day free trial</h1>'+
+    '<p class="lede">Full access to every feature. Add a card to begin. You will not be charged until the trial ends, and you can cancel anytime before then.</p>'+
+    '<div class="plan-card">'+
+      '<div class="plan-top"><span class="plan-badge">Agency</span><span class="nm">Agency Yearly</span><span class="plan-price"><b>$288</b><span>per year after trial</span></span></div>'+
+      '<div class="plan-list">'+
+        '<div class="plan-row">'+ico.check+'Unlimited Framer sites</div>'+
+        '<div class="plan-row">'+ico.check+'Schema, LLM SEO, Image SEO, Content Engine</div>'+
+        '<div class="plan-row">'+ico.check+'Team members and approvals</div>'+
+        '<div class="plan-row">'+ico.check+'Google indexing, keyword tracking, audits</div>'+
+      '</div>'+
+    '</div>'+
+    '<div class="trial-note">'+ico.alert+'<span>A card is required to start the trial. We authorize but do not charge. Cancel before day 7 and you pay nothing.</span></div>'+
+    '<button class="pbtn">'+ico.shield+'<span>Continue to secure checkout</span></button>'+
+    '<button class="lbtn">Switch to Personal plan ($108/yr)</button>'
+  }),
+  anno:[
+    ['Card up front','Confirmed requirement. Trial cannot begin without an authorized payment method.'],
+    ['Checkout handoff','Stripe checkout lives in the dashboard (per your Subscription screen). This button opens <code>dashboard.rankframe.com/checkout</code> in the browser, then returns to the plugin.'],
+    ['Endpoint','<code>POST /api/billing/trial/start</code> creates the Stripe customer + setup intent; plan default = Agency Yearly, switchable.'],
+    ['Matias safeguard','Cancel before day 7 = zero charge. Dashboard must reflect trial-cancelled state immediately to avoid the "charged after cancel" confusion.'],
+  ]});
+
+// O3 CHECKOUT WAITING
+screens.push({ id:'O2b', title:'Checkout handoff', sub:'Waiting for payment confirmation',
+  frame: frameOB({ html:
+    crumbs(1)+
+    '<div class="spinner"></div>'+
+    '<h1>Finish checkout in your browser</h1>'+
+    '<p class="lede">We opened a secure Stripe checkout tab. Add your card there, then come back. This screen updates automatically once your trial is active.</p>'+
+    '<button class="pbtn" disabled>'+ico.shield+'<span>Waiting for confirmation...</span></button>'+
+    '<button class="lbtn">Reopen checkout</button>'
+  }),
+  anno:[
+    ['State','Blocking wait. Plugin polls or listens for the Stripe webhook before advancing.'],
+    ['Signal','<code>checkout.session.completed</code> webhook flips account to <code>trialing</code>; plugin advances to Connect Site.'],
+    ['Resilience','"Reopen checkout" re-launches the session if the tab was closed. No dead end if the user navigates away.'],
+    ['Return UX','Coming back to Framer auto-detects the active trial; no manual refresh needed.'],
+  ]});
+
+// O4 CONNECT SITE (verifying)
+screens.push({ id:'O3', title:'Connect site', sub:'Auto-detect the current Framer project',
+  frame: frameOB({ html:
+    crumbs(2)+
+    '<h1 style="margin-top:14px;">Connecting your site</h1>'+
+    '<p class="lede">RankFrame detected the Framer project you are working in and is verifying its published domain.</p>'+
+    '<div class="connect-card">'+
+      '<div class="connect-row">'+
+        '<div class="connect-fav">A</div>'+
+        '<div class="connect-meta"><div class="u">appreciative-usage-908321.framer.app</div><div class="s">Detected from the open Framer project</div></div>'+
+        '<div class="connect-state verifying"><span class="mini"></span>Verifying</div>'+
+      '</div>'+
+      '<div class="detect-note">'+ico.info+'<div>We read your published site and <code>sitemap.xml</code> to build the page list. Multi-locale sites with a sitemap index are followed into each child sitemap so every page and blog is included.</div></div>'+
+    '</div>'+
+    '<button class="lbtn">Connect a different domain instead</button>'
+  }),
+  anno:[
+    ['Auto-connect','Plugin-first advantage: the active Framer project is known, so the site connects without the user typing a URL.'],
+    ['Verification','Confirms ownership via the published Framer domain. Custom domains verified by the same published mapping.'],
+    ['Sitemap recursion','Page list comes from published crawl + <code>sitemap.xml</code>, recursing through <code>&lt;sitemapindex&gt;</code> children (the Matias multi-locale fix).'],
+    ['Manual fallback','"Connect a different domain" covers users whose target site is not the open project. Mirrors the dashboard "add website" flow.'],
+  ]});
+
+// O5 CONNECTED (verified)
+screens.push({ id:'O3b', title:'Site verified', sub:'Connected and page list built',
+  frame: frameOB({ html:
+    crumbs(2)+
+    '<h1 style="margin-top:14px;">Site connected</h1>'+
+    '<p class="lede">We verified your domain and found your pages. Next, tell RankFrame about your brand so every AI suggestion sounds like you.</p>'+
+    '<div class="connect-card">'+
+      '<div class="connect-row">'+
+        '<div class="connect-fav">A</div>'+
+        '<div class="connect-meta"><div class="u">appreciative-usage-908321.framer.app</div><div class="s">17 pages and 6 blog posts found</div></div>'+
+        '<div class="connect-state verified">'+ico.check+'Verified</div>'+
+      '</div>'+
+    '</div>'+
+    '<button class="pbtn" style="margin-top:18px;">'+ico.target+'<span>Set up personalization</span></button>'
+  }),
+  anno:[
+    ['Page count','Surfaces pages + blog posts found so the user trusts the sitemap parse before continuing.'],
+    ['Stored','<code>POST /api/sites/connect</code> persists the site + page inventory to the account; appears in the dashboard Websites list as Verified.'],
+    ['Per-site scope','Everything after this (personalization, scores, schema) is scoped to this connected site.'],
+    ['Next','Routes into personalization, captured per website.'],
+  ]});
+
+// O6 PERSONALIZATION 1 - brand identity
+screens.push({ id:'O4', title:'Personalization · Brand Identity', sub:'Per website, step 1 of 3',
+  frame: frameOB({ scroll:true, html:
+    crumbs(3)+
+    '<div class="pz">'+
+      '<div class="pz-head"><div class="ico">'+ico.target+'</div><div><h1 style="margin:0;">Tell us about your brand</h1><div style="font-size:12.5px;color:var(--rf-text-muted);">For appreciative-usage-908321.framer.app · editable later in plugin and dashboard</div></div></div>'+
+      '<div class="pz-sec">'+ico.bldg+'Brand Identity</div>'+
+      '<div class="field"><label>Brand Name</label><input class="inp" value="7 Seers"/></div>'+
+      '<div class="field"><label>Brand About</label><textarea class="inp" placeholder="What does your business do, and who is it for? 3 to 5 sentences.">We help SaaS, eCommerce, and Entertainment brands look great, work better, and get noticed. We also build software tools for startups, creators, and modern brands.</textarea></div>'+
+      '<div class="pz-foot"><button class="skip">Skip for now</button><span class="grow"></span><button class="pbtn" style="min-width:auto;height:42px;">Continue '+ico.chevR+'</button></div>'+
+    '</div>'
+  }),
+  anno:[
+    ['Source feature','Improves the existing Account Settings, Personalization tab (Brand Identity section). Now captured during onboarding, per site.'],
+    ['Why first','Email plan: personalization is the highest-leverage first action. Every AI title, schema description, and alt text reads from this.'],
+    ['Editable','Same data is editable later from plugin (Global Settings) and dashboard (per-site Personalization).'],
+    ['Skippable','Can skip, but a persistent nudge appears until completed because AI quality depends on it.'],
+  ]});
+
+// O7 PERSONALIZATION 2 - strategy
+screens.push({ id:'O4b', title:'Personalization · Strategy', sub:'Per website, step 2 of 3',
+  frame: frameOB({ scroll:true, html:
+    crumbs(3)+
+    '<div class="pz">'+
+      '<div class="pz-head"><div class="ico">'+ico.target+'</div><div><h1 style="margin:0;">Your goals and audience</h1><div style="font-size:12.5px;color:var(--rf-text-muted);">Step 2 of 3 · Strategy</div></div></div>'+
+      '<div class="pz-sec">'+ico.target+'Strategy</div>'+
+      '<div class="field"><label>Main Goals</label><div class="sel"><span>4 Goals Selected</span>'+ico.chev+'</div></div>'+
+      '<div class="two">'+
+        '<div><label style="display:block;font-size:13px;font-weight:600;margin-bottom:7px;">Industry</label><div class="tagbox">'+
+          ['SaaS','Agency','E-commerce','Startup'].map(t=>'<span class="tag">'+t+' '+ico.x+'</span>').join('')+
+        '</div><div class="tag-hint">Press Enter to add multiple tags</div></div>'+
+        '<div><label style="display:block;font-size:13px;font-weight:600;margin-bottom:7px;">Audience</label><div class="tagbox">'+
+          ['Saas Founders','Business Owners','Premium Businesses'].map(t=>'<span class="tag">'+t+' '+ico.x+'</span>').join('')+
+        '</div><div class="tag-hint">Press Enter to add multiple tags</div></div>'+
+      '</div>'+
+      '<div class="pz-foot"><button class="skip">Back</button><span class="grow"></span><button class="pbtn" style="min-width:auto;height:42px;">Continue '+ico.chevR+'</button></div>'+
+    '</div>'
+  }),
+  anno:[
+    ['Source feature','Existing Personalization, Strategy section: Main Goals (multi-select), Industry and Audience (tag inputs). Preserved exactly, restyled.'],
+    ['Used by','Keyword suggestions, content briefs, and schema audience/about fields draw on goals + industry + audience.'],
+    ['Tag input','Free-entry tags, Enter to commit. No fixed taxonomy so any niche works.'],
+    ['Persist','<code>PATCH /api/sites/{id}/personalization</code> on each step; partial saves are safe.'],
+  ]});
+
+// O8 PERSONALIZATION 3 - competitors
+screens.push({ id:'O4c', title:'Personalization · Competitors', sub:'Per website, step 3 of 3',
+  frame: frameOB({ scroll:true, html:
+    crumbs(3)+
+    '<div class="pz">'+
+      '<div class="pz-head"><div class="ico">'+ico.target+'</div><div><h1 style="margin:0;">Who are your competitors?</h1><div style="font-size:12.5px;color:var(--rf-text-muted);">Step 3 of 3 · Competitors</div></div></div>'+
+      '<div class="pz-sec">'+ico.globe+'Competitors (URLs)</div>'+
+      '<div class="comp-row"><input class="inp" value="https://dashdigital.studio/"/><button class="rm">'+ico.trash+'</button></div>'+
+      '<div class="comp-row"><input class="inp" placeholder="https://competitor.com"/><button class="rm">'+ico.trash+'</button></div>'+
+      '<button class="add-link">'+ico.plus+'Add Competitor</button>'+
+      '<div class="pz-foot"><button class="skip">Back</button><span class="grow"></span><button class="pbtn" style="min-width:auto;height:42px;">'+ico.check+'Finish setup</button></div>'+
+    '</div>'
+  }),
+  anno:[
+    ['Source feature','Existing Personalization, Competitors (URLs) with Add Competitor. Unchanged in function.'],
+    ['Used by','Gap analysis and the Content Engine Research Hub benchmark against these domains.'],
+    ['Finish','Writes the full personalization profile, marks onboarding complete, routes to Global Settings.'],
+    ['Validation','URLs normalized and de-duplicated; invalid entries flagged inline, never block finish.'],
+  ]});
+
+// O9 ALL SET -> GLOBAL SETTINGS (landing)
+screens.push({ id:'O5', title:'Global Settings', sub:'The landing screen, with a first-run welcome',
+  frame: '<div class="frame"><div class="frame-bar"><div class="logo-dots"></div><div class="ttl">Rank<span class="p">Frame</span></div><div class="x">'+ico.x+'</div></div><div class="frame-body">'+
+    sideNav()+
+    '<div class="gs-main">'+
+      '<h1>Global Settings</h1>'+
+      '<p class="sub">Manage your global Framer SEO settings.</p>'+
+      '<div class="gs-tabs"><span class="gs-tab active">Basic</span><span class="gs-tab">Keywords</span><span class="gs-tab">Advanced</span><span class="gs-tab">404 Monitor</span></div>'+
+      '<div class="gs-welcome">'+ico.spark+'<div class="t"><b>You are all set, 7 Seers.</b> Your trial is active and your site is connected. Start here: review your site-wide meta title and description below, then explore Schema and LLM SEO in the Optimize menu.</div></div>'+
+      '<div class="gs-block-h">Basic SEO Settings</div>'+
+      '<div class="gs-block-s">Update your SEO title and description. Both can also be customized at the page level.</div>'+
+      '<div class="gs-grid">'+
+        '<div class="gs-fld"><label>Current Title</label><div class="gs-val">7 SEERS - Marketing for SaaS, eCommerce, and Entertainment</div><div class="gs-fld-foot"><span class="gs-chars">58/70 characters</span></div></div>'+
+        '<div class="gs-fld"><label>AI-Generated Title</label><div class="gs-val ai">7 Seers | Business Software Solutions for Modern Brands</div><div class="gs-fld-foot"><span class="gs-chars">55/70 characters</span><button class="gs-mini">'+ico.copy+'Copy</button><button class="gs-mini ai">'+ico.spark+'Write with AI</button></div></div>'+
+        '<div class="gs-fld"><label>Current Description</label><div class="gs-val">An independent marketing studio unifying ancient insight with modern strategy. Inspired by the wisdom of the Saptarishis, we combine clear thinking with honest work.</div><div class="gs-fld-foot"><span class="gs-chars">165/260 characters</span></div></div>'+
+        '<div class="gs-fld"><label>AI-Generated Description</label><div class="gs-val ai">7 Seers delivers powerful SaaS, eCommerce, and Entertainment solutions. We help brands look better, work smarter, and get noticed, building custom tools for business growth.</div><div class="gs-fld-foot"><span class="gs-chars">173/260 characters</span><button class="gs-mini">'+ico.copy+'Copy</button><button class="gs-mini ai">'+ico.spark+'Write with AI</button></div></div>'+
+      '</div>'+
+    '</div>'+
+  '</div></div>',
+  anno:[
+    ['Landing','Per your answer, onboarding ends on Global Settings, Basic tab. Matches the existing plugin home, now under the accordion nav.'],
+    ['First-run only','The purple welcome banner shows once after onboarding, then disappears. The screen is otherwise the standard Global Settings.'],
+    ['Base feature kept','Current vs AI-Generated title and description with character counts, Copy, and Write with AI, exactly as today.'],
+    ['Personalization payoff','Write with AI uses the personalization profile just captured, so suggestions are brand-specific from the first click.'],
+  ]});
+
+// render
+const stage=document.getElementById('stage');
+stage.innerHTML = screens.map(s=>{
+  const anno = s.anno ? '<div class="anno"><h4>Dev notes</h4><div class="anno-grid">'+s.anno.map(a=>'<div class="anno-item"><dt>'+a[0]+'</dt><dd>'+a[1]+'</dd></div>').join('')+'</div></div>' : '';
+  return '<div class="screen" id="'+s.id+'">'+
+    '<div class="screen-label"><span class="id">'+s.id+'</span><h2>'+s.title+'</h2><span class="sub">'+s.sub+'</span></div>'+
+    s.frame + anno +
+  '</div>';
+}).join('');
+</script>
+</body>
+</html>
